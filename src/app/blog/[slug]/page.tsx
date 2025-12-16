@@ -17,27 +17,41 @@ type BlogPost = {
 };
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5000";
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const base = apiBase 
+    ? apiBase.replace(/\/+$/, "")
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      console.error(`Failed to fetch blog post: ${res.status} ${res.statusText}`);
+      return null;
+    }
     const data = await res.json();
     const posts = data.posts ?? [];
     return posts.find((p: BlogPost) => p.slug === slug) ?? null;
-  } catch {
+  } catch (error) {
+    console.error("Error fetching blog post:", error);
     return null;
   }
 }
 
 async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5000";
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const base = apiBase 
+    ? apiBase.replace(/\/+$/, "")
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
-    if (!res.ok) return [];
+    if (!res.ok) {
+      console.error(`Failed to fetch related posts: ${res.status} ${res.statusText}`);
+      return [];
+    }
     const data = await res.json();
     const posts = data.posts ?? [];
     return posts.filter((p: BlogPost) => p.slug !== currentSlug).slice(0, 3);
-  } catch {
+  } catch (error) {
+    console.error("Error fetching related posts:", error);
     return [];
   }
 }

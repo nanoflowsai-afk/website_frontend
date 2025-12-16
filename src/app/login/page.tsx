@@ -32,6 +32,12 @@ function LoginForm() {
     });
     
     if (adminRes.ok) {
+      try {
+        const data = await adminRes.json().catch(() => null);
+        if (data?.token && typeof window !== "undefined") {
+          localStorage.setItem("nano_admin_token", data.token);
+        }
+      } catch {}
       setLoading(false);
       window.location.href = "/admin";
       return;

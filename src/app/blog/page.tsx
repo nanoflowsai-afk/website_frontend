@@ -20,13 +20,20 @@ const thoughtLeadershipTopics = [
 ];
 
 async function getBlogPosts(): Promise<BlogPost[]> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5000";
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const base = apiBase 
+    ? apiBase.replace(/\/+$/, "")
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
-    if (!res.ok) return [];
+    if (!res.ok) {
+      console.error(`Failed to fetch blog posts: ${res.status} ${res.statusText}`);
+      return [];
+    }
     const data = await res.json();
     return data.posts ?? [];
-  } catch {
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
     return [];
   }
 }

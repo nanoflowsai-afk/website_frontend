@@ -52,8 +52,8 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-orange-100 bg-white/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
+    <header className="sticky top-0 z-50 border-b border-orange-100 bg-white/90 backdrop-blur-xl" suppressHydrationWarning>
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4" suppressHydrationWarning>
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/nanoflows-logo.png"

@@ -298,6 +298,12 @@ export default function AdminPage() {
       setAuthError("Invalid credentials");
       return;
     }
+    try {
+      const data = await res.json().catch(() => null);
+      if (data?.token && typeof window !== "undefined") {
+        localStorage.setItem("nano_admin_token", data.token);
+      }
+    } catch {}
     window.location.href = "/admin";
   };
 

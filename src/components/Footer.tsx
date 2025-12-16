@@ -83,7 +83,7 @@ export function Footer() {
   const currentYear = 2025;
 
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <footer className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white" suppressHydrationWarning>
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-4">

@@ -47,10 +47,23 @@ type HomeResponse = {
 };
 
 async function getHomeData(): Promise<HomeResponse | null> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5000";
-  const res = await fetch(`${base}/api/home`, { cache: "no-store" });
-  if (!res.ok) return null;
-  return (await res.json()) as HomeResponse;
+  // Use NEXT_PUBLIC_API_BASE_URL if set, otherwise default to Express server port 5001
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const base = apiBase 
+    ? apiBase.replace(/\/+$/, "") // Remove trailing slashes
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
+  
+  try {
+    const res = await fetch(`${base}/api/home`, { cache: "no-store" });
+    if (!res.ok) {
+      console.error(`Failed to fetch home data: ${res.status} ${res.statusText}`);
+      return null;
+    }
+    return (await res.json()) as HomeResponse;
+  } catch (error) {
+    console.error("Error fetching home data:", error);
+    return null;
+  }
 }
 
 export default async function Home() {
@@ -71,7 +84,7 @@ export default async function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" suppressHydrationWarning>
       <Navbar />
 
       <div className="w-full">

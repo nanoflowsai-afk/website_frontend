@@ -396,16 +396,28 @@ export default function CareersPage() {
 
   useEffect(() => {
     apiFetch("/api/careers")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          console.error(`Failed to fetch careers: ${res.status} ${res.statusText}`);
+          setLoading(false);
+          return;
+        }
+        return res.json();
+      })
       .then((data) => {
-        setOpenPositions(data.jobs || []);
+        if (data) {
+          setOpenPositions(data.jobs || []);
+        }
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((error) => {
+        console.error("Error fetching careers:", error);
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" suppressHydrationWarning>
       <Navbar />
 
       <section className="relative overflow-hidden py-24 md:py-32">
