@@ -1,0 +1,70 @@
+Website Theme Guidelines
+
+Brand Colors
+- Primary: #4F46E5 (indigo)
+- Secondary: #22C55E (emerald)
+- Accent: #F59E0B (amber)
+- Neutral 900/700/500/300/100: #0F172A / #1E293B / #64748B / #CBD5E1 / #F8FAFC
+- Surface: #0B1021 (hero), #111827 (panels), #FFFFFF (cards on light)
+
+Typography
+- Headings: Inter, weight 700/800, tight tracking
+- Body: Inter, weight 400/500
+- Code: JetBrains Mono or monospace fallback
+- Heading scale: H1 44/52, H2 32/40, H3 24/32, body 16/24
+
+Layout
+- Max content width: 1200px, gutters 24px
+- Grid: 12 columns on desktop, 6 on tablet, 4 on mobile
+- Section spacing: 64px desktop, 48px tablet, 32px mobile
+- Card padding: 20–24px desktop, 16px mobile
+- Border radius: 16px cards, 9999px pills, 10px inputs/buttons
+
+Hero Section
+- Background: primary-to-surface gradient or abstract glow
+- Layout: left text stack, right visual (illustration or stats)
+- CTA buttons: primary solid + secondary outline with hover lift
+
+Navigation
+- Sticky top bar with translucent backdrop blur
+- Active link color: primary; hover underline offset 4px
+
+Buttons
+- Primary: indigo solid, white text, shadow subtle
+- Secondary: outline neutral-300 with hover fill to neutral-100
+- Tertiary: text-only with underline on hover
+
+Forms
+- Inputs: neutral-100 background, neutral-300 border, radius 10px
+- Focus ring: 2px primary, offset 2px; inline error text in #EF4444
+
+Cards and Panels
+- Elevation: subtle shadow (0 8px 24px / 12%) on dark surface
+- Use accent badge in top-right for status or tags
+
+Lists and Tables
+- Stripe rows with neutral-900 / neutral-800 on dark
+- Headers uppercase, letter-spacing 0.04em, weight 600
+
+Icons and Illustration
+- Line icons at 20–24px; use accent sparingly for highlights
+- Imagery style: abstract gradients, glassmorphism accents
+
+Interactions
+- Hover: translateY(-2px) and 4% brighter background
+- Focus: visible ring; avoid relying on color alone
+- Motion: 150–220ms ease for small UI, 350ms for modals
+
+Breakpoints (px)
+- Mobile: 0–639
+- Tablet: 640–1023
+- Desktop: 1024–1439
+- Wide: 1440+
+
+Dark/Light
+- Dark default; light variant swaps surfaces to white and neutral text to #0F172A
+- Ensure 4.5:1 contrast on body text; 3:1 on UI controls
+
+Data Viz
+- Use indigo, emerald, amber, sky (#0EA5E9), rose (#F43F5E) palette
+- Gridlines light neutral; tooltips glassy with subtle shadow

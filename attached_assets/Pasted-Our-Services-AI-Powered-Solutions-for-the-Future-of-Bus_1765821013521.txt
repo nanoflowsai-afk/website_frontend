@@ -1,0 +1,123 @@
+Our Services
+AI-Powered Solutions for the Future of Business
+At NanoFlows, every service is designed with AI at the core, not as an add-on.
+We build intelligent, scalable, and automation-ready systems that help businesses operate smarter, faster, and with minimal manual effort.
+________________________________________
+A. Business & CRM Solutions
+
+1.	WhatsApp CRM System
+2.	Multi-Account WhatsApp CRM
+3.	Sales & Inventory Management System
+4.	POS Billing System (Retail / Restaurant / Pharmacy)
+5.	HRMS – Human Resource Management System
+6.	Payroll Management System
+7.	Loan Management System
+8.	Appointment Booking System
+9.	Clinic & Hospital Management System
+10.	Gym Membership Management System
+11.	Advocate / Lawyer Case Management System
+12.	Courier & Logistics Management System
+13.	Fleet Management System
+14.	Property / Tenant & Apartment Management System
+15.	Garage & Car Wash Management System
+16.	Salon, Spa & Personal Care Management System
+17.	Laundry Shop Management System
+18.	Restaurant Management & Table Booking System
+
+________________________________________
+B. Marketplace & E-Commerce Solutions
+
+19.	Single Vendor E-Commerce Website
+20.	Multi-Vendor Marketplace (Amazon-Style)
+21.	Classifieds Marketplace (OLX-Style)
+22.	Grocery E-Commerce Platform
+23.	Pharmacy E-Commerce Platform
+24.	On-Demand Services Marketplace (UrbanClap-Style)
+25.	Car Rental & Mobility Platform
+26.	Hotel Booking Platform
+27.	Bus, Travel & Tour Booking Portal
+28.	Real Estate Listing & Property Marketplace
+29.	Job Portal & Recruitment System
+30.	Freelancer & Service Marketplace (Fiverr-Style)
+31.	Digital Products Marketplace
+32.	Crowdfunding Platform
+33.	OTT Streaming Platform
+34.	Automobile Listing Marketplace
+__________________________
+C. Education & Learning Systems
+
+35.	Online Learning Management System (LMS)
+36.	School & College Management System
+37.	Coaching Institute Management System
+38.	Online Examination & Assessment Platform
+39.	Course Selling & Digital Education Platform
+40.	Library Management System
+___________________________
+D. SaaS Product Development
+
+41.	Email, SMS & Campaign Marketing SaaS
+42.	WhatsApp Marketing & Automation SaaS
+43.	CRM & Customer Engagement SaaS
+44.	Project & Task Management SaaS
+45.	Invoice, Billing & Subscription SaaS
+46.	Ticketing, Support & Helpdesk SaaS
+47.	AI Chatbot & Workflow Automation SaaS
+________________________________________
+E. Portal & CMS Solutions
+
+48.	News, Media & Magazine Portal
+49.	Blogging & Personal Portfolio Platform
+50.	Corporate Business Website & CMS
+51.	NGO & Non-Profit Organization Portal
+52.	Multipurpose CMS Platform
+53.	Religious Organization Website (Church / Temple / Trust)
+54.	Event Management & Registration Portal
+55.	Community & Membership Portal
+________________________________________
+F. Creative & Media Platforms
+
+56.	Video Hosting & Streaming Platform
+57.	Music Streaming & Audio Platform
+58.	Photography & Creative Portfolio Platform
+59.	Wedding & Event Showcase Website
+60.	Media & Creative Agency Website
+61.	Artist, Influencer & Talent Booking Platform
+________________________________________
+G. Booking & Service Platforms
+
+62.	Doctor Appointment & Healthcare Booking Portal
+63.	Salon, Spa & Beauty Service Booking Platform
+64.	Home Services & On-Demand Service Booking Platform
+65.	Car & Two-Wheeler Service Booking System
+66.	Fitness Trainer & Wellness Booking Platform
+67.	Tutor & Learning Session Booking Platform
+________________________________________
+H. Finance & Business Tools
+
+68.	Accounting, GST & Financial Management Software
+69.	Inventory & Stock Control System
+70.	Vendor & Supplier Management System
+71.	Asset & Resource Management Software
+72.	Payment Gateway & Digital Wallet Integration
+73.	Subscription & Recurring Billing Management System
+74.	Prepaid Services & Utility Recharge Platform
+75.	Investment Advisory & Wealth Management Portal
+76.	Insurance Agent CRM & Policy Management System
+________________________________________
+I. Security & Utility Systems
+
+77.	Website Firewall, Anti-Spam & Threat Protection System
+78.	Multi-Factor Authentication (MFA) & Identity Access System
+79.	Admin Dashboard & Control Panel Framework
+80.	Secure File & Document Management System
+81.	QR Code & Biometric Attendance Management System
+82.	Parking & Vehicle Access Management System
+83.	Visitor & Facility Access Management System
+89. Website Firewall & Anti-Spam Software
+90. Multi-Factor Authentication System
+91. Admin Dashboard Templates
+92. File Management System
+93. QR Code-Based Attendance System
+94. Parking Management System
+95. Visitor Management System
+________________________________________

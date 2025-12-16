@@ -1,0 +1,29 @@
+# Robots.txt for NanoFlows AI Software Technologies
+# https://nanoflows.ai
+
+User-agent: *
+Allow: /
+
+# Disallow admin and auth pages
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /auth
+Disallow: /api/
+
+# Allow search engine crawlers to access important content
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://nanoflows.ai/sitemap.xml

@@ -1,0 +1,371 @@
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import leadGenImage from "@assets/generated_images/ai_lead_generation_dashboard.png";
+import callingImage from "@assets/generated_images/ai_calling_system_interface.png";
+import crmImage from "@assets/generated_images/ai_crm_dashboard_analytics.png";
+import contentImage from "@assets/generated_images/ai_content_marketing_platform.png";
+import assistantImage from "@assets/generated_images/ai_team_assistant_interface.png";
+import type { StaticImageData } from "next/image";
+
+type Product = {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  image: StaticImageData;
+  imageAlt: string;
+  color: string;
+  capabilities: {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
+  keyFeatures: {
+    title: string;
+    description: string;
+  }[];
+  comparison: {
+    feature: string;
+    traditional: string;
+    nanoflows: string;
+  }[];
+  deploymentOptions: {
+    name: string;
+    description: string;
+    features: string[];
+    recommended?: boolean;
+  }[];
+};
+
+const products: Product[] = [
+  {
+    id: "lead-generation",
+    name: "AI Lead Generation Engines",
+    tagline: "Scale Your Pipeline Autonomously",
+    description: "Autonomous systems that identify, qualify, and nurture leads 24/7 without human intervention. Built to scale your pipeline effortlessly while maintaining personalized engagement.",
+    image: leadGenImage,
+    imageAlt: "NanoFlows AI Lead Generation Dashboard - Autonomous lead scoring and pipeline management system for B2B sales automation",
+    color: "from-red-500 to-orange-500",
+    capabilities: [
+      { title: "Automated Prospecting", description: "AI scans multiple data sources to identify ideal prospects matching your ICP", icon: "🔍" },
+      { title: "Intelligent Lead Scoring", description: "Machine learning models score and prioritize leads based on conversion likelihood", icon: "📊" },
+      { title: "Multi-Channel Outreach", description: "Coordinates email, LinkedIn, and other channels for seamless engagement", icon: "📨" },
+      { title: "Real-Time Enrichment", description: "Automatically enriches lead data with company info, technographics, and intent signals", icon: "📈" },
+    ],
+    keyFeatures: [
+      { title: "24/7 Autonomous Operation", description: "Runs continuously without human oversight, identifying and engaging prospects around the clock" },
+      { title: "Personalized at Scale", description: "Generates unique, contextual messages for each prospect based on their profile and behavior" },
+      { title: "CRM Integration", description: "Seamlessly syncs with Salesforce, HubSpot, and other CRMs for unified pipeline management" },
+      { title: "Compliance Built-In", description: "Adheres to GDPR, CAN-SPAM, and other regulations automatically" },
+      { title: "A/B Testing Engine", description: "Continuously tests messaging, timing, and channels to optimize performance" },
+      { title: "Analytics Dashboard", description: "Real-time visibility into pipeline health, conversion rates, and ROI" },
+    ],
+    comparison: [
+      { feature: "Operation Hours", traditional: "Business hours only", nanoflows: "24/7 autonomous" },
+      { feature: "Lead Response Time", traditional: "Hours to days", nanoflows: "Instant (< 1 min)" },
+      { feature: "Personalization", traditional: "Generic templates", nanoflows: "AI-generated unique content" },
+      { feature: "Scale Capacity", traditional: "Limited by team size", nanoflows: "Unlimited scaling" },
+      { feature: "Data Entry", traditional: "Manual input required", nanoflows: "Fully automated" },
+    ],
+    deploymentOptions: [
+      { name: "Starter", description: "For small teams getting started", features: ["Up to 1,000 leads/month", "1 CRM integration", "Email channel", "Basic analytics"] },
+      { name: "Growth", description: "For scaling businesses", features: ["Up to 10,000 leads/month", "3 CRM integrations", "Multi-channel outreach", "Advanced analytics", "A/B testing"], recommended: true },
+      { name: "Enterprise", description: "For large organizations", features: ["Unlimited leads", "Unlimited integrations", "All channels", "Custom AI training", "Dedicated support", "On-premise option"] },
+    ],
+  },
+  {
+    id: "calling-followup",
+    name: "AI Calling & Follow-Up Systems",
+    tagline: "Voice AI That Closes Deals",
+    description: "Voice AI platforms that handle outbound calls, follow-ups, and appointment scheduling autonomously with human-like conversations that convert.",
+    image: callingImage,
+    imageAlt: "NanoFlows AI Calling System Interface - Voice AI platform for automated outbound calls, follow-ups and appointment scheduling",
+    color: "from-orange-500 to-amber-500",
+    capabilities: [
+      { title: "Natural Voice AI", description: "Human-like voice interactions powered by advanced speech synthesis and understanding", icon: "🎙️" },
+      { title: "Smart Scheduling", description: "Automatically books meetings and syncs with calendars in real-time", icon: "📅" },
+      { title: "Call Transcription", description: "Real-time transcription and summarization of all conversations", icon: "📝" },
+      { title: "Sentiment Analysis", description: "Detects caller mood and adjusts approach for optimal outcomes", icon: "💭" },
+    ],
+    keyFeatures: [
+      { title: "Infinite Call Capacity", description: "Handle thousands of simultaneous calls without wait times or dropped connections" },
+      { title: "Objection Handling", description: "AI trained on your best sales reps to handle common objections naturally" },
+      { title: "Multi-Language Support", description: "Communicate fluently in 20+ languages with native-level pronunciation" },
+      { title: "Call Recording & Analytics", description: "Every call recorded, transcribed, and analyzed for insights" },
+      { title: "Warm Transfer", description: "Seamlessly transfers qualified prospects to human reps when needed" },
+      { title: "Follow-Up Automation", description: "Automatically schedules and executes follow-up calls based on outcomes" },
+    ],
+    comparison: [
+      { feature: "Calls per Day", traditional: "50-100 per rep", nanoflows: "Unlimited" },
+      { feature: "Availability", traditional: "Business hours", nanoflows: "24/7/365" },
+      { feature: "Training Time", traditional: "Weeks to months", nanoflows: "Hours" },
+      { feature: "Consistency", traditional: "Variable by rep", nanoflows: "100% consistent" },
+      { feature: "Cost per Call", traditional: "$5-15", nanoflows: "$0.10-0.50" },
+      { feature: "Scaling Speed", traditional: "Months (hiring)", nanoflows: "Instant" },
+    ],
+    deploymentOptions: [
+      { name: "Starter", description: "For initial testing", features: ["500 minutes/month", "1 phone number", "Basic voice AI", "Call recording"] },
+      { name: "Growth", description: "For active teams", features: ["5,000 minutes/month", "5 phone numbers", "Advanced voice AI", "CRM integration", "Custom scripts"], recommended: true },
+      { name: "Enterprise", description: "For call centers", features: ["Unlimited minutes", "Unlimited numbers", "Custom voice cloning", "API access", "Priority support", "SLA guarantee"] },
+    ],
+  },
+  {
+    id: "crm-dashboards",
+    name: "AI CRM & Dashboards",
+    tagline: "Self-Updating Intelligence Hub",
+    description: "Intelligent CRM platforms that update themselves, predict outcomes, and surface insights without manual data entry or analysis.",
+    image: crmImage,
+    imageAlt: "NanoFlows AI CRM Dashboard - Self-updating CRM with predictive analytics and real-time business intelligence",
+    color: "from-amber-500 to-yellow-500",
+    capabilities: [
+      { title: "Auto-Updating Records", description: "CRM entries update automatically from emails, calls, and interactions", icon: "🔄" },
+      { title: "Predictive Analytics", description: "AI forecasts deal outcomes, churn risk, and revenue with high accuracy", icon: "🔮" },
+      { title: "Real-Time Insights", description: "Instant visibility into pipeline health and team performance", icon: "⚡" },
+      { title: "Custom Reporting", description: "Generate any report using natural language queries", icon: "📋" },
+    ],
+    keyFeatures: [
+      { title: "Zero Data Entry", description: "AI captures and logs all customer interactions automatically across channels" },
+      { title: "Deal Probability Scoring", description: "Real-time probability scores for every opportunity based on historical patterns" },
+      { title: "Activity Capture", description: "Automatically logs emails, calls, meetings, and notes to the right records" },
+      { title: "Natural Language Queries", description: "Ask questions in plain English and get instant answers with visualizations" },
+      { title: "Anomaly Detection", description: "Alerts you to unusual patterns in data before they become problems" },
+      { title: "Executive Dashboards", description: "Role-based views with the metrics that matter most" },
+    ],
+    comparison: [
+      { feature: "Data Entry Time", traditional: "2-3 hours/day", nanoflows: "0 hours" },
+      { feature: "Data Accuracy", traditional: "60-70%", nanoflows: "95%+" },
+      { feature: "Report Generation", traditional: "Hours to days", nanoflows: "Seconds" },
+      { feature: "Forecast Accuracy", traditional: "50-60%", nanoflows: "85%+" },
+      { feature: "User Adoption", traditional: "Often low", nanoflows: "High (no manual work)" },
+      { feature: "Insights Discovery", traditional: "Manual analysis", nanoflows: "Automated alerts" },
+    ],
+    deploymentOptions: [
+      { name: "Starter", description: "For small teams", features: ["Up to 10 users", "Core CRM features", "Basic dashboards", "Email sync"] },
+      { name: "Growth", description: "For growing companies", features: ["Up to 50 users", "Advanced analytics", "Custom dashboards", "API access", "Integrations"], recommended: true },
+      { name: "Enterprise", description: "For large organizations", features: ["Unlimited users", "Custom AI models", "Advanced security", "SSO/SAML", "Dedicated support", "On-premise option"] },
+    ],
+  },
+  {
+    id: "content-marketing",
+    name: "AI Content & Marketing Systems",
+    tagline: "Content Creation at Scale",
+    description: "End-to-end content platforms that create, optimize, and distribute marketing assets across all channels autonomously.",
+    image: contentImage,
+    imageAlt: "NanoFlows AI Content Marketing Platform - Automated content creation, SEO optimization and multi-channel publishing system",
+    color: "from-green-500 to-emerald-500",
+    capabilities: [
+      { title: "Auto Content Generation", description: "AI creates blog posts, social content, emails, and ads from briefs", icon: "✍️" },
+      { title: "SEO Optimization", description: "Built-in SEO analysis and optimization for maximum organic reach", icon: "🔍" },
+      { title: "Multi-Channel Publishing", description: "Publish to all platforms from a single dashboard with optimal timing", icon: "📢" },
+      { title: "Performance Tracking", description: "Real-time analytics across all content and channels", icon: "📈" },
+    ],
+    keyFeatures: [
+      { title: "Brand Voice AI", description: "Learns and maintains your unique brand voice across all content" },
+      { title: "Content Calendar", description: "AI-planned editorial calendar based on trends and performance data" },
+      { title: "Image Generation", description: "Creates custom visuals and graphics to accompany content" },
+      { title: "A/B Testing", description: "Automatically tests headlines, images, and copy variations" },
+      { title: "Competitor Analysis", description: "Monitors competitor content and identifies opportunities" },
+      { title: "ROI Attribution", description: "Tracks content performance to revenue with full attribution" },
+    ],
+    comparison: [
+      { feature: "Content Volume", traditional: "5-10 pieces/week", nanoflows: "50+ pieces/week" },
+      { feature: "Time to Publish", traditional: "Days to weeks", nanoflows: "Minutes" },
+      { feature: "Consistency", traditional: "Variable quality", nanoflows: "Consistent brand voice" },
+      { feature: "SEO Optimization", traditional: "Manual process", nanoflows: "Automatic" },
+      { feature: "Cost per Piece", traditional: "$200-500+", nanoflows: "$5-20" },
+      { feature: "Analytics", traditional: "Fragmented", nanoflows: "Unified dashboard" },
+    ],
+    deploymentOptions: [
+      { name: "Starter", description: "For content teams", features: ["50 pieces/month", "2 channels", "Basic analytics", "Brand voice training"] },
+      { name: "Growth", description: "For marketing teams", features: ["500 pieces/month", "All channels", "Advanced analytics", "SEO tools", "A/B testing"], recommended: true },
+      { name: "Enterprise", description: "For media companies", features: ["Unlimited content", "Custom integrations", "API access", "White-label option", "Priority support", "Custom AI training"] },
+    ],
+  },
+  {
+    id: "internal-assistants",
+    name: "Internal AI Assistants for Teams",
+    tagline: "Your Company's AI Expert",
+    description: "Custom AI assistants trained on your company knowledge to support employees with instant answers and automated workflows.",
+    image: assistantImage,
+    imageAlt: "NanoFlows Internal AI Team Assistant - Custom AI assistant for company knowledge base, task automation and team productivity",
+    color: "from-blue-500 to-indigo-500",
+    capabilities: [
+      { title: "Company Knowledge Base", description: "AI trained on all your docs, wikis, and internal resources", icon: "📚" },
+      { title: "Task Automation", description: "Automates repetitive tasks like report generation and data lookup", icon: "⚙️" },
+      { title: "Meeting Summaries", description: "Automatically summarizes meetings and extracts action items", icon: "📝" },
+      { title: "Platform Integration", description: "Works in Slack, Teams, email, and other tools your team uses", icon: "🔗" },
+    ],
+    keyFeatures: [
+      { title: "Instant Answers", description: "Employees get accurate answers from company knowledge in seconds" },
+      { title: "Onboarding Acceleration", description: "New hires get up to speed 3x faster with AI guidance" },
+      { title: "Process Automation", description: "Common workflows automated without custom development" },
+      { title: "Secure & Private", description: "Your data never leaves your environment, full encryption" },
+      { title: "Continuous Learning", description: "Gets smarter as your company knowledge grows" },
+      { title: "Usage Analytics", description: "See what questions are asked most and identify knowledge gaps" },
+    ],
+    comparison: [
+      { feature: "Answer Time", traditional: "Hours to days", nanoflows: "Seconds" },
+      { feature: "Availability", traditional: "When experts free", nanoflows: "24/7" },
+      { feature: "Knowledge Access", traditional: "Search multiple tools", nanoflows: "Single interface" },
+      { feature: "Onboarding Time", traditional: "Weeks to months", nanoflows: "Days" },
+      { feature: "Expert Dependency", traditional: "High", nanoflows: "Low" },
+      { feature: "Knowledge Retention", traditional: "Lost when people leave", nanoflows: "Permanently captured" },
+    ],
+    deploymentOptions: [
+      { name: "Starter", description: "For small teams", features: ["Up to 25 users", "Basic knowledge base", "Slack integration", "Standard support"] },
+      { name: "Growth", description: "For departments", features: ["Up to 200 users", "Advanced features", "All integrations", "Custom training", "Analytics"], recommended: true },
+      { name: "Enterprise", description: "For organizations", features: ["Unlimited users", "SSO/SAML", "On-premise option", "API access", "Dedicated support", "Custom SLA"] },
+    ],
+  },
+];
+
+export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
+
+  if (!product) {
+    notFound();
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-50 py-24">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-orange-200 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-amber-200 rounded-full blur-[150px]"></div>
+        </div>
+        <div className="relative mx-auto max-w-[1400px] px-6">
+          <Link href="/products" className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-orange-600 mb-8">
+            ← Back to Products
+          </Link>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl font-extrabold text-gray-900 md:text-5xl">
+                {product.name}
+              </h1>
+              <p className="mt-2 text-xl text-orange-600 font-semibold">{product.tagline}</p>
+              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+                {product.description}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
+                >
+                  Request Demo
+                </a>
+              </div>
+            </div>
+            <div className="relative hidden lg:block">
+              <div className="rounded-2xl overflow-hidden shadow-2xl relative h-96">
+                <Image
+                  src={product.image}
+                  alt={product.imageAlt}
+                  title={`${product.name} - NanoFlows AI Product`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
+              Capabilities
+            </p>
+            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
+              What It Can Do
+            </h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {product.capabilities.map((cap) => (
+              <div key={cap.title} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-orange-200 transition">
+                <div className="text-4xl mb-4">{cap.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900">{cap.title}</h3>
+                <p className="mt-2 text-gray-600 text-sm">{cap.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-amber-50">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
+              Key Features
+            </p>
+            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
+              Built for Performance
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {product.keyFeatures.map((feature, idx) => (
+              <div key={feature.title} className="flex items-start gap-4 rounded-xl bg-white border border-gray-200 p-6 shadow-sm">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 font-bold">
+                  {idx + 1}
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900">{feature.title}</h3>
+                  <p className="mt-1 text-sm text-gray-600">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="text-center mb-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
+              Comparison
+            </p>
+            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
+              Traditional vs NanoFlows
+            </h2>
+          </div>
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                    Feature
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Traditional
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-orange-600">
+                    NanoFlows
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {product.comparison.map((row, idx) => (
+                  <tr key={row.feature} className={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td className="px-4 py-3 text-gray-700">{row.feature}</td>
+                    <td className="px-4 py-3 text-center text-gray-500">{row.traditional}</td>
+                    <td className="px-4 py-3 text-center font-medium text-green-600">{row.nanoflows}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
