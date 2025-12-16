@@ -3,6 +3,9 @@ import { Footer } from "@/components/Footer";
 import { SafeBackgroundImage } from "@/components/SafeBackgroundImage";
 import { normalizeImageUrl } from "@/lib/images";
 
+// Force dynamic rendering since we fetch from external API
+export const dynamic = 'force-dynamic';
+
 type BlogPost = {
   id: number;
   title: string;

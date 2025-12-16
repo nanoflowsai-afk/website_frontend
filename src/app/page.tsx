@@ -9,6 +9,9 @@ import { AboutSection } from "@/components/AboutSection";
 import { TeamCarousel } from "@/components/TeamCarousel";
 import { normalizeImageUrl } from "@/lib/images";
 
+// Force dynamic rendering since we fetch from external API
+export const dynamic = 'force-dynamic';
+
 type HomeResponse = {
   slides: {
     id: number;

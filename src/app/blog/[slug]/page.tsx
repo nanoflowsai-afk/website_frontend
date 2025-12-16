@@ -5,6 +5,9 @@ import { normalizeImageUrl } from "@/lib/images";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+// Force dynamic rendering since we fetch from external API
+export const dynamic = 'force-dynamic';
+
 type BlogPost = {
   id: number;
   title: string;
