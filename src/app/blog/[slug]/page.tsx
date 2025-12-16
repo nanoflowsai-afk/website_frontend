@@ -20,7 +20,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
   const base = apiBase 
     ? apiBase.replace(/\/+$/, "")
-    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
     if (!res.ok) {
@@ -40,7 +40,7 @@ async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
   const base = apiBase 
     ? apiBase.replace(/\/+$/, "")
-    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
     if (!res.ok) {

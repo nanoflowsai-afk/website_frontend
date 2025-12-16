@@ -136,7 +136,7 @@ export default function AdminPage() {
   const { data: blogData, mutate: mutateBlog } = useSWR<{ posts: BlogPost[] }>("/api/admin/blog-posts", fetcher);
   const { data: careersData, mutate: mutateCareers } = useSWR<{ jobs: JobPosting[] }>("/api/admin/careers", fetcher);
 
-  const isAuthed = !error || (error && error.message !== "Unauthorized");
+  const isAuthed = !error; // If there's no error from API calls, user is authenticated
   const [authError, setAuthError] = useState<string | null>(null);
   const [heroError, setHeroError] = useState<string | null>(null);
   const [heroUploading, setHeroUploading] = useState(false);
@@ -570,8 +570,13 @@ export default function AdminPage() {
               <Link href="/" className="text-sm text-gray-600 hover:text-orange-600 transition">View Site</Link>
               <button
                 onClick={async () => {
-                  await apiFetch("/api/admin/logout", { method: "POST" });
-                  window.location.href = "/";
+                  await apiFetch("/api/admin/logout", { method: "POST", credentials: "include" });
+                  // Clear localStorage token
+                  if (typeof window !== "undefined") {
+                    localStorage.removeItem("nano_admin_token");
+                  }
+                  // Redirect to login page
+                  router.push("/login");
                 }}
                 className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-700 hover:border-red-200 hover:text-red-600 transition"
               >

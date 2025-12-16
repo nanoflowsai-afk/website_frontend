@@ -47,11 +47,11 @@ type HomeResponse = {
 };
 
 async function getHomeData(): Promise<HomeResponse | null> {
-  // Use NEXT_PUBLIC_API_BASE_URL if set, otherwise default to Express server port 5001
+  // Use NEXT_PUBLIC_API_BASE_URL if set, otherwise default to localhost for development
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
   const base = apiBase 
     ? apiBase.replace(/\/+$/, "") // Remove trailing slashes
-    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://0.0.0.0:5001");
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
