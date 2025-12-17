@@ -10,6 +10,25 @@ import realEstateImage from "@assets/generated_images/real_estate_ai_matching.pn
 import healthcareImage from "@assets/generated_images/healthcare_ai_diagnostics.png";
 import educationImage from "@assets/generated_images/education_ai_learning.png";
 import localBusinessImage from "@assets/generated_images/local_business_ai_service.png";
+import customLlmImage from "@assets/generated_images/custom_llm_ai_system.png";
+import decisionSupportImage from "@assets/generated_images/decision_support_ai_dashboard.png";
+import contentIntelImage from "@assets/generated_images/content_intelligence_ai_platform.png";
+import salesAutoImage from "@assets/generated_images/sales_automation_workflow.png";
+import marketingAutoImage from "@assets/generated_images/marketing_automation_platform.png";
+import opsWorkflowImage from "@assets/generated_images/operations_workflow_ai.png";
+import aiNativeWebImage from "@assets/generated_images/ai_native_website_builder.png";
+import saasDevImage from "@assets/generated_images/saas_platform_development.png";
+import entDashImage from "@assets/generated_images/enterprise_dashboard_system.png";
+import aiSalesAgentImage from "@assets/generated_images/ai_sales_agent_chat.png";
+import customerSupportImage from "@assets/generated_images/customer_support_chatbot.png";
+import followUpAgentImage from "@assets/generated_images/multi-channel_ai_assistant.png";
+import analysisAgentImage from "@assets/generated_images/predictive_analytics_engine.png";
+import realtimeAnalyticsImage from "@assets/generated_images/real-time_analytics_dashboard.png";
+import predictiveAnalyticsImage from "@assets/generated_images/predictive_analytics_engine.png";
+import decisionIntelImage from "@assets/generated_images/decision_support_ai_dashboard.png";
+import dataIntegrationImage from "@assets/generated_images/data_integration_platform.png";
+import hrSupportImage from "@assets/generated_images/hrms_management_system.png";
+import customSoftwareImage from "@assets/generated_images/saas_platform_development.png";
 import type { StaticImageData } from "next/image";
 import type { Metadata } from "next";
 
