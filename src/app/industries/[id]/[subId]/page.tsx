@@ -605,35 +605,53 @@ const industries: Industry[] = [
         name: "Banking & Financial Services (BFSI)",
         description: "AI solutions for banks, insurance companies, and financial institutions with compliance and security focus.",
         icon: "🏦",
-        features: ["Risk Assessment AI", "Fraud Detection", "Compliance Automation", "Customer Analytics"],
-        detailedDescription: "Enterprise-grade AI solutions for the banking and financial services sector. Our BFSI solutions provide robust risk management, regulatory compliance automation, and customer intelligence that drives growth while maintaining the highest security standards.",
-        benefits: [
-          "Reduce fraud losses by up to 80%",
-          "Automate regulatory compliance reporting",
-          "Enhance customer lifetime value",
-          "Streamline loan processing",
-          "Improve risk assessment accuracy"
+        tagline: "AI-Powered Banking & Financial Services Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help banking and financial enterprises build AI-native platforms that are secure, compliant, customer-centric, and intelligence-driven. From fraud detection systems to regulatory automation, we design enterprise-grade BFSI solutions that manage risk, ensure compliance, and deliver exceptional customer experiences. We build trust-first, AI-powered financial systems for the modern enterprise.",
+        whyChoose: {
+          intro: "BFSI enterprises need security, compliance, accuracy, and intelligent automation at scale.",
+          points: [
+            "Enterprise-grade security & compliance architecture",
+            "AI-powered fraud detection & risk management",
+            "Regulatory compliance automation & reporting",
+            "Customer intelligence & personalization engines",
+            "Built for scale, audits & enterprise integrations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled BFSI enterprise solutions, including:",
+          solutions: [
+            "Fraud detection & prevention systems",
+            "Risk assessment & credit scoring platforms",
+            "Regulatory compliance automation tools",
+            "Customer 360 & analytics dashboards",
+            "Loan origination & processing systems",
+            "Anti-money laundering (AML) solutions",
+            "Digital banking transformation platforms"
+          ],
+          footer: "All solutions are enterprise-grade, compliant, and integration-ready."
+        },
+        coreCapabilities: [
+          "Real-time transaction monitoring & fraud detection",
+          "AI-driven credit risk modeling & scoring",
+          "Regulatory compliance automation & reporting",
+          "Customer behavior analytics & predictions",
+          "Document verification & KYC automation",
+          "Voice banking & conversational AI",
+          "Secure APIs & core banking integrations",
+          "Audit trails & compliance dashboards"
         ],
-        useCases: [
-          "Anti-money laundering detection",
-          "Credit risk modeling and scoring",
-          "Customer churn prediction",
-          "Regulatory reporting automation",
-          "Personalized financial advice"
+        idealFor: [
+          "Commercial & retail banks",
+          "Insurance companies & NBFCs",
+          "Investment firms & asset managers",
+          "Financial regulators & compliance teams"
         ],
-        aiCapabilities: [
-          "Real-time transaction monitoring",
-          "Natural language compliance analysis",
-          "Predictive risk modeling",
-          "Document verification AI",
-          "Voice banking assistants"
-        ],
-        targetAudience: [
-          "Commercial and retail banks",
-          "Insurance companies",
-          "Investment firms",
-          "Credit unions",
-          "Financial regulators"
+        businessOutcomes: [
+          "Reduced fraud losses by up to 80%",
+          "Automated regulatory compliance reporting",
+          "Enhanced customer lifetime value",
+          "Streamlined loan processing & approvals",
+          "Improved risk assessment accuracy"
         ]
       },
       {
@@ -641,35 +659,53 @@ const industries: Industry[] = [
         name: "Manufacturing & Industrial Enterprises",
         description: "Smart manufacturing solutions with predictive maintenance, quality control, and production optimization.",
         icon: "🏭",
-        features: ["Predictive Maintenance", "Quality Control AI", "Production Optimization", "Supply Chain AI"],
-        detailedDescription: "Transform manufacturing operations with Industry 4.0 AI solutions. Our manufacturing AI predicts equipment failures, ensures quality standards, and optimizes production schedules for maximum efficiency.",
-        benefits: [
-          "Reduce unplanned downtime by 45%",
-          "Improve product quality by 35%",
-          "Optimize production efficiency",
-          "Lower maintenance costs",
-          "Enhance supply chain resilience"
-        ],
-        useCases: [
-          "Predictive equipment maintenance",
-          "Visual quality inspection",
+        tagline: "AI-Powered Smart Manufacturing & Industry 4.0 Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help manufacturing and industrial enterprises build AI-native smart factory platforms that are predictive, quality-focused, efficient, and data-driven. From predictive maintenance to quality control automation, we design Industry 4.0 solutions that optimize production and reduce downtime. We build efficiency-first, AI-powered manufacturing systems for the modern industrial enterprise.",
+        whyChoose: {
+          intro: "Manufacturing enterprises need predictive intelligence, quality assurance, and operational efficiency at scale.",
+          points: [
+            "AI-first predictive maintenance architecture",
+            "Computer vision quality control & inspection",
+            "Production optimization & scheduling intelligence",
+            "IoT integration & sensor data analytics",
+            "Built for scale across plants & production lines"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled manufacturing enterprise solutions, including:",
+          solutions: [
+            "Predictive maintenance platforms",
+            "Visual quality inspection systems",
+            "Production planning & optimization tools",
+            "Supply chain intelligence dashboards",
+            "Digital twin simulation platforms",
+            "Energy management & optimization systems",
+            "Asset performance management solutions"
+          ],
+          footer: "All solutions are enterprise-grade, IoT-ready, and integration-capable."
+        },
+        coreCapabilities: [
+          "Predictive equipment failure detection",
+          "Computer vision defect identification",
           "Production schedule optimization",
-          "Inventory optimization",
-          "Energy consumption reduction"
+          "IoT sensor data aggregation & analytics",
+          "Digital twin modeling & simulation",
+          "Supply chain demand forecasting",
+          "Energy consumption optimization",
+          "Real-time OEE dashboards & reporting"
         ],
-        aiCapabilities: [
-          "IoT sensor data analytics",
-          "Computer vision for defect detection",
-          "Digital twin simulation",
-          "Demand forecasting AI",
-          "Robotic process automation"
+        idealFor: [
+          "Discrete & process manufacturers",
+          "Automotive & aerospace companies",
+          "Consumer goods & FMCG enterprises",
+          "Heavy industrial & equipment manufacturers"
         ],
-        targetAudience: [
-          "Discrete manufacturers",
-          "Process manufacturers",
-          "Automotive companies",
-          "Aerospace and defense",
-          "Consumer goods manufacturers"
+        businessOutcomes: [
+          "Reduced unplanned downtime by 45%",
+          "Improved product quality by 35%",
+          "Optimized production efficiency & throughput",
+          "Lower maintenance & operational costs",
+          "Enhanced supply chain resilience"
         ]
       },
       {
@@ -677,35 +713,53 @@ const industries: Industry[] = [
         name: "IT Services & Consulting Firms",
         description: "Technology consulting and IT service companies with AI-powered project management and service delivery.",
         icon: "💻",
-        features: ["Project Automation", "Resource Planning", "Client Analytics", "Service Optimization"],
-        detailedDescription: "Elevate IT service delivery with AI that optimizes every project. Our solutions help consulting firms manage resources, predict project outcomes, and deliver exceptional client experiences.",
-        benefits: [
-          "Improve project delivery success rates",
-          "Optimize resource utilization by 30%",
-          "Enhance client satisfaction scores",
-          "Reduce project overruns",
-          "Scale service delivery efficiently"
+        tagline: "AI-Powered IT Services & Consulting Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help IT services and consulting enterprises build AI-native service delivery platforms that are efficient, client-centric, resource-optimized, and insight-driven. From intelligent resource allocation to project outcome prediction, we design solutions that elevate service delivery and client satisfaction. We build delivery-first, AI-powered IT service systems for the modern consulting enterprise.",
+        whyChoose: {
+          intro: "IT services enterprises need resource optimization, project intelligence, and client success at scale.",
+          points: [
+            "AI-first resource matching & allocation",
+            "Project outcome prediction & risk mitigation",
+            "Automated time tracking & billing workflows",
+            "Client success monitoring & intelligence",
+            "Built for scale across projects & engagements"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled IT services enterprise solutions, including:",
+          solutions: [
+            "Intelligent resource management platforms",
+            "Project portfolio management systems",
+            "Automated time & expense tracking tools",
+            "Client relationship intelligence dashboards",
+            "Knowledge management & search platforms",
+            "Service delivery automation systems",
+            "Skills gap analysis & training platforms"
+          ],
+          footer: "All solutions are enterprise-grade, scalable, and PSA-integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven resource matching & scheduling",
+          "Project risk prediction & mitigation",
+          "Automated status reporting & dashboards",
+          "Client health scoring & early warning",
+          "Knowledge discovery & documentation AI",
+          "Skills inventory & gap analysis",
+          "Utilization optimization & forecasting",
+          "Contract & SLA management automation"
         ],
-        useCases: [
-          "Intelligent resource allocation",
-          "Project risk prediction",
-          "Automated time tracking and billing",
-          "Client success monitoring",
-          "Knowledge management automation"
+        idealFor: [
+          "IT consulting & advisory firms",
+          "Systems integrators & implementation partners",
+          "Managed service providers (MSPs)",
+          "Digital agencies & technology boutiques"
         ],
-        aiCapabilities: [
-          "Resource matching algorithms",
-          "Project outcome prediction",
-          "Document analysis and search",
-          "Automated status reporting",
-          "Skills gap analysis"
-        ],
-        targetAudience: [
-          "IT consulting firms",
-          "Systems integrators",
-          "Managed service providers",
-          "Digital agencies",
-          "Technology advisory firms"
+        businessOutcomes: [
+          "Improved project delivery success rates",
+          "Optimized resource utilization by 30%",
+          "Enhanced client satisfaction scores",
+          "Reduced project overruns & scope creep",
+          "Scaled service delivery efficiently"
         ]
       },
       {
@@ -713,35 +767,53 @@ const industries: Industry[] = [
         name: "Telecom & Networking Enterprises",
         description: "Telecommunications solutions with network optimization, customer service AI, and infrastructure management.",
         icon: "📡",
-        features: ["Network Optimization", "Customer Service AI", "Infrastructure Monitoring", "Traffic Analysis"],
-        detailedDescription: "Optimize telecommunications operations with AI that ensures network reliability and customer satisfaction. Our telecom solutions predict network issues, automate customer support, and optimize infrastructure investments.",
-        benefits: [
-          "Reduce network downtime by 60%",
-          "Automate 70% of customer inquiries",
-          "Optimize network capacity planning",
-          "Reduce customer churn",
-          "Improve service quality metrics"
+        tagline: "AI-Powered Telecom & Network Operations Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help telecom and networking enterprises build AI-native operations platforms that are reliable, customer-focused, infrastructure-optimized, and intelligence-driven. From network anomaly detection to customer service automation, we design solutions that ensure uptime and customer satisfaction. We build network-first, AI-powered telecom systems for the modern communications enterprise.",
+        whyChoose: {
+          intro: "Telecom enterprises need network reliability, customer experience, and infrastructure intelligence at scale.",
+          points: [
+            "AI-first network monitoring & anomaly detection",
+            "Predictive capacity planning & optimization",
+            "Customer service automation & personalization",
+            "Infrastructure maintenance intelligence",
+            "Built for scale across networks & subscribers"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled telecom enterprise solutions, including:",
+          solutions: [
+            "Network operations centers (NOC) automation",
+            "Predictive network maintenance platforms",
+            "Customer experience management systems",
+            "Capacity planning & optimization tools",
+            "Fraud detection & prevention systems",
+            "Self-service customer portals",
+            "5G & next-gen network management solutions"
+          ],
+          footer: "All solutions are enterprise-grade, carrier-class, and OSS/BSS integration-ready."
+        },
+        coreCapabilities: [
+          "Real-time network traffic analysis & optimization",
+          "Anomaly detection & predictive maintenance",
+          "Customer sentiment monitoring & analytics",
+          "Automated customer support & resolution",
+          "Usage pattern analysis & forecasting",
+          "Fraud detection & prevention systems",
+          "Self-healing network automation",
+          "SLA monitoring & compliance dashboards"
         ],
-        useCases: [
-          "Network anomaly detection",
-          "Predictive capacity planning",
-          "Customer complaint resolution",
-          "Fraud detection and prevention",
-          "Service quality optimization"
+        idealFor: [
+          "Mobile network operators & carriers",
+          "Internet service providers (ISPs)",
+          "Cable & satellite communications companies",
+          "Network equipment & infrastructure vendors"
         ],
-        aiCapabilities: [
-          "Network traffic analysis",
-          "Customer sentiment monitoring",
-          "Predictive maintenance for infrastructure",
-          "Voice and text customer support",
-          "Usage pattern analytics"
-        ],
-        targetAudience: [
-          "Mobile network operators",
-          "Internet service providers",
-          "Cable and satellite companies",
-          "Network equipment vendors",
-          "Telecom tower companies"
+        businessOutcomes: [
+          "Reduced network downtime by 60%",
+          "Automated 70% of customer inquiries",
+          "Optimized network capacity planning",
+          "Reduced customer churn & improved NPS",
+          "Enhanced service quality metrics"
         ]
       },
       {
@@ -749,35 +821,53 @@ const industries: Industry[] = [
         name: "Energy & Utilities",
         description: "Energy sector solutions with smart grid management, demand forecasting, and sustainability analytics.",
         icon: "⚡",
-        features: ["Smart Grid AI", "Demand Forecasting", "Asset Management", "Sustainability Analytics"],
-        detailedDescription: "Power the energy transition with AI that optimizes operations and sustainability. Our energy solutions enable smart grid management, predict demand patterns, and support renewable energy integration.",
-        benefits: [
-          "Reduce energy waste by 20%",
-          "Improve grid stability and reliability",
-          "Optimize renewable energy integration",
-          "Predict and prevent outages",
-          "Meet sustainability targets faster"
+        tagline: "AI-Powered Energy & Utilities Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help energy and utilities enterprises build AI-native grid management platforms that are sustainable, efficient, predictive, and resilience-focused. From smart grid optimization to renewable energy integration, we design solutions that power the energy transition. We build sustainability-first, AI-powered energy systems for the modern utility enterprise.",
+        whyChoose: {
+          intro: "Energy enterprises need grid reliability, demand intelligence, sustainability, and operational efficiency at scale.",
+          points: [
+            "AI-first smart grid management & optimization",
+            "Predictive demand forecasting & response",
+            "Renewable energy integration & balancing",
+            "Asset health monitoring & maintenance",
+            "Built for scale across grids & energy sources"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled energy & utilities enterprise solutions, including:",
+          solutions: [
+            "Smart grid management platforms",
+            "Demand forecasting & response systems",
+            "Asset performance management tools",
+            "Renewable energy optimization platforms",
+            "Carbon footprint tracking dashboards",
+            "Outage prediction & management systems",
+            "Customer engagement & billing platforms"
+          ],
+          footer: "All solutions are enterprise-grade, SCADA-compatible, and integration-ready."
+        },
+        coreCapabilities: [
+          "Time-series demand forecasting & prediction",
+          "Grid load balancing & optimization",
+          "Anomaly detection for grid events & outages",
+          "Weather-based energy predictions",
+          "IoT sensor analytics & asset monitoring",
+          "Renewable energy source integration",
+          "Carbon tracking & sustainability reporting",
+          "Customer usage analytics & insights"
         ],
-        useCases: [
-          "Demand response optimization",
-          "Grid load balancing",
-          "Predictive asset maintenance",
-          "Renewable energy forecasting",
-          "Carbon footprint tracking"
+        idealFor: [
+          "Electric utilities & grid operators",
+          "Renewable energy companies & IPPs",
+          "Oil & gas enterprises",
+          "Water & gas utility providers"
         ],
-        aiCapabilities: [
-          "Time-series forecasting",
-          "Anomaly detection for grid events",
-          "Optimization algorithms for distribution",
-          "Weather-based predictions",
-          "IoT sensor analytics"
-        ],
-        targetAudience: [
-          "Electric utilities",
-          "Renewable energy companies",
-          "Oil and gas companies",
-          "Energy retailers",
-          "Grid operators"
+        businessOutcomes: [
+          "Reduced energy waste by 20%",
+          "Improved grid stability & reliability",
+          "Optimized renewable energy integration",
+          "Predicted & prevented outages proactively",
+          "Accelerated sustainability target achievement"
         ]
       },
       {
@@ -785,35 +875,53 @@ const industries: Industry[] = [
         name: "Government & Public Sector",
         description: "Public sector AI solutions for citizen services, policy analysis, and administrative automation.",
         icon: "🏛️",
-        features: ["Citizen Services AI", "Policy Analysis", "Process Automation", "Public Safety AI"],
-        detailedDescription: "Modernize government services with AI that serves citizens better. Our public sector solutions automate administrative processes, analyze policy impacts, and improve citizen engagement while maintaining transparency.",
-        benefits: [
-          "Reduce citizen wait times by 80%",
-          "Automate routine administrative tasks",
-          "Improve policy decision-making",
-          "Enhance public safety outcomes",
-          "Increase citizen satisfaction"
+        tagline: "AI-Powered Government & Public Sector Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help government and public sector organizations build AI-native citizen service platforms that are accessible, transparent, efficient, and policy-driven. From citizen inquiry automation to policy impact analysis, we design solutions that modernize public services. We build citizen-first, AI-powered government systems for the modern public sector.",
+        whyChoose: {
+          intro: "Government organizations need citizen accessibility, transparency, efficiency, and policy intelligence at scale.",
+          points: [
+            "AI-first citizen service automation & accessibility",
+            "Policy impact simulation & analysis",
+            "Document processing & verification at scale",
+            "Privacy-preserving AI & data security",
+            "Built for scale across departments & agencies"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled government & public sector solutions, including:",
+          solutions: [
+            "Citizen service portals & chatbots",
+            "Document processing & verification systems",
+            "Policy analysis & simulation platforms",
+            "Public safety analytics dashboards",
+            "Benefits eligibility automation systems",
+            "Inter-agency data sharing platforms",
+            "Compliance monitoring & reporting tools"
+          ],
+          footer: "All solutions are secure, accessible, and government-compliance-ready."
+        },
+        coreCapabilities: [
+          "Multi-language citizen support & accessibility",
+          "Document understanding & verification AI",
+          "Predictive analytics for public services",
+          "Accessible chatbot & voice interfaces",
+          "Privacy-preserving data processing",
+          "Policy simulation & impact modeling",
+          "Fraud detection in benefits programs",
+          "Cross-agency workflow automation"
         ],
-        useCases: [
-          "Citizen inquiry automation",
-          "Document processing and verification",
-          "Policy impact simulation",
-          "Public safety analytics",
-          "Benefits eligibility determination"
+        idealFor: [
+          "Federal government agencies",
+          "State & local government bodies",
+          "Public safety & law enforcement",
+          "Healthcare & social service agencies"
         ],
-        aiCapabilities: [
-          "Multi-language support",
-          "Document understanding AI",
-          "Predictive analytics for services",
-          "Accessible chatbot interfaces",
-          "Privacy-preserving AI"
-        ],
-        targetAudience: [
-          "Federal agencies",
-          "State and local governments",
-          "Public safety organizations",
-          "Healthcare agencies",
-          "Education departments"
+        businessOutcomes: [
+          "Reduced citizen wait times by 80%",
+          "Automated routine administrative tasks",
+          "Improved policy decision-making",
+          "Enhanced public safety outcomes",
+          "Increased citizen satisfaction & trust"
         ]
       },
       {
@@ -821,143 +929,215 @@ const industries: Industry[] = [
         name: "Retail & Consumer Enterprises",
         description: "Large retail organizations with omnichannel AI, inventory optimization, and customer experience solutions.",
         icon: "🛍️",
-        features: ["Omnichannel AI", "Inventory Optimization", "Customer Experience", "Pricing Intelligence"],
-        detailedDescription: "Transform retail operations with AI that delivers seamless customer experiences across all channels. Our retail enterprise solutions optimize inventory, personalize shopping, and drive customer loyalty at scale.",
-        benefits: [
-          "Increase same-store sales by 15%",
-          "Reduce stockouts by 40%",
-          "Improve customer retention rates",
-          "Optimize pricing dynamically",
-          "Unify online and offline experiences"
+        tagline: "AI-Powered Retail & Consumer Experience Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help retail and consumer enterprises build AI-native omnichannel platforms that are customer-centric, inventory-optimized, experience-focused, and data-driven. From personalized recommendations to dynamic pricing, we design solutions that transform retail operations. We build customer-first, AI-powered retail systems for the modern enterprise.",
+        whyChoose: {
+          intro: "Retail enterprises need omnichannel excellence, inventory intelligence, and customer personalization at scale.",
+          points: [
+            "AI-first omnichannel personalization engine",
+            "Demand sensing & inventory optimization",
+            "Dynamic pricing & promotion intelligence",
+            "Customer journey analytics & insights",
+            "Built for scale across stores & channels"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled retail enterprise solutions, including:",
+          solutions: [
+            "Personalization & recommendation engines",
+            "Inventory optimization & demand forecasting",
+            "Dynamic pricing & markdown optimization",
+            "Customer 360 & loyalty platforms",
+            "Store operations & workforce management",
+            "Visual merchandising & planogram AI",
+            "Omnichannel order management systems"
+          ],
+          footer: "All solutions are enterprise-grade, POS-integrated, and omnichannel-ready."
+        },
+        coreCapabilities: [
+          "Real-time product personalization & recommendations",
+          "Demand forecasting & inventory optimization",
+          "Price elasticity modeling & dynamic pricing",
+          "Customer lifetime value prediction",
+          "Computer vision for retail analytics",
+          "Store layout & traffic optimization",
+          "Unified customer profile management",
+          "Cross-channel attribution & analytics"
         ],
-        useCases: [
-          "Personalized product recommendations",
-          "Dynamic pricing optimization",
-          "Inventory demand forecasting",
-          "Customer lifetime value modeling",
-          "Store layout optimization"
+        idealFor: [
+          "Department store & specialty retail chains",
+          "Grocery & supermarket enterprises",
+          "Quick-service & casual dining chains",
+          "Wholesale & club retailers"
         ],
-        aiCapabilities: [
-          "Real-time personalization engines",
-          "Computer vision for retail",
-          "Demand sensing algorithms",
-          "Price elasticity modeling",
-          "Customer journey analytics"
-        ],
-        targetAudience: [
-          "Department store chains",
-          "Specialty retailers",
-          "Grocery chains",
-          "Convenience store chains",
-          "Wholesale retailers"
+        businessOutcomes: [
+          "Increased same-store sales by 15%",
+          "Reduced stockouts by 40%",
+          "Improved customer retention rates",
+          "Optimized pricing & promotion ROI",
+          "Unified online & offline experiences"
         ]
       },
       {
-        id: "logistics-transportation-enterprises",
-        name: "Logistics & Transportation Enterprises",
-        description: "Enterprise logistics with fleet management, route optimization, and supply chain intelligence.",
-        icon: "🚛",
-        features: ["Fleet Management AI", "Route Optimization", "Supply Chain Intelligence", "Delivery Prediction"],
-        detailedDescription: "Optimize logistics operations at enterprise scale with AI that maximizes efficiency. Our transportation solutions manage complex fleets, optimize routes in real-time, and provide supply chain visibility that reduces costs.",
-        benefits: [
-          "Reduce fuel costs by 20%",
-          "Improve on-time delivery to 99%",
-          "Optimize fleet utilization",
-          "Enhance supply chain visibility",
-          "Reduce carbon emissions"
+        id: "hospitality-travel-enterprises",
+        name: "Hospitality & Travel Enterprises",
+        description: "Hospitality and travel companies with booking optimization, guest experience AI, and revenue management.",
+        icon: "🏨",
+        tagline: "AI-Powered Hospitality & Travel Experience Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help hospitality and travel enterprises build AI-native guest experience platforms that are personalized, revenue-optimized, operationally efficient, and insight-driven. From dynamic pricing to personalized guest journeys, we design solutions that elevate hospitality. We build guest-first, AI-powered hospitality systems for the modern travel enterprise.",
+        whyChoose: {
+          intro: "Hospitality enterprises need guest personalization, revenue optimization, and operational excellence at scale.",
+          points: [
+            "AI-first revenue management & dynamic pricing",
+            "Personalized guest journey orchestration",
+            "Operational efficiency & workforce optimization",
+            "Reputation management & sentiment analysis",
+            "Built for scale across properties & destinations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled hospitality & travel enterprise solutions, including:",
+          solutions: [
+            "Revenue management & dynamic pricing systems",
+            "Guest experience personalization platforms",
+            "Booking optimization & channel management",
+            "Housekeeping & operations management",
+            "Reputation & review management dashboards",
+            "Loyalty program optimization platforms",
+            "Concierge AI & guest service automation"
+          ],
+          footer: "All solutions are enterprise-grade, PMS-integrated, and hospitality-ready."
+        },
+        coreCapabilities: [
+          "Dynamic pricing & revenue optimization",
+          "Guest preference learning & personalization",
+          "Demand forecasting & capacity management",
+          "Sentiment analysis & reputation monitoring",
+          "Workforce scheduling & optimization",
+          "Conversational AI for guest services",
+          "Loyalty program analytics & optimization",
+          "Cross-property guest recognition"
         ],
-        useCases: [
-          "Multi-stop route optimization",
-          "Driver behavior analytics",
-          "Shipment tracking and ETA prediction",
-          "Capacity planning and scheduling",
-          "Carrier selection optimization"
+        idealFor: [
+          "Hotel chains & resort groups",
+          "Airlines & travel companies",
+          "Cruise lines & tour operators",
+          "Restaurant & entertainment groups"
         ],
-        aiCapabilities: [
-          "Real-time GPS analytics",
-          "Machine learning route planning",
-          "Predictive maintenance for vehicles",
-          "Weather-aware logistics AI",
-          "Load optimization algorithms"
-        ],
-        targetAudience: [
-          "Trucking companies",
-          "Shipping and freight",
-          "Third-party logistics (3PL)",
-          "Courier services",
-          "Rail and intermodal"
+        businessOutcomes: [
+          "Increased RevPAR by 20%",
+          "Improved guest satisfaction scores",
+          "Optimized occupancy & booking rates",
+          "Reduced operational costs",
+          "Enhanced loyalty program engagement"
         ]
       },
       {
-        id: "media-entertainment-enterprises",
-        name: "Media & Entertainment Enterprises",
+        id: "pharma-life-sciences",
+        name: "Pharma & Life Sciences",
+        description: "Pharmaceutical and life sciences companies with drug discovery AI, clinical trials optimization, and regulatory compliance.",
+        icon: "💊",
+        tagline: "AI-Powered Pharma & Life Sciences Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help pharmaceutical and life sciences enterprises build AI-native discovery and development platforms that are research-accelerating, compliance-focused, patient-centric, and data-driven. From drug discovery to clinical trials optimization, we design solutions that advance healthcare innovation. We build science-first, AI-powered pharma systems for the modern life sciences enterprise.",
+        whyChoose: {
+          intro: "Pharma enterprises need research acceleration, regulatory compliance, and clinical intelligence at scale.",
+          points: [
+            "AI-first drug discovery & target identification",
+            "Clinical trial optimization & patient matching",
+            "Regulatory compliance & documentation automation",
+            "Real-world evidence & pharmacovigilance",
+            "Built for scale across R&D pipelines & trials"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled pharma & life sciences enterprise solutions, including:",
+          solutions: [
+            "Drug discovery & molecular analysis platforms",
+            "Clinical trial management & optimization",
+            "Regulatory submission automation systems",
+            "Pharmacovigilance & safety monitoring",
+            "Medical affairs & scientific intelligence",
+            "Supply chain & manufacturing optimization",
+            "Commercial analytics & market access platforms"
+          ],
+          footer: "All solutions are GxP-compliant, validated, and enterprise-ready."
+        },
+        coreCapabilities: [
+          "Molecular analysis & target prediction",
+          "Clinical trial site selection & optimization",
+          "Patient recruitment & matching algorithms",
+          "Adverse event detection & monitoring",
+          "Regulatory document generation & review",
+          "Real-world evidence analysis",
+          "Manufacturing quality prediction",
+          "Commercial forecasting & analytics"
+        ],
+        idealFor: [
+          "Pharmaceutical companies & biotechs",
+          "Medical device manufacturers",
+          "Clinical research organizations (CROs)",
+          "Life sciences R&D organizations"
+        ],
+        businessOutcomes: [
+          "Accelerated drug discovery timelines",
+          "Optimized clinical trial success rates",
+          "Streamlined regulatory submissions",
+          "Enhanced pharmacovigilance & safety",
+          "Improved manufacturing quality & efficiency"
+        ]
+      },
+      {
+        id: "media-entertainment",
+        name: "Media & Entertainment",
         description: "Media companies with content recommendation, audience analytics, and production automation.",
         icon: "🎬",
-        features: ["Content Recommendation", "Audience Analytics", "Production Automation", "Rights Management"],
-        detailedDescription: "Captivate audiences with AI that understands content and viewers. Our media solutions recommend the right content, analyze audience behavior, and streamline production workflows for maximum engagement.",
-        benefits: [
-          "Increase viewer engagement by 45%",
-          "Reduce content production costs",
-          "Optimize content acquisition decisions",
-          "Improve advertising effectiveness",
-          "Personalize at massive scale"
+        tagline: "AI-Powered Media & Entertainment Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help media and entertainment enterprises build AI-native content platforms that are audience-centric, engagement-optimized, production-efficient, and data-driven. From personalized recommendations to content creation automation, we design solutions that captivate audiences. We build audience-first, AI-powered media systems for the modern entertainment enterprise.",
+        whyChoose: {
+          intro: "Media enterprises need audience intelligence, content optimization, and production efficiency at scale.",
+          points: [
+            "AI-first content recommendation & discovery",
+            "Audience behavior analytics & segmentation",
+            "Content creation & production automation",
+            "Rights management & content protection",
+            "Built for scale across platforms & audiences"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled media & entertainment enterprise solutions, including:",
+          solutions: [
+            "Personalized content recommendation engines",
+            "Audience analytics & segmentation platforms",
+            "Automated content tagging & metadata",
+            "Ad tech & monetization optimization",
+            "Content moderation & safety systems",
+            "Rights management & royalty tracking",
+            "Production workflow automation tools"
+          ],
+          footer: "All solutions are enterprise-grade, CDN-compatible, and streaming-ready."
+        },
+        coreCapabilities: [
+          "Collaborative filtering & content recommendations",
+          "Video & audio content analysis",
+          "Audience behavior modeling & prediction",
+          "Automated content tagging & classification",
+          "Ad placement & yield optimization",
+          "Content moderation & policy enforcement",
+          "Rights tracking & royalty calculation",
+          "Production scheduling & resource optimization"
         ],
-        useCases: [
-          "Personalized content recommendations",
-          "Audience segmentation and targeting",
-          "Automated content tagging",
-          "Ad placement optimization",
-          "Content performance prediction"
+        idealFor: [
+          "Streaming platforms & OTT services",
+          "Broadcast networks & media companies",
+          "Publishing & digital content enterprises",
+          "Gaming & interactive entertainment companies"
         ],
-        aiCapabilities: [
-          "Collaborative filtering algorithms",
-          "Video and audio analysis",
-          "Natural language content understanding",
-          "Viewer behavior modeling",
-          "Creative optimization AI"
-        ],
-        targetAudience: [
-          "Streaming platforms",
-          "Broadcast networks",
-          "Publishing companies",
-          "Gaming companies",
-          "Sports organizations"
-        ]
-      },
-      {
-        id: "large-healthcare-education",
-        name: "Large Healthcare & Education Enterprises",
-        description: "Enterprise healthcare and education institutions with administrative AI and operational efficiency.",
-        icon: "🏫",
-        features: ["Administrative AI", "Resource Management", "Student/Patient Analytics", "Compliance Automation"],
-        detailedDescription: "Optimize large-scale healthcare and education operations with AI that manages complexity. Our enterprise solutions streamline administration, improve resource allocation, and ensure compliance across large institutions.",
-        benefits: [
-          "Reduce administrative costs by 30%",
-          "Improve resource utilization",
-          "Enhance student/patient outcomes",
-          "Automate compliance reporting",
-          "Scale operations efficiently"
-        ],
-        useCases: [
-          "Centralized scheduling and resource management",
-          "Enrollment and admissions automation",
-          "Compliance monitoring and reporting",
-          "Facility and asset management",
-          "Staff scheduling optimization"
-        ],
-        aiCapabilities: [
-          "Large-scale data analytics",
-          "Workflow automation",
-          "Predictive modeling for outcomes",
-          "Document processing at scale",
-          "Multi-campus coordination"
-        ],
-        targetAudience: [
-          "Hospital systems",
-          "University systems",
-          "School districts",
-          "Healthcare networks",
-          "Educational consortiums"
+        businessOutcomes: [
+          "Increased viewer engagement by 45%",
+          "Reduced content production costs",
+          "Optimized content acquisition decisions",
+          "Improved advertising effectiveness",
+          "Scaled personalization across millions of users"
         ]
       },
     ],
@@ -974,35 +1154,53 @@ const industries: Industry[] = [
         name: "B2C Online Retail",
         description: "Consumer-focused online stores with personalized shopping experiences and conversion optimization.",
         icon: "🛍️",
-        features: ["Product Recommendations", "Personalization AI", "Cart Recovery", "Customer Segmentation"],
-        detailedDescription: "Transform your B2C online store with AI that converts browsers into buyers. Our retail AI delivers hyper-personalized shopping experiences, recovers abandoned carts, and maximizes customer lifetime value.",
-        benefits: [
+        tagline: "AI-Powered Consumer Retail Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help B2C online retailers build AI-native e-commerce platforms that are conversion-focused, personalized, scalable, and customer-centric. From intelligent product recommendations to abandoned cart recovery, we design retail solutions that transform browsers into loyal buyers. We build customer-first, AI-powered retail systems that maximize lifetime value.",
+        whyChoose: {
+          intro: "B2C retail requires personalization, conversion optimization, and seamless shopping experiences.",
+          points: [
+            "AI-first product recommendation architecture",
+            "Real-time personalization across touchpoints",
+            "Automated cart recovery & retargeting",
+            "Customer segmentation & behavior analytics",
+            "Built for scale across catalogs & traffic spikes"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled B2C retail solutions, including:",
+          solutions: [
+            "Intelligent product recommendation engines",
+            "Dynamic homepage & category personalization",
+            "Abandoned cart recovery systems",
+            "Customer segmentation platforms",
+            "AI-powered site search & discovery",
+            "Conversion rate optimization tools",
+            "Customer journey analytics dashboards"
+          ],
+          footer: "All solutions are cloud-native, mobile-first, and e-commerce platform integrated."
+        },
+        coreCapabilities: [
+          "Collaborative filtering & content-based recommendations",
+          "Behavioral prediction & purchase propensity modeling",
+          "Natural language search & autocomplete",
+          "Visual similarity & product matching",
+          "Customer journey mapping & optimization",
+          "A/B testing & experimentation automation",
+          "Real-time inventory & pricing sync",
+          "Multi-channel engagement & notifications"
+        ],
+        idealFor: [
+          "Online retail store owners",
+          "E-commerce brand managers",
+          "Digital commerce platforms",
+          "Omnichannel retail enterprises"
+        ],
+        businessOutcomes: [
           "Increase conversion rates by 40%",
           "Boost average order value by 25%",
           "Recover 30% of abandoned carts",
-          "Improve customer retention",
-          "Personalize every touchpoint"
-        ],
-        useCases: [
-          "Real-time product recommendations",
-          "Dynamic homepage personalization",
-          "Abandoned cart recovery campaigns",
-          "Customer segment-based marketing",
-          "Search result optimization"
-        ],
-        aiCapabilities: [
-          "Collaborative filtering engines",
-          "Behavioral prediction models",
-          "Natural language search",
-          "Visual similarity matching",
-          "Customer journey optimization"
-        ],
-        targetAudience: [
-          "Online retailers",
-          "Direct-to-consumer brands",
-          "E-commerce marketplaces",
-          "Digital storefronts",
-          "Omnichannel retailers"
+          "Improve customer retention & LTV",
+          "Personalized shopping at scale"
         ]
       },
       {
@@ -1010,35 +1208,53 @@ const industries: Industry[] = [
         name: "B2B E-Commerce Platforms",
         description: "Business-to-business commerce platforms with bulk ordering, pricing tiers, and account management.",
         icon: "🏢",
-        features: ["Bulk Order AI", "Dynamic Pricing", "Account Management", "Order Automation"],
-        detailedDescription: "Streamline B2B commerce with AI built for complex business relationships. Our B2B solutions handle custom pricing, automate reordering, and provide account intelligence that strengthens customer relationships.",
-        benefits: [
-          "Automate 60% of order processing",
-          "Increase customer reorder rates",
-          "Optimize bulk pricing decisions",
-          "Reduce order errors by 95%",
-          "Scale account management"
+        tagline: "AI-Powered B2B Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help B2B e-commerce companies build AI-native platforms that handle complex business relationships, custom pricing, and automated ordering workflows. From purchase order processing to account intelligence, we design B2B solutions that strengthen customer relationships and drive efficiency. We build relationship-first, AI-powered B2B commerce systems.",
+        whyChoose: {
+          intro: "B2B commerce requires complex pricing, account management, and intelligent order automation.",
+          points: [
+            "AI-first purchase order processing & automation",
+            "Dynamic pricing & customer-specific catalogs",
+            "Account health scoring & relationship intelligence",
+            "Automated reordering & inventory sync",
+            "Built for scale across enterprise accounts & SKUs"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled B2B e-commerce solutions, including:",
+          solutions: [
+            "Automated purchase order processing systems",
+            "Dynamic pricing & quote management platforms",
+            "Customer portal & self-service tools",
+            "Inventory availability & forecasting systems",
+            "Contract & agreement management platforms",
+            "Account relationship analytics dashboards",
+            "B2B marketplace & catalog solutions"
+          ],
+          footer: "All solutions are ERP-integrated, scalable, and enterprise-ready."
+        },
+        coreCapabilities: [
+          "Document AI for PO & invoice processing",
+          "Dynamic pricing optimization algorithms",
+          "Customer demand forecasting & prediction",
+          "Account health scoring & churn prediction",
+          "Bulk order workflow automation",
+          "Credit management & risk assessment",
+          "Multi-warehouse inventory visibility",
+          "B2B chatbots & query automation"
         ],
-        useCases: [
-          "Automated purchase order processing",
-          "Customer-specific pricing optimization",
-          "Inventory availability forecasting",
-          "Contract and quote management",
-          "Customer health scoring"
-        ],
-        aiCapabilities: [
-          "Document processing for POs",
-          "Pricing optimization algorithms",
-          "Demand forecasting for customers",
-          "Account relationship AI",
-          "Chatbots for business queries"
-        ],
-        targetAudience: [
+        idealFor: [
           "Wholesale distributors",
           "Manufacturing suppliers",
           "Industrial equipment sellers",
-          "Business service providers",
-          "B2B marketplaces"
+          "B2B marketplace operators"
+        ],
+        businessOutcomes: [
+          "Automate 60% of order processing",
+          "Increase customer reorder rates",
+          "Reduce order errors by 95%",
+          "Optimize bulk pricing decisions",
+          "Scale account management efficiently"
         ]
       },
       {
@@ -1046,35 +1262,53 @@ const industries: Industry[] = [
         name: "D2C (Direct-to-Consumer) Brands",
         description: "Direct-to-consumer brands with brand storytelling, customer loyalty, and subscription management.",
         icon: "📦",
-        features: ["Brand Analytics", "Loyalty Programs AI", "Subscription Management", "Social Commerce"],
-        detailedDescription: "Build lasting D2C brand relationships with AI that creates loyal customers. Our D2C solutions power engaging brand experiences, optimize subscription economics, and leverage social commerce for growth.",
-        benefits: [
+        tagline: "AI-Powered Direct-to-Consumer Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help D2C brands build AI-native platforms that create lasting customer relationships through personalized experiences, loyalty programs, and community engagement. From subscription optimization to social commerce, we design D2C solutions that maximize customer lifetime value. We build brand-first, AI-powered D2C systems that scale authentically.",
+        whyChoose: {
+          intro: "D2C brands need customer loyalty, subscription management, and authentic community building.",
+          points: [
+            "AI-first customer loyalty & retention architecture",
+            "Subscription economics optimization",
+            "Social commerce & community engagement",
+            "Brand sentiment analysis & feedback loops",
+            "Built for scale while maintaining brand authenticity"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled D2C brand solutions, including:",
+          solutions: [
+            "Customer loyalty & rewards platforms",
+            "Subscription management & optimization systems",
+            "Community engagement & UGC platforms",
+            "Influencer partnership analytics tools",
+            "Customer feedback & sentiment dashboards",
+            "Social commerce integration platforms",
+            "Brand storytelling & content automation"
+          ],
+          footer: "All solutions are mobile-first, social-integrated, and brand-aligned."
+        },
+        coreCapabilities: [
+          "Customer sentiment analysis & NPS tracking",
+          "Churn prediction & intervention automation",
+          "Social listening & trend detection",
+          "Personalized content & offer delivery",
+          "Community engagement scoring & automation",
+          "Subscription box curation algorithms",
+          "Influencer ROI tracking & optimization",
+          "Customer referral & advocacy programs"
+        ],
+        idealFor: [
+          "D2C brand founders",
+          "Subscription commerce companies",
+          "Lifestyle & wellness brands",
+          "Beauty & personal care brands"
+        ],
+        businessOutcomes: [
           "Increase customer lifetime value by 35%",
           "Reduce subscription churn by 40%",
           "Optimize customer acquisition costs",
-          "Build brand community engagement",
-          "Scale personalized experiences"
-        ],
-        useCases: [
-          "Loyalty program optimization",
-          "Subscription box personalization",
-          "Social media engagement automation",
-          "Influencer campaign tracking",
-          "Customer feedback analysis"
-        ],
-        aiCapabilities: [
-          "Customer sentiment analysis",
-          "Churn prediction models",
-          "Social listening AI",
-          "Content personalization",
-          "Community engagement automation"
-        ],
-        targetAudience: [
-          "D2C consumer brands",
-          "Subscription box companies",
-          "Lifestyle brands",
-          "Health and wellness brands",
-          "Beauty and personal care"
+          "Build engaged brand communities",
+          "Scale personalized experiences authentically"
         ]
       },
       {
@@ -1082,35 +1316,53 @@ const industries: Industry[] = [
         name: "Multi-Vendor Marketplaces",
         description: "Marketplace platforms with seller management, product curation, and marketplace analytics.",
         icon: "🏪",
-        features: ["Seller Analytics", "Product Curation AI", "Commission Management", "Fraud Detection"],
-        detailedDescription: "Build thriving marketplaces with AI that balances seller success and buyer satisfaction. Our marketplace solutions curate products, manage seller performance, and detect fraud to create trusted commerce ecosystems.",
-        benefits: [
+        tagline: "AI-Powered Marketplace Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help marketplace operators build AI-native platforms that balance seller success with buyer satisfaction. From intelligent product curation to fraud detection, we design marketplace solutions that create trusted, thriving commerce ecosystems. We build ecosystem-first, AI-powered marketplace systems that scale sustainably.",
+        whyChoose: {
+          intro: "Marketplaces need seller management, product quality control, and ecosystem balance.",
+          points: [
+            "AI-first product curation & discovery",
+            "Seller performance scoring & management",
+            "Fraud detection & trust enforcement",
+            "Supply-demand balancing algorithms",
+            "Built for scale across sellers, products & transactions"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled marketplace solutions, including:",
+          solutions: [
+            "Intelligent product categorization systems",
+            "Seller onboarding & verification platforms",
+            "Fraud detection & prevention tools",
+            "Search ranking & discovery optimization",
+            "Commission & pricing management systems",
+            "Seller analytics & performance dashboards",
+            "Marketplace dispute resolution tools"
+          ],
+          footer: "All solutions are scalable, secure, and multi-tenant ready."
+        },
+        coreCapabilities: [
+          "Computer vision for product image validation",
+          "Natural language for listing quality analysis",
+          "Fraud detection & anomaly algorithms",
+          "Search ranking & matching optimization",
+          "Seller behavior analysis & scoring",
+          "Dynamic commission optimization",
+          "Review authenticity verification",
+          "Category & attribute standardization"
+        ],
+        idealFor: [
+          "General marketplace operators",
+          "Vertical niche marketplaces",
+          "Service marketplace platforms",
+          "B2B marketplace founders"
+        ],
+        businessOutcomes: [
           "Improve product discovery by 50%",
           "Reduce fraudulent listings by 90%",
-          "Optimize seller performance",
-          "Balance supply and demand",
-          "Scale marketplace operations"
-        ],
-        useCases: [
-          "Intelligent product categorization",
-          "Seller quality scoring",
-          "Fraudulent listing detection",
-          "Search ranking optimization",
-          "Commission and pricing optimization"
-        ],
-        aiCapabilities: [
-          "Computer vision for product images",
-          "Natural language for listings",
-          "Fraud detection algorithms",
-          "Matching algorithms for search",
-          "Seller behavior analysis"
-        ],
-        targetAudience: [
-          "General marketplaces",
-          "Niche vertical marketplaces",
-          "Service marketplaces",
-          "B2B marketplaces",
-          "Rental marketplaces"
+          "Optimize seller performance & quality",
+          "Balance supply and demand effectively",
+          "Scale marketplace operations sustainably"
         ]
       },
       {
@@ -1118,35 +1370,53 @@ const industries: Industry[] = [
         name: "Grocery & Quick Commerce",
         description: "Fast delivery grocery and convenience platforms with inventory management and delivery optimization.",
         icon: "🥬",
-        features: ["Inventory Prediction", "Delivery Optimization", "Fresh Product AI", "Quick Commerce Analytics"],
-        detailedDescription: "Win in quick commerce with AI that delivers freshness and speed. Our grocery solutions predict demand for perishables, optimize dark store operations, and ensure lightning-fast delivery times.",
-        benefits: [
-          "Reduce food waste by 35%",
-          "Achieve 15-minute delivery times",
-          "Optimize dark store inventory",
-          "Improve picker efficiency",
-          "Predict demand accurately"
+        tagline: "AI-Powered Quick Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help grocery and quick commerce platforms build AI-native systems that deliver freshness and speed. From perishable inventory prediction to last-mile optimization, we design quick commerce solutions that minimize waste and maximize delivery efficiency. We build speed-first, AI-powered grocery systems that delight customers.",
+        whyChoose: {
+          intro: "Quick commerce requires speed, freshness, and hyper-local inventory intelligence.",
+          points: [
+            "AI-first perishable demand forecasting",
+            "Real-time delivery route optimization",
+            "Dark store inventory & operations intelligence",
+            "Picker efficiency & path optimization",
+            "Built for scale across hyperlocal fulfillment"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled grocery & quick commerce solutions, including:",
+          solutions: [
+            "Perishable inventory forecasting systems",
+            "Real-time rider route optimization tools",
+            "Dark store management platforms",
+            "Substitute product recommendation engines",
+            "Dynamic delivery slot & pricing systems",
+            "Picker path optimization tools",
+            "Freshness tracking & waste reduction dashboards"
+          ],
+          footer: "All solutions are real-time, hyperlocal-ready, and operations-optimized."
+        },
+        coreCapabilities: [
+          "Short-term demand forecasting for perishables",
+          "Real-time route optimization & rider dispatch",
+          "Freshness tracking & shelf-life prediction",
+          "Picker path & warehouse optimization",
+          "Customer preference learning & substitutions",
+          "Dynamic delivery pricing algorithms",
+          "Inventory replenishment automation",
+          "Order batching & slot management"
         ],
-        useCases: [
-          "Perishable inventory forecasting",
-          "Rider route optimization",
-          "Dark store slot management",
-          "Substitute product recommendations",
-          "Dynamic delivery pricing"
-        ],
-        aiCapabilities: [
-          "Short-term demand forecasting",
-          "Real-time route optimization",
-          "Freshness tracking AI",
-          "Picker path optimization",
-          "Customer preference learning"
-        ],
-        targetAudience: [
+        idealFor: [
           "Grocery delivery platforms",
           "Quick commerce startups",
-          "Convenience store chains",
           "Dark store operators",
-          "Meal kit companies"
+          "Meal kit & fresh food companies"
+        ],
+        businessOutcomes: [
+          "Reduce food waste by 35%",
+          "Achieve sub-15-minute delivery times",
+          "Optimize dark store inventory levels",
+          "Improve picker efficiency by 40%",
+          "Predict demand with 90%+ accuracy"
         ]
       },
       {
@@ -1154,35 +1424,53 @@ const industries: Industry[] = [
         name: "Fashion & Lifestyle E-Commerce",
         description: "Fashion and lifestyle stores with visual search, size recommendations, and trend analysis.",
         icon: "👗",
-        features: ["Visual Search AI", "Size Recommendation", "Trend Analysis", "Style Matching"],
-        detailedDescription: "Revolutionize fashion e-commerce with AI that understands style. Our fashion solutions enable visual discovery, solve sizing challenges, and predict trends to keep your inventory relevant.",
-        benefits: [
+        tagline: "AI-Powered Fashion Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help fashion and lifestyle e-commerce platforms build AI-native systems that understand style, fit, and trends. From visual search to size recommendations, we design fashion solutions that reduce returns and increase discovery. We build style-first, AI-powered fashion systems that inspire confident purchases.",
+        whyChoose: {
+          intro: "Fashion e-commerce needs visual intelligence, sizing accuracy, and trend prediction.",
+          points: [
+            "AI-first visual search & style matching",
+            "Size recommendation & fit prediction",
+            "Trend detection & demand forecasting",
+            "Outfit completion & styling suggestions",
+            "Built for scale across catalogs & seasons"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled fashion e-commerce solutions, including:",
+          solutions: [
+            "Visual similarity search engines",
+            "AI-powered size recommendation systems",
+            "Trend forecasting & buying tools",
+            "Outfit completion & styling platforms",
+            "Virtual try-on & visualization tools",
+            "Fashion catalog enrichment systems",
+            "Return prediction & prevention dashboards"
+          ],
+          footer: "All solutions are visual-first, mobile-optimized, and fashion-specialized."
+        },
+        coreCapabilities: [
+          "Computer vision for fashion image analysis",
+          "Body measurement & fit prediction AI",
+          "Trend detection & forecasting algorithms",
+          "Style preference learning & personalization",
+          "Color & pattern matching intelligence",
+          "Outfit recommendation & completion",
+          "Return reason analysis & prevention",
+          "Seasonal demand prediction"
+        ],
+        idealFor: [
+          "Fashion retail platforms",
+          "Luxury & designer brands",
+          "Athletic & activewear companies",
+          "Accessories & lifestyle retailers"
+        ],
+        businessOutcomes: [
           "Reduce returns by 40%",
-          "Increase product discovery",
-          "Predict trend-driven demand",
-          "Improve size confidence",
-          "Personalize style recommendations"
-        ],
-        useCases: [
-          "Visual similarity search",
-          "AI size recommendations",
-          "Trend forecasting and buying",
-          "Outfit completion suggestions",
-          "Virtual try-on experiences"
-        ],
-        aiCapabilities: [
-          "Computer vision for fashion",
-          "Body measurement AI",
-          "Trend detection algorithms",
-          "Style preference learning",
-          "Color and pattern matching"
-        ],
-        targetAudience: [
-          "Fashion retailers",
-          "Luxury brands",
-          "Athletic apparel",
-          "Accessories brands",
-          "Home decor retailers"
+          "Increase product discovery & engagement",
+          "Predict trend-driven demand accurately",
+          "Improve size confidence & conversion",
+          "Personalize style recommendations at scale"
         ]
       },
       {
@@ -1190,35 +1478,53 @@ const industries: Industry[] = [
         name: "Electronics & Digital Goods Stores",
         description: "Electronics and digital product stores with tech specifications matching and comparison tools.",
         icon: "📱",
-        features: ["Spec Matching AI", "Comparison Engine", "Tech Support Bot", "Warranty Management"],
-        detailedDescription: "Simplify electronics e-commerce with AI that matches complex specifications. Our solutions help customers find the right products, compare options intelligently, and get instant tech support.",
-        benefits: [
-          "Increase confidence in purchases",
-          "Reduce product returns by 30%",
-          "Automate tech support inquiries",
-          "Simplify product comparisons",
-          "Improve post-purchase satisfaction"
+        tagline: "AI-Powered Electronics Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help electronics and digital goods retailers build AI-native platforms that simplify complex purchase decisions. From specification matching to compatibility checking, we design electronics solutions that build purchase confidence and reduce returns. We build tech-first, AI-powered electronics systems that guide informed decisions.",
+        whyChoose: {
+          intro: "Electronics commerce needs specification intelligence, compatibility checking, and technical support.",
+          points: [
+            "AI-first product specification understanding",
+            "Compatibility & system requirements analysis",
+            "Technical support automation & chatbots",
+            "Product comparison & recommendation engines",
+            "Built for scale across complex product catalogs"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled electronics commerce solutions, including:",
+          solutions: [
+            "Specification-based product matching systems",
+            "Intelligent product comparison engines",
+            "AI technical support chatbots",
+            "Compatibility checking & validation tools",
+            "Warranty claim automation platforms",
+            "Product knowledge graph systems",
+            "Usage-based recommendation engines"
+          ],
+          footer: "All solutions are technically accurate, API-integrated, and support-ready."
+        },
+        coreCapabilities: [
+          "Technical specification parsing & understanding",
+          "Compatibility analysis & validation AI",
+          "Natural language technical support",
+          "Product knowledge graph construction",
+          "Usage-based product recommendations",
+          "Warranty & service automation",
+          "Price tracking & competitive intelligence",
+          "Technical documentation AI assistants"
         ],
-        useCases: [
-          "Specification-based product matching",
-          "Intelligent product comparison",
-          "AI technical support chatbot",
-          "Compatibility checking",
-          "Warranty claim automation"
-        ],
-        aiCapabilities: [
-          "Technical specification understanding",
-          "Compatibility analysis AI",
-          "Natural language tech support",
-          "Product knowledge graphs",
-          "Usage-based recommendations"
-        ],
-        targetAudience: [
+        idealFor: [
           "Consumer electronics retailers",
-          "Computer and component stores",
-          "Mobile device retailers",
-          "Software marketplaces",
-          "Gaming equipment stores"
+          "Computer & component stores",
+          "Mobile device platforms",
+          "Software & digital goods marketplaces"
+        ],
+        businessOutcomes: [
+          "Increase purchase confidence & conversion",
+          "Reduce product returns by 30%",
+          "Automate 70% of tech support inquiries",
+          "Simplify complex product comparisons",
+          "Improve post-purchase satisfaction"
         ]
       },
       {
@@ -1226,35 +1532,53 @@ const industries: Industry[] = [
         name: "Subscription-Based Commerce",
         description: "Subscription box and recurring commerce with churn prediction and personalized curation.",
         icon: "📬",
-        features: ["Churn Prediction", "Personalized Curation", "Subscription Analytics", "Renewal Optimization"],
-        detailedDescription: "Build subscription businesses that last with AI that predicts and prevents churn. Our subscription solutions personalize every box, optimize billing, and keep subscribers engaged month after month.",
-        benefits: [
-          "Reduce churn by 35%",
-          "Increase subscription LTV",
-          "Personalize every delivery",
-          "Optimize pricing and plans",
-          "Improve subscriber satisfaction"
-        ],
-        useCases: [
-          "Churn risk prediction and intervention",
-          "Personalized product curation",
-          "Subscription plan optimization",
+        tagline: "AI-Powered Subscription Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help subscription commerce platforms build AI-native systems that predict churn, personalize curation, and optimize recurring revenue. From subscriber analytics to renewal optimization, we design subscription solutions that maximize lifetime value. We build retention-first, AI-powered subscription systems that keep customers engaged.",
+        whyChoose: {
+          intro: "Subscription commerce needs churn prediction, personalization, and billing optimization.",
+          points: [
+            "AI-first churn prediction & intervention",
+            "Personalized product curation algorithms",
+            "Subscription pricing & plan optimization",
+            "Renewal timing & engagement automation",
+            "Built for scale across subscriber bases"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled subscription commerce solutions, including:",
+          solutions: [
+            "Churn prediction & prevention platforms",
+            "Personalized curation & box algorithms",
+            "Subscription analytics dashboards",
+            "Plan & pricing optimization tools",
+            "Renewal & billing automation systems",
+            "Subscriber feedback integration platforms",
+            "Win-back campaign automation tools"
+          ],
+          footer: "All solutions are retention-focused, billing-integrated, and analytics-driven."
+        },
+        coreCapabilities: [
+          "Churn prediction & risk scoring models",
+          "Preference learning & curation algorithms",
+          "Price sensitivity & elasticity analysis",
+          "Engagement scoring & health monitoring",
+          "Automated win-back & retention campaigns",
+          "Subscriber segmentation & cohort analysis",
           "Renewal timing optimization",
-          "Customer feedback integration"
+          "Feedback sentiment analysis & action"
         ],
-        aiCapabilities: [
-          "Churn prediction models",
-          "Preference learning algorithms",
-          "Price sensitivity analysis",
-          "Engagement scoring",
-          "Automated win-back campaigns"
-        ],
-        targetAudience: [
+        idealFor: [
           "Subscription box companies",
-          "Replenishment subscriptions",
-          "Digital subscription services",
-          "Membership programs",
-          "Curated commerce brands"
+          "Replenishment subscription services",
+          "Digital subscription platforms",
+          "Membership program operators"
+        ],
+        businessOutcomes: [
+          "Reduce churn by 35%",
+          "Increase subscriber lifetime value",
+          "Personalize every delivery experience",
+          "Optimize pricing & plan structures",
+          "Improve overall subscriber satisfaction"
         ]
       },
       {
@@ -1262,35 +1586,53 @@ const industries: Industry[] = [
         name: "Social Commerce",
         description: "Social media-driven commerce with influencer analytics, live shopping, and social selling tools.",
         icon: "📲",
-        features: ["Influencer Analytics", "Live Shopping AI", "Social Selling Tools", "UGC Management"],
-        detailedDescription: "Capture social commerce opportunities with AI that understands social behavior. Our solutions optimize influencer partnerships, power live shopping experiences, and turn social engagement into sales.",
-        benefits: [
-          "Increase social conversion rates",
-          "Optimize influencer ROI",
-          "Scale live shopping events",
-          "Leverage user-generated content",
-          "Track social attribution"
+        tagline: "AI-Powered Social Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help social commerce platforms build AI-native systems that turn social engagement into sales. From influencer analytics to live shopping AI, we design social solutions that optimize creator partnerships and power shoppable experiences. We build engagement-first, AI-powered social commerce systems that convert followers to customers.",
+        whyChoose: {
+          intro: "Social commerce needs influencer intelligence, live shopping capabilities, and social attribution.",
+          points: [
+            "AI-first influencer matching & performance prediction",
+            "Live shopping & real-time product tagging",
+            "Social attribution & ROI tracking",
+            "User-generated content management & leverage",
+            "Built for scale across platforms & creators"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled social commerce solutions, including:",
+          solutions: [
+            "Influencer discovery & matching platforms",
+            "Live shopping & streaming commerce tools",
+            "Social proof & UGC management systems",
+            "Shoppable content creation platforms",
+            "Social listening & trend detection tools",
+            "Creator commerce & affiliate platforms",
+            "Social attribution analytics dashboards"
+          ],
+          footer: "All solutions are platform-integrated, real-time, and creator-friendly."
+        },
+        coreCapabilities: [
+          "Influencer matching & performance prediction",
+          "Real-time video analytics & product detection",
+          "Sentiment analysis for social engagement",
+          "Visual content recognition & tagging",
+          "Social graph analytics & reach prediction",
+          "UGC curation & moderation automation",
+          "Live stream product overlay & checkout",
+          "Cross-platform attribution modeling"
         ],
-        useCases: [
-          "Influencer performance prediction",
-          "Live stream product detection",
-          "Social proof automation",
-          "Shoppable content creation",
-          "Social listening for trends"
-        ],
-        aiCapabilities: [
-          "Influencer matching algorithms",
-          "Real-time video analytics",
-          "Sentiment analysis for comments",
-          "Visual content recognition",
-          "Social graph analytics"
-        ],
-        targetAudience: [
+        idealFor: [
           "Social commerce platforms",
-          "Live shopping apps",
-          "Influencer marketplaces",
-          "Social-first brands",
-          "Creator commerce tools"
+          "Live shopping applications",
+          "Influencer marketplace operators",
+          "Social-first D2C brands"
+        ],
+        businessOutcomes: [
+          "Increase social conversion rates by 50%",
+          "Optimize influencer partnership ROI",
+          "Scale live shopping events efficiently",
+          "Leverage user-generated content at scale",
+          "Track accurate social attribution"
         ]
       },
       {
@@ -1298,35 +1640,53 @@ const industries: Industry[] = [
         name: "Cross-Border E-Commerce",
         description: "International commerce platforms with multi-currency, localization, and cross-border logistics.",
         icon: "🌍",
-        features: ["Currency Optimization", "Localization AI", "Cross-Border Logistics", "Compliance Automation"],
-        detailedDescription: "Expand globally with AI that handles cross-border complexity. Our international commerce solutions optimize currencies, localize experiences, and navigate regulatory requirements for seamless global selling.",
-        benefits: [
-          "Enter new markets faster",
-          "Reduce cross-border friction",
-          "Optimize currency conversion",
-          "Automate compliance",
-          "Localize at scale"
+        tagline: "AI-Powered Global Commerce Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help cross-border e-commerce platforms build AI-native systems that handle international complexity seamlessly. From currency optimization to automated compliance, we design global solutions that expand market reach and reduce friction. We build global-first, AI-powered cross-border systems that scale internationally.",
+        whyChoose: {
+          intro: "Cross-border commerce needs localization, compliance automation, and logistics intelligence.",
+          points: [
+            "AI-first content localization & translation",
+            "Dynamic currency conversion & optimization",
+            "Automated duty, tax & compliance handling",
+            "Cross-border shipping cost prediction",
+            "Built for scale across markets & regulations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled cross-border commerce solutions, including:",
+          solutions: [
+            "Neural machine translation platforms",
+            "Dynamic currency optimization systems",
+            "Duty & tax calculation engines",
+            "Cross-border shipping optimization tools",
+            "Market entry prioritization platforms",
+            "Compliance automation systems",
+            "International payment optimization tools"
+          ],
+          footer: "All solutions are multi-market, compliance-ready, and globally scalable."
+        },
+        coreCapabilities: [
+          "Neural machine translation for commerce",
+          "Currency optimization & conversion algorithms",
+          "Compliance rule engines & automation",
+          "Shipping cost prediction & optimization",
+          "Market demand analysis & prioritization",
+          "Local payment method optimization",
+          "Cross-border returns management",
+          "International fraud detection"
         ],
-        useCases: [
-          "Dynamic currency conversion",
-          "Content localization and translation",
-          "Duty and tax calculation",
-          "Cross-border shipping optimization",
-          "Market entry prioritization"
-        ],
-        aiCapabilities: [
-          "Neural machine translation",
-          "Currency optimization algorithms",
-          "Compliance rule engines",
-          "Shipping cost prediction",
-          "Market demand analysis"
-        ],
-        targetAudience: [
+        idealFor: [
           "Global e-commerce brands",
-          "Cross-border marketplaces",
+          "Cross-border marketplace operators",
           "Export-focused retailers",
-          "Global logistics providers",
-          "International payment platforms"
+          "International logistics providers"
+        ],
+        businessOutcomes: [
+          "Enter new markets 50% faster",
+          "Reduce cross-border friction & cart abandonment",
+          "Optimize currency conversion & margins",
+          "Automate compliance across jurisdictions",
+          "Localize experiences at global scale"
         ]
       },
     ],
@@ -2822,20 +3182,20 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   return {
     title: `${subIndustry.name} AI Solutions | ${industry.name} | NanoFlows`,
-    description: subIndustry.detailedDescription,
+    description: subIndustry.overview,
     keywords: [
       subIndustry.name,
       `${subIndustry.name} AI`,
       `${subIndustry.name} automation`,
       industry.name,
-      ...subIndustry.features,
+      ...subIndustry.whatWeBuild.solutions.slice(0, 4),
       "AI solutions",
       "autonomous AI",
       "NanoFlows"
     ],
     openGraph: {
       title: `${subIndustry.name} AI Solutions | NanoFlows`,
-      description: subIndustry.detailedDescription,
+      description: subIndustry.overview,
       type: "website",
     },
   };
@@ -2883,11 +3243,14 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
                 <span className="text-sm font-semibold">{subIndustry.name}</span>
               </div>
             </div>
-            <h1 className="mt-6 text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
-              AI Solutions for <span className="text-orange-400">{subIndustry.name}</span>
+            <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 px-4 py-2 text-4xl shadow-lg">
+              {subIndustry.icon}
+            </div>
+            <h1 className="text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
+              {subIndustry.name}
             </h1>
-            <p className="mt-6 text-xl text-gray-300 leading-relaxed">
-              {subIndustry.detailedDescription}
+            <p className="mt-4 text-xl text-orange-300 font-semibold">
+              {subIndustry.tagline}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -2909,78 +3272,64 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
 
       <section className="bg-gradient-to-b from-gray-50 to-white py-20">
         <div className="mx-auto max-w-[1400px] px-6">
-          <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-              Core Capabilities
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
-              Key Features for {subIndustry.name}
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {subIndustry.features.map((feature, index) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
-              >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 text-2xl font-bold text-orange-600">
-                  {index + 1}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-600">
-                  {feature}
-                </h3>
-              </div>
-            ))}
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
+                Section 1
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+                {subIndustry.name} Sub-Industry Overview
+              </h2>
+            </div>
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                {subIndustry.overview}
+              </p>
+              <p className="mt-6 text-orange-600 font-semibold italic">
+                We build trust-first, AI-powered {subIndustry.name.toLowerCase()} systems — not just apps.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[1400px] px-6">
-          <div className="grid gap-16 lg:grid-cols-2">
-            <div>
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-8 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Why Choose NanoFlows
+                Section 2
               </p>
               <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
-                Benefits for Your Business
+                Why {subIndustry.name} Choose Nano Flows
               </h2>
-              <div className="mt-8 space-y-4">
-                {subIndustry.benefits.map((benefit, index) => (
+            </div>
+            <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-50 to-gray-50 p-8">
+              <p className="mb-6 text-gray-700 font-medium">
+                {subIndustry.whyChoose.intro}
+              </p>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-orange-500">
+                Nano Flows advantage:
+              </p>
+              <div className="space-y-3">
+                {subIndustry.whyChoose.points.map((point, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-4 rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:border-orange-200 hover:bg-orange-50"
+                    className="flex items-start gap-4 rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md"
                   >
                     <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white">
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="text-gray-700 font-medium">{benefit}</p>
+                    <p className="text-gray-700 font-medium">{point}</p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Real-World Applications
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
-                Use Cases
-              </h2>
-              <div className="mt-8 space-y-4">
-                {subIndustry.useCases.map((useCase, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-4 rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:border-orange-200 hover:bg-orange-50"
-                  >
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-slate-700 to-slate-900 text-white text-sm font-bold">
-                      {index + 1}
-                    </div>
-                    <p className="text-gray-700 font-medium">{useCase}</p>
-                  </div>
-                ))}
+              <div className="mt-6 rounded-xl bg-gradient-to-r from-orange-100 to-amber-100 p-4">
+                <p className="text-center text-orange-800 font-semibold">
+                  Result: A {subIndustry.name.toLowerCase()} product investors and users trust.
+                </p>
               </div>
             </div>
           </div>
@@ -2989,54 +3338,123 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
 
       <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20">
         <div className="mx-auto max-w-[1400px] px-6">
-          <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-              Powered by AI
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
-              AI Capabilities
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Our autonomous AI systems leverage cutting-edge technology to deliver results for {subIndustry.name.toLowerCase()}.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
-            {subIndustry.aiCapabilities.map((capability, index) => (
-              <div
-                key={index}
-                className="rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-sm font-bold text-gray-900">{capability}</h3>
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
+                Section 3
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+                What We Build for {subIndustry.name}
+              </h2>
+            </div>
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+              <p className="mb-6 text-gray-700 font-medium">
+                {subIndustry.whatWeBuild.intro}
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                {subIndustry.whatWeBuild.solutions.map((solution, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:border-orange-200 hover:bg-orange-50"
+                  >
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 text-white text-sm font-bold">
+                      {index + 1}
+                    </div>
+                    <p className="text-gray-700 font-medium">{solution}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+              <p className="mt-6 text-center text-gray-600 italic">
+                {subIndustry.whatWeBuild.footer}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[1400px] px-6">
-          <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-              Who We Help
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
+                Section 4
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+                Core {subIndustry.name} Capabilities Included
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+                Every {subIndustry.name.toLowerCase()} product we build includes:
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {subIndustry.coreCapabilities.map((capability, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
+                >
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white">
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm font-bold text-gray-900">{capability}</h3>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 text-center text-gray-600 font-medium">
+              Security, performance, and accuracy are non-negotiable.
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
-              Target Audience
-            </h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {subIndustry.targetAudience.map((audience, index) => (
-              <span
-                key={index}
-                className="inline-flex items-center rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 shadow-sm transition hover:border-orange-300 hover:bg-orange-50"
-              >
-                {audience}
-              </span>
-            ))}
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
+                Section 5
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+                Ideal For + Business Outcomes
+              </h2>
+            </div>
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+                <h3 className="mb-6 text-xl font-bold text-gray-900">Ideal for:</h3>
+                <div className="space-y-3">
+                  {subIndustry.idealFor.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 rounded-xl bg-gray-50 p-4"
+                    >
+                      <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">
+                        {index + 1}
+                      </div>
+                      <p className="text-gray-700 font-medium">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+                <h3 className="mb-6 text-xl font-bold text-gray-900">Business outcomes:</h3>
+                <div className="space-y-3">
+                  {subIndustry.businessOutcomes.map((outcome, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-orange-50 to-amber-50 p-4"
+                    >
+                      <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white">
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <p className="text-gray-700 font-medium">{outcome}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
