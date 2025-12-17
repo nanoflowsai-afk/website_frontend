@@ -103,16 +103,6 @@ function LoginForm() {
             </div>
             <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
             <p className="mt-3 text-gray-400">Sign in to access your dashboard. Admins will be routed to the admin console automatically.</p>
-            <div className="mt-6 flex items-center gap-4">
-              <div className="flex -space-x-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">A</div>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">S</div>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">M</div>
-              </div>
-              <p className="text-sm text-gray-400">
-                Trusted by 500+ businesses
-              </p>
-            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -175,7 +165,7 @@ function LoginForm() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 text-sm text-white hover:text-orange-300 transition"
+              className="inline-flex items-center justify-center gap-2 text-sm text-orange-400 hover:text-orange-300 transition"
             >
               <span>← Back to website</span>
             </Link>
