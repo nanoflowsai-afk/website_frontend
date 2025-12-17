@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
+import { normalizeImageUrl } from "@/lib/images";
 
 export type HeroSlide = {
   id: number;
@@ -66,12 +67,11 @@ export function HeroCarousel({ slides }: Props) {
   const current = activeSlides.length ? activeSlides[index] : defaultSlide;
   const bgUrl = current.backgroundImageUrl?.trim() || defaultSlide.backgroundImageUrl;
 
+  // Normalize hero background image URL the same way as team avatars/blog images,
+  // so that /uploads/* paths are always resolved against the backend API base URL.
   const normalizedBgUrl = useMemo(() => {
-    if (!bgUrl) return defaultSlide.backgroundImageUrl;
-    if (/^data:/i.test(bgUrl)) return bgUrl;
-    if (/^https?:\/\//i.test(bgUrl)) return bgUrl;
-    if (bgUrl.startsWith("/")) return bgUrl;
-    return "/" + bgUrl;
+    const url = bgUrl || defaultSlide.backgroundImageUrl;
+    return normalizeImageUrl(url);
   }, [bgUrl]);
 
   useEffect(() => {
