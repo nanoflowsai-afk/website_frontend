@@ -32,10 +32,10 @@ export default function SubIndustryGrid({ subIndustries, industryId }: SubIndust
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl"
+            className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl flex flex-col h-full"
           >
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 text-2xl">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 text-2xl">
                 {subIndustry.icon}
               </div>
               <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-600">
@@ -43,11 +43,11 @@ export default function SubIndustryGrid({ subIndustries, industryId }: SubIndust
               </h3>
             </div>
             
-            <p className="mb-4 text-sm text-gray-600 leading-relaxed">
+            <p className="mb-4 text-sm text-gray-600 leading-relaxed line-clamp-3">
               {subIndustry.description}
             </p>
 
-            <div className="mb-5">
+            <div className="mb-5 flex-1">
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                 Key Features
               </p>
@@ -65,7 +65,7 @@ export default function SubIndustryGrid({ subIndustries, industryId }: SubIndust
 
             <Link
               href={`/industries/${industryId}/${subIndustry.id}`}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl mt-auto"
             >
               Get Started →
             </Link>

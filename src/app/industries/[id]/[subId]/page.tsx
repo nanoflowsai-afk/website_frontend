@@ -58,29 +58,30 @@ type RelatedService = {
   description: string;
   icon: string;
   category: string;
+  image: StaticImageData;
 };
 
 const allServices: RelatedService[] = [
-  { title: "Custom LLM Systems", description: "Build tailored large language model solutions for content generation, intelligence, and enterprise automation.", icon: "🤖", category: "Generative AI Solutions" },
-  { title: "Decision Support AI", description: "AI-powered systems that analyze data and provide actionable insights for strategic decision-making.", icon: "📊", category: "Generative AI Solutions" },
-  { title: "Content Intelligence", description: "Automated content creation, summarization, and optimization powered by advanced AI models.", icon: "✍️", category: "Generative AI Solutions" },
-  { title: "Enterprise Automation", description: "Transform business processes with intelligent automation that learns and adapts to your workflows.", icon: "⚡", category: "Generative AI Solutions" },
-  { title: "Sales Automation", description: "Automate lead scoring, follow-ups, and pipeline management with AI-driven workflows.", icon: "💼", category: "AI Automation & Workflows" },
-  { title: "Marketing Automation", description: "End-to-end campaign automation, personalization, and performance optimization.", icon: "📢", category: "AI Automation & Workflows" },
-  { title: "Operations Workflow", description: "Streamline operational processes with intelligent automation and real-time monitoring.", icon: "🔄", category: "AI Automation & Workflows" },
-  { title: "HR & Support Systems", description: "Automate HR processes and customer support with AI-powered ticket routing and responses.", icon: "👥", category: "AI Automation & Workflows" },
-  { title: "AI-Native Websites", description: "Build modern, intelligent websites with integrated AI features and personalization.", icon: "🌐", category: "AI-Powered Development" },
-  { title: "SaaS Platforms", description: "Develop scalable SaaS products with AI capabilities built into the core architecture.", icon: "☁️", category: "AI-Powered Development" },
-  { title: "Enterprise Dashboards", description: "Create intelligent dashboards with predictive analytics and automated insights.", icon: "📈", category: "AI-Powered Development" },
-  { title: "Custom Software", description: "Build production-grade software with AI features tailored to your business needs.", icon: "🛠️", category: "AI-Powered Development" },
-  { title: "Sales Agents", description: "Autonomous AI agents that qualify leads, handle objections, and close deals 24/7.", icon: "💰", category: "AI Agents & Chatbots" },
-  { title: "Support Agents", description: "Intelligent support bots that resolve issues, escalate when needed, and learn continuously.", icon: "🎧", category: "AI Agents & Chatbots" },
-  { title: "Follow-up Agents", description: "Automated follow-up systems that nurture leads and maintain customer relationships.", icon: "📧", category: "AI Agents & Chatbots" },
-  { title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots" },
-  { title: "Real-time Dashboards", description: "Live data visualization and monitoring dashboards with automated alerts.", icon: "📉", category: "Data & Intelligence" },
-  { title: "Predictive Analytics", description: "Machine learning models that forecast trends and identify opportunities.", icon: "🔮", category: "Data & Intelligence" },
-  { title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence" },
-  { title: "Data Integration", description: "Connect and unify data sources for comprehensive business intelligence.", icon: "🔗", category: "Data & Intelligence" },
+  { title: "Custom LLM Systems", description: "Build tailored large language model solutions for content generation, intelligence, and enterprise automation.", icon: "🤖", category: "Generative AI Solutions", image: customLlmImage },
+  { title: "Decision Support AI", description: "AI-powered systems that analyze data and provide actionable insights for strategic decision-making.", icon: "📊", category: "Generative AI Solutions", image: decisionSupportImage },
+  { title: "Content Intelligence", description: "Automated content creation, summarization, and optimization powered by advanced AI models.", icon: "✍️", category: "Generative AI Solutions", image: contentIntelImage },
+  { title: "Enterprise Automation", description: "Transform business processes with intelligent automation that learns and adapts to your workflows.", icon: "⚡", category: "Generative AI Solutions", image: opsWorkflowImage },
+  { title: "Sales Automation", description: "Automate lead scoring, follow-ups, and pipeline management with AI-driven workflows.", icon: "💼", category: "AI Automation & Workflows", image: salesAutoImage },
+  { title: "Marketing Automation", description: "End-to-end campaign automation, personalization, and performance optimization.", icon: "📢", category: "AI Automation & Workflows", image: marketingAutoImage },
+  { title: "Operations Workflow", description: "Streamline operational processes with intelligent automation and real-time monitoring.", icon: "🔄", category: "AI Automation & Workflows", image: opsWorkflowImage },
+  { title: "HR & Support Systems", description: "Automate HR processes and customer support with AI-powered ticket routing and responses.", icon: "👥", category: "AI Automation & Workflows", image: hrSupportImage },
+  { title: "AI-Native Websites", description: "Build modern, intelligent websites with integrated AI features and personalization.", icon: "🌐", category: "AI-Powered Development", image: aiNativeWebImage },
+  { title: "SaaS Platforms", description: "Develop scalable SaaS products with AI capabilities built into the core architecture.", icon: "☁️", category: "AI-Powered Development", image: saasDevImage },
+  { title: "Enterprise Dashboards", description: "Create intelligent dashboards with predictive analytics and automated insights.", icon: "📈", category: "AI-Powered Development", image: entDashImage },
+  { title: "Custom Software", description: "Build production-grade software with AI features tailored to your business needs.", icon: "🛠️", category: "AI-Powered Development", image: customSoftwareImage },
+  { title: "Sales Agents", description: "Autonomous AI agents that qualify leads, handle objections, and close deals 24/7.", icon: "💰", category: "AI Agents & Chatbots", image: aiSalesAgentImage },
+  { title: "Support Agents", description: "Intelligent support bots that resolve issues, escalate when needed, and learn continuously.", icon: "🎧", category: "AI Agents & Chatbots", image: customerSupportImage },
+  { title: "Follow-up Agents", description: "Automated follow-up systems that nurture leads and maintain customer relationships.", icon: "📧", category: "AI Agents & Chatbots", image: followUpAgentImage },
+  { title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots", image: analysisAgentImage },
+  { title: "Real-time Dashboards", description: "Live data visualization and monitoring dashboards with automated alerts.", icon: "📉", category: "Data & Intelligence", image: realtimeAnalyticsImage },
+  { title: "Predictive Analytics", description: "Machine learning models that forecast trends and identify opportunities.", icon: "🔮", category: "Data & Intelligence", image: predictiveAnalyticsImage },
+  { title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence", image: decisionIntelImage },
+  { title: "Data Integration", description: "Connect and unify data sources for comprehensive business intelligence.", icon: "🔗", category: "Data & Intelligence", image: dataIntegrationImage },
 ];
 
 function getRelatedServices(subIndustry: SubIndustry, industryId: string): RelatedService[] {
@@ -4361,30 +4362,34 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
               {getRelatedServices(subIndustry, industry.id).map((service, index) => (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl"
+                  className="group rounded-2xl bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col h-full"
                 >
-                  <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-gradient-to-br from-orange-500/10 to-amber-500/10 transition-transform group-hover:scale-150"></div>
-                  <div className="relative">
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 text-2xl shadow-sm">
-                      {service.icon}
-                    </div>
+                  <div className="relative h-40 overflow-hidden flex-shrink-0">
+                    <Image
+                      src={service.image}
+                      alt={`${service.title} - NanoFlows ${service.category} Service`}
+                      title={service.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40"></div>
+                  </div>
+                  <div className="p-5 text-center flex flex-col flex-1">
                     <span className="mb-2 inline-block text-xs font-medium text-orange-500 uppercase tracking-wide">
                       {service.category}
                     </span>
-                    <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
+                    <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="mb-4 text-sm text-gray-600 leading-relaxed">
+                    <p className="mb-4 text-sm text-gray-600 leading-relaxed flex-1">
                       {service.description}
                     </p>
                     <Link
                       href="/services"
-                      className="inline-flex items-center gap-1 text-sm font-semibold text-orange-600 transition hover:text-orange-700 hover:gap-2"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
                     >
-                      Learn More
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      Learn More <span>→</span>
                     </Link>
                   </div>
                 </div>
@@ -4393,7 +4398,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
             <div className="mt-10 text-center">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 px-8 py-4 font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
               >
                 View All Our Services
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
