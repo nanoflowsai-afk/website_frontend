@@ -22,13 +22,15 @@ import entDashImage from "@assets/generated_images/enterprise_dashboard_system.p
 import aiSalesAgentImage from "@assets/generated_images/ai_sales_agent_chat.png";
 import customerSupportImage from "@assets/generated_images/customer_support_chatbot.png";
 import followUpAgentImage from "@assets/generated_images/multi-channel_ai_assistant.png";
-import analysisAgentImage from "@assets/generated_images/predictive_analytics_engine.png";
 import realtimeAnalyticsImage from "@assets/generated_images/real-time_analytics_dashboard.png";
 import predictiveAnalyticsImage from "@assets/generated_images/predictive_analytics_engine.png";
 import decisionIntelImage from "@assets/generated_images/decision_support_ai_dashboard.png";
 import dataIntegrationImage from "@assets/generated_images/data_integration_platform.png";
 import hrSupportImage from "@assets/generated_images/hrms_management_system.png";
 import customSoftwareImage from "@assets/generated_images/saas_platform_development.png";
+import enterpriseAutoImage from "@assets/generated_images/ai_crm_dashboard_analytics.png";
+import analysisAgentImage2 from "@assets/generated_images/ai_lead_generation_dashboard.png";
+import decisionIntelImage2 from "@assets/generated_images/ai_team_assistant_interface.png";
 import type { StaticImageData } from "next/image";
 import type { Metadata } from "next";
 
@@ -54,6 +56,7 @@ type SubIndustry = {
 };
 
 type RelatedService = {
+  id: string;
   title: string;
   description: string;
   icon: string;
@@ -62,26 +65,25 @@ type RelatedService = {
 };
 
 const allServices: RelatedService[] = [
-  { title: "Custom LLM Systems", description: "Build tailored large language model solutions for content generation, intelligence, and enterprise automation.", icon: "🤖", category: "Generative AI Solutions", image: customLlmImage },
-  { title: "Decision Support AI", description: "AI-powered systems that analyze data and provide actionable insights for strategic decision-making.", icon: "📊", category: "Generative AI Solutions", image: decisionSupportImage },
-  { title: "Content Intelligence", description: "Automated content creation, summarization, and optimization powered by advanced AI models.", icon: "✍️", category: "Generative AI Solutions", image: contentIntelImage },
-  { title: "Enterprise Automation", description: "Transform business processes with intelligent automation that learns and adapts to your workflows.", icon: "⚡", category: "Generative AI Solutions", image: opsWorkflowImage },
-  { title: "Sales Automation", description: "Automate lead scoring, follow-ups, and pipeline management with AI-driven workflows.", icon: "💼", category: "AI Automation & Workflows", image: salesAutoImage },
-  { title: "Marketing Automation", description: "End-to-end campaign automation, personalization, and performance optimization.", icon: "📢", category: "AI Automation & Workflows", image: marketingAutoImage },
-  { title: "Operations Workflow", description: "Streamline operational processes with intelligent automation and real-time monitoring.", icon: "🔄", category: "AI Automation & Workflows", image: opsWorkflowImage },
-  { title: "HR & Support Systems", description: "Automate HR processes and customer support with AI-powered ticket routing and responses.", icon: "👥", category: "AI Automation & Workflows", image: hrSupportImage },
-  { title: "AI-Native Websites", description: "Build modern, intelligent websites with integrated AI features and personalization.", icon: "🌐", category: "AI-Powered Development", image: aiNativeWebImage },
-  { title: "SaaS Platforms", description: "Develop scalable SaaS products with AI capabilities built into the core architecture.", icon: "☁️", category: "AI-Powered Development", image: saasDevImage },
-  { title: "Enterprise Dashboards", description: "Create intelligent dashboards with predictive analytics and automated insights.", icon: "📈", category: "AI-Powered Development", image: entDashImage },
-  { title: "Custom Software", description: "Build production-grade software with AI features tailored to your business needs.", icon: "🛠️", category: "AI-Powered Development", image: customSoftwareImage },
-  { title: "Sales Agents", description: "Autonomous AI agents that qualify leads, handle objections, and close deals 24/7.", icon: "💰", category: "AI Agents & Chatbots", image: aiSalesAgentImage },
-  { title: "Support Agents", description: "Intelligent support bots that resolve issues, escalate when needed, and learn continuously.", icon: "🎧", category: "AI Agents & Chatbots", image: customerSupportImage },
-  { title: "Follow-up Agents", description: "Automated follow-up systems that nurture leads and maintain customer relationships.", icon: "📧", category: "AI Agents & Chatbots", image: followUpAgentImage },
-  { title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots", image: analysisAgentImage },
-  { title: "Real-time Dashboards", description: "Live data visualization and monitoring dashboards with automated alerts.", icon: "📉", category: "Data & Intelligence", image: realtimeAnalyticsImage },
-  { title: "Predictive Analytics", description: "Machine learning models that forecast trends and identify opportunities.", icon: "🔮", category: "Data & Intelligence", image: predictiveAnalyticsImage },
-  { title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence", image: decisionIntelImage },
-  { title: "Data Integration", description: "Connect and unify data sources for comprehensive business intelligence.", icon: "🔗", category: "Data & Intelligence", image: dataIntegrationImage },
+  { id: "1", title: "Custom LLM Systems", description: "Build tailored large language model solutions for content generation, intelligence, and enterprise automation.", icon: "🤖", category: "Generative AI Solutions", image: customLlmImage },
+  { id: "2", title: "Decision Support AI", description: "AI-powered systems that analyze data and provide actionable insights for strategic decision-making.", icon: "📊", category: "Generative AI Solutions", image: decisionSupportImage },
+  { id: "3", title: "Content Intelligence", description: "Automated content creation, summarization, and optimization powered by advanced AI models.", icon: "✍️", category: "Generative AI Solutions", image: contentIntelImage },
+  { id: "6", title: "Operations Workflow", description: "Streamline operational processes with intelligent automation and real-time monitoring.", icon: "🔄", category: "AI Automation & Workflows", image: opsWorkflowImage },
+  { id: "4", title: "Sales Automation", description: "Automate lead scoring, follow-ups, and pipeline management with AI-driven workflows.", icon: "💼", category: "AI Automation & Workflows", image: salesAutoImage },
+  { id: "5", title: "Marketing Automation", description: "End-to-end campaign automation, personalization, and performance optimization.", icon: "📢", category: "AI Automation & Workflows", image: marketingAutoImage },
+  { id: "20", title: "HR & Support Systems", description: "Automate HR processes and customer support with AI-powered ticket routing and responses.", icon: "👥", category: "AI Automation & Workflows", image: hrSupportImage },
+  { id: "7", title: "AI-Native Websites", description: "Build modern, intelligent websites with integrated AI features and personalization.", icon: "🌐", category: "AI-Powered Development", image: aiNativeWebImage },
+  { id: "8", title: "SaaS Platforms", description: "Develop scalable SaaS products with AI capabilities built into the core architecture.", icon: "☁️", category: "AI-Powered Development", image: saasDevImage },
+  { id: "9", title: "Enterprise Dashboards", description: "Create intelligent dashboards with predictive analytics and automated insights.", icon: "📈", category: "AI-Powered Development", image: entDashImage },
+  { id: "58", title: "Custom Software", description: "Build production-grade software with AI features tailored to your business needs.", icon: "🛠️", category: "AI-Powered Development", image: customSoftwareImage },
+  { id: "10", title: "Sales Agents", description: "Autonomous AI agents that qualify leads, handle objections, and close deals 24/7.", icon: "💰", category: "AI Agents & Chatbots", image: aiSalesAgentImage },
+  { id: "11", title: "Support Agents", description: "Intelligent support bots that resolve issues, escalate when needed, and learn continuously.", icon: "🎧", category: "AI Agents & Chatbots", image: customerSupportImage },
+  { id: "12", title: "Follow-up Agents", description: "Automated follow-up systems that nurture leads and maintain customer relationships.", icon: "📧", category: "AI Agents & Chatbots", image: followUpAgentImage },
+  { id: "71", title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots", image: analysisAgentImage2 },
+  { id: "13", title: "Real-time Dashboards", description: "Live data visualization and monitoring dashboards with automated alerts.", icon: "📉", category: "Data & Intelligence", image: realtimeAnalyticsImage },
+  { id: "14", title: "Predictive Analytics", description: "Machine learning models that forecast trends and identify opportunities.", icon: "🔮", category: "Data & Intelligence", image: predictiveAnalyticsImage },
+  { id: "2", title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence", image: decisionIntelImage2 },
+  { id: "15", title: "Data Integration", description: "Connect and unify data sources for comprehensive business intelligence.", icon: "🔗", category: "Data & Intelligence", image: dataIntegrationImage },
 ];
 
 function getRelatedServices(subIndustry: SubIndustry, industryId: string): RelatedService[] {
@@ -4386,7 +4388,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
                       {service.description}
                     </p>
                     <Link
-                      href="/services"
+                      href={`/services/${service.id}`}
                       className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
                     >
                       Learn More <span>→</span>
