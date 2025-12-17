@@ -660,7 +660,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
             </p>
           </div>
 
-          <SubIndustryGrid subIndustries={industry.subIndustries} />
+          <SubIndustryGrid subIndustries={industry.subIndustries} industryId={industry.id} />
         </div>
       </section>
 

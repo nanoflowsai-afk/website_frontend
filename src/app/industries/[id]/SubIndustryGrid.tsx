@@ -13,9 +13,10 @@ type SubIndustry = {
 
 interface SubIndustryGridProps {
   subIndustries: SubIndustry[];
+  industryId: string;
 }
 
-export default function SubIndustryGrid({ subIndustries }: SubIndustryGridProps) {
+export default function SubIndustryGrid({ subIndustries, industryId }: SubIndustryGridProps) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -63,7 +64,7 @@ export default function SubIndustryGrid({ subIndustries }: SubIndustryGridProps)
             </div>
 
             <Link
-              href="/contact"
+              href={`/industries/${industryId}/${subIndustry.id}`}
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
             >
               Get Started →
