@@ -1,0 +1,81 @@
+when i click the learn more button in industries with respect to the industry then it should redirect to sub industries page, the sub industries page should be like services page with categories, with respect to sub industries.
+
+Nano Flows – Industry & Sub-Industry Classification
+This document outlines the sub-industries mapped under each core industry. These sub-industries are designed for industry pages, navigation structure, and SEO organization for the Nano Flows website.
+🚀 Startups & SaaS
+•	FinTech Startups
+•	HealthTech Startups
+•	EdTech Startups
+•	PropTech Startups
+•	HRTech & Recruitment SaaS
+•	MarTech & SalesTech SaaS
+•	Logistics & Supply Chain SaaS
+•	Productivity & Collaboration Tools
+•	Vertical SaaS (Industry-Specific Software)
+•	AI Tools & Automation Startups
+🏢 Enterprises
+•	Banking & Financial Services (BFSI)
+•	Manufacturing & Industrial Enterprises
+•	IT Services & Consulting Firms
+•	Telecom & Networking Enterprises
+•	Energy & Utilities
+•	Government & Public Sector
+•	Retail & Consumer Enterprises
+•	Logistics & Transportation Enterprises
+•	Media & Entertainment Enterprises
+•	Large Healthcare & Education Enterprises
+🛒 E-Commerce
+•	B2C Online Retail
+•	B2B E-Commerce Platforms
+•	D2C (Direct-to-Consumer) Brands
+•	Multi-Vendor Marketplaces
+•	Grocery & Quick Commerce
+•	Fashion & Lifestyle E-Commerce
+•	Electronics & Digital Goods Stores
+•	Subscription-Based Commerce
+•	Social Commerce
+•	Cross-Border E-Commerce
+🏘️ Real Estate
+•	Residential Real Estate
+•	Commercial Real Estate
+•	Real Estate Developers & Builders
+•	Property Brokers & Agencies
+•	Co-Living & Co-Working Spaces
+•	Property Management Firms
+•	Rental & Leasing Platforms
+•	Land & Plot Management
+•	Real Estate Investment Firms
+•	Hospitality & Vacation Rentals
+🏥 Healthcare
+•	Hospitals & Multi-Specialty Clinics
+•	Diagnostic Labs & Imaging Centers
+•	Telemedicine & Virtual Care
+•	Pharmacies & Medical Stores
+•	Health Insurance Providers
+•	Medical Device Companies
+•	Wellness & Fitness Centers
+•	Mental Health & Counseling Services
+•	Home Healthcare Services
+•	Healthcare SaaS & Health IT
+🎓 Education
+•	Schools (K–12)
+•	Colleges & Universities
+•	Coaching & Training Institutes
+•	Online Learning Platforms (EdTech)
+•	Corporate Training & L&D
+•	Skill Development & Vocational Training
+•	Competitive Exam Preparation
+•	Test & Certification Providers
+•	Education Content Publishers
+•	Learning Management SaaS Providers
+🏪 Local Businesses
+•	Retail Stores & Showrooms
+•	Restaurants, Cafés & Food Outlets
+•	Salons, Spas & Personal Care
+•	Gyms, Yoga & Fitness Studios
+•	Clinics & Local Healthcare Centers
+•	Real Estate Agencies
+•	Automobile Services & Workshops
+•	Travel Agents & Local Tourism
+•	Event Management & Services
+•	Professional Services (CA, Legal, Consultants)
