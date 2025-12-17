@@ -21,6 +21,10 @@ src/
 │   ├── careers/      # Careers page
 │   ├── contact/      # Contact page
 │   ├── industries/   # Industries pages
+│   │   ├── [id]/     # Industry detail pages
+│   │   │   ├── [subId]/  # Sub-industry detail pages (70+ sub-industries)
+│   │   │   └── SubIndustryGrid.tsx
+│   │   └── page.tsx  # Industries listing
 │   ├── products/     # Products pages
 │   ├── services/     # Services pages
 │   └── ...
