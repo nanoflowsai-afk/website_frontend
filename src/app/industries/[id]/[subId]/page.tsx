@@ -1703,35 +1703,54 @@ const industries: Industry[] = [
         name: "Residential Real Estate",
         description: "Home buying and selling with property matching, virtual tours, and buyer qualification.",
         icon: "🏡",
-        features: ["Property Matching AI", "Virtual Tours", "Buyer Qualification", "Market Analysis"],
-        detailedDescription: "Transform residential real estate with AI that matches buyers to their perfect homes. Our solutions qualify leads instantly, create engaging virtual experiences, and provide market intelligence that closes deals faster.",
-        benefits: [
+        tagline: "AI-Powered Residential Property Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help residential real estate businesses build AI-native platforms that match buyers to their perfect homes. From instant lead qualification to engaging virtual experiences, we design solutions that close deals faster while providing 24/7 property intelligence. We build buyer-first, AI-powered residential systems that transform the home buying journey.",
+        whyChoose: {
+          intro: "Residential real estate requires instant response, accurate matching, and market intelligence.",
+          points: [
+            "AI-first buyer-property matching with 95% accuracy",
+            "Virtual tour and property visualization capabilities",
+            "Instant lead scoring and qualification automation",
+            "Predictive market analysis and pricing models",
+            "Built for scale across listings and buyer inquiries"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled residential real estate solutions, including:",
+          solutions: [
+            "Intelligent buyer-property matching platforms",
+            "AI-powered virtual property tour systems",
+            "Lead scoring and qualification automation",
+            "Comparative market analysis dashboards",
+            "Automated follow-up and nurturing sequences",
+            "Property search and recommendation engines",
+            "Agent productivity and CRM tools"
+          ],
+          footer: "All solutions are cloud-native, mobile-first, and MLS integration-ready."
+        },
+        coreCapabilities: [
+          "Natural language property search and queries",
+          "Computer vision for property image analysis",
+          "Predictive pricing and valuation models",
+          "Chatbots for 24/7 buyer inquiries",
+          "Preference learning and matching algorithms",
+          "Market trend analysis and forecasting",
+          "Automated scheduling and showing management",
+          "Document processing and transaction coordination"
+        ],
+        idealFor: [
+          "Real estate agents and teams",
+          "Home builders and developers",
+          "Real estate brokerages",
+          "Property listing platforms",
+          "Home buying startups"
+        ],
+        businessOutcomes: [
           "Qualify leads in seconds, not hours",
           "Match buyers with 95% accuracy",
           "Reduce time to close by 30%",
           "Provide 24/7 property information",
           "Predict market trends accurately"
-        ],
-        useCases: [
-          "Intelligent buyer-property matching",
-          "AI-powered virtual property tours",
-          "Lead scoring and qualification",
-          "Comparative market analysis",
-          "Automated follow-up sequences"
-        ],
-        aiCapabilities: [
-          "Natural language for property queries",
-          "Computer vision for property images",
-          "Predictive pricing models",
-          "Chatbots for buyer inquiries",
-          "Preference learning algorithms"
-        ],
-        targetAudience: [
-          "Real estate agents",
-          "Home builders",
-          "Real estate brokerages",
-          "Property listing platforms",
-          "Home buying startups"
         ]
       },
       {
@@ -1739,35 +1758,54 @@ const industries: Industry[] = [
         name: "Commercial Real Estate",
         description: "Commercial property solutions with lease management, tenant matching, and investment analytics.",
         icon: "🏢",
-        features: ["Lease Management AI", "Tenant Matching", "Investment Analytics", "Space Optimization"],
-        detailedDescription: "Optimize commercial real estate operations with AI built for complex transactions. Our solutions automate lease management, match tenants to spaces, and provide investment analytics for smarter decisions.",
-        benefits: [
-          "Reduce lease administration costs",
-          "Find qualified tenants faster",
-          "Optimize portfolio performance",
-          "Predict vacancy and renewals",
-          "Make data-driven investments"
+        tagline: "AI-Powered Commercial Property Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help commercial real estate businesses build AI-native platforms for complex property transactions. From automated lease management to intelligent tenant matching, we design solutions that optimize portfolio performance and drive data-driven investment decisions. We build transaction-first, AI-powered commercial systems that maximize asset value.",
+        whyChoose: {
+          intro: "Commercial real estate requires complex transaction handling, portfolio optimization, and market intelligence.",
+          points: [
+            "AI-first lease abstraction and management automation",
+            "Intelligent tenant credit and fit analysis",
+            "Investment opportunity scoring and analytics",
+            "Space utilization optimization algorithms",
+            "Built for scale across commercial portfolios"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled commercial real estate solutions, including:",
+          solutions: [
+            "Automated lease abstraction and management platforms",
+            "Tenant credit and fit analysis systems",
+            "Investment opportunity scoring dashboards",
+            "Space utilization optimization tools",
+            "Market rent benchmarking platforms",
+            "Portfolio performance analytics",
+            "Commercial property marketing automation"
+          ],
+          footer: "All solutions are enterprise-grade, compliant, and CRE platform integrated."
+        },
+        coreCapabilities: [
+          "Document AI for lease analysis and extraction",
+          "Financial modeling and investment algorithms",
+          "Tenant behavior and renewal prediction",
+          "Market analytics and rent forecasting",
+          "Portfolio optimization and balancing",
+          "Space planning and utilization analysis",
+          "Automated reporting and compliance",
+          "Multi-property performance dashboards"
         ],
-        useCases: [
-          "Automated lease abstraction and management",
-          "Tenant credit and fit analysis",
-          "Investment opportunity scoring",
-          "Space utilization optimization",
-          "Market rent benchmarking"
-        ],
-        aiCapabilities: [
-          "Document AI for lease analysis",
-          "Financial modeling algorithms",
-          "Tenant behavior prediction",
-          "Market analytics AI",
-          "Portfolio optimization"
-        ],
-        targetAudience: [
-          "Commercial brokers",
-          "Office building owners",
-          "Retail landlords",
+        idealFor: [
+          "Commercial brokers and agents",
+          "Office building owners and operators",
+          "Retail landlords and developers",
           "Industrial property owners",
-          "Commercial REITs"
+          "Commercial REITs and investment firms"
+        ],
+        businessOutcomes: [
+          "Reduce lease administration costs by 60%",
+          "Find qualified tenants 50% faster",
+          "Optimize portfolio performance and returns",
+          "Predict vacancy and renewals accurately",
+          "Make data-driven investment decisions"
         ]
       },
       {
@@ -1775,35 +1813,54 @@ const industries: Industry[] = [
         name: "Real Estate Developers & Builders",
         description: "Development projects with project management, sales automation, and construction tracking.",
         icon: "🏗️",
-        features: ["Project Management AI", "Sales Automation", "Construction Tracking", "Inventory Management"],
-        detailedDescription: "Build smarter with AI that manages development complexity. Our solutions track construction progress, automate sales for new developments, and optimize inventory allocation across projects.",
-        benefits: [
-          "Track construction in real-time",
-          "Automate new home sales",
-          "Optimize unit release strategy",
-          "Reduce project delays",
-          "Improve buyer communication"
+        tagline: "AI-Powered Development & Construction Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help real estate developers and builders build AI-native project management platforms. From real-time construction tracking to automated sales processes, we design solutions that reduce delays and optimize inventory allocation. We build project-first, AI-powered development systems that deliver on time and on budget.",
+        whyChoose: {
+          intro: "Real estate development requires project visibility, sales automation, and construction intelligence.",
+          points: [
+            "AI-first construction progress monitoring and alerts",
+            "Automated new home sales and buyer communication",
+            "Unit inventory and release strategy optimization",
+            "Predictive project analytics and delay prevention",
+            "Built for scale across multiple development projects"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled real estate development solutions, including:",
+          solutions: [
+            "Construction progress monitoring platforms",
+            "Automated buyer communication systems",
+            "Unit inventory optimization tools",
+            "Sales pipeline management dashboards",
+            "Warranty claim tracking platforms",
+            "Project timeline and milestone management",
+            "Vendor and subcontractor coordination tools"
+          ],
+          footer: "All solutions are cloud-native, mobile-accessible, and construction-integrated."
+        },
+        coreCapabilities: [
+          "Computer vision for site monitoring and progress",
+          "Predictive project analytics and delay detection",
+          "CRM automation for buyer engagement",
+          "Document management and version control AI",
+          "Customer journey automation and nurturing",
+          "Budget tracking and cost prediction",
+          "Resource allocation optimization",
+          "Quality control and inspection automation"
         ],
-        useCases: [
-          "Construction progress monitoring",
-          "Automated buyer communication",
-          "Unit inventory optimization",
-          "Sales pipeline management",
-          "Warranty claim tracking"
+        idealFor: [
+          "Home builders and residential developers",
+          "Condo and apartment developers",
+          "Mixed-use and commercial developers",
+          "Land developers and subdividers",
+          "Construction companies and general contractors"
         ],
-        aiCapabilities: [
-          "Computer vision for site monitoring",
-          "Predictive project analytics",
-          "CRM automation",
-          "Document management AI",
-          "Customer journey automation"
-        ],
-        targetAudience: [
-          "Home builders",
-          "Condo developers",
-          "Mixed-use developers",
-          "Land developers",
-          "Construction companies"
+        businessOutcomes: [
+          "Track construction progress in real-time",
+          "Automate new home sales by 70%",
+          "Optimize unit release strategy for maximum revenue",
+          "Reduce project delays by 35%",
+          "Improve buyer communication and satisfaction"
         ]
       },
       {
@@ -1811,35 +1868,54 @@ const industries: Industry[] = [
         name: "Property Brokers & Agencies",
         description: "Brokerage solutions with lead management, commission tracking, and agent performance analytics.",
         icon: "🔑",
-        features: ["Lead Management AI", "Commission Tracking", "Agent Analytics", "Client Matching"],
-        detailedDescription: "Scale your brokerage with AI that maximizes agent productivity. Our solutions manage leads intelligently, track commissions accurately, and provide analytics that help agents perform at their best.",
-        benefits: [
-          "Increase lead conversion by 40%",
-          "Automate commission calculations",
-          "Improve agent productivity",
-          "Track performance in real-time",
-          "Optimize lead distribution"
+        tagline: "AI-Powered Real Estate Brokerage Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help property brokers and agencies build AI-native platforms that maximize agent productivity. From intelligent lead management to automated commission tracking, we design solutions that help brokerages scale efficiently. We build agent-first, AI-powered brokerage systems that drive performance.",
+        whyChoose: {
+          intro: "Real estate brokerages require lead optimization, commission accuracy, and performance intelligence.",
+          points: [
+            "AI-first lead routing and scoring algorithms",
+            "Automated commission calculation and tracking",
+            "Agent performance analytics and coaching insights",
+            "Client-agent matching for better outcomes",
+            "Built for scale across agents and transactions"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled brokerage solutions, including:",
+          solutions: [
+            "Intelligent lead routing and scoring platforms",
+            "Automated commission tracking systems",
+            "Agent performance analytics dashboards",
+            "Client-agent matching algorithms",
+            "Transaction coordination automation",
+            "Brokerage CRM and pipeline management",
+            "Training and onboarding platforms"
+          ],
+          footer: "All solutions are cloud-native, scalable, and brokerage-integrated."
+        },
+        coreCapabilities: [
+          "Lead scoring and prioritization algorithms",
+          "Automated transaction tracking and reporting",
+          "Performance prediction and coaching models",
+          "CRM integration and data synchronization",
+          "Market intelligence and competitive analysis",
+          "Commission calculation and split automation",
+          "Agent productivity analytics",
+          "Compliance monitoring and documentation"
         ],
-        useCases: [
-          "Intelligent lead routing and scoring",
-          "Automated commission tracking",
-          "Agent performance dashboards",
-          "Client-agent matching",
-          "Transaction coordination"
-        ],
-        aiCapabilities: [
-          "Lead scoring algorithms",
-          "Automated transaction tracking",
-          "Performance prediction models",
-          "CRM integration AI",
-          "Market intelligence"
-        ],
-        targetAudience: [
-          "Real estate brokerages",
-          "Franchise networks",
-          "Boutique agencies",
-          "Team leaders",
+        idealFor: [
+          "Real estate brokerages of all sizes",
+          "Franchise networks and brands",
+          "Boutique and specialty agencies",
+          "Team leaders and office managers",
           "Brokerage technology providers"
+        ],
+        businessOutcomes: [
+          "Increase lead conversion by 40%",
+          "Automate commission calculations with 100% accuracy",
+          "Improve agent productivity by 35%",
+          "Track performance in real-time across all agents",
+          "Optimize lead distribution for maximum conversion"
         ]
       },
       {
@@ -1847,35 +1923,54 @@ const industries: Industry[] = [
         name: "Co-Living & Co-Working Spaces",
         description: "Shared space management with booking systems, community engagement, and occupancy optimization.",
         icon: "🏘️",
-        features: ["Space Booking AI", "Community Engagement", "Occupancy Optimization", "Amenity Management"],
-        detailedDescription: "Create thriving shared spaces with AI that builds community and maximizes occupancy. Our solutions manage bookings, engage members, and optimize space utilization for flexible living and working.",
-        benefits: [
-          "Maximize space utilization",
-          "Build engaged communities",
-          "Automate member services",
-          "Optimize pricing dynamically",
-          "Reduce administrative overhead"
+        tagline: "AI-Powered Flexible Space Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help co-living and co-working operators build AI-native platforms that maximize occupancy and build thriving communities. From smart booking systems to dynamic pricing, we design solutions that optimize space utilization while fostering member engagement. We build community-first, AI-powered space management systems.",
+        whyChoose: {
+          intro: "Flexible spaces require occupancy optimization, community building, and dynamic operations.",
+          points: [
+            "AI-first demand forecasting and pricing optimization",
+            "Smart room and desk booking automation",
+            "Community engagement and event recommendations",
+            "Amenity usage optimization and planning",
+            "Built for scale across multiple locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled flexible space solutions, including:",
+          solutions: [
+            "Smart room and desk booking platforms",
+            "Community event recommendation engines",
+            "Dynamic occupancy pricing systems",
+            "Amenity usage optimization tools",
+            "Member matching and networking platforms",
+            "Space utilization analytics dashboards",
+            "Automated member services and support"
+          ],
+          footer: "All solutions are mobile-first, community-focused, and operations-optimized."
+        },
+        coreCapabilities: [
+          "Demand forecasting for space optimization",
+          "Community graph analytics and matching",
+          "Dynamic pricing algorithms and yield management",
+          "Chatbots for 24/7 member services",
+          "Usage pattern analysis and prediction",
+          "Event planning and recommendation AI",
+          "Access control and security integration",
+          "Member satisfaction tracking and improvement"
         ],
-        useCases: [
-          "Smart room and desk booking",
-          "Community event recommendations",
-          "Dynamic occupancy pricing",
-          "Amenity usage optimization",
-          "Member matching and networking"
+        idealFor: [
+          "Co-working space operators",
+          "Co-living and community housing providers",
+          "Flexible office platforms and networks",
+          "Student housing and dormitory operators",
+          "Community-focused real estate developments"
         ],
-        aiCapabilities: [
-          "Demand forecasting for spaces",
-          "Community graph analytics",
-          "Dynamic pricing algorithms",
-          "Chatbots for member services",
-          "Usage pattern analysis"
-        ],
-        targetAudience: [
-          "Co-working operators",
-          "Co-living providers",
-          "Flexible office platforms",
-          "Student housing operators",
-          "Community-focused developments"
+        businessOutcomes: [
+          "Maximize space utilization by 40%",
+          "Build engaged and active communities",
+          "Automate member services and reduce overhead",
+          "Optimize pricing dynamically for maximum revenue",
+          "Reduce administrative overhead by 60%"
         ]
       },
       {
@@ -1883,35 +1978,54 @@ const industries: Industry[] = [
         name: "Property Management Firms",
         description: "Property management with maintenance scheduling, tenant communication, and financial tracking.",
         icon: "🔧",
-        features: ["Maintenance AI", "Tenant Communication", "Financial Tracking", "Vendor Management"],
-        detailedDescription: "Manage properties efficiently with AI that handles the details. Our solutions automate maintenance scheduling, streamline tenant communication, and provide financial visibility across your portfolio.",
-        benefits: [
-          "Reduce maintenance response times",
-          "Automate rent collection",
-          "Improve tenant satisfaction",
-          "Track financials in real-time",
-          "Scale management operations"
+        tagline: "AI-Powered Property Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help property management firms build AI-native platforms that handle operations at scale. From predictive maintenance scheduling to automated tenant communication, we design solutions that improve satisfaction while reducing costs. We build efficiency-first, AI-powered property management systems.",
+        whyChoose: {
+          intro: "Property management requires operational efficiency, tenant satisfaction, and financial visibility.",
+          points: [
+            "AI-first predictive maintenance scheduling",
+            "Automated tenant communication and support",
+            "Real-time financial tracking and reporting",
+            "Vendor coordination and management automation",
+            "Built for scale across property portfolios"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled property management solutions, including:",
+          solutions: [
+            "Predictive maintenance scheduling platforms",
+            "Automated tenant communication systems",
+            "Rent payment and collection automation",
+            "Vendor coordination and tracking tools",
+            "Financial reporting and analytics dashboards",
+            "Tenant portal and self-service platforms",
+            "Lease management and renewal automation"
+          ],
+          footer: "All solutions are cloud-native, scalable, and property management integrated."
+        },
+        coreCapabilities: [
+          "Maintenance prediction and scheduling models",
+          "Natural language tenant support chatbots",
+          "Financial analytics and reporting AI",
+          "Vendor matching and performance algorithms",
+          "Document processing and lease management",
+          "Rent collection and payment prediction",
+          "Work order automation and tracking",
+          "Portfolio performance dashboards"
         ],
-        useCases: [
-          "Predictive maintenance scheduling",
-          "Automated tenant communication",
-          "Rent payment reminders and processing",
-          "Vendor coordination and tracking",
-          "Financial reporting automation"
-        ],
-        aiCapabilities: [
-          "Maintenance prediction models",
-          "Natural language tenant support",
-          "Financial analytics AI",
-          "Vendor matching algorithms",
-          "Document processing"
-        ],
-        targetAudience: [
-          "Residential property managers",
+        idealFor: [
+          "Residential property management companies",
           "Commercial property managers",
-          "HOA management companies",
-          "Student housing managers",
-          "Vacation rental managers"
+          "HOA and community management companies",
+          "Student housing management firms",
+          "Multi-family property operators"
+        ],
+        businessOutcomes: [
+          "Reduce maintenance response times by 50%",
+          "Automate rent collection and reduce late payments",
+          "Improve tenant satisfaction scores by 40%",
+          "Track financials in real-time across all properties",
+          "Scale management operations efficiently"
         ]
       },
       {
@@ -1919,35 +2033,54 @@ const industries: Industry[] = [
         name: "Rental & Leasing Platforms",
         description: "Rental platforms with tenant screening, lease automation, and rent collection.",
         icon: "📝",
-        features: ["Tenant Screening AI", "Lease Automation", "Rent Collection", "Property Marketing"],
-        detailedDescription: "Power rental platforms with AI that streamlines the entire leasing journey. Our solutions screen tenants intelligently, automate lease creation, and ensure reliable rent collection.",
-        benefits: [
-          "Screen tenants in minutes",
-          "Automate lease generation",
+        tagline: "AI-Powered Rental and Leasing Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help rental and leasing platforms build AI-native solutions that streamline the entire leasing journey. From intelligent tenant screening to automated lease creation, we design platforms that reduce friction and ensure reliable rent collection. We build landlord-first, AI-powered rental systems.",
+        whyChoose: {
+          intro: "Rental platforms require fast screening, seamless leasing, and reliable collections.",
+          points: [
+            "AI-first tenant screening and risk assessment",
+            "Automated lease document generation and signing",
+            "Smart rent payment reminders and collection",
+            "Listing optimization and property marketing",
+            "Built for scale across rental portfolios"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled rental platform solutions, including:",
+          solutions: [
+            "AI-powered tenant screening platforms",
+            "Automated lease document creation systems",
+            "Smart rent payment and collection tools",
+            "Listing optimization and marketing platforms",
+            "Move-in/move-out coordination automation",
+            "Landlord and tenant communication portals",
+            "Rental market analytics dashboards"
+          ],
+          footer: "All solutions are cloud-native, secure, and rental platform integrated."
+        },
+        coreCapabilities: [
+          "Credit and background analysis algorithms",
+          "Document generation and e-signature automation",
+          "Payment prediction and collection models",
+          "Listing quality scoring and optimization",
+          "Chatbots for tenant and landlord inquiries",
+          "Rental pricing and market analysis",
+          "Maintenance request handling and routing",
+          "Compliance and fair housing automation"
+        ],
+        idealFor: [
+          "Rental listing platforms and marketplaces",
+          "Property management software providers",
+          "Tenant screening service companies",
+          "Lease management platform operators",
+          "Rent payment and collection platforms"
+        ],
+        businessOutcomes: [
+          "Screen tenants in minutes, not days",
+          "Automate lease generation with 100% accuracy",
           "Reduce late payments by 50%",
-          "Market properties effectively",
-          "Improve landlord experience"
-        ],
-        useCases: [
-          "AI-powered tenant screening",
-          "Automated lease document creation",
-          "Smart rent payment reminders",
-          "Listing optimization for rentals",
-          "Move-in/move-out coordination"
-        ],
-        aiCapabilities: [
-          "Credit and background analysis AI",
-          "Document generation automation",
-          "Payment prediction models",
-          "Listing quality scoring",
-          "Chatbots for inquiries"
-        ],
-        targetAudience: [
-          "Rental listing platforms",
-          "Property management software",
-          "Tenant screening services",
-          "Lease management platforms",
-          "Rent payment platforms"
+          "Market properties more effectively",
+          "Improve landlord and tenant experience"
         ]
       },
       {
@@ -1955,35 +2088,54 @@ const industries: Industry[] = [
         name: "Land & Plot Management",
         description: "Land and plot sales with mapping, valuation, and documentation management.",
         icon: "🗺️",
-        features: ["Land Valuation AI", "Mapping Tools", "Documentation Management", "Title Verification"],
-        detailedDescription: "Simplify land transactions with AI that values, maps, and verifies. Our solutions provide accurate land valuations, manage complex documentation, and streamline title verification processes.",
-        benefits: [
-          "Value land accurately and quickly",
-          "Visualize parcels effectively",
-          "Automate documentation",
-          "Verify titles efficiently",
-          "Reduce transaction risks"
+        tagline: "AI-Powered Land and Plot Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help land and plot management companies build AI-native platforms that simplify complex land transactions. From accurate valuations to automated title verification, we design solutions that reduce risks and accelerate deals. We build accuracy-first, AI-powered land management systems.",
+        whyChoose: {
+          intro: "Land management requires accurate valuation, documentation handling, and risk mitigation.",
+          points: [
+            "AI-first land valuation using satellite imagery",
+            "GIS-integrated parcel mapping and visualization",
+            "Automated title search and verification",
+            "Document management and tracking automation",
+            "Built for scale across land portfolios"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled land management solutions, including:",
+          solutions: [
+            "Automated land valuation model platforms",
+            "GIS-integrated parcel mapping systems",
+            "Title search and verification automation",
+            "Document management and tracking tools",
+            "Zoning compliance checking platforms",
+            "Land investment analytics dashboards",
+            "Transaction coordination and closing tools"
+          ],
+          footer: "All solutions are GIS-enabled, secure, and land registry integrated."
+        },
+        coreCapabilities: [
+          "Satellite imagery analysis for land assessment",
+          "Comparable sales and valuation algorithms",
+          "Document OCR and data extraction AI",
+          "Geographic information system integration",
+          "Risk assessment and due diligence models",
+          "Zoning and regulatory compliance checking",
+          "Land use planning and optimization",
+          "Transaction document automation"
         ],
-        useCases: [
-          "Automated land valuation models",
-          "GIS-integrated parcel mapping",
-          "Title search automation",
-          "Document management and tracking",
-          "Zoning compliance checking"
-        ],
-        aiCapabilities: [
-          "Satellite imagery analysis",
-          "Comparable sales algorithms",
-          "Document OCR and extraction",
-          "Geographic information AI",
-          "Risk assessment models"
-        ],
-        targetAudience: [
-          "Land brokers and agents",
+        idealFor: [
+          "Land brokers and specialty agents",
           "Land development companies",
           "Agricultural land platforms",
-          "Title companies",
-          "Land investment firms"
+          "Title companies and insurers",
+          "Land investment and acquisition firms"
+        ],
+        businessOutcomes: [
+          "Value land accurately and 10x faster",
+          "Visualize parcels with comprehensive mapping",
+          "Automate documentation and reduce errors",
+          "Verify titles efficiently and reliably",
+          "Reduce transaction risks by 60%"
         ]
       },
       {
@@ -1991,35 +2143,54 @@ const industries: Industry[] = [
         name: "Real Estate Investment Firms",
         description: "Investment management with portfolio analytics, market forecasting, and deal sourcing.",
         icon: "💰",
-        features: ["Portfolio Analytics", "Market Forecasting AI", "Deal Sourcing", "Risk Assessment"],
-        detailedDescription: "Make smarter real estate investments with AI that analyzes markets and opportunities. Our solutions provide portfolio analytics, forecast market trends, and source deals that match your investment criteria.",
-        benefits: [
-          "Identify opportunities faster",
-          "Optimize portfolio allocation",
-          "Predict market movements",
-          "Assess risks accurately",
-          "Improve investment returns"
+        tagline: "AI-Powered Real Estate Investment Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help real estate investment firms build AI-native platforms that identify opportunities and optimize portfolios. From market trend forecasting to intelligent deal sourcing, we design solutions that maximize returns. We build returns-first, AI-powered investment management systems.",
+        whyChoose: {
+          intro: "Real estate investment requires market intelligence, deal flow optimization, and portfolio management.",
+          points: [
+            "AI-first deal flow management and scoring",
+            "Portfolio performance analytics and optimization",
+            "Market trend forecasting and prediction",
+            "Risk-adjusted return modeling and analysis",
+            "Built for scale across investment portfolios"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled real estate investment solutions, including:",
+          solutions: [
+            "Deal flow management and scoring platforms",
+            "Portfolio performance analytics dashboards",
+            "Market trend forecasting systems",
+            "Risk-adjusted return modeling tools",
+            "Comparable transaction analysis platforms",
+            "Investment thesis validation tools",
+            "Investor reporting and communication automation"
+          ],
+          footer: "All solutions are enterprise-grade, secure, and financial systems integrated."
+        },
+        coreCapabilities: [
+          "Predictive market models and trend analysis",
+          "Deal matching and opportunity scoring algorithms",
+          "Financial modeling and scenario analysis AI",
+          "Alternative data analytics and insights",
+          "Portfolio optimization and rebalancing",
+          "Risk assessment and mitigation modeling",
+          "Investor communication automation",
+          "Due diligence and underwriting automation"
         ],
-        useCases: [
-          "Deal flow management and scoring",
-          "Portfolio performance analytics",
-          "Market trend forecasting",
-          "Risk-adjusted return modeling",
-          "Comparable transaction analysis"
+        idealFor: [
+          "Private equity real estate firms",
+          "Real estate investment trusts (REITs)",
+          "Family offices with real estate focus",
+          "Institutional real estate investors",
+          "Real estate crowdfunding platforms"
         ],
-        aiCapabilities: [
-          "Predictive market models",
-          "Deal matching algorithms",
-          "Financial modeling AI",
-          "Alternative data analytics",
-          "Portfolio optimization"
-        ],
-        targetAudience: [
-          "Private equity real estate",
-          "REITs",
-          "Family offices",
-          "Institutional investors",
-          "Crowdfunding platforms"
+        businessOutcomes: [
+          "Identify investment opportunities 50% faster",
+          "Optimize portfolio allocation for maximum returns",
+          "Predict market movements with 85% accuracy",
+          "Assess and mitigate risks proactively",
+          "Improve overall investment returns by 25%"
         ]
       },
       {
@@ -2027,35 +2198,54 @@ const industries: Industry[] = [
         name: "Hospitality & Vacation Rentals",
         description: "Short-term rental management with dynamic pricing, guest communication, and booking optimization.",
         icon: "🏖️",
-        features: ["Dynamic Pricing AI", "Guest Communication", "Booking Optimization", "Review Management"],
-        detailedDescription: "Maximize vacation rental revenue with AI that optimizes every booking. Our hospitality solutions price dynamically, automate guest communication, and manage reviews to boost your property ratings.",
-        benefits: [
-          "Increase revenue per property by 25%",
-          "Automate guest communications",
-          "Optimize booking calendar",
-          "Improve guest satisfaction",
-          "Manage reviews proactively"
+        tagline: "AI-Powered Vacation Rental Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help hospitality and vacation rental operators build AI-native platforms that maximize revenue and guest satisfaction. From dynamic pricing optimization to automated guest communication, we design solutions that boost occupancy and ratings. We build hospitality-first, AI-powered vacation rental systems.",
+        whyChoose: {
+          intro: "Vacation rentals require revenue optimization, guest experience, and operational efficiency.",
+          points: [
+            "AI-first dynamic pricing and yield management",
+            "Automated guest messaging and communication",
+            "Multi-channel booking management and optimization",
+            "Review response automation and sentiment analysis",
+            "Built for scale across property portfolios"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled vacation rental solutions, including:",
+          solutions: [
+            "AI-powered dynamic pricing platforms",
+            "Automated guest messaging systems",
+            "Multi-channel booking management tools",
+            "Review response automation platforms",
+            "Cleaning and turnover coordination systems",
+            "Guest experience optimization tools",
+            "Revenue and performance analytics dashboards"
+          ],
+          footer: "All solutions are OTA-integrated, mobile-first, and hospitality-optimized."
+        },
+        coreCapabilities: [
+          "Demand-based pricing algorithms and optimization",
+          "Natural language guest support chatbots",
+          "Calendar optimization and overbooking prevention",
+          "Sentiment analysis for reviews and feedback",
+          "Operations automation and scheduling",
+          "Channel management and rate parity",
+          "Guest preference learning and personalization",
+          "Cleaning and maintenance coordination"
         ],
-        useCases: [
-          "AI-powered dynamic pricing",
-          "Automated guest messaging",
-          "Multi-channel booking management",
-          "Review response automation",
-          "Cleaning and turnover coordination"
-        ],
-        aiCapabilities: [
-          "Demand-based pricing algorithms",
-          "Natural language guest support",
-          "Calendar optimization AI",
-          "Sentiment analysis for reviews",
-          "Operations automation"
-        ],
-        targetAudience: [
-          "Vacation rental managers",
-          "Short-term rental hosts",
-          "Boutique hotels",
+        idealFor: [
+          "Vacation rental property managers",
+          "Short-term rental hosts and owners",
+          "Boutique hotels and B&Bs",
           "Property management companies",
-          "Vacation rental platforms"
+          "Vacation rental platforms and marketplaces"
+        ],
+        businessOutcomes: [
+          "Increase revenue per property by 25%",
+          "Automate 80% of guest communications",
+          "Optimize booking calendar utilization",
+          "Improve guest satisfaction and ratings",
+          "Manage reviews proactively and efficiently"
         ]
       },
     ],
@@ -2072,35 +2262,54 @@ const industries: Industry[] = [
         name: "Hospitals & Multi-Specialty Clinics",
         description: "Hospital management with patient flow optimization, clinical decision support, and operational efficiency.",
         icon: "🏨",
-        features: ["Patient Flow AI", "Clinical Decision Support", "Bed Management", "Staff Scheduling"],
-        detailedDescription: "Transform hospital operations with AI that improves patient outcomes and efficiency. Our healthcare solutions optimize patient flow, support clinical decisions, and streamline operations while maintaining HIPAA compliance.",
-        benefits: [
+        tagline: "AI-Powered Hospital Operations & Clinical Excellence Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help hospitals and multi-specialty clinics build AI-native operational platforms that improve patient outcomes and efficiency. From emergency department flow optimization to clinical decision support, we design HIPAA-compliant solutions that streamline operations while enhancing care quality. We build patient-first, AI-powered hospital systems.",
+        whyChoose: {
+          intro: "Hospitals require operational efficiency, clinical intelligence, and patient-centered care at scale.",
+          points: [
+            "AI-first patient flow prediction and optimization",
+            "Clinical decision support with evidence-based alerts",
+            "Predictive bed management and capacity planning",
+            "Staff scheduling optimization and resource allocation",
+            "Built for scale across departments and specialties"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled hospital operations solutions, including:",
+          solutions: [
+            "Emergency department flow optimization platforms",
+            "Clinical decision support alert systems",
+            "Predictive bed management dashboards",
+            "Staff scheduling optimization tools",
+            "Supply chain management automation",
+            "Patient experience monitoring platforms",
+            "Quality metrics and outcomes analytics"
+          ],
+          footer: "All solutions are HIPAA-compliant, EHR-integrated, and clinically validated."
+        },
+        coreCapabilities: [
+          "Patient flow prediction and optimization models",
+          "Clinical NLP for medical records analysis",
+          "Resource optimization and allocation algorithms",
+          "Real-time alerting and escalation systems",
+          "Demand forecasting for staffing and supplies",
+          "Patient satisfaction monitoring and analytics",
+          "Clinical quality metrics tracking",
+          "Integration with major EHR systems"
+        ],
+        idealFor: [
+          "Hospital systems and health networks",
+          "Multi-specialty clinics and medical groups",
+          "Ambulatory surgery centers",
+          "Urgent care centers and networks",
+          "Academic medical centers"
+        ],
+        businessOutcomes: [
           "Reduce patient wait times by 40%",
           "Improve bed utilization by 25%",
-          "Support clinical decision-making",
-          "Optimize staff scheduling",
-          "Reduce operational costs"
-        ],
-        useCases: [
-          "Emergency department flow optimization",
-          "Clinical decision support alerts",
-          "Predictive bed management",
-          "Staff scheduling optimization",
-          "Supply chain management"
-        ],
-        aiCapabilities: [
-          "Patient flow prediction models",
-          "Clinical NLP for records",
-          "Resource optimization algorithms",
-          "Real-time alerting systems",
-          "Demand forecasting AI"
-        ],
-        targetAudience: [
-          "Hospital systems",
-          "Multi-specialty clinics",
-          "Ambulatory surgery centers",
-          "Urgent care centers",
-          "Academic medical centers"
+          "Support clinical decision-making with AI insights",
+          "Optimize staff scheduling and reduce overtime",
+          "Reduce operational costs by 30%"
         ]
       },
       {
@@ -2108,35 +2317,54 @@ const industries: Industry[] = [
         name: "Diagnostic Labs & Imaging Centers",
         description: "Diagnostic centers with AI-powered image analysis, report generation, and workflow automation.",
         icon: "🔬",
-        features: ["Image Analysis AI", "Report Automation", "Lab Workflow", "Results Communication"],
-        detailedDescription: "Enhance diagnostic accuracy and speed with AI-powered analysis. Our solutions analyze medical images, automate report generation, and streamline lab workflows for faster, more accurate diagnoses.",
-        benefits: [
-          "Improve diagnostic accuracy",
-          "Reduce report turnaround time",
-          "Automate routine analyses",
-          "Ensure quality consistency",
-          "Scale diagnostic capacity"
-        ],
-        useCases: [
-          "AI-assisted radiology reading",
-          "Automated lab result interpretation",
-          "Report generation and distribution",
-          "Quality control monitoring",
-          "Patient result notification"
-        ],
-        aiCapabilities: [
-          "Medical imaging AI",
-          "Lab value analysis",
+        tagline: "AI-Powered Diagnostic & Imaging Excellence Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help diagnostic labs and imaging centers build AI-native platforms that enhance accuracy and speed. From AI-assisted radiology reading to automated report generation, we design solutions that streamline workflows while ensuring quality consistency. We build accuracy-first, AI-powered diagnostic systems.",
+        whyChoose: {
+          intro: "Diagnostic services require accuracy, speed, and quality consistency at scale.",
+          points: [
+            "AI-first medical image analysis and interpretation",
+            "Automated report generation with natural language",
+            "Lab workflow optimization and automation",
+            "Quality control monitoring and assurance",
+            "Built for scale across diagnostic modalities"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled diagnostic solutions, including:",
+          solutions: [
+            "AI-assisted radiology reading platforms",
+            "Automated lab result interpretation systems",
+            "Report generation and distribution automation",
+            "Quality control monitoring dashboards",
+            "Patient result notification systems",
+            "Workflow optimization tools",
+            "Integration platforms for LIMS and PACS"
+          ],
+          footer: "All solutions are FDA-aware, HIPAA-compliant, and clinically validated."
+        },
+        coreCapabilities: [
+          "Medical imaging AI for multiple modalities",
+          "Lab value analysis and interpretation algorithms",
           "Natural language report generation",
-          "Anomaly detection algorithms",
-          "Workflow automation"
+          "Anomaly detection and flagging systems",
+          "Workflow automation and optimization",
+          "Quality assurance and control monitoring",
+          "Turnaround time tracking and optimization",
+          "Patient and provider communication automation"
         ],
-        targetAudience: [
-          "Radiology practices",
-          "Clinical laboratories",
-          "Pathology labs",
-          "Imaging centers",
-          "Reference laboratories"
+        idealFor: [
+          "Radiology practices and imaging centers",
+          "Clinical laboratories and reference labs",
+          "Pathology labs and specialty diagnostics",
+          "Standalone imaging centers",
+          "Hospital laboratory departments"
+        ],
+        businessOutcomes: [
+          "Improve diagnostic accuracy with AI assistance",
+          "Reduce report turnaround time by 50%",
+          "Automate routine analyses and workflows",
+          "Ensure quality consistency across all tests",
+          "Scale diagnostic capacity without proportional staffing"
         ]
       },
       {
@@ -2144,35 +2372,54 @@ const industries: Industry[] = [
         name: "Telemedicine & Virtual Care",
         description: "Virtual healthcare platforms with video consultations, symptom checking, and remote monitoring.",
         icon: "📱",
-        features: ["Video Consultation AI", "Symptom Checker", "Remote Monitoring", "Virtual Triage"],
-        detailedDescription: "Scale virtual care with AI that enhances remote healthcare delivery. Our telemedicine solutions power symptom assessment, triage patients intelligently, and enable effective remote monitoring.",
-        benefits: [
-          "Scale virtual consultations",
-          "Triage patients accurately",
-          "Enable remote monitoring",
-          "Reduce unnecessary visits",
-          "Improve access to care"
+        tagline: "AI-Powered Virtual Care & Telemedicine Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help telemedicine providers build AI-native platforms that scale virtual care effectively. From intelligent symptom assessment to remote patient monitoring, we design solutions that enhance care access while maintaining quality. We build access-first, AI-powered virtual care systems.",
+        whyChoose: {
+          intro: "Virtual care requires intelligent triage, seamless consultations, and effective remote monitoring.",
+          points: [
+            "AI-first symptom assessment and intelligent triage",
+            "Enhanced video consultation with AI features",
+            "Remote patient monitoring with smart alerts",
+            "Post-visit follow-up automation and care gaps",
+            "Built for scale across patient populations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled telemedicine solutions, including:",
+          solutions: [
+            "AI symptom assessment and triage platforms",
+            "Virtual consultation enhancement tools",
+            "Remote patient monitoring alert systems",
+            "Post-visit follow-up automation",
+            "Chronic condition management platforms",
+            "Patient intake and documentation automation",
+            "Virtual waiting room and queue management"
+          ],
+          footer: "All solutions are HIPAA-compliant, telehealth platform integrated, and mobile-first."
+        },
+        coreCapabilities: [
+          "Symptom analysis and triage algorithms",
+          "Video consultation AI enhancement features",
+          "Vital sign monitoring and alerting AI",
+          "Natural language patient intake processing",
+          "Care gap identification and intervention",
+          "Patient scheduling and reminder automation",
+          "Clinical documentation assistance",
+          "Multi-channel patient communication"
         ],
-        useCases: [
-          "AI symptom assessment and triage",
-          "Virtual consultation enhancement",
-          "Remote patient monitoring alerts",
-          "Post-visit follow-up automation",
-          "Chronic condition management"
-        ],
-        aiCapabilities: [
-          "Symptom analysis algorithms",
-          "Video consultation AI features",
-          "Vital sign monitoring AI",
-          "Natural language for intake",
-          "Care gap identification"
-        ],
-        targetAudience: [
-          "Telemedicine platforms",
-          "Virtual care providers",
-          "Remote monitoring companies",
+        idealFor: [
+          "Telemedicine platform providers",
+          "Virtual care and telehealth companies",
+          "Remote monitoring device companies",
           "Digital health startups",
-          "Health systems with virtual care"
+          "Health systems with virtual care programs"
+        ],
+        businessOutcomes: [
+          "Scale virtual consultations efficiently",
+          "Triage patients accurately and reduce no-shows",
+          "Enable effective remote monitoring programs",
+          "Reduce unnecessary in-person visits by 40%",
+          "Improve access to care for underserved populations"
         ]
       },
       {
@@ -2180,35 +2427,54 @@ const industries: Industry[] = [
         name: "Pharmacies & Medical Stores",
         description: "Pharmacy management with inventory prediction, prescription processing, and medication reminders.",
         icon: "💊",
-        features: ["Inventory Prediction", "Prescription Processing AI", "Medication Reminders", "Drug Interaction Checks"],
-        detailedDescription: "Optimize pharmacy operations with AI that ensures medication safety and efficiency. Our solutions predict inventory needs, process prescriptions accurately, and improve medication adherence.",
-        benefits: [
-          "Reduce medication errors",
-          "Optimize inventory levels",
-          "Improve patient adherence",
-          "Speed up prescription processing",
-          "Enhance customer service"
-        ],
-        useCases: [
-          "Inventory demand forecasting",
-          "Prescription verification and processing",
-          "Drug interaction screening",
-          "Medication reminder automation",
-          "Patient counseling support"
-        ],
-        aiCapabilities: [
-          "Demand forecasting models",
-          "Drug database AI",
+        tagline: "AI-Powered Pharmacy Operations & Patient Safety Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help pharmacies and medical stores build AI-native platforms that optimize operations and ensure medication safety. From inventory demand forecasting to prescription verification, we design solutions that improve efficiency and patient adherence. We build safety-first, AI-powered pharmacy systems.",
+        whyChoose: {
+          intro: "Pharmacies require medication safety, inventory optimization, and patient adherence support.",
+          points: [
+            "AI-first inventory demand forecasting and optimization",
+            "Prescription verification and drug interaction checks",
+            "Medication reminder and adherence automation",
+            "Patient counseling and communication support",
+            "Built for scale across pharmacy locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled pharmacy solutions, including:",
+          solutions: [
+            "Inventory demand forecasting platforms",
+            "Prescription verification and processing systems",
+            "Drug interaction screening automation",
+            "Medication reminder and adherence tools",
+            "Patient counseling support platforms",
+            "Pharmacy workflow optimization tools",
+            "Multi-location pharmacy management dashboards"
+          ],
+          footer: "All solutions are HIPAA-compliant, pharmacy management integrated, and patient-safe."
+        },
+        coreCapabilities: [
+          "Demand forecasting for pharmaceutical inventory",
+          "Drug database and interaction checking AI",
           "Natural language prescription processing",
-          "Patient communication automation",
-          "Clinical decision support"
+          "Patient communication and reminder automation",
+          "Clinical decision support for pharmacists",
+          "Workflow optimization and efficiency tracking",
+          "Regulatory compliance monitoring",
+          "Patient adherence analytics and intervention"
         ],
-        targetAudience: [
-          "Retail pharmacies",
-          "Hospital pharmacies",
-          "Specialty pharmacies",
-          "Mail-order pharmacies",
+        idealFor: [
+          "Retail pharmacy chains and independents",
+          "Hospital pharmacy departments",
+          "Specialty and compounding pharmacies",
+          "Mail-order and online pharmacies",
           "Pharmacy benefit managers"
+        ],
+        businessOutcomes: [
+          "Reduce medication errors with AI verification",
+          "Optimize inventory levels and reduce waste",
+          "Improve patient adherence by 35%",
+          "Speed up prescription processing by 50%",
+          "Enhance customer service and satisfaction"
         ]
       },
       {
@@ -2216,35 +2482,54 @@ const industries: Industry[] = [
         name: "Health Insurance Providers",
         description: "Insurance solutions with claims processing, fraud detection, and policy management.",
         icon: "🛡️",
-        features: ["Claims Processing AI", "Fraud Detection", "Policy Management", "Member Engagement"],
-        detailedDescription: "Transform health insurance operations with AI that processes claims faster and detects fraud accurately. Our solutions automate claims, engage members, and optimize policy management.",
-        benefits: [
+        tagline: "AI-Powered Health Insurance Operations Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help health insurance providers build AI-native platforms that streamline operations and detect fraud. From automated claims adjudication to member engagement, we design solutions that reduce costs while improving satisfaction. We build efficiency-first, AI-powered health insurance systems.",
+        whyChoose: {
+          intro: "Health insurance requires claims efficiency, fraud prevention, and member satisfaction at scale.",
+          points: [
+            "AI-first automated claims adjudication and processing",
+            "Fraud and abuse detection before payment",
+            "Member service automation and engagement",
+            "Prior authorization processing optimization",
+            "Built for scale across member populations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled health insurance solutions, including:",
+          solutions: [
+            "Automated claims adjudication platforms",
+            "Fraud and abuse detection systems",
+            "Member service automation chatbots",
+            "Prior authorization processing tools",
+            "Benefits explanation AI platforms",
+            "Policy administration automation",
+            "Member engagement and communication systems"
+          ],
+          footer: "All solutions are HIPAA-compliant, payer system integrated, and regulatory-aware."
+        },
+        coreCapabilities: [
+          "Claims analysis and adjudication algorithms",
+          "Fraud pattern detection and prevention AI",
+          "Natural language for member query handling",
+          "Policy matching and eligibility verification",
+          "Risk stratification and population health models",
+          "Prior authorization workflow automation",
+          "Member engagement scoring and outreach",
+          "Regulatory compliance monitoring"
+        ],
+        idealFor: [
+          "Health insurance companies and payers",
+          "Third-party administrators (TPAs)",
+          "Self-insured employers and coalitions",
+          "Medicare Advantage and supplement plans",
+          "Medicaid managed care organizations"
+        ],
+        businessOutcomes: [
           "Reduce claims processing time by 60%",
-          "Detect fraud before payment",
-          "Improve member satisfaction",
-          "Automate policy administration",
-          "Lower operational costs"
-        ],
-        useCases: [
-          "Automated claims adjudication",
-          "Fraud and abuse detection",
-          "Member service automation",
-          "Prior authorization processing",
-          "Benefits explanation AI"
-        ],
-        aiCapabilities: [
-          "Claims analysis algorithms",
-          "Fraud pattern detection",
-          "Natural language for member queries",
-          "Policy matching AI",
-          "Risk stratification models"
-        ],
-        targetAudience: [
-          "Health insurers",
-          "Third-party administrators",
-          "Self-insured employers",
-          "Medicare Advantage plans",
-          "Medicaid managed care"
+          "Detect fraud before payment with 95% accuracy",
+          "Improve member satisfaction scores by 40%",
+          "Automate policy administration tasks",
+          "Lower operational costs by 35%"
         ]
       },
       {
@@ -2252,35 +2537,54 @@ const industries: Industry[] = [
         name: "Medical Device Companies",
         description: "Medical device manufacturers with quality control, regulatory compliance, and customer support.",
         icon: "🩺",
-        features: ["Quality Control AI", "Regulatory Compliance", "Device Analytics", "Customer Support"],
-        detailedDescription: "Accelerate medical device innovation with AI that ensures quality and compliance. Our solutions monitor device performance, automate regulatory processes, and provide intelligent customer support.",
-        benefits: [
-          "Improve product quality",
-          "Accelerate regulatory submissions",
-          "Monitor device performance",
-          "Enhance customer support",
-          "Reduce compliance risk"
+        tagline: "AI-Powered Medical Device Innovation & Compliance Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help medical device companies build AI-native platforms that accelerate innovation while ensuring compliance. From manufacturing quality inspection to regulatory automation, we design solutions that improve quality and speed to market. We build quality-first, AI-powered medical device systems.",
+        whyChoose: {
+          intro: "Medical device companies require quality assurance, regulatory compliance, and market responsiveness.",
+          points: [
+            "AI-first manufacturing quality inspection and control",
+            "Regulatory document automation and submission support",
+            "Post-market surveillance and adverse event detection",
+            "Customer complaint analysis and resolution",
+            "Built for scale across product lines and markets"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled medical device solutions, including:",
+          solutions: [
+            "Manufacturing quality inspection platforms",
+            "Regulatory document automation systems",
+            "Post-market surveillance dashboards",
+            "Customer complaint analysis tools",
+            "Device performance analytics platforms",
+            "Training and certification management",
+            "Field service optimization tools"
+          ],
+          footer: "All solutions are FDA/CE compliant, validated, and quality management integrated."
+        },
+        coreCapabilities: [
+          "Computer vision for manufacturing inspection",
+          "Document analysis for regulatory submissions",
+          "Adverse event detection and reporting AI",
+          "Customer support chatbots and automation",
+          "Predictive maintenance for connected devices",
+          "Quality metrics tracking and trending",
+          "Complaint pattern analysis and prevention",
+          "Training content and compliance tracking"
         ],
-        useCases: [
-          "Manufacturing quality inspection",
-          "Regulatory document automation",
-          "Post-market surveillance",
-          "Customer complaint analysis",
-          "Device performance analytics"
-        ],
-        aiCapabilities: [
-          "Computer vision for inspection",
-          "Document analysis for regulatory",
-          "Adverse event detection",
-          "Customer support chatbots",
-          "Predictive maintenance for devices"
-        ],
-        targetAudience: [
+        idealFor: [
           "Medical device manufacturers",
-          "Diagnostic device companies",
-          "Surgical equipment makers",
-          "Connected health device companies",
-          "Medical supply distributors"
+          "Diagnostic device and equipment companies",
+          "Surgical equipment and instrument makers",
+          "Connected health and IoMT device companies",
+          "Medical supply and distribution companies"
+        ],
+        businessOutcomes: [
+          "Improve product quality with AI inspection",
+          "Accelerate regulatory submissions by 40%",
+          "Monitor device performance proactively",
+          "Enhance customer support and satisfaction",
+          "Reduce compliance risk and audit findings"
         ]
       },
       {
@@ -2288,35 +2592,54 @@ const industries: Industry[] = [
         name: "Wellness & Fitness Centers",
         description: "Wellness centers with personalized programs, progress tracking, and member engagement.",
         icon: "🧘",
-        features: ["Personalized Programs AI", "Progress Tracking", "Member Engagement", "Nutrition Planning"],
-        detailedDescription: "Elevate wellness experiences with AI that personalizes health journeys. Our solutions create custom programs, track progress intelligently, and keep members engaged in their fitness goals.",
-        benefits: [
-          "Increase member retention",
-          "Personalize fitness programs",
-          "Track progress effectively",
-          "Boost member engagement",
-          "Scale personal training"
+        tagline: "AI-Powered Wellness & Fitness Experience Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help wellness and fitness centers build AI-native platforms that personalize health journeys. From custom workout generation to nutrition planning, we design solutions that keep members engaged and achieving their goals. We build member-first, AI-powered wellness systems.",
+        whyChoose: {
+          intro: "Wellness centers require personalization, engagement, and progress tracking at scale.",
+          points: [
+            "AI-first personalized workout and nutrition programs",
+            "Progress tracking with wearable data integration",
+            "Member engagement automation and gamification",
+            "Class recommendation and scheduling optimization",
+            "Built for scale across member populations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled wellness and fitness solutions, including:",
+          solutions: [
+            "Personalized workout generation platforms",
+            "Nutrition plan customization systems",
+            "Progress tracking and analytics dashboards",
+            "Member engagement automation tools",
+            "Class recommendation and booking platforms",
+            "Trainer scheduling and management",
+            "Wellness challenge and gamification systems"
+          ],
+          footer: "All solutions are mobile-first, wearable-integrated, and engagement-optimized."
+        },
+        coreCapabilities: [
+          "Fitness program AI for personalized plans",
+          "Nutritional analysis and recommendation algorithms",
+          "Wearable data integration and insights",
+          "Engagement prediction and intervention models",
+          "Chatbots for wellness support and motivation",
+          "Progress visualization and milestone tracking",
+          "Social features and community building",
+          "Trainer matching and session optimization"
         ],
-        useCases: [
-          "Personalized workout generation",
-          "Nutrition plan customization",
-          "Progress tracking and analytics",
-          "Member engagement automation",
-          "Class recommendation and booking"
-        ],
-        aiCapabilities: [
-          "Fitness program AI",
-          "Nutritional analysis",
-          "Wearable data integration",
-          "Engagement prediction models",
-          "Chatbots for wellness support"
-        ],
-        targetAudience: [
-          "Fitness centers and gyms",
+        idealFor: [
+          "Fitness centers and gym chains",
           "Yoga and pilates studios",
-          "Wellness retreats",
+          "Wellness retreats and spas",
           "Corporate wellness programs",
-          "Fitness app companies"
+          "Fitness and wellness app companies"
+        ],
+        businessOutcomes: [
+          "Increase member retention by 40%",
+          "Personalize fitness programs at scale",
+          "Track progress effectively with AI insights",
+          "Boost member engagement and satisfaction",
+          "Scale personal training efficiently"
         ]
       },
       {
@@ -2324,35 +2647,54 @@ const industries: Industry[] = [
         name: "Mental Health & Counseling Services",
         description: "Mental health services with appointment scheduling, progress monitoring, and crisis support.",
         icon: "🧠",
-        features: ["Appointment AI", "Progress Monitoring", "Crisis Support", "Therapy Matching"],
-        detailedDescription: "Expand mental health access with AI that supports care delivery. Our solutions match patients to therapists, monitor treatment progress, and provide crisis support resources.",
-        benefits: [
-          "Improve access to mental health care",
-          "Match patients with right therapists",
-          "Monitor treatment progress",
-          "Provide crisis resources",
-          "Reduce administrative burden"
+        tagline: "AI-Powered Mental Health Access & Care Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help mental health services build AI-native platforms that expand access to care. From therapist-patient matching to treatment progress monitoring, we design solutions that support care delivery while reducing administrative burden. We build access-first, AI-powered mental health systems.",
+        whyChoose: {
+          intro: "Mental health services require access expansion, care matching, and outcome tracking.",
+          points: [
+            "AI-first therapist-patient matching algorithms",
+            "Treatment progress tracking and monitoring",
+            "Between-session support and engagement tools",
+            "Crisis resource provision and escalation",
+            "Built for scale across provider networks"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled mental health solutions, including:",
+          solutions: [
+            "Therapist-patient matching platforms",
+            "Treatment progress tracking systems",
+            "Between-session support tools",
+            "Crisis resource and escalation systems",
+            "Appointment scheduling automation",
+            "Outcome measurement platforms",
+            "Provider and patient communication tools"
+          ],
+          footer: "All solutions are HIPAA-compliant, clinically informed, and crisis-aware."
+        },
+        coreCapabilities: [
+          "Therapist matching algorithms based on needs",
+          "Symptom tracking and progress monitoring AI",
+          "Natural language for supportive interactions",
+          "Risk assessment and escalation models",
+          "Outcome measurement automation",
+          "Appointment scheduling and reminder automation",
+          "Treatment plan tracking and adherence",
+          "Provider dashboard and analytics"
         ],
-        useCases: [
-          "Therapist-patient matching",
-          "Treatment progress tracking",
-          "Between-session support tools",
-          "Crisis resource provision",
-          "Appointment scheduling automation"
-        ],
-        aiCapabilities: [
-          "Therapist matching algorithms",
-          "Symptom tracking AI",
-          "Natural language for support",
-          "Risk assessment models",
-          "Outcome measurement automation"
-        ],
-        targetAudience: [
-          "Mental health practices",
-          "Counseling centers",
-          "Teletherapy platforms",
-          "Employee assistance programs",
+        idealFor: [
+          "Mental health practices and clinics",
+          "Counseling centers and group practices",
+          "Teletherapy and digital mental health platforms",
+          "Employee assistance programs (EAPs)",
           "Behavioral health organizations"
+        ],
+        businessOutcomes: [
+          "Improve access to mental health care",
+          "Match patients with right therapists accurately",
+          "Monitor treatment progress effectively",
+          "Provide crisis resources when needed",
+          "Reduce administrative burden by 50%"
         ]
       },
       {
@@ -2360,35 +2702,54 @@ const industries: Industry[] = [
         name: "Home Healthcare Services",
         description: "Home care services with caregiver scheduling, patient monitoring, and care coordination.",
         icon: "🏠",
-        features: ["Caregiver Scheduling AI", "Patient Monitoring", "Care Coordination", "Family Communication"],
-        detailedDescription: "Optimize home healthcare with AI that coordinates care effectively. Our solutions schedule caregivers efficiently, monitor patient health remotely, and keep families informed about care.",
-        benefits: [
-          "Optimize caregiver schedules",
-          "Monitor patients remotely",
-          "Coordinate care effectively",
-          "Keep families informed",
-          "Improve care quality"
+        tagline: "AI-Powered Home Care Coordination Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help home healthcare services build AI-native platforms that coordinate care effectively. From intelligent caregiver scheduling to remote patient monitoring, we design solutions that improve care quality while keeping families informed. We build coordination-first, AI-powered home care systems.",
+        whyChoose: {
+          intro: "Home healthcare requires scheduling efficiency, patient monitoring, and family communication.",
+          points: [
+            "AI-first caregiver scheduling and route optimization",
+            "Remote patient health monitoring and alerts",
+            "Care plan management and coordination",
+            "Family update automation and communication",
+            "Built for scale across patient populations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled home healthcare solutions, including:",
+          solutions: [
+            "Intelligent caregiver scheduling platforms",
+            "Remote patient health monitoring systems",
+            "Care plan management dashboards",
+            "Family update automation tools",
+            "Visit verification and documentation systems",
+            "Medication management and reminders",
+            "Care coordination communication platforms"
+          ],
+          footer: "All solutions are HIPAA-compliant, mobile-first, and home care workflow optimized."
+        },
+        coreCapabilities: [
+          "Scheduling optimization and route planning algorithms",
+          "Remote monitoring AI with smart alerts",
+          "Natural language clinical documentation",
+          "Care coordination and handoff automation",
+          "Risk prediction for patient deterioration",
+          "Family communication and update automation",
+          "Visit verification with GPS and timestamps",
+          "Caregiver performance and quality tracking"
         ],
-        useCases: [
-          "Intelligent caregiver scheduling",
-          "Remote patient health monitoring",
-          "Care plan management",
-          "Family update automation",
-          "Visit verification and documentation"
+        idealFor: [
+          "Home health agencies and providers",
+          "Hospice care providers",
+          "Private duty home care companies",
+          "Senior care and aging-in-place services",
+          "Post-acute care and transitional care providers"
         ],
-        aiCapabilities: [
-          "Scheduling optimization algorithms",
-          "Remote monitoring AI",
-          "Natural language for documentation",
-          "Care coordination AI",
-          "Risk prediction for patients"
-        ],
-        targetAudience: [
-          "Home health agencies",
-          "Hospice providers",
-          "Home care companies",
-          "Senior care services",
-          "Post-acute care providers"
+        businessOutcomes: [
+          "Optimize caregiver schedules and reduce travel time",
+          "Monitor patients remotely with AI alerts",
+          "Coordinate care effectively across team members",
+          "Keep families informed with automated updates",
+          "Improve care quality and outcomes"
         ]
       },
       {
@@ -2396,35 +2757,54 @@ const industries: Industry[] = [
         name: "Healthcare SaaS & Health IT",
         description: "Health technology companies building software for healthcare providers and patients.",
         icon: "💻",
-        features: ["EHR Integration", "Health Data Analytics", "Patient Portals", "Interoperability Solutions"],
-        detailedDescription: "Build better healthcare software with AI capabilities built in. Our Health IT solutions provide EHR integration, health data analytics, and interoperability features for healthcare software companies.",
-        benefits: [
-          "Integrate with major EHRs",
-          "Analyze health data at scale",
-          "Improve interoperability",
-          "Enhance patient engagement",
-          "Accelerate product development"
+        tagline: "AI-Powered Healthcare Technology & Integration Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help healthcare SaaS and Health IT companies build AI-native platforms with advanced capabilities. From EHR integration to health data analytics, we design solutions that accelerate product development and improve interoperability. We build innovation-first, AI-powered health IT systems.",
+        whyChoose: {
+          intro: "Health IT companies require integration capabilities, data intelligence, and rapid development.",
+          points: [
+            "AI-first EHR integration and data normalization",
+            "Population health analytics and insights",
+            "Patient portal personalization and engagement",
+            "Clinical workflow automation capabilities",
+            "Built for scale across healthcare customers"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled Health IT solutions, including:",
+          solutions: [
+            "EHR data integration and normalization platforms",
+            "Population health analytics dashboards",
+            "Patient portal personalization tools",
+            "Clinical workflow automation systems",
+            "Healthcare API development platforms",
+            "Interoperability and FHIR solutions",
+            "Clinical documentation AI assistants"
+          ],
+          footer: "All solutions are HIPAA-compliant, interoperability-ready, and healthcare-validated."
+        },
+        coreCapabilities: [
+          "Clinical NLP processing and understanding",
+          "FHIR and HL7 integration automation",
+          "Health data normalization and mapping",
+          "Clinical coding and billing AI",
+          "Patient engagement algorithms",
+          "Population health risk stratification",
+          "Real-time clinical decision support APIs",
+          "Healthcare analytics and reporting"
         ],
-        useCases: [
-          "EHR data integration and normalization",
-          "Population health analytics",
-          "Patient portal personalization",
-          "Clinical workflow automation",
-          "Healthcare API development"
+        idealFor: [
+          "Healthcare SaaS companies and startups",
+          "EHR vendors and health IT companies",
+          "Health IT consulting and integration firms",
+          "Healthcare data and analytics companies",
+          "Digital health platforms and applications"
         ],
-        aiCapabilities: [
-          "Clinical NLP processing",
-          "FHIR and HL7 integration AI",
-          "Health data normalization",
-          "Clinical coding AI",
-          "Patient engagement algorithms"
-        ],
-        targetAudience: [
-          "Healthcare SaaS companies",
-          "EHR vendors",
-          "Health IT consultants",
-          "Healthcare data companies",
-          "Digital health platforms"
+        businessOutcomes: [
+          "Integrate with major EHRs rapidly",
+          "Analyze health data at scale with AI",
+          "Improve interoperability across systems",
+          "Enhance patient engagement and portal usage",
+          "Accelerate product development by 40%"
         ]
       },
     ],
@@ -2441,35 +2821,54 @@ const industries: Industry[] = [
         name: "Schools (K-12)",
         description: "K-12 schools with student management, parent communication, and classroom analytics.",
         icon: "🏫",
-        features: ["Student Management AI", "Parent Communication", "Classroom Analytics", "Attendance Tracking"],
-        detailedDescription: "Empower K-12 education with AI that supports teachers and students. Our school solutions manage student information, facilitate parent communication, and provide classroom insights that improve learning outcomes.",
-        benefits: [
-          "Reduce administrative burden on teachers",
-          "Improve parent engagement",
-          "Track student progress effectively",
-          "Identify at-risk students early",
-          "Personalize learning support"
+        tagline: "AI-Powered K-12 School Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help K-12 schools build AI-native platforms that support teachers and improve student outcomes. From student information management to early intervention systems, we design solutions that reduce administrative burden while enabling personalized learning support. We build student-first, AI-powered school systems.",
+        whyChoose: {
+          intro: "K-12 schools require administrative efficiency, student tracking, and parent engagement.",
+          points: [
+            "AI-first student performance prediction and intervention",
+            "Automated parent communication and notifications",
+            "Attendance tracking and alert automation",
+            "At-risk student identification and support",
+            "Built for scale across grades and campuses"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled K-12 school solutions, including:",
+          solutions: [
+            "Student information management platforms",
+            "Automated parent notification systems",
+            "Attendance tracking and alert automation",
+            "Academic progress monitoring dashboards",
+            "Behavior tracking and intervention tools",
+            "Teacher productivity and planning tools",
+            "School analytics and reporting platforms"
+          ],
+          footer: "All solutions are FERPA-compliant, SIS-integrated, and education-ready."
+        },
+        coreCapabilities: [
+          "Student performance prediction and modeling",
+          "Natural language for parent communication",
+          "Pattern recognition for at-risk student identification",
+          "Automated report card and progress generation",
+          "Scheduling optimization for classes and resources",
+          "Behavior pattern analysis and intervention",
+          "Parent engagement tracking and improvement",
+          "Multi-school district management"
         ],
-        useCases: [
-          "Student information management",
-          "Automated parent notifications",
-          "Attendance tracking and alerts",
-          "Academic progress monitoring",
-          "Behavior tracking and intervention"
+        idealFor: [
+          "Public school districts and systems",
+          "Private and independent schools",
+          "Charter school networks",
+          "International and IB schools",
+          "School administrators and principals"
         ],
-        aiCapabilities: [
-          "Student performance prediction",
-          "Natural language for communication",
-          "Pattern recognition for at-risk students",
-          "Automated report generation",
-          "Scheduling optimization"
-        ],
-        targetAudience: [
-          "Public school districts",
-          "Private schools",
-          "Charter schools",
-          "International schools",
-          "School administrators"
+        businessOutcomes: [
+          "Reduce administrative burden on teachers by 40%",
+          "Improve parent engagement and communication",
+          "Track student progress effectively with AI insights",
+          "Identify at-risk students 60% earlier",
+          "Personalize learning support at scale"
         ]
       },
       {
@@ -2477,35 +2876,54 @@ const industries: Industry[] = [
         name: "Colleges & Universities",
         description: "Higher education institutions with admissions AI, student success, and research support.",
         icon: "🎓",
-        features: ["Admissions AI", "Student Success Analytics", "Research Support", "Alumni Engagement"],
-        detailedDescription: "Transform higher education with AI that enhances every aspect of the student journey. Our university solutions optimize admissions, support student success, and strengthen alumni connections.",
-        benefits: [
-          "Improve enrollment yield",
-          "Increase student retention",
-          "Support research productivity",
-          "Engage alumni effectively",
-          "Optimize resource allocation"
+        tagline: "AI-Powered Higher Education Success Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help colleges and universities build AI-native platforms that enhance the entire student journey. From admissions optimization to alumni engagement, we design solutions that improve yield, retention, and institutional outcomes. We build success-first, AI-powered higher education systems.",
+        whyChoose: {
+          intro: "Higher education requires enrollment optimization, student success, and research excellence.",
+          points: [
+            "AI-first admissions application review and optimization",
+            "Student success prediction and intervention systems",
+            "Research funding matching and support",
+            "Alumni engagement automation and fundraising",
+            "Built for scale across departments and programs"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled higher education solutions, including:",
+          solutions: [
+            "Admissions application review platforms",
+            "Student success prediction and intervention tools",
+            "Research funding matching systems",
+            "Alumni engagement automation platforms",
+            "Course scheduling optimization tools",
+            "Enrollment management dashboards",
+            "Institutional effectiveness analytics"
+          ],
+          footer: "All solutions are FERPA-compliant, SIS-integrated, and higher education ready."
+        },
+        coreCapabilities: [
+          "Application analysis and yield prediction AI",
+          "Student risk prediction and early alert models",
+          "Research matching and grant discovery algorithms",
+          "Engagement scoring and donor cultivation",
+          "Resource optimization and scheduling AI",
+          "Course demand forecasting",
+          "Retention analysis and intervention",
+          "Multi-campus and system-wide analytics"
         ],
-        useCases: [
-          "Admissions application review",
-          "Student success prediction and intervention",
-          "Research funding matching",
-          "Alumni engagement automation",
-          "Course scheduling optimization"
+        idealFor: [
+          "Universities and four-year colleges",
+          "Community and junior colleges",
+          "Graduate and professional schools",
+          "Online and hybrid institutions",
+          "Higher education administrators and deans"
         ],
-        aiCapabilities: [
-          "Application analysis AI",
-          "Student risk prediction models",
-          "Research matching algorithms",
-          "Engagement scoring",
-          "Resource optimization AI"
-        ],
-        targetAudience: [
-          "Universities and colleges",
-          "Community colleges",
-          "Graduate schools",
-          "Professional schools",
-          "Higher education administrators"
+        businessOutcomes: [
+          "Improve enrollment yield by 20%",
+          "Increase student retention rates by 15%",
+          "Support research productivity and funding success",
+          "Engage alumni effectively for giving and mentorship",
+          "Optimize resource allocation across programs"
         ]
       },
       {
@@ -2513,35 +2931,54 @@ const industries: Industry[] = [
         name: "Coaching & Training Institutes",
         description: "Coaching centers with batch management, performance tracking, and personalized study plans.",
         icon: "📖",
-        features: ["Batch Management AI", "Performance Tracking", "Study Plan Generation", "Test Analysis"],
-        detailedDescription: "Scale coaching excellence with AI that personalizes preparation for every student. Our training institute solutions manage batches efficiently, track performance, and generate study plans that maximize results.",
-        benefits: [
-          "Personalize learning for each student",
-          "Track batch performance",
-          "Identify weak areas quickly",
-          "Optimize teaching resources",
-          "Improve exam success rates"
+        tagline: "AI-Powered Coaching & Training Excellence Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help coaching and training institutes build AI-native platforms that personalize preparation for every student. From batch management to adaptive study plans, we design solutions that maximize exam success rates. We build results-first, AI-powered coaching systems.",
+        whyChoose: {
+          intro: "Coaching institutes require personalization, performance tracking, and resource optimization.",
+          points: [
+            "AI-first adaptive learning and study plan generation",
+            "Individual and batch performance tracking",
+            "Weak area identification and targeted intervention",
+            "Test result analysis and improvement insights",
+            "Built for scale across batches and locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled coaching institute solutions, including:",
+          solutions: [
+            "Batch scheduling and management platforms",
+            "Individual performance tracking dashboards",
+            "Personalized study plan generation tools",
+            "Test result analysis and insights systems",
+            "Parent progress reporting automation",
+            "Teacher productivity and assignment tools",
+            "Multi-location institute management"
+          ],
+          footer: "All solutions are mobile-first, analytics-driven, and coaching-optimized."
+        },
+        coreCapabilities: [
+          "Adaptive learning algorithms for personalization",
+          "Performance prediction and improvement models",
+          "Study plan optimization based on goals",
+          "Test analytics and question-level insights AI",
+          "Batch optimization and resource allocation",
+          "Parent communication automation",
+          "Teacher performance and workload tracking",
+          "Competitive benchmarking and ranking"
         ],
-        useCases: [
-          "Batch scheduling and management",
-          "Individual performance tracking",
-          "Personalized study plan generation",
-          "Test result analysis and insights",
-          "Parent progress reporting"
+        idealFor: [
+          "Test preparation institutes",
+          "Private tutoring centers",
+          "Competitive exam coaching centers",
+          "Skill and professional training centers",
+          "Language and certification schools"
         ],
-        aiCapabilities: [
-          "Adaptive learning algorithms",
-          "Performance prediction models",
-          "Study plan optimization",
-          "Test analytics AI",
-          "Batch optimization"
-        ],
-        targetAudience: [
-          "Test prep institutes",
-          "Tutoring centers",
-          "Competitive exam coaching",
-          "Skill training centers",
-          "Language schools"
+        businessOutcomes: [
+          "Personalize learning for each student effectively",
+          "Track batch and individual performance in real-time",
+          "Identify weak areas quickly for targeted focus",
+          "Optimize teaching resources and faculty time",
+          "Improve exam success rates by 35%"
         ]
       },
       {
@@ -2549,35 +2986,54 @@ const industries: Industry[] = [
         name: "Online Learning Platforms (EdTech)",
         description: "E-learning platforms with adaptive learning, content recommendations, and engagement analytics.",
         icon: "💻",
-        features: ["Adaptive Learning AI", "Content Recommendation", "Engagement Analytics", "Gamification"],
-        detailedDescription: "Build engaging e-learning experiences with AI that adapts to every learner. Our EdTech solutions recommend content, measure engagement, and create personalized learning paths that keep students coming back.",
-        benefits: [
-          "Increase course completion rates",
-          "Personalize learning journeys",
-          "Improve learner engagement",
-          "Optimize content effectiveness",
-          "Scale personalized education"
+        tagline: "AI-Powered EdTech & Online Learning Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help EdTech companies build AI-native platforms that adapt to every learner. From personalized content recommendations to engagement optimization, we design solutions that increase completion rates and learning outcomes. We build learner-first, AI-powered e-learning systems.",
+        whyChoose: {
+          intro: "EdTech platforms require personalization, engagement, and scalable learning experiences.",
+          points: [
+            "AI-first content recommendation and learning paths",
+            "Adaptive difficulty and pacing algorithms",
+            "Engagement tracking and intervention nudges",
+            "Gamification and motivation systems",
+            "Built for scale across global learner populations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled EdTech solutions, including:",
+          solutions: [
+            "Personalized content recommendation engines",
+            "Adaptive learning path generation platforms",
+            "Engagement tracking and nudge systems",
+            "Gamification and rewards platforms",
+            "Learning outcome prediction tools",
+            "AI tutoring and Q&A assistants",
+            "Learner analytics and insights dashboards"
+          ],
+          footer: "All solutions are cloud-native, mobile-first, and learning science-informed."
+        },
+        coreCapabilities: [
+          "Content recommendation engines and personalization",
+          "Adaptive difficulty and mastery algorithms",
+          "Engagement prediction and re-engagement models",
+          "Natural language Q&A and tutoring AI",
+          "Video content analysis and interaction",
+          "Learning path optimization",
+          "A/B testing for content effectiveness",
+          "Cross-platform learning continuity"
         ],
-        useCases: [
-          "Personalized content recommendations",
-          "Adaptive learning path generation",
-          "Engagement tracking and nudges",
-          "Gamification and rewards",
-          "Learning outcome prediction"
+        idealFor: [
+          "MOOC and online course platforms",
+          "Corporate e-learning providers",
+          "K-12 online learning platforms",
+          "Language learning apps and platforms",
+          "Skill development and upskilling platforms"
         ],
-        aiCapabilities: [
-          "Content recommendation engines",
-          "Adaptive difficulty algorithms",
-          "Engagement prediction models",
-          "Natural language Q&A",
-          "Video content analysis"
-        ],
-        targetAudience: [
-          "MOOC platforms",
-          "Corporate e-learning",
-          "K-12 online learning",
-          "Language learning apps",
-          "Skill development platforms"
+        businessOutcomes: [
+          "Increase course completion rates by 40%",
+          "Personalize learning journeys for every user",
+          "Improve learner engagement and satisfaction",
+          "Optimize content effectiveness with data",
+          "Scale personalized education globally"
         ]
       },
       {
@@ -2585,35 +3041,54 @@ const industries: Industry[] = [
         name: "Corporate Training & L&D",
         description: "Corporate learning with skill gap analysis, training automation, and compliance tracking.",
         icon: "👔",
-        features: ["Skill Gap Analysis AI", "Training Automation", "Compliance Tracking", "Performance Metrics"],
-        detailedDescription: "Upskill your workforce with AI that identifies gaps and delivers targeted training. Our corporate L&D solutions analyze skills, automate compliance training, and measure learning impact on performance.",
-        benefits: [
-          "Identify skill gaps accurately",
-          "Automate compliance training",
-          "Measure training effectiveness",
-          "Personalize employee development",
-          "Reduce training costs"
-        ],
-        useCases: [
-          "Skills assessment and gap analysis",
-          "Personalized learning paths",
-          "Compliance training automation",
-          "Training effectiveness measurement",
-          "Career development planning"
-        ],
-        aiCapabilities: [
-          "Skills inference algorithms",
+        tagline: "AI-Powered Corporate Learning & Development Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help corporate L&D teams build AI-native platforms that upskill workforces effectively. From skill gap analysis to compliance automation, we design solutions that deliver targeted training with measurable impact. We build impact-first, AI-powered corporate learning systems.",
+        whyChoose: {
+          intro: "Corporate L&D requires skill intelligence, compliance assurance, and training effectiveness.",
+          points: [
+            "AI-first skills assessment and gap analysis",
+            "Personalized learning path recommendation",
+            "Compliance training automation and tracking",
+            "Training effectiveness measurement and ROI",
+            "Built for scale across global workforces"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled corporate L&D solutions, including:",
+          solutions: [
+            "Skills assessment and gap analysis platforms",
+            "Personalized learning path systems",
+            "Compliance training automation tools",
+            "Training effectiveness measurement dashboards",
+            "Career development planning platforms",
+            "Content curation and recommendation engines",
+            "Manager and leadership development tools"
+          ],
+          footer: "All solutions are enterprise-grade, HRIS-integrated, and compliance-ready."
+        },
+        coreCapabilities: [
+          "Skills inference and gap analysis algorithms",
           "Training recommendation engines",
-          "Compliance tracking AI",
-          "Performance correlation models",
-          "Content curation AI"
+          "Compliance tracking and certification AI",
+          "Performance correlation and impact models",
+          "Content curation and discovery AI",
+          "Learning engagement and completion prediction",
+          "Career pathing and succession planning",
+          "Multi-format content delivery optimization"
         ],
-        targetAudience: [
-          "Corporate L&D teams",
-          "HR departments",
-          "Training companies",
-          "LMS vendors",
+        idealFor: [
+          "Corporate L&D and training teams",
+          "HR departments and talent development",
+          "Training and consulting companies",
+          "LMS vendors and learning platforms",
           "Professional development providers"
+        ],
+        businessOutcomes: [
+          "Identify skill gaps accurately with AI analysis",
+          "Automate compliance training and reduce risk",
+          "Measure training effectiveness and ROI",
+          "Personalize employee development paths",
+          "Reduce training costs by 35%"
         ]
       },
       {
@@ -2621,35 +3096,54 @@ const industries: Industry[] = [
         name: "Skill Development & Vocational Training",
         description: "Vocational training with hands-on skill tracking, job placement, and industry certification.",
         icon: "🛠️",
-        features: ["Skill Tracking AI", "Job Placement", "Certification Management", "Industry Partnerships"],
-        detailedDescription: "Build career-ready workforce with AI that tracks practical skills and connects to jobs. Our vocational solutions track hands-on learning, manage certifications, and facilitate job placement.",
-        benefits: [
-          "Track practical skill development",
-          "Connect graduates to jobs",
-          "Manage industry certifications",
-          "Align training with employer needs",
-          "Improve employment outcomes"
-        ],
-        useCases: [
-          "Hands-on skill assessment",
-          "Job matching and placement",
-          "Certification tracking and renewal",
-          "Employer requirement matching",
-          "Apprenticeship management"
-        ],
-        aiCapabilities: [
+        tagline: "AI-Powered Vocational & Skill Development Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help vocational training organizations build AI-native platforms that create career-ready graduates. From hands-on skill assessment to job placement, we design solutions that align training with employer needs. We build employment-first, AI-powered skill development systems.",
+        whyChoose: {
+          intro: "Vocational training requires practical skill validation, employer alignment, and placement success.",
+          points: [
+            "AI-first hands-on skill assessment and tracking",
+            "Job matching and placement optimization",
+            "Certification tracking and verification",
+            "Employer requirement and demand matching",
+            "Built for scale across programs and industries"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled vocational training solutions, including:",
+          solutions: [
+            "Hands-on skill assessment platforms",
+            "Job matching and placement systems",
+            "Certification tracking and renewal tools",
+            "Employer requirement matching dashboards",
+            "Apprenticeship management platforms",
+            "Industry partnership portals",
+            "Graduate outcome tracking systems"
+          ],
+          footer: "All solutions are industry-aligned, employer-connected, and outcome-focused."
+        },
+        coreCapabilities: [
           "Practical skill assessment AI",
-          "Job matching algorithms",
-          "Certification verification",
-          "Employer demand prediction",
-          "Career path recommendation"
+          "Job matching and recommendation algorithms",
+          "Certification verification and tracking",
+          "Employer demand prediction and alignment",
+          "Career path recommendation and guidance",
+          "Apprenticeship progress monitoring",
+          "Industry competency mapping",
+          "Graduate employment outcome analytics"
         ],
-        targetAudience: [
-          "Vocational schools",
-          "Trade schools",
+        idealFor: [
+          "Vocational and trade schools",
+          "Technical and career colleges",
           "Workforce development programs",
-          "Apprenticeship programs",
-          "Skill development organizations"
+          "Apprenticeship and internship programs",
+          "Government skill development initiatives"
+        ],
+        businessOutcomes: [
+          "Track practical skill development accurately",
+          "Connect graduates to jobs 50% faster",
+          "Manage industry certifications efficiently",
+          "Align training with employer needs precisely",
+          "Improve employment outcomes by 40%"
         ]
       },
       {
@@ -2657,35 +3151,54 @@ const industries: Industry[] = [
         name: "Competitive Exam Preparation",
         description: "Exam preparation with practice tests, performance analysis, and personalized study paths.",
         icon: "📝",
-        features: ["Practice Test AI", "Performance Analysis", "Study Path Generation", "Weak Area Detection"],
-        detailedDescription: "Maximize exam success with AI that creates personalized preparation strategies. Our exam prep solutions generate practice tests, analyze performance patterns, and focus study time on weak areas.",
-        benefits: [
-          "Identify and address weak areas",
-          "Generate targeted practice tests",
-          "Track preparation progress",
-          "Predict exam performance",
-          "Optimize study time"
+        tagline: "AI-Powered Competitive Exam Success Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help exam preparation companies build AI-native platforms that maximize student success. From adaptive practice tests to personalized study strategies, we design solutions that optimize preparation time and predict outcomes. We build success-first, AI-powered exam prep systems.",
+        whyChoose: {
+          intro: "Exam preparation requires adaptive testing, performance insights, and focused study strategies.",
+          points: [
+            "AI-first adaptive practice test generation",
+            "Performance pattern analysis and insights",
+            "Weak area identification and focused practice",
+            "Study schedule optimization for each student",
+            "Built for scale across exam types and students"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled exam preparation solutions, including:",
+          solutions: [
+            "Adaptive practice test generation platforms",
+            "Performance pattern analysis dashboards",
+            "Weak area identification and focus tools",
+            "Study schedule optimization systems",
+            "Score prediction and tracking platforms",
+            "Question bank management and analytics",
+            "Peer comparison and motivation tools"
+          ],
+          footer: "All solutions are mobile-first, analytics-driven, and exam-pattern aligned."
+        },
+        coreCapabilities: [
+          "Adaptive testing algorithms for personalization",
+          "Performance analytics and pattern recognition AI",
+          "Study path optimization based on goals",
+          "Question difficulty calibration and IRT models",
+          "Time management analysis and optimization",
+          "Score prediction and readiness assessment",
+          "Exam pattern analysis and alignment",
+          "Multi-exam and multi-subject support"
         ],
-        useCases: [
-          "Adaptive practice test generation",
-          "Performance pattern analysis",
-          "Weak area identification and focus",
-          "Study schedule optimization",
-          "Score prediction and tracking"
+        idealFor: [
+          "Test preparation companies and platforms",
+          "Exam coaching centers and institutes",
+          "Self-study and practice platforms",
+          "Professional certification prep providers",
+          "Academic competition prep organizations"
         ],
-        aiCapabilities: [
-          "Adaptive testing algorithms",
-          "Performance analytics AI",
-          "Study path optimization",
-          "Question difficulty calibration",
-          "Time management analysis"
-        ],
-        targetAudience: [
-          "Test prep companies",
-          "Exam coaching centers",
-          "Self-study platforms",
-          "Professional certification prep",
-          "Academic competition prep"
+        businessOutcomes: [
+          "Identify and address weak areas precisely",
+          "Generate targeted practice tests automatically",
+          "Track preparation progress with AI insights",
+          "Predict exam performance accurately",
+          "Optimize study time for maximum results"
         ]
       },
       {
@@ -2693,35 +3206,54 @@ const industries: Industry[] = [
         name: "Test & Certification Providers",
         description: "Testing organizations with exam administration, proctoring, and certification management.",
         icon: "✅",
-        features: ["Exam Administration AI", "AI Proctoring", "Certification Tracking", "Credential Verification"],
-        detailedDescription: "Deliver secure, scalable assessments with AI-powered exam administration. Our testing solutions provide intelligent proctoring, manage certifications, and enable instant credential verification.",
-        benefits: [
-          "Scale exam delivery securely",
-          "Detect cheating effectively",
-          "Manage certifications efficiently",
-          "Enable instant verification",
-          "Reduce administration costs"
+        tagline: "AI-Powered Assessment & Certification Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help testing and certification organizations build AI-native platforms that deliver secure, scalable assessments. From intelligent proctoring to instant credential verification, we design solutions that maintain integrity while reducing costs. We build integrity-first, AI-powered testing systems.",
+        whyChoose: {
+          intro: "Testing organizations require exam security, scalable delivery, and credential management.",
+          points: [
+            "AI-first remote proctoring and cheating detection",
+            "Exam scheduling and scalable delivery systems",
+            "Certification issuance and lifecycle management",
+            "Instant credential verification APIs",
+            "Built for scale across global test-taker populations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled testing and certification solutions, including:",
+          solutions: [
+            "Remote exam proctoring platforms",
+            "Exam scheduling and delivery systems",
+            "Certification issuance and tracking tools",
+            "Credential verification API services",
+            "Cheating detection and prevention systems",
+            "Exam item analysis and optimization",
+            "Test-taker management dashboards"
+          ],
+          footer: "All solutions are secure, scalable, and assessment standards compliant."
+        },
+        coreCapabilities: [
+          "AI-powered proctoring and monitoring",
+          "Anomaly detection for cheating and fraud",
+          "Exam item analysis and psychometrics AI",
+          "Credential verification and blockchain options",
+          "Scheduling optimization for test centers",
+          "Adaptive testing and CAT algorithms",
+          "Multi-modal assessment delivery",
+          "Global test center network management"
         ],
-        useCases: [
-          "Remote exam proctoring",
-          "Exam scheduling and delivery",
-          "Certification issuance and tracking",
-          "Credential verification APIs",
-          "Cheating detection and prevention"
-        ],
-        aiCapabilities: [
-          "AI-powered proctoring",
-          "Anomaly detection for cheating",
-          "Exam item analysis",
-          "Credential verification AI",
-          "Scheduling optimization"
-        ],
-        targetAudience: [
-          "Testing organizations",
-          "Certification bodies",
-          "Professional associations",
+        idealFor: [
+          "Testing organizations and assessment providers",
+          "Certification and credentialing bodies",
+          "Professional associations with certifications",
           "Educational testing services",
-          "Credentialing organizations"
+          "Government and regulatory exam providers"
+        ],
+        businessOutcomes: [
+          "Scale exam delivery securely worldwide",
+          "Detect cheating effectively with AI",
+          "Manage certifications efficiently at scale",
+          "Enable instant credential verification",
+          "Reduce administration costs by 50%"
         ]
       },
       {
@@ -2729,35 +3261,54 @@ const industries: Industry[] = [
         name: "Education Content Publishers",
         description: "Educational publishers with content creation, distribution, and usage analytics.",
         icon: "📚",
-        features: ["Content Creation AI", "Distribution Analytics", "Rights Management", "Personalization"],
-        detailedDescription: "Transform educational publishing with AI that creates, distributes, and analyzes content. Our solutions help publishers generate content, track usage, and personalize learning materials at scale.",
-        benefits: [
-          "Accelerate content creation",
-          "Track content effectiveness",
-          "Manage rights efficiently",
-          "Personalize for learners",
-          "Optimize distribution channels"
+        tagline: "AI-Powered Educational Publishing Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help educational publishers build AI-native platforms that transform content creation and distribution. From AI-assisted authoring to personalized content delivery, we design solutions that increase engagement and effectiveness. We build content-first, AI-powered publishing systems.",
+        whyChoose: {
+          intro: "Educational publishers require content efficiency, distribution intelligence, and learner engagement.",
+          points: [
+            "AI-first content creation and authoring assistance",
+            "Content usage analytics and effectiveness tracking",
+            "Rights and licensing management automation",
+            "Adaptive content personalization for learners",
+            "Built for scale across formats and markets"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled educational publishing solutions, including:",
+          solutions: [
+            "AI-assisted content creation platforms",
+            "Content usage analytics dashboards",
+            "Rights and licensing management systems",
+            "Adaptive content personalization tools",
+            "Market demand analysis platforms",
+            "Multi-format content delivery systems",
+            "Author and contributor management tools"
+          ],
+          footer: "All solutions are DRM-capable, multi-format, and education standards aligned."
+        },
+        coreCapabilities: [
+          "Content generation and authoring AI",
+          "Usage pattern analytics and insights",
+          "Rights matching and licensing algorithms",
+          "Personalization engines for adaptive content",
+          "Market prediction and demand models",
+          "Multi-format publishing automation",
+          "Accessibility and localization AI",
+          "Content effectiveness and learning outcome analysis"
         ],
-        useCases: [
-          "AI-assisted content creation",
-          "Content usage analytics",
-          "Rights and licensing management",
-          "Adaptive content personalization",
-          "Market demand analysis"
-        ],
-        aiCapabilities: [
-          "Content generation AI",
-          "Usage pattern analytics",
-          "Rights matching algorithms",
-          "Personalization engines",
-          "Market prediction models"
-        ],
-        targetAudience: [
-          "Textbook publishers",
-          "Digital content providers",
-          "Assessment publishers",
-          "Educational media companies",
+        idealFor: [
+          "Textbook and educational publishers",
+          "Digital content and courseware providers",
+          "Assessment and test item publishers",
+          "Educational media and multimedia companies",
           "Open educational resource providers"
+        ],
+        businessOutcomes: [
+          "Accelerate content creation by 40%",
+          "Track content effectiveness with analytics",
+          "Manage rights efficiently and reduce risk",
+          "Personalize content for individual learners",
+          "Optimize distribution channels and revenue"
         ]
       },
       {
@@ -2765,35 +3316,54 @@ const industries: Industry[] = [
         name: "Learning Management SaaS Providers",
         description: "LMS platforms with course management, student tracking, and integration capabilities.",
         icon: "🖥️",
-        features: ["Course Management AI", "Student Tracking", "Integration APIs", "Analytics Dashboard"],
-        detailedDescription: "Build smarter LMS platforms with AI that enhances learning management. Our solutions provide intelligent course management, student tracking, and analytics that help educators make data-driven decisions.",
-        benefits: [
-          "Improve course completion rates",
-          "Track student progress effectively",
-          "Integrate with existing tools",
-          "Provide actionable analytics",
-          "Differentiate with AI features"
+        tagline: "AI-Powered Learning Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help LMS providers build AI-native platforms that differentiate with intelligent features. From course optimization to predictive analytics, we design solutions that help educators make data-driven decisions. We build educator-first, AI-powered learning management systems.",
+        whyChoose: {
+          intro: "LMS providers require intelligent course management, learner insights, and integration capabilities.",
+          points: [
+            "AI-first course organization and optimization",
+            "Automated progress tracking and prediction",
+            "Seamless third-party tool integration",
+            "Learning analytics and actionable insights",
+            "Built for scale across institutions and enterprises"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled LMS solutions, including:",
+          solutions: [
+            "Intelligent course organization platforms",
+            "Automated progress tracking systems",
+            "Third-party tool integration frameworks",
+            "Learning analytics dashboards",
+            "Content recommendation within LMS",
+            "Instructor productivity tools",
+            "API and integration development platforms"
+          ],
+          footer: "All solutions are LTI-compliant, API-first, and education standards ready."
+        },
+        coreCapabilities: [
+          "Course optimization and sequencing algorithms",
+          "Progress prediction and early alert models",
+          "Integration AI for tool and system mapping",
+          "Analytics and reporting automation",
+          "Recommendation engines for content and paths",
+          "Instructor workload optimization",
+          "Multi-tenant and white-label capabilities",
+          "xAPI and learning record store integration"
         ],
-        useCases: [
-          "Intelligent course organization",
-          "Automated progress tracking",
-          "Third-party tool integration",
-          "Learning analytics dashboards",
-          "Content recommendation within LMS"
-        ],
-        aiCapabilities: [
-          "Course optimization algorithms",
-          "Progress prediction models",
-          "Integration AI for mapping",
-          "Analytics and reporting AI",
-          "Recommendation engines"
-        ],
-        targetAudience: [
-          "LMS vendors",
-          "Corporate learning platforms",
-          "Academic LMS providers",
-          "Training management systems",
+        idealFor: [
+          "LMS vendors and platform providers",
+          "Corporate learning platform companies",
+          "Academic LMS and SIS providers",
+          "Training management system vendors",
           "EdTech infrastructure companies"
+        ],
+        businessOutcomes: [
+          "Improve course completion rates by 30%",
+          "Track student progress effectively with AI",
+          "Integrate seamlessly with existing tools",
+          "Provide actionable analytics for educators",
+          "Differentiate with AI-powered features"
         ]
       },
     ],
@@ -2810,35 +3380,54 @@ const industries: Industry[] = [
         name: "Retail Stores & Showrooms",
         description: "Local retail stores with inventory management, customer engagement, and sales tracking.",
         icon: "🏬",
-        features: ["Inventory Management AI", "Customer Engagement", "Sales Tracking", "Loyalty Programs"],
-        detailedDescription: "Compete with big retailers using AI that understands local customers. Our retail solutions manage inventory, engage customers personally, and track sales to help local stores thrive.",
-        benefits: [
-          "Never run out of popular items",
-          "Know your customers personally",
-          "Track what sells and when",
-          "Build customer loyalty",
-          "Compete with online retailers"
+        tagline: "AI-Powered Local Retail & Showroom Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help local retail stores and showrooms build AI-native platforms that compete with big retailers. From smart inventory management to personalized customer engagement, we design solutions that help local businesses thrive. We build customer-first, AI-powered local retail systems.",
+        whyChoose: {
+          intro: "Local retail requires inventory optimization, customer personalization, and sales intelligence.",
+          points: [
+            "AI-first demand forecasting and inventory management",
+            "Personalized customer outreach and engagement",
+            "Sales trend analysis and performance tracking",
+            "Loyalty program optimization and retention",
+            "Built for scale across store locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled local retail solutions, including:",
+          solutions: [
+            "Smart inventory reordering platforms",
+            "Personalized customer outreach systems",
+            "Sales trend analysis dashboards",
+            "Loyalty program management tools",
+            "Staff scheduling optimization platforms",
+            "Customer preference tracking systems",
+            "Multi-location retail management"
+          ],
+          footer: "All solutions are affordable, easy to use, and local business optimized."
+        },
+        coreCapabilities: [
+          "Demand forecasting for local markets",
+          "Customer preference learning and personalization",
+          "Sales pattern analysis and prediction",
+          "Loyalty optimization and retention AI",
+          "Natural language for customer inquiries",
+          "Staff scheduling and shift optimization",
+          "Inventory alerts and reorder automation",
+          "Local competitor and market analysis"
         ],
-        useCases: [
-          "Smart inventory reordering",
-          "Personalized customer outreach",
-          "Sales trend analysis",
-          "Loyalty program management",
-          "Staff scheduling optimization"
+        idealFor: [
+          "Boutique stores and specialty shops",
+          "Showroom businesses and galleries",
+          "Gift shops and novelty stores",
+          "Local retail chains",
+          "Family-owned retail businesses"
         ],
-        aiCapabilities: [
-          "Demand forecasting models",
-          "Customer preference learning",
-          "Sales pattern analysis",
-          "Loyalty optimization AI",
-          "Natural language for inquiries"
-        ],
-        targetAudience: [
-          "Boutique stores",
-          "Specialty retailers",
-          "Showroom businesses",
-          "Gift shops",
-          "Local chains"
+        businessOutcomes: [
+          "Never run out of popular items again",
+          "Know your customers personally with AI insights",
+          "Track what sells and when accurately",
+          "Build lasting customer loyalty",
+          "Compete effectively with online retailers"
         ]
       },
       {
@@ -2846,35 +3435,54 @@ const industries: Industry[] = [
         name: "Restaurants, Cafes & Food Outlets",
         description: "Food businesses with table management, order automation, and customer feedback analysis.",
         icon: "🍽️",
-        features: ["Table Management AI", "Order Automation", "Menu Optimization", "Review Analysis"],
-        detailedDescription: "Delight diners with AI that streamlines restaurant operations. Our food service solutions manage reservations, automate ordering, and analyze feedback to keep customers coming back.",
-        benefits: [
-          "Reduce wait times",
-          "Automate order taking",
-          "Optimize your menu",
-          "Respond to reviews quickly",
-          "Increase table turnover"
+        tagline: "AI-Powered Restaurant & Food Service Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help restaurants, cafes, and food outlets build AI-native platforms that delight diners and optimize operations. From smart reservations to menu optimization, we design solutions that keep customers coming back. We build hospitality-first, AI-powered food service systems.",
+        whyChoose: {
+          intro: "Food businesses require operational efficiency, customer satisfaction, and menu intelligence.",
+          points: [
+            "AI-first reservation management and table optimization",
+            "Order automation and kitchen workflow efficiency",
+            "Menu item performance analysis and pricing",
+            "Review monitoring and sentiment analysis",
+            "Built for scale across restaurant locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled restaurant solutions, including:",
+          solutions: [
+            "Smart reservation management platforms",
+            "Order taking and processing automation",
+            "Menu item performance dashboards",
+            "Review monitoring and response tools",
+            "Kitchen workflow optimization systems",
+            "Customer engagement and loyalty platforms",
+            "Multi-location restaurant management"
+          ],
+          footer: "All solutions are POS-integrated, mobile-first, and restaurant-optimized."
+        },
+        coreCapabilities: [
+          "Reservation optimization and table management",
+          "Voice and digital ordering AI",
+          "Menu analytics and pricing optimization",
+          "Sentiment analysis for reviews and feedback",
+          "Demand prediction and prep planning",
+          "Staff scheduling and labor optimization",
+          "Inventory tracking and waste reduction",
+          "Customer preference and dietary tracking"
         ],
-        useCases: [
-          "Smart reservation management",
-          "Order taking and processing",
-          "Menu item performance analysis",
-          "Review monitoring and response",
-          "Kitchen workflow optimization"
-        ],
-        aiCapabilities: [
-          "Reservation optimization",
-          "Voice ordering AI",
-          "Menu analytics",
-          "Sentiment analysis for reviews",
-          "Demand prediction"
-        ],
-        targetAudience: [
-          "Restaurants",
+        idealFor: [
+          "Full-service restaurants and bistros",
           "Cafes and coffee shops",
-          "Fast food outlets",
-          "Food trucks",
-          "Cloud kitchens"
+          "Fast food and quick-service outlets",
+          "Food trucks and mobile vendors",
+          "Cloud kitchens and delivery-only restaurants"
+        ],
+        businessOutcomes: [
+          "Reduce customer wait times by 40%",
+          "Automate order taking and reduce errors",
+          "Optimize menu with data-driven insights",
+          "Respond to reviews quickly and professionally",
+          "Increase table turnover and revenue"
         ]
       },
       {
@@ -2882,35 +3490,54 @@ const industries: Industry[] = [
         name: "Salons, Spas & Personal Care",
         description: "Beauty businesses with appointment booking, staff scheduling, and client management.",
         icon: "💇",
-        features: ["Appointment AI", "Staff Scheduling", "Client Management", "Service Recommendations"],
-        detailedDescription: "Elevate client experiences with AI that manages your beauty business effortlessly. Our salon solutions book appointments, schedule staff, and remember every client's preferences.",
-        benefits: [
+        tagline: "AI-Powered Salon & Spa Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help salons, spas, and personal care businesses build AI-native platforms that elevate client experiences. From intelligent booking to personalized service recommendations, we design solutions that build lasting client relationships. We build client-first, AI-powered beauty business systems.",
+        whyChoose: {
+          intro: "Beauty businesses require booking efficiency, client personalization, and service optimization.",
+          points: [
+            "AI-first online booking and slot optimization",
+            "Staff scheduling and stylist matching",
+            "Client history and preference tracking",
+            "Service package recommendations and upselling",
+            "Built for scale across salon locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled salon and spa solutions, including:",
+          solutions: [
+            "Online appointment booking platforms",
+            "Staff schedule optimization tools",
+            "Client history and preference systems",
+            "Service package recommendation engines",
+            "No-show prediction and prevention tools",
+            "Client communication automation",
+            "Multi-location salon management"
+          ],
+          footer: "All solutions are mobile-first, booking-integrated, and beauty business optimized."
+        },
+        coreCapabilities: [
+          "Booking optimization and slot filling algorithms",
+          "Client preference learning and personalization",
+          "Schedule optimization for staff and services",
+          "Recommendation engines for services and products",
+          "Communication automation for reminders and follow-ups",
+          "No-show prediction and intervention",
+          "Revenue optimization and pricing intelligence",
+          "Loyalty program and retention tracking"
+        ],
+        idealFor: [
+          "Hair salons and styling studios",
+          "Nail salons and beauty bars",
+          "Day spas and wellness centers",
+          "Barbershops and grooming studios",
+          "Med spas and aesthetic clinics"
+        ],
+        businessOutcomes: [
           "Fill appointment slots automatically",
-          "Match clients with right stylists",
-          "Remember client preferences",
-          "Reduce no-shows",
-          "Upsell services naturally"
-        ],
-        useCases: [
-          "Online appointment booking",
-          "Staff schedule optimization",
-          "Client history and preferences",
-          "Service package recommendations",
-          "No-show prediction and prevention"
-        ],
-        aiCapabilities: [
-          "Booking optimization algorithms",
-          "Client preference learning",
-          "Schedule optimization",
-          "Recommendation engines",
-          "Communication automation"
-        ],
-        targetAudience: [
-          "Hair salons",
-          "Nail salons",
-          "Day spas",
-          "Barbershops",
-          "Beauty clinics"
+          "Match clients with the right stylists",
+          "Remember every client's preferences",
+          "Reduce no-shows by 50%",
+          "Upsell services naturally with AI"
         ]
       },
       {
@@ -2918,35 +3545,54 @@ const industries: Industry[] = [
         name: "Gyms, Yoga & Fitness Studios",
         description: "Fitness centers with membership management, class scheduling, and member engagement.",
         icon: "🏋️",
-        features: ["Membership AI", "Class Scheduling", "Member Engagement", "Workout Recommendations"],
-        detailedDescription: "Build thriving fitness communities with AI that keeps members engaged. Our fitness solutions manage memberships, schedule classes, and personalize workouts to reduce churn and increase satisfaction.",
-        benefits: [
-          "Reduce member churn",
-          "Fill classes efficiently",
-          "Personalize fitness journeys",
-          "Engage inactive members",
-          "Grow your community"
+        tagline: "AI-Powered Fitness Studio Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help gyms, yoga studios, and fitness centers build AI-native platforms that build thriving communities. From membership management to personalized workout recommendations, we design solutions that reduce churn and increase satisfaction. We build community-first, AI-powered fitness systems.",
+        whyChoose: {
+          intro: "Fitness businesses require member retention, class optimization, and engagement.",
+          points: [
+            "AI-first membership management and renewal prediction",
+            "Class scheduling and demand-based capacity planning",
+            "Member workout personalization and progress tracking",
+            "Re-engagement campaigns for inactive members",
+            "Built for scale across studio locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled fitness studio solutions, including:",
+          solutions: [
+            "Membership management and renewal platforms",
+            "Class scheduling and waitlist systems",
+            "Member workout personalization tools",
+            "Re-engagement campaign automation",
+            "Trainer scheduling and management platforms",
+            "Member progress tracking dashboards",
+            "Multi-location fitness management"
+          ],
+          footer: "All solutions are member-app integrated, mobile-first, and fitness-optimized."
+        },
+        coreCapabilities: [
+          "Churn prediction and prevention models",
+          "Class demand forecasting and scheduling",
+          "Personalization algorithms for workouts",
+          "Engagement scoring and intervention AI",
+          "Communication automation for members",
+          "Trainer matching and scheduling optimization",
+          "Progress tracking and goal setting",
+          "Revenue optimization and pricing"
         ],
-        useCases: [
-          "Membership management and renewals",
-          "Class scheduling and waitlists",
-          "Member workout personalization",
-          "Re-engagement campaigns",
-          "Trainer scheduling"
-        ],
-        aiCapabilities: [
-          "Churn prediction models",
-          "Class demand forecasting",
-          "Personalization algorithms",
-          "Engagement scoring",
-          "Communication automation"
-        ],
-        targetAudience: [
+        idealFor: [
           "Gyms and fitness centers",
-          "Yoga studios",
-          "CrossFit boxes",
-          "Pilates studios",
-          "Martial arts studios"
+          "Yoga and pilates studios",
+          "CrossFit boxes and functional fitness",
+          "Martial arts studios and dojos",
+          "Dance and movement studios"
+        ],
+        businessOutcomes: [
+          "Reduce member churn by 35%",
+          "Fill classes efficiently with AI scheduling",
+          "Personalize fitness journeys for each member",
+          "Re-engage inactive members proactively",
+          "Grow your fitness community sustainably"
         ]
       },
       {
@@ -2954,35 +3600,54 @@ const industries: Industry[] = [
         name: "Clinics & Local Healthcare Centers",
         description: "Local clinics with patient scheduling, records management, and follow-up automation.",
         icon: "⚕️",
-        features: ["Patient Scheduling AI", "Records Management", "Follow-up Automation", "Prescription Management"],
-        detailedDescription: "Provide better patient care with AI that handles clinic administration. Our local healthcare solutions schedule patients, manage records, and automate follow-ups so you can focus on care.",
-        benefits: [
-          "Reduce scheduling headaches",
-          "Keep patient records organized",
-          "Never miss a follow-up",
-          "Improve patient satisfaction",
-          "Streamline prescriptions"
+        tagline: "AI-Powered Local Clinic Management Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help local clinics and healthcare centers build AI-native platforms that improve patient care while reducing administrative burden. From intelligent scheduling to automated follow-ups, we design solutions that let providers focus on what matters. We build care-first, AI-powered clinic systems.",
+        whyChoose: {
+          intro: "Local clinics require scheduling efficiency, record organization, and patient engagement.",
+          points: [
+            "AI-first patient scheduling and optimization",
+            "Electronic health record organization and access",
+            "Automated appointment reminders and follow-ups",
+            "Prescription management and refill automation",
+            "Built for scale across clinic locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled local clinic solutions, including:",
+          solutions: [
+            "Patient appointment scheduling platforms",
+            "Electronic health record management systems",
+            "Automated appointment reminder tools",
+            "Prescription refill automation platforms",
+            "Patient communication portals",
+            "Clinical workflow optimization tools",
+            "Multi-location clinic management"
+          ],
+          footer: "All solutions are HIPAA-compliant, EHR-integrated, and clinic-optimized."
+        },
+        coreCapabilities: [
+          "Scheduling optimization and no-show prevention",
+          "Document management and record organization AI",
+          "Follow-up prediction and reminder automation",
+          "Communication automation for patients",
+          "Clinical workflow efficiency optimization",
+          "Prescription tracking and refill management",
+          "Patient satisfaction monitoring",
+          "Revenue cycle optimization"
         ],
-        useCases: [
-          "Patient appointment scheduling",
-          "Electronic health record management",
-          "Automated appointment reminders",
-          "Prescription refill automation",
-          "Patient communication"
+        idealFor: [
+          "Family medicine practices",
+          "Dental clinics and offices",
+          "Specialist and specialty clinics",
+          "Urgent care and walk-in centers",
+          "Physical therapy and rehab clinics"
         ],
-        aiCapabilities: [
-          "Scheduling optimization",
-          "Document management AI",
-          "Follow-up prediction models",
-          "Communication automation",
-          "Clinical workflow AI"
-        ],
-        targetAudience: [
-          "Family practices",
-          "Dental clinics",
-          "Specialist clinics",
-          "Urgent care centers",
-          "Physical therapy clinics"
+        businessOutcomes: [
+          "Reduce scheduling headaches with AI optimization",
+          "Keep patient records organized and accessible",
+          "Never miss a patient follow-up",
+          "Improve patient satisfaction scores",
+          "Streamline prescription management"
         ]
       },
       {
@@ -2990,35 +3655,54 @@ const industries: Industry[] = [
         name: "Real Estate Agencies",
         description: "Local real estate offices with lead management, property listings, and client communication.",
         icon: "🏠",
-        features: ["Lead Management AI", "Property Listings", "Client Communication", "Market Insights"],
-        detailedDescription: "Close more deals with AI that never lets a lead go cold. Our local real estate solutions manage leads, market properties, and keep clients engaged throughout their buying journey.",
-        benefits: [
-          "Respond to leads instantly",
-          "Market properties effectively",
-          "Stay in touch with clients",
-          "Understand your local market",
-          "Win more listings"
+        tagline: "AI-Powered Local Real Estate Agency Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help local real estate agencies build AI-native platforms that close more deals. From intelligent lead management to automated client communication, we design solutions that never let a lead go cold. We build agent-first, AI-powered local real estate systems.",
+        whyChoose: {
+          intro: "Local real estate agencies require lead management, property marketing, and client engagement.",
+          points: [
+            "AI-first lead capture and nurturing automation",
+            "Property listing optimization and marketing",
+            "Automated client follow-ups and communication",
+            "Local market analysis and pricing insights",
+            "Built for scale across agents and listings"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled local real estate solutions, including:",
+          solutions: [
+            "Lead capture and nurturing platforms",
+            "Property listing optimization tools",
+            "Automated client follow-up systems",
+            "Local market analysis dashboards",
+            "Open house management platforms",
+            "Agent productivity and CRM tools",
+            "Team performance tracking"
+          ],
+          footer: "All solutions are MLS-integrated, mobile-first, and real estate optimized."
+        },
+        coreCapabilities: [
+          "Lead scoring and prioritization algorithms",
+          "Listing optimization and marketing AI",
+          "Communication automation for clients",
+          "Market analytics and pricing insights",
+          "Client matching and recommendation",
+          "Open house scheduling and follow-up",
+          "Transaction coordination automation",
+          "Agent performance tracking"
         ],
-        useCases: [
-          "Lead capture and nurturing",
-          "Property listing optimization",
-          "Automated client follow-ups",
-          "Local market analysis",
-          "Open house management"
+        idealFor: [
+          "Independent real estate agents",
+          "Small and boutique brokerages",
+          "Property management offices",
+          "Real estate teams and groups",
+          "New and growing agents"
         ],
-        aiCapabilities: [
-          "Lead scoring algorithms",
-          "Listing optimization AI",
-          "Communication automation",
-          "Market analytics",
-          "Client matching"
-        ],
-        targetAudience: [
-          "Real estate agents",
-          "Small brokerages",
-          "Property managers",
-          "Real estate teams",
-          "Independent realtors"
+        businessOutcomes: [
+          "Respond to leads instantly with AI",
+          "Market properties more effectively",
+          "Stay in touch with clients automatically",
+          "Understand your local market deeply",
+          "Win more listings and close more deals"
         ]
       },
       {
@@ -3026,35 +3710,54 @@ const industries: Industry[] = [
         name: "Automobile Services & Workshops",
         description: "Auto service centers with appointment booking, service tracking, and customer communication.",
         icon: "🚗",
-        features: ["Service Booking AI", "Job Tracking", "Parts Inventory", "Customer Updates"],
-        detailedDescription: "Run your auto shop efficiently with AI that tracks every job. Our automotive solutions book appointments, manage parts inventory, and keep customers informed about their vehicles.",
-        benefits: [
-          "Fill your service bays",
-          "Track jobs in real-time",
+        tagline: "AI-Powered Auto Service & Workshop Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help auto service centers and workshops build AI-native platforms that run efficiently. From appointment booking to job tracking, we design solutions that keep customers informed and coming back. We build service-first, AI-powered automotive systems.",
+        whyChoose: {
+          intro: "Auto service centers require appointment efficiency, job tracking, and customer communication.",
+          points: [
+            "AI-first service appointment booking and optimization",
+            "Real-time job status tracking and updates",
+            "Parts inventory management and prediction",
+            "Customer status updates and communication",
+            "Built for scale across service bays and locations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled auto service solutions, including:",
+          solutions: [
+            "Service appointment booking platforms",
+            "Job status tracking systems",
+            "Parts inventory management tools",
+            "Customer status update automation",
+            "Service history tracking databases",
+            "Technician scheduling and assignment",
+            "Multi-location workshop management"
+          ],
+          footer: "All solutions are shop-management integrated, mobile-first, and automotive-optimized."
+        },
+        coreCapabilities: [
+          "Appointment optimization and bay utilization",
+          "Job tracking and progress monitoring AI",
+          "Inventory prediction and reorder automation",
+          "Customer communication and update automation",
+          "Upsell recommendation based on vehicle history",
+          "Technician scheduling and skill matching",
+          "Warranty and recall tracking",
+          "Customer retention and service reminders"
+        ],
+        idealFor: [
+          "Auto repair shops and garages",
+          "Tire and oil change service centers",
+          "Body shops and collision repair",
+          "Car dealership service departments",
+          "Specialty and performance shops"
+        ],
+        businessOutcomes: [
+          "Fill service bays efficiently",
+          "Track jobs in real-time across technicians",
           "Never run out of common parts",
-          "Keep customers informed",
-          "Build repeat business"
-        ],
-        useCases: [
-          "Service appointment booking",
-          "Job status tracking",
-          "Parts inventory management",
-          "Customer status updates",
-          "Service history tracking"
-        ],
-        aiCapabilities: [
-          "Appointment optimization",
-          "Job tracking AI",
-          "Inventory prediction",
-          "Customer communication automation",
-          "Upsell recommendations"
-        ],
-        targetAudience: [
-          "Auto repair shops",
-          "Tire and oil change shops",
-          "Body shops",
-          "Car dealership service centers",
-          "Specialty repair shops"
+          "Keep customers informed automatically",
+          "Build repeat business and loyalty"
         ]
       },
       {
@@ -3062,35 +3765,54 @@ const industries: Industry[] = [
         name: "Travel Agents & Local Tourism",
         description: "Travel agencies with trip planning, booking management, and customer engagement.",
         icon: "✈️",
-        features: ["Trip Planning AI", "Booking Management", "Itinerary Generation", "Customer Engagement"],
-        detailedDescription: "Create unforgettable trips with AI that knows destinations inside out. Our travel solutions plan itineraries, manage bookings, and engage travelers before, during, and after their journeys.",
-        benefits: [
-          "Plan trips faster",
-          "Manage bookings easily",
-          "Create personalized itineraries",
-          "Engage travelers proactively",
-          "Build loyal customers"
+        tagline: "AI-Powered Travel Agency & Tourism Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help travel agents and local tourism businesses build AI-native platforms that create unforgettable trips. From personalized itinerary generation to booking management, we design solutions that engage travelers throughout their journey. We build traveler-first, AI-powered travel systems.",
+        whyChoose: {
+          intro: "Travel agencies require trip planning efficiency, booking management, and traveler engagement.",
+          points: [
+            "AI-first trip planning and itinerary generation",
+            "Booking consolidation and management automation",
+            "Personalized travel recommendations and preferences",
+            "Travel updates and proactive communication",
+            "Built for scale across clients and destinations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled travel agency solutions, including:",
+          solutions: [
+            "AI-assisted trip planning platforms",
+            "Booking consolidation and management systems",
+            "Personalized itinerary generation tools",
+            "Travel update and notification automation",
+            "Post-trip feedback collection platforms",
+            "Client preference and history tracking",
+            "Supplier and vendor management"
+          ],
+          footer: "All solutions are GDS-integrated, mobile-first, and travel-optimized."
+        },
+        coreCapabilities: [
+          "Destination knowledge and recommendation AI",
+          "Booking management and consolidation automation",
+          "Itinerary optimization and personalization",
+          "Traveler preference learning over time",
+          "Communication automation for all trip stages",
+          "Pricing and deal optimization",
+          "Supplier relationship management",
+          "Client loyalty and repeat booking"
         ],
-        useCases: [
-          "AI-assisted trip planning",
-          "Booking consolidation and management",
-          "Personalized itinerary generation",
-          "Travel updates and notifications",
-          "Post-trip feedback collection"
-        ],
-        aiCapabilities: [
-          "Destination knowledge AI",
-          "Booking management automation",
-          "Itinerary optimization",
-          "Traveler preference learning",
-          "Communication automation"
-        ],
-        targetAudience: [
-          "Travel agencies",
-          "Tour operators",
+        idealFor: [
+          "Travel agencies and travel advisors",
+          "Tour operators and package providers",
           "Destination management companies",
-          "Travel advisors",
-          "Local tour guides"
+          "Independent travel consultants",
+          "Local tour guides and experience providers"
+        ],
+        businessOutcomes: [
+          "Plan trips faster with AI assistance",
+          "Manage bookings easily across suppliers",
+          "Create personalized itineraries instantly",
+          "Engage travelers proactively throughout their trip",
+          "Build loyal customers who return"
         ]
       },
       {
@@ -3098,35 +3820,54 @@ const industries: Industry[] = [
         name: "Event Management & Services",
         description: "Event planners with vendor management, scheduling, and event coordination.",
         icon: "🎉",
-        features: ["Event Planning AI", "Vendor Management", "Scheduling", "Budget Tracking"],
-        detailedDescription: "Execute flawless events with AI that coordinates every detail. Our event solutions manage vendors, track budgets, and ensure every timeline is met for memorable experiences.",
-        benefits: [
-          "Plan events efficiently",
-          "Manage vendors seamlessly",
-          "Stay on budget",
-          "Never miss a deadline",
-          "Delight your clients"
+        tagline: "AI-Powered Event Planning & Coordination Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help event planners and management services build AI-native platforms that execute flawless events. From vendor coordination to budget tracking, we design solutions that ensure every detail is handled. We build experience-first, AI-powered event systems.",
+        whyChoose: {
+          intro: "Event management requires vendor coordination, budget control, and timeline precision.",
+          points: [
+            "AI-first event timeline management and tracking",
+            "Vendor coordination and performance monitoring",
+            "Budget monitoring with real-time alerts",
+            "Guest list management and communication",
+            "Built for scale across event types and sizes"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled event management solutions, including:",
+          solutions: [
+            "Event timeline management platforms",
+            "Vendor coordination and tracking systems",
+            "Budget monitoring and alert tools",
+            "Guest list management platforms",
+            "Day-of coordination support tools",
+            "Client communication automation",
+            "Post-event feedback and analytics"
+          ],
+          footer: "All solutions are mobile-first, collaboration-ready, and event-optimized."
+        },
+        coreCapabilities: [
+          "Planning optimization and timeline algorithms",
+          "Vendor matching and performance AI",
+          "Budget tracking and variance automation",
+          "Timeline prediction and risk models",
+          "Communication coordination across stakeholders",
+          "Guest management and RSVP tracking",
+          "Checklist and task automation",
+          "Post-event analytics and improvement"
         ],
-        useCases: [
-          "Event timeline management",
-          "Vendor coordination and tracking",
-          "Budget monitoring and alerts",
-          "Guest list management",
-          "Day-of coordination support"
-        ],
-        aiCapabilities: [
-          "Planning optimization algorithms",
-          "Vendor matching AI",
-          "Budget tracking automation",
-          "Timeline prediction models",
-          "Communication coordination"
-        ],
-        targetAudience: [
-          "Event planners",
-          "Wedding planners",
+        idealFor: [
+          "Event planning companies",
+          "Wedding planners and coordinators",
           "Corporate event managers",
-          "Party planners",
-          "Venue operators"
+          "Party and celebration planners",
+          "Venue operators and managers"
+        ],
+        businessOutcomes: [
+          "Plan events more efficiently with AI",
+          "Manage vendors seamlessly and professionally",
+          "Stay on budget with real-time tracking",
+          "Never miss a deadline or detail",
+          "Delight clients with flawless execution"
         ]
       },
       {
@@ -3134,35 +3875,54 @@ const industries: Industry[] = [
         name: "Professional Services (CA, Legal, Consultants)",
         description: "Professional service firms with client management, case tracking, and document automation.",
         icon: "⚖️",
-        features: ["Client Management AI", "Case Tracking", "Document Automation", "Billing Management"],
-        detailedDescription: "Serve clients better with AI that handles the paperwork. Our professional services solutions manage clients, track cases, and automate documents so you can focus on your expertise.",
-        benefits: [
-          "Manage client relationships",
-          "Track cases and matters",
-          "Automate document creation",
-          "Bill accurately and timely",
-          "Grow your practice"
+        tagline: "AI-Powered Professional Services Practice Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help professional service firms build AI-native platforms that serve clients better. From client management to document automation, we design solutions that handle the paperwork so professionals can focus on their expertise. We build expertise-first, AI-powered practice systems.",
+        whyChoose: {
+          intro: "Professional services require client management, case tracking, and billing accuracy.",
+          points: [
+            "AI-first client relationship management and tracking",
+            "Case and matter tracking with status updates",
+            "Document template automation and generation",
+            "Time tracking and accurate billing automation",
+            "Built for scale across practices and clients"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled professional services solutions, including:",
+          solutions: [
+            "Client relationship management platforms",
+            "Case and matter tracking systems",
+            "Document template automation tools",
+            "Time tracking and billing automation",
+            "Deadline management and alerting",
+            "Client communication portals",
+            "Practice analytics and reporting"
+          ],
+          footer: "All solutions are practice-management integrated, secure, and compliance-aware."
+        },
+        coreCapabilities: [
+          "Client management and relationship AI",
+          "Case analytics and status tracking",
+          "Document automation and template generation",
+          "Billing optimization and time tracking",
+          "Deadline prediction and management",
+          "Communication automation for clients",
+          "Knowledge management and precedent search",
+          "Practice performance analytics"
         ],
-        useCases: [
-          "Client relationship management",
-          "Case and matter tracking",
-          "Document template automation",
-          "Time tracking and billing",
-          "Deadline management"
+        idealFor: [
+          "Accounting firms and CPAs",
+          "Law practices and attorneys",
+          "Consulting firms and advisors",
+          "Tax preparation services",
+          "Financial advisors and planners"
         ],
-        aiCapabilities: [
-          "Client management AI",
-          "Case analytics",
-          "Document automation",
-          "Billing optimization",
-          "Deadline prediction"
-        ],
-        targetAudience: [
-          "Accounting firms",
-          "Law practices",
-          "Consulting firms",
-          "Tax preparers",
-          "Financial advisors"
+        businessOutcomes: [
+          "Manage client relationships more effectively",
+          "Track cases and matters with full visibility",
+          "Automate document creation and save time",
+          "Bill accurately and timely with tracking",
+          "Grow your practice with AI efficiency"
         ]
       },
     ],
