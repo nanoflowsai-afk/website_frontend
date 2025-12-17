@@ -18,12 +18,20 @@ type SubIndustry = {
   name: string;
   description: string;
   icon: string;
-  features: string[];
-  detailedDescription: string;
-  benefits: string[];
-  useCases: string[];
-  aiCapabilities: string[];
-  targetAudience: string[];
+  tagline: string;
+  overview: string;
+  whyChoose: {
+    intro: string;
+    points: string[];
+  };
+  whatWeBuild: {
+    intro: string;
+    solutions: string[];
+    footer: string;
+  };
+  coreCapabilities: string[];
+  idealFor: string[];
+  businessOutcomes: string[];
 };
 
 type Industry = {
@@ -47,36 +55,54 @@ const industries: Industry[] = [
         id: "fintech-startups",
         name: "FinTech Startups",
         description: "AI solutions for financial technology startups including payment processing, lending platforms, and investment tools.",
-        icon: "💳",
-        features: ["Payment Automation", "Fraud Detection", "Credit Scoring AI", "Investment Analytics"],
-        detailedDescription: "Transform your FinTech startup with cutting-edge AI solutions designed specifically for the financial technology sector. Our autonomous AI agents handle complex payment processing, detect fraudulent transactions in real-time, and provide intelligent credit scoring that adapts to market conditions.",
-        benefits: [
-          "Reduce payment processing errors by up to 95%",
-          "Detect fraud before it impacts your business",
-          "Automate credit decisions in seconds, not days",
-          "Scale financial operations without scaling headcount",
-          "Maintain regulatory compliance automatically"
+        icon: "🏦",
+        tagline: "AI-Powered, Secure & Scalable Financial SaaS Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help FinTech startups build AI-native financial platforms that are secure, compliant, scalable, and automation-driven. From digital payments and lending platforms to AI-driven finance tools, we design future-ready FinTech SaaS products that handle real-world financial complexity with intelligence at the core. We build trust-first, AI-powered FinTech systems — not just apps.",
+        whyChoose: {
+          intro: "FinTech is not regular SaaS. It needs security, compliance, accuracy, and intelligence.",
+          points: [
+            "AI-first architecture for risk, fraud & decisioning",
+            "Multi-tenant FinTech SaaS design",
+            "Automation-driven operations (KYC, onboarding, workflows)",
+            "Data security & role-based access by default",
+            "Built for scale, audits & future integrations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled FinTech SaaS solutions, including:",
+          solutions: [
+            "Digital payments & wallet platforms",
+            "Lending & loan management SaaS",
+            "Subscription & billing platforms",
+            "Investment & wealth-tech tools",
+            "AI-based financial dashboards",
+            "Embedded finance & API-based platforms",
+            "Internal FinTech tools for enterprises"
+          ],
+          footer: "All solutions are cloud-native, scalable, and automation-ready."
+        },
+        coreCapabilities: [
+          "AI-driven data analysis & insights",
+          "Fraud detection & anomaly monitoring (AI-assisted)",
+          "Automated onboarding & KYC workflows",
+          "Role-based access & multi-tenant isolation",
+          "Secure APIs & integrations",
+          "AI dashboards & real-time analytics",
+          "Subscription, billing & usage tracking",
+          "WhatsApp & notification automation"
         ],
-        useCases: [
-          "Automated payment reconciliation and dispute resolution",
-          "Real-time fraud detection and prevention systems",
-          "AI-powered credit underwriting and risk assessment",
-          "Investment portfolio optimization and rebalancing",
-          "Customer onboarding and KYC automation"
+        idealFor: [
+          "FinTech startup founders",
+          "SaaS finance product teams",
+          "NBFCs & digital finance innovators",
+          "Enterprises launching FinTech platforms"
         ],
-        aiCapabilities: [
-          "Natural language processing for document analysis",
-          "Machine learning fraud detection models",
-          "Predictive analytics for market trends",
-          "Automated regulatory reporting",
-          "24/7 customer support chatbots"
-        ],
-        targetAudience: [
-          "Payment processing startups",
-          "Digital lending platforms",
-          "Investment and wealth management apps",
-          "Cryptocurrency and blockchain companies",
-          "InsurTech startups"
+        businessOutcomes: [
+          "Faster go-to-market",
+          "Reduced manual financial operations",
+          "AI-driven insights & decisions",
+          "High-trust, scalable SaaS architecture",
+          "Future-ready platform for investors & compliance"
         ]
       },
       {
@@ -84,35 +110,53 @@ const industries: Industry[] = [
         name: "HealthTech Startups",
         description: "Healthcare technology solutions with AI-powered diagnostics, patient engagement, and medical data analytics.",
         icon: "🏥",
-        features: ["Telemedicine AI", "Health Analytics", "Patient Engagement", "Medical Imaging AI"],
-        detailedDescription: "Revolutionize healthcare delivery with AI solutions built for HealthTech innovators. Our HIPAA-compliant AI systems power telemedicine platforms, analyze medical data at scale, and create personalized patient engagement experiences that improve outcomes.",
-        benefits: [
-          "Improve diagnostic accuracy with AI-assisted analysis",
-          "Reduce patient wait times by 70%",
-          "Increase patient engagement and adherence",
-          "Scale telehealth operations efficiently",
-          "Maintain HIPAA compliance automatically"
+        tagline: "AI-First, HIPAA-Compliant Healthcare Technology Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help HealthTech startups build AI-native healthcare platforms that are compliant, secure, patient-centric, and automation-driven. From telemedicine apps to diagnostic AI systems, we design healthcare SaaS products that improve patient outcomes while maintaining strict regulatory compliance. We build health-first, AI-powered systems that transform care delivery.",
+        whyChoose: {
+          intro: "HealthTech requires compliance, accuracy, patient trust, and intelligent automation.",
+          points: [
+            "HIPAA-compliant architecture from day one",
+            "AI-powered diagnostics & clinical decision support",
+            "Patient engagement automation & personalization",
+            "Secure health data management & interoperability",
+            "Built for scale, audits & healthcare integrations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled HealthTech SaaS solutions, including:",
+          solutions: [
+            "Telemedicine & virtual care platforms",
+            "Patient engagement & communication apps",
+            "AI-powered diagnostic tools",
+            "Remote patient monitoring systems",
+            "Health data analytics dashboards",
+            "Medical imaging AI platforms",
+            "Healthcare workflow automation tools"
+          ],
+          footer: "All solutions are HIPAA-compliant, cloud-native, and integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven symptom analysis & triage",
+          "Medical image recognition & analysis",
+          "Automated appointment scheduling & reminders",
+          "Patient data aggregation & insights",
+          "Secure messaging & video consultations",
+          "EHR/EMR integration capabilities",
+          "Compliance monitoring & reporting",
+          "Multi-channel patient communication"
         ],
-        useCases: [
-          "AI-powered symptom checking and triage",
-          "Medical image analysis and interpretation",
-          "Patient appointment scheduling and reminders",
-          "Health data aggregation and analytics",
-          "Remote patient monitoring and alerts"
+        idealFor: [
+          "HealthTech startup founders",
+          "Digital health entrepreneurs",
+          "Medical device innovators",
+          "Healthcare SaaS teams"
         ],
-        aiCapabilities: [
-          "Medical natural language processing",
-          "Computer vision for diagnostic imaging",
-          "Predictive health analytics",
-          "Voice-enabled patient interactions",
-          "Automated health record management"
-        ],
-        targetAudience: [
-          "Telemedicine platforms",
-          "Digital health apps",
-          "Medical device companies",
-          "Health data analytics startups",
-          "Mental health technology companies"
+        businessOutcomes: [
+          "Faster time-to-market with compliance",
+          "Improved patient engagement & outcomes",
+          "Reduced operational overhead",
+          "Scalable, audit-ready architecture",
+          "Investor-ready healthcare platform"
         ]
       },
       {
@@ -120,35 +164,53 @@ const industries: Industry[] = [
         name: "EdTech Startups",
         description: "Educational technology platforms with personalized learning, assessment automation, and student engagement tools.",
         icon: "📚",
-        features: ["Adaptive Learning", "AI Tutoring", "Assessment Automation", "Learning Analytics"],
-        detailedDescription: "Build the future of education with AI that adapts to every learner. Our EdTech solutions create personalized learning paths, automate assessments, and provide real-time insights into student progress and engagement.",
-        benefits: [
-          "Increase learning outcomes by 40%",
-          "Reduce instructor workload significantly",
-          "Scale personalized education affordably",
-          "Improve student retention rates",
-          "Generate actionable learning insights"
+        tagline: "AI-Powered Personalized Learning & Education Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help EdTech startups build AI-native learning platforms that are personalized, engaging, scalable, and data-driven. From adaptive learning systems to AI tutors, we design education SaaS products that transform how people learn. We build learner-first, AI-powered systems that make quality education accessible.",
+        whyChoose: {
+          intro: "EdTech needs personalization, engagement, scalability, and learning intelligence.",
+          points: [
+            "AI-first adaptive learning architecture",
+            "Personalized content delivery & recommendations",
+            "Automated assessment & instant feedback",
+            "Engagement analytics & retention optimization",
+            "Built for scale across courses & learners"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled EdTech SaaS solutions, including:",
+          solutions: [
+            "Adaptive learning management systems",
+            "AI tutoring & homework help platforms",
+            "Online course marketplace platforms",
+            "Assessment & grading automation tools",
+            "Language learning applications",
+            "Corporate e-learning platforms",
+            "Student engagement & analytics dashboards"
+          ],
+          footer: "All solutions are cloud-native, mobile-first, and integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven personalized learning paths",
+          "Natural language Q&A & tutoring",
+          "Automated grading & feedback generation",
+          "Learning analytics & progress tracking",
+          "Content recommendation engines",
+          "Gamification & engagement features",
+          "Multi-format content delivery",
+          "Real-time collaboration tools"
         ],
-        useCases: [
-          "Adaptive learning path generation",
-          "AI tutoring and homework assistance",
-          "Automated grading and feedback",
-          "Student engagement monitoring",
-          "Content recommendation engines"
+        idealFor: [
+          "EdTech startup founders",
+          "Online course creators",
+          "Corporate training innovators",
+          "Education SaaS product teams"
         ],
-        aiCapabilities: [
-          "Natural language understanding for Q&A",
-          "Learning pattern recognition",
-          "Automated content generation",
-          "Speech recognition for language learning",
-          "Plagiarism detection AI"
-        ],
-        targetAudience: [
-          "Online learning platforms",
-          "Language learning apps",
-          "Test preparation companies",
-          "Corporate training platforms",
-          "K-12 educational software"
+        businessOutcomes: [
+          "Higher student engagement & completion rates",
+          "Reduced instructor workload",
+          "Scalable personalized education",
+          "Data-driven learning insights",
+          "Investor-ready EdTech platform"
         ]
       },
       {
@@ -156,35 +218,53 @@ const industries: Industry[] = [
         name: "PropTech Startups",
         description: "Property technology solutions for real estate management, virtual tours, and property valuation.",
         icon: "🏗️",
-        features: ["Property Valuation AI", "Virtual Tours", "Tenant Management", "Market Analytics"],
-        detailedDescription: "Disrupt the real estate industry with AI-powered property technology. Our PropTech solutions automate property valuations, create immersive virtual experiences, and provide market intelligence that gives you a competitive edge.",
-        benefits: [
-          "Instant property valuations with 95% accuracy",
-          "Reduce property showing time by 60%",
-          "Automate tenant screening and management",
-          "Predict market trends before competitors",
-          "Scale property operations efficiently"
-        ],
-        useCases: [
-          "Automated property valuation models",
-          "AI-generated virtual property tours",
-          "Tenant screening and matching",
-          "Predictive market analytics",
-          "Smart building management"
-        ],
-        aiCapabilities: [
+        tagline: "AI-Powered Property Technology & Real Estate Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help PropTech startups build AI-native property platforms that are intelligent, data-driven, scalable, and user-friendly. From property valuation tools to smart building systems, we design PropTech SaaS products that transform real estate operations. We build property-first, AI-powered systems that modernize the real estate industry.",
+        whyChoose: {
+          intro: "PropTech requires accuracy, market intelligence, automation, and seamless experiences.",
+          points: [
+            "AI-first property analysis & valuation",
+            "Immersive virtual tour capabilities",
+            "Automated tenant & property management",
+            "Predictive market analytics & insights",
+            "Built for scale across properties & markets"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled PropTech SaaS solutions, including:",
+          solutions: [
+            "Property valuation & estimation platforms",
+            "Virtual tour & 3D visualization tools",
+            "Tenant screening & management systems",
+            "Real estate marketplace platforms",
+            "Smart building & IoT management",
+            "Property investment analytics tools",
+            "Lease management & automation platforms"
+          ],
+          footer: "All solutions are cloud-native, scalable, and real estate integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven property valuation models",
           "Computer vision for property analysis",
-          "Natural language for property descriptions",
-          "Predictive pricing models",
-          "Automated document processing",
-          "Chatbots for property inquiries"
+          "Automated tenant screening & matching",
+          "Market trend prediction & analytics",
+          "Virtual tour generation & hosting",
+          "Document processing & verification",
+          "Lead management & nurturing",
+          "Multi-property portfolio management"
         ],
-        targetAudience: [
-          "Real estate marketplaces",
-          "Property management software",
-          "Home valuation platforms",
-          "Commercial real estate tech",
-          "Smart building companies"
+        idealFor: [
+          "PropTech startup founders",
+          "Real estate tech entrepreneurs",
+          "Property management innovators",
+          "Real estate SaaS teams"
+        ],
+        businessOutcomes: [
+          "Faster property valuations & decisions",
+          "Reduced manual property operations",
+          "AI-driven market intelligence",
+          "Scalable multi-property platform",
+          "Investor-ready PropTech solution"
         ]
       },
       {
@@ -192,35 +272,53 @@ const industries: Industry[] = [
         name: "HRTech & Recruitment SaaS",
         description: "Human resources and recruitment automation with AI-powered candidate matching and employee management.",
         icon: "👥",
-        features: ["Resume Screening AI", "Candidate Matching", "Employee Analytics", "Onboarding Automation"],
-        detailedDescription: "Transform talent acquisition and HR operations with intelligent automation. Our HRTech solutions screen candidates in seconds, match talent to opportunities with precision, and streamline the entire employee lifecycle.",
-        benefits: [
-          "Screen 1000s of resumes in minutes",
-          "Improve quality of hire by 50%",
-          "Reduce time-to-hire by 65%",
-          "Automate repetitive HR tasks",
-          "Increase employee retention"
-        ],
-        useCases: [
-          "AI-powered resume screening and ranking",
+        tagline: "AI-Powered HR & Talent Acquisition Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help HRTech startups build AI-native human resources platforms that are intelligent, efficient, candidate-centric, and automation-driven. From recruitment automation to employee analytics, we design HR SaaS products that transform talent management. We build people-first, AI-powered systems that modernize HR operations.",
+        whyChoose: {
+          intro: "HRTech requires speed, accuracy, candidate experience, and workforce intelligence.",
+          points: [
+            "AI-first candidate screening & matching",
+            "Automated recruitment workflows & scheduling",
+            "Employee lifecycle management automation",
+            "Predictive analytics for retention & performance",
+            "Built for scale across hiring & HR operations"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled HRTech SaaS solutions, including:",
+          solutions: [
+            "Applicant tracking systems (ATS)",
+            "AI recruitment & matching platforms",
+            "Employee onboarding automation tools",
+            "Performance management systems",
+            "HR analytics & reporting dashboards",
+            "Talent marketplace platforms",
+            "Employee engagement & feedback tools"
+          ],
+          footer: "All solutions are cloud-native, scalable, and HR integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven resume screening & ranking",
           "Intelligent candidate-job matching",
           "Automated interview scheduling",
           "Employee performance analytics",
-          "Onboarding workflow automation"
+          "Onboarding workflow automation",
+          "Retention prediction & alerts",
+          "HR chatbots & self-service portals",
+          "Compliance & documentation management"
         ],
-        aiCapabilities: [
-          "Resume parsing and analysis",
-          "Skill matching algorithms",
-          "Sentiment analysis for feedback",
-          "Predictive attrition modeling",
-          "Chatbots for HR queries"
+        idealFor: [
+          "HRTech startup founders",
+          "Recruitment tech entrepreneurs",
+          "HR software innovators",
+          "Talent management SaaS teams"
         ],
-        targetAudience: [
-          "Recruitment platforms",
-          "HR management software",
-          "Talent marketplace companies",
-          "Employee engagement tools",
-          "Workforce analytics platforms"
+        businessOutcomes: [
+          "Faster time-to-hire",
+          "Improved quality of hire",
+          "Reduced HR operational costs",
+          "Data-driven workforce decisions",
+          "Investor-ready HRTech platform"
         ]
       },
       {
@@ -228,35 +326,53 @@ const industries: Industry[] = [
         name: "MarTech & SalesTech SaaS",
         description: "Marketing and sales technology with AI-driven lead generation, campaign optimization, and conversion analytics.",
         icon: "📈",
-        features: ["Lead Scoring AI", "Campaign Automation", "Sales Forecasting", "Conversion Optimization"],
-        detailedDescription: "Supercharge your marketing and sales stack with AI that converts. Our MarTech solutions identify high-value leads, optimize campaigns in real-time, and provide sales intelligence that closes deals faster.",
-        benefits: [
-          "Increase lead conversion rates by 3x",
-          "Reduce customer acquisition costs",
-          "Automate personalized marketing at scale",
-          "Improve sales forecast accuracy by 40%",
-          "Identify best opportunities instantly"
-        ],
-        useCases: [
-          "Predictive lead scoring and prioritization",
-          "AI-powered email campaign optimization",
+        tagline: "AI-Powered Marketing & Sales Technology Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help MarTech and SalesTech startups build AI-native marketing and sales platforms that are conversion-focused, data-driven, scalable, and automation-powered. From lead scoring to campaign optimization, we design MarTech SaaS products that accelerate revenue. We build growth-first, AI-powered systems that transform go-to-market operations.",
+        whyChoose: {
+          intro: "MarTech/SalesTech requires personalization, predictive analytics, automation, and conversion intelligence.",
+          points: [
+            "AI-first lead scoring & qualification",
+            "Campaign optimization & personalization",
+            "Sales intelligence & forecasting",
+            "Multi-channel automation capabilities",
+            "Built for scale across marketing & sales"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled MarTech & SalesTech SaaS solutions, including:",
+          solutions: [
+            "Lead generation & scoring platforms",
+            "Marketing automation systems",
+            "CRM & sales enablement tools",
+            "Campaign management & analytics",
+            "Customer data platforms (CDP)",
+            "Conversational marketing tools",
+            "Sales forecasting & intelligence dashboards"
+          ],
+          footer: "All solutions are cloud-native, scalable, and CRM integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven lead scoring & prioritization",
+          "Predictive campaign optimization",
           "Sales pipeline forecasting",
           "Customer journey personalization",
-          "A/B testing automation"
+          "Automated content generation",
+          "Attribution modeling & analytics",
+          "A/B testing automation",
+          "Multi-channel engagement automation"
         ],
-        aiCapabilities: [
-          "Predictive analytics for conversions",
-          "Natural language generation for content",
-          "Customer segmentation AI",
-          "Attribution modeling",
-          "Conversational AI for sales"
+        idealFor: [
+          "MarTech startup founders",
+          "Sales technology entrepreneurs",
+          "Growth tech innovators",
+          "Revenue SaaS product teams"
         ],
-        targetAudience: [
-          "Marketing automation platforms",
-          "CRM software companies",
-          "Sales enablement tools",
-          "Ad tech companies",
-          "Customer data platforms"
+        businessOutcomes: [
+          "Higher lead conversion rates",
+          "Reduced customer acquisition costs",
+          "Accurate sales forecasting",
+          "Scalable personalized marketing",
+          "Investor-ready growth platform"
         ]
       },
       {
@@ -264,35 +380,53 @@ const industries: Industry[] = [
         name: "Logistics & Supply Chain SaaS",
         description: "Supply chain management solutions with route optimization, inventory forecasting, and delivery tracking.",
         icon: "🚚",
-        features: ["Route Optimization", "Inventory AI", "Demand Forecasting", "Delivery Tracking"],
-        detailedDescription: "Optimize every link in the supply chain with AI that predicts, plans, and performs. Our logistics solutions minimize costs, maximize efficiency, and provide end-to-end visibility across complex supply networks.",
-        benefits: [
-          "Reduce logistics costs by 25%",
-          "Improve on-time delivery rates to 98%",
-          "Minimize inventory holding costs",
-          "Predict demand with 95% accuracy",
-          "Automate route planning at scale"
+        tagline: "AI-Powered Logistics & Supply Chain Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help logistics and supply chain startups build AI-native operations platforms that are efficient, predictive, scalable, and visibility-focused. From route optimization to demand forecasting, we design supply chain SaaS products that transform logistics operations. We build efficiency-first, AI-powered systems that optimize every link.",
+        whyChoose: {
+          intro: "Logistics requires real-time visibility, predictive planning, optimization, and operational efficiency.",
+          points: [
+            "AI-first route & delivery optimization",
+            "Demand forecasting & inventory intelligence",
+            "Real-time tracking & visibility",
+            "Warehouse & fleet automation",
+            "Built for scale across supply networks"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled Logistics & Supply Chain SaaS solutions, including:",
+          solutions: [
+            "Route optimization & planning platforms",
+            "Inventory management & forecasting tools",
+            "Fleet management systems",
+            "Warehouse management solutions",
+            "Last-mile delivery platforms",
+            "Supply chain visibility dashboards",
+            "Freight & carrier management systems"
+          ],
+          footer: "All solutions are cloud-native, scalable, and IoT integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven route optimization",
+          "Demand forecasting & prediction",
+          "Real-time shipment tracking",
+          "Inventory optimization & alerts",
+          "Warehouse automation workflows",
+          "Carrier selection & management",
+          "Exception handling & alerts",
+          "Analytics & performance reporting"
         ],
-        useCases: [
-          "Dynamic route optimization",
-          "Demand forecasting and planning",
-          "Warehouse automation",
-          "Last-mile delivery optimization",
-          "Supplier risk assessment"
+        idealFor: [
+          "Logistics tech startup founders",
+          "Supply chain entrepreneurs",
+          "Fleet management innovators",
+          "Operations SaaS product teams"
         ],
-        aiCapabilities: [
-          "Machine learning for demand prediction",
-          "Optimization algorithms for routing",
-          "Computer vision for package processing",
-          "IoT data analytics",
-          "Predictive maintenance AI"
-        ],
-        targetAudience: [
-          "Logistics management platforms",
-          "Fleet management software",
-          "Warehouse management systems",
-          "Supply chain visibility tools",
-          "Freight tech companies"
+        businessOutcomes: [
+          "Reduced logistics costs",
+          "Improved on-time delivery rates",
+          "Optimized inventory levels",
+          "End-to-end supply chain visibility",
+          "Investor-ready logistics platform"
         ]
       },
       {
@@ -300,35 +434,53 @@ const industries: Industry[] = [
         name: "Productivity & Collaboration Tools",
         description: "Team productivity and collaboration platforms with AI-powered task management and communication tools.",
         icon: "⚡",
-        features: ["Task Automation", "Smart Scheduling", "Meeting AI", "Document Collaboration"],
-        detailedDescription: "Boost team productivity with AI that works alongside your team. Our productivity solutions automate routine tasks, optimize schedules, and make collaboration seamless across distributed teams.",
-        benefits: [
-          "Save 10+ hours per employee weekly",
-          "Reduce meeting time by 40%",
-          "Automate repetitive workflows",
-          "Improve team coordination",
-          "Enhance decision-making speed"
+        tagline: "AI-Powered Productivity & Team Collaboration Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help productivity tool startups build AI-native collaboration platforms that are intelligent, efficient, team-centric, and automation-powered. From smart scheduling to meeting AI, we design productivity SaaS products that transform how teams work. We build teamwork-first, AI-powered systems that multiply productivity.",
+        whyChoose: {
+          intro: "Productivity tools need intelligent automation, seamless collaboration, and time-saving AI.",
+          points: [
+            "AI-first task automation & prioritization",
+            "Smart scheduling & calendar optimization",
+            "Meeting intelligence & action tracking",
+            "Document collaboration & search",
+            "Built for scale across distributed teams"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled Productivity & Collaboration SaaS solutions, including:",
+          solutions: [
+            "Project & task management platforms",
+            "Team communication & messaging tools",
+            "Meeting scheduling & AI assistants",
+            "Document collaboration platforms",
+            "Workflow automation tools",
+            "Knowledge management systems",
+            "Virtual workspace solutions"
+          ],
+          footer: "All solutions are cloud-native, mobile-friendly, and integration-ready."
+        },
+        coreCapabilities: [
+          "AI-driven task prioritization & assignment",
+          "Smart scheduling & availability matching",
+          "Meeting transcription & summaries",
+          "Document search & organization",
+          "Workflow automation & triggers",
+          "Team analytics & insights",
+          "Natural language commands",
+          "Cross-platform synchronization"
         ],
-        useCases: [
-          "Intelligent task prioritization and assignment",
-          "AI meeting summaries and action items",
-          "Smart calendar scheduling",
-          "Document drafting and editing",
-          "Workflow automation"
+        idealFor: [
+          "Productivity tool founders",
+          "Collaboration tech entrepreneurs",
+          "Workflow automation innovators",
+          "Team software product teams"
         ],
-        aiCapabilities: [
-          "Natural language processing for commands",
-          "Meeting transcription and analysis",
-          "Smart search across documents",
-          "Automated report generation",
-          "Context-aware suggestions"
-        ],
-        targetAudience: [
-          "Project management tools",
-          "Team communication platforms",
-          "Document collaboration software",
-          "Workflow automation tools",
-          "Virtual workspace providers"
+        businessOutcomes: [
+          "Significant time savings per user",
+          "Reduced meeting overhead",
+          "Streamlined team workflows",
+          "Improved team coordination",
+          "Investor-ready productivity platform"
         ]
       },
       {
@@ -336,35 +488,53 @@ const industries: Industry[] = [
         name: "Vertical SaaS (Industry-Specific)",
         description: "Industry-specific software solutions tailored for niche markets with specialized AI capabilities.",
         icon: "🎯",
-        features: ["Industry Templates", "Specialized Workflows", "Compliance Tools", "Custom Integrations"],
-        detailedDescription: "Dominate your niche with AI built for your specific industry. Our vertical SaaS solutions provide deep domain expertise, pre-built workflows, and compliance tools that generic solutions cannot match.",
-        benefits: [
-          "Industry-specific AI out of the box",
-          "Pre-built compliance frameworks",
-          "Faster time to value",
-          "Deep integration with industry tools",
-          "Specialized customer support"
-        ],
-        useCases: [
-          "Industry-specific workflow automation",
-          "Regulatory compliance management",
-          "Domain-specific analytics",
-          "Specialized customer portals",
-          "Industry data integration"
-        ],
-        aiCapabilities: [
-          "Domain-trained language models",
-          "Industry-specific prediction models",
-          "Specialized document processing",
+        tagline: "AI-Powered Industry-Specific SaaS Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help vertical SaaS startups build AI-native industry-specific platforms that are specialized, compliant, workflow-optimized, and domain-expert. From legal tech to construction software, we design niche SaaS products that dominate their verticals. We build industry-first, AI-powered systems that understand your domain.",
+        whyChoose: {
+          intro: "Vertical SaaS needs deep industry knowledge, specialized workflows, and domain-specific AI.",
+          points: [
+            "AI trained on industry-specific data",
+            "Pre-built compliance & regulatory frameworks",
+            "Specialized workflow templates",
+            "Deep industry tool integrations",
+            "Built for niche market dominance"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-enabled Vertical SaaS solutions, including:",
+          solutions: [
+            "Legal tech & practice management",
+            "Construction project management",
+            "Agriculture & farming technology",
+            "Hospitality management systems",
+            "Non-profit & association software",
+            "Automotive dealership solutions",
+            "Industry-specific CRM platforms"
+          ],
+          footer: "All solutions are domain-optimized, compliant, and industry integration-ready."
+        },
+        coreCapabilities: [
+          "Domain-specific AI & NLP models",
+          "Industry compliance automation",
+          "Specialized workflow templates",
           "Custom entity recognition",
-          "Vertical-specific chatbots"
+          "Industry data standardization",
+          "Vertical-specific reporting",
+          "Niche integration connectors",
+          "Industry chatbots & assistants"
         ],
-        targetAudience: [
-          "Legal tech companies",
-          "Construction software",
-          "Agriculture technology",
-          "Hospitality software",
-          "Non-profit technology"
+        idealFor: [
+          "Vertical SaaS founders",
+          "Industry-specific tech entrepreneurs",
+          "Niche market innovators",
+          "Domain-focused product teams"
+        ],
+        businessOutcomes: [
+          "Faster time-to-value for customers",
+          "Higher customer retention in niche",
+          "Compliance out of the box",
+          "Deep industry credibility",
+          "Investor-ready vertical platform"
         ]
       },
       {
@@ -372,35 +542,53 @@ const industries: Industry[] = [
         name: "AI Tools & Automation Startups",
         description: "AI-native startups building automation tools, intelligent agents, and machine learning platforms.",
         icon: "🤖",
-        features: ["AI Agent Development", "ML Platforms", "Automation Tools", "Data Processing AI"],
-        detailedDescription: "Build the next generation of AI products with our development platform. We provide the infrastructure, tools, and expertise to help AI-native startups ship faster and scale efficiently.",
-        benefits: [
-          "Accelerate AI product development",
-          "Reduce infrastructure complexity",
-          "Scale ML operations efficiently",
-          "Access pre-trained models and APIs",
-          "Expert AI engineering support"
-        ],
-        useCases: [
-          "AI agent development and deployment",
-          "Machine learning model training",
-          "Data pipeline automation",
-          "AI API development",
-          "Intelligent automation platforms"
-        ],
-        aiCapabilities: [
-          "Large language model fine-tuning",
+        tagline: "AI-Native Development & Automation Platforms",
+        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help AI-native startups build cutting-edge automation platforms that are intelligent, scalable, developer-friendly, and production-ready. From AI agents to ML platforms, we design AI-first products that push the boundaries of automation. We build intelligence-first systems that power the next generation of software.",
+        whyChoose: {
+          intro: "AI startups need infrastructure, scalability, ML expertise, and rapid development.",
+          points: [
+            "AI-native architecture & infrastructure",
+            "LLM fine-tuning & deployment expertise",
+            "Scalable ML operations & model serving",
+            "AI observability & monitoring",
+            "Built for rapid AI product iteration"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-native automation solutions, including:",
+          solutions: [
+            "AI agent development platforms",
+            "Machine learning model training tools",
+            "Intelligent automation platforms",
+            "AI API & integration services",
+            "Data pipeline automation systems",
+            "Computer vision applications",
+            "Natural language processing tools"
+          ],
+          footer: "All solutions are cloud-native, GPU-optimized, and enterprise-ready."
+        },
+        coreCapabilities: [
+          "LLM fine-tuning & customization",
+          "AI agent orchestration & deployment",
+          "ML model training & serving",
           "Computer vision pipelines",
-          "AutoML capabilities",
-          "Model serving infrastructure",
-          "AI observability and monitoring"
+          "NLP & text processing",
+          "AI observability & monitoring",
+          "AutoML & model optimization",
+          "Data pipeline automation"
         ],
-        targetAudience: [
-          "AI-first startups",
+        idealFor: [
+          "AI-first startup founders",
           "Automation platform builders",
-          "ML infrastructure companies",
-          "AI consulting firms",
-          "Research-focused startups"
+          "ML infrastructure entrepreneurs",
+          "AI research commercializers"
+        ],
+        businessOutcomes: [
+          "Faster AI product development",
+          "Reduced ML infrastructure complexity",
+          "Scalable AI operations",
+          "Production-ready AI systems",
+          "Investor-ready AI platform"
         ]
       },
     ],
