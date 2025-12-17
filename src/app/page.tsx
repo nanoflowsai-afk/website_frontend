@@ -50,11 +50,13 @@ type HomeResponse = {
 };
 
 async function getHomeData(): Promise<HomeResponse | null> {
-  // Use NEXT_PUBLIC_API_BASE_URL if set, otherwise default to localhost for development
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const base = apiBase 
-    ? apiBase.replace(/\/+$/, "") // Remove trailing slashes
-    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
+  
+  if (!apiBase) {
+    return null;
+  }
+  
+  const base = apiBase.replace(/\/+$/, "");
   
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
