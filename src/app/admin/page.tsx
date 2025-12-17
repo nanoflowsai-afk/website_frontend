@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeroSlide } from "@/components/HeroCarousel";
 import { apiFetch } from "@/lib/api";
+import { normalizeImageUrl } from "@/lib/images";
 
 type About = {
   mission: string;
@@ -638,7 +639,10 @@ export default function AdminPage() {
               <div className="grid gap-4">
                 {sortedSlides.map((slide) => (
                   <div key={slide.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row md:items-center gap-6">
-                    <div className="w-32 h-20 rounded-xl bg-cover bg-center flex-shrink-0 border border-gray-200" style={{ backgroundImage: `url(${slide.backgroundImageUrl})` }} />
+                    <div
+                      className="w-32 h-20 rounded-xl bg-cover bg-center flex-shrink-0 border border-gray-200"
+                      style={{ backgroundImage: `url(${normalizeImageUrl(slide.backgroundImageUrl)})` }}
+                    />
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${slide.isActive ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"}`}>{slide.isActive ? "Active" : "Inactive"}</span>
@@ -738,7 +742,10 @@ export default function AdminPage() {
                 {teamData?.members?.map((m) => (
                   <div key={m.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-16 h-16 rounded-full bg-cover bg-center border-2 border-orange-200" style={{ backgroundImage: `url(${m.avatarUrl})` }} />
+                      <div
+                        className="w-16 h-16 rounded-full bg-cover bg-center border-2 border-orange-200"
+                        style={{ backgroundImage: `url(${normalizeImageUrl(m.avatarUrl)})` }}
+                      />
                       <div>
                         <h4 className="font-semibold text-gray-900">{m.name}</h4>
                         <p className="text-sm text-orange-600">{m.role}</p>
@@ -808,7 +815,10 @@ export default function AdminPage() {
               <div className="grid gap-4">
                 {blogData?.posts?.map((p) => (
                   <div key={p.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row md:items-center gap-6">
-                    <div className="w-32 h-20 rounded-xl bg-cover bg-center flex-shrink-0 border border-gray-200" style={{ backgroundImage: `url(${p.imageUrl})` }} />
+                    <div
+                      className="w-32 h-20 rounded-xl bg-cover bg-center flex-shrink-0 border border-gray-200"
+                      style={{ backgroundImage: `url(${normalizeImageUrl(p.imageUrl)})` }}
+                    />
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${p.isPublished ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>{p.isPublished ? "Published" : "Draft"}</span>
