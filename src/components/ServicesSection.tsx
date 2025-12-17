@@ -25,12 +25,12 @@ const serviceCategories: ServiceCategory[] = [
       {
         title: "Custom LLM Systems",
         description: "Build tailored large language model solutions for content generation, intelligence, and enterprise automation.",
-        icon: "🤖",
+        icon: "💡",
       },
       {
         title: "Decision Support AI",
         description: "AI-powered systems that analyze data and provide actionable insights for strategic decision-making.",
-        icon: "📊",
+        icon: "🧩",
       },
       {
         title: "Content Intelligence",
