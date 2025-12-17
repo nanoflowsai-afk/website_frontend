@@ -34,6 +34,126 @@ type SubIndustry = {
   businessOutcomes: string[];
 };
 
+type RelatedService = {
+  title: string;
+  description: string;
+  icon: string;
+  category: string;
+};
+
+const allServices: RelatedService[] = [
+  { title: "Custom LLM Systems", description: "Build tailored large language model solutions for content generation, intelligence, and enterprise automation.", icon: "🤖", category: "Generative AI Solutions" },
+  { title: "Decision Support AI", description: "AI-powered systems that analyze data and provide actionable insights for strategic decision-making.", icon: "📊", category: "Generative AI Solutions" },
+  { title: "Content Intelligence", description: "Automated content creation, summarization, and optimization powered by advanced AI models.", icon: "✍️", category: "Generative AI Solutions" },
+  { title: "Enterprise Automation", description: "Transform business processes with intelligent automation that learns and adapts to your workflows.", icon: "⚡", category: "Generative AI Solutions" },
+  { title: "Sales Automation", description: "Automate lead scoring, follow-ups, and pipeline management with AI-driven workflows.", icon: "💼", category: "AI Automation & Workflows" },
+  { title: "Marketing Automation", description: "End-to-end campaign automation, personalization, and performance optimization.", icon: "📢", category: "AI Automation & Workflows" },
+  { title: "Operations Workflow", description: "Streamline operational processes with intelligent automation and real-time monitoring.", icon: "🔄", category: "AI Automation & Workflows" },
+  { title: "HR & Support Systems", description: "Automate HR processes and customer support with AI-powered ticket routing and responses.", icon: "👥", category: "AI Automation & Workflows" },
+  { title: "AI-Native Websites", description: "Build modern, intelligent websites with integrated AI features and personalization.", icon: "🌐", category: "AI-Powered Development" },
+  { title: "SaaS Platforms", description: "Develop scalable SaaS products with AI capabilities built into the core architecture.", icon: "☁️", category: "AI-Powered Development" },
+  { title: "Enterprise Dashboards", description: "Create intelligent dashboards with predictive analytics and automated insights.", icon: "📈", category: "AI-Powered Development" },
+  { title: "Custom Software", description: "Build production-grade software with AI features tailored to your business needs.", icon: "🛠️", category: "AI-Powered Development" },
+  { title: "Sales Agents", description: "Autonomous AI agents that qualify leads, handle objections, and close deals 24/7.", icon: "💰", category: "AI Agents & Chatbots" },
+  { title: "Support Agents", description: "Intelligent support bots that resolve issues, escalate when needed, and learn continuously.", icon: "🎧", category: "AI Agents & Chatbots" },
+  { title: "Follow-up Agents", description: "Automated follow-up systems that nurture leads and maintain customer relationships.", icon: "📧", category: "AI Agents & Chatbots" },
+  { title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots" },
+  { title: "Real-time Dashboards", description: "Live data visualization and monitoring dashboards with automated alerts.", icon: "📉", category: "Data & Intelligence" },
+  { title: "Predictive Analytics", description: "Machine learning models that forecast trends and identify opportunities.", icon: "🔮", category: "Data & Intelligence" },
+  { title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence" },
+  { title: "Data Integration", description: "Connect and unify data sources for comprehensive business intelligence.", icon: "🔗", category: "Data & Intelligence" },
+];
+
+function getRelatedServices(subIndustry: SubIndustry, industryId: string): RelatedService[] {
+  const name = subIndustry.name.toLowerCase();
+  const desc = subIndustry.description.toLowerCase();
+  const overview = subIndustry.overview.toLowerCase();
+  const combined = `${name} ${desc} ${overview}`;
+  
+  const serviceMatches: { service: RelatedService; score: number }[] = [];
+  
+  allServices.forEach(service => {
+    let score = 0;
+    
+    if (combined.includes("sales") || combined.includes("lead") || combined.includes("crm")) {
+      if (service.title === "Sales Automation" || service.title === "Sales Agents" || service.title === "Follow-up Agents") score += 3;
+    }
+    if (combined.includes("marketing") || combined.includes("campaign") || combined.includes("content")) {
+      if (service.title === "Marketing Automation" || service.title === "Content Intelligence") score += 3;
+    }
+    if (combined.includes("support") || combined.includes("customer service") || combined.includes("ticket")) {
+      if (service.title === "Support Agents" || service.title === "HR & Support Systems") score += 3;
+    }
+    if (combined.includes("dashboard") || combined.includes("analytics") || combined.includes("data") || combined.includes("insights")) {
+      if (service.title === "Real-time Dashboards" || service.title === "Predictive Analytics" || service.title === "Enterprise Dashboards" || service.title === "Decision Intelligence") score += 3;
+    }
+    if (combined.includes("automation") || combined.includes("workflow") || combined.includes("process")) {
+      if (service.title === "Operations Workflow" || service.title === "Enterprise Automation") score += 3;
+    }
+    if (combined.includes("saas") || combined.includes("platform") || combined.includes("software")) {
+      if (service.title === "SaaS Platforms" || service.title === "Custom Software") score += 3;
+    }
+    if (combined.includes("website") || combined.includes("web") || combined.includes("online")) {
+      if (service.title === "AI-Native Websites") score += 3;
+    }
+    if (combined.includes("hr") || combined.includes("recruitment") || combined.includes("employee") || combined.includes("hiring")) {
+      if (service.title === "HR & Support Systems") score += 3;
+    }
+    if (combined.includes("llm") || combined.includes("language model") || combined.includes("ai-powered") || combined.includes("intelligent")) {
+      if (service.title === "Custom LLM Systems" || service.title === "Decision Support AI") score += 2;
+    }
+    if (combined.includes("integration") || combined.includes("connect") || combined.includes("unify")) {
+      if (service.title === "Data Integration") score += 3;
+    }
+    if (combined.includes("forecast") || combined.includes("predict") || combined.includes("trend")) {
+      if (service.title === "Predictive Analytics") score += 3;
+    }
+    if (combined.includes("agent") || combined.includes("bot") || combined.includes("chatbot") || combined.includes("assistant")) {
+      if (service.title === "Sales Agents" || service.title === "Support Agents" || service.title === "Analysis Agents") score += 2;
+    }
+    
+    if (industryId === "enterprises" || industryId === "startups-saas") {
+      if (service.title === "Enterprise Dashboards" || service.title === "SaaS Platforms" || service.title === "Enterprise Automation") score += 1;
+    }
+    if (industryId === "ecommerce") {
+      if (service.title === "Sales Automation" || service.title === "Marketing Automation" || service.title === "Predictive Analytics") score += 1;
+    }
+    if (industryId === "healthcare" || industryId === "education") {
+      if (service.title === "Support Agents" || service.title === "Custom Software" || service.title === "Data Integration") score += 1;
+    }
+    if (industryId === "real-estate" || industryId === "local-businesses") {
+      if (service.title === "Sales Agents" || service.title === "Follow-up Agents" || service.title === "AI-Native Websites") score += 1;
+    }
+    
+    if (score > 0) {
+      serviceMatches.push({ service, score });
+    }
+  });
+  
+  serviceMatches.sort((a, b) => b.score - a.score);
+  
+  const topServices = serviceMatches.slice(0, 4).map(m => m.service);
+  
+  if (topServices.length < 4) {
+    const defaultServices = [
+      allServices.find(s => s.title === "Custom LLM Systems")!,
+      allServices.find(s => s.title === "Enterprise Automation")!,
+      allServices.find(s => s.title === "Support Agents")!,
+      allServices.find(s => s.title === "Real-time Dashboards")!,
+    ];
+    const existingTitles = new Set(topServices.map(s => s.title));
+    for (const defaultService of defaultServices) {
+      if (topServices.length >= 4) break;
+      if (!existingTitles.has(defaultService.title)) {
+        topServices.push(defaultService);
+        existingTitles.add(defaultService.title);
+      }
+    }
+  }
+  
+  return topServices;
+}
+
 type Industry = {
   id: string;
   name: string;
@@ -4199,6 +4319,68 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 text-center">
+              <span className="mb-3 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-600">
+                Our Services
+              </span>
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                Related Services for {subIndustry.name}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+                Explore the AI services that best complement your {subIndustry.name.toLowerCase()} needs and accelerate your digital transformation.
+              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {getRelatedServices(subIndustry, industry.id).map((service, index) => (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl"
+                >
+                  <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-gradient-to-br from-orange-500/10 to-amber-500/10 transition-transform group-hover:scale-150"></div>
+                  <div className="relative">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-orange-100 to-amber-100 text-2xl shadow-sm">
+                      {service.icon}
+                    </div>
+                    <span className="mb-2 inline-block text-xs font-medium text-orange-500 uppercase tracking-wide">
+                      {service.category}
+                    </span>
+                    <h3 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mb-4 text-sm text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <Link
+                      href="/services"
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-orange-600 transition hover:text-orange-700 hover:gap-2"
+                    >
+                      Learn More
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-slate-800 to-slate-900 px-8 py-4 font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+              >
+                View All Our Services
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
