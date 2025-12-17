@@ -1,7 +1,9 @@
+// Prefer explicit backend base URL for serving images from /uploads.
+// In development, default to the local backend so hero/team/blog images
+// are always read from the backend's public/uploads directory.
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/+$/, "") ||
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
-  "";
+  (process.env.NODE_ENV !== "production" ? "http://localhost:5001" : "");
 
 export function normalizeImageUrl(url?: string | null) {
   const placeholderSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='100%' height='100%' fill='%23e2e8f0'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='18'>N</text></svg>`;

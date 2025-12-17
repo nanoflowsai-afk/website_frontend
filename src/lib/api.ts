@@ -1,4 +1,9 @@
-const rawApiBase = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/+$/, "") ?? "";
+// Prefer explicit backend URL; fall back to localhost:5001 for development.
+// This ensures all admin API calls (including /api/uploads) hit the backend,
+// so uploaded files are always stored in the backend's public/uploads folder.
+const rawApiBase =
+  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/+$/, "") ||
+  (process.env.NODE_ENV !== "production" ? "http://localhost:5001" : "");
 
 export const API_BASE_URL = rawApiBase;
 
