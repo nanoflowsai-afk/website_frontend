@@ -1,11 +1,8 @@
-"use client";
-
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, use } from "react";
 import startupsImage from "@assets/generated_images/startups_saas_ai_office.png";
 import enterpriseImage from "@assets/generated_images/enterprise_ai_headquarters.png";
 import ecommerceImage from "@assets/generated_images/e-commerce_ai_automation.png";
@@ -14,6 +11,15 @@ import healthcareImage from "@assets/generated_images/healthcare_ai_diagnostics.
 import educationImage from "@assets/generated_images/education_ai_learning.png";
 import localBusinessImage from "@assets/generated_images/local_business_ai_service.png";
 import type { StaticImageData } from "next/image";
+import SubIndustryGrid from "./SubIndustryGrid";
+
+type SubIndustry = {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  features: string[];
+};
 
 type Industry = {
   id: string;
@@ -23,27 +29,7 @@ type Industry = {
   imageAlt: string;
   tagline: string;
   description: string;
-  challenges: {
-    title: string;
-    description: string;
-  }[];
-  solutions: {
-    title: string;
-    description: string;
-    icon: string;
-  }[];
-  whyNanoflows: {
-    title: string;
-    description: string;
-  }[];
-  techStack: {
-    category: string;
-    technologies: string[];
-  }[];
-  faqs: {
-    question: string;
-    answer: string;
-  }[];
+  subIndustries: SubIndustry[];
 };
 
 const industries: Industry[] = [
@@ -55,36 +41,77 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows Startups and SaaS AI Solutions - AI-powered growth engines for scaling companies and startup automation",
     tagline: "AI-Powered Growth for Fast-Moving Teams",
     description: "Scale your startup with AI systems that automate customer acquisition, optimize retention, and deliver enterprise-grade experiences without enterprise-sized teams.",
-    challenges: [
-      { title: "Limited Resources", description: "Small teams struggle to handle growing customer demands while maintaining quality." },
-      { title: "Scaling Bottlenecks", description: "Manual processes break down as you grow, creating friction and slowing momentum." },
-      { title: "Customer Churn", description: "Without predictive insights, you're always reacting to churn instead of preventing it." },
-      { title: "Data Silos", description: "Customer data scattered across tools makes it impossible to get a unified view." },
-    ],
-    solutions: [
-      { title: "AI Customer Acquisition", description: "Autonomous lead generation and qualification that runs 24/7", icon: "🎯" },
-      { title: "Intelligent Onboarding", description: "Personalized onboarding flows that adapt to each user's behavior", icon: "👋" },
-      { title: "Predictive Churn Prevention", description: "ML models that identify at-risk customers before they leave", icon: "📊" },
-      { title: "Automated Support", description: "AI agents that resolve 80% of support tickets instantly", icon: "🤖" },
-    ],
-    whyNanoflows: [
-      { title: "Startup-Friendly Pricing", description: "Scale your AI capabilities as you grow, starting with affordable plans designed for early-stage companies." },
-      { title: "Rapid Deployment", description: "Go from zero to production in weeks, not months. Our pre-built modules accelerate time-to-value." },
-      { title: "Founder-Led Support", description: "Direct access to our team who understands the unique challenges of building a startup." },
-      { title: "Integration Ready", description: "Connect seamlessly with your existing stack: Stripe, Intercom, HubSpot, and 100+ more." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["GPT-4", "Claude", "Custom Fine-tuned Models", "Vector Databases"] },
-      { category: "Integrations", technologies: ["Stripe", "HubSpot", "Intercom", "Segment", "Mixpanel"] },
-      { category: "Infrastructure", technologies: ["AWS", "GCP", "Kubernetes", "Real-time Processing"] },
-      { category: "Security", technologies: ["SOC 2 Type II", "GDPR Compliant", "End-to-end Encryption"] },
-    ],
-    faqs: [
-      { question: "How quickly can we get started?", answer: "Most startups are up and running within 2-4 weeks. Our pre-built templates and integrations accelerate deployment significantly." },
-      { question: "Do you offer startup pricing?", answer: "Yes! We have special pricing tiers for early-stage startups, including discounts for YC and other accelerator companies." },
-      { question: "Can it integrate with our existing tools?", answer: "Absolutely. We integrate with 100+ popular SaaS tools including CRMs, payment processors, analytics platforms, and communication tools." },
-      { question: "What kind of support do you provide?", answer: "Startups get dedicated onboarding support, regular check-ins, and access to our Slack community of fellow founders." },
-      { question: "How does the AI learn about our business?", answer: "We train custom models on your data, product documentation, and customer interactions to ensure responses are accurate and on-brand." },
+    subIndustries: [
+      {
+        id: "fintech-startups",
+        name: "FinTech Startups",
+        description: "AI solutions for financial technology startups including payment processing, lending platforms, and investment tools.",
+        icon: "💳",
+        features: ["Payment Automation", "Fraud Detection", "Credit Scoring AI", "Investment Analytics"],
+      },
+      {
+        id: "healthtech-startups",
+        name: "HealthTech Startups",
+        description: "Healthcare technology solutions with AI-powered diagnostics, patient engagement, and medical data analytics.",
+        icon: "🏥",
+        features: ["Telemedicine AI", "Health Analytics", "Patient Engagement", "Medical Imaging AI"],
+      },
+      {
+        id: "edtech-startups",
+        name: "EdTech Startups",
+        description: "Educational technology platforms with personalized learning, assessment automation, and student engagement tools.",
+        icon: "📚",
+        features: ["Adaptive Learning", "AI Tutoring", "Assessment Automation", "Learning Analytics"],
+      },
+      {
+        id: "proptech-startups",
+        name: "PropTech Startups",
+        description: "Property technology solutions for real estate management, virtual tours, and property valuation.",
+        icon: "🏗️",
+        features: ["Property Valuation AI", "Virtual Tours", "Tenant Management", "Market Analytics"],
+      },
+      {
+        id: "hrtech-recruitment-saas",
+        name: "HRTech & Recruitment SaaS",
+        description: "Human resources and recruitment automation with AI-powered candidate matching and employee management.",
+        icon: "👥",
+        features: ["Resume Screening AI", "Candidate Matching", "Employee Analytics", "Onboarding Automation"],
+      },
+      {
+        id: "martech-salestech-saas",
+        name: "MarTech & SalesTech SaaS",
+        description: "Marketing and sales technology with AI-driven lead generation, campaign optimization, and conversion analytics.",
+        icon: "📈",
+        features: ["Lead Scoring AI", "Campaign Automation", "Sales Forecasting", "Conversion Optimization"],
+      },
+      {
+        id: "logistics-supply-chain-saas",
+        name: "Logistics & Supply Chain SaaS",
+        description: "Supply chain management solutions with route optimization, inventory forecasting, and delivery tracking.",
+        icon: "🚚",
+        features: ["Route Optimization", "Inventory AI", "Demand Forecasting", "Delivery Tracking"],
+      },
+      {
+        id: "productivity-collaboration-tools",
+        name: "Productivity & Collaboration Tools",
+        description: "Team productivity and collaboration platforms with AI-powered task management and communication tools.",
+        icon: "⚡",
+        features: ["Task Automation", "Smart Scheduling", "Meeting AI", "Document Collaboration"],
+      },
+      {
+        id: "vertical-saas",
+        name: "Vertical SaaS (Industry-Specific)",
+        description: "Industry-specific software solutions tailored for niche markets with specialized AI capabilities.",
+        icon: "🎯",
+        features: ["Industry Templates", "Specialized Workflows", "Compliance Tools", "Custom Integrations"],
+      },
+      {
+        id: "ai-tools-automation-startups",
+        name: "AI Tools & Automation Startups",
+        description: "AI-native startups building automation tools, intelligent agents, and machine learning platforms.",
+        icon: "🤖",
+        features: ["AI Agent Development", "ML Platforms", "Automation Tools", "Data Processing AI"],
+      },
     ],
   },
   {
@@ -95,36 +122,77 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows Enterprise AI Solutions - Enterprise-grade artificial intelligence for digital transformation and operational efficiency",
     tagline: "Enterprise-Grade AI That Integrates Seamlessly",
     description: "Transform your organization with AI solutions built for enterprise scale, security, and compliance requirements.",
-    challenges: [
-      { title: "Legacy System Integration", description: "Decades of tech investments make it hard to adopt new AI capabilities." },
-      { title: "Compliance Requirements", description: "Strict regulatory frameworks require careful implementation of AI systems." },
-      { title: "Change Management", description: "Getting buy-in across departments and training thousands of employees." },
-      { title: "Data Governance", description: "Ensuring AI systems respect data boundaries and access controls." },
-    ],
-    solutions: [
-      { title: "Legacy Connectors", description: "Pre-built integrations for SAP, Oracle, Salesforce, and legacy systems", icon: "🔗" },
-      { title: "Compliance Engine", description: "Built-in controls for GDPR, HIPAA, SOX, and industry regulations", icon: "🛡️" },
-      { title: "Change Management Suite", description: "Training modules and adoption tracking for enterprise rollouts", icon: "📈" },
-      { title: "Data Governance Layer", description: "Role-based access, audit logs, and data lineage tracking", icon: "🔐" },
-    ],
-    whyNanoflows: [
-      { title: "Enterprise Security", description: "SOC 2 Type II certified with options for on-premise deployment and private cloud." },
-      { title: "Dedicated Success Team", description: "Named customer success managers, solution architects, and 24/7 support." },
-      { title: "Custom SLAs", description: "Guaranteed uptime and response times tailored to your requirements." },
-      { title: "Proven at Scale", description: "Trusted by Fortune 500 companies processing millions of interactions daily." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["Enterprise LLMs", "On-premise Models", "Federated Learning", "Custom Training"] },
-      { category: "Integrations", technologies: ["SAP", "Oracle", "Salesforce", "ServiceNow", "Workday"] },
-      { category: "Infrastructure", technologies: ["Private Cloud", "On-premise", "Hybrid Deployment", "Edge Computing"] },
-      { category: "Security", technologies: ["SOC 2", "ISO 27001", "FedRAMP Ready", "HIPAA Compliant"] },
-    ],
-    faqs: [
-      { question: "Can you deploy on-premise?", answer: "Yes, we offer full on-premise deployment options as well as private cloud and hybrid configurations." },
-      { question: "What compliance certifications do you have?", answer: "We are SOC 2 Type II certified and can support HIPAA, GDPR, and industry-specific compliance requirements." },
-      { question: "How do you handle data security?", answer: "All data is encrypted at rest and in transit. We support customer-managed encryption keys and data residency requirements." },
-      { question: "What's your typical enterprise deployment timeline?", answer: "Enterprise deployments typically take 8-12 weeks depending on complexity and integration requirements." },
-      { question: "Do you provide training for our teams?", answer: "Yes, we provide comprehensive training programs including admin training, user training, and train-the-trainer sessions." },
+    subIndustries: [
+      {
+        id: "banking-financial-services",
+        name: "Banking & Financial Services (BFSI)",
+        description: "AI solutions for banks, insurance companies, and financial institutions with compliance and security focus.",
+        icon: "🏦",
+        features: ["Risk Assessment AI", "Fraud Detection", "Compliance Automation", "Customer Analytics"],
+      },
+      {
+        id: "manufacturing-industrial",
+        name: "Manufacturing & Industrial Enterprises",
+        description: "Smart manufacturing solutions with predictive maintenance, quality control, and production optimization.",
+        icon: "🏭",
+        features: ["Predictive Maintenance", "Quality Control AI", "Production Optimization", "Supply Chain AI"],
+      },
+      {
+        id: "it-services-consulting",
+        name: "IT Services & Consulting Firms",
+        description: "Technology consulting and IT service companies with AI-powered project management and service delivery.",
+        icon: "💻",
+        features: ["Project Automation", "Resource Planning", "Client Analytics", "Service Optimization"],
+      },
+      {
+        id: "telecom-networking",
+        name: "Telecom & Networking Enterprises",
+        description: "Telecommunications solutions with network optimization, customer service AI, and infrastructure management.",
+        icon: "📡",
+        features: ["Network Optimization", "Customer Service AI", "Infrastructure Monitoring", "Traffic Analysis"],
+      },
+      {
+        id: "energy-utilities",
+        name: "Energy & Utilities",
+        description: "Energy sector solutions with smart grid management, demand forecasting, and sustainability analytics.",
+        icon: "⚡",
+        features: ["Smart Grid AI", "Demand Forecasting", "Asset Management", "Sustainability Analytics"],
+      },
+      {
+        id: "government-public-sector",
+        name: "Government & Public Sector",
+        description: "Public sector AI solutions for citizen services, policy analysis, and administrative automation.",
+        icon: "🏛️",
+        features: ["Citizen Services AI", "Policy Analysis", "Process Automation", "Public Safety AI"],
+      },
+      {
+        id: "retail-consumer-enterprises",
+        name: "Retail & Consumer Enterprises",
+        description: "Large retail organizations with omnichannel AI, inventory optimization, and customer experience solutions.",
+        icon: "🛍️",
+        features: ["Omnichannel AI", "Inventory Optimization", "Customer Experience", "Pricing Intelligence"],
+      },
+      {
+        id: "logistics-transportation-enterprises",
+        name: "Logistics & Transportation Enterprises",
+        description: "Enterprise logistics with fleet management, route optimization, and supply chain intelligence.",
+        icon: "🚛",
+        features: ["Fleet Management AI", "Route Optimization", "Supply Chain Intelligence", "Delivery Prediction"],
+      },
+      {
+        id: "media-entertainment-enterprises",
+        name: "Media & Entertainment Enterprises",
+        description: "Media companies with content recommendation, audience analytics, and production automation.",
+        icon: "🎬",
+        features: ["Content Recommendation", "Audience Analytics", "Production Automation", "Rights Management"],
+      },
+      {
+        id: "large-healthcare-education",
+        name: "Large Healthcare & Education Enterprises",
+        description: "Enterprise healthcare and education institutions with administrative AI and operational efficiency.",
+        icon: "🏫",
+        features: ["Administrative AI", "Resource Management", "Student/Patient Analytics", "Compliance Automation"],
+      },
     ],
   },
   {
@@ -135,36 +203,77 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows E-Commerce AI Solutions - Personalized shopping experiences, cart recovery, and AI-powered product recommendations",
     tagline: "AI That Converts Browsers Into Buyers",
     description: "Boost conversions, increase average order value, and deliver personalized shopping experiences at scale.",
-    challenges: [
-      { title: "Cart Abandonment", description: "70% of shoppers abandon carts, leaving revenue on the table." },
-      { title: "Generic Experiences", description: "One-size-fits-all product pages fail to engage modern shoppers." },
-      { title: "Support Overload", description: "Product questions and order issues overwhelm support teams during peak times." },
-      { title: "Inventory Management", description: "Stockouts and overstock tie up capital and frustrate customers." },
-    ],
-    solutions: [
-      { title: "Smart Cart Recovery", description: "AI-powered recovery flows that bring shoppers back with personalized offers", icon: "🛒" },
-      { title: "Dynamic Personalization", description: "Real-time product recommendations based on browsing behavior", icon: "✨" },
-      { title: "AI Shopping Assistant", description: "24/7 product expert that answers questions and guides purchases", icon: "💬" },
-      { title: "Demand Forecasting", description: "ML models that predict demand and optimize inventory levels", icon: "📦" },
-    ],
-    whyNanoflows: [
-      { title: "Revenue Impact", description: "Average 25% increase in conversion rates and 15% lift in AOV within 90 days." },
-      { title: "Platform Native", description: "Deep integrations with Shopify, WooCommerce, Magento, and BigCommerce." },
-      { title: "Black Friday Ready", description: "Infrastructure that scales instantly to handle peak traffic without breaking." },
-      { title: "Measurable ROI", description: "Clear attribution and analytics showing exactly how AI impacts your bottom line." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["Recommendation Engines", "NLP", "Computer Vision", "Demand Forecasting"] },
-      { category: "Integrations", technologies: ["Shopify", "WooCommerce", "Magento", "BigCommerce", "Klaviyo"] },
-      { category: "Infrastructure", technologies: ["Edge CDN", "Auto-scaling", "Real-time Processing", "Global Deployment"] },
-      { category: "Analytics", technologies: ["Revenue Attribution", "A/B Testing", "Customer Analytics", "Funnel Analysis"] },
-    ],
-    faqs: [
-      { question: "Will this work with my Shopify store?", answer: "Yes! We have a native Shopify app that installs in minutes and syncs your product catalog automatically." },
-      { question: "How do you handle high traffic during sales?", answer: "Our infrastructure auto-scales to handle any traffic level. We've successfully powered Black Friday for major retailers." },
-      { question: "Can the AI understand our products?", answer: "Yes, we train on your product catalog, descriptions, and customer reviews to provide accurate, helpful responses." },
-      { question: "What's the impact on page speed?", answer: "Our lightweight scripts load asynchronously and have minimal impact on page performance." },
-      { question: "How quickly will I see results?", answer: "Most merchants see measurable improvements within 2-4 weeks of deployment." },
+    subIndustries: [
+      {
+        id: "b2c-online-retail",
+        name: "B2C Online Retail",
+        description: "Consumer-focused online stores with personalized shopping experiences and conversion optimization.",
+        icon: "🛍️",
+        features: ["Product Recommendations", "Personalization AI", "Cart Recovery", "Customer Segmentation"],
+      },
+      {
+        id: "b2b-ecommerce-platforms",
+        name: "B2B E-Commerce Platforms",
+        description: "Business-to-business commerce platforms with bulk ordering, pricing tiers, and account management.",
+        icon: "🏢",
+        features: ["Bulk Order AI", "Dynamic Pricing", "Account Management", "Order Automation"],
+      },
+      {
+        id: "d2c-brands",
+        name: "D2C (Direct-to-Consumer) Brands",
+        description: "Direct-to-consumer brands with brand storytelling, customer loyalty, and subscription management.",
+        icon: "📦",
+        features: ["Brand Analytics", "Loyalty Programs AI", "Subscription Management", "Social Commerce"],
+      },
+      {
+        id: "multi-vendor-marketplaces",
+        name: "Multi-Vendor Marketplaces",
+        description: "Marketplace platforms with seller management, product curation, and marketplace analytics.",
+        icon: "🏪",
+        features: ["Seller Analytics", "Product Curation AI", "Commission Management", "Fraud Detection"],
+      },
+      {
+        id: "grocery-quick-commerce",
+        name: "Grocery & Quick Commerce",
+        description: "Fast delivery grocery and convenience platforms with inventory management and delivery optimization.",
+        icon: "🥬",
+        features: ["Inventory Prediction", "Delivery Optimization", "Fresh Product AI", "Quick Commerce Analytics"],
+      },
+      {
+        id: "fashion-lifestyle-ecommerce",
+        name: "Fashion & Lifestyle E-Commerce",
+        description: "Fashion and lifestyle stores with visual search, size recommendations, and trend analysis.",
+        icon: "👗",
+        features: ["Visual Search AI", "Size Recommendation", "Trend Analysis", "Style Matching"],
+      },
+      {
+        id: "electronics-digital-goods",
+        name: "Electronics & Digital Goods Stores",
+        description: "Electronics and digital product stores with tech specifications matching and comparison tools.",
+        icon: "📱",
+        features: ["Spec Matching AI", "Comparison Engine", "Tech Support Bot", "Warranty Management"],
+      },
+      {
+        id: "subscription-commerce",
+        name: "Subscription-Based Commerce",
+        description: "Subscription box and recurring commerce with churn prediction and personalized curation.",
+        icon: "📬",
+        features: ["Churn Prediction", "Personalized Curation", "Subscription Analytics", "Renewal Optimization"],
+      },
+      {
+        id: "social-commerce",
+        name: "Social Commerce",
+        description: "Social media-driven commerce with influencer analytics, live shopping, and social selling tools.",
+        icon: "📲",
+        features: ["Influencer Analytics", "Live Shopping AI", "Social Selling Tools", "UGC Management"],
+      },
+      {
+        id: "cross-border-ecommerce",
+        name: "Cross-Border E-Commerce",
+        description: "International commerce platforms with multi-currency, localization, and cross-border logistics.",
+        icon: "🌍",
+        features: ["Currency Optimization", "Localization AI", "Cross-Border Logistics", "Compliance Automation"],
+      },
     ],
   },
   {
@@ -175,36 +284,77 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows Real Estate AI Solutions - AI agents for lead qualification, property matching, and 24/7 prospect nurturing",
     tagline: "AI Agents That Never Miss a Lead",
     description: "Qualify leads, match properties, and nurture prospects 24/7 so your agents can focus on closing deals.",
-    challenges: [
-      { title: "Lead Response Time", description: "Hot leads go cold within minutes, but agents can't respond instantly to every inquiry." },
-      { title: "Lead Qualification", description: "Agents waste time on unqualified leads while serious buyers slip through the cracks." },
-      { title: "Property Matching", description: "Finding the perfect property for each buyer requires extensive manual research." },
-      { title: "Follow-Up Consistency", description: "Long sales cycles require consistent nurturing that's hard to maintain manually." },
-    ],
-    solutions: [
-      { title: "Instant Lead Response", description: "AI engages new leads within seconds, 24/7, across all channels", icon: "⚡" },
-      { title: "Smart Qualification", description: "Automatically qualifies leads based on budget, timeline, and preferences", icon: "✅" },
-      { title: "Property Matching AI", description: "Intelligent matching based on stated and inferred preferences", icon: "🏘️" },
-      { title: "Automated Nurturing", description: "Personalized drip campaigns that keep leads warm until they're ready", icon: "📧" },
-    ],
-    whyNanoflows: [
-      { title: "Built for Real Estate", description: "Purpose-built for the unique workflows and terminology of the real estate industry." },
-      { title: "MLS Integration", description: "Real-time sync with MLS listings for accurate property recommendations." },
-      { title: "Agent Empowerment", description: "AI handles the busywork so agents can focus on relationships and closings." },
-      { title: "Proven Results", description: "Clients see 3x more qualified appointments within the first month." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["Natural Language Understanding", "Property Matching", "Lead Scoring", "Sentiment Analysis"] },
-      { category: "Integrations", technologies: ["MLS", "Zillow", "Realtor.com", "Follow Up Boss", "kvCORE"] },
-      { category: "Communication", technologies: ["SMS", "Email", "Voice AI", "WhatsApp", "Live Chat"] },
-      { category: "Analytics", technologies: ["Lead Attribution", "Agent Performance", "Pipeline Analytics", "ROI Tracking"] },
-    ],
-    faqs: [
-      { question: "Does it integrate with my CRM?", answer: "Yes, we integrate with all major real estate CRMs including Follow Up Boss, kvCORE, LionDesk, and more." },
-      { question: "Can it handle complex property searches?", answer: "Absolutely. Our AI understands nuanced requirements like school districts, commute times, and neighborhood preferences." },
-      { question: "Will leads know they're talking to AI?", answer: "The AI identifies itself appropriately while maintaining natural conversation. It seamlessly hands off to agents when needed." },
-      { question: "How does the MLS integration work?", answer: "We pull real-time listing data from your MLS to ensure property recommendations are always current and accurate." },
-      { question: "Can it schedule showings?", answer: "Yes, the AI can coordinate showing schedules with both the lead and the agent's calendar." },
+    subIndustries: [
+      {
+        id: "residential-real-estate",
+        name: "Residential Real Estate",
+        description: "Home buying and selling with property matching, virtual tours, and buyer qualification.",
+        icon: "🏡",
+        features: ["Property Matching AI", "Virtual Tours", "Buyer Qualification", "Market Analysis"],
+      },
+      {
+        id: "commercial-real-estate",
+        name: "Commercial Real Estate",
+        description: "Commercial property solutions with lease management, tenant matching, and investment analytics.",
+        icon: "🏢",
+        features: ["Lease Management AI", "Tenant Matching", "Investment Analytics", "Space Optimization"],
+      },
+      {
+        id: "real-estate-developers",
+        name: "Real Estate Developers & Builders",
+        description: "Development projects with project management, sales automation, and construction tracking.",
+        icon: "🏗️",
+        features: ["Project Management AI", "Sales Automation", "Construction Tracking", "Inventory Management"],
+      },
+      {
+        id: "property-brokers-agencies",
+        name: "Property Brokers & Agencies",
+        description: "Brokerage solutions with lead management, commission tracking, and agent performance analytics.",
+        icon: "🔑",
+        features: ["Lead Management AI", "Commission Tracking", "Agent Analytics", "Client Matching"],
+      },
+      {
+        id: "co-living-co-working",
+        name: "Co-Living & Co-Working Spaces",
+        description: "Shared space management with booking systems, community engagement, and occupancy optimization.",
+        icon: "🏘️",
+        features: ["Space Booking AI", "Community Engagement", "Occupancy Optimization", "Amenity Management"],
+      },
+      {
+        id: "property-management-firms",
+        name: "Property Management Firms",
+        description: "Property management with maintenance scheduling, tenant communication, and financial tracking.",
+        icon: "🔧",
+        features: ["Maintenance AI", "Tenant Communication", "Financial Tracking", "Vendor Management"],
+      },
+      {
+        id: "rental-leasing-platforms",
+        name: "Rental & Leasing Platforms",
+        description: "Rental platforms with tenant screening, lease automation, and rent collection.",
+        icon: "📝",
+        features: ["Tenant Screening AI", "Lease Automation", "Rent Collection", "Property Marketing"],
+      },
+      {
+        id: "land-plot-management",
+        name: "Land & Plot Management",
+        description: "Land and plot sales with mapping, valuation, and documentation management.",
+        icon: "🗺️",
+        features: ["Land Valuation AI", "Mapping Tools", "Documentation Management", "Title Verification"],
+      },
+      {
+        id: "real-estate-investment",
+        name: "Real Estate Investment Firms",
+        description: "Investment management with portfolio analytics, market forecasting, and deal sourcing.",
+        icon: "💰",
+        features: ["Portfolio Analytics", "Market Forecasting AI", "Deal Sourcing", "Risk Assessment"],
+      },
+      {
+        id: "hospitality-vacation-rentals",
+        name: "Hospitality & Vacation Rentals",
+        description: "Short-term rental management with dynamic pricing, guest communication, and booking optimization.",
+        icon: "🏖️",
+        features: ["Dynamic Pricing AI", "Guest Communication", "Booking Optimization", "Review Management"],
+      },
     ],
   },
   {
@@ -215,36 +365,77 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows Healthcare AI Solutions - HIPAA-compliant AI for patient engagement, clinical support, and healthcare automation",
     tagline: "HIPAA-Compliant AI for Better Patient Care",
     description: "Improve patient engagement, streamline operations, and support clinical decisions while maintaining strict compliance.",
-    challenges: [
-      { title: "Patient Communication", description: "Staff spend hours on phone calls, appointment reminders, and basic questions." },
-      { title: "Administrative Burden", description: "Clinical staff drowning in paperwork instead of focusing on patient care." },
-      { title: "No-Show Rates", description: "Missed appointments cost practices millions and delay patient care." },
-      { title: "Insurance Complexity", description: "Verifying coverage and processing claims is time-consuming and error-prone." },
-    ],
-    solutions: [
-      { title: "Patient AI Assistant", description: "HIPAA-compliant chatbot for scheduling, FAQs, and symptom triage", icon: "💬" },
-      { title: "Clinical Documentation AI", description: "Automated note-taking and documentation from patient encounters", icon: "📝" },
-      { title: "Smart Scheduling", description: "AI-optimized scheduling with automated reminders and waitlist management", icon: "📅" },
-      { title: "Claims Automation", description: "Intelligent claims processing and prior authorization handling", icon: "💳" },
-    ],
-    whyNanoflows: [
-      { title: "HIPAA Compliant", description: "Built from the ground up for healthcare with BAA agreements and full HIPAA compliance." },
-      { title: "EHR Integration", description: "Seamless integration with Epic, Cerner, athenahealth, and other major EHR systems." },
-      { title: "Clinical Accuracy", description: "AI trained on medical knowledge with human oversight for clinical decisions." },
-      { title: "Patient-Centric", description: "Designed to enhance the patient experience while respecting privacy." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["Clinical NLP", "Medical Entity Recognition", "Symptom Analysis", "Risk Stratification"] },
-      { category: "Integrations", technologies: ["Epic", "Cerner", "athenahealth", "Allscripts", "eClinicalWorks"] },
-      { category: "Security", technologies: ["HIPAA Compliant", "BAA Available", "PHI Encryption", "Audit Logging"] },
-      { category: "Communication", technologies: ["Patient Portal", "Secure Messaging", "Voice", "SMS (Compliant)"] },
-    ],
-    faqs: [
-      { question: "Is this HIPAA compliant?", answer: "Yes, our platform is fully HIPAA compliant and we sign Business Associate Agreements with all healthcare clients." },
-      { question: "Does it integrate with Epic?", answer: "Yes, we have certified integrations with Epic, Cerner, and other major EHR systems." },
-      { question: "Can patients use this for medical advice?", answer: "The AI provides general information and triage guidance, but always recommends consulting a healthcare provider for medical advice." },
-      { question: "How is patient data protected?", answer: "All PHI is encrypted at rest and in transit, with strict access controls and comprehensive audit logging." },
-      { question: "Can it reduce no-show rates?", answer: "Yes, our clients typically see 30-50% reduction in no-shows through smart reminders and easy rescheduling." },
+    subIndustries: [
+      {
+        id: "hospitals-multispecialty-clinics",
+        name: "Hospitals & Multi-Specialty Clinics",
+        description: "Hospital management with patient flow optimization, clinical decision support, and operational efficiency.",
+        icon: "🏨",
+        features: ["Patient Flow AI", "Clinical Decision Support", "Bed Management", "Staff Scheduling"],
+      },
+      {
+        id: "diagnostic-labs-imaging",
+        name: "Diagnostic Labs & Imaging Centers",
+        description: "Diagnostic centers with AI-powered image analysis, report generation, and workflow automation.",
+        icon: "🔬",
+        features: ["Image Analysis AI", "Report Automation", "Lab Workflow", "Results Communication"],
+      },
+      {
+        id: "telemedicine-virtual-care",
+        name: "Telemedicine & Virtual Care",
+        description: "Virtual healthcare platforms with video consultations, symptom checking, and remote monitoring.",
+        icon: "📱",
+        features: ["Video Consultation AI", "Symptom Checker", "Remote Monitoring", "Virtual Triage"],
+      },
+      {
+        id: "pharmacies-medical-stores",
+        name: "Pharmacies & Medical Stores",
+        description: "Pharmacy management with inventory prediction, prescription processing, and medication reminders.",
+        icon: "💊",
+        features: ["Inventory Prediction", "Prescription Processing AI", "Medication Reminders", "Drug Interaction Checks"],
+      },
+      {
+        id: "health-insurance-providers",
+        name: "Health Insurance Providers",
+        description: "Insurance solutions with claims processing, fraud detection, and policy management.",
+        icon: "🛡️",
+        features: ["Claims Processing AI", "Fraud Detection", "Policy Management", "Member Engagement"],
+      },
+      {
+        id: "medical-device-companies",
+        name: "Medical Device Companies",
+        description: "Medical device manufacturers with quality control, regulatory compliance, and customer support.",
+        icon: "🩺",
+        features: ["Quality Control AI", "Regulatory Compliance", "Device Analytics", "Customer Support"],
+      },
+      {
+        id: "wellness-fitness-centers",
+        name: "Wellness & Fitness Centers",
+        description: "Wellness centers with personalized programs, progress tracking, and member engagement.",
+        icon: "🧘",
+        features: ["Personalized Programs AI", "Progress Tracking", "Member Engagement", "Nutrition Planning"],
+      },
+      {
+        id: "mental-health-counseling",
+        name: "Mental Health & Counseling Services",
+        description: "Mental health services with appointment scheduling, progress monitoring, and crisis support.",
+        icon: "🧠",
+        features: ["Appointment AI", "Progress Monitoring", "Crisis Support", "Therapy Matching"],
+      },
+      {
+        id: "home-healthcare-services",
+        name: "Home Healthcare Services",
+        description: "Home care services with caregiver scheduling, patient monitoring, and care coordination.",
+        icon: "🏠",
+        features: ["Caregiver Scheduling AI", "Patient Monitoring", "Care Coordination", "Family Communication"],
+      },
+      {
+        id: "healthcare-saas-health-it",
+        name: "Healthcare SaaS & Health IT",
+        description: "Health technology companies building software for healthcare providers and patients.",
+        icon: "💻",
+        features: ["EHR Integration", "Health Data Analytics", "Patient Portals", "Interoperability Solutions"],
+      },
     ],
   },
   {
@@ -255,36 +446,77 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows Education AI Solutions - AI tutoring, personalized learning paths, and educational automation for schools",
     tagline: "AI That Transforms Learning Experiences",
     description: "Personalize education, automate administration, and support students with AI tutors available 24/7.",
-    challenges: [
-      { title: "One-Size-Fits-All Learning", description: "Students learn at different paces, but teachers can't personalize for every student." },
-      { title: "Administrative Overload", description: "Educators spend too much time on paperwork and not enough on teaching." },
-      { title: "Student Support Gaps", description: "Students need help outside class hours when teachers aren't available." },
-      { title: "Engagement Challenges", description: "Keeping students engaged in an era of endless digital distractions." },
-    ],
-    solutions: [
-      { title: "AI Tutoring System", description: "Personalized tutoring that adapts to each student's learning style and pace", icon: "🎓" },
-      { title: "Automated Grading", description: "Instant feedback on assignments with detailed explanations", icon: "✏️" },
-      { title: "24/7 Student Support", description: "AI assistant for homework help, scheduling, and campus questions", icon: "🤖" },
-      { title: "Engagement Analytics", description: "Early warning system for at-risk students based on engagement patterns", icon: "📊" },
-    ],
-    whyNanoflows: [
-      { title: "Pedagogy-First Design", description: "Developed with educators to align with proven teaching methodologies." },
-      { title: "FERPA Compliant", description: "Built for education with full FERPA and COPPA compliance for all age groups." },
-      { title: "Accessibility Focus", description: "WCAG 2.1 compliant with features for diverse learning needs." },
-      { title: "Institution Scale", description: "Proven at scale from small schools to large university systems." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["Adaptive Learning", "Natural Language Tutoring", "Essay Assessment", "Learning Analytics"] },
-      { category: "Integrations", technologies: ["Canvas", "Blackboard", "Google Classroom", "Moodle", "PowerSchool"] },
-      { category: "Compliance", technologies: ["FERPA Compliant", "COPPA Compliant", "WCAG 2.1", "Student Privacy Pledge"] },
-      { category: "Platforms", technologies: ["Web", "iOS", "Android", "LTI Compatible", "API Access"] },
-    ],
-    faqs: [
-      { question: "Is it safe for K-12 students?", answer: "Yes, we are fully COPPA and FERPA compliant with strict content filtering and age-appropriate interactions." },
-      { question: "Does it integrate with our LMS?", answer: "Yes, we integrate with Canvas, Blackboard, Google Classroom, Moodle, and other major learning management systems via LTI." },
-      { question: "Can it replace teachers?", answer: "No, our AI is designed to support and empower teachers, not replace them. It handles routine tasks so teachers can focus on teaching." },
-      { question: "How does the AI tutor work?", answer: "The AI tutor uses Socratic questioning to guide students to understanding, providing hints and explanations tailored to their level." },
-      { question: "Can it help with multiple subjects?", answer: "Yes, our AI tutors cover math, science, English, history, and many other subjects across K-12 and higher education." },
+    subIndustries: [
+      {
+        id: "schools-k12",
+        name: "Schools (K–12)",
+        description: "K-12 schools with student management, parent communication, and classroom analytics.",
+        icon: "🏫",
+        features: ["Student Management AI", "Parent Communication", "Classroom Analytics", "Attendance Tracking"],
+      },
+      {
+        id: "colleges-universities",
+        name: "Colleges & Universities",
+        description: "Higher education institutions with admissions AI, student success, and research support.",
+        icon: "🎓",
+        features: ["Admissions AI", "Student Success Analytics", "Research Support", "Alumni Engagement"],
+      },
+      {
+        id: "coaching-training-institutes",
+        name: "Coaching & Training Institutes",
+        description: "Coaching centers with batch management, performance tracking, and personalized study plans.",
+        icon: "📖",
+        features: ["Batch Management AI", "Performance Tracking", "Study Plan Generation", "Test Analysis"],
+      },
+      {
+        id: "online-learning-platforms",
+        name: "Online Learning Platforms (EdTech)",
+        description: "E-learning platforms with adaptive learning, content recommendations, and engagement analytics.",
+        icon: "💻",
+        features: ["Adaptive Learning AI", "Content Recommendation", "Engagement Analytics", "Gamification"],
+      },
+      {
+        id: "corporate-training-ld",
+        name: "Corporate Training & L&D",
+        description: "Corporate learning with skill gap analysis, training automation, and compliance tracking.",
+        icon: "👔",
+        features: ["Skill Gap Analysis AI", "Training Automation", "Compliance Tracking", "Performance Metrics"],
+      },
+      {
+        id: "skill-development-vocational",
+        name: "Skill Development & Vocational Training",
+        description: "Vocational training with hands-on skill tracking, job placement, and industry certification.",
+        icon: "🛠️",
+        features: ["Skill Tracking AI", "Job Placement", "Certification Management", "Industry Partnerships"],
+      },
+      {
+        id: "competitive-exam-prep",
+        name: "Competitive Exam Preparation",
+        description: "Exam preparation with practice tests, performance analysis, and personalized study paths.",
+        icon: "📝",
+        features: ["Practice Test AI", "Performance Analysis", "Study Path Generation", "Weak Area Detection"],
+      },
+      {
+        id: "test-certification-providers",
+        name: "Test & Certification Providers",
+        description: "Testing organizations with exam administration, proctoring, and certification management.",
+        icon: "✅",
+        features: ["Exam Administration AI", "AI Proctoring", "Certification Tracking", "Credential Verification"],
+      },
+      {
+        id: "education-content-publishers",
+        name: "Education Content Publishers",
+        description: "Educational publishers with content creation, distribution, and usage analytics.",
+        icon: "📚",
+        features: ["Content Creation AI", "Distribution Analytics", "Rights Management", "Personalization"],
+      },
+      {
+        id: "learning-management-saas",
+        name: "Learning Management SaaS Providers",
+        description: "LMS platforms with course management, student tracking, and integration capabilities.",
+        icon: "🖥️",
+        features: ["Course Management AI", "Student Tracking", "Integration APIs", "Analytics Dashboard"],
+      },
     ],
   },
   {
@@ -295,64 +527,84 @@ const industries: Industry[] = [
     imageAlt: "NanoFlows Local Business AI Solutions - Affordable AI for 24/7 customer service, booking automation, and local marketing",
     tagline: "Enterprise AI at Local Business Prices",
     description: "Compete with big brands by delivering 24/7 customer service, automated bookings, and smart marketing.",
-    challenges: [
-      { title: "Limited Availability", description: "You can't answer every call or message when you're busy serving customers." },
-      { title: "Review Management", description: "Managing online reputation across multiple platforms is overwhelming." },
-      { title: "Booking Chaos", description: "Double bookings, no-shows, and scheduling conflicts hurt your business." },
-      { title: "Marketing Time", description: "Running a business leaves no time for consistent marketing." },
-    ],
-    solutions: [
-      { title: "24/7 Customer Response", description: "AI answers calls, texts, and messages instantly, any time of day", icon: "📱" },
-      { title: "Reputation Manager", description: "Automatically monitor and respond to reviews across all platforms", icon: "⭐" },
-      { title: "Smart Booking System", description: "Automated scheduling with reminders and no-show protection", icon: "📅" },
-      { title: "Local Marketing AI", description: "Automated social posts, email campaigns, and local ads", icon: "📣" },
-    ],
-    whyNanoflows: [
-      { title: "Affordable Pricing", description: "Plans starting at prices that make sense for local businesses." },
-      { title: "No Technical Skills Needed", description: "Set up and manage everything from a simple mobile app." },
-      { title: "Local Focus", description: "Features built specifically for the needs of local service businesses." },
-      { title: "Quick Results", description: "Most businesses see increased bookings within the first week." },
-    ],
-    techStack: [
-      { category: "AI/ML", technologies: ["Natural Conversation", "Sentiment Analysis", "Local SEO", "Smart Scheduling"] },
-      { category: "Integrations", technologies: ["Google Business", "Yelp", "Facebook", "Square", "QuickBooks"] },
-      { category: "Communication", technologies: ["Phone", "SMS", "Facebook Messenger", "Instagram DM", "Website Chat"] },
-      { category: "Marketing", technologies: ["Social Media", "Email Marketing", "Local Ads", "Review Management"] },
-    ],
-    faqs: [
-      { question: "Do I need to be tech-savvy?", answer: "Not at all! Our platform is designed for busy business owners. Everything is managed through a simple mobile app." },
-      { question: "How much does it cost?", answer: "We have plans starting at affordable monthly rates designed for local businesses. No long-term contracts required." },
-      { question: "Can it really sound like me?", answer: "Yes! We customize the AI's personality and responses to match your brand voice and business style." },
-      { question: "Will my customers know it's AI?", answer: "The AI is transparent about being an assistant when asked, but handles conversations so naturally that most customers are impressed by the service." },
-      { question: "What if I want to take over a conversation?", answer: "You can jump into any conversation at any time from the mobile app. The AI notifies you of high-priority inquiries." },
+    subIndustries: [
+      {
+        id: "retail-stores-showrooms",
+        name: "Retail Stores & Showrooms",
+        description: "Local retail stores with inventory management, customer engagement, and sales tracking.",
+        icon: "🏬",
+        features: ["Inventory Management AI", "Customer Engagement", "Sales Tracking", "Loyalty Programs"],
+      },
+      {
+        id: "restaurants-cafes-food",
+        name: "Restaurants, Cafés & Food Outlets",
+        description: "Food businesses with table management, order automation, and customer feedback analysis.",
+        icon: "🍽️",
+        features: ["Table Management AI", "Order Automation", "Menu Optimization", "Review Analysis"],
+      },
+      {
+        id: "salons-spas-personal-care",
+        name: "Salons, Spas & Personal Care",
+        description: "Beauty businesses with appointment booking, staff scheduling, and client management.",
+        icon: "💇",
+        features: ["Appointment AI", "Staff Scheduling", "Client Management", "Service Recommendations"],
+      },
+      {
+        id: "gyms-yoga-fitness",
+        name: "Gyms, Yoga & Fitness Studios",
+        description: "Fitness centers with membership management, class scheduling, and member engagement.",
+        icon: "🏋️",
+        features: ["Membership AI", "Class Scheduling", "Member Engagement", "Workout Recommendations"],
+      },
+      {
+        id: "clinics-local-healthcare",
+        name: "Clinics & Local Healthcare Centers",
+        description: "Local clinics with patient scheduling, records management, and follow-up automation.",
+        icon: "⚕️",
+        features: ["Patient Scheduling AI", "Records Management", "Follow-up Automation", "Prescription Management"],
+      },
+      {
+        id: "real-estate-agencies-local",
+        name: "Real Estate Agencies",
+        description: "Local real estate offices with lead management, property listings, and client communication.",
+        icon: "🏠",
+        features: ["Lead Management AI", "Property Listings", "Client Communication", "Market Insights"],
+      },
+      {
+        id: "automobile-services-workshops",
+        name: "Automobile Services & Workshops",
+        description: "Auto service centers with appointment booking, service tracking, and customer communication.",
+        icon: "🚗",
+        features: ["Service Booking AI", "Job Tracking", "Parts Inventory", "Customer Updates"],
+      },
+      {
+        id: "travel-agents-local-tourism",
+        name: "Travel Agents & Local Tourism",
+        description: "Travel agencies with trip planning, booking management, and customer engagement.",
+        icon: "✈️",
+        features: ["Trip Planning AI", "Booking Management", "Itinerary Generation", "Customer Engagement"],
+      },
+      {
+        id: "event-management-services",
+        name: "Event Management & Services",
+        description: "Event planners with vendor management, scheduling, and event coordination.",
+        icon: "🎉",
+        features: ["Event Planning AI", "Vendor Management", "Scheduling", "Budget Tracking"],
+      },
+      {
+        id: "professional-services",
+        name: "Professional Services (CA, Legal, Consultants)",
+        description: "Professional service firms with client management, case tracking, and document automation.",
+        icon: "⚖️",
+        features: ["Client Management AI", "Case Tracking", "Document Automation", "Billing Management"],
+      },
     ],
   },
 ];
 
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  return (
-    <div className="border-b border-gray-200 last:border-b-0">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between py-5 text-left"
-      >
-        <span className="text-lg font-semibold text-gray-900">{question}</span>
-        <span className={`ml-4 flex-shrink-0 text-2xl text-orange-500 transition-transform ${isOpen ? "rotate-45" : ""}`}>
-          +
-        </span>
-      </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-5" : "max-h-0"}`}>
-        <p className="text-gray-600 leading-relaxed">{answer}</p>
-      </div>
-    </div>
-  );
-}
-
-export default function IndustryDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
-  const industry = industries.find((i) => i.id === id);
+export default async function IndustryDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const industry = industries.find((ind) => ind.id === id);
 
   if (!industry) {
     notFound();
@@ -362,180 +614,84 @@ export default function IndustryDetailPage({ params }: { params: Promise<{ id: s
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-50 py-24">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-orange-200 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-amber-200 rounded-full blur-[150px]"></div>
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <div className="absolute inset-0">
+          <Image
+            src={industry.image}
+            alt={industry.imageAlt}
+            title={`NanoFlows ${industry.name} AI Solutions`}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
         </div>
         <div className="relative mx-auto max-w-[1400px] px-6">
-          <Link href="/industries" className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-orange-600 mb-8">
-            ← Back to Industries
-          </Link>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-3xl shadow-lg mb-6">
-                {industry.icon}
-              </div>
-              <h1 className="text-4xl font-extrabold text-gray-900 md:text-5xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-white backdrop-blur-sm">
+              <span className="text-2xl">{industry.icon}</span>
+              <span className="text-sm font-semibold uppercase tracking-[0.1em]">
                 {industry.name}
-              </h1>
-              <p className="mt-2 text-xl text-orange-600 font-semibold">{industry.tagline}</p>
-              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-                {industry.description}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
-                >
-                  Get Started →
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 text-base font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
-                >
-                  Schedule Demo
-                </Link>
-              </div>
+              </span>
             </div>
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl relative h-96">
-                <Image
-                  src={industry.image}
-                  alt={industry.imageAlt}
-                  title={`${industry.name} AI Solutions - NanoFlows`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-              </div>
+            <h1 className="mt-4 text-4xl font-extrabold text-white md:text-5xl">
+              Sub-Industries We Serve
+            </h1>
+            <p className="mt-6 text-lg text-gray-300">
+              {industry.description}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="mb-12 text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
+              Specialized Solutions
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+              Choose Your {industry.name} Segment
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+              We offer tailored AI solutions for each sub-industry within {industry.name.toLowerCase()}. 
+              Select your segment to explore how we can transform your business.
+            </p>
+          </div>
+
+          <SubIndustryGrid subIndustries={industry.subIndustries} />
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
+        <div className="mx-auto max-w-[1400px] px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold text-white md:text-4xl">
+              Don&apos;t See Your Specific Segment?
+            </h2>
+            <p className="mt-4 text-lg text-gray-300">
+              We work with businesses across all segments within {industry.name.toLowerCase()}. 
+              Let&apos;s discuss your unique requirements and build a custom AI solution for your business.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
+              >
+                Contact Us →
+              </Link>
+              <Link
+                href="/industries"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 px-8 py-4 font-semibold text-white transition hover:bg-white/10"
+              >
+                ← Back to Industries
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-[1400px] px-6">
-          <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
-              Industry Challenges
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
-              Problems We Solve
-            </h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {industry.challenges.map((challenge) => (
-              <div key={challenge.title} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-orange-200 transition">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-100 text-red-600 text-xl mb-4">
-                  ⚠️
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">{challenge.title}</h3>
-                <p className="mt-2 text-gray-600 text-sm">{challenge.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-amber-50">
-        <div className="mx-auto max-w-[1400px] px-6">
-          <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
-              AI Solutions
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
-              How We Help
-            </h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {industry.solutions.map((solution) => (
-              <div key={solution.title} className="flex items-start gap-4 rounded-2xl bg-white border border-gray-200 p-6 shadow-sm hover:shadow-lg transition">
-                <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 text-2xl">
-                  {solution.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">{solution.title}</h3>
-                  <p className="mt-2 text-gray-600">{solution.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-[1400px] px-6">
-          <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
-              Why NanoFlows
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
-              The NanoFlows Advantage
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {industry.whyNanoflows.map((item, idx) => (
-              <div key={item.title} className="flex items-start gap-4 rounded-xl bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-100 p-6">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500 text-white font-bold">
-                  {idx + 1}
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">{item.title}</h3>
-                  <p className="mt-1 text-sm text-gray-600">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-amber-50">
-        <div className="mx-auto max-w-[1400px] px-6">
-          <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
-              Technology Stack
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
-              Built With Best-in-Class Technology
-            </h2>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {industry.techStack.map((stack) => (
-              <div key={stack.category} className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm hover:shadow-lg transition">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">{stack.category}</h3>
-                <div className="space-y-2">
-                  {stack.technologies.map((tech) => (
-                    <div key={tech} className="flex items-center gap-2 text-gray-600 text-sm">
-                      <span className="text-orange-500">•</span>
-                      {tech}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
-              FAQ
-            </p>
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
-              Frequently Asked Questions
-            </h2>
-          </div>
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
-            {industry.faqs.map((faq) => (
-              <FAQItem key={faq.question} question={faq.question} answer={faq.answer} />
-            ))}
-          </div>
-        </div>
-      </section>
       <Footer />
     </div>
   );
