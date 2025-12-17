@@ -8,7 +8,7 @@ import decisionSupportImage from "@assets/generated_images/decision_support_ai_d
 import contentIntelImage from "@assets/generated_images/content_intelligence_ai_platform.png";
 import salesAutoImage from "@assets/generated_images/sales_automation_workflow.png";
 import marketingAutoImage from "@assets/generated_images/marketing_automation_platform.png";
-import opsWorkflowImage from "@assets/generated_images/operations_workflow_ai.png";
+import opsWorkflowImage from "@assets/generated_images/operations_workflow_ai_engine.png";
 import aiNativeWebImage from "@assets/generated_images/ai_native_website_builder.png";
 import saasDevImage from "@assets/generated_images/saas_platform_development.png";
 import entDashImage from "@assets/generated_images/enterprise_dashboard_system.png";
@@ -23,9 +23,9 @@ import multiAccountWhatsappImage from "@assets/generated_images/multi-account_wh
 import salesInventoryImage from "@assets/generated_images/sales_inventory_management.png";
 import posBillingImage from "@assets/generated_images/pos_billing_system.png";
 import hrmsImage from "@assets/generated_images/hrms_management_system.png";
-import payrollImage from "@assets/generated_images/payroll_management.png";
+import payrollImage from "@assets/generated_images/payroll_management_system.png";
 import loanImage from "@assets/generated_images/loan_management_system.png";
-import appointmentImage from "@assets/generated_images/appointment_booking.png";
+import appointmentImage from "@assets/generated_images/appointment_booking_system.png";
 import clinicImage from "@assets/generated_images/clinic_hospital_management.png";
 import gymImage from "@assets/generated_images/gym_membership_management.png";
 import lawyerImage from "@assets/generated_images/lawyer_case_management.png";
@@ -41,7 +41,7 @@ import multiVendorImage from "@assets/generated_images/multi-vendor_marketplace.
 import classifiedsImage from "@assets/generated_images/classifieds_marketplace.png";
 import groceryImage from "@assets/generated_images/grocery_e-commerce.png";
 import pharmacyImage from "@assets/generated_images/pharmacy_e-commerce.png";
-import onDemandImage from "@assets/generated_images/on-demand_services.png";
+import onDemandImage from "@assets/generated_images/on-demand_services_marketplace.png";
 import carRentalImage from "@assets/generated_images/car_rental_platform.png";
 import hotelImage from "@assets/generated_images/hotel_booking_platform.png";
 import travelImage from "@assets/generated_images/travel_tour_booking.png";
@@ -55,7 +55,7 @@ import automobileImage from "@assets/generated_images/automobile_marketplace.png
 import lmsImage from "@assets/generated_images/learning_management_lms.png";
 import schoolImage from "@assets/generated_images/school_college_management.png";
 import coachingImage from "@assets/generated_images/coaching_institute_management.png";
-import examImage from "@assets/generated_images/examination_assessment.png";
+import examImage from "@assets/generated_images/examination_assessment_system.png";
 import courseImage from "@assets/generated_images/course_selling_platform.png";
 import libraryImage from "@assets/generated_images/library_management_system.png";
 import emailCampaignImage from "@assets/generated_images/email_campaign_marketing.png";
