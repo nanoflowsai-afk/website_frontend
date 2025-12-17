@@ -4021,7 +4021,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 px-8 py-4 text-lg font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg transition hover:-translate-y-0.5"
               >
                 View Our Services
               </Link>
@@ -4034,10 +4034,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Section 1
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 {subIndustry.name} Sub-Industry Overview
               </h2>
             </div>
@@ -4057,10 +4054,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Section 2
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 Why {subIndustry.name} Choose Nano Flows
               </h2>
             </div>
@@ -4100,10 +4094,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Section 3
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 What We Build for {subIndustry.name}
               </h2>
             </div>
@@ -4136,10 +4127,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Section 4
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 Core {subIndustry.name} Capabilities Included
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-gray-600">
@@ -4172,10 +4160,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-500">
-                Section 5
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
                 Ideal For + Business Outcomes
               </h2>
             </div>
@@ -4219,16 +4204,16 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
+      <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20">
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-3xl shadow-lg">
               {subIndustry.icon}
             </div>
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
               Ready to Transform Your {subIndustry.name} Business?
             </h2>
-            <p className="mt-4 text-lg text-gray-300">
+            <p className="mt-4 text-lg text-gray-600">
               Let&apos;s discuss how our AI solutions can help you automate operations, 
               reduce costs, and deliver exceptional experiences to your customers.
             </p>
@@ -4241,7 +4226,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
               </Link>
               <Link
                 href={`/industries/${industry.id}`}
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 px-8 py-4 font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
               >
                 ← Back to {industry.name}
               </Link>

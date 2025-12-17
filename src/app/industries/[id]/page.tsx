@@ -664,13 +664,13 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
+      <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20">
         <div className="mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
               Don&apos;t See Your Specific Segment?
             </h2>
-            <p className="mt-4 text-lg text-gray-300">
+            <p className="mt-4 text-lg text-gray-600">
               We work with businesses across all segments within {industry.name.toLowerCase()}. 
               Let&apos;s discuss your unique requirements and build a custom AI solution for your business.
             </p>
@@ -683,7 +683,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
               </Link>
               <Link
                 href="/industries"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 px-8 py-4 font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
               >
                 ← Back to Industries
               </Link>

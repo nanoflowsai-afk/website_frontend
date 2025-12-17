@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { Suspense } from "react";
 import { apiFetch } from "@/lib/api";
 
@@ -71,9 +70,7 @@ function LoginForm() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
         <div className="relative z-10 flex flex-col justify-between p-12">
-          <Link href="/">
-            <Image src="/nanoflows-logo.png" alt="NanoFlows" width={180} height={50} className="h-10 w-auto" />
-          </Link>
+          <div></div>
           <div className="max-w-md">
             <h2 className="text-3xl font-bold text-white mb-4">Welcome Back</h2>
             <p className="text-gray-300 leading-relaxed">
@@ -99,18 +96,23 @@ function LoginForm() {
 
       <div className="flex-1 flex flex-col justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 lg:px-12">
         <div className="mx-auto w-full max-w-md">
-          <div className="lg:hidden mb-8">
-            <Link href="/">
-              <Image src="/nanoflows-logo.png" alt="NanoFlows" width={160} height={45} className="h-10 w-auto" />
-            </Link>
-          </div>
 
           <div className="mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium mb-4">
               Secure Login
             </div>
-            <h1 className="text-3xl font-bold text-white">Sign in to NanoFlows</h1>
-            <p className="mt-3 text-gray-400">Enter your credentials to access your account or the admin console.</p>
+            <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
+            <p className="mt-3 text-gray-400">Sign in to access your dashboard. Admins will be routed to the admin console automatically.</p>
+            <div className="mt-6 flex items-center gap-4">
+              <div className="flex -space-x-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">A</div>
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">S</div>
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">M</div>
+              </div>
+              <p className="text-sm text-gray-400">
+                Trusted by 500+ businesses
+              </p>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -173,7 +175,7 @@ function LoginForm() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 text-sm text-gray-400 hover:text-orange-300 transition"
+              className="inline-flex items-center justify-center gap-2 text-sm text-white hover:text-orange-300 transition"
             >
               <span>← Back to website</span>
             </Link>

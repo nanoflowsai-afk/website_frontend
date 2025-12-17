@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { apiFetch } from "@/lib/api";
 
 export default function SignupPage() {
@@ -49,15 +48,7 @@ export default function SignupPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
         <div className="relative z-10 flex flex-col justify-between p-12">
-          <Link href="/">
-            <Image
-              src="/nanoflows-logo.png"
-              alt="NanoFlows"
-              width={160}
-              height={45}
-              className="h-10 w-auto brightness-0 invert"
-            />
-          </Link>
+          <div></div>
           <div className="max-w-md">
             <h2 className="text-3xl font-bold text-white mb-4">
               Join the AI Revolution
@@ -95,17 +86,6 @@ export default function SignupPage() {
 
       <div className="flex-1 flex flex-col justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 lg:px-12">
         <div className="mx-auto w-full max-w-md">
-          <div className="lg:hidden mb-8">
-            <Link href="/">
-              <Image
-                src="/nanoflows-logo.png"
-                alt="NanoFlows"
-                width={140}
-                height={40}
-                className="h-10 w-auto brightness-0 invert"
-              />
-            </Link>
-          </div>
 
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white">Create your account</h1>
