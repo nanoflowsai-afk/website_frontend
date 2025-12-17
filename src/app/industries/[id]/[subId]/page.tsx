@@ -24,13 +24,12 @@ import customerSupportImage from "@assets/generated_images/customer_support_chat
 import followUpAgentImage from "@assets/generated_images/multi-channel_ai_assistant.png";
 import realtimeAnalyticsImage from "@assets/generated_images/real-time_analytics_dashboard.png";
 import predictiveAnalyticsImage from "@assets/generated_images/predictive_analytics_engine.png";
-import decisionIntelImage from "@assets/generated_images/decision_support_ai_dashboard.png";
 import dataIntegrationImage from "@assets/generated_images/data_integration_platform.png";
 import hrSupportImage from "@assets/generated_images/hrms_management_system.png";
-import customSoftwareImage from "@assets/generated_images/saas_platform_development.png";
+import customSoftwareImage from "@assets/generated_images/project_task_management.png";
 import enterpriseAutoImage from "@assets/generated_images/ai_crm_dashboard_analytics.png";
-import analysisAgentImage2 from "@assets/generated_images/ai_lead_generation_dashboard.png";
-import decisionIntelImage2 from "@assets/generated_images/ai_team_assistant_interface.png";
+import analysisAgentImage from "@assets/generated_images/ai_chatbot_automation_saas.png";
+import decisionIntelImage from "@assets/generated_images/ai_team_assistant_interface.png";
 import type { StaticImageData } from "next/image";
 import type { Metadata } from "next";
 
@@ -79,10 +78,10 @@ const allServices: RelatedService[] = [
   { id: "10", title: "Sales Agents", description: "Autonomous AI agents that qualify leads, handle objections, and close deals 24/7.", icon: "💰", category: "AI Agents & Chatbots", image: aiSalesAgentImage },
   { id: "11", title: "Support Agents", description: "Intelligent support bots that resolve issues, escalate when needed, and learn continuously.", icon: "🎧", category: "AI Agents & Chatbots", image: customerSupportImage },
   { id: "12", title: "Follow-up Agents", description: "Automated follow-up systems that nurture leads and maintain customer relationships.", icon: "📧", category: "AI Agents & Chatbots", image: followUpAgentImage },
-  { id: "71", title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots", image: analysisAgentImage2 },
+  { id: "71", title: "Analysis Agents", description: "AI agents that monitor, analyze, and report on key business metrics automatically.", icon: "🔍", category: "AI Agents & Chatbots", image: analysisAgentImage },
   { id: "13", title: "Real-time Dashboards", description: "Live data visualization and monitoring dashboards with automated alerts.", icon: "📉", category: "Data & Intelligence", image: realtimeAnalyticsImage },
   { id: "14", title: "Predictive Analytics", description: "Machine learning models that forecast trends and identify opportunities.", icon: "🔮", category: "Data & Intelligence", image: predictiveAnalyticsImage },
-  { id: "2", title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence", image: decisionIntelImage2 },
+  { id: "16", title: "Decision Intelligence", description: "AI systems that synthesize data and recommend optimal business decisions.", icon: "🎯", category: "Data & Intelligence", image: decisionIntelImage },
   { id: "15", title: "Data Integration", description: "Connect and unify data sources for comprehensive business intelligence.", icon: "🔗", category: "Data & Intelligence", image: dataIntegrationImage },
 ];
 
