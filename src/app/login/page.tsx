@@ -165,7 +165,7 @@ function LoginForm() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 text-sm text-orange-400 hover:text-orange-300 transition"
+              className="inline-flex items-center justify-center gap-2 text-sm text-white hover:text-orange-300 transition"
             >
               <span>← Back to website</span>
             </Link>
