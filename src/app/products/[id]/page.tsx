@@ -3,11 +3,11 @@ import { Footer } from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import leadGenImage from "@assets/generated_images/ai_lead_generation_dashboard.png";
-import callingImage from "@assets/generated_images/ai_calling_system_interface.png";
-import crmImage from "@assets/generated_images/ai_crm_analytics_dashboard.png";
-import contentImage from "@assets/generated_images/ai_content_marketing_platform.png";
-import assistantImage from "@assets/generated_images/internal_ai_team_assistant.png";
+import leadGenHeroImage from "@assets/generated_images/lead_generation_hero_banner.png";
+import callingHeroImage from "@assets/generated_images/ai_calling_hero_banner.png";
+import crmHeroImage from "@assets/generated_images/crm_dashboard_hero_banner.png";
+import contentHeroImage from "@assets/generated_images/content_marketing_hero_banner.png";
+import assistantHeroImage from "@assets/generated_images/ai_assistants_hero_banner.png";
 import type { StaticImageData } from "next/image";
 
 type Product = {
@@ -15,8 +15,7 @@ type Product = {
   name: string;
   tagline: string;
   description: string;
-  image: StaticImageData;
-  imageAlt: string;
+  heroImage: StaticImageData;
   color: string;
   capabilities: {
     title: string;
@@ -46,8 +45,7 @@ const products: Product[] = [
     name: "AI Lead Generation Engines",
     tagline: "Scale Your Pipeline Autonomously",
     description: "Autonomous systems that identify, qualify, and nurture leads 24/7 without human intervention. Built to scale your pipeline effortlessly while maintaining personalized engagement.",
-    image: leadGenImage,
-    imageAlt: "NanoFlows AI Lead Generation Dashboard - Autonomous lead scoring and pipeline management system for B2B sales automation",
+    heroImage: leadGenHeroImage,
     color: "from-red-500 to-orange-500",
     capabilities: [
       { title: "Automated Prospecting", description: "AI scans multiple data sources to identify ideal prospects matching your ICP", icon: "🔍" },
@@ -81,8 +79,7 @@ const products: Product[] = [
     name: "AI Calling & Follow-Up Systems",
     tagline: "Voice AI That Closes Deals",
     description: "Voice AI platforms that handle outbound calls, follow-ups, and appointment scheduling autonomously with human-like conversations that convert.",
-    image: callingImage,
-    imageAlt: "NanoFlows AI Calling System Interface - Voice AI platform for automated outbound calls, follow-ups and appointment scheduling",
+    heroImage: callingHeroImage,
     color: "from-orange-500 to-amber-500",
     capabilities: [
       { title: "Natural Voice AI", description: "Human-like voice interactions powered by advanced speech synthesis and understanding", icon: "🎙️" },
@@ -117,8 +114,7 @@ const products: Product[] = [
     name: "AI CRM & Dashboards",
     tagline: "Self-Updating Intelligence Hub",
     description: "Intelligent CRM platforms that update themselves, predict outcomes, and surface insights without manual data entry or analysis.",
-    image: crmImage,
-    imageAlt: "NanoFlows AI CRM Dashboard - Self-updating CRM with predictive analytics and real-time business intelligence",
+    heroImage: crmHeroImage,
     color: "from-amber-500 to-yellow-500",
     capabilities: [
       { title: "Auto-Updating Records", description: "CRM entries update automatically from emails, calls, and interactions", icon: "🔄" },
@@ -153,8 +149,7 @@ const products: Product[] = [
     name: "AI Content & Marketing Systems",
     tagline: "Content Creation at Scale",
     description: "End-to-end content platforms that create, optimize, and distribute marketing assets across all channels autonomously.",
-    image: contentImage,
-    imageAlt: "NanoFlows AI Content Marketing Platform - Automated content creation, SEO optimization and multi-channel publishing system",
+    heroImage: contentHeroImage,
     color: "from-green-500 to-emerald-500",
     capabilities: [
       { title: "Auto Content Generation", description: "AI creates blog posts, social content, emails, and ads from briefs", icon: "✍️" },
@@ -189,8 +184,7 @@ const products: Product[] = [
     name: "Internal AI Assistants for Teams",
     tagline: "Your Company's AI Expert",
     description: "Custom AI assistants trained on your company knowledge to support employees with instant answers and automated workflows.",
-    image: assistantImage,
-    imageAlt: "NanoFlows Internal AI Team Assistant - Custom AI assistant for company knowledge base, task automation and team productivity",
+    heroImage: assistantHeroImage,
     color: "from-blue-500 to-indigo-500",
     capabilities: [
       { title: "Company Knowledge Base", description: "AI trained on all your docs, wikis, and internal resources", icon: "📚" },
@@ -234,45 +228,37 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-50 py-24">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-orange-200 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-amber-200 rounded-full blur-[150px]"></div>
+      <section className="relative overflow-hidden py-32">
+        <div className="absolute inset-0">
+          <Image
+            src={product.heroImage}
+            alt={`${product.name} Hero Banner`}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className={`absolute inset-0 bg-gradient-to-r ${product.color} opacity-40`}></div>
         </div>
         <div className="relative mx-auto max-w-[1400px] px-6">
-          <Link href="/products" className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-orange-600 mb-8">
+          <Link href="/products" className="inline-flex items-center gap-2 text-sm text-white hover:text-gray-100 mb-8">
             ← Back to Products
           </Link>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl font-extrabold text-gray-900 md:text-5xl">
-                {product.name}
-              </h1>
-              <p className="mt-2 text-xl text-orange-600 font-semibold">{product.tagline}</p>
-              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-                {product.description}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
-                >
-                  Request Demo
-                </a>
-              </div>
-            </div>
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl relative h-96">
-                <Image
-                  src={product.image}
-                  alt={product.imageAlt}
-                  title={`${product.name} - NanoFlows AI Product`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-              </div>
+          <div className="max-w-2xl">
+            <h1 className="text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
+              {product.name}
+            </h1>
+            <p className="mt-4 text-xl text-white/90 font-semibold">{product.tagline}</p>
+            <p className="mt-6 text-lg text-white/80 leading-relaxed">
+              {product.description}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
+              >
+                Request Demo
+              </a>
             </div>
           </div>
         </div>
