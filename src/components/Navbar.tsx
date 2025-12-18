@@ -149,10 +149,6 @@ export function Navbar() {
             <Link 
               href="/products"
               className="flex items-center gap-1 transition hover:text-orange-600"
-              onClick={(e) => {
-                e.preventDefault();
-                setProductsOpen(prev => !prev);
-              }}
             >
               Products
               <svg className={`h-4 w-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -171,15 +167,15 @@ export function Navbar() {
             onMouseEnter={handleIndustriesMouseEnter}
             onMouseLeave={handleIndustriesMouseLeave}
           >
-            <button 
-              onClick={handleIndustriesClick}
+            <Link 
+              href="/industries"
               className="flex items-center gap-1 transition hover:text-orange-600"
             >
               Industries
               <svg className={`h-4 w-4 transition-transform ${industriesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </Link>
             <AnimatePresence>
               {industriesOpen && (
                 <IndustriesDropdown onClose={() => setIndustriesOpen(false)} />
