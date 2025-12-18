@@ -116,7 +116,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[75vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-6">
+      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
         {industriesData.map((industry, index) => (
           <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-4' : ''}`}>
             {/* Header Section */}
