@@ -137,28 +137,27 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
             </Link>
 
             {/* Sub-items Section */}
-            <div className="flex flex-col gap-3 items-center">
+            <div className="flex flex-col gap-2">
               {industry.subIndustries.map((sub, subIndex) => (
                 <motion.div
                   key={sub.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.05 + subIndex * 0.02 }}
-                  className="w-full"
                 >
                   <Link
                     href={`/industries/${industry.id}/${sub.id}`}
-                    className="group flex items-center justify-center gap-2 text-sm text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-colors py-2 px-2 rounded-lg text-center"
+                    className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md whitespace-nowrap"
                     onClick={onClose}
                   >
                     <motion.span 
-                      className="text-base"
+                      className="text-sm flex-shrink-0"
                       whileHover={{ scale: 1.2 }}
                       transition={{ duration: 0.3 }}
                     >
                       {sub.icon}
                     </motion.span>
-                    <span className="leading-snug group-hover:translate-x-1 transition-transform">{sub.name}</span>
+                    <span className="truncate group-hover:translate-x-0.5 transition-transform">{sub.name}</span>
                   </Link>
                 </motion.div>
               ))}
