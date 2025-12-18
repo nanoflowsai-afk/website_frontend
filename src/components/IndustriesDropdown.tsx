@@ -125,8 +125,8 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               <div className="flex items-start gap-2 mb-2">
                 <motion.span 
                   className="text-2xl leading-none"
-                  animate={{ y: [0, -4, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {industry.icon}
                 </motion.span>
@@ -152,8 +152,8 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                   >
                     <motion.span 
                       className="text-base mt-0.5"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity, delay: (index * 0.1) + (subIndex * 0.08) }}
+                      whileHover={{ scale: 1.2 }}
+                      transition={{ duration: 0.3 }}
                     >
                       {sub.icon}
                     </motion.span>

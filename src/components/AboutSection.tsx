@@ -56,7 +56,7 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
             <ul className="space-y-2">
               {aboutData.coreValues.slice(0, 3).map((value, idx) => (
                 <motion.li key={idx} className="flex items-start gap-2 text-sm text-gray-600" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
-                  <motion.span className="text-orange-500 mt-0.5" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.2 }}>→</motion.span>
+                  <motion.span className="text-orange-500 mt-0.5" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>→</motion.span>
                   {value}
                 </motion.li>
               ))}
@@ -72,7 +72,7 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
             <ul className="space-y-2">
               {aboutData.coreValues.slice(0, 3).map((value, idx) => (
                 <motion.li key={idx} className="flex items-start gap-2 text-sm text-gray-600" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
-                  <motion.span className="text-orange-500 mt-0.5" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.2 }}>→</motion.span>
+                  <motion.span className="text-orange-500 mt-0.5" whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>→</motion.span>
                   {value}
                 </motion.li>
               ))}
