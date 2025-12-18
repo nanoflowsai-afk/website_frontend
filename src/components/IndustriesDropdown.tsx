@@ -140,7 +140,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
             </Link>
 
             {/* Sub-items Section */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 items-center">
               {industry.subIndustries.map((sub, subIndex) => (
                 <motion.div
                   key={sub.id}
@@ -150,7 +150,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                 >
                   <Link
                     href={`/industries/${industry.id}/${sub.id}`}
-                    className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md"
+                    className="group flex items-center justify-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md"
                     onClick={onClose}
                   >
                     <motion.span 
