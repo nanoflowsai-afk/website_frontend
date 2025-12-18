@@ -5,68 +5,73 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IndustriesDropdown } from "./IndustriesDropdown";
+import { ProductsDropdown } from "./ProductsDropdown";
 
 export function Navbar() {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const industriesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const productsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setResourcesOpen(true);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setResourcesOpen(false);
-    }, 200);
+    timeoutRef.current = setTimeout(() => setResourcesOpen(false), 200);
   };
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setResourcesOpen(prev => !prev);
   };
 
   const handleIndustriesMouseEnter = () => {
-    if (industriesTimeoutRef.current) {
-      clearTimeout(industriesTimeoutRef.current);
-    }
+    if (industriesTimeoutRef.current) clearTimeout(industriesTimeoutRef.current);
     setIndustriesOpen(true);
   };
 
   const handleIndustriesMouseLeave = () => {
-    industriesTimeoutRef.current = setTimeout(() => {
-      setIndustriesOpen(false);
-    }, 200);
+    industriesTimeoutRef.current = setTimeout(() => setIndustriesOpen(false), 200);
   };
 
   const handleIndustriesClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (industriesTimeoutRef.current) {
-      clearTimeout(industriesTimeoutRef.current);
-    }
+    if (industriesTimeoutRef.current) clearTimeout(industriesTimeoutRef.current);
     setIndustriesOpen(prev => !prev);
+  };
+
+  const handleProductsMouseEnter = () => {
+    if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
+    setProductsOpen(true);
+  };
+
+  const handleProductsMouseLeave = () => {
+    productsTimeoutRef.current = setTimeout(() => setProductsOpen(false), 200);
+  };
+
+  const handleProductsClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
+    setProductsOpen(prev => !prev);
   };
 
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      if (industriesTimeoutRef.current) {
-        clearTimeout(industriesTimeoutRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (industriesTimeoutRef.current) clearTimeout(industriesTimeoutRef.current);
+      if (productsTimeoutRef.current) clearTimeout(productsTimeoutRef.current);
     };
   }, []);
 
@@ -77,6 +82,9 @@ export function Navbar() {
       }
       if (industriesRef.current && !industriesRef.current.contains(event.target as Node)) {
         setIndustriesOpen(false);
+      }
+      if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
+        setProductsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -101,9 +109,29 @@ export function Navbar() {
           <Link href="/services" className="transition hover:text-orange-600">
             Services
           </Link>
-          <Link href="/products" className="transition hover:text-orange-600">
-            Products
-          </Link>
+
+          <div
+            ref={productsRef}
+            className="relative"
+            onMouseEnter={handleProductsMouseEnter}
+            onMouseLeave={handleProductsMouseLeave}
+          >
+            <button 
+              onClick={handleProductsClick}
+              className="flex items-center gap-1 transition hover:text-orange-600"
+            >
+              Products
+              <svg className={`h-4 w-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <AnimatePresence>
+              {productsOpen && (
+                <ProductsDropdown onClose={() => setProductsOpen(false)} />
+              )}
+            </AnimatePresence>
+          </div>
+
           <div
             ref={industriesRef}
             className="relative"
@@ -125,6 +153,7 @@ export function Navbar() {
               )}
             </AnimatePresence>
           </div>
+
           <div
             ref={dropdownRef}
             className="relative"
@@ -222,16 +251,49 @@ export function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
               >
-                <Link 
-                  href="/products" 
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all" 
-                  onClick={() => setMobileOpen(false)}
+                <button
+                  onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all"
                 >
-                  <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                    Products
+                  </div>
+                  <svg className={`w-4 h-4 transition-transform ${mobileProductsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
-                  Products
-                </Link>
+                </button>
+                <AnimatePresence>
+                  {mobileProductsOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="ml-8 mt-1 space-y-2 overflow-hidden"
+                    >
+                      {[
+                        { id: "ai-agents", name: "AI Agents", icon: "🤖" },
+                        { id: "intelligent-software", name: "Intelligent Software", icon: "💡" },
+                        { id: "gen-ai-platform", name: "Gen AI Platform", icon: "✨" },
+                        { id: "automation-suite", name: "Automation Suite", icon: "⚡" },
+                        { id: "data-solutions", name: "Data Solutions", icon: "📊" },
+                        { id: "enterprise-solutions", name: "Enterprise Solutions", icon: "🏛️" },
+                      ].map((product) => (
+                        <Link
+                          key={product.id}
+                          href={`/products/${product.id}`}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="text-base">{product.icon}</span>
+                          <span className="text-sm">{product.name}</span>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
 
               <motion.div
@@ -328,7 +390,7 @@ export function Navbar() {
                         onClick={() => setMobileOpen(false)}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6m-6 4h6v-4H7v4z" />
                         </svg>
                         Blog
                       </Link>
