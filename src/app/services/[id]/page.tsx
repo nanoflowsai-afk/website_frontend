@@ -1729,6 +1729,12 @@ const pricingTiers = [
   },
 ];
 
+export function generateStaticParams() {
+  return services.map((service) => ({
+    id: service.id,
+  }));
+}
+
 export default async function ServiceDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const service = services.find((s) => s.id === id);
@@ -1749,7 +1755,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       <ServiceCategorySidebar
         currentServiceId={id}
         currentCategory={service.category}
@@ -1890,11 +1896,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 With 2000+ Business Platforms - From CRM to Slack
               </h2>
             </div>
-            
+
             <div className="relative">
               <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
               <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-              
+
               <div className="space-y-3 overflow-hidden">
                 <div className="flex animate-scroll-left gap-3">
                   {[...Array(3)].map((_, setIndex) => (
@@ -1913,7 +1919,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="flex animate-scroll-right gap-3">
                   {[...Array(3)].map((_, setIndex) => (
                     <div key={setIndex} className="flex gap-3 shrink-0">
@@ -1931,7 +1937,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="flex animate-scroll-left-slow gap-3">
                   {[...Array(3)].map((_, setIndex) => (
                     <div key={setIndex} className="flex gap-3 shrink-0">
@@ -1951,7 +1957,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-8 text-center">
               <a
                 href="/contact"
@@ -1975,10 +1981,10 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 Our Digital Product Development Process We Follow
               </h2>
             </div>
-            
+
             <div className="relative">
               <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-orange-200 via-orange-300 to-orange-200 -translate-y-1/2 z-0"></div>
-              
+
               <div className="flex md:grid md:grid-cols-5 gap-6 relative z-10 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory">
                 {processSteps.map((item, idx) => {
                   const bgColor = idx === 4 ? 'bg-amber-50' : 'bg-orange-50';
