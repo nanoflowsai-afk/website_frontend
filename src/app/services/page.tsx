@@ -823,6 +823,7 @@ const services: Service[] = [
   },
 ];
 
+
 function ServicesPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -836,8 +837,8 @@ function ServicesPageContent() {
     }
   }, [searchParams]);
 
-  const filteredServices = activeCategory === "all" 
-    ? services 
+  const filteredServices = activeCategory === "all"
+    ? services
     : services.filter(s => s.category === activeCategory);
 
   const visibleCategories = showAllCategories ? categories : categories.slice(0, 6);
@@ -845,143 +846,129 @@ function ServicesPageContent() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       <section className="relative overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0">
           <Image
             src={servicesHeroImage}
-            alt="NanoFlows AI Services - Comprehensive AI solutions including Generative AI, Automation, Development, Chatbots, Analytics and more"
-            title="NanoFlows AI Services"
+            alt="Services Background"
             fill
-            className="object-cover"
-            sizes="100vw"
+            className="object-cover opacity-10"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white" />
         </div>
-        <div className="relative mx-auto max-w-[1400px] px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-400">
+
+        <div className="relative mx-auto max-w-[1400px] px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100 text-3xl shadow-lg ring-4 ring-orange-50/50">
+              🚀
+            </div>
+            <h1 className="bg-gradient-to-r from-gray-900 via-orange-800 to-gray-900 bg-clip-text text-4xl font-black tracking-tight text-transparent md:text-6xl lg:text-7xl">
               Our Services
-            </p>
-            <h1 className="mt-4 text-4xl font-extrabold text-white md:text-5xl">
-              AI-Powered Solutions for Modern Business
             </h1>
-            <p className="mt-6 text-lg text-gray-300">
-              We build intelligent, scalable, automation-ready systems so you operate smarter and faster.
+            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-600 md:text-xl">
+              Transforming businesses with AI-driven innovation. From custom LLMs to automated workflows, we build the future.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="bg-white py-12">
-        <div className="mx-auto max-w-[1400px] px-6">
-          <div className="mb-8 md:mb-12">
-            <div className="hidden md:flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => {
-                    setActiveCategory(category.id);
-                    router.replace(`/services?category=${category.id}`, { scroll: false });
-                  }}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
-                    activeCategory === category.id
-                      ? "bg-orange-500 text-white shadow-lg shadow-orange-500/25"
-                      : "bg-gray-50 text-gray-700 border border-gray-200 hover:border-orange-300 hover:text-orange-600"
+      <section className="mx-auto max-w-[1400px] px-6 pb-24">
+        <div className="mb-12 flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {visibleCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => {
+                  setActiveCategory(category.id);
+                  if (category.id === "all") {
+                    router.push("/services", { scroll: false });
+                  } else {
+                    router.push(`/services?category=${category.id}`, { scroll: false });
+                  }
+                }}
+                className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${activeCategory === category.id
+                  ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25 ring-2 ring-orange-500/20"
+                  : "bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                   }`}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="md:hidden">
-              <div className="grid grid-cols-2 gap-2">
-                {visibleCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => {
-                      setActiveCategory(category.id);
-                      router.replace(`/services?category=${category.id}`, { scroll: false });
-                    }}
-                    className={`px-3 py-2.5 rounded-lg text-xs font-medium transition-all text-center ${
-                      activeCategory === category.id
-                        ? "bg-orange-500 text-white shadow-lg shadow-orange-500/25"
-                        : "bg-gray-50 text-gray-700 border border-gray-200"
-                    }`}
-                  >
-                    {category.label}
-                  </button>
-                ))}
-              </div>
-              {categories.length > 6 && (
-                <button
-                  onClick={() => setShowAllCategories(!showAllCategories)}
-                  className="w-full mt-3 py-2.5 text-sm font-medium text-orange-600 border border-orange-200 rounded-lg hover:bg-orange-50 transition-all flex items-center justify-center gap-2"
-                >
-                  {showAllCategories ? (
-                    <>Show Less <span className="text-xs">▲</span></>
-                  ) : (
-                    <>Show More ({categories.length - 6} more) <span className="text-xs">▼</span></>
-                  )}
-                </button>
-              )}
-            </div>
+              >
+                {category.label}
+              </button>
+            ))}
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-            >
-              {filteredServices.map((service) => (
-                <div
-                  key={service.id}
-                  className="group rounded-2xl bg-white border border-gray-200 overflow-hidden transition hover:border-orange-300 hover:shadow-xl flex flex-col h-full"
+          <button
+            onClick={() => setShowAllCategories(!showAllCategories)}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 transition hover:text-orange-700"
+          >
+            {showAllCategories ? "Show Less Categories" : "Show All Categories"}
+            <span className={`transition-transform duration-300 ${showAllCategories ? "rotate-180" : ""}`}>
+              ↓
+            </span>
+          </button>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence mode="popLayout">
+            {filteredServices.map((service) => (
+              <motion.div
+                key={service.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <a
+                  href={`/services/${service.id}`}
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-orange-500/20"
                 >
-                  <div className="relative h-48 overflow-hidden flex-shrink-0">
-                    {typeof service.image === 'string' ? (
-                      <img
-                        src={service.image}
-                        alt={`${service.title} - NanoFlows ${service.category} Service`}
-                        title={service.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    ) : (
-                      <Image
-                        src={service.image}
-                        alt={`${service.title} - NanoFlows ${service.category} Service`}
-                        title={service.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40"></div>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-40" />
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center rounded-lg bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-md">
+                          {categories.find(c => c.id === service.category)?.label}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-6 text-center flex flex-col flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="mb-3 text-xl font-bold leading-tight text-gray-900 transition-colors group-hover:text-orange-600">
+                      {service.title}
+                    </h3>
+                    <p className="mb-6 flex-1 text-sm leading-relaxed text-gray-600">
                       {service.description}
                     </p>
-                    <a
-                      href={`/services/${service.id}`}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
-                    >
-                      Learn More <span>→</span>
-                    </a>
+
+                    <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-6">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                        Learn more
+                      </span>
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-50 text-orange-600 transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                        →
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </motion.div>
+                </a>
+              </motion.div>
+            ))}
           </AnimatePresence>
         </div>
       </section>
+
       <Footer />
     </div>
   );
@@ -998,3 +985,4 @@ export default function ServicesPage() {
     </Suspense>
   );
 }
+

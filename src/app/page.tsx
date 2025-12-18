@@ -59,7 +59,7 @@ async function getHomeData(): Promise<HomeResponse | null> {
   const base = apiBase.replace(/\/+$/, "");
 
   try {
-    const res = await fetch(`${base}/api/home`, { cache: "no-store" });
+    const res = await fetch(`${base}/api/home`);
     if (!res.ok) {
       console.error(`Failed to fetch home data: ${res.status} ${res.statusText}`);
       return null;
