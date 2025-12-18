@@ -25,7 +25,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
     ? apiBase.replace(/\/+$/, "")
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
-    const res = await fetch(`${base}/api/home`, { cache: "no-store" });
+    const res = await fetch(`${base}/api/home`);
     if (!res.ok) {
       console.error(`Failed to fetch blog post: ${res.status} ${res.statusText}`);
       return null;
@@ -45,7 +45,7 @@ async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
     ? apiBase.replace(/\/+$/, "")
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
-    const res = await fetch(`${base}/api/home`, { cache: "no-store" });
+    const res = await fetch(`${base}/api/home`);
     if (!res.ok) {
       console.error(`Failed to fetch related posts: ${res.status} ${res.statusText}`);
       return [];
@@ -67,7 +67,7 @@ export async function generateStaticParams() {
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001"); // Updated default to 5001 matching backend
 
   try {
-    const res = await fetch(`${base}/api/home`, { cache: "no-store" }); // Fetch all posts
+    const res = await fetch(`${base}/api/home`); // Fetch all posts
     if (!res.ok) return [];
 
     const data = await res.json();

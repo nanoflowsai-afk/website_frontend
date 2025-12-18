@@ -28,7 +28,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
     ? apiBase.replace(/\/+$/, "")
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
-    const res = await fetch(`${base}/api/home`, { cache: "no-store" });
+    const res = await fetch(`${base}/api/home`);
     if (!res.ok) {
       console.error(`Failed to fetch blog posts: ${res.status} ${res.statusText}`);
       return [];
