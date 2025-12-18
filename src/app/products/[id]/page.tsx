@@ -101,7 +101,6 @@ const products: Product[] = [
       { feature: "Availability", traditional: "Business hours", nanoflows: "24/7/365" },
       { feature: "Training Time", traditional: "Weeks to months", nanoflows: "Hours" },
       { feature: "Consistency", traditional: "Variable by rep", nanoflows: "100% consistent" },
-      { feature: "Cost per Call", traditional: "$5-15", nanoflows: "$0.10-0.50" },
       { feature: "Scaling Speed", traditional: "Months (hiring)", nanoflows: "Instant" },
     ],
     deploymentOptions: [

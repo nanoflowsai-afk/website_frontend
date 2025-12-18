@@ -853,10 +853,10 @@ function ServicesPageContent() {
             src={servicesHeroImage}
             alt="Services Background"
             fill
-            className="object-cover opacity-10"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/70" />
         </div>
 
         <div className="relative mx-auto max-w-[1400px] px-6 text-center">
@@ -865,20 +865,20 @@ function ServicesPageContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100 text-3xl shadow-lg ring-4 ring-orange-50/50">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl shadow-lg ring-4 ring-white/20 text-orange-400">
               🚀
             </div>
-            <h1 className="bg-gradient-to-r from-gray-900 via-orange-800 to-gray-900 bg-clip-text text-4xl font-black tracking-tight text-transparent md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-black tracking-tight text-white md:text-6xl lg:text-7xl">
               Our Services
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-600 md:text-xl">
+            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-300 md:text-xl">
               Transforming businesses with AI-driven innovation. From custom LLMs to automated workflows, we build the future.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1400px] px-6 pb-24">
+      <section className="mx-auto max-w-[1400px] px-6 pb-24 mt-20">
         <div className="mb-12 flex flex-col items-center justify-center gap-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {visibleCategories.map((category) => (

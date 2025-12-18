@@ -16,9 +16,9 @@ const industriesData = [
       { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
       { id: "martech-salestech-saas", name: "MarTech & SalesTech", icon: "📈" },
       { id: "logistics-supply-chain-saas", name: "Logistics & Supply Chain", icon: "🚚" },
-      { id: "local-business-saas", name: "Local Business SaaS", icon: "🏪" },
-      { id: "travel-hospitality-startups", name: "Travel & Hospitality", icon: "✈️" },
-      { id: "delivery-mobility-startups", name: "Delivery & Mobility", icon: "🚴" },
+      { id: "productivity-collaboration-tools", name: "Productivity & Collaboration", icon: "🤝" },
+      { id: "vertical-saas", name: "Vertical SaaS", icon: "🧩" },
+      { id: "ai-tools-automation-startups", name: "AI Tools & Automation Startups", icon: "🤖" },
     ],
   },
   {
@@ -126,7 +126,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               onClick={onClose}
             >
               <div className="flex items-start gap-2 mb-2">
-                <motion.span 
+                <motion.span
                   className="text-3xl leading-none"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
@@ -153,7 +153,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                     className="group flex items-center justify-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md"
                     onClick={onClose}
                   >
-                    <motion.span 
+                    <motion.span
                       className="text-base flex-shrink-0"
                       whileHover={{ scale: 1.2 }}
                       transition={{ duration: 0.3 }}
