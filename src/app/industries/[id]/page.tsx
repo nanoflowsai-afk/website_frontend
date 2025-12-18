@@ -602,6 +602,12 @@ const industries: Industry[] = [
   },
 ];
 
+export function generateStaticParams() {
+  return industries.map((industry) => ({
+    id: industry.id,
+  }));
+}
+
 export default async function IndustryDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const industry = industries.find((ind) => ind.id === id);
@@ -655,7 +661,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
               Choose Your {industry.name} Segment
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              We offer tailored AI solutions for each sub-industry within {industry.name.toLowerCase()}. 
+              We offer tailored AI solutions for each sub-industry within {industry.name.toLowerCase()}.
               Select your segment to explore how we can transform your business.
             </p>
           </div>
@@ -671,7 +677,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
               Don&apos;t See Your Specific Segment?
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              We work with businesses across all segments within {industry.name.toLowerCase()}. 
+              We work with businesses across all segments within {industry.name.toLowerCase()}.
               Let&apos;s discuss your unique requirements and build a custom AI solution for your business.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
