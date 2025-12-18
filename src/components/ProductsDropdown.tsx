@@ -50,24 +50,24 @@ export function ProductsDropdown({ onClose }: ProductsDropdownProps) {
       className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[95vw] max-w-2xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-2 gap-8 p-8">
+      <div className="grid grid-cols-3 gap-4 p-6">
         {productsData.map((product) => (
           <div key={product.id} className="flex flex-col">
             <Link
               href={`/products/${product.id}`}
-              className="group flex flex-col h-full hover:bg-orange-50/50 p-4 rounded-lg transition-colors"
+              className="group flex flex-col h-full hover:bg-orange-50/50 p-3 rounded-lg transition-colors"
               onClick={onClose}
             >
-              <div className="flex items-start gap-3 mb-3">
+              <div className="flex items-start gap-2 mb-2">
                 <motion.span 
-                  className="text-3xl leading-none"
+                  className="text-2xl leading-none"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
                   {product.icon}
                 </motion.span>
               </div>
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest group-hover:text-orange-600 transition mb-2 leading-tight">
+              <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider group-hover:text-orange-600 transition mb-1 leading-tight">
                 {product.name}
               </h3>
               <p className="text-xs text-gray-600 group-hover:text-gray-700 transition">
