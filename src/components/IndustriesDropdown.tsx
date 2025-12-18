@@ -110,7 +110,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[95vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[98vw] max-w-7xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-10">
@@ -147,7 +147,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                 >
                   <Link
                     href={`/industries/${industry.id}/${sub.id}`}
-                    className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md whitespace-nowrap"
+                    className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md"
                     onClick={onClose}
                   >
                     <motion.span 
