@@ -15,6 +15,7 @@ export function Navbar() {
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [expandedIndustryId, setExpandedIndustryId] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const productsRef = useRef<HTMLDivElement>(null);
@@ -348,7 +349,7 @@ export function Navbar() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="ml-4 mt-2 space-y-1 max-h-80 overflow-y-auto rounded-lg bg-gray-50 p-2"
+                      className="ml-4 mt-2 max-h-80 overflow-y-auto rounded-lg bg-gray-50 p-2 space-y-1"
                     >
                       {[
                         { 
@@ -356,9 +357,11 @@ export function Navbar() {
                           name: "Startups & SaaS", 
                           icon: "🚀",
                           subs: [
-                            { id: "fintech-startups", name: "FinTech", icon: "💳" },
-                            { id: "healthtech-startups", name: "HealthTech", icon: "🏥" },
-                            { id: "edtech-startups", name: "EdTech", icon: "📚" },
+                            { id: "fintech-startups", name: "FinTech Startups", icon: "💳" },
+                            { id: "healthtech-startups", name: "HealthTech Startups", icon: "🏥" },
+                            { id: "edtech-startups", name: "EdTech Startups", icon: "📚" },
+                            { id: "proptech-startups", name: "PropTech Startups", icon: "🏗️" },
+                            { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
                           ]
                         },
                         { 
@@ -366,9 +369,11 @@ export function Navbar() {
                           name: "Enterprises", 
                           icon: "🏢",
                           subs: [
-                            { id: "banking-financial-services", name: "Banking", icon: "🏦" },
-                            { id: "manufacturing-industrial", name: "Manufacturing", icon: "🏭" },
-                            { id: "it-services-consulting", name: "IT Services", icon: "💻" },
+                            { id: "banking-financial-services", name: "Banking & Financial Services", icon: "🏦" },
+                            { id: "manufacturing-industrial", name: "Manufacturing & Industrial", icon: "🏭" },
+                            { id: "it-services-consulting", name: "IT Services & Consulting", icon: "💻" },
+                            { id: "telecom-networking", name: "Telecom & Networking", icon: "📡" },
+                            { id: "energy-utilities", name: "Energy & Utilities", icon: "⚡" },
                           ]
                         },
                         { 
@@ -376,9 +381,11 @@ export function Navbar() {
                           name: "E-Commerce", 
                           icon: "🛒",
                           subs: [
-                            { id: "multi-vendor-marketplaces", name: "Marketplaces", icon: "🏪" },
-                            { id: "b2c-online-retail", name: "B2C E-com", icon: "🛍️" },
-                            { id: "fashion-lifestyle-ecommerce", name: "Fashion", icon: "👕" },
+                            { id: "multi-vendor-marketplaces", name: "Multi-Vendor Marketplaces", icon: "🏪" },
+                            { id: "b2c-online-retail", name: "B2C E-commerce", icon: "🛍️" },
+                            { id: "b2b-ecommerce-platforms", name: "B2B E-commerce", icon: "📦" },
+                            { id: "fashion-lifestyle-ecommerce", name: "Fashion & Apparel", icon: "👕" },
+                            { id: "grocery-quick-commerce", name: "Groceries & Food", icon: "🍔" },
                           ]
                         },
                         { 
@@ -386,9 +393,11 @@ export function Navbar() {
                           name: "Real Estate", 
                           icon: "🏠",
                           subs: [
-                            { id: "residential-real-estate", name: "Residential", icon: "🏡" },
-                            { id: "commercial-real-estate", name: "Commercial", icon: "🏢" },
-                            { id: "property-management-firms", name: "Prop. Mgmt", icon: "🔑" },
+                            { id: "residential-real-estate", name: "Residential Real Estate", icon: "🏡" },
+                            { id: "commercial-real-estate", name: "Commercial Real Estate", icon: "🏢" },
+                            { id: "property-management-firms", name: "Property Management", icon: "🔑" },
+                            { id: "real-estate-developers", name: "Real Estate Developers", icon: "📊" },
+                            { id: "hospitality-vacation-rentals", name: "Hospitality & Resorts", icon: "🏨" },
                           ]
                         },
                         { 
@@ -396,9 +405,11 @@ export function Navbar() {
                           name: "Healthcare", 
                           icon: "⚕️",
                           subs: [
-                            { id: "hospitals-multispecialty-clinics", name: "Hospitals", icon: "🏥" },
+                            { id: "hospitals-multispecialty-clinics", name: "Hospitals & Clinics", icon: "🏥" },
                             { id: "telemedicine-virtual-care", name: "Telemedicine", icon: "📞" },
+                            { id: "diagnostic-labs-imaging", name: "Diagnostic Labs", icon: "🔬" },
                             { id: "pharmacies-medical-stores", name: "Pharmacies", icon: "💊" },
+                            { id: "health-insurance-providers", name: "Health Insurance", icon: "📋" },
                           ]
                         },
                         { 
@@ -406,9 +417,11 @@ export function Navbar() {
                           name: "Education", 
                           icon: "📚",
                           subs: [
-                            { id: "schools-k12", name: "K-12", icon: "🎓" },
-                            { id: "colleges-universities", name: "Colleges", icon: "🎯" },
-                            { id: "online-learning-platforms", name: "E-Learning", icon: "💻" },
+                            { id: "schools-k12", name: "K-12 Schools", icon: "🎓" },
+                            { id: "colleges-universities", name: "Colleges & Universities", icon: "🎯" },
+                            { id: "online-learning-platforms", name: "Online Learning Platforms", icon: "💻" },
+                            { id: "skill-development-vocational", name: "Vocational Training", icon: "🛠️" },
+                            { id: "corporate-training-ld", name: "Corporate Training", icon: "👔" },
                           ]
                         },
                         { 
@@ -416,38 +429,63 @@ export function Navbar() {
                           name: "Local Business", 
                           icon: "🏪",
                           subs: [
-                            { id: "restaurants-cafes-food", name: "Restaurants", icon: "🍕" },
+                            { id: "restaurants-cafes-food", name: "Restaurants & Cafés", icon: "🍕" },
                             { id: "salons-spas-personal-care", name: "Salons & Spas", icon: "💇" },
-                            { id: "automobile-services-workshops", name: "Auto Services", icon: "🚗" },
+                            { id: "automobile-services-workshops", name: "Automotive Services", icon: "🚗" },
+                            { id: "gyms-yoga-fitness", name: "Fitness & Gyms", icon: "🏋️" },
+                            { id: "clinics-local-healthcare", name: "Local Clinics", icon: "🏥" },
                           ]
                         },
-                      ].map((industry) => (
-                        <div key={industry.id} className="py-1">
-                          <Link
-                            href={`/industries/${industry.id}`}
-                            className="flex items-center gap-2 px-3 py-1.5 rounded-md text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-all text-sm font-medium"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            <span className="text-base">{industry.icon}</span>
-                            <span>{industry.name}</span>
-                          </Link>
-                          {industry.subs && (
-                            <div className="ml-4 space-y-0.5 mt-0.5">
-                              {industry.subs.map((sub) => (
-                                <Link
-                                  key={sub.id}
-                                  href={`/industries/${industry.id}/${sub.id}`}
-                                  className="flex items-center gap-2 px-2.5 py-1 rounded-md text-gray-600 text-xs hover:bg-orange-50 hover:text-orange-600 transition-all"
-                                  onClick={() => setMobileOpen(false)}
+                      ].map((industry) => {
+                        const isExpanded = expandedIndustryId === industry.id;
+                        return (
+                          <div key={industry.id}>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setExpandedIndustryId(isExpanded ? null : industry.id);
+                              }}
+                              className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-md text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-all text-sm font-medium"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="text-base">{industry.icon}</span>
+                                <span>{industry.name}</span>
+                              </div>
+                              <svg 
+                                className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
+                            <AnimatePresence>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="ml-4 mt-1 space-y-1 overflow-hidden"
                                 >
-                                  <span className="text-sm">{sub.icon}</span>
-                                  <span>{sub.name}</span>
-                                </Link>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
+                                  {industry.subs.map((sub) => (
+                                    <Link
+                                      key={sub.id}
+                                      href={`/industries/${industry.id}/${sub.id}`}
+                                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-gray-600 text-xs hover:bg-orange-50 hover:text-orange-600 transition-all"
+                                      onClick={() => setMobileOpen(false)}
+                                    >
+                                      <span className="text-sm">{sub.icon}</span>
+                                      <span className="line-clamp-1">{sub.name}</span>
+                                    </Link>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        );
+                      })}
                     </motion.div>
                   )}
                 </AnimatePresence>
