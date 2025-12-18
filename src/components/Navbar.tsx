@@ -348,7 +348,7 @@ export function Navbar() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="ml-8 mt-1 space-y-2 overflow-hidden"
+                      className="ml-4 mt-2 space-y-1 max-h-80 overflow-y-auto rounded-lg bg-gray-50 p-2"
                     >
                       {[
                         { 
@@ -356,9 +356,9 @@ export function Navbar() {
                           name: "Startups & SaaS", 
                           icon: "🚀",
                           subs: [
-                            { id: "fintech-startups", name: "FinTech Startups", icon: "💳" },
-                            { id: "healthtech-startups", name: "HealthTech Startups", icon: "🏥" },
-                            { id: "edtech-startups", name: "EdTech Startups", icon: "📚" },
+                            { id: "fintech-startups", name: "FinTech", icon: "💳" },
+                            { id: "healthtech-startups", name: "HealthTech", icon: "🏥" },
+                            { id: "edtech-startups", name: "EdTech", icon: "📚" },
                           ]
                         },
                         { 
@@ -366,7 +366,7 @@ export function Navbar() {
                           name: "Enterprises", 
                           icon: "🏢",
                           subs: [
-                            { id: "banking-financial-services", name: "Banking & Financial", icon: "🏦" },
+                            { id: "banking-financial-services", name: "Banking", icon: "🏦" },
                             { id: "manufacturing-industrial", name: "Manufacturing", icon: "🏭" },
                             { id: "it-services-consulting", name: "IT Services", icon: "💻" },
                           ]
@@ -377,8 +377,8 @@ export function Navbar() {
                           icon: "🛒",
                           subs: [
                             { id: "multi-vendor-marketplaces", name: "Marketplaces", icon: "🏪" },
-                            { id: "b2c-online-retail", name: "B2C E-commerce", icon: "🛍️" },
-                            { id: "fashion-lifestyle-ecommerce", name: "Fashion & Apparel", icon: "👕" },
+                            { id: "b2c-online-retail", name: "B2C E-com", icon: "🛍️" },
+                            { id: "fashion-lifestyle-ecommerce", name: "Fashion", icon: "👕" },
                           ]
                         },
                         { 
@@ -388,7 +388,7 @@ export function Navbar() {
                           subs: [
                             { id: "residential-real-estate", name: "Residential", icon: "🏡" },
                             { id: "commercial-real-estate", name: "Commercial", icon: "🏢" },
-                            { id: "property-management-firms", name: "Property Management", icon: "🔑" },
+                            { id: "property-management-firms", name: "Prop. Mgmt", icon: "🔑" },
                           ]
                         },
                         { 
@@ -396,7 +396,7 @@ export function Navbar() {
                           name: "Healthcare", 
                           icon: "⚕️",
                           subs: [
-                            { id: "hospitals-multispecialty-clinics", name: "Hospitals & Clinics", icon: "🏥" },
+                            { id: "hospitals-multispecialty-clinics", name: "Hospitals", icon: "🏥" },
                             { id: "telemedicine-virtual-care", name: "Telemedicine", icon: "📞" },
                             { id: "pharmacies-medical-stores", name: "Pharmacies", icon: "💊" },
                           ]
@@ -406,9 +406,9 @@ export function Navbar() {
                           name: "Education", 
                           icon: "📚",
                           subs: [
-                            { id: "schools-k12", name: "K-12 Schools", icon: "🎓" },
-                            { id: "colleges-universities", name: "Colleges & Universities", icon: "🎯" },
-                            { id: "online-learning-platforms", name: "Online Learning", icon: "💻" },
+                            { id: "schools-k12", name: "K-12", icon: "🎓" },
+                            { id: "colleges-universities", name: "Colleges", icon: "🎯" },
+                            { id: "online-learning-platforms", name: "E-Learning", icon: "💻" },
                           ]
                         },
                         { 
@@ -416,28 +416,28 @@ export function Navbar() {
                           name: "Local Business", 
                           icon: "🏪",
                           subs: [
-                            { id: "restaurants-cafes-food", name: "Restaurants & Cafés", icon: "🍕" },
+                            { id: "restaurants-cafes-food", name: "Restaurants", icon: "🍕" },
                             { id: "salons-spas-personal-care", name: "Salons & Spas", icon: "💇" },
-                            { id: "automobile-services-workshops", name: "Automotive Services", icon: "🚗" },
+                            { id: "automobile-services-workshops", name: "Auto Services", icon: "🚗" },
                           ]
                         },
                       ].map((industry) => (
-                        <div key={industry.id}>
+                        <div key={industry.id} className="py-1">
                           <Link
                             href={`/industries/${industry.id}`}
-                            className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all font-medium"
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-md text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-all text-sm font-medium"
                             onClick={() => setMobileOpen(false)}
                           >
                             <span className="text-base">{industry.icon}</span>
-                            <span className="text-sm">{industry.name}</span>
+                            <span>{industry.name}</span>
                           </Link>
                           {industry.subs && (
-                            <div className="ml-6 space-y-1 mt-1">
+                            <div className="ml-4 space-y-0.5 mt-0.5">
                               {industry.subs.map((sub) => (
                                 <Link
                                   key={sub.id}
                                   href={`/industries/${industry.id}/${sub.id}`}
-                                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-500 text-xs hover:bg-orange-50 hover:text-orange-600 transition-all"
+                                  className="flex items-center gap-2 px-2.5 py-1 rounded-md text-gray-600 text-xs hover:bg-orange-50 hover:text-orange-600 transition-all"
                                   onClick={() => setMobileOpen(false)}
                                 >
                                   <span className="text-sm">{sub.icon}</span>
