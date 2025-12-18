@@ -127,7 +127,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
             >
               <div className="flex items-start gap-2 mb-2">
                 <motion.span 
-                  className="text-2xl leading-none"
+                  className="text-3xl leading-none"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -154,7 +154,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                     onClick={onClose}
                   >
                     <motion.span 
-                      className="text-sm flex-shrink-0"
+                      className="text-base flex-shrink-0"
                       whileHover={{ scale: 1.2 }}
                       transition={{ duration: 0.3 }}
                     >
