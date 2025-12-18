@@ -1,5 +1,5 @@
 const rawApiBase =
-  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/+$/, "") || "";
+  process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/+$/, "") || "http://localhost:5001";
 
 export const API_BASE_URL = rawApiBase;
 

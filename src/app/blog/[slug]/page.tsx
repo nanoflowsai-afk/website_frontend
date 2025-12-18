@@ -6,7 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 // Force dynamic rendering since we fetch from external API
-export const dynamic = 'force-dynamic';
+
 
 type BlogPost = {
   id: number;
@@ -21,7 +21,7 @@ type BlogPost = {
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const base = apiBase 
+  const base = apiBase
     ? apiBase.replace(/\/+$/, "")
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
@@ -41,7 +41,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const base = apiBase 
+  const base = apiBase
     ? apiBase.replace(/\/+$/, "")
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
@@ -59,10 +59,33 @@ async function getRelatedPosts(currentSlug: string): Promise<BlogPost[]> {
   }
 }
 
+
+export async function generateStaticParams() {
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const base = apiBase
+    ? apiBase.replace(/\/+$/, "")
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001"); // Updated default to 5001 matching backend
+
+  try {
+    const res = await fetch(`${base}/api/home`, { cache: "no-store" }); // Fetch all posts
+    if (!res.ok) return [];
+
+    const data = await res.json();
+    const posts: BlogPost[] = data.posts ?? [];
+
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error("Error generating static params for blog:", error);
+    return [];
+  }
+}
+
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getBlogPost(slug);
-  
+
   if (!post) {
     notFound();
   }
@@ -79,9 +102,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-200 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-200 rounded-full blur-3xl"></div>
           </div>
-          
+
           <div className="relative mx-auto max-w-4xl px-6">
-            <Link 
+            <Link
               href="/blog"
               className="inline-flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition mb-8"
             >
@@ -90,7 +113,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               </svg>
               Back to Blog
             </Link>
-            
+
             {post.publishedAt && (
               <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,11 +126,11 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 })}
               </div>
             )}
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
               {post.title}
             </h1>
-            
+
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
               {post.excerpt}
             </p>
@@ -129,7 +152,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               {post.content}
             </div>
           </div>
-          
+
           <div className="mt-12 pt-8 border-t border-gray-200">
             <div className="flex flex-wrap gap-3">
               <span className="px-4 py-2 rounded-full bg-orange-100 text-orange-700 text-sm font-medium">AI</span>
@@ -165,7 +188,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               <p className="text-sm font-semibold uppercase tracking-[0.15em] text-orange-600 mb-4">Keep Reading</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Related Articles</h2>
             </div>
-            
+
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((relatedPost) => (
                 <article

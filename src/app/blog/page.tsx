@@ -4,7 +4,7 @@ import { SafeBackgroundImage } from "@/components/SafeBackgroundImage";
 import { normalizeImageUrl } from "@/lib/images";
 
 // Force dynamic rendering since we fetch from external API
-export const dynamic = 'force-dynamic';
+
 
 type BlogPost = {
   id: number;
@@ -24,7 +24,7 @@ const thoughtLeadershipTopics = [
 
 async function getBlogPosts(): Promise<BlogPost[]> {
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const base = apiBase 
+  const base = apiBase
     ? apiBase.replace(/\/+$/, "")
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:5001");
   try {
@@ -57,7 +57,7 @@ export default async function BlogPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
         </div>
-        
+
         <div className="relative mx-auto max-w-[1400px] px-6">
           <div className="mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-8">
@@ -72,7 +72,7 @@ export default async function BlogPage() {
             <p className="mt-6 text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto">
               Insights on AI innovation, automation strategies, and business transformation.
             </p>
-            
+
             <div className="mt-12 flex flex-wrap justify-center gap-3">
               {thoughtLeadershipTopics.map((topic) => (
                 <div
@@ -100,9 +100,8 @@ export default async function BlogPage() {
               {posts.map((post, index) => (
                 <article
                   key={post.id}
-                  className={`group relative overflow-hidden rounded-3xl bg-white shadow-sm border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-orange-200 ${
-                    index === 0 ? "md:col-span-2 md:row-span-2" : ""
-                  }`}
+                  className={`group relative overflow-hidden rounded-3xl bg-white shadow-sm border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-orange-200 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
+                    }`}
                 >
                   <div className={`relative ${index === 0 ? "aspect-[16/9]" : "aspect-video"} overflow-hidden`}>
                     <SafeBackgroundImage
@@ -110,7 +109,7 @@ export default async function BlogPage() {
                       className="absolute inset-0 bg-gray-100 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    
+
                     {index === 0 && (
                       <div className="absolute top-4 left-4">
                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500 text-white text-xs font-semibold">
@@ -122,7 +121,7 @@ export default async function BlogPage() {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className={`p-6 ${index === 0 ? "md:p-8" : ""}`}>
                     {post.publishedAt && (
                       <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
@@ -136,17 +135,16 @@ export default async function BlogPage() {
                         })}
                       </div>
                     )}
-                    
-                    <h3 className={`font-bold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition ${
-                      index === 0 ? "text-2xl md:text-3xl" : "text-lg"
-                    }`}>
+
+                    <h3 className={`font-bold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition ${index === 0 ? "text-2xl md:text-3xl" : "text-lg"
+                      }`}>
                       {post.title}
                     </h3>
-                    
+
                     <p className={`mt-3 text-gray-600 line-clamp-3 ${index === 0 ? "text-base" : "text-sm"}`}>
                       {post.excerpt}
                     </p>
-                    
+
                     <a
                       href={`/blog/${post.slug}`}
                       className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 group-hover:gap-3 transition-all"
@@ -182,7 +180,7 @@ export default async function BlogPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.15em] text-orange-600 mb-4">Topics We Cover</p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Thought Leadership On</h2>
           </div>
-          
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {thoughtLeadershipTopics.map((topic) => (
               <div

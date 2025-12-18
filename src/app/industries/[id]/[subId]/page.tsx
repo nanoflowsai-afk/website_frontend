@@ -4106,6 +4106,15 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
+export async function generateStaticParams() {
+  return industries.flatMap((industry) =>
+    industry.subIndustries.map((sub) => ({
+      id: industry.id,
+      subId: sub.id,
+    }))
+  );
+}
+
 export default async function SubIndustryPage({ params }: { params: Promise<{ id: string; subId: string }> }) {
   const { id, subId } = await params;
   const industry = industries.find((ind) => ind.id === id);

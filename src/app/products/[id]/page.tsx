@@ -265,6 +265,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
+
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    id: product.id,
+  }));
+}
+
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const product = products.find((p) => p.id === id);
@@ -287,13 +294,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             sizes="100vw"
             priority
           />
-          <div className={`absolute inset-0 bg-gradient-to-r ${product.color} opacity-40`}></div>
-        </div>
-
-        {/* Blur Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -left-1/4 top-1/4 h-96 w-96 rounded-full bg-orange-500/10 blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-          <div className="absolute -right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/75"></div>
         </div>
         <div className="relative mx-auto max-w-[1400px] px-6">
           <Link href="/products" className="inline-flex items-center gap-2 text-sm text-white hover:text-gray-100 mb-8">

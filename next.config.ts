@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig = {
+  output: "export",
+
 
   webpack: (config: any) => {
     config.resolve.alias["@assets"] = path.resolve(process.cwd(), "attached_assets");
@@ -16,6 +18,7 @@ const nextConfig = {
     "localhost",
   ],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -23,19 +26,7 @@ const nextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-cache, no-store, must-revalidate",
-          },
-        ],
-      },
-    ];
-  },
+
   eslint: {
     ignoreDuringBuilds: true,
   },

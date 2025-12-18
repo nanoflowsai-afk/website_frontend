@@ -7,9 +7,9 @@ import { FloatingContactMenu } from "./FloatingContactMenu";
 
 export function FloatingButtons() {
   const pathname = usePathname();
-  
-  const hideFloatingWidget = ["/contact", "/login", "/signup"].includes(pathname);
-  const hideChatbot = ["/login", "/signup"].includes(pathname);
+
+  const hideFloatingWidget = ["/contact", "/login", "/signup"].includes(pathname) || pathname.startsWith("/admin");
+  const hideChatbot = ["/login", "/signup"].includes(pathname) || pathname.startsWith("/admin");
 
   return (
     <>

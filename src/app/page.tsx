@@ -10,7 +10,7 @@ import { TeamCarousel } from "@/components/TeamCarousel";
 import { normalizeImageUrl } from "@/lib/images";
 
 // Force dynamic rendering since we fetch from external API
-export const dynamic = 'force-dynamic';
+
 
 type HomeResponse = {
   slides: {
@@ -51,13 +51,13 @@ type HomeResponse = {
 
 async function getHomeData(): Promise<HomeResponse | null> {
   const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
-  
+
   if (!apiBase) {
     return null;
   }
-  
+
   const base = apiBase.replace(/\/+$/, "");
-  
+
   try {
     const res = await fetch(`${base}/api/home`, { cache: "no-store" });
     if (!res.ok) {
@@ -102,10 +102,10 @@ export default async function Home() {
             data={
               about
                 ? {
-                    mission: about.mission,
-                    vision: about.vision,
-                    coreValues: about.coreValues ?? [],
-                  }
+                  mission: about.mission,
+                  vision: about.vision,
+                  coreValues: about.coreValues ?? [],
+                }
                 : null
             }
           />
