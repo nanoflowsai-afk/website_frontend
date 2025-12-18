@@ -4,13 +4,18 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { IndustriesDropdown } from "./IndustriesDropdown";
 
 export function Navbar() {
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const industriesRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const industriesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -33,10 +38,34 @@ export function Navbar() {
     setResourcesOpen(prev => !prev);
   };
 
+  const handleIndustriesMouseEnter = () => {
+    if (industriesTimeoutRef.current) {
+      clearTimeout(industriesTimeoutRef.current);
+    }
+    setIndustriesOpen(true);
+  };
+
+  const handleIndustriesMouseLeave = () => {
+    industriesTimeoutRef.current = setTimeout(() => {
+      setIndustriesOpen(false);
+    }, 200);
+  };
+
+  const handleIndustriesClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (industriesTimeoutRef.current) {
+      clearTimeout(industriesTimeoutRef.current);
+    }
+    setIndustriesOpen(prev => !prev);
+  };
+
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
+      }
+      if (industriesTimeoutRef.current) {
+        clearTimeout(industriesTimeoutRef.current);
       }
     };
   }, []);
@@ -45,6 +74,9 @@ export function Navbar() {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setResourcesOpen(false);
+      }
+      if (industriesRef.current && !industriesRef.current.contains(event.target as Node)) {
+        setIndustriesOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -72,9 +104,27 @@ export function Navbar() {
           <Link href="/products" className="transition hover:text-orange-600">
             Products
           </Link>
-          <Link href="/industries" className="transition hover:text-orange-600">
-            Industries
-          </Link>
+          <div
+            ref={industriesRef}
+            className="relative"
+            onMouseEnter={handleIndustriesMouseEnter}
+            onMouseLeave={handleIndustriesMouseLeave}
+          >
+            <button 
+              onClick={handleIndustriesClick}
+              className="flex items-center gap-1 transition hover:text-orange-600"
+            >
+              Industries
+              <svg className={`h-4 w-4 transition-transform ${industriesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <AnimatePresence>
+              {industriesOpen && (
+                <IndustriesDropdown onClose={() => setIndustriesOpen(false)} />
+              )}
+            </AnimatePresence>
+          </div>
           <div
             ref={dropdownRef}
             className="relative"
@@ -189,16 +239,50 @@ export function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.15 }}
               >
-                <Link 
-                  href="/industries" 
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all" 
-                  onClick={() => setMobileOpen(false)}
+                <button
+                  onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all"
                 >
-                  <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    Industries
+                  </div>
+                  <svg className={`w-4 h-4 transition-transform ${mobileIndustriesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
-                  Industries
-                </Link>
+                </button>
+                <AnimatePresence>
+                  {mobileIndustriesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="ml-8 mt-1 space-y-2 overflow-hidden"
+                    >
+                      {[
+                        { id: "startups-saas", name: "Startups & SaaS", icon: "🚀" },
+                        { id: "enterprises", name: "Enterprises", icon: "🏢" },
+                        { id: "ecommerce", name: "E-Commerce", icon: "🛒" },
+                        { id: "real-estate", name: "Real Estate", icon: "🏠" },
+                        { id: "healthcare", name: "Healthcare", icon: "⚕️" },
+                        { id: "education", name: "Education", icon: "📚" },
+                        { id: "local-business", name: "Local Business", icon: "🏪" },
+                      ].map((industry) => (
+                        <Link
+                          key={industry.id}
+                          href={`/industries/${industry.id}`}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="text-base">{industry.icon}</span>
+                          <span className="text-sm">{industry.name}</span>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
 
               <motion.div
