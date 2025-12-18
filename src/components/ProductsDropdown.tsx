@@ -50,9 +50,9 @@ export function ProductsDropdown({ onClose }: ProductsDropdownProps) {
       className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[95vw] max-w-2xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-3 gap-4 p-6">
-        {productsData.map((product) => (
-          <div key={product.id} className="flex flex-col">
+      <div className="grid grid-cols-3 gap-0 divide-x divide-gray-200 p-6">
+        {productsData.map((product, index) => (
+          <div key={product.id} className={`flex flex-col ${index !== 0 ? 'pl-6' : ''}`}>
             <Link
               href={`/products/${product.id}`}
               className="group flex flex-col h-full hover:bg-orange-50/50 p-3 rounded-lg transition-colors"

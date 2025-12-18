@@ -131,7 +131,7 @@ export function Navbar() {
             alt="NanoFlows"
             width={180}
             height={50}
-            className="h-14 w-auto"
+            className="h-16 w-auto"
             priority
           />
         </Link>
@@ -146,15 +146,19 @@ export function Navbar() {
             onMouseEnter={handleProductsMouseEnter}
             onMouseLeave={handleProductsMouseLeave}
           >
-            <button 
-              onClick={handleProductsClick}
+            <Link 
+              href="/products"
               className="flex items-center gap-1 transition hover:text-orange-600"
+              onClick={(e) => {
+                e.preventDefault();
+                setProductsOpen(prev => !prev);
+              }}
             >
               Products
               <svg className={`h-4 w-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </Link>
             <AnimatePresence>
               {productsOpen && (
                 <ProductsDropdown onClose={() => setProductsOpen(false)} />
@@ -167,19 +171,15 @@ export function Navbar() {
             onMouseEnter={handleIndustriesMouseEnter}
             onMouseLeave={handleIndustriesMouseLeave}
           >
-            <Link 
-              href="/industries"
+            <button 
+              onClick={handleIndustriesClick}
               className="flex items-center gap-1 transition hover:text-orange-600"
-              onClick={(e) => {
-                e.preventDefault();
-                setIndustriesOpen(prev => !prev);
-              }}
             >
               Industries
               <svg className={`h-4 w-4 transition-transform ${industriesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </Link>
+            </button>
             <AnimatePresence>
               {industriesOpen && (
                 <IndustriesDropdown onClose={() => setIndustriesOpen(false)} />
