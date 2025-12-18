@@ -64,6 +64,14 @@ export const homeMetadata: Metadata = {
     "AI company Visakhapatnam",
     "best AI company",
     "top AI solutions",
+    "AI automation vs human agents",
+    "best manufacturing AI software",
+    "AI for startups vs enterprise",
+    "custom AI development services India",
+    "top generative AI consulting",
+    "autonomous sales agents platform",
+    "AI CRM alternative",
+    "business process automation AI"
   ],
   openGraph: {
     title: "NanoFlows | AI Software Technologies - Generative AI & Automation Solutions",

@@ -130,7 +130,7 @@ export default function AdminPage() {
   const router = useRouter();
   const [activeSection, setActiveSection] = useState("hero");
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  
+
   const { data, mutate, error } = useSWR<{ slides: HeroSlide[] }>("/api/admin/hero-slides", fetcher);
   const { data: aboutData, mutate: mutateAbout } = useSWR<{ about: About | null }>("/api/admin/about", fetcher);
   const { data: teamData, mutate: mutateTeam } = useSWR<{ members: TeamMember[] }>("/api/admin/team-members", fetcher);
@@ -304,7 +304,7 @@ export default function AdminPage() {
       if (data?.token && typeof window !== "undefined") {
         localStorage.setItem("nano_admin_token", data.token);
       }
-    } catch {}
+    } catch { }
     window.location.href = "/admin";
   };
 
@@ -516,35 +516,41 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      <aside className={`${sidebarOpen ? "w-64" : "w-20"} bg-slate-900 transition-all duration-300 flex flex-col`}>
+    <div className="h-screen bg-gray-50 flex overflow-hidden">
+      <aside className={`${sidebarOpen ? "w-64" : "w-20"} bg-slate-900 transition-all duration-300 flex flex-col flex-shrink-0 h-full overflow-y-auto`}>
         <div className="p-6 border-b border-slate-700">
           <Link href="/" className="flex items-center gap-3">
             {sidebarOpen ? (
-              <Image src="/nanoflows-logo.png" alt="NanoFlows" width={140} height={40} className="h-8 w-auto brightness-0 invert" />
+              <Image
+                src="/nanoflows-logo.png"
+                alt="NanoFlows"
+                width={180}
+                height={50}
+                className="h-16 w-auto"
+                priority
+              />
             ) : (
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white font-bold">N</div>
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white font-bold text-xl">N</div>
             )}
           </Link>
         </div>
-        
+
         <nav className="flex-1 p-4 space-y-2">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition ${
-                activeSection === item.id
-                  ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25"
-                  : "text-slate-400 hover:bg-slate-800 hover:text-white"
-              }`}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition ${activeSection === item.id
+                ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25"
+                : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                }`}
             >
               {item.icon}
               {sidebarOpen && <span className="font-medium">{item.label}</span>}
             </button>
           ))}
         </nav>
-        
+
         <div className="p-4 border-t border-slate-700">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -558,7 +564,7 @@ export default function AdminPage() {
         </div>
       </aside>
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col h-full overflow-hidden">
         <header className="bg-white border-b border-gray-200 px-8 py-4">
           <div className="flex items-center justify-between">
             <div>
@@ -616,7 +622,12 @@ export default function AdminPage() {
                   </div>
                   <div className="flex items-center gap-4">
                     <label className="text-sm font-medium text-gray-700">Or upload image:</label>
-                    <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleHeroFile(f); }} className="text-sm" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleHeroFile(f); }}
+                      className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition"
+                    />
                     {heroUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                   </div>
                   <div className="flex items-center gap-6">
@@ -718,7 +729,12 @@ export default function AdminPage() {
                   </div>
                   <div className="flex items-center gap-4">
                     <label className="text-sm font-medium text-gray-700">Or upload:</label>
-                    <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleMemberImageUpload(f); }} className="text-sm" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleMemberImageUpload(f); }}
+                      className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition"
+                    />
                     {memberUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                   </div>
                   <div className="flex items-center gap-6">
@@ -792,7 +808,12 @@ export default function AdminPage() {
                   </div>
                   <div className="flex items-center gap-4">
                     <label className="text-sm font-medium text-gray-700">Or upload:</label>
-                    <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleBlogImageUpload(f); }} className="text-sm" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleBlogImageUpload(f); }}
+                      className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition"
+                    />
                     {blogUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                   </div>
                   <div className="flex items-center gap-6">

@@ -2,13 +2,59 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { apiFetch } from "@/lib/api";
 
 type Message = {
   id: string;
   role: "user" | "assistant";
   content: string;
 };
+
+const KNOWLEDGE_BASE = [
+  {
+    keywords: ["hi", "hello", "hey", "greetings", "start"],
+    response: "Hello! I'm the NanoFlows AI Assistant. I can help you with:\n\n• Our AI Products (CRM, Lead Gen, Calling Agents)\n• Custom AI Development Services\n• Pricing & Contact Info\n\nWhat would you like to know?"
+  },
+  {
+    keywords: ["who", "what", "identity", "nanoflows"],
+    response: "NanoFlows AI Software Technologies is a leader in Generative AI and business automation. We build custom AI solutions, intelligent agents, and enterprise software to automate your business operations."
+  },
+  {
+    keywords: ["crm", "customer relationship", "dashboard"],
+    response: "Our AI CRM & Dashboards are self-updating systems that predict deal outcomes and automate data entry. They feature:\n\n• 50% less data entry\n• Predictive pipeline analytics\n• Automated follow-ups\n\nWould you like a demo?"
+  },
+  {
+    keywords: ["lead", "generation", "prospecting", "outreach"],
+    response: "Our AI Lead Generation Engines automate your pipeline growth. They handle:\n\n• 24/7 Autonomous Prospecting\n• Multi-channel outreach (Email, LinkedIn)\n• Intelligent Lead Scoring\n\nIt's like having a sales team that never sleeps."
+  },
+  {
+    keywords: ["call", "calling", "voice", "phone"],
+    response: "Our AI Calling & Follow-up Agents provide human-like voice interactions for:\n\n• Outbound sales calls\n• Appointment setting\n• Customer service\n\nThey can handle thousands of calls simultaneously."
+  },
+  {
+    keywords: ["content", "marketing", "blog", "write"],
+    response: "Our AI Content & Marketing Systems create and distribute high-quality content autonomously. Features include:\n\n• Auto-blog post generation\n• SEO optimization\n• Social media scheduling\n• Brand voice training"
+  },
+  {
+    keywords: ["service", "custom", "development", "consulting", "build"],
+    response: "We offer comprehensive AI services:\n\n1. Custom LLM Development\n2. AI Agent Implementation\n3. Enterprise Automation\n4. SaaS Product Development\n\nTell me about your project, and I can guide you."
+  },
+  {
+    keywords: ["price", "cost", "pricing", "money", "rate"],
+    response: "We offer flexible pricing models:\n\n• SaaS Products: Monthly subscription plans (Starter, Growth, Enterprise)\n• Custom Services: Project-based or retainer models depending on scope.\n\nPlease contact our sales team for a custom quote."
+  },
+  {
+    keywords: ["contact", "email", "phone", "support", "reach", "talk"],
+    response: "You can reach us directly:\n\n📧 Email: contact@nanoflows.ai\n📞 Phone: +91 9618 433 043\n\nOr click the 'Contact' button in the menu to fill out a form."
+  },
+  {
+    keywords: ["location", "where", "office", "address"],
+    response: "We are headquartered in Visakhapatnam, India, serving clients globally."
+  },
+  {
+    keywords: ["thank", "thanks", "bye", "goodbye"],
+    response: "You're welcome! Feel free to ask if you have more questions. Have a great day!"
+  }
+];
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,6 +129,20 @@ export function Chatbot() {
     return () => document.removeEventListener("keydown", handleTabKey);
   }, [isOpen]);
 
+  const findResponse = (query: string): string => {
+    const lowerQuery = query.toLowerCase();
+
+    // Check for exact matches first
+    const match = KNOWLEDGE_BASE.find(item =>
+      item.keywords.some(keyword => lowerQuery.includes(keyword))
+    );
+
+    if (match) return match.response;
+
+    // Default fallback
+    return "I can help you with our AI Products (CRM, Lead Gen), Services, or Contact information. Could you please rephrase your question or select a topic?";
+  };
+
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -97,34 +157,19 @@ export function Chatbot() {
     setInput("");
     setIsLoading(true);
 
-    try {
-      const response = await apiFetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage.content }),
-      });
-
-      const data = await response.json();
+    // Simulate network delay for natural feel
+    setTimeout(() => {
+      const responseText = findResponse(userMessage.content);
 
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: data.response || "I apologize, but I encountered an error. Please try again.",
+        content: responseText,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content: "I'm having trouble connecting right now. Please try again in a moment.",
-        },
-      ]);
-    } finally {
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -202,7 +247,7 @@ export function Chatbot() {
                 </button>
               </div>
 
-              <div 
+              <div
                 className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
                 role="log"
                 aria-live="polite"
@@ -214,11 +259,10 @@ export function Chatbot() {
                     className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                        message.role === "user"
+                      className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.role === "user"
                           ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white"
                           : "bg-white text-gray-800 shadow-sm border border-gray-100"
-                      }`}
+                        }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                     </div>

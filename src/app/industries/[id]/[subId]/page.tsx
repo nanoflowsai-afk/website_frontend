@@ -90,12 +90,12 @@ function getRelatedServices(subIndustry: SubIndustry, industryId: string): Relat
   const desc = subIndustry.description.toLowerCase();
   const overview = subIndustry.overview.toLowerCase();
   const combined = `${name} ${desc} ${overview}`;
-  
+
   const serviceMatches: { service: RelatedService; score: number }[] = [];
-  
+
   allServices.forEach(service => {
     let score = 0;
-    
+
     if (combined.includes("sales") || combined.includes("lead") || combined.includes("crm")) {
       if (service.title === "Sales Automation" || service.title === "Sales Agents" || service.title === "Follow-up Agents") score += 3;
     }
@@ -132,7 +132,7 @@ function getRelatedServices(subIndustry: SubIndustry, industryId: string): Relat
     if (combined.includes("agent") || combined.includes("bot") || combined.includes("chatbot") || combined.includes("assistant")) {
       if (service.title === "Sales Agents" || service.title === "Support Agents" || service.title === "Analysis Agents") score += 2;
     }
-    
+
     if (industryId === "enterprises" || industryId === "startups-saas") {
       if (service.title === "Enterprise Dashboards" || service.title === "SaaS Platforms" || service.title === "Enterprise Automation") score += 1;
     }
@@ -145,16 +145,16 @@ function getRelatedServices(subIndustry: SubIndustry, industryId: string): Relat
     if (industryId === "real-estate" || industryId === "local-businesses") {
       if (service.title === "Sales Agents" || service.title === "Follow-up Agents" || service.title === "AI-Native Websites") score += 1;
     }
-    
+
     if (score > 0) {
       serviceMatches.push({ service, score });
     }
   });
-  
+
   serviceMatches.sort((a, b) => b.score - a.score);
-  
+
   const topServices = serviceMatches.slice(0, 4).map(m => m.service);
-  
+
   if (topServices.length < 4) {
     const defaultServices = [
       allServices.find(s => s.title === "Custom LLM Systems")!,
@@ -171,7 +171,7 @@ function getRelatedServices(subIndustry: SubIndustry, industryId: string): Relat
       }
     }
   }
-  
+
   return topServices;
 }
 
@@ -4088,11 +4088,15 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       subIndustry.name,
       `${subIndustry.name} AI`,
       `${subIndustry.name} automation`,
-      industry.name,
-      ...subIndustry.whatWeBuild.solutions.slice(0, 4),
+      `${subIndustry.name} software`,
+      `Best AI for ${subIndustry.name}`,
+      `${industry.name} AI solutions`,
+      ...subIndustry.whatWeBuild.solutions.slice(0, 6),
       "AI solutions",
       "autonomous AI",
-      "NanoFlows"
+      "NanoFlows",
+      "Enterprise AI Platform",
+      "Custom AI Development"
     ],
     openGraph: {
       title: `${subIndustry.name} AI Solutions | NanoFlows`,
@@ -4421,7 +4425,7 @@ export default async function SubIndustryPage({ params }: { params: Promise<{ id
               Ready to Transform Your {subIndustry.name} Business?
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Let&apos;s discuss how our AI solutions can help you automate operations, 
+              Let&apos;s discuss how our AI solutions can help you automate operations,
               reduce costs, and deliver exceptional experiences to your customers.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

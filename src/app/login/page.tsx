@@ -15,13 +15,13 @@ function LoginForm() {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    
+
     const formData = new FormData(e.currentTarget);
     const payload = {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
-    
+
     // Try admin login first
     const adminRes = await apiFetch("/api/admin/login", {
       method: "POST",
@@ -29,19 +29,19 @@ function LoginForm() {
       body: JSON.stringify(payload),
       credentials: "include",
     });
-    
+
     if (adminRes.ok) {
       try {
         const data = await adminRes.json().catch(() => null);
         if (data?.token && typeof window !== "undefined") {
           localStorage.setItem("nano_admin_token", data.token);
         }
-      } catch {}
+      } catch { }
       setLoading(false);
       window.location.href = "/admin";
       return;
     }
-    
+
     // If admin login fails, try user login
     const userRes = await apiFetch("/api/auth/login", {
       method: "POST",
@@ -49,14 +49,14 @@ function LoginForm() {
       body: JSON.stringify(payload),
       credentials: "include",
     });
-    
+
     setLoading(false);
-    
+
     if (userRes.ok) {
       router.push("/");
       return;
     }
-    
+
     setError("Invalid credentials. Please try again.");
   };
 
@@ -74,7 +74,7 @@ function LoginForm() {
           <div className="max-w-md">
             <h2 className="text-3xl font-bold text-white mb-4">Welcome Back</h2>
             <p className="text-gray-300 leading-relaxed">
-              Sign in once to access your dashboard. Admins will be routed to the admin console automatically.
+              Securely access your dashboard. Admins are automatically redirected to the console.
             </p>
           </div>
           <div className="flex items-center gap-6 text-sm text-gray-400">
@@ -102,7 +102,7 @@ function LoginForm() {
               Secure Login
             </div>
             <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-            <p className="mt-3 text-gray-400">Sign in to access your dashboard. Admins will be routed to the admin console automatically.</p>
+            <p className="mt-3 text-gray-400">Securely access your dashboard. Admins are automatically redirected to the console.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -116,7 +116,7 @@ function LoginForm() {
                 required
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
               <input
@@ -127,7 +127,7 @@ function LoginForm() {
                 required
               />
             </div>
-            
+
             {error && (
               <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                 <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -136,7 +136,7 @@ function LoginForm() {
                 <p className="text-sm text-red-400">{error}</p>
               </div>
             )}
-            
+
             <button
               type="submit"
               disabled={loading}
@@ -155,7 +155,7 @@ function LoginForm() {
               )}
             </button>
           </form>
-          
+
           <div className="mt-8 text-center space-y-4">
             <p className="text-gray-400">
               Don't have an account?{" "}
@@ -170,7 +170,7 @@ function LoginForm() {
               ← Back to website
             </Link>
           </div>
-          
+
           <p className="mt-8 text-center text-sm text-gray-500">
             By signing in, you agree to our{" "}
             <a href="#" className="text-orange-400 hover:underline">Terms of Service</a>

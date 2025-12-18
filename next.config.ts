@@ -2,11 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    resolveAlias: {
-      "@assets": "./attached_assets",
-    },
-  },
+
   webpack: (config) => {
     config.resolve.alias["@assets"] = path.resolve(process.cwd(), "attached_assets");
     return config;

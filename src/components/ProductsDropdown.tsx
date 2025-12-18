@@ -59,7 +59,7 @@ export function ProductsDropdown({ onClose }: ProductsDropdownProps) {
               onClick={onClose}
             >
               <div className="flex items-start gap-2 mb-2">
-                <motion.span 
+                <motion.span
                   className="text-2xl leading-none"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}

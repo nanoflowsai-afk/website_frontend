@@ -9,6 +9,7 @@ import crmHeroImage from "@assets/generated_images/crm_dashboard_hero_no_text.pn
 import contentHeroImage from "@assets/generated_images/content_marketing_hero_no_text.png";
 import assistantHeroImage from "@assets/generated_images/ai_assistants_team_hero_no_text.png";
 import type { StaticImageData } from "next/image";
+import type { Metadata } from "next";
 
 type Product = {
   id: string;
@@ -216,6 +217,54 @@ const products: Product[] = [
   },
 ];
 
+
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
+
+  if (!product) {
+    return {
+      title: "Product Not Found | NanoFlows",
+    };
+  }
+
+  // Generate comparison keywords
+  const comparisonKeywords = product.comparison.flatMap(c => [
+    `${c.feature} AI solution`,
+    `Auto vs Manual ${c.feature}`,
+    `AI for ${c.feature}`
+  ]);
+
+  return {
+    title: `${product.name} - ${product.tagline} | NanoFlows AI`,
+    description: product.description,
+    keywords: [
+      product.name,
+      product.tagline,
+      `${product.name} software`,
+      `Best AI for ${product.id.split('-').join(' ')}`,
+      ...product.capabilities.map(c => c.title),
+      ...comparisonKeywords,
+      "NanoFlows Product",
+      "Enterprise AI Solution"
+    ],
+    openGraph: {
+      title: `${product.name} | NanoFlows AI`,
+      description: product.description,
+      type: "website",
+      images: [
+        {
+          url: "/nanoflows-logo.png", // Ideally, we'd use the product hero image if it was a public URL, but logo is safe
+          width: 800,
+          height: 600,
+          alt: product.name,
+        },
+      ],
+    },
+  };
+}
+
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const product = products.find((p) => p.id === id);
@@ -240,9 +289,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           />
           <div className={`absolute inset-0 bg-gradient-to-r ${product.color} opacity-40`}></div>
         </div>
+
+        {/* Blur Effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -left-1/4 top-1/4 h-96 w-96 rounded-full bg-orange-500/10 blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+          <div className="absolute -right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+        </div>
         <div className="relative mx-auto max-w-[1400px] px-6">
           <Link href="/products" className="inline-flex items-center gap-2 text-sm text-white hover:text-gray-100 mb-8">
-            ← Back to Products
           </Link>
           <div className="max-w-2xl">
             <h1 className="text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
