@@ -16,6 +16,9 @@ const industriesData = [
       { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
       { id: "martech-salestech-saas", name: "MarTech & SalesTech", icon: "📈" },
       { id: "logistics-supply-chain-saas", name: "Logistics & Supply Chain", icon: "🚚" },
+      { id: "local-business-saas", name: "Local Business SaaS", icon: "🏪" },
+      { id: "travel-hospitality-startups", name: "Travel & Hospitality", icon: "✈️" },
+      { id: "delivery-mobility-startups", name: "Delivery & Mobility", icon: "🚴" },
     ],
   },
   {
