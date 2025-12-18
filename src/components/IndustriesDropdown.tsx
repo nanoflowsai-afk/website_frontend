@@ -113,9 +113,9 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[95vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-7 gap-6 p-10">
-        {industriesData.map((industry) => (
-          <div key={industry.id} className="flex flex-col">
+      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-10">
+        {industriesData.map((industry, index) => (
+          <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-6' : ''}`}>
             {/* Header Section */}
             <Link
               href={`/industries/${industry.id}`}
@@ -123,7 +123,13 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               onClick={onClose}
             >
               <div className="flex items-start gap-2 mb-2">
-                <span className="text-2xl leading-none">{industry.icon}</span>
+                <motion.span 
+                  className="text-2xl leading-none"
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.1 }}
+                >
+                  {industry.icon}
+                </motion.span>
               </div>
               <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest group-hover:text-orange-600 transition leading-tight">
                 {industry.name}
@@ -132,16 +138,28 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
 
             {/* Sub-items Section */}
             <div className="flex flex-col gap-3">
-              {industry.subIndustries.map((sub) => (
-                <Link
+              {industry.subIndustries.map((sub, subIndex) => (
+                <motion.div
                   key={sub.id}
-                  href={`/industries/${industry.id}/${sub.id}`}
-                  className="group flex items-start gap-2 text-sm text-gray-700 hover:text-orange-600 transition-colors py-1"
-                  onClick={onClose}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.05 + subIndex * 0.02 }}
                 >
-                  <span className="text-base mt-0.5">{sub.icon}</span>
-                  <span className="leading-snug group-hover:translate-x-1 transition-transform">{sub.name}</span>
-                </Link>
+                  <Link
+                    href={`/industries/${industry.id}/${sub.id}`}
+                    className="group flex items-start gap-2 text-sm text-gray-700 hover:text-orange-600 transition-colors py-1"
+                    onClick={onClose}
+                  >
+                    <motion.span 
+                      className="text-base mt-0.5"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, delay: (index * 0.1) + (subIndex * 0.08) }}
+                    >
+                      {sub.icon}
+                    </motion.span>
+                    <span className="leading-snug group-hover:translate-x-1 transition-transform">{sub.name}</span>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>

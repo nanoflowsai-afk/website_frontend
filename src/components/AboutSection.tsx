@@ -55,10 +55,10 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
             </p>
             <ul className="space-y-2">
               {aboutData.coreValues.slice(0, 3).map((value, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                  <span className="text-orange-500 mt-0.5">→</span>
+                <motion.li key={idx} className="flex items-start gap-2 text-sm text-gray-600" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
+                  <motion.span className="text-orange-500 mt-0.5" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.2 }}>→</motion.span>
                   {value}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -71,10 +71,10 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
             </p>
             <ul className="space-y-2">
               {aboutData.coreValues.slice(0, 3).map((value, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                  <span className="text-orange-500 mt-0.5">→</span>
+                <motion.li key={idx} className="flex items-start gap-2 text-sm text-gray-600" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
+                  <motion.span className="text-orange-500 mt-0.5" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.2 }}>→</motion.span>
                   {value}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -83,10 +83,10 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
         return (
           <ul className="space-y-3">
             {aboutData.coreValues.map((value, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-gray-600">
-                <span className="text-orange-500 mt-0.5">→</span>
+              <motion.li key={idx} className="flex items-start gap-2 text-gray-600" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
+                <motion.span className="text-orange-500 mt-0.5" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.2 }}>→</motion.span>
                 {value}
-              </li>
+              </motion.li>
             ))}
           </ul>
         );
@@ -94,10 +94,10 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
         return (
           <ul className="space-y-3">
             {growthMetrics.map((metric, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-gray-600">
-                <span className="text-orange-500 mt-0.5">→</span>
+              <motion.li key={idx} className="flex items-start gap-2 text-gray-600" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
+                <motion.span className="text-orange-500 mt-0.5" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, delay: idx * 0.2 }}>→</motion.span>
                 {metric}
-              </li>
+              </motion.li>
             ))}
           </ul>
         );
