@@ -16,7 +16,6 @@ const industriesData = [
       { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
       { id: "martech-salestech-saas", name: "MarTech & SalesTech", icon: "📈" },
       { id: "logistics-supply-chain-saas", name: "Logistics & Supply Chain", icon: "🚚" },
-      { id: "productivity-collaboration-tools", name: "Productivity Tools", icon: "⚡" },
     ],
   },
   {
@@ -31,7 +30,6 @@ const industriesData = [
       { id: "energy-utilities", name: "Energy & Utilities", icon: "⚡" },
       { id: "government-public-sector", name: "Government & Public Sector", icon: "🏛️" },
       { id: "retail-consumer-enterprises", name: "Retail & Consumer", icon: "🛍️" },
-      { id: "media-entertainment", name: "Media & Entertainment", icon: "🎬" },
     ],
   },
   {
@@ -112,31 +110,37 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute left-0 top-full mt-2 w-screen max-w-5xl rounded-xl border border-orange-100 bg-white shadow-2xl"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[95vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-7 gap-8 p-8">
+      <div className="grid grid-cols-7 gap-6 p-10">
         {industriesData.map((industry) => (
-          <div key={industry.id} className="space-y-3">
+          <div key={industry.id} className="flex flex-col">
+            {/* Header Section */}
             <Link
               href={`/industries/${industry.id}`}
-              className="flex items-center gap-2 font-semibold text-gray-900 transition hover:text-orange-600"
+              className="group flex flex-col mb-4 pb-4 border-b border-gray-100 transition-all"
               onClick={onClose}
             >
-              <span className="text-lg">{industry.icon}</span>
-              <span className="text-xs uppercase tracking-wide">{industry.name}</span>
+              <div className="flex items-start gap-2 mb-2">
+                <span className="text-2xl leading-none">{industry.icon}</span>
+              </div>
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest group-hover:text-orange-600 transition leading-tight">
+                {industry.name}
+              </h3>
             </Link>
 
-            <div className="space-y-2">
+            {/* Sub-items Section */}
+            <div className="flex flex-col gap-3">
               {industry.subIndustries.map((sub) => (
                 <Link
                   key={sub.id}
                   href={`/industries/${industry.id}/${sub.id}`}
-                  className="block text-xs text-gray-600 transition hover:text-orange-600 hover:pl-1"
+                  className="group flex items-start gap-2 text-sm text-gray-700 hover:text-orange-600 transition-colors py-1"
                   onClick={onClose}
                 >
-                  <span className="mr-1">{sub.icon}</span>
-                  {sub.name}
+                  <span className="text-base mt-0.5">{sub.icon}</span>
+                  <span className="leading-snug group-hover:translate-x-1 transition-transform">{sub.name}</span>
                 </Link>
               ))}
             </div>
