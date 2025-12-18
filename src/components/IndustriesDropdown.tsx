@@ -119,7 +119,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
             {/* Header Section */}
             <Link
               href={`/industries/${industry.id}`}
-              className="group flex flex-col mb-4 pb-4 border-b border-gray-100 transition-all"
+              className="group flex flex-col mb-4 pb-4 border-b border-gray-100 transition-all hover:bg-orange-50 hover:text-orange-600 px-2 py-2 rounded-lg"
               onClick={onClose}
             >
               <div className="flex items-start gap-2 mb-2">
@@ -147,7 +147,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                 >
                   <Link
                     href={`/industries/${industry.id}/${sub.id}`}
-                    className="group flex items-start gap-2 text-sm text-gray-700 hover:text-orange-600 transition-colors py-1"
+                    className="group flex items-start gap-2 text-sm text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-colors py-2 px-2 rounded-lg"
                     onClick={onClose}
                   >
                     <motion.span 
