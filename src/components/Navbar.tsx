@@ -167,15 +167,19 @@ export function Navbar() {
             onMouseEnter={handleIndustriesMouseEnter}
             onMouseLeave={handleIndustriesMouseLeave}
           >
-            <button 
-              onClick={handleIndustriesClick}
+            <Link 
+              href="/industries"
               className="flex items-center gap-1 transition hover:text-orange-600"
+              onClick={(e) => {
+                e.preventDefault();
+                setIndustriesOpen(prev => !prev);
+              }}
             >
               Industries
               <svg className={`h-4 w-4 transition-transform ${industriesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </Link>
             <AnimatePresence>
               {industriesOpen && (
                 <IndustriesDropdown onClose={() => setIndustriesOpen(false)} />
@@ -302,12 +306,11 @@ export function Navbar() {
                       className="ml-8 mt-1 space-y-2 overflow-hidden"
                     >
                       {[
-                        { id: "autoflow", name: "AutoFlow", icon: "⚙️" },
-                        { id: "dataminds", name: "DataMinds", icon: "🧠" },
-                        { id: "decisionai", name: "DecisionAI", icon: "🎯" },
-                        { id: "processoptimizer", name: "ProcessOptimizer", icon: "⚡" },
-                        { id: "insighthub", name: "InsightHub", icon: "📊" },
-                        { id: "smartagent", name: "SmartAgent", icon: "🤖" },
+                        { id: "lead-generation", name: "AI Lead Generation", icon: "🔍" },
+                        { id: "calling-followup", name: "AI Calling & Follow-Up", icon: "📞" },
+                        { id: "crm-dashboards", name: "AI CRM & Dashboards", icon: "📊" },
+                        { id: "content-marketing", name: "AI Content & Marketing", icon: "✍️" },
+                        { id: "internal-assistants", name: "Internal AI Assistants", icon: "🤖" },
                       ].map((product) => (
                         <Link
                           key={product.id}
