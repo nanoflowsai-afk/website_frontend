@@ -3,11 +3,11 @@ import { Footer } from "@/components/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import leadGenHeroImage from "@assets/generated_images/lead_generation_hero_banner.png";
-import callingHeroImage from "@assets/generated_images/ai_calling_hero_banner.png";
-import crmHeroImage from "@assets/generated_images/crm_dashboard_hero_banner.png";
-import contentHeroImage from "@assets/generated_images/content_marketing_hero_banner.png";
-import assistantHeroImage from "@assets/generated_images/ai_assistants_hero_banner.png";
+import leadGenHeroImage from "@assets/generated_images/lead_generation_professional_hero.png";
+import callingHeroImage from "@assets/generated_images/ai_calling_professional_hero.png";
+import crmHeroImage from "@assets/generated_images/crm_professional_hero.png";
+import contentHeroImage from "@assets/generated_images/content_marketing_professional_hero.png";
+import assistantHeroImage from "@assets/generated_images/ai_assistants_professional_hero.png";
 import type { StaticImageData } from "next/image";
 
 type Product = {
