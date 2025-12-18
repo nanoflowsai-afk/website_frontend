@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import leadGenImage from "@assets/generated_images/ai_lead_generation_dashboard.png";
 import callingImage from "@assets/generated_images/ai_calling_system_interface.png";
-import crmImage from "@assets/generated_images/ai_crm_dashboard_analytics.png";
+import crmImage from "@assets/generated_images/ai_crm_analytics_dashboard.png";
 import contentImage from "@assets/generated_images/ai_content_marketing_platform.png";
-import assistantImage from "@assets/generated_images/ai_team_assistant_interface.png";
+import assistantImage from "@assets/generated_images/internal_ai_team_assistant.png";
 import heroImage from "@assets/generated_images/products_hero_background_abstract.png";
 import type { StaticImageData } from "next/image";
 
