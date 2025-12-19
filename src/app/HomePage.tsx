@@ -221,7 +221,7 @@ export default function HomePage() {
                 </section>
 
                 <section id="blog" className="py-20">
-                    <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                    <div className="flex flex-row items-end justify-between gap-6">
                         <div>
                             <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-600">
                                 Case Studies
@@ -232,7 +232,7 @@ export default function HomePage() {
                         </div>
                         <a
                             href="/blog"
-                            className="inline-flex items-center gap-2 rounded-xl border border-orange-500 px-6 py-3 text-sm font-semibold text-orange-600 transition hover:-translate-y-0.5 hover:bg-orange-50"
+                            className="inline-flex items-center gap-2 rounded-xl border border-orange-500 px-6 py-3 text-sm font-semibold text-orange-600 transition hover:-translate-y-0.5 hover:bg-orange-50 flex-shrink-0"
                         >
                             View All →
                         </a>
