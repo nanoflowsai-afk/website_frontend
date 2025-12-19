@@ -58,7 +58,7 @@ export default function BlogPage() {
             <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
                 <div className="absolute inset-0">
                     <img
-                        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&h=800&fit=crop"
+                        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&h=800&fit=crop&fm=webp"
                         alt="Blog background"
                         className="w-full h-full object-cover"
                     />

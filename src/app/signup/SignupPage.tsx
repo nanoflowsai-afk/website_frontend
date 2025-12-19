@@ -39,7 +39,7 @@ export default function SignupPage() {
         <div className="min-h-screen flex">
             <div className="hidden lg:flex lg:w-1/2 relative">
                 <img
-                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=1600&fit=crop"
+                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=1600&fit=crop&fm=webp"
                     alt="AI Technology"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

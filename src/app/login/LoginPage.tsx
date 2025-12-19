@@ -61,7 +61,7 @@ function LoginForm() {
         <div className="min-h-screen flex">
             <div className="hidden lg:flex lg:w-1/2 relative">
                 <img
-                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=1600&fit=crop"
+                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=1600&fit=crop&fm=webp"
                     alt="AI Technology"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

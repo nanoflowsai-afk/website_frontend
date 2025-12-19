@@ -60,7 +60,7 @@ export function HeroCarousel({ slides }: Props) {
     heading: defaultHeadline,
     subHeading: defaultSubheadline,
     tags: rotatingKeywords,
-    backgroundImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=80",
+    backgroundImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=80&fm=webp",
     isActive: true,
     displayOrder: 0,
   };
