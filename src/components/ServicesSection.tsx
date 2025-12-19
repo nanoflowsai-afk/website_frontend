@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SafeBackgroundImage } from "@/components/SafeBackgroundImage";
 
 type ServiceCard = {
   title: string;
@@ -160,7 +161,13 @@ export function ServicesSection() {
   const currentCategory = serviceCategories.find((c) => c.id === activeCategory);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6">
+    <div className="relative overflow-hidden rounded-2xl">
+      <SafeBackgroundImage 
+        src="/attached_assets/stock_images/professional_busines_75038a4f.jpg"
+        className="absolute inset-0 h-full w-full"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80"></div>
+      <div className="relative flex flex-col lg:flex-row gap-6 p-0.5">
       <div className="lg:w-56 flex-shrink-0 lg:border-r lg:border-gray-200 lg:pr-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 pb-4 lg:pb-0">
           {serviceCategories.map((category, index) => (
@@ -216,6 +223,7 @@ export function ServicesSection() {
             ))}
           </motion.div>
         </AnimatePresence>
+      </div>
       </div>
     </div>
   );
