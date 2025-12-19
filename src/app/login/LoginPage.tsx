@@ -6,138 +6,136 @@ function LoginForm() {
     const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [emailValue, setEmailValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError(null);
         setLoading(true);
 
-        const formData = new FormData(e.currentTarget);
         const payload = {
-            email: formData.get("email") as string,
-            password: formData.get("password") as string,
+            email: emailValue,
+            password: passwordValue,
         };
 
-        // Try admin login first
-        const adminRes = await apiFetch("/api/admin/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            credentials: "include",
-        });
+        try {
+            // Try admin login first
+            const adminRes = await apiFetch("/api/admin/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+                credentials: "include",
+            });
 
-        if (adminRes.ok) {
-            try {
-                const data = await adminRes.json().catch(() => null);
-                if (data?.token) {
-                    localStorage.setItem("nano_admin_token", data.token);
-                }
-            } catch { }
+            if (adminRes.ok) {
+                try {
+                    const data = await adminRes.json().catch(() => null);
+                    if (data?.token) {
+                        localStorage.setItem("nano_admin_token", data.token);
+                    }
+                } catch { }
+                setLoading(false);
+                window.location.href = "/admin";
+                return;
+            }
+
+            // If admin login fails, try user login
+            const userRes = await apiFetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+                credentials: "include",
+            });
+
             setLoading(false);
-            // Force reload for admin to ensure clean state or navigating to a potentially different app structure
-            window.location.href = "/admin";
-            return;
+
+            if (userRes.ok) {
+                navigate("/");
+                return;
+            }
+
+            setError("Invalid credentials. Please try again.");
+        } catch (err) {
+            setLoading(false);
+            setError("An error occurred. Please try again.");
         }
-
-        // If admin login fails, try user login
-        const userRes = await apiFetch("/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            credentials: "include",
-        });
-
-        setLoading(false);
-
-        if (userRes.ok) {
-            navigate("/");
-            return;
-        }
-
-        setError("Invalid credentials. Please try again.");
     };
 
     return (
-        <div className="min-h-screen flex">
-            <div className="hidden lg:flex lg:w-1/2 relative">
-                <img
-                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=1600&fit=crop"
-                    alt="AI Technology"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
-                <div className="relative z-10 flex flex-col justify-between p-12">
-                    <div></div>
-                    <div className="max-w-md">
-                        <h2 className="text-3xl font-bold text-white mb-4">Welcome Back</h2>
-                        <p className="text-gray-300 leading-relaxed">
-                            Securely access your dashboard. Admins are automatically redirected to the console.
-                        </p>
-                    </div>
-                    <div className="flex items-center gap-6 text-sm text-gray-400">
-                        <span className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                            Secure Login
-                        </span>
-                        <span className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
-                            256-bit Encryption
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div className="min-h-screen flex items-center justify-center p-4 md:p-6 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+            {/* Animated background gradient */}
+            <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse -z-10"></div>
+            <div className="fixed bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full filter blur-3xl opacity-10 animate-pulse -z-10"></div>
 
-            <div className="flex-1 flex flex-col justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 lg:px-12">
-                <div className="mx-auto w-full max-w-md">
-
+            <div className="w-full max-w-md relative z-10">
+                {/* Card Container with glassmorphism */}
+                <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-white/10 shadow-2xl p-8 md:p-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    {/* Header */}
                     <div className="mb-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium mb-4">
-                            Secure Login
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-500/10 border border-orange-200 dark:border-orange-500/20 text-orange-600 dark:text-orange-400 text-xs font-semibold mb-4">
+                            🔐 Secure Login
                         </div>
-                        <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-                        <p className="mt-3 text-gray-400">Securely access your dashboard. Admins are automatically redirected to the console.</p>
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h1>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">Sign in to your account</p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                    {/* Error Message */}
+                    {error && (
+                        <div className="mb-6 flex items-start gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 animate-in slide-in-from-top-2">
+                            <span className="text-lg">⚠️</span>
+                            <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
+                        </div>
+                    )}
+
+                    {/* Form */}
+                    <form onSubmit={handleSubmit} className="space-y-5 mb-6">
+                        {/* Email Input */}
+                        <div className="relative">
                             <input
-                                name="email"
                                 type="email"
-                                placeholder="you@example.com"
-                                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
+                                value={emailValue}
+                                onChange={(e) => setEmailValue(e.target.value)}
+                                placeholder="Email"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-transparent outline-none transition-all duration-300 focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/10 dark:focus:ring-orange-400/10"
                                 required
                             />
+                            <label className="absolute left-4 -top-2 bg-white dark:bg-slate-900 px-1 text-xs font-semibold text-gray-600 dark:text-gray-400 transition-all duration-300 pointer-events-none">
+                                Email
+                            </label>
                         </div>
 
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                        {/* Password Input */}
+                        <div className="relative">
                             <input
-                                name="password"
                                 type="password"
-                                placeholder="Enter your password"
-                                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
+                                value={passwordValue}
+                                onChange={(e) => setPasswordValue(e.target.value)}
+                                placeholder="Password"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-transparent outline-none transition-all duration-300 focus:border-orange-500 dark:focus:border-orange-400 focus:ring-2 focus:ring-orange-500/10 dark:focus:ring-orange-400/10"
                                 required
                             />
+                            <label className="absolute left-4 -top-2 bg-white dark:bg-slate-900 px-1 text-xs font-semibold text-gray-600 dark:text-gray-400 transition-all duration-300 pointer-events-none">
+                                Password
+                            </label>
                         </div>
 
-                        {error && (
-                            <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
-                                <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <p className="text-sm text-red-400">{error}</p>
-                            </div>
-                        )}
+                        {/* Remember & Forgot */}
+                        <div className="flex items-center justify-between text-sm">
+                            <label className="flex items-center gap-2 cursor-pointer group">
+                                <input type="checkbox" className="w-4 h-4 rounded accent-orange-500" />
+                                <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition">Remember me</span>
+                            </label>
+                            <Link to="#" className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-semibold transition">
+                                Forgot?
+                            </Link>
+                        </div>
 
+                        {/* Submit Button */}
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -153,27 +151,60 @@ function LoginForm() {
                         </button>
                     </form>
 
-                    <div className="mt-8 text-center space-y-4">
-                        <p className="text-gray-400">
-                            Don't have an account?{" "}
-                            <Link to="/signup" className="font-semibold text-orange-400 hover:text-orange-300 transition">
-                                Sign up
+                    {/* Divider */}
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">or</span>
+                        <div className="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
+                    </div>
+
+                    {/* Social Login Buttons */}
+                    <div className="grid grid-cols-2 gap-3 mb-8">
+                        <button className="py-2.5 px-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold text-sm transition-all duration-300">
+                            Google
+                        </button>
+                        <button className="py-2.5 px-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold text-sm transition-all duration-300">
+                            Microsoft
+                        </button>
+                    </div>
+
+                    {/* Sign Up Link */}
+                    <p className="text-center text-gray-600 dark:text-gray-400">
+                        Don't have an account?{" "}
+                        <Link to="/signup" className="font-semibold text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition">
+                            Create one
+                        </Link>
+                    </p>
+
+                    {/* Footer Links */}
+                    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-white/10">
+                        <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+                            By signing in, you agree to our{" "}
+                            <Link to="/terms" className="text-orange-600 dark:text-orange-400 hover:underline">
+                                Terms
+                            </Link>
+                            {" "}and{" "}
+                            <Link to="/privacy-policy" className="text-orange-600 dark:text-orange-400 hover:underline">
+                                Privacy
                             </Link>
                         </p>
-                        <Link
-                            to="/"
-                            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
-                        >
+                        <Link to="/" className="inline-flex justify-center w-full mt-4 py-2 text-sm text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-semibold transition">
                             ← Back to website
                         </Link>
                     </div>
+                </div>
 
-                    <p className="mt-8 text-center text-sm text-gray-500">
-                        By signing in, you agree to our{" "}
-                        <Link to="/terms" className="text-orange-400 hover:underline">Terms of Service</Link>
-                        {" "}and{" "}
-                        <Link to="/privacy-policy" className="text-orange-400 hover:underline">Privacy Policy</Link>
-                    </p>
+                {/* Security Badge */}
+                <div className="mt-6 flex items-center justify-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+                    <span className="flex items-center gap-1.5">
+                        <span className="text-green-500">✓</span>
+                        256-bit Encryption
+                    </span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span className="flex items-center gap-1.5">
+                        <span className="text-green-500">✓</span>
+                        Secure Login
+                    </span>
                 </div>
             </div>
         </div>
