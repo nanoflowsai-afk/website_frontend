@@ -1,6 +1,7 @@
 import { useState, Suspense } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { apiFetch } from "@/lib/api";
+import loginImage from "@assets/generated_images/ai_business_technology_interface.png";
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -61,8 +62,9 @@ function LoginForm() {
         <div className="min-h-screen flex">
             <div className="hidden lg:flex lg:w-1/2 relative">
                 <img
-                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=1600&fit=crop&fm=webp"
-                    alt="AI Technology"
+                    src={loginImage}
+                    alt="NanoFlows secure login - AI business technology platform, intelligent automation administration"
+                    title="NanoFlows Login - AI Automation Platform"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>

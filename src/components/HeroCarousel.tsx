@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import { normalizeImageUrl } from "@/lib/images";
+import defaultHeroImage from "@assets/generated_images/ai_automation_technology_concept.png";
 
 export type HeroSlide = {
   id: number;
@@ -60,7 +61,7 @@ export function HeroCarousel({ slides }: Props) {
     heading: defaultHeadline,
     subHeading: defaultSubheadline,
     tags: rotatingKeywords,
-    backgroundImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=80&fm=webp",
+    backgroundImageUrl: defaultHeroImage,
     isActive: true,
     displayOrder: 0,
   };

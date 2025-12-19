@@ -1,6 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { apiFetch } from "@/lib/api";
+import signupImage from "@assets/generated_images/ai_automation_technology_concept.png";
 
 export default function SignupPage() {
     const navigate = useNavigate();
@@ -39,8 +40,9 @@ export default function SignupPage() {
         <div className="min-h-screen flex">
             <div className="hidden lg:flex lg:w-1/2 relative">
                 <img
-                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=1600&fit=crop&fm=webp"
-                    alt="AI Technology"
+                    src={signupImage}
+                    alt="NanoFlows signup - join AI automation platform, intelligent workflow creation, business intelligence solutions"
+                    title="Create NanoFlows Account - AI Automation Platform"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>

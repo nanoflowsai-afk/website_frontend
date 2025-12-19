@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SafeBackgroundImage } from "@/components/SafeBackgroundImage";
 import { normalizeImageUrl } from "@/lib/images";
+import blogHeroImage from "@assets/generated_images/ai_automation_business_workflow.png";
 
 type BlogPost = {
     id: number;
@@ -58,8 +59,9 @@ export default function BlogPage() {
             <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
                 <div className="absolute inset-0">
                     <img
-                        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&h=800&fit=crop&fm=webp"
-                        alt="Blog background"
+                        src={blogHeroImage}
+                        alt="NanoFlows AI automation and business insights blog - AI technology, machine learning, business automation research"
+                        title="AI Business Blog - NanoFlows Insights & Research"
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/60 to-slate-900/50"></div>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { apiFetch } from "@/lib/api";
+import careersHeroImage from "@assets/generated_images/tech_team_collaboration_workspace.png";
 
 const culturePoints = [
     {
@@ -421,8 +422,9 @@ export default function CareersPage() {
             <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
                 <div className="absolute inset-0">
                     <img
-                        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=800&fit=crop&fm=webp"
-                        alt="Careers background"
+                        src={careersHeroImage}
+                        alt="NanoFlows careers - join our AI and automation engineering team, tech careers in AI development"
+                        title="NanoFlows Careers - AI Engineering Jobs"
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/60 to-slate-900/50"></div>
