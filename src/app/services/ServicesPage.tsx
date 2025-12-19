@@ -843,7 +843,7 @@ function ServicesPageContent() {
         <div className="min-h-screen bg-white">
             <Navbar />
 
-            <section className="relative overflow-hidden py-32 md:py-40 min-h-[450px] md:min-h-[550px]">
+            <section className="relative overflow-hidden py-40 md:py-48 min-h-[450px] md:min-h-[550px]">
                 <div className="absolute inset-0">
                     <img
                         src={servicesHeroImage}
