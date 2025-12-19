@@ -109,7 +109,7 @@ export function HeroCarousel({ slides }: Props) {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-16 lg:py-20">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-center text-center lg:text-left">
-          <div className="flex-1 space-y-5 lg:max-w-3xl mx-auto">
+          <div className="flex-1 space-y-5 lg:max-w-3xl mx-auto min-h-[400px] lg:min-h-0 flex flex-col justify-center">
             <div className="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mx-auto lg:mx-0">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
