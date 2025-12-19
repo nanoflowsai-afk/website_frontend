@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from "react-router-dom";
+// import Image from "next/image";
 
 const footerLinks = {
   services: [
@@ -87,8 +87,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-4">
-            <Link href="/" className="inline-block group">
-              <Image
+            <Link to="/" className="inline-block group">
+              <img
                 src="/nanoflows-logo.png"
                 alt="NanoFlows"
                 width={200}
@@ -125,7 +125,7 @@ export function Footer() {
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-gray-400 transition-colors hover:text-orange-400"
                   >
                     {link.label}
@@ -143,7 +143,7 @@ export function Footer() {
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-gray-400 transition-colors hover:text-orange-400"
                   >
                     {link.label}
@@ -161,7 +161,7 @@ export function Footer() {
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    to={link.href}
                     className="text-sm text-gray-400 transition-colors hover:text-orange-400"
                   >
                     {link.label}
@@ -192,7 +192,7 @@ export function Footer() {
                 Visakhapatnam, India
               </p>
               <Link
-                href="/contact"
+                to="/contact"
                 className="inline-flex items-center justify-center gap-2 w-full rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5"
               >
                 Get in Touch
@@ -210,15 +210,15 @@ export function Footer() {
               © {currentYear} NanoFlows. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-500">
-              <Link href="/privacy-policy" className="hover:text-orange-400 transition-colors">
+              <Link to="/privacy-policy" className="hover:text-orange-400 transition-colors">
                 Privacy Policy
               </Link>
               <span className="text-gray-700">|</span>
-              <Link href="/terms" className="hover:text-orange-400 transition-colors">
+              <Link to="/terms" className="hover:text-orange-400 transition-colors">
                 Terms of Service
               </Link>
               <span className="text-gray-700">|</span>
-              <Link href="/cookie-policy" className="hover:text-orange-400 transition-colors">
+              <Link to="/cookie-policy" className="hover:text-orange-400 transition-colors">
                 Cookie Policy
               </Link>
             </div>

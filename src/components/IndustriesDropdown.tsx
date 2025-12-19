@@ -1,106 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const industriesData = [
-  {
-    id: "startups-saas",
-    name: "Startups & SaaS",
-    icon: "🚀",
-    subIndustries: [
-      { id: "fintech-startups", name: "FinTech Startups", icon: "💳" },
-      { id: "healthtech-startups", name: "HealthTech Startups", icon: "🏥" },
-      { id: "edtech-startups", name: "EdTech Startups", icon: "📚" },
-      { id: "proptech-startups", name: "PropTech Startups", icon: "🏗️" },
-      { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
-      { id: "martech-salestech-saas", name: "MarTech & SalesTech", icon: "📈" },
-      { id: "logistics-supply-chain-saas", name: "Logistics & Supply Chain", icon: "🚚" },
-      { id: "productivity-collaboration-tools", name: "Productivity & Collaboration", icon: "🤝" },
-      { id: "vertical-saas", name: "Vertical SaaS", icon: "🧩" },
-      { id: "ai-tools-automation-startups", name: "AI Tools & Automation Startups", icon: "🤖" },
-    ],
-  },
-  {
-    id: "enterprises",
-    name: "Enterprises",
-    icon: "🏢",
-    subIndustries: [
-      { id: "banking-financial-services", name: "Banking & Financial Services", icon: "🏦" },
-      { id: "manufacturing-industrial", name: "Manufacturing & Industrial", icon: "🏭" },
-      { id: "it-services-consulting", name: "IT Services & Consulting", icon: "💻" },
-      { id: "telecom-networking", name: "Telecom & Networking", icon: "📡" },
-      { id: "energy-utilities", name: "Energy & Utilities", icon: "⚡" },
-      { id: "government-public-sector", name: "Government & Public Sector", icon: "🏛️" },
-      { id: "retail-consumer-enterprises", name: "Retail & Consumer", icon: "🛍️" },
-    ],
-  },
-  {
-    id: "ecommerce",
-    name: "E-Commerce",
-    icon: "🛒",
-    subIndustries: [
-      { id: "multi-vendor-marketplaces", name: "Multi-Vendor Marketplaces", icon: "🏪" },
-      { id: "b2c-online-retail", name: "B2C E-commerce", icon: "🛍️" },
-      { id: "b2b-ecommerce-platforms", name: "B2B E-commerce", icon: "📦" },
-      { id: "fashion-lifestyle-ecommerce", name: "Fashion & Apparel", icon: "👕" },
-      { id: "grocery-quick-commerce", name: "Groceries & Food Delivery", icon: "🍔" },
-      { id: "electronics-digital-goods", name: "Electronics Retail", icon: "📱" },
-    ],
-  },
-  {
-    id: "real-estate",
-    name: "Real Estate",
-    icon: "🏠",
-    subIndustries: [
-      { id: "residential-real-estate", name: "Residential Real Estate", icon: "🏡" },
-      { id: "commercial-real-estate", name: "Commercial Real Estate", icon: "🏢" },
-      { id: "property-management-firms", name: "Property Management", icon: "🔑" },
-      { id: "real-estate-developers", name: "Real Estate Developers", icon: "📊" },
-      { id: "hospitality-vacation-rentals", name: "Hospitality & Resorts", icon: "🏨" },
-      { id: "co-living-co-working", name: "Co-living & Co-working", icon: "🏗️" },
-    ],
-  },
-  {
-    id: "healthcare",
-    name: "Healthcare",
-    icon: "⚕️",
-    subIndustries: [
-      { id: "hospitals-multispecialty-clinics", name: "Hospitals & Clinics", icon: "🏥" },
-      { id: "telemedicine-virtual-care", name: "Telemedicine", icon: "📞" },
-      { id: "diagnostic-labs-imaging", name: "Diagnostic Labs", icon: "🔬" },
-      { id: "pharmacies-medical-stores", name: "Pharmacies", icon: "💊" },
-      { id: "health-insurance-providers", name: "Health Insurance", icon: "📋" },
-      { id: "wellness-fitness-centers", name: "Wellness & Fitness", icon: "💪" },
-    ],
-  },
-  {
-    id: "education",
-    name: "Education",
-    icon: "📚",
-    subIndustries: [
-      { id: "schools-k12", name: "K-12 Schools", icon: "🎓" },
-      { id: "colleges-universities", name: "Colleges & Universities", icon: "🎯" },
-      { id: "online-learning-platforms", name: "Online Learning Platforms", icon: "💻" },
-      { id: "skill-development-vocational", name: "Vocational Training", icon: "🛠️" },
-      { id: "corporate-training-ld", name: "Corporate Training", icon: "👔" },
-      { id: "coaching-training-institutes", name: "Coaching Institutes", icon: "📈" },
-    ],
-  },
-  {
-    id: "local-businesses",
-    name: "Local Business",
-    icon: "🏪",
-    subIndustries: [
-      { id: "restaurants-cafes-food", name: "Restaurants & Cafés", icon: "🍕" },
-      { id: "salons-spas-personal-care", name: "Salons & Spas", icon: "💇" },
-      { id: "automobile-services-workshops", name: "Automotive Services", icon: "🚗" },
-      { id: "gyms-yoga-fitness", name: "Fitness & Gyms", icon: "🏋️" },
-      { id: "clinics-local-healthcare", name: "Local Clinics", icon: "🏥" },
-      { id: "professional-services", name: "Professional Services", icon: "⚖️" },
-    ],
-  },
-];
+import { industries } from "../lib/data/industries";
+
+const industriesData = industries;
 
 interface IndustriesDropdownProps {
   onClose?: () => void;
@@ -121,7 +26,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
           <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-4' : ''}`}>
             {/* Header Section */}
             <Link
-              href={`/industries/${industry.id}`}
+              to={`/industries/${industry.id}`}
               className="group flex flex-col mb-4 pb-4 border-b border-gray-100 transition-all hover:bg-orange-50 hover:text-orange-600 px-2 py-2 rounded-lg"
               onClick={onClose}
             >
@@ -149,7 +54,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                   transition={{ delay: 0.05 + subIndex * 0.02 }}
                 >
                   <Link
-                    href={`/industries/${industry.id}/${sub.id}`}
+                    to={`/industries/${industry.id}/${sub.id}`}
                     className="group flex items-center justify-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md"
                     onClick={onClose}
                   >

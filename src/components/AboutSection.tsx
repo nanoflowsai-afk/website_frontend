@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+
 import aboutImage from "@assets/generated_images/ai_company_office_collaboration.png";
 
 type AboutData = {
@@ -107,25 +107,23 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
   const ImageBlock = () => (
     <div className="relative">
       <div className="absolute -top-4 -left-4 w-20 h-20 border-2 border-orange-200 rounded-lg opacity-50"></div>
-      <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-orange-100 rounded-lg opacity-50"></div>
-      <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl">
-        <Image
-          src={aboutImage}
-          alt="NanoFlows AI Innovation Team"
-          className="w-full h-auto object-cover"
-          priority
+      <div className="relative h-full min-h-[250px] w-full overflow-hidden rounded-2xl lg:min-h-[480px]">
+        <img
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+          alt="Team collaboration"
+          className="object-cover w-full h-full"
         />
       </div>
     </div>
   );
 
   return (
-    <div className="flex flex-col lg:flex-row gap-10 items-center">
-      <div className="hidden lg:block lg:w-1/2 relative">
+    <div className="flex flex-col lg:flex-row gap-10 items-start">
+      <div className="hidden lg:block lg:w-1/2 relative pt-12">
         <ImageBlock />
       </div>
 
-      <div className="lg:w-1/2">
+      <div className="lg:w-1/2 pt-8">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-orange-600 mb-2">
           |⁘ About Company ⁘|
         </p>
@@ -134,12 +132,12 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
           <span className="text-orange-600">Solution</span>
         </h2>
 
-        <div className="block lg:hidden mb-6">
+        <div className="block lg:hidden mb-3">
           <ImageBlock />
         </div>
 
         <p className="text-gray-600 text-sm mb-6">
-          We craft innovative, forward-thinking AI strategies to empower businesses, 
+          We craft innovative, forward-thinking AI strategies to empower businesses,
           ensuring proactive solutions that drive success and growth in an ever-evolving digital landscape.
         </p>
 
@@ -148,11 +146,10 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative pb-3 text-xs sm:text-sm font-medium transition-colors text-center sm:text-left ${
-                activeTab === tab.id
-                  ? "text-orange-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
+              className={`relative pb-3 text-xs sm:text-sm font-medium transition-colors text-center sm:text-left ${activeTab === tab.id
+                ? "text-orange-600"
+                : "text-gray-500 hover:text-gray-700"
+                }`}
             >
               {tab.label}
               {activeTab === tab.id && (

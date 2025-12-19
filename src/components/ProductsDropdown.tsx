@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const productsData = [
@@ -54,7 +54,7 @@ export function ProductsDropdown({ onClose }: ProductsDropdownProps) {
         {productsData.map((product, index) => (
           <div key={product.id} className={`flex flex-col ${index !== 0 ? 'pl-6' : ''}`}>
             <Link
-              href={`/products/${product.id}`}
+              to={`/products/${product.id}`}
               className="group flex flex-col h-full hover:bg-orange-50/50 p-3 rounded-lg transition-colors"
               onClick={onClose}
             >

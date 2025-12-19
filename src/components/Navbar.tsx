@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from "react-router-dom";
+// import Image from "next/image"; // Removed Next.js Image
 import { motion, AnimatePresence } from "framer-motion";
 import { IndustriesDropdown } from "./IndustriesDropdown";
 import { ProductsDropdown } from "./ProductsDropdown";
@@ -16,12 +16,21 @@ export function Navbar() {
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [expandedIndustryId, setExpandedIndustryId] = useState<string | null>(null);
+
+  // Admin State
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const productsRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const industriesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const productsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("nano_admin_token");
+    setIsAdmin(!!token);
+  }, []);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -126,19 +135,19 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-orange-100 bg-white/90 backdrop-blur-xl" suppressHydrationWarning>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4" suppressHydrationWarning>
-        <Link href="/" className="flex items-center gap-3">
-          <Image
+        <Link to="/" className="flex items-center gap-3">
+          <img
             src="/nanoflows-logo.png"
             alt="NanoFlows"
             width={180}
             height={50}
             className="h-16 w-auto"
-            priority
+
           />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-gray-700 lg:flex">
-          <Link href="/services" className="transition hover:text-orange-600">
+          <Link to="/services" className="transition hover:text-orange-600">
             Services
           </Link>
           <div
@@ -147,8 +156,8 @@ export function Navbar() {
             onMouseEnter={handleProductsMouseEnter}
             onMouseLeave={handleProductsMouseLeave}
           >
-            <Link 
-              href="/products"
+            <Link
+              to="/products"
               className="flex items-center gap-1 transition hover:text-orange-600"
             >
               Products
@@ -168,8 +177,8 @@ export function Navbar() {
             onMouseEnter={handleIndustriesMouseEnter}
             onMouseLeave={handleIndustriesMouseLeave}
           >
-            <Link 
-              href="/industries"
+            <Link
+              to="/industries"
               className="flex items-center gap-1 transition hover:text-orange-600"
             >
               Industries
@@ -189,7 +198,7 @@ export function Navbar() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button 
+            <button
               onClick={handleClick}
               className="flex items-center gap-1 transition hover:text-orange-600"
             >
@@ -199,20 +208,20 @@ export function Navbar() {
               </svg>
             </button>
             {resourcesOpen && (
-              <div 
+              <div
                 className="absolute left-0 top-full mt-2 w-48 rounded-xl border border-orange-100 bg-white py-2 shadow-xl"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
-                  href="/careers"
+                  to="/careers"
                   className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-orange-50 hover:text-orange-600"
                   onClick={() => setResourcesOpen(false)}
                 >
                   Careers
                 </Link>
                 <Link
-                  href="/blog"
+                  to="/blog"
                   className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-orange-50 hover:text-orange-600"
                   onClick={() => setResourcesOpen(false)}
                 >
@@ -221,18 +230,27 @@ export function Navbar() {
               </div>
             )}
           </div>
-          <Link href="/contact" className="transition hover:text-orange-600">
+          <Link to="/contact" className="transition hover:text-orange-600">
             Contact
           </Link>
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="hidden rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40 sm:inline-flex"
-          >
-            Get Started
-          </Link>
+          {isAdmin ? (
+            <Link
+              to="/admin"
+              className="hidden rounded-xl bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-gray-800 sm:inline-flex"
+            >
+              Admin Dashboard
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="hidden rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40 sm:inline-flex"
+            >
+              Get Started
+            </Link>
+          )}
           <button
             className="rounded-lg p-2 text-gray-700 transition hover:bg-orange-50 lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -263,9 +281,9 @@ export function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.05 }}
               >
-                <Link 
-                  href="/services" 
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all" 
+                <Link
+                  to="/services"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all"
                   onClick={() => setMobileOpen(false)}
                 >
                   <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -311,7 +329,7 @@ export function Navbar() {
                       ].map((product) => (
                         <Link
                           key={product.id}
-                          href={`/products/${product.id}`}
+                          to={`/products/${product.id}`}
                           className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all"
                           onClick={() => setMobileOpen(false)}
                         >
@@ -352,9 +370,9 @@ export function Navbar() {
                       className="ml-4 mt-2 max-h-80 overflow-y-auto rounded-lg bg-gray-50 p-2 space-y-1"
                     >
                       {[
-                        { 
-                          id: "startups-saas", 
-                          name: "Startups & SaaS", 
+                        {
+                          id: "startups-saas",
+                          name: "Startups & SaaS",
                           icon: "🚀",
                           subs: [
                             { id: "fintech-startups", name: "FinTech Startups", icon: "💳" },
@@ -364,9 +382,9 @@ export function Navbar() {
                             { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
                           ]
                         },
-                        { 
-                          id: "enterprises", 
-                          name: "Enterprises", 
+                        {
+                          id: "enterprises",
+                          name: "Enterprises",
                           icon: "🏢",
                           subs: [
                             { id: "banking-financial-services", name: "Banking & Financial Services", icon: "🏦" },
@@ -376,9 +394,9 @@ export function Navbar() {
                             { id: "energy-utilities", name: "Energy & Utilities", icon: "⚡" },
                           ]
                         },
-                        { 
-                          id: "ecommerce", 
-                          name: "E-Commerce", 
+                        {
+                          id: "ecommerce",
+                          name: "E-Commerce",
                           icon: "🛒",
                           subs: [
                             { id: "multi-vendor-marketplaces", name: "Multi-Vendor Marketplaces", icon: "🏪" },
@@ -388,9 +406,9 @@ export function Navbar() {
                             { id: "grocery-quick-commerce", name: "Groceries & Food", icon: "🍔" },
                           ]
                         },
-                        { 
-                          id: "real-estate", 
-                          name: "Real Estate", 
+                        {
+                          id: "real-estate",
+                          name: "Real Estate",
                           icon: "🏠",
                           subs: [
                             { id: "residential-real-estate", name: "Residential Real Estate", icon: "🏡" },
@@ -400,9 +418,9 @@ export function Navbar() {
                             { id: "hospitality-vacation-rentals", name: "Hospitality & Resorts", icon: "🏨" },
                           ]
                         },
-                        { 
-                          id: "healthcare", 
-                          name: "Healthcare", 
+                        {
+                          id: "healthcare",
+                          name: "Healthcare",
                           icon: "⚕️",
                           subs: [
                             { id: "hospitals-multispecialty-clinics", name: "Hospitals & Clinics", icon: "🏥" },
@@ -412,9 +430,9 @@ export function Navbar() {
                             { id: "health-insurance-providers", name: "Health Insurance", icon: "📋" },
                           ]
                         },
-                        { 
-                          id: "education", 
-                          name: "Education", 
+                        {
+                          id: "education",
+                          name: "Education",
                           icon: "📚",
                           subs: [
                             { id: "schools-k12", name: "K-12 Schools", icon: "🎓" },
@@ -424,9 +442,9 @@ export function Navbar() {
                             { id: "corporate-training-ld", name: "Corporate Training", icon: "👔" },
                           ]
                         },
-                        { 
-                          id: "local-businesses", 
-                          name: "Local Business", 
+                        {
+                          id: "local-businesses",
+                          name: "Local Business",
                           icon: "🏪",
                           subs: [
                             { id: "restaurants-cafes-food", name: "Restaurants & Cafés", icon: "🍕" },
@@ -451,10 +469,10 @@ export function Navbar() {
                                 <span className="text-base">{industry.icon}</span>
                                 <span>{industry.name}</span>
                               </div>
-                              <svg 
+                              <svg
                                 className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                                fill="none" 
-                                viewBox="0 0 24 24" 
+                                fill="none"
+                                viewBox="0 0 24 24"
                                 stroke="currentColor"
                               >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -470,7 +488,7 @@ export function Navbar() {
                                   className="ml-4 mt-1 space-y-1 overflow-hidden"
                                 >
                                   {industry.subs.map((sub) => (
-                                    <Link
+                                    <a
                                       key={sub.id}
                                       href={`/industries/${industry.id}/${sub.id}`}
                                       className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-gray-600 text-xs hover:bg-orange-50 hover:text-orange-600 transition-all"
@@ -478,7 +496,7 @@ export function Navbar() {
                                     >
                                       <span className="text-sm">{sub.icon}</span>
                                       <span className="line-clamp-1">{sub.name}</span>
-                                    </Link>
+                                    </a>
                                   ))}
                                 </motion.div>
                               )}
@@ -518,9 +536,9 @@ export function Navbar() {
                       exit={{ opacity: 0, height: 0 }}
                       className="ml-8 mt-1 space-y-1 overflow-hidden"
                     >
-                      <Link 
-                        href="/careers" 
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all" 
+                      <Link
+                        to="/careers"
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all"
                         onClick={() => setMobileOpen(false)}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -528,9 +546,9 @@ export function Navbar() {
                         </svg>
                         Careers
                       </Link>
-                      <Link 
-                        href="/blog" 
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all" 
+                      <Link
+                        to="/blog"
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 transition-all"
                         onClick={() => setMobileOpen(false)}
                       >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -548,9 +566,9 @@ export function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.25 }}
               >
-                <Link 
-                  href="/contact" 
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all" 
+                <Link
+                  to="/contact"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 hover:text-orange-600 transition-all"
                   onClick={() => setMobileOpen(false)}
                 >
                   <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -566,16 +584,29 @@ export function Navbar() {
                 transition={{ delay: 0.3 }}
                 className="pt-3"
               >
-                <Link
-                  href="/login"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/25"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Get Started
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
+                {isAdmin ? (
+                  <Link
+                    to="/admin"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-lg"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Admin Dashboard
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/25"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Get Started
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                )}
               </motion.div>
             </div>
           </motion.div>

@@ -31,7 +31,7 @@ export function TeamCarousel({ team }: { team: TeamMember[] }) {
       <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
       <div
-        className="flex gap-6 animate-scroll hover:pause-animation"
+        className="flex gap-6 animate-[scroll-left_75s_linear_infinite] hover:[animation-play-state:paused]"
         style={{
           width: `${duplicatedTeam.length * 344}px`,
         }}
@@ -68,22 +68,7 @@ export function TeamCarousel({ team }: { team: TeamMember[] }) {
         ))}
       </div>
 
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll {
-          animation: scroll 75s linear infinite;
-        }
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+
     </div>
   );
 }

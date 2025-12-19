@@ -1,0 +1,150 @@
+﻿src/app/admin/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/admin/page.tsx(4,27): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/admin/page.tsx(6,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/admin/page.tsx(7,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/auth/page.tsx(3,44): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/auth/page.tsx(5,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/blog/[slug]/page.tsx(5,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/blog/[slug]/page.tsx(6,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/blog/[slug]/page.tsx(117,14): error TS18047: 'post' is possibly 'null'.
+src/app/blog/[slug]/page.tsx(122,27): error TS18047: 'post' is possibly 'null'.
+src/app/blog/[slug]/page.tsx(131,16): error TS18047: 'post' is possibly 'null'.
+src/app/blog/[slug]/page.tsx(135,16): error TS18047: 'post' is possibly 'null'.
+src/app/blog/[slug]/page.tsx(143,38): error TS18047: 'post' is possibly 'null'.
+src/app/blog/[slug]/page.tsx(152,16): error TS18047: 'post' is possibly 'null'.
+src/app/blog/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/careers/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/contact/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/cookie-policy/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/cookie-policy/page.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/industries/[id]/[subId]/page.tsx(3,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/industries/[id]/[subId]/page.tsx(4,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/industries/[id]/[subId]/page.tsx(5,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/industries/[id]/[subId]/page.tsx(33,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/industries/[id]/[subId]/page.tsx(34,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/industries/[id]/[subId]/page.tsx(4134,18): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4135,31): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4136,33): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4148,38): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4151,44): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4152,56): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4156,44): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4157,58): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4161,16): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4164,16): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4167,16): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4192,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4197,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4200,51): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4212,22): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4217,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4223,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4239,30): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4252,36): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4257,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4260,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4273,18): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4285,23): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4288,24): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4292,16): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4325,20): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4341,20): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4369,39): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4372,68): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4376,35): error TS2345: Argument of type 'SubIndustry | undefined' is not assignable to parameter of type 'SubIndustry'.
+  Type 'undefined' is not assignable to type 'SubIndustry'.
+src/app/industries/[id]/[subId]/page.tsx(4376,48): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4431,16): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4434,40): error TS18048: 'subIndustry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4448,38): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/[subId]/page.tsx(4451,28): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(3,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/industries/[id]/page.tsx(4,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/industries/[id]/page.tsx(5,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/industries/[id]/page.tsx(13,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/industries/[id]/page.tsx(626,18): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(627,18): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(628,33): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(639,43): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(641,18): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(648,16): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(661,28): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(664,76): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(669,43): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(669,79): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/page.tsx(680,67): error TS18048: 'industry' is possibly 'undefined'.
+src/app/industries/[id]/SubIndustryGrid.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/industries/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/industries/page.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/industries/page.tsx(4,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/industries/page.tsx(13,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/login/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/login/page.tsx(4,27): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/login/page.tsx(5,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/page-metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/privacy-policy/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/privacy-policy/page.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/products/[id]/page.tsx(3,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/products/[id]/page.tsx(4,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/products/[id]/page.tsx(5,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/products/[id]/page.tsx(11,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/products/[id]/page.tsx(12,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/products/[id]/page.tsx(289,18): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(290,21): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(303,16): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(305,70): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(307,16): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(332,14): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(354,14): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/[id]/page.tsx(395,18): error TS18048: 'product' is possibly 'undefined'.
+src/app/products/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/products/page.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/products/page.tsx(4,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/products/page.tsx(11,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/robots.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/services/[id]/page.tsx(4,26): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/services/[id]/page.tsx(5,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/services/[id]/page.tsx(112,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/services/[id]/page.tsx(1746,21): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1761,26): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1769,21): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1769,50): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1769,82): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1770,20): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1780,14): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1783,14): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1786,14): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1816,50): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1823,50): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1830,50): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1836,9): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1836,32): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1836,56): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1836,76): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1849,16): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1849,39): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1856,22): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1866,16): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1866,40): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/[id]/page.tsx(1873,22): error TS18048: 'service' is possibly 'undefined'.
+src/app/services/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/services/page.tsx(4,44): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/services/page.tsx(8,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/services/page.tsx(109,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/app/signup/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/signup/page.tsx(3,27): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/app/signup/page.tsx(5,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/app/sitemap.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/terms/metadata.ts(1,31): error TS2307: Cannot find module 'next' or its corresponding type declarations.
+src/app/terms/page.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/components/AboutSection.tsx(5,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/components/FloatingButtons.tsx(3,29): error TS2307: Cannot find module 'next/navigation' or its corresponding type declarations.
+src/components/IndustriesDropdown.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/components/ProductsDropdown.tsx(3,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/components/ServiceCategorySidebar.tsx(5,18): error TS2307: Cannot find module 'next/link' or its corresponding type declarations.
+src/components/ServiceCategorySidebar.tsx(6,19): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/components/ServiceCategorySidebar.tsx(7,38): error TS2307: Cannot find module 'next/image' or its corresponding type declarations.
+src/components/TeamCarousel.tsx(71,14): error TS2322: Type '{ children: string; jsx: true; }' is not assignable to type 'DetailedHTMLProps<StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>'.
+  Property 'jsx' does not exist on type 'DetailedHTMLProps<StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>'.
+src/lib/data/industries.ts(184,14): error TS2451: Cannot redeclare block-scoped variable 'industries'.
+src/lib/data/industries.ts(4090,14): error TS2451: Cannot redeclare block-scoped variable 'industries'.

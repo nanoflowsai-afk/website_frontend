@@ -2,14 +2,12 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
+import { Link } from "react-router-dom";
 
 type Service = {
   id: string;
   title: string;
-  image: string | StaticImageData;
+  image: string;
   category: string;
 };
 
@@ -194,26 +192,16 @@ export function ServiceCategorySidebar({
                     transition={{ delay: index * 0.05 }}
                   >
                     <Link
-                      href={`/services/${service.id}`}
+                      to={`/services/${service.id}`}
                       onClick={() => setIsOpen(false)}
                       className="group flex items-center gap-4 p-3 rounded-xl hover:bg-orange-50 transition-all duration-200 border border-transparent hover:border-orange-200"
                     >
                       <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 shadow-sm">
-                        {typeof service.image === "string" ? (
-                          <img
-                            src={service.image}
-                            alt={service.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                        ) : (
-                          <Image
-                            src={service.image}
-                            alt={service.title}
-                            width={64}
-                            height={64}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                          />
-                        )}
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-gray-900 font-semibold text-sm group-hover:text-orange-600 transition-colors line-clamp-2">
@@ -244,7 +232,7 @@ export function ServiceCategorySidebar({
 
               <div className="p-4 border-t border-gray-100 bg-gray-50">
                 <Link
-                  href="/services"
+                  to="/services"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold text-sm hover:shadow-lg transition-all"
                 >

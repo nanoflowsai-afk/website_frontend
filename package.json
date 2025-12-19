@@ -3,28 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack -H 0.0.0.0 -p 5000",
-    "build": "next build --webpack",
-    "start": "next start -H 0.0.0.0 -p 5000",
-    "lint": "eslint"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",
-    "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "swr": "^2.3.7",
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^9",
-    "eslint-config-next": "16.0.10",
+    "tailwindcss": "^4",
     "typescript": "^5",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "vite": "^7.3.0"
   }
 }
