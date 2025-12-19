@@ -57,7 +57,7 @@ export default function SubIndustryPage() {
                             <span className="text-white/50" >→</span>
                             <div className="inline-flex items-center gap-2 rounded-full bg-orange-500/20 px-4 py-2 text-white backdrop-blur-sm" >
                                 <span className="text-xl" > {subIndustry.icon} </span>
-                                <span className="text-sm font-semibold" > {subIndustry.name} - {industry.name} </span>
+                                <span className="text-sm font-semibold" > {subIndustry.name} </span>
                             </div>
                         </div>
                         <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 px-4 py-2 text-4xl shadow-lg" >
