@@ -367,7 +367,7 @@ export function Navbar() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="ml-4 mt-2 max-h-80 overflow-y-auto rounded-lg bg-gray-50 p-2 space-y-1"
+                      className="ml-4 mt-2 rounded-lg bg-gray-50 p-2 space-y-1"
                     >
                       {[
                         {
