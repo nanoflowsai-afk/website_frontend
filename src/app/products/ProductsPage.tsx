@@ -76,6 +76,8 @@ export default function ProductsPage() {
                         alt="NanoFlows AI Products - Autonomous AI Platforms for lead generation, CRM, calling systems and content marketing"
                         title="NanoFlows AI Products"
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
                 </div>
@@ -111,6 +113,8 @@ export default function ProductsPage() {
                                             alt={`${product.name} - NanoFlows AI Product for autonomous business operations`}
                                             title={product.name}
                                             className="w-full h-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
                                         <div className="absolute bottom-6 left-6">

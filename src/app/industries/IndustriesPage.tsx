@@ -96,6 +96,8 @@ export default function IndustriesPage() {
                         alt="NanoFlows Industries - AI Solutions for Startups, Enterprises, E-Commerce, Healthcare, Education and Local Businesses"
                         title="NanoFlows Industries We Serve"
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
                 </div>
@@ -131,6 +133,8 @@ export default function IndustriesPage() {
                                             alt={`${industry.name} AI Solutions - NanoFlows autonomous AI systems for industry automation`}
                                             title={`${industry.name} AI Solutions`}
                                             className="w-full h-full object-cover"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
                                         <div className="absolute bottom-6 left-6 flex items-center gap-3">
