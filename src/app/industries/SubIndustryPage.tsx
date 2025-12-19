@@ -78,7 +78,7 @@ export default function SubIndustryPage() {
                             </Link>
                             <Link
                                 to="/services"
-                                className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg transition hover:-translate-y-0.5"
+                                className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-orange-600 shadow-lg transition hover:-translate-y-0.5"
                             >
                                 View Our Services
                             </Link>
