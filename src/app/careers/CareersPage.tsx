@@ -591,29 +591,6 @@ export default function CareersPage() {
                 </div>
             </section>
 
-            <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-                <div className="mx-auto max-w-[1400px] px-6 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Don't See Your Role?</h2>
-                        <p className="text-lg text-white/70 max-w-2xl mx-auto mb-8">
-                            We're always looking for exceptional talent. Send us your resume and tell us how you can contribute.
-                        </p>
-                        <a
-                            href="mailto:nanoflowsvizag@gmail.com"
-                            className="inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-slate-900 transition hover:-translate-y-0.5 hover:shadow-2xl"
-                        >
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            nanoflowsvizag@gmail.com
-                        </a>
-                    </motion.div>
-                </div>
-            </section>
 
             <Footer />
             {selectedPosition && (

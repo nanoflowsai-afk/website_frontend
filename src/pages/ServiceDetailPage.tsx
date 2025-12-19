@@ -450,11 +450,11 @@ export default function ServiceDetailPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-24 bg-gray-900 text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+            <section className="py-24 bg-white text-gray-900 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                 <div className="mx-auto max-w-[1400px] px-6 text-center relative z-10">
                     <h2 className="text-3xl font-black mb-8 md:text-5xl">Ready to Transform Your Business?</h2>
-                    <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                    <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
                         {service.uniqueValue || "Let's build something extraordinary together."}
                     </p>
                     <Link
