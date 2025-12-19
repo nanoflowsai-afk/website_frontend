@@ -180,7 +180,7 @@ export default function ServiceDetailPage() {
                         <h1 className="max-w-4xl text-4xl font-extrabold leading-tight text-white md:text-5xl lg:text-6xl">
                             {service.title}
                         </h1>
-                        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-gray-600">
+                        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-gray-200">
                             {service.description}
                         </p>
 
