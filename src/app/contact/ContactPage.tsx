@@ -105,7 +105,7 @@ export default function ContactPage() {
         <div className="min-h-screen bg-white">
             <Navbar />
 
-            <section className="relative overflow-hidden py-24 md:py-32">
+            <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
                 <div className="absolute inset-0">
                     <img
                         src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=800&fit=crop"
