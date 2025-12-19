@@ -19,7 +19,7 @@ import multiChannelImage from "@assets/generated_images/multi-channel_ai_assista
 import realtimeAnalyticsImage from "@assets/generated_images/real-time_analytics_dashboard.png";
 import predictiveAnalyticsImage from "@assets/generated_images/predictive_analytics_engine.png";
 import dataIntegrationImage from "@assets/generated_images/data_integration_platform.png";
-import servicesHeroImage from "@assets/generated_images/products_hero_background_abstract.png";
+import servicesHeroImage from "@assets/generated_images/clean_ai_services_background.png";
 import whatsappCrmImage from "@assets/generated_images/whatsapp_crm_system.png";
 import multiAccountWhatsappImage from "@assets/generated_images/multi-account_whatsapp_crm.png";
 import salesInventoryImage from "@assets/generated_images/sales_inventory_management.png";
