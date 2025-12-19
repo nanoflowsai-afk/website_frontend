@@ -850,7 +850,7 @@ function ServicesPageContent() {
                         alt="Services Background"
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/70" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/50" />
                 </div>
 
                 <div className="relative mx-auto max-w-[1400px] px-6 text-center">

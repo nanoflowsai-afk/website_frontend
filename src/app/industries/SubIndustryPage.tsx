@@ -42,7 +42,7 @@ export default function SubIndustryPage() {
                         title={`NanoFlows ${subIndustry.name} AI Solutions`}
                         className="object-cover w-full h-full absolute inset-0"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/75" > </div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-slate-900/65 to-slate-900/55" > </div>
                 </div>
                 <div className="relative mx-auto max-w-[1400px] px-6" >
                     <div className="mx-auto max-w-4xl" >
