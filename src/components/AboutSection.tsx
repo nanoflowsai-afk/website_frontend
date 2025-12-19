@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import aboutImage from "@assets/generated_images/ai_company_office_collaboration.png";
+import teamImage from "@assets/generated_images/tech_team_collaboration_workspace.png";
 
 type AboutData = {
   mission: string;
@@ -109,8 +110,9 @@ export function AboutSection({ data }: { data?: AboutData | null }) {
       <div className="absolute -top-4 -left-4 w-20 h-20 border-2 border-orange-200 rounded-lg opacity-50"></div>
       <div className="relative h-full min-h-[250px] w-full overflow-hidden rounded-2xl lg:min-h-[480px]">
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
-          alt="Team collaboration"
+          src={teamImage}
+          alt="NanoFlows team collaboration - AI engineering professionals, tech team working on intelligent automation solutions"
+          title="NanoFlows Team - AI Engineering Excellence"
           className="object-cover w-full h-full"
         />
       </div>

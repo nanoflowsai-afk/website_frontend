@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { apiFetch } from "@/lib/api";
+import contactHeroImage from "@assets/generated_images/ai_business_dashboard_tech.png";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -109,8 +110,9 @@ export default function ContactPage() {
       <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=800&fit=crop"
-            alt="Contact background"
+            src={contactHeroImage}
+            alt="NanoFlows contact us - AI automation consultation, intelligent business solutions, enterprise AI technology"
+            title="Contact NanoFlows - AI Business Transformation"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-slate-900/65 to-slate-900/55"></div>
