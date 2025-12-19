@@ -859,9 +859,6 @@ function ServicesPageContent() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl shadow-lg ring-4 ring-white/20 text-orange-400">
-                            🚀
-                        </div>
                         <h1 className="text-4xl font-black tracking-tight text-white md:text-6xl lg:text-7xl">
                             Our Services
                         </h1>
