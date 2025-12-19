@@ -90,7 +90,7 @@ export default function IndustriesPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="relative overflow-hidden py-24 md:py-32">
+      <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
         <div className="absolute inset-0">
           <img
             src={heroImage}
