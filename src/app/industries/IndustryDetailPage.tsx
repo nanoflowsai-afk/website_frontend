@@ -47,7 +47,7 @@ export default function IndustryDetailPage() {
                         title={`NanoFlows ${industry.name} AI Solutions`}
                         className="object-cover w-full h-full"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/60 to-slate-900/50"></div>
                 </div>
                 <div className="relative mx-auto max-w-[1400px] px-6">
                     <div className="mx-auto max-w-3xl text-center">
