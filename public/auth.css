@@ -1,0 +1,587 @@
+/* ========================================
+   CSS VARIABLES - THEME CUSTOMIZATION
+   ======================================== */
+
+:root {
+    /* Primary Colors */
+    --primary-color: #6366f1;
+    --secondary-color: #ec4899;
+    --tertiary-color: #8b5cf6;
+
+    /* Background & Surface */
+    --bg-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --overlay-bg: rgba(0, 0, 0, 0.05);
+
+    /* Text */
+    --text-color: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+
+    /* Border & Accent */
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --focus-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --gradient-accent: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+
+    /* Animation */
+    --transition-duration: 0.5s;
+    --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #0f172a;
+        --card-bg: rgba(30, 41, 59, 0.95);
+        --overlay-bg: rgba(255, 255, 255, 0.05);
+        --text-color: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-light: #94a3b8;
+        --border-color: rgba(255, 255, 255, 0.1);
+        --focus-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+}
+
+/* ========================================
+   RESET & GLOBAL STYLES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================
+   AUTHENTICATION CONTAINER
+   ======================================== */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--overlay-bg) 100%);
+}
+
+.auth-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    min-height: 560px;
+}
+
+/* Animated Background Gradient */
+.background-gradient {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient-accent);
+    opacity: 0.1;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: gradientShift 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* ========================================
+   FORM CONTAINER - MORPHING ANIMATION
+   ======================================== */
+
+.auth-form {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 50px 40px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+    transition: all var(--transition-duration) var(--easing);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.auth-form.active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+    z-index: 2;
+}
+
+.login-form.active {
+    animation: slideInLeft var(--transition-duration) var(--easing);
+}
+
+.signup-form.active {
+    animation: slideInRight var(--transition-duration) var(--easing);
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(100%) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(-100%) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ========================================
+   FORM TYPOGRAPHY
+   ======================================== */
+
+.form-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin: 0;
+}
+
+/* ========================================
+   FORM FIELDS
+   ======================================== */
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Styling */
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--overlay-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    outline: none;
+
+    /* Floating label support */
+    padding-top: 20px;
+    padding-bottom: 8px;
+}
+
+.form-input::placeholder {
+    color: transparent;
+}
+
+/* Floating Label */
+.form-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 500;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform-origin: left top;
+}
+
+/* Focus State */
+.form-input:focus {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+    box-shadow: var(--focus-shadow);
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+    transform: translateY(-24px) scale(0.85);
+    color: var(--primary-color);
+}
+
+/* Focus Border Animation */
+.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    border-radius: 1px;
+    transition: width 0.3s ease;
+    pointer-events: none;
+}
+
+.form-input:focus ~ .focus-border {
+    width: 100%;
+}
+
+/* ========================================
+   FORM OPTIONS (Remember Me, Forgot Password)
+   ======================================== */
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.checkbox-label:hover {
+    color: var(--text-color);
+}
+
+.checkbox-input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-input:hover {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.forgot-link,
+.terms-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.forgot-link:hover,
+.terms-link:hover {
+    color: var(--secondary-color);
+    border-bottom-color: currentColor;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.form-button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+
+    /* Active state animation */
+    animation: buttonEnter 0.5s ease backwards;
+}
+
+@keyframes buttonEnter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.form-button:active {
+    transform: translateY(0);
+}
+
+/* Ripple Effect */
+.form-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+}
+
+.form-button:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    to {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   TOGGLE BUTTONS & LINKS
+   ======================================== */
+
+.auth-toggle {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: inherit;
+}
+
+.toggle-button::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.toggle-button:hover::after {
+    width: 100%;
+}
+
+.toggle-button:hover {
+    color: var(--secondary-color);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .auth-wrapper {
+        max-width: 100%;
+        min-height: 520px;
+    }
+
+    .auth-form {
+        padding: 40px 30px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .form-subtitle {
+        font-size: 13px;
+    }
+
+    .form-input {
+        padding: 11px 14px;
+        padding-top: 18px;
+        font-size: 14px;
+    }
+
+    .form-label {
+        font-size: 13px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 15px;
+    }
+
+    .auth-wrapper {
+        min-height: 480px;
+    }
+
+    .auth-form {
+        padding: 35px 20px;
+    }
+
+    .form-title {
+        font-size: 22px;
+    }
+
+    .form-subtitle {
+        font-size: 12px;
+    }
+
+    .form-input {
+        padding: 10px 12px;
+        padding-top: 16px;
+        font-size: 13px;
+    }
+
+    .form-label {
+        font-size: 12px;
+        left: 12px;
+    }
+
+    .form-fields {
+        gap: 14px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .checkbox-label {
+        font-size: 12px;
+    }
+
+    .form-button {
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+
+    .auth-toggle {
+        font-size: 13px;
+    }
+
+    .toggle-button {
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.form-input:focus-visible {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-button:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-shadow);
+}
+
+.toggle-button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .auth-form,
+    .form-input,
+    .form-label,
+    .focus-border,
+    .form-button,
+    .toggle-button,
+    .background-gradient {
+        transition: none;
+        animation: none;
+    }
+
+    .form-button:hover {
+        transform: none;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+    .auth-container {
+        display: none;
+    }
+}
