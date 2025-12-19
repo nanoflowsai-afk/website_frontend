@@ -6,209 +6,138 @@ export default function SignupPage() {
     const navigate = useNavigate();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-    const [nameValue, setNameValue] = useState("");
-    const [emailValue, setEmailValue] = useState("");
-    const [passwordValue, setPasswordValue] = useState("");
-    const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
-    const [termsAccepted, setTermsAccepted] = useState(false);
-
-    const validateForm = () => {
-        if (!nameValue.trim()) {
-            setError("Full name is required");
-            return false;
-        }
-        if (nameValue.trim().length < 2) {
-            setError("Name must be at least 2 characters");
-            return false;
-        }
-        if (!emailValue.trim()) {
-            setError("Email is required");
-            return false;
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(emailValue)) {
-            setError("Please enter a valid email address");
-            return false;
-        }
-        if (!passwordValue) {
-            setError("Password is required");
-            return false;
-        }
-        if (passwordValue.length < 6) {
-            setError("Password must be at least 6 characters");
-            return false;
-        }
-        if (!/[A-Z]/.test(passwordValue)) {
-            setError("Password must contain at least one uppercase letter");
-            return false;
-        }
-        if (!/[0-9]/.test(passwordValue)) {
-            setError("Password must contain at least one number");
-            return false;
-        }
-        if (!confirmPasswordValue) {
-            setError("Please confirm your password");
-            return false;
-        }
-        if (passwordValue !== confirmPasswordValue) {
-            setError("Passwords do not match");
-            return false;
-        }
-        if (!termsAccepted) {
-            setError("You must agree to the Terms & Conditions");
-            return false;
-        }
-        return true;
-    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError(null);
-
-        if (!validateForm()) {
-            return;
-        }
-
         setLoading(true);
 
+        const formData = new FormData(e.currentTarget);
         const payload = {
-            name: nameValue,
-            email: emailValue,
-            password: passwordValue,
+            name: formData.get("name") as string,
+            email: formData.get("email") as string,
+            password: formData.get("password") as string,
         };
 
-        try {
-            const res = await apiFetch("/api/auth/signup", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-            });
+        const res = await apiFetch("/api/auth/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
 
-            setLoading(false);
+        setLoading(false);
 
-            if (!res.ok) {
-                const data = await res.json().catch(() => null);
-                setError(data?.error ?? "Could not sign up");
-                return;
-            }
-
-            navigate("/login");
-        } catch (err) {
-            setLoading(false);
-            setError("An error occurred. Please try again.");
+        if (!res.ok) {
+            const data = await res.json().catch(() => null);
+            setError(data?.error ?? "Could not sign up");
+            return;
         }
+        navigate("/login");
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4 md:p-6 bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-            {/* Animated background gradient */}
-            <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full filter blur-3xl opacity-10 animate-pulse -z-10"></div>
-            <div className="fixed bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full filter blur-3xl opacity-10 animate-pulse -z-10"></div>
-
-            <div className="w-full max-w-md relative z-10">
-                {/* Card Container with glassmorphism */}
-                <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-white/10 shadow-2xl p-8 md:p-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    {/* Header */}
-                    <div className="mb-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-4">
-                            🚀 Join Us
+        <div className="min-h-screen flex">
+            <div className="hidden lg:flex lg:w-1/2 relative">
+                <img
+                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=1600&fit=crop"
+                    alt="AI Technology"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
+                <div className="relative z-10 flex flex-col justify-between p-12">
+                    <div></div>
+                    <div className="max-w-md">
+                        <h2 className="text-3xl font-bold text-white mb-4">
+                            Join the AI Revolution
+                        </h2>
+                        <p className="text-gray-300 leading-relaxed">
+                            Create your account and start building intelligent automation systems that transform your business operations.
+                        </p>
+                        <div className="mt-8 flex items-center gap-4">
+                            <div className="flex -space-x-3">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">A</div>
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">S</div>
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-slate-900">M</div>
+                            </div>
+                            <p className="text-sm text-gray-400">
+                                Join 500+ businesses using NanoFlows
+                            </p>
                         </div>
-                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">Create Account</h1>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm">Join NanoFlows and explore AI-powered solutions</p>
+                    </div>
+                    <div className="flex items-center gap-6 text-sm text-gray-400">
+                        <span className="flex items-center gap-2">
+                            <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            Enterprise Security
+                        </span>
+                        <span className="flex items-center gap-2">
+                            <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            Instant Setup
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 lg:px-12">
+                <div className="mx-auto w-full max-w-md">
+
+                    <div className="mb-8">
+                        <h1 className="text-3xl font-bold text-white">Create your account</h1>
+                        <p className="mt-3 text-gray-400">
+                            Join NanoFlows to explore AI-powered solutions for your business.
+                        </p>
                     </div>
 
-                    {/* Error Message */}
-                    {error && (
-                        <div className="mb-6 flex items-start gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 animate-in slide-in-from-top-2">
-                            <span className="text-lg">⚠️</span>
-                            <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
-                        </div>
-                    )}
-
-                    {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-                        {/* Full Name Input */}
-                        <div className="relative">
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
                             <input
+                                name="name"
                                 type="text"
-                                value={nameValue}
-                                onChange={(e) => setNameValue(e.target.value)}
-                                placeholder="Full Name"
-                                className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-transparent outline-none transition-all duration-300 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10 dark:focus:ring-blue-400/10"
+                                placeholder="John Doe"
+                                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
                                 required
                             />
-                            <label className="absolute left-4 -top-2 bg-white dark:bg-slate-900 px-1 text-xs font-semibold text-gray-600 dark:text-gray-400 transition-all duration-300 pointer-events-none">
-                                Full Name
-                            </label>
                         </div>
 
-                        {/* Email Input */}
-                        <div className="relative">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
                             <input
+                                name="email"
                                 type="email"
-                                value={emailValue}
-                                onChange={(e) => setEmailValue(e.target.value)}
-                                placeholder="Email"
-                                className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-transparent outline-none transition-all duration-300 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10 dark:focus:ring-blue-400/10"
+                                placeholder="you@example.com"
+                                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
                                 required
                             />
-                            <label className="absolute left-4 -top-2 bg-white dark:bg-slate-900 px-1 text-xs font-semibold text-gray-600 dark:text-gray-400 transition-all duration-300 pointer-events-none">
-                                Email
-                            </label>
                         </div>
 
-                        {/* Password Input */}
-                        <div className="relative">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
                             <input
+                                name="password"
                                 type="password"
-                                value={passwordValue}
-                                onChange={(e) => setPasswordValue(e.target.value)}
-                                placeholder="Password"
-                                className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-transparent outline-none transition-all duration-300 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10 dark:focus:ring-blue-400/10"
+                                placeholder="Create a strong password"
+                                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-white placeholder-gray-500 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
                                 required
                             />
-                            <label className="absolute left-4 -top-2 bg-white dark:bg-slate-900 px-1 text-xs font-semibold text-gray-600 dark:text-gray-400 transition-all duration-300 pointer-events-none">
-                                Password
-                            </label>
                         </div>
 
-                        {/* Confirm Password Input */}
-                        <div className="relative">
-                            <input
-                                type="password"
-                                value={confirmPasswordValue}
-                                onChange={(e) => setConfirmPasswordValue(e.target.value)}
-                                placeholder="Confirm Password"
-                                className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder-transparent outline-none transition-all duration-300 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10 dark:focus:ring-blue-400/10"
-                                required
-                            />
-                            <label className="absolute left-4 -top-2 bg-white dark:bg-slate-900 px-1 text-xs font-semibold text-gray-600 dark:text-gray-400 transition-all duration-300 pointer-events-none">
-                                Confirm Password
-                            </label>
-                        </div>
+                        {error && (
+                            <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+                                <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <p className="text-sm text-red-400">{error}</p>
+                            </div>
+                        )}
 
-                        {/* Terms Checkbox */}
-                        <label className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition">
-                            <input
-                                type="checkbox"
-                                checked={termsAccepted}
-                                onChange={(e) => setTermsAccepted(e.target.checked)}
-                                className="w-5 h-5 rounded accent-blue-500 mt-0.5 flex-shrink-0"
-                                required
-                            />
-                            <span className="text-sm text-gray-700 dark:text-gray-300">
-                                I agree to the{" "}
-                                <Link to="/terms" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
-                                    Terms & Conditions
-                                </Link>
-                            </span>
-                        </label>
-
-                        {/* Submit Button */}
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+                            className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-4 text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -224,57 +153,21 @@ export default function SignupPage() {
                         </button>
                     </form>
 
-                    {/* Divider */}
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">or</span>
-                        <div className="flex-1 h-px bg-gray-200 dark:bg-white/10"></div>
-                    </div>
-
-                    {/* Social Signup Buttons */}
-                    <div className="grid grid-cols-2 gap-3 mb-8">
-                        <button type="button" className="py-2.5 px-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold text-sm transition-all duration-300">
-                            Google
-                        </button>
-                        <button type="button" className="py-2.5 px-3 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold text-sm transition-all duration-300">
-                            Microsoft
-                        </button>
-                    </div>
-
-                    {/* Sign In Link */}
-                    <p className="text-center text-gray-600 dark:text-gray-400">
-                        Already have an account?{" "}
-                        <Link to="/login" className="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition">
-                            Sign in
-                        </Link>
-                    </p>
-
-                    {/* Footer Links */}
-                    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-white/10">
-                        <p className="text-center text-xs text-gray-500 dark:text-gray-400">
-                            By creating an account, you agree to our{" "}
-                            <Link to="/terms" className="text-blue-600 dark:text-blue-400 hover:underline">
-                                Terms
-                            </Link>
-                            {" "}and{" "}
-                            <Link to="/privacy-policy" className="text-blue-600 dark:text-blue-400 hover:underline">
-                                Privacy
+                    <div className="mt-8 text-center">
+                        <p className="text-gray-400">
+                            Already have an account?{" "}
+                            <Link to="/login" className="font-semibold text-orange-400 hover:text-orange-300 transition">
+                                Sign in
                             </Link>
                         </p>
                     </div>
-                </div>
 
-                {/* Join Community Badge */}
-                <div className="mt-6 flex items-center justify-center gap-4 text-xs text-gray-600 dark:text-gray-400">
-                    <span className="flex items-center gap-1.5">
-                        <span className="text-green-500">✓</span>
-                        Enterprise Security
-                    </span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-                    <span className="flex items-center gap-1.5">
-                        <span className="text-green-500">✓</span>
-                        Instant Setup
-                    </span>
+                    <p className="mt-8 text-center text-sm text-gray-500">
+                        By creating an account, you agree to our{" "}
+                        <Link to="/terms" className="text-orange-400 hover:underline">Terms of Service</Link>
+                        {" "}and{" "}
+                        <Link to="/privacy-policy" className="text-orange-400 hover:underline">Privacy Policy</Link>
+                    </p>
                 </div>
             </div>
         </div>
