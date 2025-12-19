@@ -35,6 +35,7 @@ export function HeroCarousel({ slides }: Props) {
 
   const [index, setIndex] = useState(0);
   const [keywordIndex, setKeywordIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     if (!activeSlides.length) return;
@@ -59,7 +60,7 @@ export function HeroCarousel({ slides }: Props) {
     heading: defaultHeadline,
     subHeading: defaultSubheadline,
     tags: rotatingKeywords,
-    backgroundImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=800&fit=crop",
+    backgroundImageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=80",
     isActive: true,
     displayOrder: 0,
   };
@@ -74,12 +75,29 @@ export function HeroCarousel({ slides }: Props) {
     return normalizeImageUrl(url);
   }, [bgUrl]);
 
+  // Preload current image and next slide image
   useEffect(() => {
     if (!normalizedBgUrl) return;
+    setImageLoaded(false);
     const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => {
+      console.warn("Hero image failed to load:", normalizedBgUrl);
+      setImageLoaded(true); // Still show even if failed
+    };
     img.src = normalizedBgUrl;
-    img.onerror = () => console.warn("Hero image failed to load:", normalizedBgUrl);
   }, [normalizedBgUrl]);
+
+  // Preload next slide image
+  useEffect(() => {
+    if (!activeSlides.length || activeSlides.length <= 1) return;
+    const nextIndex = (index + 1) % activeSlides.length;
+    const nextSlide = activeSlides[nextIndex];
+    if (!nextSlide?.backgroundImageUrl) return;
+    const nextUrl = normalizeImageUrl(nextSlide.backgroundImageUrl);
+    const img = new Image();
+    img.src = nextUrl;
+  }, [index, activeSlides]);
 
   return (
     <div className="relative isolate overflow-hidden min-h-[auto] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
@@ -87,7 +105,7 @@ export function HeroCarousel({ slides }: Props) {
         <motion.div
           key={normalizedBgUrl}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: imageLoaded ? 1 : 0.5 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
           className="absolute inset-0"
@@ -95,7 +113,11 @@ export function HeroCarousel({ slides }: Props) {
           <img
             src={normalizedBgUrl}
             alt="Hero background"
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${
+              imageLoaded ? "blur-0" : "blur-md"
+            }`}
+            loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
         </motion.div>
