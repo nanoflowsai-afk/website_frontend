@@ -860,7 +860,7 @@ function ServicesPageContent() {
                         transition={{ duration: 0.6 }}
                     >
                         <h1 className="text-4xl font-black tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Our Services
+                            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Services</span>
                         </h1>
                         <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-gray-300 md:text-xl">
                             Transforming businesses with AI-driven innovation. From custom LLMs to automated workflows, we build the future.
