@@ -358,7 +358,7 @@ export default function ServiceDetailPage() {
                                 <div className="flex animate-scroll-left gap-6">
                                     {[...row1Logos, ...row1Logos].map((logo, i) => (
                                         <div key={`row1-${i}`} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                                            <div className="w-5 h-5">
+                                            <div className="w-7 h-7">
                                                 {logo.component}
                                             </div>
                                         </div>
@@ -369,7 +369,7 @@ export default function ServiceDetailPage() {
                                 <div className="flex animate-scroll-right gap-6">
                                     {[...row2Logos, ...row2Logos].map((logo, i) => (
                                         <div key={`row2-${i}`} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                                            <div className="w-5 h-5">
+                                            <div className="w-7 h-7">
                                                 {logo.component}
                                             </div>
                                         </div>
@@ -380,7 +380,7 @@ export default function ServiceDetailPage() {
                                 <div className="flex animate-scroll-left-slow gap-6">
                                     {[...row3Logos, ...row3Logos].map((logo, i) => (
                                         <div key={`row3-${i}`} className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                                            <div className="w-5 h-5">
+                                            <div className="w-7 h-7">
                                                 {logo.component}
                                             </div>
                                         </div>

@@ -119,8 +119,8 @@ export default function ContactPage() {
                         <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-400">
                             Get In Touch
                         </p>
-                        <h1 className="mt-4 text-4xl font-extrabold md:text-5xl">
-                            Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Amazing</span> Together
+                        <h1 className="mt-4 text-4xl font-extrabold md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">
+                            Let's Build Something Amazing Together
                         </h1>
                         <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
                             Ready to transform your business with AI? Our team is here to help you every step of the way. Reach out and let's discuss your project.
