@@ -82,7 +82,7 @@ export function HeroCarousel({ slides }: Props) {
   }, [normalizedBgUrl]);
 
   return (
-    <div className="relative isolate overflow-hidden min-h-[600px] lg:min-h-[700px]">
+    <div className="relative isolate overflow-hidden min-h-[auto] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={normalizedBgUrl}
@@ -96,7 +96,6 @@ export function HeroCarousel({ slides }: Props) {
             src={normalizedBgUrl}
             alt="Hero background"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ minHeight: '600px' }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-slate-900/70"></div>
         </motion.div>
@@ -109,7 +108,7 @@ export function HeroCarousel({ slides }: Props) {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 py-16 lg:py-20">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-center text-center lg:text-left">
-          <div className="flex-1 space-y-5 lg:max-w-3xl mx-auto min-h-[400px] lg:min-h-0 flex flex-col justify-center">
+          <div className="flex-1 space-y-5 lg:max-w-3xl mx-auto sm:min-h-[400px] lg:min-h-0 flex flex-col justify-center">
             <div className="flex items-center justify-center lg:justify-start gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-2 mx-auto lg:mx-0 w-fit max-w-xs sm:max-w-sm">
               <span className="relative flex h-2 w-2 flex-shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
