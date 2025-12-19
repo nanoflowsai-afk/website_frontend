@@ -114,13 +114,13 @@ export default function ContactPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/75 via-slate-900/65 to-slate-900/55"></div>
                 </div>
-                <div className="relative mx-auto max-w-[1400px] px-6">
-                    <div className="mx-auto max-w-3xl text-center">
+                <div className="relative mx-auto max-w-[1400px] px-6 flex items-center justify-center h-full">
+                    <div className="mx-auto max-w-3xl text-center pt-20">
                         <p className="text-sm font-semibold uppercase tracking-[0.1em] text-orange-400">
                             Get In Touch
                         </p>
-                        <h1 className="mt-4 text-4xl font-extrabold md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">
-                            Let's Build Something Amazing Together
+                        <h1 className="mt-4 text-4xl font-extrabold md:text-5xl text-white">
+                            Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Amazing Together</span>
                         </h1>
                         <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
                             Ready to transform your business with AI? Our team is here to help you every step of the way. Reach out and let's discuss your project.
