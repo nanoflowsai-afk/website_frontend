@@ -32,17 +32,17 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[75vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[75vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl max-h-[600px] overflow-hidden"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
+      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4 h-full">
         {industriesData.map((industry, index) => {
           const isExpanded = expandedIndustryIds.has(industry.id);
           const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
           const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
           return (
-            <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-4' : ''}`}>
+            <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-4' : ''} overflow-y-auto max-h-[550px]`}>
               {/* Header Section */}
               <Link
                 to={`/industries/${industry.id}`}
@@ -64,27 +64,28 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               </Link>
 
               {/* Sub-items Section */}
-              <div className="flex flex-col gap-1 items-center">
+              <div className="flex flex-col gap-1.5 items-start">
                 {visibleSubs.map((sub, subIndex) => (
                   <motion.div
                     key={sub.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.05 + subIndex * 0.02 }}
+                    className="w-full"
                   >
                     <Link
                       to={`/industries/${industry.id}/${sub.id}`}
-                      className="group flex items-center justify-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2.5 rounded-md"
+                      className="group flex items-start gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-2 px-2 rounded-md w-full hover:px-3"
                       onClick={onClose}
                     >
                       <motion.span
-                        className="text-base flex-shrink-0"
+                        className="text-base flex-shrink-0 mt-0.5"
                         whileHover={{ scale: 1.2 }}
                         transition={{ duration: 0.3 }}
                       >
                         {sub.icon}
                       </motion.span>
-                      <span className="group-hover:translate-x-0.5 transition-transform">{sub.name}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform text-left">{sub.name}</span>
                     </Link>
                   </motion.div>
                 ))}
