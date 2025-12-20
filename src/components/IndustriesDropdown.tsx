@@ -13,17 +13,15 @@ interface IndustriesDropdownProps {
 }
 
 export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
-  const [expandedIndustryIds, setExpandedIndustryIds] = useState<Set<string>>(new Set());
+  const [expandedIndustryId, setExpandedIndustryId] = useState<string | null>(null);
   const MAX_SHOWN = 6;
 
   const toggleExpanded = (industryId: string) => {
-    const newSet = new Set(expandedIndustryIds);
-    if (newSet.has(industryId)) {
-      newSet.delete(industryId);
+    if (expandedIndustryId === industryId) {
+      setExpandedIndustryId(null);
     } else {
-      newSet.add(industryId);
+      setExpandedIndustryId(industryId);
     }
-    setExpandedIndustryIds(newSet);
   };
 
   return (
@@ -37,7 +35,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
     >
       <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
         {industriesData.map((industry, index) => {
-          const isExpanded = expandedIndustryIds.has(industry.id);
+          const isExpanded = expandedIndustryId === industry.id;
           const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
           const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
