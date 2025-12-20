@@ -232,40 +232,79 @@ export const industries: Industry[] = [
       {
         id: "fintech-startups",
         name: "FinTech Startups",
-        description: "Secure, intelligent financial technology platforms for payments, lending, and wealth management.",
-        icon: "💳",
-        tagline: "Secure Financial Innovation",
-        overview: "FinTech startups need security, compliance, and intelligence to compete with legacy banks.",
+        description: "AI-powered financial platforms delivering secure payments, lending, banking, and investment solutions at scale.",
+        icon: "🏦",
+        tagline: "AI-Powered Software, Automation & Scalable Systems",
+        overview: "FinTech startups use technology to deliver financial services such as payments, lending, banking, insurance, investments, and expense management. As FinTech companies grow, they face challenges like high user volume, compliance requirements, security risks, and operational complexity. Nano Flows builds AI-powered systems, automation, and secure software architecture to help FinTech startups scale safely and profitably.",
         whyChoose: {
-          intro: "Build trusted financial platforms with AI",
+          intro: "Build trusted financial platforms with AI and secure automation",
           points: [
-            "Bank-grade security & compliance",
-            "Fraud detection AI",
-            "Automated KYC workflows",
-            "Real-time risk assessment",
-            "Scalable infrastructure"
+            "Bank-grade security & regulatory compliance (KYC, AML, data protection)",
+            "Advanced fraud detection and anomaly monitoring AI",
+            "Automated KYC & customer onboarding workflows",
+            "Real-time risk assessment and credit scoring",
+            "Scalable infrastructure handling high transaction volumes",
+            "AI-powered customer support and multi-channel automation",
+            "Secure APIs and integrations with banking ecosystems",
+            "Real-time analytics and compliance dashboards"
           ]
         },
         whatWeBuild: {
-          intro: "FinTech solutions including:",
+          intro: "Comprehensive FinTech solutions across 20+ business models:",
           solutions: [
-            "Payment processing platforms",
-            "Lending & loan management",
-            "Digital wallets & neobanks",
-            "Investment platforms",
-            "Billing & subscription systems"
+            "Payment Gateway & Processing Platforms",
+            "Digital Wallets & Mobile Money Apps",
+            "Buy Now Pay Later (BNPL) Solutions",
+            "Neo Banks & Digital Banking Platforms",
+            "Loan Aggregation & Origination Systems",
+            "Peer-to-Peer Lending Platforms",
+            "MSME & Microfinance Systems",
+            "Credit Scoring & Risk Analytics Engines",
+            "Insurance Technology (InsurTech) Platforms",
+            "Wealth Management & Investment Apps",
+            "Robo-Advisory Platforms",
+            "Crypto & Blockchain Solutions",
+            "Regulatory Technology (RegTech) Platforms",
+            "Accounting & Expense Management SaaS",
+            "Subscription Billing & Invoicing Systems",
+            "Payroll & Salary Advance Platforms",
+            "Cross-Border Payment Networks",
+            "Fraud Detection & AML Solutions",
+            "Open Banking API Providers",
+            "Embedded Finance Solutions"
           ],
-          footer: "Compliant, secure, and intelligent."
+          footer: "Compliant, secure, scalable, and powered by AI at every layer."
         },
         coreCapabilities: [
-          "Fraud detection",
-          "Compliance automation",
-          "Risk analytics",
-          "Transaction processing",
-          "Multi-currency support"
+          "Fraud & Risk Detection AI",
+          "KYC/AML Automation & Compliance",
+          "Real-time Transaction Processing",
+          "Secure API Architecture",
+          "Multi-currency & Payment Networks",
+          "Credit & Risk Analytics",
+          "Customer & Lead Management CRM",
+          "AI Chatbots & Support Automation"
         ],
-        idealFor: ["Payment startups", "Lending platforms", "Digital banks"],
-        businessOutcomes: ["Regulatory compliance", "Reduced fraud losses", "Faster onboarding", "Higher transaction volume"]
+        idealFor: [
+          "FinTech startup founders and early-stage teams",
+          "Growth-stage financial platforms",
+          "Payment & lending innovators",
+          "Digital banking startups",
+          "InsurTech and WealthTech companies",
+          "Blockchain & crypto fintech",
+          "RegTech platform builders",
+          "Enterprise financial product innovators"
+        ],
+        businessOutcomes: [
+          "Reduce manual work by 50–70% through AI automation",
+          "Onboard users 10x faster with automated KYC",
+          "Minimize fraud losses with advanced detection",
+          "Achieve regulatory compliance readiness",
+          "Scale transaction volumes without infrastructure overhaul",
+          "Increase customer retention through AI support",
+          "Improve operational visibility with real-time analytics",
+          "Deploy to market faster with secure, modular architecture"
+        ]
       },
       {
         id: "martech-salestech",
