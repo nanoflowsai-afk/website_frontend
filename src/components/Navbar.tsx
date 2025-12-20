@@ -133,6 +133,17 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-orange-100 bg-white/90 backdrop-blur-xl" suppressHydrationWarning>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4" suppressHydrationWarning>
