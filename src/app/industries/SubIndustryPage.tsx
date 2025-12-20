@@ -91,37 +91,43 @@ export default function SubIndustryPage() {
             {subIndustry.id === "fintech-startups" && (
                 <>
                     {/* Section 1: Overview */}
-                    <section className="bg-white py-16">
+                    <section className="bg-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                                        <span className="text-orange-500">1️⃣</span> Overview of the FinTech Sub-Industry
-                                    </h2>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">1️⃣</span> OVERVIEW
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900 mb-6">Understanding the FinTech Landscape</h2>
                                 </div>
-                                <div className="space-y-4 text-gray-700 leading-relaxed">
-                                    <p>
-                                        FinTech startups are companies that use technology to deliver financial services such as payments, lending, banking, insurance, investments, and expense management. These businesses rely heavily on software platforms, APIs, data, and automation to operate efficiently.
-                                    </p>
-                                    <p>
-                                        As FinTech companies grow, they face challenges like high user volume, compliance requirements, security risks, and operational complexity. To scale safely and profitably, FinTech startups need AI-powered systems, automation, and secure software architecture from the beginning.
-                                    </p>
+                                <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-8 shadow-sm">
+                                    <div className="space-y-6 text-gray-700 leading-relaxed">
+                                        <p className="text-lg">
+                                            FinTech startups are companies that use technology to deliver financial services such as payments, lending, banking, insurance, investments, and expense management. These businesses rely heavily on software platforms, APIs, data, and automation to operate efficiently.
+                                        </p>
+                                        <div className="border-l-4 border-orange-500 bg-orange-50 p-4">
+                                            <p className="font-semibold text-gray-900 mb-2">The Challenge</p>
+                                            <p>
+                                                As FinTech companies grow, they face critical challenges: high user volume, strict compliance requirements, security risks, and operational complexity. To scale safely and profitably, FinTech startups need AI-powered systems, automation, and secure software architecture from day one.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     {/* Section 2: Business Categories */}
-                    <section className="bg-gray-50 py-16">
+                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                                        <span className="text-orange-500">2️⃣</span> Top Business Listings / Categories in FinTech Startups
-                                    </h2>
-                                    <p className="text-gray-600 text-sm">(Exact FinTech Business Types Nano Flows Targets)</p>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">2️⃣</span> CATEGORIES
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">20+ FinTech Business Models We Support</h2>
+                                    <p className="text-gray-600 mt-4">Nano Flows provides tailored solutions for:</p>
                                 </div>
-                                <p className="mb-6 text-gray-700 font-medium">Nano Flows provides solutions for the following FinTech business models:</p>
                                 <div className="grid gap-3 md:grid-cols-2">
                                     {[
                                         "Payment Gateway Platforms",
@@ -145,9 +151,9 @@ export default function SubIndustryPage() {
                                         "Open Banking API Providers",
                                         "Embedded Finance Solutions"
                                     ].map((category, index) => (
-                                        <div key={index} className="flex items-start gap-3 bg-white rounded-lg p-3">
-                                            <span className="font-bold text-orange-500 flex-shrink-0">{index + 1}.</span>
-                                            <span className="text-gray-700">{category}</span>
+                                        <div key={index} className="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-4 hover:border-orange-300 hover:bg-orange-50 transition">
+                                            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">{index + 1}</div>
+                                            <span className="text-gray-900 font-medium">{category}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -156,32 +162,39 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 3: Who & Why */}
-                    <section className="bg-white py-16">
+                    <section className="bg-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        <span className="text-orange-500">3️⃣</span> Who These Services Are For & Why
-                                    </h2>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">3️⃣</span> WHO & WHY
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">Who We Serve and Why They Need Us</h2>
                                 </div>
                                 <div className="grid gap-8 md:grid-cols-2">
-                                    <div>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-4">Who We Serve</h3>
-                                        <ul className="space-y-3">
+                                    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-blue-50 to-white p-8 shadow-sm">
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500 text-white font-bold">👥</div>
+                                            <h3 className="text-xl font-bold text-gray-900">Who We Serve</h3>
+                                        </div>
+                                        <ul className="space-y-4">
                                             {["FinTech startup founders", "Early-stage and growth-stage FinTech companies", "SaaS-based financial platforms", "Financial product innovators", "Enterprises launching FinTech products"].map((item, idx) => (
                                                 <li key={idx} className="flex items-start gap-3 text-gray-700">
-                                                    <span className="text-orange-500 mt-1">•</span>
+                                                    <span className="text-orange-500 font-bold flex-shrink-0 mt-1">✓</span>
                                                     <span>{item}</span>
                                                 </li>
                                             ))}
                                         </ul>
                                     </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-4">Why They Need These Services</h3>
-                                        <ul className="space-y-3">
-                                            {["To automate manual financial workflows", "To improve customer onboarding & engagement", "To reduce operational costs", "To maintain compliance & security", "To scale faster without system failures"].map((item, idx) => (
+                                    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-green-50 to-white p-8 shadow-sm">
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500 text-white font-bold">💡</div>
+                                            <h3 className="text-xl font-bold text-gray-900">Why They Need Us</h3>
+                                        </div>
+                                        <ul className="space-y-4">
+                                            {["Automate manual financial workflows", "Improve customer onboarding & engagement", "Reduce operational costs", "Maintain compliance & security", "Scale faster without system failures"].map((item, idx) => (
                                                 <li key={idx} className="flex items-start gap-3 text-gray-700">
-                                                    <span className="text-orange-500 mt-1">•</span>
+                                                    <span className="text-orange-500 font-bold flex-shrink-0 mt-1">→</span>
                                                     <span>{item}</span>
                                                 </li>
                                             ))}
@@ -193,28 +206,29 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 4: Tech Stack */}
-                    <section className="bg-gray-50 py-16">
+                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        <span className="text-orange-500">4️⃣</span> Technology Stack Used by Nano Flows
-                                    </h2>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">4️⃣</span> TECH STACK
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">Modern, Secure & Scalable Technology</h2>
+                                    <p className="text-gray-600 mt-4">Enterprise-grade stack built for FinTech</p>
                                 </div>
-                                <p className="mb-6 text-gray-700">Nano Flows uses a modern, scalable, and secure tech stack suitable for FinTech environments:</p>
-                                <div className="grid gap-4 md:grid-cols-2">
+                                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                                     {[
-                                        { label: "Frontend", value: "React, Next.js" },
-                                        { label: "Backend", value: "Node.js, Python" },
-                                        { label: "Databases", value: "PostgreSQL, MongoDB" },
-                                        { label: "AI & Automation", value: "Custom AI models, workflow automation" },
-                                        { label: "Cloud & DevOps", value: "AWS / VPS, Docker, Nginx" },
-                                        { label: "Security", value: "Role-based access, encrypted APIs" },
-                                        { label: "Integrations", value: "Payment gateways, KYC APIs, banking APIs" }
+                                        { label: "Frontend", value: "React, Next.js", icon: "🎨" },
+                                        { label: "Backend", value: "Node.js, Python", icon: "⚙️" },
+                                        { label: "Databases", value: "PostgreSQL, MongoDB", icon: "💾" },
+                                        { label: "AI & Automation", value: "Custom AI models, Workflows", icon: "🤖" },
+                                        { label: "Cloud & DevOps", value: "AWS, Docker, Nginx", icon: "☁️" },
+                                        { label: "Security", value: "Role-based access, Encrypted APIs", icon: "🔐" }
                                     ].map((item, idx) => (
-                                        <div key={idx} className="bg-white rounded-lg p-4">
-                                            <h4 className="font-bold text-gray-900 mb-2">{item.label}</h4>
-                                            <p className="text-gray-700 text-sm">{item.value}</p>
+                                        <div key={idx} className="rounded-xl border border-gray-200 bg-white p-6 hover:border-orange-300 hover:shadow-lg transition">
+                                            <div className="text-3xl mb-3">{item.icon}</div>
+                                            <h4 className="font-bold text-gray-900 mb-2 text-lg">{item.label}</h4>
+                                            <p className="text-gray-600">{item.value}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -223,17 +237,17 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 5: Features */}
-                    <section className="bg-white py-16">
+                    <section className="bg-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        <span className="text-orange-500">5️⃣</span> How Nano Flows AI Serves FinTech Startups
-                                    </h2>
-                                    <p className="text-gray-600 text-sm mt-2">(Features Included)</p>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">5️⃣</span> FEATURES
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">Comprehensive FinTech Solutions</h2>
+                                    <p className="text-gray-600 mt-4">Everything you need to build and scale</p>
                                 </div>
-                                <p className="mb-6 text-gray-700">Nano Flows builds secure, scalable, AI-powered systems specifically for FinTech operations, including:</p>
-                                <div className="grid gap-3">
+                                <div className="grid gap-4 md:grid-cols-2">
                                     {[
                                         "AI-Native FinTech SaaS Platform Development",
                                         "Customer & Lead Management CRM",
@@ -245,9 +259,9 @@ export default function SubIndustryPage() {
                                         "Real-Time Business & Financial Analytics",
                                         "API-Ready Architecture for integrations"
                                     ].map((feature, idx) => (
-                                        <div key={idx} className="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
-                                            <span className="text-orange-500 mt-1">✓</span>
-                                            <span className="text-gray-700">{feature}</span>
+                                        <div key={idx} className="flex items-start gap-4 rounded-xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-5 hover:border-orange-300 hover:shadow-md transition">
+                                            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white font-bold text-sm">✓</div>
+                                            <span className="text-gray-900 font-medium">{feature}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -256,62 +270,67 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 6: Architecture */}
-                    <section className="bg-gray-50 py-16">
+                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        <span className="text-orange-500">6️⃣</span> AI-Driven System Architecture
-                                    </h2>
-                                    <p className="text-gray-600 text-sm mt-2">(Conceptual Flow)</p>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">6️⃣</span> ARCHITECTURE
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">AI-Driven System Flow</h2>
                                 </div>
-                                <div className="bg-white rounded-lg p-8">
-                                    <div className="space-y-3 text-center">
+                                <div className="rounded-2xl border border-gray-200 bg-white p-10 shadow-sm">
+                                    <div className="space-y-4">
                                         {[
-                                            "Lead / User Entry",
-                                            "AI Lead Qualification",
-                                            "CRM & User Management",
-                                            "KYC & Verification Automation",
-                                            "Risk & Credit Scoring",
-                                            "Transaction / Service Execution",
-                                            "AI Follow-Ups & Notifications",
-                                            "Support Chatbot & Ticket System",
-                                            "Analytics & Compliance Dashboard"
+                                            { title: "Lead / User Entry", icon: "📝" },
+                                            { title: "AI Lead Qualification", icon: "🎯" },
+                                            { title: "CRM & User Management", icon: "👤" },
+                                            { title: "KYC & Verification", icon: "✅" },
+                                            { title: "Risk & Credit Scoring", icon: "📊" },
+                                            { title: "Transaction Execution", icon: "💳" },
+                                            { title: "AI Follow-Ups & Notifications", icon: "📢" },
+                                            { title: "Support Chatbot & Tickets", icon: "💬" },
+                                            { title: "Analytics & Compliance", icon: "📈" }
                                         ].map((step, idx) => (
-                                            <div key={idx}>
-                                                <div className="inline-block bg-orange-500 text-white rounded-full px-4 py-2 text-sm font-semibold">{step}</div>
-                                                {idx < 8 && <div className="text-gray-400 text-lg">↓</div>}
+                                            <div key={idx} className="flex items-center gap-4">
+                                                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white text-xl font-bold">{step.icon}</div>
+                                                <div className="flex-1">
+                                                    <p className="font-semibold text-gray-900">{step.title}</p>
+                                                </div>
+                                                {idx < 8 && <div className="text-gray-400 text-2xl">↓</div>}
                                             </div>
                                         ))}
                                     </div>
-                                    <p className="mt-8 text-center text-gray-700 font-medium">This ensures speed, accuracy, security, and scalability.</p>
+                                    <div className="mt-8 rounded-lg bg-orange-50 border border-orange-200 p-4 text-center">
+                                        <p className="text-gray-900 font-semibold">Ensures speed, accuracy, security, and scalability</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     {/* Section 7: Benefits */}
-                    <section className="bg-white py-16">
+                    <section className="bg-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        <span className="text-orange-500">7️⃣</span> What Is the Use of Implementing These Systems?
-                                    </h2>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">7️⃣</span> BENEFITS
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">Measurable Business Impact</h2>
                                 </div>
-                                <p className="mb-6 text-gray-700">By implementing Nano Flows' AI-driven FinTech solutions, businesses can:</p>
-                                <div className="grid gap-3">
+                                <div className="grid gap-4 md:grid-cols-2">
                                     {[
-                                        "Reduce manual work by 50–70%",
-                                        "Onboard users faster",
-                                        "Increase customer retention",
-                                        "Improve operational visibility",
-                                        "Ensure compliance readiness",
-                                        "Scale confidently with growth"
-                                    ].map((benefit, idx) => (
-                                        <div key={idx} className="flex items-start gap-3 bg-orange-50 rounded-lg p-3">
-                                            <span className="text-orange-500 font-bold flex-shrink-0">✓</span>
-                                            <span className="text-gray-700">{benefit}</span>
+                                        { metric: "50-70%", description: "Reduction in manual work" },
+                                        { metric: "10x", description: "Faster user onboarding" },
+                                        { metric: "Higher", description: "Customer retention rates" },
+                                        { metric: "Real-time", description: "Operational visibility" },
+                                        { metric: "100%", description: "Compliance readiness" },
+                                        { metric: "Confident", description: "Scale with growth" }
+                                    ].map((item, idx) => (
+                                        <div key={idx} className="rounded-xl border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-white p-6 text-center hover:border-orange-500 transition">
+                                            <div className="text-4xl font-bold text-orange-600 mb-2">{item.metric}</div>
+                                            <p className="text-gray-700 font-medium">{item.description}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -320,16 +339,16 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 8: Other Industries */}
-                    <section className="bg-gray-50 py-16">
+                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-4xl">
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900">
-                                        <span className="text-orange-500">8️⃣</span> Industries Nano Flows Serves (Beyond FinTech)
-                                    </h2>
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        <span className="text-lg">8️⃣</span> MORE INDUSTRIES
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond FinTech</h2>
                                 </div>
-                                <p className="mb-6 text-gray-700">In addition to FinTech startups, Nano Flows provides AI & software solutions for:</p>
-                                <div className="grid gap-3">
+                                <div className="grid gap-3 md:grid-cols-2">
                                     {[
                                         "Startups & SaaS Companies",
                                         "Enterprises & Corporates",
@@ -339,9 +358,9 @@ export default function SubIndustryPage() {
                                         "Education & EdTech Platforms",
                                         "Local Businesses & Service Providers"
                                     ].map((industry, idx) => (
-                                        <div key={idx} className="flex items-start gap-3 bg-white rounded-lg p-3">
-                                            <span className="text-orange-500 mt-1">•</span>
-                                            <span className="text-gray-700">{industry}</span>
+                                        <div key={idx} className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-4 hover:border-orange-300 hover:bg-orange-50 transition">
+                                            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">✓</span>
+                                            <span className="text-gray-900 font-medium">{industry}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -350,26 +369,25 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* CTA Section */}
-                    <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20">
+                    <section className="bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
                             <div className="mx-auto max-w-3xl text-center">
-                                <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                                <h2 className="text-4xl font-bold text-white md:text-5xl mb-4">
                                     Ready to Transform Your FinTech Business?
                                 </h2>
-                                <p className="mt-4 text-lg text-gray-600">
-                                    Let's discuss how our AI solutions can help you automate operations,
-                                    reduce costs, and deliver exceptional experiences to your customers.
+                                <p className="text-lg text-white/90 mb-10">
+                                    Let's discuss how our AI solutions can help you automate operations, reduce costs, and deliver exceptional experiences.
                                 </p>
-                                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                                     <Link
                                         to="/contact"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 font-semibold text-orange-600 shadow-lg hover:shadow-xl transition hover:-translate-y-0.5"
                                     >
                                         Schedule a Demo →
                                     </Link>
                                     <Link
                                         to={`/industries/${industry.id}`}
-                                        className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
+                                        className="inline-flex items-center gap-2 rounded-xl border-2 border-white px-8 py-4 font-semibold text-white transition hover:bg-white/10"
                                     >
                                         ← Back to {industry.name}
                                     </Link>
