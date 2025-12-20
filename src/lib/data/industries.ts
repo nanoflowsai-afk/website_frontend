@@ -153,7 +153,7 @@ export function getRelatedServices(subIndustry: SubIndustry, industryId: string)
   if (topServices.length < 4) {
     const defaultServices = [
       allServices.find(s => s.title === "Custom LLM Systems")!,
-      allServices.find(s => s.title === "Enterprise Automation")!,
+      allServices.find(s => s.title === "Operations Workflow")!,
       allServices.find(s => s.title === "Support Agents")!,
       allServices.find(s => s.title === "Real-time Dashboards")!,
     ];
@@ -192,484 +192,384 @@ export const industries: Industry[] = [
     description: "Scale your startup with AI systems that automate customer acquisition, optimize retention, and deliver enterprise-grade experiences without enterprise-sized teams.",
     subIndustries: [
       {
+        id: "ai-native-saas",
+        name: "AI-Native SaaS Products",
+        description: "Next-generation SaaS built with AI at the core, offering intelligent automation and predictive capabilities.",
+        icon: "🤖",
+        tagline: "Intelligence Built In",
+        overview: "AI-native SaaS products leverage advanced AI models as core differentiators, not add-ons.",
+        whyChoose: {
+          intro: "Build SaaS that learns and improves automatically",
+          points: [
+            "AI models integrated into product architecture",
+            "Self-improving algorithms",
+            "Personalization at scale",
+            "Predictive automation",
+            "Natural language interfaces"
+          ]
+        },
+        whatWeBuild: {
+          intro: "We develop AI-native SaaS solutions:",
+          solutions: [
+            "Intelligent content platforms",
+            "Predictive analytics engines",
+            "Autonomous workflow systems",
+            "AI-powered collaboration tools",
+            "Smart automation platforms"
+          ],
+          footer: "Built with machine learning at the foundation."
+        },
+        coreCapabilities: [
+          "AI model integration",
+          "Continuous learning systems",
+          "Real-time predictions",
+          "Automated optimization",
+          "Intelligent recommendations"
+        ],
+        idealFor: ["Early-stage SaaS founders", "Venture-backed startups", "Product innovators"],
+        businessOutcomes: ["Higher user engagement", "Reduced churn", "Premium pricing power", "Competitive differentiation"]
+      },
+      {
         id: "fintech-startups",
         name: "FinTech Startups",
-        description: "AI solutions for financial technology startups including payment processing, lending platforms, and investment tools.",
-        icon: "🏦",
-        tagline: "AI-Powered, Secure & Scalable Financial SaaS Platforms",
-        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help FinTech startups build AI-native financial platforms that are secure, compliant, scalable, and automation-driven. From digital payments and lending platforms to AI-driven finance tools, we design future-ready FinTech SaaS products that handle real-world financial complexity with intelligence at the core. We build trust-first, AI-powered FinTech systems — not just apps.",
+        description: "Secure, intelligent financial technology platforms for payments, lending, and wealth management.",
+        icon: "💳",
+        tagline: "Secure Financial Innovation",
+        overview: "FinTech startups need security, compliance, and intelligence to compete with legacy banks.",
         whyChoose: {
-          intro: "FinTech is not regular SaaS. It needs security, compliance, accuracy, and intelligence.",
+          intro: "Build trusted financial platforms with AI",
           points: [
-            "AI-first architecture for risk, fraud & decisioning",
-            "Multi-tenant FinTech SaaS design",
-            "Automation-driven operations (KYC, onboarding, workflows)",
-            "Data security & role-based access by default",
-            "Built for scale, audits & future integrations"
+            "Bank-grade security & compliance",
+            "Fraud detection AI",
+            "Automated KYC workflows",
+            "Real-time risk assessment",
+            "Scalable infrastructure"
           ]
         },
         whatWeBuild: {
-          intro: "We develop AI-enabled FinTech SaaS solutions, including:",
+          intro: "FinTech solutions including:",
           solutions: [
-            "Digital payments & wallet platforms",
-            "Lending & loan management SaaS",
-            "Subscription & billing platforms",
-            "Investment & wealth-tech tools",
-            "AI-based financial dashboards",
-            "Embedded finance & API-based platforms",
-            "Internal FinTech tools for enterprises"
+            "Payment processing platforms",
+            "Lending & loan management",
+            "Digital wallets & neobanks",
+            "Investment platforms",
+            "Billing & subscription systems"
           ],
-          footer: "All solutions are cloud-native, scalable, and automation-ready."
+          footer: "Compliant, secure, and intelligent."
         },
         coreCapabilities: [
-          "AI-driven data analysis & insights",
-          "Fraud detection & anomaly monitoring (AI-assisted)",
-          "Automated onboarding & KYC workflows",
-          "Role-based access & multi-tenant isolation",
-          "Secure APIs & integrations",
-          "AI dashboards & real-time analytics"
+          "Fraud detection",
+          "Compliance automation",
+          "Risk analytics",
+          "Transaction processing",
+          "Multi-currency support"
         ],
-        idealFor: [
-          "Early-stage FinTech startups",
-          "Digital payment platforms",
-          "Asset management firms",
-          "Neobanks & lending apps"
-        ],
-        businessOutcomes: [
-          "Faster time-to-market for financial products",
-          "Reduced operational costs via automation",
-          "Increased security & compliance adherence",
-          "Scalable infrastructure from Day 1"
-        ]
+        idealFor: ["Payment startups", "Lending platforms", "Digital banks"],
+        businessOutcomes: ["Regulatory compliance", "Reduced fraud losses", "Faster onboarding", "Higher transaction volume"]
       },
       {
-        id: "edtech-startups",
-        name: "EdTech Startups",
-        description: "AI-powered educational platforms offering personalized learning experiences, automated grading, and smart content delivery.",
-        icon: "🎓",
-        tagline: "AI-Powered Learning, Personalized for every Student",
-        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we empower EdTech startups to move beyond static video courses. We build AI-native learning platforms that adapt to students, automate administrative tasks, and provide real-time performance insights. Whether you are building an LMS, a tutoring app, or a corporate training platform, we help you create intelligent educational experiences that drive engagement and outcomes.",
+        id: "martech-salestech",
+        name: "MarTech & SalesTech Platforms",
+        description: "Marketing automation and sales enablement tools powered by AI for revenue growth.",
+        icon: "📊",
+        tagline: "Revenue Growth Automation",
+        overview: "MarTech and SalesTech platforms multiply the effectiveness of marketing and sales teams.",
         whyChoose: {
-          intro: "Education is evolving. Your platform should too.",
+          intro: "Automate revenue generation",
           points: [
-            "AI-driven personalization engines",
-            "Scalable video & content delivery",
-            "Built-in gamification & engagement tools",
-            "Automated enhancing & grading capabilities",
-            "Seamless integration with existing school systems"
+            "AI-powered lead scoring",
+            "Campaign personalization",
+            "Sales forecasting",
+            "Content generation",
+            "Customer journey mapping"
           ]
         },
         whatWeBuild: {
-          intro: "We build comprehensive EdTech solutions:",
+          intro: "Marketing & Sales automation platforms:",
           solutions: [
-            "Custom Learning Management Systems (LMS)",
-            "AI-powered tutoring & quiz apps",
-            "Virtual classroom & live streaming platforms",
-            "Skill assessment & certification tools",
-            "Corporate training & employee onboarding SaaS",
-            "Mobile-first learning applications"
+            "Marketing automation suites",
+            "CRM systems",
+            "Lead scoring engines",
+            "Campaign management tools",
+            "Sales analytics dashboards"
           ],
-          footer: "Designed for engagement, retention, and learning outcomes."
+          footer: "Multiply team productivity."
         },
         coreCapabilities: [
-          "Adaptive learning paths & recommendations",
-          "AI-generated quizzes & content",
-          "Real-time student performance analytics",
-          "Interactive video players & live classes",
-          "Multi-language support & localization"
+          "AI lead scoring",
+          "Campaign automation",
+          "Personalization engines",
+          "Sales forecasting",
+          "Attribution modeling"
         ],
-        idealFor: [
-          "Online course creators & bootcamps",
-          "Corporate training departments",
-          "K-12 & Higher Education institutions",
-          "Language learning startups"
-        ],
-        businessOutcomes: [
-          "Higher student engagement & completion rates",
-          "Reduced manual grading & admin work",
-          "Scalable to millions of users",
-          "Data-driven insights for curriculum improvement"
-        ]
+        idealFor: ["Marketing teams", "Sales organizations", "Growth companies"],
+        businessOutcomes: ["Shorter sales cycles", "Higher conversion rates", "More qualified leads", "Revenue growth"]
       },
       {
-        id: "healthtech-startups",
-        name: "HealthTech Startups",
-        description: "HIPAA-compliant AI solutions for healthcare startups, including telemedicine, patient management, and diagnostic tools.",
-        icon: "⚕️",
-        tagline: "Secure, Intelligent & Patient-Centric HealthTech Solutions",
-        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we help HealthTech startups build secure, compliant, and AI-enabled healthcare platforms. From telemedicine apps to AI diagnostic tools and practice management software, we ensure your technology meets strict regulatory standards (HIPAA) while delivering exceptional patient and provider experiences. We build technology that saves time—and lives.",
-        whyChoose: {
-          intro: "Healthcare requires zero error margins and absolute data privacy.",
-          points: [
-            "HIPAA-compliant architecture & data encryption",
-            "Interoperability with EHR/EMR systems",
-            "AI-assisted diagnostics & triage workflows",
-            "Secure telemedicine & video consultation features",
-            "User-friendly interfaces for patients & doctors"
-          ]
-        },
-        whatWeBuild: {
-          intro: "We develop secure HealthTech applications:",
-          solutions: [
-            "Telemedicine & virtual care platforms",
-            "Patient portal & appointment scheduling apps",
-            "Remote patient monitoring (RPM) dashboards",
-            "AI-driven diagnostic support tools",
-            "Practice management & billing software",
-            "Mental health & wellness applications"
-          ],
-          footer: "Built with security, privacy, and care at the center."
-        },
-        coreCapabilities: [
-          "Secure video & messaging (Encrypted)",
-          "AI symptom checkers & triage",
-          "Automated appointment reminders & scheduling",
-          "Integration with wearable devices",
-          "Data analytics for patient outcomes"
-        ],
-        idealFor: [
-          "Telehealth startups",
-          "Digital therapeutics companies",
-          "Specialized medical clinics",
-          "Wellness & fitness apps"
-        ],
-        businessOutcomes: [
-          "Expanded access to care via digital channels",
-          "Improved patient adherence & engagement",
-          "Streamlined clinical operations",
-          "Compliance-ready for rapid scaling"
-        ]
-      },
-      {
-        id: "ai-tools-automation-startups",
-        name: "AI Tools & Automation Startups",
-        description: "Next-generation SaaS applications with core AI capabilities for automation, prediction, and intelligent workflows.",
-        icon: "🧠",
-        tagline: "Building the Next Generation of Intelligent SaaS",
-        overview: "At Nano Flows AI Software Technologies Pvt. Ltd., we specialize in building AI-first SaaS products. Unlike traditional software, AI SaaS learns, adapts, and automates complex tasks for users. Whether you are building an AI writing assistant, a predictive analytics tool, or an automated workflow platform, we provide the engineering expertise to integrate advanced AI models (LLMs, NLP, Computer Vision) directly into your product's core value proposition.",
-        whyChoose: {
-          intro: "Don't just add AI as a feature. Build it as the core.",
-          points: [
-            "Deep integration of LLMs (GPT, Claude, etc.)",
-            "Scalable vector database architectures",
-            "Real-time processing & inference optimization",
-            "User-centric AI UX/UI design",
-            "Prompt engineering & fine-tuning pipelines"
-          ]
-        },
-        whatWeBuild: {
-          intro: "We Engineer AI-native SaaS products such as:",
-          solutions: [
-            "Generative AI content creation tools",
-            "Intelligent document processing platforms",
-            "AI-powered customer support suites",
-            "Predictive analytics & forecasting tools",
-            "Automated code generation & dev tools",
-            "Voice & audio processing applications"
-          ],
-          footer: "From prototype to production-grade AI SaaS."
-        },
-        coreCapabilities: [
-          "Custom model fine-tuning & integration",
-          "RAG (Retrieval-Augmented Generation) pipelines",
-          "Multi-modal capabilities (Text, Image, Audio)",
-          "Usage-based billing & scalable infrastructure",
-          "Production-ready AI systems"
-        ],
-        idealFor: [
-          "AI startups & founders",
-          "SaaS companies pivoting to AI",
-          "Enterprise innovation labs",
-          "Data-focused product teams"
-        ],
-        businessOutcomes: [
-          "Unique competitive advantage via proprietary AI",
-          "Higher user retention through intelligent features",
-          "Automated value delivery to customers",
-          "Investor-ready AI platform"
-        ]
-      },
-      {
-        id: "proptech-startups",
-        name: "PropTech Startups",
-        description: "AI solutions for real estate technology, including property management, valuation, and smart building systems.",
-        icon: "🏗️",
-        tagline: "Smart Real Estate & Property Tech Solutions",
-        overview: "Transform the real estate industry with AI-driven PropTech solutions. We help startups build platforms for property management, virtual tours, automated valuations, and smart building operations.",
-        whyChoose: {
-          intro: "Innovate in the property market:",
-          points: [
-            "Automated Property Valuation Models",
-            "Smart Building IoT Integration",
-            "Virtual Tour & AR Experiences",
-            "Tenant Management Automation",
-            "Real-time Market Analytics"
-          ]
-        },
-        whatWeBuild: {
-          intro: "We build:",
-          solutions: [
-            "Property Management Software",
-            "Real Estate Marketplaces",
-            "Smart Home Dashboards",
-            "Construction Project Management Tools",
-            "Tenant Experience Apps"
-          ],
-          footer: "Building the future of real estate."
-        },
-        coreCapabilities: [
-          "Automated Valuation",
-          "IoT Data Processing",
-          "Visual Search for Properties",
-          "Lease Management Automation"
-        ],
-        idealFor: [
-          "PropTech Startups",
-          "Real Estate Developers",
-          "Property Management Companies",
-          "Smart City Initiatives"
-        ],
-        businessOutcomes: [
-          "Increased Operational Efficiency",
-          "Enhanced Tenant Satisfaction",
-          "Better Asset Utilization",
-          "Data-Driven Investment Decisions"
-        ]
-      },
-      {
-        id: "hrtech-recruitment-saas",
-        name: "HRTech & Recruitment",
-        description: "AI-powered platforms for talent acquisition, employee engagement, and HR automation.",
+        id: "hrtech-recruitment",
+        name: "HRTech & Recruitment SaaS",
+        description: "AI-powered talent acquisition, management, and HR automation platforms.",
         icon: "👥",
-        tagline: "Intelligent HR & Recruitment Solutions",
-        overview: "Revolutionize HR with AI. From automated resume screening to employee engagement analysis, we build SaaS platforms that streamline the entire talent lifecycle.",
+        tagline: "Smart Talent Management",
+        overview: "HRTech platforms automate hiring, onboarding, and employee management with AI.",
         whyChoose: {
-          intro: "Optimize your workforce management:",
+          intro: "Build the future of work",
           points: [
-            "Bias-free Resume Screening",
-            "Employee Sentiment Analysis",
-            "Automated Onboarding flows",
-            "Performance Prediction Models",
-            "Smart Scheduling Systems"
+            "AI resume screening",
+            "Bias-free hiring",
+            "Employee engagement AI",
+            "Predictive attrition",
+            "Automated onboarding"
           ]
         },
         whatWeBuild: {
           intro: "HRTech solutions including:",
           solutions: [
-            "Applicant Tracking Systems (ATS)",
-            "Employee Experience Platforms",
-            "Payroll & Benefits Administration",
-            "Video Interview Platforms",
-            "Workforce Planning Tools"
+            "Applicant tracking systems",
+            "Resume screening tools",
+            "Employee experience platforms",
+            "Payroll systems",
+            "Workforce planning tools"
           ],
-          footer: "Bringing intelligence to people operations."
+          footer: "Intelligent talent management."
         },
         coreCapabilities: [
-          "Resume Parsing & Matching",
-          "Sentiment Analysis",
-          "Chatbots for HR Queries",
-          "Predictive Attrition Modeling"
+          "Resume parsing",
+          "Candidate matching",
+          "Sentiment analysis",
+          "Performance prediction",
+          "Engagement tracking"
         ],
-        idealFor: [
-          "Recruitment Agencies",
-          "HR SaaS Companies",
-          "Enterprise HR Departments",
-          "Staffing Firms"
-        ],
-        businessOutcomes: [
-          "Reduced Time-to-Hire",
-          "Improved Quality of Hire",
-          "Higher Employee Retention",
-          "Streamlined HR Processes"
-        ]
+        idealFor: ["HR teams", "Recruitment agencies", "Enterprise HR"],
+        businessOutcomes: ["Faster hiring", "Better hires", "Lower turnover", "Improved retention"]
       },
       {
-        id: "martech-salestech-saas",
-        name: "MarTech & SalesTech",
-        description: "Tools for marketing automation, sales enablement, and customer relationship management.",
-        icon: "📈",
-        tagline: "Drive Growth with AI Marketing & Sales Tools",
-        overview: "Empower marketing and sales teams with AI. We develop SaaS platforms that automate campaigns, score leads, and provide actionable insights to drive revenue growth.",
+        id: "healthtech-startups",
+        name: "HealthTech & MedTech SaaS",
+        description: "HIPAA-compliant healthcare platforms for telemedicine, patient management, and diagnostics.",
+        icon: "⚕️",
+        tagline: "Smart Healthcare Delivery",
+        overview: "HealthTech startups deliver care more efficiently with AI-powered platforms.",
         whyChoose: {
-          intro: "Supercharge your growth engine:",
+          intro: "Healthcare needs security and intelligence",
           points: [
-            "Personalized Content Generation",
-            "Lead Scoring & Prioritization",
-            "Omnichannel Campaign Management",
-            "Sales Forecasting AI",
-            "Customer Journey Mapping"
+            "HIPAA-compliant design",
+            "AI diagnostics support",
+            "Secure telemedicine",
+            "Patient monitoring automation",
+            "EHR integration"
           ]
         },
         whatWeBuild: {
-          intro: "Sales & Marketing platforms:",
+          intro: "HealthTech platforms including:",
           solutions: [
-            "Marketing Automation Platforms",
-            "CRM Systems",
-            "Social Media Management Tools",
-            "SEO & Content Optimization Tools",
-            "ABM (Account-Based Marketing) Platforms"
+            "Telemedicine platforms",
+            "Patient management systems",
+            "Remote monitoring apps",
+            "Diagnostic tools",
+            "Health records systems"
           ],
-          footer: "Accelerating your go-to-market strategy."
+          footer: "Secure and intelligent healthcare."
         },
         coreCapabilities: [
-          "Content Generation (GenAI)",
-          "Predictive Lead Scoring",
-          "Customer Segmentation",
-          "Attribution Modeling"
+          "HIPAA compliance",
+          "Secure messaging",
+          "AI symptom checking",
+          "Appointment management",
+          "Clinical documentation"
         ],
-        idealFor: [
-          "Marketing Agencies",
-          "Sales Teams",
-          "B2B SaaS Companies",
-          "E-commerce Brands"
-        ],
-        businessOutcomes: [
-          "Higher Conversion Rates",
-          "Increased ROI on Ad Spend",
-          "Shortened Sales Cycles",
-          "Better Customer Alignment"
-        ]
+        idealFor: ["Telehealth providers", "Digital health startups", "Clinics"],
+        businessOutcomes: ["Better patient outcomes", "Reduced operational costs", "Compliance", "Scalable care"]
       },
       {
-        id: "logistics-supply-chain-saas",
-        name: "Logistics & Supply Chain",
-        description: "AI solutions for fleet management, inventory optimization, and supply chain visibility.",
+        id: "logistics-supply-chain",
+        name: "Logistics & Supply Chain SaaS",
+        description: "Intelligent platforms for supply chain optimization, tracking, and logistics management.",
         icon: "🚚",
-        tagline: "Optimized Logistics & Supply Chain Management",
-        overview: "Streamline global operations with AI. We build software that optimizes routes, predicts inventory needs, and provides real-time visibility into complex supply chains.",
+        tagline: "Supply Chain Intelligence",
+        overview: "Supply chain platforms use AI to optimize routes, reduce costs, and improve visibility.",
         whyChoose: {
-          intro: "Efficiency in motion:",
+          intro: "Optimize your supply chain",
           points: [
-            "Route Optimization Algorithms",
-            "Demand Forecasting",
-            "Real-time Shipment Tracking",
-            "Warehouse Automation Integration",
-            "Supplier Risk Management"
+            "AI route optimization",
+            "Real-time tracking",
+            "Demand forecasting",
+            "Inventory optimization",
+            "Cost reduction AI"
           ]
         },
         whatWeBuild: {
-          intro: "Logistics platforms:",
+          intro: "Supply chain solutions:",
           solutions: [
-            "Fleet Management Systems",
-            "Warehouse Management Systems (WMS)",
-            "Supply Chain Control Towers",
-            "Last-Mile Delivery Apps",
-            "Freight Forwarding Platforms"
+            "Route optimization engines",
+            "Tracking & visibility platforms",
+            "Inventory management systems",
+            "Demand forecasting tools",
+            "Vendor management portals"
           ],
-          footer: "Delivering efficiency at scale."
+          footer: "Optimize your supply chain."
         },
         coreCapabilities: [
-          "Route Optimization",
-          "Demand Prediction",
-          "IoT Tracking Integration",
-          "Document Automation"
+          "Route optimization",
+          "Real-time tracking",
+          "Demand forecasting",
+          "Inventory prediction",
+          "Cost analytics"
         ],
-        idealFor: [
-          "3PL Providers",
-          "Freight Companies",
-          "Manufacturing Firms",
-          "Last-mile Delivery Startups"
-        ],
-        businessOutcomes: [
-          "Reduced Fuel Costs",
-          "Faster Delivery Times",
-          "Lower Inventory Holding Costs",
-          "Improved Supply Chain Resilience"
-        ]
+        idealFor: ["Logistics companies", "E-commerce", "Manufacturing"],
+        businessOutcomes: ["Reduced costs", "Faster delivery", "Better visibility", "Improved efficiency"]
       },
       {
-        id: "productivity-collaboration-tools",
-        name: "Productivity & Collaboration",
-        description: "SaaS tools for project management, team collaboration, and workflow automation.",
-        icon: "🤝",
-        tagline: "Empowering Teams to Do More",
-        overview: "Build the next generation of work tools. We help startups create collaboration platforms that integrate AI assistants, automate repetitive tasks, and bring teams together.",
+        id: "edtech-platforms",
+        name: "EdTech Platforms & LMS",
+        description: "Intelligent learning management systems with personalized learning paths and analytics.",
+        icon: "📚",
+        tagline: "Smart Education Platforms",
+        overview: "EdTech platforms adapt to learners and automate administrative tasks with AI.",
         whyChoose: {
-          intro: "Work smarter, not harder:",
+          intro: "Education that adapts to learners",
           points: [
-            "AI Meeting Assistants",
-            "Smart Task Prioritization",
-            "Real-time Document Collaboration",
-            "Workflow Automation Builders",
-            "Knowledge Management Search"
+            "AI personalization",
+            "Adaptive learning paths",
+            "Automated grading",
+            "Content recommendations",
+            "Student analytics"
           ]
         },
         whatWeBuild: {
-          intro: "Productivity solutions:",
+          intro: "EdTech solutions including:",
           solutions: [
-            "Project Management Tools",
-            "Team Chat & Video Apps",
-            "Note-taking & Knowledge Bases",
-            "Design Collaboration Tools",
-            "No-code/Low-code Platforms"
+            "Learning management systems",
+            "Tutoring platforms",
+            "Online course platforms",
+            "Assessment tools",
+            "Corporate training systems"
           ],
-          footer: "Redefining the future of work."
+          footer: "Intelligent education."
         },
         coreCapabilities: [
-          "Natural Language Search",
-          "Real-time Sync",
-          "Meeting Transcription & Summary",
-          "Automated Workflows"
+          "Adaptive learning",
+          "AI tutoring",
+          "Automated grading",
+          "Progress tracking",
+          "Content recommendations"
         ],
-        idealFor: [
-          "Remote Teams",
-          "Enterprise Organizations",
-          "Creative Agencies",
-          "Software Development Teams"
-        ],
-        businessOutcomes: [
-          "Increased Team Output",
-          "Reduced Meeting Overhead",
-          "Better Information Access",
-          "Higher Employee Satisfaction"
-        ]
+        idealFor: ["Course creators", "Schools & Universities", "Corporate training"],
+        businessOutcomes: ["Higher completion rates", "Better learning outcomes", "Reduced admin work", "Scalability"]
       },
       {
-        id: "vertical-saas",
-        name: "Vertical SaaS",
-        description: "Industry-specific SaaS solutions tailored to niche markets and unique business workflows.",
-        icon: "🧩",
-        tagline: "Specialized Software for Niche Industries",
-        overview: "Solve deep industry problems with Vertical SaaS. Whether for legal, construction, or agriculture, we build specialized platforms that address the unique challenges of specific sectors.",
+        id: "cybersecurity-saas",
+        name: "Cybersecurity SaaS",
+        description: "AI-powered threat detection, vulnerability management, and security automation platforms.",
+        icon: "🔒",
+        tagline: "Intelligent Security",
+        overview: "Cybersecurity platforms use AI to detect threats faster and automate responses.",
         whyChoose: {
-          intro: "Deep domain expertise in code:",
+          intro: "Stay ahead of threats",
           points: [
-            "Industry-specific Compliance",
-            "Tailored Workflow Automation",
-            "Specialized Data Models",
-            "Pre-built Industry Integrations",
-            "User-friendly Interface for Non-tech Users"
+            "AI threat detection",
+            "Automated response",
+            "Vulnerability scanning",
+            "Anomaly detection",
+            "Real-time alerts"
           ]
         },
         whatWeBuild: {
-          intro: "Niche solutions for:",
+          intro: "Cybersecurity solutions:",
           solutions: [
-            "Legal Practice Management",
-            "Construction ERP",
-            "Restaurant Management Systems",
-            "Farm Management Software",
-            "Salon & Spa Booking Systems"
+            "Threat detection systems",
+            "Vulnerability management",
+            "SIEM platforms",
+            "Access control systems",
+            "Security monitoring tools"
           ],
-          footer: "Purpose-built for your industry."
+          footer: "Intelligent threat protection."
         },
         coreCapabilities: [
-          "Custom Reporting",
-          "Compliance Management",
-          "Field Service Management",
-          "Inventory Tracking"
+          "Threat detection",
+          "Vulnerability scanning",
+          "Anomaly detection",
+          "Automated response",
+          "Compliance monitoring"
         ],
-        idealFor: [
-          "Industry Insiders",
-          "Niche Market Founders",
-          "Professional Service Firms",
-          "Trade Associations"
+        idealFor: ["Enterprises", "MSPs", "Security teams"],
+        businessOutcomes: ["Faster threat response", "Reduced breaches", "Compliance", "Risk reduction"]
+      },
+      {
+        id: "proptech-platforms",
+        name: "PropTech Platforms",
+        description: "Real estate technology solutions for property management, valuations, and smart buildings.",
+        icon: "🏢",
+        tagline: "Smart Real Estate",
+        overview: "PropTech platforms streamline property management and sales with AI insights.",
+        whyChoose: {
+          intro: "Digitize real estate",
+          points: [
+            "AI property valuation",
+            "Virtual tours",
+            "Smart building controls",
+            "Automated lease management",
+            "Market analytics"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Real estate solutions:",
+          solutions: [
+            "Property management software",
+            "Real estate marketplaces",
+            "Valuation engines",
+            "Smart building platforms",
+            "Tenant management systems"
+          ],
+          footer: "Smart property technology."
+        },
+        coreCapabilities: [
+          "Property valuation",
+          "Virtual tours",
+          "IoT integration",
+          "Lease automation",
+          "Market analytics"
         ],
-        businessOutcomes: [
-          "Higher Market Penetration",
-          "Reduced Churn",
-          "Increased Customer Value",
-          "Dominant Market Position"
-        ]
+        idealFor: ["Real estate developers", "Property managers", "Agents"],
+        businessOutcomes: ["Faster sales", "Better valuations", "Operational efficiency", "Market intelligence"]
+      },
+      {
+        id: "agritech-startups",
+        name: "AgriTech Startups",
+        description: "Agricultural technology for crop optimization, farm management, and supply chain tracking.",
+        icon: "🌾",
+        tagline: "Smart Agriculture",
+        overview: "AgriTech startups use AI and IoT to improve crop yields and farm efficiency.",
+        whyChoose: {
+          intro: "Modernize agriculture",
+          points: [
+            "Crop yield optimization",
+            "Weather predictions",
+            "Pest detection AI",
+            "Resource optimization",
+            "Farm automation"
+          ]
+        },
+        whatWeBuild: {
+          intro: "AgriTech solutions:",
+          solutions: [
+            "Crop management systems",
+            "Farm monitoring platforms",
+            "Yield prediction tools",
+            "Resource optimization",
+            "Supply chain tracking"
+          ],
+          footer: "Intelligent farming."
+        },
+        coreCapabilities: [
+          "Crop analytics",
+          "Weather prediction",
+          "Pest detection",
+          "Resource management",
+          "IoT integration"
+        ],
+        idealFor: ["Farms", "Agricultural companies", "Food producers"],
+        businessOutcomes: ["Higher yields", "Lower costs", "Sustainability", "Better planning"]
       }
     ]
   },
@@ -678,338 +578,389 @@ export const industries: Industry[] = [
     name: "Enterprises",
     icon: "🏢",
     image: enterpriseImage,
-    imageAlt: "NanoFlows Enterprise AI Solutions - Enterprise-grade artificial intelligence for digital transformation and operational efficiency",
-    tagline: "Enterprise-Grade AI That Integrates Seamlessly",
-    description: "Transform your organization with AI solutions built for enterprise scale, security, and compliance requirements.",
+    imageAlt: "NanoFlows Enterprise AI Solutions - ERP, automation, and intelligence for large organizations",
+    tagline: "Enterprise-Scale AI Automation",
+    description: "Transform enterprise operations with AI-powered automation, analytics, and decision-making systems that drive efficiency and innovation.",
     subIndustries: [
       {
-        id: "banking-financial-services",
-        name: "Banking & Financial Services (BFSI)",
-        description: "AI solutions for banks, insurance companies, and financial institutions with compliance and security focus.",
-        icon: "🏦",
-        tagline: "AI-Powered Banking & Financial Services Platforms",
-        overview: "Secure, compliant, and scalable AI solutions for the financial sector. We help banks and fintechs automate operations, detect fraud, and personalize customer experiences.",
+        id: "erp-business-automation",
+        name: "ERP & Business Process Automation",
+        description: "Enterprise resource planning with AI-driven automation for seamless operations.",
+        icon: "⚙️",
+        tagline: "Unified Enterprise Operations",
+        overview: "Modern ERP systems integrate all business processes with AI automation.",
         whyChoose: {
-          intro: "Key benefits for financial institutions:",
+          intro: "Streamline enterprise operations",
           points: [
-            "Compliance & Regulatory Adherence",
-            "Enhanced Security & Fraud Prevention",
-            "Scalable Transaction Processing",
-            "Personalized Customer Insights",
-            "24/7 Automated Support"
+            "Process automation",
+            "Data integration",
+            "Real-time visibility",
+            "AI-driven insights",
+            "Workflow optimization"
           ]
         },
         whatWeBuild: {
-          intro: "Our BFSI solutions include:",
+          intro: "ERP and automation solutions:",
           solutions: [
-            "Fraud Detection Systems",
-            "Automated Loan Processing",
-            "Customer Service Chatbots",
-            "Personalized Wealth Management Tools",
-            "Risk Assessment Models"
+            "Enterprise ERP systems",
+            "Workflow automation",
+            "Process mining",
+            "Business intelligence",
+            "Integration platforms"
           ],
-          footer: "Driving efficiency and trust in financial services."
+          footer: "Unified operations."
         },
         coreCapabilities: [
-          "Real-time Fraud Detection",
-          "Automated KYC/AML",
-          "Conversational AI Banking",
-          "Predictive Financial Analytics"
+          "Process automation",
+          "Data integration",
+          "Analytics dashboards",
+          "Workflow management",
+          "Real-time reporting"
         ],
-        idealFor: [
-          "Banks",
-          "Insurance Companies",
-          "Investment Firms",
-          "Fintech Enterprises"
+        idealFor: ["Large enterprises", "Manufacturing", "Retail"],
+        businessOutcomes: ["Operational efficiency", "Cost reduction", "Better decisions", "Faster cycles"]
+      },
+      {
+        id: "enterprise-ai-rpa",
+        name: "Enterprise AI & RPA",
+        description: "Robotic process automation and AI for intelligent enterprise automation.",
+        icon: "🤖",
+        tagline: "Intelligent Automation at Scale",
+        overview: "Enterprise RPA uses AI to automate complex, repetitive business processes.",
+        whyChoose: {
+          intro: "Automate enterprise processes",
+          points: [
+            "Process automation",
+            "AI-enhanced workflows",
+            "Continuous improvement",
+            "Cost reduction",
+            "Faster processing"
+          ]
+        },
+        whatWeBuild: {
+          intro: "RPA solutions:",
+          solutions: [
+            "Robotic process automation",
+            "Intelligent document processing",
+            "Workflow automation",
+            "Process monitoring",
+            "Bot management platforms"
+          ],
+          footer: "Intelligent automation."
+        },
+        coreCapabilities: [
+          "Bot development",
+          "Process automation",
+          "Document processing",
+          "Workflow orchestration",
+          "Performance monitoring"
         ],
-        businessOutcomes: [
-          "Reduced Fraud Losses",
-          "Lower Operational Costs",
-          "Improved Customer Satisfaction",
-          "Faster Processing Times"
-        ]
+        idealFor: ["Enterprises", "Financial services", "Insurance"],
+        businessOutcomes: ["Cost savings", "Efficiency", "Accuracy", "Scalability"]
+      },
+      {
+        id: "enterprise-crm",
+        name: "Enterprise CRM & Sales Automation",
+        description: "Comprehensive customer relationship management with AI-powered sales optimization.",
+        icon: "📈",
+        tagline: "Enterprise Sales Optimization",
+        overview: "Enterprise CRM systems manage complex sales processes with AI insights.",
+        whyChoose: {
+          intro: "Manage enterprise customer relationships",
+          points: [
+            "Customer 360 view",
+            "AI sales forecasting",
+            "Opportunity scoring",
+            "Sales analytics",
+            "Pipeline management"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Enterprise CRM solutions:",
+          solutions: [
+            "CRM platforms",
+            "Sales forecasting systems",
+            "Customer analytics",
+            "Lead management",
+            "Deal tracking systems"
+          ],
+          footer: "Enterprise customer relationships."
+        },
+        coreCapabilities: [
+          "Customer data management",
+          "Sales forecasting",
+          "Opportunity scoring",
+          "Pipeline analytics",
+          "Integration capabilities"
+        ],
+        idealFor: ["Sales organizations", "Large enterprises", "B2B companies"],
+        businessOutcomes: ["Higher revenue", "Better forecasts", "Shorter cycles", "Customer insights"]
+      },
+      {
+        id: "business-intelligence",
+        name: "Business Intelligence & Analytics",
+        description: "Advanced analytics and BI platforms for enterprise decision-making.",
+        icon: "📊",
+        tagline: "Data-Driven Enterprise Decisions",
+        overview: "Enterprise BI systems turn data into actionable intelligence.",
+        whyChoose: {
+          intro: "Make data-driven decisions",
+          points: [
+            "Data warehouse solutions",
+            "Advanced analytics",
+            "Real-time dashboards",
+            "Predictive insights",
+            "Data visualization"
+          ]
+        },
+        whatWeBuild: {
+          intro: "BI & Analytics platforms:",
+          solutions: [
+            "Data warehouses",
+            "BI dashboards",
+            "Analytics platforms",
+            "Data lakes",
+            "Reporting systems"
+          ],
+          footer: "Intelligence-driven insights."
+        },
+        coreCapabilities: [
+          "Data integration",
+          "Advanced analytics",
+          "Real-time dashboards",
+          "Predictive modeling",
+          "Data visualization"
+        ],
+        idealFor: ["Enterprises", "Financial firms", "Retail"],
+        businessOutcomes: ["Better decisions", "Faster insights", "Competitive advantage", "ROI visibility"]
+      },
+      {
+        id: "bfsi-banking",
+        name: "BFSI (Banking, Financial Services, Insurance)",
+        description: "Banking, financial services, and insurance solutions with security and compliance.",
+        icon: "🏦",
+        tagline: "Secure Financial Services",
+        overview: "BFSI systems handle sensitive financial data with bank-grade security.",
+        whyChoose: {
+          intro: "Build trusted financial services",
+          points: [
+            "Bank-grade security",
+            "Regulatory compliance",
+            "Fraud prevention",
+            "Risk management",
+            "Customer onboarding"
+          ]
+        },
+        whatWeBuild: {
+          intro: "BFSI solutions:",
+          solutions: [
+            "Core banking systems",
+            "Insurance platforms",
+            "Wealth management",
+            "Compliance systems",
+            "Risk management platforms"
+          ],
+          footer: "Secure financial services."
+        },
+        coreCapabilities: [
+          "Security & encryption",
+          "Compliance management",
+          "Fraud detection",
+          "Risk analytics",
+          "Customer management"
+        ],
+        idealFor: ["Banks", "Insurance companies", "Financial firms"],
+        businessOutcomes: ["Regulatory compliance", "Fraud reduction", "Customer trust", "Operational efficiency"]
+      },
+      {
+        id: "hrms-payroll",
+        name: "HRMS & Payroll Systems",
+        description: "Human resource management and payroll systems for enterprise HR operations.",
+        icon: "💰",
+        tagline: "Enterprise HR & Payroll",
+        overview: "Enterprise HRMS systems manage all HR and payroll functions.",
+        whyChoose: {
+          intro: "Manage enterprise HR at scale",
+          points: [
+            "Payroll automation",
+            "Benefits management",
+            "Employee self-service",
+            "Compliance management",
+            "Analytics & insights"
+          ]
+        },
+        whatWeBuild: {
+          intro: "HRMS solutions:",
+          solutions: [
+            "HRMS platforms",
+            "Payroll systems",
+            "Benefits management",
+            "Time tracking",
+            "Performance management"
+          ],
+          footer: "Enterprise HR management."
+        },
+        coreCapabilities: [
+          "Payroll processing",
+          "Benefits administration",
+          "Employee data management",
+          "Compliance tracking",
+          "Analytics dashboards"
+        ],
+        idealFor: ["Large enterprises", "HR departments", "Multinational companies"],
+        businessOutcomes: ["Cost savings", "Compliance", "Employee satisfaction", "Operational efficiency"]
+      },
+      {
+        id: "supply-chain-procurement",
+        name: "Supply Chain & Procurement Systems",
+        description: "End-to-end supply chain management and procurement automation.",
+        icon: "🔗",
+        tagline: "Smart Supply Chain",
+        overview: "Enterprise supply chain systems optimize purchasing and vendor management.",
+        whyChoose: {
+          intro: "Optimize enterprise supply chain",
+          points: [
+            "Procurement automation",
+            "Vendor management",
+            "Contract management",
+            "Cost optimization",
+            "Supply visibility"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Supply chain solutions:",
+          solutions: [
+            "Procurement platforms",
+            "Vendor management systems",
+            "Inventory management",
+            "Supplier portals",
+            "Cost optimization tools"
+          ],
+          footer: "Intelligent supply chain."
+        },
+        coreCapabilities: [
+          "Procurement automation",
+          "Vendor management",
+          "Contract management",
+          "Cost analytics",
+          "Supply planning"
+        ],
+        idealFor: ["Large retailers", "Manufacturing", "Enterprises"],
+        businessOutcomes: ["Cost savings", "Better terms", "Faster procurement", "Risk reduction"]
+      },
+      {
+        id: "cybersecurity-compliance",
+        name: "Cybersecurity & Compliance Solutions",
+        description: "Enterprise-grade security and compliance management systems.",
+        icon: "🛡️",
+        tagline: "Enterprise Security & Compliance",
+        overview: "Enterprise security systems protect and manage compliance across the organization.",
+        whyChoose: {
+          intro: "Secure your enterprise",
+          points: [
+            "Threat detection",
+            "Compliance automation",
+            "Risk management",
+            "Access control",
+            "Incident response"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Security solutions:",
+          solutions: [
+            "Security operations centers",
+            "Compliance platforms",
+            "Identity management",
+            "Threat intelligence",
+            "Audit management"
+          ],
+          footer: "Enterprise security."
+        },
+        coreCapabilities: [
+          "Threat detection",
+          "Compliance monitoring",
+          "Risk assessment",
+          "Access management",
+          "Incident tracking"
+        ],
+        idealFor: ["Large enterprises", "Regulated industries", "Financial firms"],
+        businessOutcomes: ["Risk reduction", "Compliance", "Breach prevention", "Audit readiness"]
       },
       {
         id: "manufacturing-industrial",
-        name: "Manufacturing & Industrial",
-        description: "AI-driven predictive maintenance, supply chain optimization, and quality control systems.",
+        name: "Manufacturing & Industrial Automation",
+        description: "Smart manufacturing and industrial IoT solutions for operations optimization.",
         icon: "🏭",
-        tagline: "Smart Manufacturing & Industry 4.0",
-        overview: "Empower your manufacturing operations with Industry 4.0 solutions. We build AI systems that predict equipment failures, optimize production schedules, and ensure product quality through computer vision.",
+        tagline: "Smart Manufacturing",
+        overview: "Manufacturing systems optimize production with IoT and AI.",
         whyChoose: {
-          intro: "Optimize production with AI:",
+          intro: "Optimize manufacturing operations",
           points: [
-            "Predictive Maintenance Alerts",
-            "Computer Vision Quality Control",
-            "Supply Chain Twin Simulation",
-            "Worker Safety Monitoring AI",
-            "Energy Consumption Optimization"
+            "Production optimization",
+            "Predictive maintenance",
+            "Quality control",
+            "IoT integration",
+            "Process efficiency"
           ]
         },
         whatWeBuild: {
-          intro: "Industrial solutions:",
+          intro: "Manufacturing solutions:",
           solutions: [
-            "Defect Detection Systems",
-            "Process Optimization Engines",
-            "Inventory Management AI",
-            "Robotics Integration Middleware",
-            "Production Dashboards"
+            "MES platforms",
+            "Predictive maintenance",
+            "Quality control systems",
+            "Inventory management",
+            "Production planning"
           ],
-          footer: "Building the factory of the future."
+          footer: "Intelligent manufacturing."
         },
         coreCapabilities: [
-          "Defect Detection (Vision)",
-          "Predictive Maintenance",
-          "Production Forecasting",
-          "Digital Twin"
+          "IoT integration",
+          "Predictive maintenance",
+          "Quality analytics",
+          "Production tracking",
+          "Performance monitoring"
         ],
-        idealFor: [
-          "Automotive Manufacturers",
-          "FMCG Factories",
-          "Electronics Assembly",
-          "Heavy Industry"
-        ],
-        businessOutcomes: [
-          "Reduced Downtime",
-          "Lower Waste & Scrap",
-          "Higher Production Throughput",
-          "Improved Worker Safety"
-        ]
+        idealFor: ["Manufacturing plants", "Industrial companies", "Utilities"],
+        businessOutcomes: ["Uptime improvement", "Reduced downtime", "Quality improvement", "Cost savings"]
       },
       {
-        id: "it-services-consulting",
-        name: "IT Services & Consulting",
-        description: "AI capability enhancement for IT service providers and consultancy firms.",
+        id: "it-services",
+        name: "IT Services & Managed Services",
+        description: "Platforms for IT service delivery, ticketing, and managed services.",
         icon: "💻",
-        tagline: "AI for IT Modernization",
-        overview: "Enhance your IT service offerings with white-labeled AI capabilities. We partner with consultancies to deliver AI transformation projects, from automated code migration to intelligent test automation.",
+        tagline: "Enterprise IT Operations",
+        overview: "IT services platforms manage infrastructure and service delivery.",
         whyChoose: {
-          intro: "Accelerate delivery:",
+          intro: "Manage enterprise IT operations",
           points: [
-            "Automated Code Refactoring",
-            "Test Case Generation",
-            "Log Analysis & Anomaly Detection",
-            "AI-Assisted DevOps",
-            "Knowledge Base Automation"
+            "ITSM solutions",
+            "Helpdesk automation",
+            "Monitoring & alerting",
+            "Change management",
+            "Asset management"
           ]
         },
         whatWeBuild: {
-          intro: "We build:",
+          intro: "IT service solutions:",
           solutions: [
-            "AIOps Platforms",
-            "Service Desk Chatbots",
-            "Migration Accelerators",
-            "Performance Monitoring Tools",
-            "Developer Productivity Suites"
+            "ITSM platforms",
+            "Help desk systems",
+            "Monitoring tools",
+            "Asset management",
+            "Incident management"
           ],
-          footer: "Scaling IT expertise with AI."
+          footer: "Enterprise IT management."
         },
         coreCapabilities: [
-          "Code Generation",
-          "Automated Testing",
-          "Incident Response AI",
-          "Legacy System Analytics"
+          "Ticketing systems",
+          "Monitoring & alerting",
+          "Change management",
+          "Asset tracking",
+          "Service analytics"
         ],
-        idealFor: [
-          "System Integrators",
-          "Managed Service Providers",
-          "Digital Agencies",
-          "IT Consultancies"
-        ],
-        businessOutcomes: [
-          "Faster Project Delivery",
-          "Higher Margins",
-          "Reduced Support Ticket Volume",
-          "Competitive Differentiation"
-        ]
-      },
-      {
-        id: "telecom-networking",
-        name: "Telecom & Networking",
-        description: "AI solutions for network optimization, customer experience management, and fraud prevention.",
-        icon: "📡",
-        tagline: "Intelligent Networks & Connectivity",
-        overview: "Transform telecommunications with AI. We help telcos optimize network performance, predict outages, and deliver hyper-personalized customer experiences.",
-        whyChoose: {
-          intro: "Connect smarter:",
-          points: [
-            "Predictive Network Maintenance",
-            "Churn Prediction & Prevention",
-            "Automated Network Planning",
-            "Fraud & Revenue Assurance",
-            "Intelligent Customer Support"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Telecom innovations:",
-          solutions: [
-            "Network Operations Center (NOC) AI",
-            "Self-Optimizing Network (SON) Tools",
-            "Customer Experience Management (CEM)",
-            "Billing Anomaly Detection",
-            "Field Force Management Apps"
-          ],
-          footer: "Powering the next generation of connectivity."
-        },
-        coreCapabilities: [
-          "Network Traffic Analysis",
-          "Signal Quality Prediction",
-          "Customer Churn Modeling",
-          "Automated Routing"
-        ],
-        idealFor: [
-          "Mobile Network Operators",
-          "ISPs",
-          "Tower Companies",
-          "Network Equipment Vendors"
-        ],
-        businessOutcomes: [
-          "Improved Network Uptime",
-          "Reduced Customer Churn",
-          "Lower OpEx",
-          "Faster Issue Resolution"
-        ]
-      },
-      {
-        id: "energy-utilities",
-        name: "Energy & Utilities",
-        description: "AI for smart grids, renewable energy management, and demand forecasting.",
-        icon: "⚡",
-        tagline: "Smarter Energy for a Sustainable Future",
-        overview: "Drive the energy transition with AI. We build systems for load forecasting, renewable energy integration, and predictive maintenance of utility assets.",
-        whyChoose: {
-          intro: "Energize efficiency:",
-          points: [
-            "Accurate Demand Forecasting",
-            "Grid Load Balancing",
-            "Renewable Output Prediction",
-            "Asset Health Monitoring",
-            "Energy Trading AI"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Utility solutions:",
-          solutions: [
-            "Smart Grid Managment Systems",
-            "Energy Consumption Analytics",
-            "Solar/Wind Forecasting Tools",
-            "Outage Management Systems",
-            "Customer Energy Portals"
-          ],
-          footer: "Innovating for energy efficiency."
-        },
-        coreCapabilities: [
-          "Time-series Forecasting",
-          "Grid Anomaly Detection",
-          "Satellite Imagery Analysis",
-          "Predictive Asset Maintenance"
-        ],
-        idealFor: [
-          "Utility Companies",
-          "Renewable Energy Firms",
-          "Grid Operators",
-          "Energy Traders"
-        ],
-        businessOutcomes: [
-          "Grid Stability",
-          "Optimized Energy Trading",
-          "Reduced Outage Duration",
-          "Lower Carbon Footprint"
-        ]
-      },
-      {
-        id: "government-public-sector",
-        name: "Government & Public Sector",
-        description: "Secure AI solutions for citizen services, public safety, and administrative efficiency.",
-        icon: "🏛️",
-        tagline: "Efficient, Transparent & Smart Governance",
-        overview: "Modernize public services with secure AI. We help government agencies automate processes, improve citizen engagement, and make data-driven policy decisions.",
-        whyChoose: {
-          intro: "Serve citizens better:",
-          points: [
-            "Automated Document Processing",
-            "Smart City Traffic Management",
-            "Public Safety Analytics",
-            "Fraud Detection in Benefits",
-            "Citizen Chatbots"
-          ]
-        },
-        whatWeBuild: {
-          intro: "GovTech solutions:",
-          solutions: [
-            "e-Governance Portals",
-            "Traffic & Urban Planning Tools",
-            "Public Safety Command Systems",
-            "Tax Compliance AI",
-            "Social Service Case Management"
-          ],
-          footer: "Technology for the public good."
-        },
-        coreCapabilities: [
-          "Document Digitization (OCR)",
-          "Privacy-Preserving Analytics",
-          "Traffic Pattern Analysis",
-          "Sentiment Analysis on Public Feedback"
-        ],
-        idealFor: [
-          "City Municipalities",
-          "Federal Agencies",
-          "Public Transport Authorities",
-          "Urban Planning Departments"
-        ],
-        businessOutcomes: [
-          "Faster Service Delivery",
-          "Improved Public Trust",
-          "Cost Savings",
-          "Better Resource Allocation"
-        ]
-      },
-      {
-        id: "retail-consumer-enterprises",
-        name: "Retail & Consumer",
-        description: "AI strategies for large retail chains to unify online and offline experiences.",
-        icon: "🛍️",
-        tagline: "Unified Commerce & Customer Intelligence",
-        overview: "Bridge the gap between digital and physical retail. We help enterprise retailers use AI to optimize supply chains, personalize marketing, and store operations.",
-        whyChoose: {
-          intro: "Retail reimagined:",
-          points: [
-            "Omnichannel Customer View",
-            "Planogram Compliance AI",
-            "Dynamic Pricing Strategy",
-            "Demand Sensing",
-            "Personalized Loyalty Programs"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Enterprise Retail tools:",
-          solutions: [
-            "Retail Media Networks",
-            "Smart Shelf Monitoring",
-            "Supply Chain Visibility Platforms",
-            "Customer Data Platforms (CDP)",
-            "Store Operations Apps"
-          ],
-          footer: "Delivering the future of retail."
-        },
-        coreCapabilities: [
-          "Image Recognition (Shelves)",
-          "Demand Forecasting",
-          "Customer Clustering",
-          "Price Elasticity Modeling"
-        ],
-        idealFor: [
-          "Retail Chains",
-          "CPG Brands",
-          "Department Stores",
-          "Supermarkets"
-        ],
-        businessOutcomes: [
-          "Increased Same-Store Sales",
-          "Optimized Inventory",
-          "Higher Customer Lifetime Value",
-          "Streamlined Store Ops"
-        ]
+        idealFor: ["IT teams", "MSPs", "Enterprises"],
+        businessOutcomes: ["Faster resolution", "Better service", "Cost efficiency", "Uptime improvement"]
       }
     ]
   },
@@ -1018,584 +969,780 @@ export const industries: Industry[] = [
     name: "E-Commerce",
     icon: "🛒",
     image: ecommerceImage,
-    imageAlt: "NanoFlows E-Commerce AI Solutions - Personalized shopping experiences, cart recovery, and AI-powered product recommendations",
-    tagline: "AI That Converts Browsers Into Buyers",
-    description: "Boost conversions, increase average order value, and deliver personalized shopping experiences at scale.",
+    imageAlt: "NanoFlows E-Commerce AI Solutions - Personalization, optimization, and growth for online retailers",
+    tagline: "AI-Powered E-Commerce Growth",
+    description: "Transform your online store with AI-driven personalization, optimization, and customer engagement that increases conversion and lifetime value.",
     subIndustries: [
+      {
+        id: "ai-personalization",
+        name: "AI-Powered Personalization & CRO",
+        description: "Personalization engines and conversion rate optimization powered by AI.",
+        icon: "✨",
+        tagline: "Personalized Shopping Experiences",
+        overview: "AI personalization engines increase conversion by adapting to each customer.",
+        whyChoose: {
+          intro: "Convert more visitors",
+          points: [
+            "Dynamic personalization",
+            "AI recommendations",
+            "Behavior prediction",
+            "A/B testing automation",
+            "Conversion optimization"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Personalization solutions:",
+          solutions: [
+            "Recommendation engines",
+            "Personalization platforms",
+            "A/B testing tools",
+            "CRO analytics",
+            "Customer journey optimization"
+          ],
+          footer: "Personalized experiences."
+        },
+        coreCapabilities: [
+          "Recommendation algorithms",
+          "Behavior prediction",
+          "Dynamic content",
+          "A/B testing",
+          "Conversion analytics"
+        ],
+        idealFor: ["E-commerce sites", "Retailers", "Online marketplaces"],
+        businessOutcomes: ["Higher conversion", "Increased AOV", "Better engagement", "Customer loyalty"]
+      },
+      {
+        id: "omnichannel-retail",
+        name: "Omnichannel Retail Systems",
+        description: "Unified retail systems managing online, mobile, and physical store operations.",
+        icon: "🔄",
+        tagline: "Unified Retail Operations",
+        overview: "Omnichannel systems integrate all retail channels for seamless experiences.",
+        whyChoose: {
+          intro: "Sell everywhere",
+          points: [
+            "Channel integration",
+            "Unified inventory",
+            "Consistent experience",
+            "Cross-channel tracking",
+            "Customer unification"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Omnichannel solutions:",
+          solutions: [
+            "Omnichannel platforms",
+            "Inventory management",
+            "POS systems",
+            "Order management",
+            "Customer management"
+          ],
+          footer: "Unified retail."
+        },
+        coreCapabilities: [
+          "Channel integration",
+          "Inventory synchronization",
+          "Order routing",
+          "Customer profiles",
+          "Analytics across channels"
+        ],
+        idealFor: ["Retailers", "Department stores", "Fashion brands"],
+        businessOutcomes: ["Seamless experience", "Increased sales", "Inventory efficiency", "Customer satisfaction"]
+      },
+      {
+        id: "order-inventory-management",
+        name: "Order & Inventory Management Systems",
+        description: "Intelligent order and inventory management for retail optimization.",
+        icon: "📦",
+        tagline: "Smart Order & Inventory",
+        overview: "Inventory systems optimize stock levels and fulfill orders efficiently.",
+        whyChoose: {
+          intro: "Optimize your inventory",
+          points: [
+            "Demand forecasting",
+            "Inventory optimization",
+            "Order fulfillment",
+            "Warehouse management",
+            "Cost reduction"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Inventory solutions:",
+          solutions: [
+            "Inventory management systems",
+            "Warehouse management",
+            "Order fulfillment",
+            "Shipping & logistics",
+            "Return management"
+          ],
+          footer: "Intelligent inventory."
+        },
+        coreCapabilities: [
+          "Demand forecasting",
+          "Inventory optimization",
+          "Order tracking",
+          "Warehouse automation",
+          "Cost analytics"
+        ],
+        idealFor: ["E-commerce", "Retailers", "Warehousing"],
+        businessOutcomes: ["Lower inventory costs", "Faster fulfillment", "Fewer stockouts", "Better margins"]
+      },
+      {
+        id: "d2c-brands",
+        name: "D2C Brand Platforms",
+        description: "Direct-to-consumer platforms for online brand selling and customer engagement.",
+        icon: "🎯",
+        tagline: "Direct Customer Connection",
+        overview: "D2C platforms help brands sell directly and build customer relationships.",
+        whyChoose: {
+          intro: "Build your D2C brand",
+          points: [
+            "Store builder",
+            "Customer management",
+            "Marketing automation",
+            "Community building",
+            "Analytics"
+          ]
+        },
+        whatWeBuild: {
+          intro: "D2C solutions:",
+          solutions: [
+            "E-commerce platforms",
+            "Store builders",
+            "Customer loyalty programs",
+            "Email marketing",
+            "Analytics dashboards"
+          ],
+          footer: "Direct brand connection."
+        },
+        coreCapabilities: [
+          "Store management",
+          "Customer relationships",
+          "Marketing automation",
+          "Community features",
+          "Sales analytics"
+        ],
+        idealFor: ["Brands", "Niche sellers", "Startups"],
+        businessOutcomes: ["Higher margins", "Customer loyalty", "Direct data", "Brand control"]
+      },
       {
         id: "multi-vendor-marketplaces",
         name: "Multi-Vendor Marketplaces",
-        description: "AI solutions for scaling marketplaces, managing vendors, and personalizing search.",
-        icon: "🏪",
-        tagline: "Scalable Marketplace Intelligence",
-        overview: "Build the next Amazon or Etsy with AI. We provide engines for vendor management, catalog unification, and intelligent search to power complex multi-vendor ecosystems.",
+        description: "Marketplace platforms managing multiple vendors and their inventory.",
+        icon: "🏬",
+        tagline: "Vendor Marketplace Platform",
+        overview: "Marketplace platforms connect multiple sellers and buyers.",
         whyChoose: {
-          intro: "Scale your marketplace:",
+          intro: "Build a thriving marketplace",
           points: [
-            "Vendor Onboarding Automation",
-            "Unified Catalog Search",
-            "Fraud & Quality Control",
-            "Dynamic Commission Models",
-            "Hyper-personalized Feeds"
+            "Vendor management",
+            "Commission system",
+            "Dispute resolution",
+            "Quality control",
+            "Growth automation"
           ]
         },
         whatWeBuild: {
-          intro: "Marketplace tech:",
+          intro: "Marketplace solutions:",
           solutions: [
-            "Vendor Portals",
-            "Marketplace Admin Dashboards",
-            "Cross-border Payment Systems",
-            "Dispute Resolution AI",
-            "User Review Analyzers"
+            "Marketplace platforms",
+            "Vendor portals",
+            "Commission management",
+            "Quality assurance",
+            "Logistics integration"
           ],
-          footer: "Creating thriving digital economies."
+          footer: "Multi-vendor success."
         },
         coreCapabilities: [
-          "Catalog Matching",
-          "Search & Discovery",
-          "Fraud Detection",
-          "Pricing Optimization"
+          "Vendor onboarding",
+          "Commission tracking",
+          "Dispute management",
+          "Quality monitoring",
+          "Growth analytics"
         ],
-        idealFor: [
-          "B2B Marketplaces",
-          "Service Aggregators",
-          "Niche Retail Platforms",
-          "Global Trade Hubs"
-        ],
-        businessOutcomes: [
-          "Faster GMV Growth",
-          "Lower Operational Overhead",
-          "Better Vendor Retention",
-          "Increased Trust & Safety"
-        ]
+        idealFor: ["Marketplace operators", "Enterprise e-commerce", "Hyperlocal"],
+        businessOutcomes: ["Network effects", "Higher GMV", "Vendor satisfaction", "Scalability"]
       },
       {
-        id: "b2c-online-retail",
-        name: "B2C Online Retail",
-        description: "AI-driven solutions for online retailers to optimize sales, marketing, and customer service.",
-        icon: "🛍️",
-        tagline: "Personalized Shopping Experiences",
-        overview: "Transform your online store with AI. We build solutions that personalize shopping journeys, automate marketing, and streamline inventory management.",
+        id: "subscription-commerce",
+        name: "Subscription-Based Commerce",
+        description: "Subscription platforms for recurring revenue models and customer retention.",
+        icon: "🔁",
+        tagline: "Recurring Revenue Platform",
+        overview: "Subscription platforms build predictable revenue from repeat customers.",
         whyChoose: {
-          intro: "Why AI for E-Commerce:",
+          intro: "Build subscription business",
           points: [
-            "Increased Conversion Rates",
-            "Higher Average Order Value",
-            "Reduced Cart Abandonment",
-            "Automated Customer Support",
-            "Optimized Inventory Levels"
+            "Subscription management",
+            "Billing automation",
+            "Churn prediction",
+            "Customer retention",
+            "Lifetime value optimization"
           ]
         },
         whatWeBuild: {
-          intro: "We build:",
+          intro: "Subscription solutions:",
           solutions: [
-            "Recommendation Engines",
-            "Visual Search Tools",
-            "Dynamic Pricing Models",
-            "Chatbots for Order Tracking",
-            "Automated Email Marketing"
+            "Subscription platforms",
+            "Billing systems",
+            "Retention tools",
+            "Analytics dashboards",
+            "Customer portals"
           ],
-          footer: "Scaling your retail business with intelligence."
+          footer: "Predictable revenue."
         },
         coreCapabilities: [
-          "Product Recommendations",
-          "Behavioral Targeting",
-          "Inventory Forecasting",
-          "Visual Search"
+          "Subscription management",
+          "Recurring billing",
+          "Churn prediction",
+          "Retention automation",
+          "Revenue analytics"
         ],
-        idealFor: [
-          "Online Fashion Retailers",
-          "Electronics Stores",
-          "Home Goods Brands",
-          "DTC Brands"
-        ],
-        businessOutcomes: [
-          "Higher Revenue per User",
-          "Improved Customer Loyalty",
-          "Lower Support Costs",
-          "Efficient Inventory Management"
-        ]
+        idealFor: ["Box services", "SaaS", "Membership sites"],
+        businessOutcomes: ["Predictable revenue", "Customer lifetime value", "Churn reduction", "Growth"]
       },
       {
-        id: "b2b-ecommerce-platforms",
-        name: "B2B E-Commerce",
-        description: "AI-driven platforms for wholesale, distribution, and complex B2B buying journeys.",
-        icon: "🏭",
-        tagline: "Modernizing B2B Trade",
-        overview: "Streamline B2B sales with AI. From bulk ordering to negotiated pricing, we build platforms that simplify complex procurement processes for businesses.",
-        whyChoose: {
-          intro: "Simplify B2B sales:",
-          points: [
-            "Automated Quote Generation (CPQ)",
-            "Dynamic Pricing Logic",
-            "Reorder Prediction",
-            "Credit Risk Assessment",
-            "Self-service Portals"
-          ]
-        },
-        whatWeBuild: {
-          intro: "B2B Solutions:",
-          solutions: [
-            "Wholesale Portals",
-            "Distributor Management Systems",
-            "Quick Order Apps",
-            "Procurement Integrations",
-            "Sales Rep Analytics"
-          ],
-          footer: "Digitizing the supply chain."
-        },
-        coreCapabilities: [
-          "CPQ Automation",
-          "Pricing Engines",
-          "Inventory Sync",
-          "Account Management AI"
-        ],
-        idealFor: [
-          "Wholesalers",
-          "Manufacturers",
-          "Distributors",
-          "Industrial Suppliers"
-        ],
-        businessOutcomes: [
-          "Higher Average Order Value",
-          "Reduced Sales Admin Time",
-          "Faster Quote-to-Cash",
-          "Improved Customer Stickiness"
-        ]
-      },
-      {
-        id: "fashion-lifestyle-ecommerce",
-        name: "Fashion & Lifestyle",
-        description: "AI for visual commerce, trend prediction, and personalized styling.",
-        icon: "👗",
-        tagline: "Style & Substance with AI",
-        overview: "Lead the fashion industry with AI. We build visual search, virtual try-on, and trend forecasting tools that delight customers and reduce returns.",
-        whyChoose: {
-          intro: "Innovate in fashion:",
-          points: [
-            "Virtual Try-On Tech",
-            "Visual Search & Discovery",
-            "Size Recommendation AI",
-            "Trend Forecasting",
-            "Automated Tagging"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Fashion tech:",
-          solutions: [
-            "Personal Styling Apps",
-            "Smart Mirrors for Retail",
-            "Sustainability Trackers",
-            "Influencer Marketing Platforms",
-            "Inventory Planning Bots"
-          ],
-          footer: "Defining the future of style."
-        },
-        coreCapabilities: [
-          "Computer Vision (Style)",
-          "Size Fitting Algorithms",
-          "Trend Analysis",
-          "Social Commerce"
-        ],
-        idealFor: [
-          "Fashion Brands",
-          "Luxury Retailers",
-          "Apparel Startups",
-          "Lifestyle Marketplaces"
-        ],
-        businessOutcomes: [
-          "Lower Return Rates",
-          "Higher Conversion",
-          "Better Inventory Planning",
-          "Enhanced Brand Loyalty"
-        ]
-      },
-      {
-        id: "grocery-quick-commerce",
-        name: "Grocery & Quick Commerce",
-        description: "Hyper-local delivery algorithms and inventory management for speed and freshness.",
-        icon: "🥦",
-        tagline: "Speed & Freshness Delivered",
-        overview: "Win the race for speed. We build AI for rapid delivery services, optimizing dark stores, rider routes, and inventory to ensure freshness and speed.",
-        whyChoose: {
-          intro: "Deliver faster:",
-          points: [
-            "Hyper-local Demand Prediction",
-            "Dark Store Optimization",
-            "Dynamic Delivery Fees",
-            "Freshness Monitoring",
-            "Rider Fleet Allocation"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Q-Commerce solutions:",
-          solutions: [
-            "Delivery Apps",
-            "Picker Apps for Warehouses",
-            "Inventory Dashboards",
-            "Route Planners",
-            "Supply Chain Integrations"
-          ],
-          footer: "The future of convenience."
-        },
-        coreCapabilities: [
-          "Real-time Routing",
-          "Perishable Management",
-          "Surge Pricing",
-          "Demand Sensing"
-        ],
-        idealFor: [
-          "Grocery Chains",
-          "Delivery Startups",
-          "Dark Store Operators",
-          "FMCG Brands"
-        ],
-        businessOutcomes: [
-          "Reduced Delivery Time",
-          "Lower Spoilage",
-          "Higher Fleet Efficiency",
-          "Customer Convenience"
-        ]
-      },
-      {
-        id: "electronics-digital-goods",
-        name: "Electronics & Digital Goods",
-        description: "Technical product discovery engines and digital download platforms.",
+        id: "social-commerce",
+        name: "Social Commerce (Instagram / WhatsApp)",
+        description: "Shopping integration within social platforms for seamless purchasing.",
         icon: "📱",
-        tagline: "Tech Retail, Upgraded",
-        overview: "Simplify tech buying with AI. We help electronics retailers guide customers through complex specs, compare products, and manage high-value inventory.",
+        tagline: "Social Shopping Platform",
+        overview: "Social commerce platforms let customers shop within social apps.",
         whyChoose: {
-          intro: "Sell tech better:",
+          intro: "Sell on social media",
           points: [
-            "Spec Comparison Engines",
-            "Compatibility Checkers",
-            "Warranty & Repair Automation",
-            "Review Summarization AI",
-            "Digital License Management"
+            "Instagram shopping",
+            "WhatsApp commerce",
+            "Shoppable posts",
+            "Social listening",
+            "Direct messaging sales"
           ]
         },
         whatWeBuild: {
-          intro: "Electronics retail:",
+          intro: "Social commerce solutions:",
           solutions: [
-            "Product Comparison Tools",
-            "Support Bots for Setup",
-            "RMA Management Systems",
-            "Refurbished Certification AI",
-            "Digital Asset Delivery"
+            "Instagram shop integration",
+            "WhatsApp commerce",
+            "Social listening",
+            "Chat commerce",
+            "Influencer management"
           ],
-          footer: "Powering the digital lifestyle."
+          footer: "Social selling."
         },
         coreCapabilities: [
-          "Technical Search",
-          "Compatibility Logic",
-          "Fraud Prevention (Digital)",
-          "Review Analysis"
+          "Social platform integration",
+          "Chat commerce",
+          "Shoppable content",
+          "Social analytics",
+          "Influencer tracking"
         ],
-        idealFor: [
-          "Electronics Retailers",
-          "Software Marketplaces",
-          "Gaming Platforms",
-          "Mobile Carriers"
+        idealFor: ["Fashion", "Beauty", "Lifestyle brands"],
+        businessOutcomes: ["Impulse sales", "Viral reach", "Direct engagement", "Brand loyalty"]
+      },
+      {
+        id: "b2b-wholesale-marketplaces",
+        name: "B2B Wholesale Marketplaces",
+        description: "B2B platforms for wholesale trading and bulk purchasing.",
+        icon: "🏢",
+        tagline: "B2B Wholesale Platform",
+        overview: "B2B marketplaces connect wholesalers and bulk buyers efficiently.",
+        whyChoose: {
+          intro: "Build B2B marketplace",
+          points: [
+            "Bulk pricing",
+            "Order management",
+            "Credit terms",
+            "Supplier network",
+            "Quality control"
+          ]
+        },
+        whatWeBuild: {
+          intro: "B2B solutions:",
+          solutions: [
+            "B2B marketplaces",
+            "Wholesale platforms",
+            "Buyer portals",
+            "Supplier networks",
+            "Order management"
+          ],
+          footer: "B2B commerce."
+        },
+        coreCapabilities: [
+          "Bulk order management",
+          "Dynamic pricing",
+          "Credit management",
+          "Supplier integration",
+          "Quality assurance"
         ],
-        businessOutcomes: [
-          "Reduced Return Rates",
-          "Higher Tech Attach Rate",
-          "Better Customer Education",
-          "Trusted Refurbished Sales"
-        ]
+        idealFor: ["Wholesalers", "Distributors", "Enterprise procurement"],
+        businessOutcomes: ["Efficient bulk sales", "Supplier expansion", "Volume growth", "Better margins"]
+      },
+      {
+        id: "b2c-online-stores",
+        name: "B2C Online Stores",
+        description: "Traditional business-to-consumer online retail platforms.",
+        icon: "🛍️",
+        tagline: "B2C E-Commerce Store",
+        overview: "B2C platforms provide complete online retail functionality.",
+        whyChoose: {
+          intro: "Launch online store",
+          points: [
+            "Store management",
+            "Payment processing",
+            "Shipping integration",
+            "Marketing tools",
+            "Analytics"
+          ]
+        },
+        whatWeBuild: {
+          intro: "B2C solutions:",
+          solutions: [
+            "E-commerce platforms",
+            "Shopping cart systems",
+            "Payment gateways",
+            "Shipping management",
+            "Marketing automation"
+          ],
+          footer: "Complete B2C solution."
+        },
+        coreCapabilities: [
+          "Store management",
+          "Payment processing",
+          "Shipping automation",
+          "Marketing tools",
+          "Sales analytics"
+        ],
+        idealFor: ["Retailers", "Online sellers", "Brands"],
+        businessOutcomes: ["Easier selling", "Global reach", "Integrated experience", "Data visibility"]
+      },
+      {
+        id: "dropshipping",
+        name: "Dropshipping Businesses",
+        description: "Dropshipping platforms connecting retailers with suppliers.",
+        icon: "🚀",
+        tagline: "Dropshipping Operations",
+        overview: "Dropshipping platforms automate the supply chain for online sellers.",
+        whyChoose: {
+          intro: "Start dropshipping",
+          points: [
+            "Supplier network",
+            "Automatic ordering",
+            "Inventory sync",
+            "Order tracking",
+            "Supplier integration"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Dropshipping solutions:",
+          solutions: [
+            "Dropshipping platforms",
+            "Supplier integrations",
+            "Automated ordering",
+            "Inventory sync",
+            "Order fulfillment"
+          ],
+          footer: "Automated dropshipping."
+        },
+        coreCapabilities: [
+          "Supplier integration",
+          "Automatic ordering",
+          "Inventory synchronization",
+          "Order tracking",
+          "Margin management"
+        ],
+        idealFor: ["Online entrepreneurs", "Niche sellers", "New e-commerce"],
+        businessOutcomes: ["Low startup costs", "No inventory risk", "Easy scaling", "Global products"]
       }
     ]
   },
   {
     id: "real-estate",
     name: "Real Estate",
-    icon: "🏠",
+    icon: "🏘️",
     image: realEstateImage,
-    imageAlt: "NanoFlows Real Estate AI Solutions - AI agents for lead qualification, property matching, and 24/7 prospect nurturing",
-    tagline: "AI Agents That Never Miss a Lead",
-    description: "Qualify leads, match properties, and nurture prospects 24/7 so your agents can focus on closing deals.",
+    imageAlt: "NanoFlows Real Estate AI Solutions - CRM, lead automation, and smart property platforms",
+    tagline: "AI-Powered Real Estate Solutions",
+    description: "Streamline property sales, management, and operations with AI-driven CRM, virtual tours, and intelligent lead automation.",
     subIndustries: [
       {
-        id: "residential-real-estate",
-        name: "Residential Real Estate",
-        description: "AI tools for real estate agencies to manage leads, schedule viewings, and market properties.",
-        icon: "🏡",
-        tagline: "Automated Real Estate Operations",
-        overview: "Streamline your real estate business with AI. From lead qualification to property matching, we automate the busy work so agents can focus on closing.",
+        id: "real-estate-crm",
+        name: "Real Estate CRM & Lead Automation",
+        description: "CRM systems for real estate with lead management and sales automation.",
+        icon: "📋",
+        tagline: "Real Estate Lead Management",
+        overview: "Real estate CRM systems automate lead follow-up and sales processes.",
         whyChoose: {
-          intro: "Benefits for Real Estate:",
+          intro: "Manage real estate leads efficiently",
           points: [
-            "24/7 Lead Response",
-            "Automated Viewing Scheduling",
-            "Smart Property Matching",
-            "Market Analysis Insights",
-            "Efficient Client Communication"
+            "Lead capture & scoring",
+            "Automated follow-up",
+            "Property matching",
+            "Client communication",
+            "Sales pipeline"
           ]
         },
         whatWeBuild: {
-          intro: "Solutions for Agencies:",
+          intro: "Real estate CRM solutions:",
           solutions: [
-            "AI Lead Qualifiers",
-            "Automated CRM Updates",
-            "Virtual Tour Experiences",
-            "Property Value Estimators",
-            "Client Follow-up Automation"
+            "Real estate CRM",
+            "Lead management",
+            "Property management",
+            "Client portals",
+            "Sales automation"
           ],
-          footer: "Modernizing real estate transactions."
+          footer: "Smart lead management."
         },
         coreCapabilities: [
-          "Lead Scoring & Qualification",
-          "Automated Scheduling",
-          "Property Matching Algorithms",
-          "Virtual Assistants"
+          "Lead scoring",
+          "Automated follow-up",
+          "Property matching",
+          "Communication tools",
+          "Sales analytics"
         ],
-        idealFor: [
-          "Real Estate Agencies",
-          "Property Management Firms",
-          "Developers",
-          "Brokerages"
+        idealFor: ["Real estate agents", "Brokers", "Agencies"],
+        businessOutcomes: ["More closings", "Better lead conversion", "Time savings", "Repeat business"]
+      },
+      {
+        id: "real-estate-marketing",
+        name: "Real Estate Marketing Automation",
+        description: "Marketing automation platforms for real estate companies and agents.",
+        icon: "📢",
+        tagline: "Real Estate Marketing",
+        overview: "Real estate marketing platforms automate campaigns and lead generation.",
+        whyChoose: {
+          intro: "Generate real estate leads",
+          points: [
+            "Lead generation",
+            "Email campaigns",
+            "Social media automation",
+            "Property promotion",
+            "Market analytics"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Real estate marketing solutions:",
+          solutions: [
+            "Email marketing",
+            "Social media campaigns",
+            "Lead generation",
+            "Property promotion",
+            "Analytics dashboards"
+          ],
+          footer: "Automated real estate marketing."
+        },
+        coreCapabilities: [
+          "Campaign automation",
+          "Lead generation",
+          "Email marketing",
+          "Social media management",
+          "Performance tracking"
         ],
-        businessOutcomes: [
-          "Increased Deal Flow",
-          "Faster Sales Cycles",
-          "Better Agent Productivity",
-          "Higher Client Satisfaction"
-        ]
+        idealFor: ["Real estate firms", "Brokers", "Agents"],
+        businessOutcomes: ["More leads", "Better conversion", "Lower CAC", "Consistent pipeline"]
+      },
+      {
+        id: "booking-virtual-tours",
+        name: "Booking & Virtual Tour Platforms",
+        description: "Virtual tour and booking platforms for property showings.",
+        icon: "🎥",
+        tagline: "Virtual Property Tours",
+        overview: "Virtual tour platforms reduce showing friction and expand reach.",
+        whyChoose: {
+          intro: "Showcase properties virtually",
+          points: [
+            "360 virtual tours",
+            "3D walkthroughs",
+            "Booking automation",
+            "Lead capture",
+            "Mobile experience"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Virtual tour solutions:",
+          solutions: [
+            "Virtual tour platform",
+            "360 photography integration",
+            "Booking system",
+            "Lead capture",
+            "Mobile app"
+          ],
+          footer: "Immersive property experiences."
+        },
+        coreCapabilities: [
+          "Virtual tour creation",
+          "3D visualization",
+          "Automated booking",
+          "Lead capture",
+          "Mobile optimization"
+        ],
+        idealFor: ["Real estate companies", "Property managers", "Brokers"],
+        businessOutcomes: ["More showings", "Faster sales", "Remote viewing", "Lead quality"]
+      },
+      {
+        id: "property-facility-management",
+        name: "Property & Facility Management",
+        description: "Management platforms for properties, facilities, and tenants.",
+        icon: "🔧",
+        tagline: "Property Management System",
+        overview: "Property management systems streamline operations and tenant relations.",
+        whyChoose: {
+          intro: "Manage properties efficiently",
+          points: [
+            "Tenant management",
+            "Maintenance tracking",
+            "Rent collection",
+            "Expense tracking",
+            "Communication"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Property management solutions:",
+          solutions: [
+            "Property management software",
+            "Maintenance tracking",
+            "Tenant portals",
+            "Rent collection",
+            "Financial reporting"
+          ],
+          footer: "Smart property management."
+        },
+        coreCapabilities: [
+          "Tenant management",
+          "Maintenance tracking",
+          "Rent & lease management",
+          "Expense tracking",
+          "Financial reporting"
+        ],
+        idealFor: ["Property managers", "Landlords", "Real estate companies"],
+        businessOutcomes: ["Operational efficiency", "Tenant satisfaction", "Better margins", "Compliance"]
       },
       {
         id: "commercial-real-estate",
-        name: "Commercial Real Estate",
-        description: "AI analytics for commercial property valuation, leasing, and tenant management.",
-        icon: "🏢",
-        tagline: "Smarter Commercial Investments",
-        overview: "Optimize commercial portfolios with AI. We help firms forecast market trends, value assets accurately, and find the perfect tenants for office and retail spaces.",
+        name: "Commercial Real Estate Systems",
+        description: "Platforms for commercial property sales, leasing, and management.",
+        icon: "🏙️",
+        tagline: "Commercial Real Estate",
+        overview: "Commercial real estate systems manage complex deals and relationships.",
         whyChoose: {
-          intro: "Maximize ROI:",
+          intro: "Manage commercial real estate",
           points: [
-            "Lease Abstraction AI",
-            "Vacancy Prediction",
-            "Tenant Credit Scoring",
-            "Market Trend Forecasting",
-            "Smart Building Energy Mgmt"
+            "Deal management",
+            "Lease tracking",
+            "Tenant relations",
+            "Market analysis",
+            "Financial modeling"
           ]
         },
         whatWeBuild: {
-          intro: "CRE tools:",
+          intro: "Commercial RE solutions:",
           solutions: [
-            "Portfolio Management Dashboards",
-            "Automated Valuation Models (AVM)",
-            "Lease Management Systems",
-            "Space Utilization Analytics",
-            "Investment Deal Flow Platforms"
+            "Commercial CRM",
+            "Deal management",
+            "Lease management",
+            "Tenant portals",
+            "Analytics dashboards"
           ],
-          footer: "Data-driven commercial success."
+          footer: "Commercial real estate intelligence."
         },
         coreCapabilities: [
-          "Document Analysis (Leases)",
-          "Predictive Analytics",
-          "Geospatial Intelligence",
-          "Financial Modeling"
+          "Deal tracking",
+          "Lease management",
+          "Tenant management",
+          "Market analytics",
+          "Financial reporting"
         ],
-        idealFor: [
-          "Commercial Brokerages",
-          "REITs",
-          "Asset Managers",
-          "Corporate Real Estate Techs"
-        ],
-        businessOutcomes: [
-          "Higher Occupancy Rates",
-          "Optimized Rental Yields",
-          "Faster Due Diligence",
-          "Lower Operating Costs"
-        ]
+        idealFor: ["Commercial brokers", "REITs", "Property companies"],
+        businessOutcomes: ["Faster closings", "Better deals", "Market insights", "Efficiency"]
       },
       {
-        id: "property-management-firms",
-        name: "Property Management",
-        description: "Automation for maintenance requests, rent collection, and tenant communication.",
-        icon: "🔑",
-        tagline: "Effortless Property Management",
-        overview: "Automate the day-to-day of property management. Our AI solutions handle maintenance tickets, rent reminders, and tenant inquiries so you can scale your portfolio.",
+        id: "broker-channel-partners",
+        name: "Broker & Channel Partner Platforms",
+        description: "Platforms connecting brokers and channel partners for collaboration.",
+        icon: "🤝",
+        tagline: "Broker Network Platform",
+        overview: "Broker platforms enable collaboration and deal sharing.",
         whyChoose: {
-          intro: "Manage more units:",
+          intro: "Build broker networks",
           points: [
-            "Automated Maintenance Triaging",
-            "Rent Collection Reminders",
-            "24/7 Tenant Support Chatbots",
-            "Vendor Scheduling AI",
-            "Lease Renewal Prediction"
+            "Broker management",
+            "Deal distribution",
+            "Commission tracking",
+            "Collaboration tools",
+            "Network effects"
           ]
         },
         whatWeBuild: {
-          intro: "PM software:",
+          intro: "Broker platform solutions:",
           solutions: [
-            "Tenant Portals & Apps",
-            "Maintenance Workflow Automation",
-            "Digital Lease Signing Tools",
-            "Smart Lock Integration",
-            "Accounting & Reporting Suites"
+            "Broker portals",
+            "Deal distribution",
+            "Commission management",
+            "Collaboration tools",
+            "Analytics"
           ],
-          footer: "Scaling property operations."
+          footer: "Unified broker network."
         },
         coreCapabilities: [
-          "NLP for Maintenance Requests",
-          "Automated Notifications",
-          "Payment Processing Integration",
-          "IoT Management"
+          "Broker onboarding",
+          "Deal distribution",
+          "Commission tracking",
+          "Collaboration tools",
+          "Network analytics"
         ],
-        idealFor: [
-          "Property Managers",
-          "Landlords",
-          "HOA Management Companies",
-          "Student Housing Operators"
-        ],
-        businessOutcomes: [
-          "Reduced Admin Work",
-          "Faster Maintenance Resolution",
-          "Improved Tenant Retention",
-          "Scalable Operations"
-        ]
+        idealFor: ["Real estate networks", "Brokerage firms", "Brokers"],
+        businessOutcomes: ["More deals", "Stronger network", "Revenue sharing", "Growth"]
       },
       {
-        id: "real-estate-developers",
-        name: "Real Estate Developers",
-        description: "AI for site selection, project planning, and construction management.",
+        id: "real-estate-analytics",
+        name: "Real Estate Analytics & Forecasting",
+        description: "Analytics and predictive tools for real estate market insights.",
+        icon: "📈",
+        tagline: "Real Estate Intelligence",
+        overview: "Real estate analytics provide market insights and predictions.",
+        whyChoose: {
+          intro: "Understand real estate markets",
+          points: [
+            "Market analysis",
+            "Price forecasting",
+            "Investment insights",
+            "Trend prediction",
+            "Competitive analysis"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Analytics solutions:",
+          solutions: [
+            "Analytics dashboards",
+            "Price forecasting",
+            "Market reports",
+            "Investment analysis",
+            "Trend tracking"
+          ],
+          footer: "Data-driven real estate decisions."
+        },
+        coreCapabilities: [
+          "Market analysis",
+          "Price prediction",
+          "Trend analysis",
+          "Competitive intelligence",
+          "Investment metrics"
+        ],
+        idealFor: ["Investors", "Analysts", "Real estate firms"],
+        businessOutcomes: ["Better investments", "Market insights", "Risk reduction", "Timing advantage"]
+      },
+      {
+        id: "residential-portals",
+        name: "Residential Property Portals",
+        description: "Portals for listing and searching residential properties.",
+        icon: "🏠",
+        tagline: "Residential Property Portal",
+        overview: "Residential portals are major traffic drivers for property search.",
+        whyChoose: {
+          intro: "Build property portal",
+          points: [
+            "Property listings",
+            "Search functionality",
+            "Lead capture",
+            "Agent network",
+            "User engagement"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Residential portal solutions:",
+          solutions: [
+            "Property portal",
+            "Listing management",
+            "Search engine",
+            "Agent network",
+            "Mobile apps"
+          ],
+          footer: "Residential property discovery."
+        },
+        coreCapabilities: [
+          "Listing management",
+          "Advanced search",
+          "Lead capture",
+          "Agent connectivity",
+          "Mobile experience"
+        ],
+        idealFor: ["Real estate sites", "Brokers", "Portal operators"],
+        businessOutcomes: ["User traffic", "Lead generation", "Agent network", "Revenue model"]
+      },
+      {
+        id: "construction-project-management",
+        name: "Construction Project Management",
+        description: "Project management platforms for construction and development.",
         icon: "🏗️",
-        tagline: "Build Smarter with Data",
-        overview: "De-risk development with AI. We provide data-driven insights for site selection, cost estimation, and project timeline management to ensure profitable developments.",
+        tagline: "Construction Management",
+        overview: "Construction platforms manage complex projects, budgets, and teams.",
         whyChoose: {
-          intro: "Build with confidence:",
+          intro: "Manage construction projects",
           points: [
-            "AI-Driven Site Selection",
-            "Construction Cost Forecasting",
-            "Regulatory Compliance Checks",
-            "Project Timeline Optimization",
-            "Virtual Staging for Presales"
+            "Project tracking",
+            "Budget management",
+            "Team collaboration",
+            "Document management",
+            "Timeline tracking"
           ]
         },
         whatWeBuild: {
-          intro: "Development tech:",
+          intro: "Construction solutions:",
           solutions: [
-            "Land Acquisition Analyzers",
-            "Project Management ERPs",
-            "Budget Tracking Tools",
-            "Investor Reporting Portals",
-            "Zoning Analysis AI"
+            "Project management",
+            "Budget tracking",
+            "Team collaboration",
+            "Document management",
+            "Reporting"
           ],
-          footer: "From ground-breaking to ribbon-cutting."
+          footer: "Smart construction management."
         },
         coreCapabilities: [
-          "Geospatial Data Analysis",
-          "Cost Modeling",
-          "Generative Design",
-          "Risk Assessment"
+          "Project tracking",
+          "Budget management",
+          "Collaboration tools",
+          "Document management",
+          "Progress reporting"
         ],
-        idealFor: [
-          "Residential Developers",
-          "Commercial Developers",
-          "Urban Planners",
-          "Infrastructure Firms"
-        ],
-        businessOutcomes: [
-          "Identify Best Sites Faster",
-          "Avoid Cost Overruns",
-          "Accelerate Presales",
-          "Streamlined Permitting"
-        ]
+        idealFor: ["Contractors", "Developers", "Construction firms"],
+        businessOutcomes: ["On-time delivery", "Budget control", "Team efficiency", "Better communication"]
       },
       {
-        id: "hospitality-vacation-rentals",
-        name: "Hospitality & Vacation Rentals",
-        description: "Dynamic pricing and guest experience AI for hotels and short-term rentals.",
-        icon: "🏨",
-        tagline: "Five-Star Guest Experiences",
-        overview: "Maximize revenue per available room (RevPAR) with AI. We build dynamic pricing engines and guest experience platforms for the hospitality industry.",
+        id: "smart-property-iot",
+        name: "Smart Property / IoT Solutions",
+        description: "IoT and smart home solutions for intelligent property management.",
+        icon: "🏠",
+        tagline: "Smart Property Technology",
+        overview: "Smart property systems use IoT for connected, automated properties.",
         whyChoose: {
-          intro: "Host better:",
+          intro: "Make properties smart",
           points: [
-            "Dynamic Pricing Algorithms",
-            "Automated Guest Messaging",
-            "Review Sentiment Analysis",
-            "Housekeeping Scheduling Optimization",
-            "Direct Booking Engines"
+            "Smart controls",
+            "Energy optimization",
+            "Security systems",
+            "Tenant convenience",
+            "Sustainability"
           ]
         },
         whatWeBuild: {
-          intro: "Hospitality solutions:",
+          intro: "Smart property solutions:",
           solutions: [
-            "Property Management Systems (PMS)",
-            "Channel Managers",
-            "Guest Apps (Check-in/out)",
-            "Revenue Management Systems",
-            "Cleaning Management Ops"
+            "Smart building controls",
+            "IoT sensors",
+            "Energy management",
+            "Security systems",
+            "Tenant apps"
           ],
-          footer: "Elevating the guest journey."
+          footer: "Intelligent properties."
         },
         coreCapabilities: [
-          "Price Prediction",
-          "Chatbots for Guest Services",
-          "Reputation Management",
-          "Calendar Sync"
+          "IoT integration",
+          "Smart controls",
+          "Energy monitoring",
+          "Security integration",
+          "Tenant interface"
         ],
-        idealFor: [
-          "Hotel Chains",
-          "Vacation Rental Hosts",
-          "Boutique Hotels",
-          "Travel Agencies"
-        ],
-        businessOutcomes: [
-          "Maximized Revenue",
-          "Higher Occupancy",
-          "Better Guest Reviews",
-          "Operational Efficiency"
-        ]
-      },
-      {
-        id: "co-living-co-working",
-        name: "Co-Living & Co-Working",
-        description: "Community management and space utilization platforms for shared spaces.",
-        icon: "🛋️",
-        tagline: "Community-First Space Management",
-        overview: "Manage shared spaces effortlessly. Our AI platforms help co-living and co-working operators build community, manage bookings, and optimize space usage.",
-        whyChoose: {
-          intro: "Power your community:",
-          points: [
-            "Member Matching AI",
-            "Automated Desk/Room Booking",
-            "Community Event Recommendations",
-            "Smart Access Control",
-            "Utilization Heatmaps"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Shared space tech:",
-          solutions: [
-            "Member Apps",
-            "Space Management Dashboards",
-            "Billing & Invoicing Systems",
-            "Event Management Tools",
-            "Visitor Management Systems"
-          ],
-          footer: "Fostering connection and collaboration."
-        },
-        coreCapabilities: [
-          "Matching Algorithms",
-          "Resource Scheduling",
-          "IoT Integration",
-          "Behavioral Analytics"
-        ],
-        idealFor: [
-          "Co-Working Spaces",
-          "Co-Living Operators",
-          "Student Housing",
-          "Flexible Office Providers"
-        ],
-        businessOutcomes: [
-          "Higher Member Retention",
-          "Optimized Space Usage",
-          "Vibrant Communities",
-          "Streamlined Billing"
-        ]
+        idealFor: ["Property developers", "Facilities", "Modern buildings"],
+        businessOutcomes: ["Energy savings", "Tenant satisfaction", "Property value", "Sustainability"]
       }
     ]
   },
@@ -1604,291 +1751,389 @@ export const industries: Industry[] = [
     name: "Healthcare",
     icon: "🏥",
     image: healthcareImage,
-    imageAlt: "NanoFlows Healthcare AI Solutions - HIPAA-compliant AI for patient engagement, clinical support, and healthcare automation",
-    tagline: "HIPAA-Compliant AI for Better Patient Care",
-    description: "Improve patient engagement, streamline operations, and support clinical decisions while maintaining strict compliance.",
+    imageAlt: "NanoFlows Healthcare AI Solutions - HMS, telemedicine, and patient engagement platforms",
+    tagline: "AI-Powered Healthcare Solutions",
+    description: "Deliver better patient care with HIPAA-compliant AI systems for hospital management, telemedicine, diagnostics, and wellness.",
     subIndustries: [
       {
-        id: "hospitals-multispecialty-clinics",
-        name: "Hospitals & Clinics",
-        description: "AI solutions for hospitals to improve patient flow, administrative efficiency, and clinical outcomes.",
+        id: "hospital-management",
+        name: "Hospital Management Systems (HMS)",
+        description: "Comprehensive hospital management systems for patient care and operations.",
         icon: "🏥",
-        tagline: "Efficient Hospital Operations",
-        overview: "Optimize healthcare delivery with AI. We help hospitals and clinics reduce wait times, automate administrative tasks, and improve patient communication.",
+        tagline: "Hospital Management Platform",
+        overview: "HMS systems streamline hospital operations from admission to discharge.",
         whyChoose: {
-          intro: "Why AI in Healthcare:",
+          intro: "Manage hospital operations",
           points: [
-            "Improved Patient Flow",
-            "Reduced Administrative Burden",
-            "Better Resource Allocation",
-            "Enhanced Patient Experience",
-            "Data-Driven Insights"
+            "Patient admission & discharge",
+            "Doctor scheduling",
+            "Bed management",
+            "Billing & insurance",
+            "Compliance management"
           ]
         },
         whatWeBuild: {
-          intro: "We deliver:",
+          intro: "HMS solutions:",
           solutions: [
-            "Patient Flow Management Systems",
-            "Automated appointment booking",
-            "EHR Integration Tools",
-            "Predictive Staffing Models",
-            "Post-discharge Monitoring"
+            "Hospital management software",
+            "Patient management",
+            "Doctor scheduling",
+            "Billing systems",
+            "EHR systems"
           ],
-          footer: "Technology for better care."
+          footer: "Efficient hospital operations."
         },
         coreCapabilities: [
-          "Patient Triage AI",
-          "Resource Scheduling",
-          "Clinical Decision Support",
-          "Operational Analytics"
+          "Patient admission",
+          "Doctor & staff scheduling",
+          "Bed management",
+          "Billing & claims",
+          "Electronic health records"
         ],
-        idealFor: [
-          "Multi-specialty Hospitals",
-          "Urgent Care Centers",
-          "Private Clinics",
-          "Diagnostic Labs"
-        ],
-        businessOutcomes: [
-          "Reduced Wait Times",
-          "Lower Operational Costs",
-          "Improved Patient Satisfaction",
-          "Better Staff Utilization"
-        ]
+        idealFor: ["Hospitals", "Healthcare networks", "Medical centers"],
+        businessOutcomes: ["Better patient care", "Operational efficiency", "Revenue cycle", "Compliance"]
       },
       {
-        id: "telemedicine-virtual-care",
-        name: "Telemedicine & Virtual Care",
-        description: "AI-powered remote patient monitoring and virtual consultation platforms.",
+        id: "clinic-opd-management",
+        name: "Clinic & OPD Management",
+        description: "Management systems for clinics and outpatient departments.",
         icon: "🩺",
-        tagline: "Healthcare Beyond Walls",
-        overview: "Extend care beyond the clinic. We build telemedicine platforms with AI diagnosis support, remote monitoring integration, and secure video conferencing.",
+        tagline: "Clinic Management System",
+        overview: "Clinic systems manage patient flow and outpatient care.",
         whyChoose: {
-          intro: "Expand your reach:",
+          intro: "Manage clinic operations",
           points: [
-            "AI Symptom Checker",
-            "Remote Patient Monitoring (RPM)",
-            "Secure Video Consultations",
-            "Digital Prescription Management",
-            "Chronic Disease Management"
+            "Patient registration",
+            "Appointment scheduling",
+            "Doctor consultation",
+            "Prescription management",
+            "Payment collection"
           ]
         },
         whatWeBuild: {
-          intro: "Telehealth solutions:",
+          intro: "Clinic solutions:",
           solutions: [
-            "Telemedicine Apps",
-            "RPM Dashboards",
-            "Mental Health Apps",
-            "Virtual Triage Bots",
-            "Integration with Wearables"
+            "Clinic management software",
+            "Appointment system",
+            "Patient records",
+            "Prescription system",
+            "Billing"
           ],
-          footer: "Accessible care for everyone."
+          footer: "Efficient clinic operations."
         },
         coreCapabilities: [
-          "Video Streaming (WebRTC)",
-          "Symptom Analysis NLP",
-          "IoT Wearable Sync",
-          "Secure Messaging"
+          "Appointment scheduling",
+          "Patient records",
+          "Consultation management",
+          "Prescription generation",
+          "Payment processing"
         ],
-        idealFor: [
-          "Hospital Networks",
-          "Digital Health Startups",
-          "Insurance Providers",
-          "Rural Health Clinics"
-        ],
-        businessOutcomes: [
-          "Reduced Re-admissions",
-          "Broader Patient Reach",
-          "Continuous Care Models",
-          "Lower Cost of Delivery"
-        ]
+        idealFor: ["Clinics", "Private practices", "Diagnostic centers"],
+        businessOutcomes: ["Better throughput", "Patient satisfaction", "Revenue growth", "Organization"]
       },
       {
-        id: "diagnostic-labs-imaging",
-        name: "Diagnostic Labs & Imaging",
-        description: "AI analysis of medical images and lab results for faster diagnosis.",
+        id: "healthcare-crm",
+        name: "Healthcare CRM & Patient Engagement",
+        description: "CRM systems for healthcare providers to manage patient relationships.",
+        icon: "💬",
+        tagline: "Patient Engagement Platform",
+        overview: "Healthcare CRM improves patient relationships and engagement.",
+        whyChoose: {
+          intro: "Engage patients effectively",
+          points: [
+            "Patient communication",
+            "Appointment reminders",
+            "Health education",
+            "Follow-up management",
+            "Loyalty programs"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Healthcare CRM solutions:",
+          solutions: [
+            "Patient CRM",
+            "Communication platform",
+            "Appointment management",
+            "Health education",
+            "Patient portals"
+          ],
+          footer: "Patient-centric engagement."
+        },
+        coreCapabilities: [
+          "Patient communication",
+          "Automated reminders",
+          "Health content",
+          "Follow-up automation",
+          "Patient feedback"
+        ],
+        idealFor: ["Healthcare providers", "Hospitals", "Clinics"],
+        businessOutcomes: ["Higher adherence", "Better outcomes", "Patient loyalty", "Repeat visits"]
+      },
+      {
+        id: "telemedicine",
+        name: "Telemedicine & Virtual Care",
+        description: "Telehealth platforms enabling remote patient consultations.",
+        icon: "📱",
+        tagline: "Virtual Healthcare Platform",
+        overview: "Telemedicine platforms expand healthcare access beyond physical locations.",
+        whyChoose: {
+          intro: "Enable remote healthcare",
+          points: [
+            "Video consultations",
+            "Remote patient monitoring",
+            "Prescription delivery",
+            "Patient convenience",
+            "Provider efficiency"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Telemedicine solutions:",
+          solutions: [
+            "Telemedicine platform",
+            "Video consultation",
+            "Remote monitoring",
+            "Prescription system",
+            "Patient app"
+          ],
+          footer: "Healthcare accessibility."
+        },
+        coreCapabilities: [
+          "Secure video calls",
+          "Patient monitoring",
+          "Prescription e-delivery",
+          "Patient records",
+          "Scheduling"
+        ],
+        idealFor: ["Healthcare providers", "Clinics", "Digital health startups"],
+        businessOutcomes: ["Expanded reach", "Patient convenience", "Cost savings", "Accessibility"]
+      },
+      {
+        id: "medical-billing",
+        name: "Medical Billing & Insurance Technology",
+        description: "Billing and insurance processing systems for healthcare providers.",
+        icon: "💰",
+        tagline: "Healthcare Billing System",
+        overview: "Medical billing systems streamline claims and insurance management.",
+        whyChoose: {
+          intro: "Simplify healthcare billing",
+          points: [
+            "Claims processing",
+            "Insurance verification",
+            "Automated billing",
+            "Denial management",
+            "Revenue optimization"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Medical billing solutions:",
+          solutions: [
+            "Billing software",
+            "Claims management",
+            "Insurance verification",
+            "Coding & compliance",
+            "Revenue analytics"
+          ],
+          footer: "Efficient healthcare billing."
+        },
+        coreCapabilities: [
+          "Claims generation",
+          "Insurance verification",
+          "Automated billing",
+          "Denial tracking",
+          "Revenue reporting"
+        ],
+        idealFor: ["Hospitals", "Clinics", "Healthcare networks"],
+        businessOutcomes: ["Faster collections", "Reduced denials", "Revenue growth", "Compliance"]
+      },
+      {
+        id: "diagnostic-labs",
+        name: "Diagnostic Labs & Radiology Software",
+        description: "Laboratory and radiology information systems for test management.",
         icon: "🔬",
-        tagline: "Precision Diagnostics with AI",
-        overview: "Accelerate diagnosis with computer vision. We build systems that analyze X-rays, MRIs, and lab results to assist pathologists and radiologists in detecting anomalies.",
+        tagline: "Diagnostic Lab System",
+        overview: "Lab systems manage tests, results, and image storage.",
         whyChoose: {
-          intro: "Diagnose faster:",
+          intro: "Streamline lab operations",
           points: [
-            "Automated Image Analysis",
-            "Pattern Recognition in Labs",
-            "Worklist Prioritization",
-            "Quality Control AI",
-            "Integrated Reporting"
+            "Sample tracking",
+            "Test management",
+            "Result reporting",
+            "Image storage",
+            "Integration with EHR"
           ]
         },
         whatWeBuild: {
-          intro: "Diagnostic tools:",
+          intro: "Lab management solutions:",
           solutions: [
-            "PACS/RIS Integration",
-            "Pathology Image Viewers",
-            "Lab Information Systems (LIS)",
-            "Genetic Data Analysis Tools",
-            "AI Second Opinion Bots"
+            "Laboratory information system",
+            "Radiology management",
+            "PACS system",
+            "Report generation",
+            "Integration services"
           ],
-          footer: "Empowering diagnostic precision."
+          footer: "Efficient lab operations."
         },
         coreCapabilities: [
-          "Computer Vision (Medical)",
-          "Data Pattern Recognition",
-          "DICOM Standard Support",
-          "Anonymization"
+          "Sample & test tracking",
+          "Result management",
+          "Image storage & retrieval",
+          "Report generation",
+          "Quality control"
         ],
-        idealFor: [
-          "Diagnostic Centers",
-          "Radiology Clinics",
-          "Pathology Labs",
-          "Research Institutes"
-        ],
-        businessOutcomes: [
-          "Faster Turnaround Time",
-          "Reduced Diagnostic Error",
-          "Higher Throughput",
-          "Standardized Reporting"
-        ]
+        idealFor: ["Diagnostic labs", "Hospitals", "Radiology centers"],
+        businessOutcomes: ["Faster results", "Quality improvement", "Integration", "Compliance"]
       },
       {
-        id: "pharmacies-medical-stores",
-        name: "Pharmacies & Medical Stores",
-        description: "Inventory management and digital prescription systems for pharmacies.",
+        id: "pharmacy-inventory",
+        name: "Pharmacy & Inventory Systems",
+        description: "Pharmacy management and drug inventory control systems.",
         icon: "💊",
-        tagline: "Smart Pharmacy Management",
-        overview: "Digitize pharmacy operations. We build inventory management, e-prescription, and customer loyalty systems tailored for retail and hospital pharmacies.",
+        tagline: "Pharmacy Management System",
+        overview: "Pharmacy systems manage prescriptions, inventory, and dispensing.",
         whyChoose: {
-          intro: "Manage efficiently:",
+          intro: "Manage pharmacy operations",
           points: [
-            "Automated Restocking",
-            "Expiry Date Tracking",
-            "Digital Prescription Processing",
-            "Interaction Checking AI",
-            "Customer adherence reminders"
+            "Prescription management",
+            "Inventory control",
+            "Drug interaction checking",
+            "Billing integration",
+            "Regulatory compliance"
           ]
         },
         whatWeBuild: {
-          intro: "Pharmacy tech:",
+          intro: "Pharmacy solutions:",
           solutions: [
-            "Pharmacy Management Systems",
-            "Online Pharmacy Apps",
-            "Inventory Forecasting Tools",
-            "B2B Pharma Supply Chain",
-            "POS Systems"
+            "Pharmacy management software",
+            "Inventory system",
+            "Prescription system",
+            "Billing integration",
+            "Quality assurance"
           ],
-          footer: "Delivering health, efficiently."
+          footer: "Efficient pharmacy operations."
         },
         coreCapabilities: [
-          "Barcode Scanning",
-          "Inventory Prediction",
-          "Drug Database Integration",
-          "Compliance Tracking"
+          "Prescription processing",
+          "Inventory management",
+          "Drug interaction checking",
+          "Billing & insurance",
+          "Compliance tracking"
         ],
-        idealFor: [
-          "Retail Pharmacy Chains",
-          "Independent Chemists",
-          "Hospital Pharmacies",
-          "e-Pharmacies"
-        ],
-        businessOutcomes: [
-          "Reduced Waste",
-          "Improved Compliance",
-          "Better Customer Service",
-          "Optimized Stock Levels"
-        ]
+        idealFor: ["Pharmacies", "Hospitals", "Healthcare networks"],
+        businessOutcomes: ["Efficiency", "Safety", "Accuracy", "Compliance"]
       },
       {
-        id: "health-insurance-providers",
-        name: "Health Insurance & Payers",
-        description: "AI claims processing, fraud detection, and risk assessment for insurers.",
-        icon: "🛡️",
-        tagline: "Intelligent Health Insurance",
-        overview: "Automate claims and assess risk accurately. We help health insurers use AI to process claims faster, detect fraud, and offer personalized wellness programs.",
+        id: "healthcare-analytics",
+        name: "AI-Based Healthcare Analytics",
+        description: "Analytics platforms for healthcare data insights and AI diagnostics.",
+        icon: "📊",
+        tagline: "Healthcare Analytics Platform",
+        overview: "Healthcare analytics transform data into actionable clinical insights.",
         whyChoose: {
-          intro: "Insure smarter:",
+          intro: "Data-driven healthcare",
           points: [
-            "Automated Claims Adjudication",
-            "Fraud & Waste Detection",
-            "Predictive Risk Modeling",
-            "Member Engagement Bots",
-            "Wellness Program Analytics"
+            "Clinical analytics",
+            "Predictive models",
+            "AI diagnostics support",
+            "Outcomes tracking",
+            "Quality improvement"
           ]
         },
         whatWeBuild: {
-          intro: "Payer solutions:",
+          intro: "Healthcare analytics solutions:",
           solutions: [
-            "Claims Management Systems",
-            "Fraud Detection Engines",
-            "Member Portals",
-            "Underwriting Assistants",
-            "Network Management Tools"
+            "Analytics platform",
+            "Predictive models",
+            "Outcomes dashboards",
+            "Quality metrics",
+            "Reporting tools"
           ],
-          footer: "Protecting health and wealth."
+          footer: "Intelligence-driven healthcare."
         },
         coreCapabilities: [
-          "Document Processing (Claims)",
-          "Anomaly Detection",
-          "Risk Algorithms",
-          "Chatbots"
+          "Data integration",
+          "Clinical analytics",
+          "Predictive modeling",
+          "Outcomes analysis",
+          "Quality tracking"
         ],
-        idealFor: [
-          "Health Insurance Companies",
-          "TPAs (Third Party Administrators)",
-          "Government Health Schemes",
-          "Corporate Wellness Providers"
-        ],
-        businessOutcomes: [
-          "Faster Claim Settlement",
-          "Reduced Fraud Losses",
-          "Better Risk Scoring",
-          "Improved Member Trust"
-        ]
+        idealFor: ["Hospitals", "Healthcare networks", "Researchers"],
+        businessOutcomes: ["Better outcomes", "Quality improvement", "Cost savings", "Evidence-based care"]
       },
       {
-        id: "wellness-fitness-centers",
-        name: "Wellness & Fitness",
-        description: "Member management and personalized workout plans for fitness centers.",
-        icon: "🧘",
-        tagline: "Technology for Well-being",
-        overview: "Engage members with personalized wellness. We build apps and management systems for gyms, yoga studios, and wellness centers that keep members coming back.",
+        id: "wellness-preventive",
+        name: "Wellness & Preventive Care Platforms",
+        description: "Platforms promoting wellness, prevention, and healthy lifestyles.",
+        icon: "🏃",
+        tagline: "Wellness & Prevention Platform",
+        overview: "Wellness platforms help prevent disease through engagement.",
         whyChoose: {
-          intro: "Grow your community:",
+          intro: "Promote preventive health",
           points: [
-            "Personalized Workout Plans AI",
-            "Class Booking Automation",
-            "Member Retention Prediction",
-            "Virtual Coaching Integration",
-            "Wearable Data Sync"
+            "Health tracking",
+            "Wellness programs",
+            "Behavior change",
+            "Incentives",
+            "Community support"
           ]
         },
         whatWeBuild: {
-          intro: "Fitness tech:",
+          intro: "Wellness solutions:",
           solutions: [
-            "Gym Management Software",
-            "Workout Tracking Apps",
-            "Tele-wellness Platforms",
-            "Studio Booking Systems",
-            "Nutrition Planning AI"
+            "Wellness app",
+            "Health coaching platform",
+            "Corporate wellness programs",
+            "Incentive management",
+            "Community features"
           ],
-          footer: "Inspiring healthy lifestyles."
+          footer: "Prevention through wellness."
         },
         coreCapabilities: [
-          "Recommendation Engines",
-          "Scheduling Algorithms",
-          "Video Content Delivery",
-          "Activity Tracking"
+          "Health tracking",
+          "Coaching programs",
+          "Incentive management",
+          "Social engagement",
+          "Progress analytics"
         ],
-        idealFor: [
-          "Gym Chains",
-          "Yoga Studios",
-          "Personal Trainers",
-          "Corporate Wellness Programs"
+        idealFor: ["Employers", "Health plans", "Corporate wellness"],
+        businessOutcomes: ["Healthier population", "Lower costs", "Engagement", "Prevention"]
+      },
+      {
+        id: "wearable-health-monitoring",
+        name: "Wearable Health Monitoring Platforms",
+        description: "Platforms integrating wearable devices for continuous health monitoring.",
+        icon: "⌚",
+        tagline: "Wearable Health Platform",
+        overview: "Wearable platforms provide continuous health monitoring and insights.",
+        whyChoose: {
+          intro: "Monitor health continuously",
+          points: [
+            "Wearable integration",
+            "Continuous monitoring",
+            "Real-time alerts",
+            "Health insights",
+            "Provider integration"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Wearable solutions:",
+          solutions: [
+            "Wearable platform",
+            "Health monitoring app",
+            "Alert system",
+            "Provider dashboard",
+            "Analytics"
+          ],
+          footer: "Continuous health monitoring."
+        },
+        coreCapabilities: [
+          "Wearable integration",
+          "Data collection",
+          "Real-time alerts",
+          "Health analytics",
+          "Provider sharing"
         ],
-        businessOutcomes: [
-          "Higher Member Retention",
-          "Increased Ancillary Revenue",
-          "Better Operational Efficiency",
-          "Enhanced Member Results"
-        ]
+        idealFor: ["Health platforms", "Insurance companies", "Healthcare providers"],
+        businessOutcomes: ["Proactive health", "Early intervention", "Engagement", "Prevention"]
       }
     ]
   },
@@ -1897,291 +2142,389 @@ export const industries: Industry[] = [
     name: "Education",
     icon: "🎓",
     image: educationImage,
-    imageAlt: "NanoFlows Education AI Solutions - AI tutoring, personalized learning paths, and educational automation for schools",
-    tagline: "AI That Transforms Learning Experiences",
-    description: "Personalize education, automate administration, and support students with AI tutors available 24/7.",
+    imageAlt: "NanoFlows Education AI Solutions - LMS, EdTech platforms, and intelligent learning systems",
+    tagline: "AI-Powered Learning Platforms",
+    description: "Transform education with AI-driven learning platforms that personalize education, automate administration, and improve outcomes.",
     subIndustries: [
       {
-        id: "schools-k12",
-        name: "Schools & K-12",
-        description: "AI tools for schools to personalize learning, manage administration, and engage students.",
+        id: "learning-management-systems",
+        name: "Learning Management Systems (LMS)",
+        description: "Core LMS platforms for course delivery and student management.",
+        icon: "📚",
+        tagline: "Modern LMS Platform",
+        overview: "LMS platforms provide the foundation for online education.",
+        whyChoose: {
+          intro: "Build your learning platform",
+          points: [
+            "Course management",
+            "Student enrollment",
+            "Content delivery",
+            "Assignments & grading",
+            "Progress tracking"
+          ]
+        },
+        whatWeBuild: {
+          intro: "LMS solutions:",
+          solutions: [
+            "Learning management system",
+            "Course authoring tools",
+            "Assessment system",
+            "Student portal",
+            "Reporting"
+          ],
+          footer: "Complete LMS platform."
+        },
+        coreCapabilities: [
+          "Course management",
+          "Content delivery",
+          "Assessment tools",
+          "Progress tracking",
+          "Certification"
+        ],
+        idealFor: ["Educational institutions", "Training companies", "Course creators"],
+        businessOutcomes: ["Scalable learning", "Better engagement", "Data insights", "Certification"]
+      },
+      {
+        id: "online-edtech-platforms",
+        name: "Online EdTech Platforms",
+        description: "Online learning platforms offering courses and educational content.",
+        icon: "🎥",
+        tagline: "Online Learning Platform",
+        overview: "Online platforms democratize education through accessible learning.",
+        whyChoose: {
+          intro: "Offer online courses",
+          points: [
+            "Scalable platform",
+            "Multiple course formats",
+            "Interactive content",
+            "Social learning",
+            "Instructor tools"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Online platform solutions:",
+          solutions: [
+            "Online learning platform",
+            "Course marketplace",
+            "Content management",
+            "Student community",
+            "Payment processing"
+          ],
+          footer: "Accessible learning."
+        },
+        coreCapabilities: [
+          "Scalable architecture",
+          "Content delivery",
+          "Interactive features",
+          "Community building",
+          "Analytics"
+        ],
+        idealFor: ["EdTech startups", "Course creators", "Educational companies"],
+        businessOutcomes: ["Global reach", "Scalability", "Revenue model", "Learning outcomes"]
+      },
+      {
+        id: "school-management-systems",
+        name: "School Management Systems",
+        description: "Management systems for K-12 schools covering all operations.",
         icon: "🏫",
-        tagline: "Smart Schools, Better Learning",
-        overview: "Bring AI into the classroom. We provide solutions that help teachers personalize instruction and schools manage operations more efficiently.",
+        tagline: "School Management Platform",
+        overview: "School systems manage students, staff, operations, and learning.",
         whyChoose: {
-          intro: "Advancing Education with AI:",
+          intro: "Manage school operations",
           points: [
-            "Personalized Learning Plans",
-            "Automated Grading",
-            "Student Progress Tracking",
-            "Efficient Administration",
-            "Enhanced Parent Communication"
+            "Student management",
+            "Class & schedule management",
+            "Attendance tracking",
+            "Parent communication",
+            "Academic performance"
           ]
         },
         whatWeBuild: {
-          intro: "Our Education Solutions:",
+          intro: "School management solutions:",
           solutions: [
-            "Adaptive Learning Platforms",
-            "AI Tutors",
-            "Administrative Dashboards",
-            "Attendance Tracking Systems",
-            "Parent Portals"
+            "School management software",
+            "Student information system",
+            "Scheduling system",
+            "Parent portal",
+            "Reporting"
           ],
-          footer: "Empowering educators and students."
+          footer: "Complete school management."
         },
         coreCapabilities: [
-          "Adaptive Learning Algorithms",
-          "Automated Assessment",
-          "Student Analytics",
-          "Content Recommendation"
+          "Student records",
+          "Class scheduling",
+          "Attendance management",
+          "Grade management",
+          "Parent communication"
         ],
-        idealFor: [
-          "K-12 Schools",
-          "School Districts",
-          "Tutoring Centers",
-          "Educational Non-profits"
-        ],
-        businessOutcomes: [
-          "Improved Student Outcomes",
-          "Time Savings for Teachers",
-          "Better Resource Management",
-          "Increased Engagement"
-        ]
+        idealFor: ["K-12 schools", "School districts", "Private schools"],
+        businessOutcomes: ["Operational efficiency", "Parent engagement", "Better communication", "Data visibility"]
       },
       {
-        id: "colleges-universities",
-        name: "Colleges & Universities",
-        description: "Higher education management systems and research collaboration platforms.",
-        icon: "🏛️",
-        tagline: "Smarter Higher Education",
-        overview: "Transform higher ed with AI. We help universities manage admissions, improve student success rates, and facilitate cutting-edge research collaboration.",
+        id: "college-university-erp",
+        name: "College & University ERP",
+        description: "Enterprise systems for higher education institutions.",
+        icon: "🎓",
+        tagline: "Higher Education ERP",
+        overview: "University ERP systems manage complex academic and business operations.",
         whyChoose: {
-          intro: "Elevate your campus:",
+          intro: "Manage university operations",
           points: [
-            "AI-Powered Admissions",
-            "Student Success Prediction",
-            "Research Data Management",
-            "Alumni Engagement AI",
-            "Campus Resource Optimization"
+            "Student lifecycle",
+            "Course management",
+            "Faculty management",
+            "Admissions",
+            "Financial management"
           ]
         },
         whatWeBuild: {
-          intro: "University tech:",
+          intro: "University ERP solutions:",
           solutions: [
-            "Student Information Systems (SIS)",
-            "Grant Management Platforms",
-            "Virtual Campus Tours",
-            "Career Matching AI",
-            "Learning Management Integration"
+            "University ERP",
+            "Student information system",
+            "Admissions system",
+            "Faculty portal",
+            "Financial system"
           ],
-          footer: "Shaping the future of knowledge."
+          footer: "Complete university management."
         },
         coreCapabilities: [
-          "Predictive Analytics (Retention)",
-          "NLP for Research",
-          "Matchmaking Algorithms",
-          "Secure Data Sharing"
+          "Student lifecycle",
+          "Course scheduling",
+          "Faculty management",
+          "Admissions",
+          "Financial tracking"
         ],
-        idealFor: [
-          "Universities",
-          "Community Colleges",
-          "Research Labs",
-          "Vocational Schools"
-        ],
-        businessOutcomes: [
-          "Higher Enrollment Yield",
-          "Improved Retention Rates",
-          "More Research Grants",
-          "Stronger Alumni Networks"
-        ]
+        idealFor: ["Universities", "Colleges", "Higher education"],
+        businessOutcomes: ["Operational efficiency", "Student satisfaction", "Data integration", "Reporting"]
       },
       {
-        id: "online-learning-platforms",
-        name: "Online Learning Platforms",
-        description: "Scalable LMS and personalized course delivery engines.",
-        icon: "💻",
-        tagline: "Learning Without Limits",
-        overview: "Scale your online education business. We build robust learning platforms that can handle millions of users, personalized content delivery, and interactive learning experiences.",
-        whyChoose: {
-          intro: "Scale your impact:",
-          points: [
-            "Personalized Content Recommendations",
-            "Automated Video Captioning",
-            "Interactive Assessments",
-            "Peer-to-Peer Learning Support",
-            "Skill Gap Analysis"
-          ]
-        },
-        whatWeBuild: {
-          intro: "EdTech platforms:",
-          solutions: [
-            "Course Creation Tools",
-            "Video Streaming LMS",
-            "Certification Engines",
-            "Learning Analytics Dashboards",
-            "Gamified Learning Apps"
-          ],
-          footer: "Democratizing access to education."
-        },
-        coreCapabilities: [
-          "Video Streaming",
-          "Recommendation Engines",
-          "Gamification Logic",
-          "Real-time Analytics"
-        ],
-        idealFor: [
-          "EdTech Startups",
-          "Bootcamps",
-          "Professional Assoc.",
-          "Continuing Ed Providers"
-        ],
-        businessOutcomes: [
-          "Higher Course Completion",
-          "Increased User Engagement",
-          "Lower Content Costs",
-          "Faster Skill Acquisition"
-        ]
-      },
-      {
-        id: "skill-development-vocational",
-        name: "Skill Development & Vocational",
-        description: "Hands-on training simulations and certification tracking.",
-        icon: "🛠️",
-        tagline: "Skills for the Future Workforce",
-        overview: "Bridge the skills gap with AI. We build platforms that focus on practical skill acquisition, using simulations, progress tracking, and verified credentials.",
-        whyChoose: {
-          intro: "Train the workforce:",
-          points: [
-            "VR/AR Training Simulations",
-            "Competency-Based Assessment",
-            "Digital Badges & Certificates",
-            "Job Market Alignment AI",
-            "Mobile-first Learning"
-          ]
-        },
-        whatWeBuild: {
-          intro: "Vocational tech:",
-          solutions: [
-            "Simulation Training Apps",
-            "Apprenticeship Management",
-            "Credentialing Wallets",
-            "Job Board Integrations",
-            "Skill Assessment Portals"
-          ],
-          footer: "Building a capable workforce."
-        },
-        coreCapabilities: [
-          "Interactive Simulations",
-          "Credential Verification",
-          "Pathways Modeling",
-          "Mobile Learning"
-        ],
-        idealFor: [
-          "Vocational Institutes",
-          "Trade Schools",
-          "Government Skilling Missions",
-          " NGOs"
-        ],
-        businessOutcomes: [
-          "Higher Job Placement Rates",
-          "Improved Skill Retention",
-          "Standardized Training",
-          "Verifiable Credentials"
-        ]
-      },
-      {
-        id: "corporate-training-ld",
-        name: "Corporate Training & L&D",
-        description: "Employee upskilling platforms and compliance training automation.",
-        icon: "👔",
-        tagline: "Empower Your Workforce",
-        overview: "Upskill your team at scale. We build corporate learning systems that align training with business goals, ensuring employees have the skills they need to succeed.",
-        whyChoose: {
-          intro: "Drive business performance:",
-          points: [
-            "Role-Based Learning Paths",
-            "Compliance Management",
-            "Micro-learning Delivery",
-            "Performance-Learning Linkage",
-            "Social Learning Features"
-          ]
-        },
-        whatWeBuild: {
-          intro: "L&D platforms:",
-          solutions: [
-            "LXP (Learning Experience Platforms)",
-            "Onboarding Portals",
-            "Compliance Tracking Tools",
-            "Mentorship Matching Apps",
-            "Knowledge Sharing Hubs"
-          ],
-          footer: "Investing in human capital."
-        },
-        coreCapabilities: [
-          "Content Curation",
-          "User Profiling",
-          "Integration with HRIS",
-          "Social Collaboration"
-        ],
-        idealFor: [
-          "Enterprise HR",
-          "L&D Departments",
-          "Consulting Firms",
-          "Sales Organizations"
-        ],
-        businessOutcomes: [
-          "Reduced Onboarding Time",
-          "Higher Regulatory Compliance",
-          "Improved Employee Performance",
-          "Better Talent Retention"
-        ]
-      },
-      {
-        id: "coaching-training-institutes",
-        name: "Coaching & Training Institutes",
-        description: "Management software for private coaching centers and training academies.",
+        id: "student-crm-admissions",
+        name: "Student CRM & Admissions Systems",
+        description: "CRM systems for student recruitment and admissions management.",
         icon: "📝",
-        tagline: "Manage Classes, Scale Growth",
-        overview: "Run your training institute efficiently. We provide software to manage students, schedule classes, collect fees, and deliver online supplementary materials.",
+        tagline: "Student Recruitment Platform",
+        overview: "Student CRM automates recruitment and streamlines admissions.",
         whyChoose: {
-          intro: "Streamline operations:",
+          intro: "Recruit & enroll students",
           points: [
-            "Automated Fee Collection",
-            "Class Scheduling & Reminders",
-            "Online Test Series",
-            "Student Performance Reports",
-            "Lead Management CRM"
+            "Lead management",
+            "Automated communication",
+            "Application processing",
+            "Document management",
+            "Student tracking"
           ]
         },
         whatWeBuild: {
-          intro: "Institute management:",
+          intro: "Student CRM solutions:",
           solutions: [
-            "Coaching Management Software",
-            "Online Exam Portals",
-            "Student Apps",
-            "Parent Communication Apps",
-            "Marketing Automation"
+            "Student CRM platform",
+            "Lead management",
+            "Application system",
+            "Document portal",
+            "Analytics"
           ],
-          footer: "Focus on teaching, not admin."
+          footer: "Streamlined admissions."
         },
         coreCapabilities: [
-          "Billing Automation",
-          "Scheduling Logic",
-          "Quiz Engines",
-          "CRM Features"
+          "Lead capture & scoring",
+          "Automated communication",
+          "Application processing",
+          "Document management",
+          "Analytics"
         ],
-        idealFor: [
-          "Test Prep Centers",
-          "Language Schools",
-          "Music/Art Academies",
-          "Sports Academies"
+        idealFor: ["Educational institutions", "University admissions", "Recruitment"],
+        businessOutcomes: ["Higher enrollment", "Better conversion", "Data insights", "Efficiency"]
+      },
+      {
+        id: "online-examination",
+        name: "Online Examination & Proctoring",
+        description: "Online testing platforms with proctoring for secure assessments.",
+        icon: "📱",
+        tagline: "Online Assessment Platform",
+        overview: "Online exam platforms enable secure remote testing.",
+        whyChoose: {
+          intro: "Conduct secure exams",
+          points: [
+            "Proctoring technology",
+            "Secure testing",
+            "Multiple question types",
+            "Result analytics",
+            "Integrity checks"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Online exam solutions:",
+          solutions: [
+            "Exam platform",
+            "Proctoring system",
+            "Question bank",
+            "Result analysis",
+            "Certificate generation"
+          ],
+          footer: "Secure online testing."
+        },
+        coreCapabilities: [
+          "AI proctoring",
+          "Secure testing environment",
+          "Multiple question types",
+          "Result analytics",
+          "Cheating detection"
         ],
-        businessOutcomes: [
-          "Increased Student Intake",
-          "Fewer Admin Errors",
-          "Timely Fee Collection",
-          "Better Student Outcomes"
-        ]
+        idealFor: ["Educational institutions", "Certification bodies", "Testing companies"],
+        businessOutcomes: ["Secure testing", "Fraud prevention", "Scalability", "Data insights"]
+      },
+      {
+        id: "corporate-training",
+        name: "Corporate Training Platforms",
+        description: "Training platforms for employee development and onboarding.",
+        icon: "💼",
+        tagline: "Corporate Training Platform",
+        overview: "Corporate training platforms develop workforce skills.",
+        whyChoose: {
+          intro: "Train your workforce",
+          points: [
+            "Course management",
+            "Skill development",
+            "Compliance training",
+            "Progress tracking",
+            "ROI measurement"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Corporate training solutions:",
+          solutions: [
+            "Training platform",
+            "Course authoring",
+            "Compliance training",
+            "Skills assessment",
+            "Analytics"
+          ],
+          footer: "Workforce development."
+        },
+        coreCapabilities: [
+          "Course management",
+          "Assessment tools",
+          "Progress tracking",
+          "Compliance management",
+          "Analytics"
+        ],
+        idealFor: ["Enterprises", "HR departments", "Training departments"],
+        businessOutcomes: ["Skill development", "Compliance", "Retention", "Performance improvement"]
+      },
+      {
+        id: "virtual-classrooms",
+        name: "Virtual Classrooms & Content Platforms",
+        description: "Live teaching platforms and interactive educational content.",
+        icon: "💻",
+        tagline: "Virtual Classroom Platform",
+        overview: "Virtual classroom platforms enable live, interactive learning.",
+        whyChoose: {
+          intro: "Teach virtually",
+          points: [
+            "Live teaching",
+            "Interactive tools",
+            "Recording & playback",
+            "Student engagement",
+            "Collaboration features"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Virtual classroom solutions:",
+          solutions: [
+            "Virtual classroom platform",
+            "Live teaching tools",
+            "Interactive features",
+            "Recording system",
+            "Collaboration tools"
+          ],
+          footer: "Interactive virtual learning."
+        },
+        coreCapabilities: [
+          "Live video teaching",
+          "Interactive whiteboard",
+          "Breakout rooms",
+          "Recording & playback",
+          "Student engagement tools"
+        ],
+        idealFor: ["Educational institutions", "Online tutors", "Training companies"],
+        businessOutcomes: ["Engagement", "Scalability", "Flexibility", "Learning outcomes"]
+      },
+      {
+        id: "education-analytics",
+        name: "Education Analytics & AI Insights",
+        description: "Analytics platforms providing educational insights and AI-driven recommendations.",
+        icon: "📊",
+        tagline: "Education Analytics Platform",
+        overview: "Education analytics optimize learning outcomes with data insights.",
+        whyChoose: {
+          intro: "Data-driven education",
+          points: [
+            "Student performance analytics",
+            "Predictive modeling",
+            "Personalization insights",
+            "Learning path recommendations",
+            "Intervention identification"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Analytics solutions:",
+          solutions: [
+            "Analytics platform",
+            "Dashboard system",
+            "Predictive models",
+            "Intervention tools",
+            "Reporting"
+          ],
+          footer: "Intelligence-driven education."
+        },
+        coreCapabilities: [
+          "Data integration",
+          "Student analytics",
+          "Predictive modeling",
+          "Performance tracking",
+          "Intervention recommendations"
+        ],
+        idealFor: ["Educational institutions", "EdTech companies", "Researchers"],
+        businessOutcomes: ["Better outcomes", "Early intervention", "Personalization", "Retention"]
+      },
+      {
+        id: "coaching-testprep",
+        name: "Coaching & Test-Prep Institutes",
+        description: "Specialized platforms for test preparation and coaching services.",
+        icon: "🎯",
+        tagline: "Test-Prep Platform",
+        overview: "Test-prep platforms help students prepare for competitive exams.",
+        whyChoose: {
+          intro: "Support exam preparation",
+          points: [
+            "Question bank",
+            "Practice tests",
+            "Progress tracking",
+            "Personalized guidance",
+            "Results analytics"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Test-prep solutions:",
+          solutions: [
+            "Test-prep platform",
+            "Question bank",
+            "Mock tests",
+            "Performance tracking",
+            "Coaching portal"
+          ],
+          footer: "Exam preparation success."
+        },
+        coreCapabilities: [
+          "Question bank",
+          "Mock tests",
+          "Progress tracking",
+          "Performance analytics",
+          "Personalized recommendations"
+        ],
+        idealFor: ["Coaching institutes", "Test-prep companies", "Online tutors"],
+        businessOutcomes: ["Student success", "Better results", "Retention", "Reputation"]
       }
     ]
   },
@@ -2190,338 +2533,389 @@ export const industries: Industry[] = [
     name: "Local Businesses",
     icon: "🏪",
     image: localBusinessImage,
-    imageAlt: "NanoFlows Local Business AI Solutions - Affordable AI for 24/7 customer service, booking automation, and local marketing",
-    tagline: "Enterprise AI at Local Business Prices",
-    description: "Compete with big brands by delivering 24/7 customer service, automated bookings, and smart marketing.",
+    imageAlt: "NanoFlows Local Business AI Solutions - POS, CRM, and service management for local businesses",
+    tagline: "AI Solutions for Local Business Growth",
+    description: "Empower local businesses with AI-driven tools for customer engagement, operations, and growth.",
     subIndustries: [
       {
-        id: "retail-stores-showrooms",
-        name: "Retail Stores & Showrooms",
-        description: "AI solutions for local retailers to manage inventory, engage customers, and drive foot traffic.",
-        icon: "🏪",
-        tagline: "Smart Retail for Local Shops",
-        overview: "Level the playing field with AI. We help local retailers use technology to compete with big chains, from inventory management to personalized marketing.",
+        id: "whatsapp-crm",
+        name: "WhatsApp CRM & Business Automation",
+        description: "CRM systems leveraging WhatsApp for customer communication.",
+        icon: "💬",
+        tagline: "WhatsApp Business Platform",
+        overview: "WhatsApp CRM meets customers where they communicate most.",
         whyChoose: {
-          intro: "Grow your local business:",
+          intro: "Engage via WhatsApp",
           points: [
-            "Better Inventory Control",
-            "Automated Marketing",
-            "Customer Loyalty Programs",
-            "Sales Insights",
-            "Efficient Operations"
+            "WhatsApp integration",
+            "Automated messaging",
+            "Customer database",
+            "Broadcast campaigns",
+            "Order tracking"
           ]
         },
         whatWeBuild: {
-          intro: "Tools for Retailers:",
+          intro: "WhatsApp CRM solutions:",
           solutions: [
-            "POS Integration",
-            "Inventory Prediction",
-            "Loyalty App",
-            "Automated SMS Marketing",
-            "Customer Feedback Tools"
+            "WhatsApp CRM platform",
+            "Chatbot system",
+            "Broadcast campaigns",
+            "Order management",
+            "Customer database"
           ],
-          footer: "Helping local businesses thrive."
+          footer: "WhatsApp business excellence."
         },
         coreCapabilities: [
-          "Inventory Optimization",
-          "Automated Marketing Campaigns",
-          "Customer Analytics",
-          "Sales Forecasting"
+          "WhatsApp integration",
+          "Automated messaging",
+          "Customer database",
+          "Order management",
+          "Analytics"
         ],
-        idealFor: [
-          "Boutiques",
-          "Hardware Stores",
-          "Local Showrooms",
-          "Specialty Shops"
-        ],
-        businessOutcomes: [
-          "Increased Sales",
-          "Reduced Waste",
-          "Higher Customer Retention",
-          "Better Cash Flow"
-        ]
+        idealFor: ["Small businesses", "Retail shops", "Service providers"],
+        businessOutcomes: ["Better engagement", "Higher sales", "Customer retention", "Efficiency"]
       },
       {
-        id: "restaurants-cafes-food",
-        name: "Restaurants & Food",
-        description: "Digital menus, online ordering, and kitchen management systems.",
+        id: "retail-pos",
+        name: "Retail Stores & POS Systems",
+        description: "Point-of-sale systems for retail stores and shop management.",
+        icon: "🛒",
+        tagline: "Retail POS System",
+        overview: "Retail POS systems manage sales, inventory, and customers.",
+        whyChoose: {
+          intro: "Manage retail operations",
+          points: [
+            "Sales transactions",
+            "Inventory tracking",
+            "Customer profiles",
+            "Reporting",
+            "Offline capability"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Retail POS solutions:",
+          solutions: [
+            "POS system",
+            "Inventory management",
+            "Customer database",
+            "Sales reporting",
+            "Mobile POS"
+          ],
+          footer: "Efficient retail operations."
+        },
+        coreCapabilities: [
+          "Transaction processing",
+          "Inventory management",
+          "Customer tracking",
+          "Sales reporting",
+          "Multi-location support"
+        ],
+        idealFor: ["Retail shops", "Stores", "Retail chains"],
+        businessOutcomes: ["Faster checkouts", "Inventory control", "Sales insights", "Efficiency"]
+      },
+      {
+        id: "restaurants-cafes",
+        name: "Restaurants, Cafés & Food Chains",
+        description: "Management systems for food and beverage businesses.",
         icon: "🍽️",
-        tagline: "Served with Intelligence",
-        overview: "Modernize your restaurant. We help food businesses manage orders, reduce waste, and build loyal customer bases through smart apps and POS integrations.",
+        tagline: "Restaurant Management",
+        overview: "Restaurant systems manage orders, inventory, and customers.",
         whyChoose: {
-          intro: "Optimize your kitchen:",
+          intro: "Manage food business",
           points: [
-            "QR Code Ordering",
-            "Kitchen Display Systems (KDS)",
-            "Inventory Waste Tracking",
-            "Auto-scaling Delivery Integration",
-            "Reputation Management"
+            "Order management",
+            "Kitchen display",
+            "Table management",
+            "Inventory control",
+            "Customer loyalty"
           ]
         },
         whatWeBuild: {
-          intro: "Restaurant tech:",
+          intro: "Restaurant solutions:",
           solutions: [
-            "Online Ordering Apps",
-            "Table Reservation Systems",
-            "Digital Menu Boards",
-            "Ghost Kitchen Management",
-            "Staff Scheduling Tools"
+            "Restaurant management software",
+            "POS system",
+            "Order management",
+            "Inventory tracking",
+            "Delivery integration"
           ],
-          footer: "Bon appétit, business growth."
+          footer: "Smooth restaurant operations."
         },
         coreCapabilities: [
-          "Order Aggregation",
-          "Menu Engineering Analytics",
-          "Staff Performance Tracking",
-          "Customer Database"
+          "Order taking & management",
+          "Kitchen integration",
+          "Table management",
+          "Inventory tracking",
+          "Delivery coordination"
         ],
-        idealFor: [
-          "Restaurants",
-          "Cafes",
-          "Food Trucks",
-          "Ghost Kitchens"
-        ],
-        businessOutcomes: [
-          "Higher Table Turnover",
-          "Increased Average Ticket",
-          "Lower Food Cost",
-          "More Repeat Diners"
-        ]
+        idealFor: ["Restaurants", "Food chains", "Cafés"],
+        businessOutcomes: ["Faster service", "Better operations", "Inventory control", "Customer satisfaction"]
       },
       {
-        id: "salons-spas-personal-care",
-        name: "Salons & Spas",
-        description: "Booking engines and client management for personal care businesses.",
-        icon: "💇",
-        tagline: "Beautifully Simple Management",
-        overview: "Run your salon smoothly. We provide tools for online booking, staff management, and automated appointment reminders to reduce no-shows.",
+        id: "clinics-diagnostic",
+        name: "Clinics & Diagnostic Centers",
+        description: "Management systems for medical clinics and diagnostic services.",
+        icon: "🩺",
+        tagline: "Clinic Management System",
+        overview: "Clinic systems streamline patient care and operations.",
         whyChoose: {
-          intro: "Style your business:",
+          intro: "Manage clinic operations",
           points: [
-            "24/7 Online Booking",
-            "Automated Reminders (SMS/Email)",
-            "Client History & Preferences",
-            "Membership Management",
-            "Commission Tracking"
+            "Patient management",
+            "Appointment scheduling",
+            "Billing & insurance",
+            "Test management",
+            "Report generation"
           ]
         },
         whatWeBuild: {
-          intro: "Salon software:",
+          intro: "Clinic solutions:",
           solutions: [
-            "Appointment Scheduling Apps",
-            "POS for Services & Retail",
-            "Client Portfolio Apps",
-            "Marketing Automation Suite",
-            "Inventory Tracking"
+            "Clinic management software",
+            "Patient management",
+            "Appointment system",
+            "Billing system",
+            "Report generation"
           ],
-          footer: "Focus on the client, not the calendar."
+          footer: "Efficient clinic operations."
         },
         coreCapabilities: [
-          "Scheduling Algorithms",
-          "CRM for Personal Care",
-          "Photo Galleries",
-          "Payment Processing"
+          "Patient registration",
+          "Appointment scheduling",
+          "Test management",
+          "Billing & insurance",
+          "Report generation"
         ],
-        idealFor: [
-          "Hair Salons",
-          "Spas",
-          "Nail Studios",
-          "Barbershops"
-        ],
-        businessOutcomes: [
-          "Reduced No-Shows",
-          "Full Calendars",
-          "Higher Retail Sales",
-          "Better Client Retention"
-        ]
+        idealFor: ["Clinics", "Diagnostic centers", "Medical practices"],
+        businessOutcomes: ["Better operations", "Patient satisfaction", "Revenue tracking", "Organization"]
       },
       {
-        id: "automobile-services-workshops",
-        name: "Auto Services & Workshops",
-        description: "Garage management software and service reminders.",
+        id: "salons-spas",
+        name: "Salons, Spas & Wellness Centers",
+        description: "Management systems for beauty, spa, and wellness businesses.",
+        icon: "💆",
+        tagline: "Salon Management System",
+        overview: "Salon systems manage appointments, inventory, and customers.",
+        whyChoose: {
+          intro: "Manage salon operations",
+          points: [
+            "Appointment scheduling",
+            "Staff management",
+            "Customer profiles",
+            "Inventory tracking",
+            "Loyalty programs"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Salon solutions:",
+          solutions: [
+            "Salon management software",
+            "Appointment system",
+            "Staff scheduling",
+            "Customer database",
+            "Billing & loyalty"
+          ],
+          footer: "Salon business success."
+        },
+        coreCapabilities: [
+          "Appointment scheduling",
+          "Staff management",
+          "Service pricing",
+          "Customer loyalty",
+          "Inventory management"
+        ],
+        idealFor: ["Salons", "Spas", "Wellness centers"],
+        businessOutcomes: ["Better scheduling", "Repeat customers", "Staff efficiency", "Loyalty"]
+      },
+      {
+        id: "gyms-fitness",
+        name: "Gyms & Fitness Studios",
+        description: "Management systems for fitness facilities and training.",
+        icon: "💪",
+        tagline: "Gym Management System",
+        overview: "Gym systems manage memberships, classes, and members.",
+        whyChoose: {
+          intro: "Manage fitness business",
+          points: [
+            "Membership management",
+            "Class scheduling",
+            "Trainer management",
+            "Payment collection",
+            "Member engagement"
+          ]
+        },
+        whatWeBuild: {
+          intro: "Gym solutions:",
+          solutions: [
+            "Gym management software",
+            "Membership system",
+            "Class management",
+            "Billing system",
+            "Mobile app"
+          ],
+          footer: "Fitness business success."
+        },
+        coreCapabilities: [
+          "Membership management",
+          "Class scheduling",
+          "Trainer assignment",
+          "Payment processing",
+          "Member tracking"
+        ],
+        idealFor: ["Gyms", "Fitness studios", "Wellness centers"],
+        businessOutcomes: ["Better retention", "Higher utilization", "Payment efficiency", "Member engagement"]
+      },
+      {
+        id: "automobile-service",
+        name: "Automobile Service Centers",
+        description: "Management systems for car repair and service centers.",
         icon: "🚗",
-        tagline: "Drive Efficiency in Your Shop",
-        overview: "Streamline your auto workshop. We build software to manage job cards, track parts, and keep customers updated on their vehicle status.",
+        tagline: "Auto Service Management",
+        overview: "Auto service systems manage repairs, inventory, and customers.",
         whyChoose: {
-          intro: "Tune up operations:",
+          intro: "Manage auto service",
           points: [
-            "Digital Job Cards",
-            "Service History Tracking",
-            "Automated Service Reminders",
-            "Parts Inventory Lookup",
-            "Status Updates via SMS"
+            "Job scheduling",
+            "Parts inventory",
+            "Service history",
+            "Customer communication",
+            "Billing"
           ]
         },
         whatWeBuild: {
-          intro: "Workshop tools:",
+          intro: "Auto service solutions:",
           solutions: [
-            "Garage Management Software",
-            "Mechanic Apps",
-            "Customer Booking Portals",
-            "Invoicing & Estimates",
-            "Fleet Maintenance Logs"
+            "Service management software",
+            "Job scheduling",
+            "Parts inventory",
+            "Customer records",
+            "Billing system"
           ],
-          footer: "Keeping your business moving."
+          footer: "Auto service excellence."
         },
         coreCapabilities: [
-          "Vehicle Lookup API",
-          "Job Tracking",
-          "Estimating Tools",
-          "Customer Communication"
+          "Job scheduling",
+          "Parts management",
+          "Service history",
+          "Labor tracking",
+          "Customer communication"
         ],
-        idealFor: [
-          "Auto Repair Shops",
-          "Car Washes",
-          "Detailing Centers",
-          "Tire Shops"
-        ],
-        businessOutcomes: [
-          "Faster Turnaround",
-          "Improved Trust",
-          "Repeat Service Revenue",
-          "Accurate Inventory"
-        ]
+        idealFor: ["Service centers", "Repair shops", "Auto dealers"],
+        businessOutcomes: ["Better scheduling", "Service quality", "Customer retention", "Efficiency"]
       },
       {
-        id: "gyms-yoga-fitness",
-        name: "Gyms & Yoga Studios",
-        description: "Local fitness studio management and class scheduling.",
-        icon: "🧘",
-        tagline: "Community Fitness Management",
-        overview: "Manage your local studio with ease. From class bookings to membership renewals, we help you build a thriving fitness community.",
+        id: "home-service-providers",
+        name: "Home Service Providers",
+        description: "Platforms for home services like plumbing, electrician, cleaning.",
+        icon: "🔧",
+        tagline: "Home Service Platform",
+        overview: "Home service platforms connect providers with customers.",
         whyChoose: {
-          intro: "Strengthen your business:",
+          intro: "Manage home services",
           points: [
-            "Class Credential Booking",
-            "Membership Recurring Billing",
-            "Waitlist Automation",
-            "Instructor Management",
-            "VOD for Hybrid Classes"
+            "Job scheduling",
+            "Service provider management",
+            "Customer booking",
+            "Payment collection",
+            "Service tracking"
           ]
         },
         whatWeBuild: {
-          intro: "Studio tech:",
+          intro: "Home service solutions:",
           solutions: [
-            "Member Apps",
-            "Check-in Kiosks",
-            "Class Streaming Platforms",
-            "Challenge & Leaderboard Tools",
-            "Studio Admin Dashboards"
+            "Home service platform",
+            "Provider management",
+            "Booking system",
+            "Billing system",
+            "Customer app"
           ],
-          footer: "Namaste, organized."
+          footer: "Home service success."
         },
         coreCapabilities: [
-          "Calendar Management",
-          "Payment Gateways",
-          "Access Control Integration",
-          "Video Hosting"
+          "Service scheduling",
+          "Provider assignment",
+          "Customer booking",
+          "Payment processing",
+          "Service tracking"
         ],
-        idealFor: [
-          "Local Gyms",
-          "Yoga Studios",
-          "Pilates Centers",
-          "CrossFit Boxes"
-        ],
-        businessOutcomes: [
-          "Full Classes",
-          "Automated Payments",
-          "Engaged Community",
-          "Less Admin Time"
-        ]
+        idealFor: ["Service providers", "Handymen", "Service networks"],
+        businessOutcomes: ["More bookings", "Efficiency", "Customer retention", "Growth"]
       },
       {
-        id: "clinics-local-healthcare",
-        name: "Local Clinics & Dentists",
-        description: "Practice management for independent doctors and dentists.",
-        icon: "🦷",
-        tagline: "Care Focused Management",
-        overview: "Modern practice management. We help independent clinics manage appointments, patient records, and billing without the complexity of enterprise hospital systems.",
+        id: "logistics-local-delivery",
+        name: "Logistics & Local Delivery Services",
+        description: "Platforms for local delivery and logistics operations.",
+        icon: "🚚",
+        tagline: "Local Delivery Platform",
+        overview: "Delivery platforms optimize routes and track deliveries.",
         whyChoose: {
-          intro: "Care more, manage less:",
+          intro: "Manage deliveries",
           points: [
-            "Online Appointment Booking",
-            "Digital Patient Intake Forms",
-            "Tele-consultation Integration",
-            "Review Generation",
-            "Insurance Claim Assistance"
+            "Order management",
+            "Route optimization",
+            "Real-time tracking",
+            "Driver management",
+            "Customer communication"
           ]
         },
         whatWeBuild: {
-          intro: "Practice software:",
+          intro: "Delivery solutions:",
           solutions: [
-            "Clinic Management Systems",
-            "Patient Portals",
-            "Teledentistry Apps",
-            "E-Prescription Tools",
-            "Billing Software"
+            "Delivery management system",
+            "Route optimization",
+            "Tracking system",
+            "Driver app",
+            "Customer app"
           ],
-          footer: "Your practice, modernized."
+          footer: "Efficient deliveries."
         },
         coreCapabilities: [
-          "Calendar Sync",
-          "Secure Forms (HIPAA)",
-          "Video Calling",
-          "Invoicing"
+          "Order management",
+          "Route optimization",
+          "Real-time tracking",
+          "Driver coordination",
+          "Customer notifications"
         ],
-        idealFor: [
-          "Dental Clinics",
-          "GP Practices",
-          "Physiotherapy Centers",
-          "Chiropractors"
-        ],
-        businessOutcomes: [
-          "Reduced No-Shows",
-          "Paperless Operations",
-          "Better Patient Reviews",
-          "Faster Payments"
-        ]
+        idealFor: ["Delivery services", "Logistics companies", "E-commerce"],
+        businessOutcomes: ["Faster delivery", "Cost efficiency", "Customer satisfaction", "Scalability"]
       },
       {
-        id: "professional-services",
-        name: "Professional Services",
-        description: "Client portals and project tracking for lawyers, accountants, and consultants.",
-        icon: "⚖️",
-        tagline: "Professional Client Management",
-        overview: "Impress your clients. We build secure portals, document sharing tools, and billing systems for professional service firms.",
+        id: "local-seo-digital-marketing",
+        name: "Local SEO, Ads & Digital Marketing",
+        description: "Digital marketing services for local business growth.",
+        icon: "📱",
+        tagline: "Local Marketing Platform",
+        overview: "Local marketing services help businesses reach nearby customers.",
         whyChoose: {
-          intro: "Professionalize operations:",
+          intro: "Market locally",
           points: [
-            "Secure Document Exchange",
-            "Time Tracking & Billing",
-            "Client Onboarding Automation",
-            "Appointment Scheduling",
-            "Case/Project Management"
+            "Google My Business optimization",
+            "Local SEO",
+            "Local ads management",
+            "Review management",
+            "Analytics"
           ]
         },
         whatWeBuild: {
-          intro: "Firm solutions:",
+          intro: "Local marketing solutions:",
           solutions: [
-            "Client Portals",
-            "Practice Management Software",
-            "Document Automation Tools",
-            "CRM for Firms",
-            "Billing & Invoicing Apps"
+            "Local SEO platform",
+            "Ads management",
+            "Review management",
+            "Analytics dashboard",
+            "Local insights"
           ],
-          footer: "Trust and efficiency."
+          footer: "Local business growth."
         },
         coreCapabilities: [
-          "Encryption & Security",
-          "Time Tracking",
-          "Document Management",
-          "Signature Integration"
+          "Local SEO optimization",
+          "Ad campaign management",
+          "Review monitoring",
+          "Local analytics",
+          "Reputation management"
         ],
-        idealFor: [
-          "Law Firms",
-          "Accounting Firms",
-          "Consultancies",
-          "Agencies"
-        ],
-        businessOutcomes: [
-          "Billable Hours Accuracy",
-          "Client Satisfaction",
-          "Secure Collaboration",
-          "Faster Collections"
-        ]
+        idealFor: ["Local businesses", "Franchises", "Multi-location brands"],
+        businessOutcomes: ["Higher visibility", "More customers", "Better reviews", "Local dominance"]
       }
     ]
   }
