@@ -75,11 +75,11 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                   >
                     <Link
                       to={`/industries/${industry.id}/${sub.id}`}
-                      className="group flex items-start gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3"
+                      className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3 h-8"
                       onClick={onClose}
                     >
                       <motion.span
-                        className="text-base flex-shrink-0 mt-0.5"
+                        className="text-base flex-shrink-0"
                         whileHover={{ scale: 1.2 }}
                         transition={{ duration: 0.3 }}
                       >
