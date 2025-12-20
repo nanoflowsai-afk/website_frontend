@@ -95,7 +95,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                       e.preventDefault();
                       toggleExpanded(industry.id);
                     }}
-                    className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition"
+                    className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition w-full text-center"
                   >
                     {isExpanded ? "Show less ↑" : "Show more →"}
                   </button>
