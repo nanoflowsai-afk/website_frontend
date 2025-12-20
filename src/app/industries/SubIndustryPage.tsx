@@ -2,8 +2,261 @@ import { useParams, Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { industries, getRelatedServices } from "@/lib/data/industries";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+
+// Tech Stack Section Component
+function TechStackSection() {
+  const [activeCategory, setActiveCategory] = useState(0);
+  
+  const categories = [
+    {
+      label: "Frontend",
+      technologies: [
+        { name: "React", icon: "🎨" },
+        { name: "Next.js", icon: "⚡" },
+        { name: "TypeScript", icon: "📘" },
+        { name: "Tailwind CSS", icon: "🎯" },
+        { name: "Vue.js", icon: "💚" },
+        { name: "Angular", icon: "🅰️" }
+      ]
+    },
+    {
+      label: "Backend",
+      technologies: [
+        { name: "Node.js", icon: "🟩" },
+        { name: "Python", icon: "🐍" },
+        { name: "FastAPI", icon: "⚙️" },
+        { name: "Express", icon: "🚂" },
+        { name: "Django", icon: "🎭" },
+        { name: "Go", icon: "🔵" }
+      ]
+    },
+    {
+      label: "Databases",
+      technologies: [
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "MongoDB", icon: "🍃" },
+        { name: "Redis", icon: "🔴" },
+        { name: "Firebase", icon: "🔥" },
+        { name: "MySQL", icon: "🐬" },
+        { name: "DynamoDB", icon: "⚡" }
+      ]
+    },
+    {
+      label: "Cloud & DevOps",
+      technologies: [
+        { name: "AWS", icon: "☁️" },
+        { name: "Docker", icon: "🐳" },
+        { name: "Kubernetes", icon: "⚓" },
+        { name: "GCP", icon: "🌐" },
+        { name: "Azure", icon: "💙" },
+        { name: "CI/CD", icon: "🔄" }
+      ]
+    },
+    {
+      label: "AI & LLM",
+      technologies: [
+        { name: "OpenAI", icon: "🤖" },
+        { name: "Claude", icon: "🧠" },
+        { name: "LangChain", icon: "🔗" },
+        { name: "RAG Systems", icon: "📚" },
+        { name: "Custom Models", icon: "🎓" },
+        { name: "Embeddings", icon: "🔍" }
+      ]
+    }
+  ];
+
+  const activeTechs = categories[activeCategory].technologies;
+
+  return (
+    <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
+      <div className="mx-auto max-w-[1400px] px-6">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+              <span className="text-lg">4️⃣</span> TECH STACK
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">Modern, Secure & Scalable Technology</h2>
+            <p className="text-gray-600 mt-4">Enterprise-grade stack built for FinTech</p>
+          </div>
+
+          <div className="space-y-6">
+            {/* Category Tabs */}
+            <div className="flex overflow-x-auto scrollbar-hide gap-2 border-b border-gray-200 pb-4">
+              {categories.map((cat, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveCategory(idx)}
+                  className={`relative whitespace-nowrap px-4 py-2 text-sm font-medium transition-colors flex-shrink-0 rounded-lg ${
+                    activeCategory === idx
+                      ? "text-orange-600 bg-orange-50"
+                      : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  {cat.label}
+                  {activeCategory === idx && (
+                    <motion.div
+                      layoutId="activeTech"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500"
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Technology Cards */}
+            <div className="relative overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 md:grid-cols-3"
+                >
+                  {activeTechs.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="group flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-100 bg-white p-4 transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg min-h-[110px]"
+                    >
+                      <div className="text-5xl">{tech.icon}</div>
+                      <span className="text-sm font-medium text-gray-600 text-center">{tech.name}</span>
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Architecture Flow Section Component
+function ArchitectureFlowSection() {
+  const steps = [
+    { title: "Lead / User Entry", icon: "📝", desc: "Capture customer data" },
+    { title: "AI Lead Qualification", icon: "🎯", desc: "Score & segment leads" },
+    { title: "CRM & User Management", icon: "👤", desc: "Organize customer info" },
+    { title: "KYC & Verification", icon: "✅", desc: "Verify identities" },
+    { title: "Risk & Credit Scoring", icon: "📊", desc: "Assess creditworthiness" },
+    { title: "Transaction Execution", icon: "💳", desc: "Process payments" },
+    { title: "AI Follow-Ups", icon: "📢", desc: "Automated outreach" },
+    { title: "Support Chatbot", icon: "💬", desc: "24/7 assistance" },
+    { title: "Analytics & Compliance", icon: "📈", desc: "Track & monitor" }
+  ];
+
+  return (
+    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+      <div className="mx-auto max-w-[1400px] px-6">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+              <span className="text-lg">6️⃣</span> ARCHITECTURE
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">AI-Driven System Flow</h2>
+          </div>
+
+          <div className="rounded-2xl border border-gray-200 bg-white p-10 shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {steps.map((step, idx) => (
+                <div key={idx} className="relative">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex flex-col items-center"
+                  >
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-400 to-amber-500 text-white text-2xl shadow-lg mb-4">
+                      {step.icon}
+                    </div>
+                    <h4 className="font-bold text-gray-900 text-center mb-1">{step.title}</h4>
+                    <p className="text-sm text-gray-600 text-center">{step.desc}</p>
+                  </motion.div>
+
+                  {/* Flow arrows for desktop */}
+                  {idx < steps.length - 1 && idx % 3 !== 2 && (
+                    <div className="hidden md:flex absolute top-8 -right-3 text-gray-400 text-2xl">→</div>
+                  )}
+                  {idx % 3 === 2 && idx < steps.length - 1 && (
+                    <div className="hidden md:flex absolute -bottom-6 text-gray-400 text-2xl">↓</div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 rounded-lg bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 p-6 text-center">
+              <p className="text-gray-900 font-semibold text-lg">
+                ✨ Ensures speed, accuracy, security, and scalability
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                End-to-end automation with real-time monitoring and compliance checks
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Industries Scroll Section Component
+function IndustriesScrollSection() {
+  const industriesData = [
+    { name: "Startups & SaaS", icon: "🚀" },
+    { name: "Enterprises", icon: "🏢" },
+    { name: "E-Commerce", icon: "🛍️" },
+    { name: "Real Estate", icon: "🏠" },
+    { name: "Healthcare", icon: "⚕️" },
+    { name: "EdTech", icon: "🎓" },
+    { name: "Local Business", icon: "🏪" }
+  ];
+
+  return (
+    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+      <div className="mx-auto max-w-[1400px] px-6">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+              <span className="text-lg">8️⃣</span> MORE INDUSTRIES
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond FinTech</h2>
+            <p className="text-gray-600 mt-2">Scroll to explore all industries</p>
+          </div>
+
+          <div className="relative">
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex gap-4 pb-4 w-max md:w-full">
+                {industriesData.map((ind, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="flex-shrink-0 w-40 md:w-auto md:flex-1 group"
+                  >
+                    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 h-48 hover:border-orange-300 hover:shadow-lg hover:bg-orange-50 transition duration-300">
+                      <div className="text-5xl">{ind.icon}</div>
+                      <p className="text-center font-bold text-gray-900 text-sm md:text-base">{ind.name}</p>
+                      <div className="text-orange-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transition">
+                        Learn More →
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function SubIndustryPage() {
     const { id, subId } = useParams<{ id: string; subId: string }>();
@@ -206,35 +459,7 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 4: Tech Stack */}
-                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        <span className="text-lg">4️⃣</span> TECH STACK
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">Modern, Secure & Scalable Technology</h2>
-                                    <p className="text-gray-600 mt-4">Enterprise-grade stack built for FinTech</p>
-                                </div>
-                                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                                    {[
-                                        { label: "Frontend", value: "React, Next.js", icon: "🎨" },
-                                        { label: "Backend", value: "Node.js, Python", icon: "⚙️" },
-                                        { label: "Databases", value: "PostgreSQL, MongoDB", icon: "💾" },
-                                        { label: "AI & Automation", value: "Custom AI models, Workflows", icon: "🤖" },
-                                        { label: "Cloud & DevOps", value: "AWS, Docker, Nginx", icon: "☁️" },
-                                        { label: "Security", value: "Role-based access, Encrypted APIs", icon: "🔐" }
-                                    ].map((item, idx) => (
-                                        <div key={idx} className="rounded-xl border border-gray-200 bg-white p-6 hover:border-orange-300 hover:shadow-lg transition">
-                                            <div className="text-3xl mb-3">{item.icon}</div>
-                                            <h4 className="font-bold text-gray-900 mb-2 text-lg">{item.label}</h4>
-                                            <p className="text-gray-600">{item.value}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <TechStackSection />
 
                     {/* Section 5: Features */}
                     <section className="bg-white py-20">
@@ -270,44 +495,7 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 6: Architecture */}
-                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        <span className="text-lg">6️⃣</span> ARCHITECTURE
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">AI-Driven System Flow</h2>
-                                </div>
-                                <div className="rounded-2xl border border-gray-200 bg-white p-10 shadow-sm">
-                                    <div className="space-y-4">
-                                        {[
-                                            { title: "Lead / User Entry", icon: "📝" },
-                                            { title: "AI Lead Qualification", icon: "🎯" },
-                                            { title: "CRM & User Management", icon: "👤" },
-                                            { title: "KYC & Verification", icon: "✅" },
-                                            { title: "Risk & Credit Scoring", icon: "📊" },
-                                            { title: "Transaction Execution", icon: "💳" },
-                                            { title: "AI Follow-Ups & Notifications", icon: "📢" },
-                                            { title: "Support Chatbot & Tickets", icon: "💬" },
-                                            { title: "Analytics & Compliance", icon: "📈" }
-                                        ].map((step, idx) => (
-                                            <div key={idx} className="flex items-center gap-4">
-                                                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white text-xl font-bold">{step.icon}</div>
-                                                <div className="flex-1">
-                                                    <p className="font-semibold text-gray-900">{step.title}</p>
-                                                </div>
-                                                {idx < 8 && <div className="text-gray-400 text-2xl">↓</div>}
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="mt-8 rounded-lg bg-orange-50 border border-orange-200 p-4 text-center">
-                                        <p className="text-gray-900 font-semibold">Ensures speed, accuracy, security, and scalability</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <ArchitectureFlowSection />
 
                     {/* Section 7: Benefits */}
                     <section className="bg-white py-20">
@@ -339,34 +527,7 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 8: Other Industries */}
-                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        <span className="text-lg">8️⃣</span> MORE INDUSTRIES
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond FinTech</h2>
-                                </div>
-                                <div className="grid gap-3 md:grid-cols-2">
-                                    {[
-                                        "Startups & SaaS Companies",
-                                        "Enterprises & Corporates",
-                                        "E-Commerce & D2C Brands",
-                                        "Real Estate Businesses",
-                                        "Healthcare & Clinics",
-                                        "Education & EdTech Platforms",
-                                        "Local Businesses & Service Providers"
-                                    ].map((industry, idx) => (
-                                        <div key={idx} className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-4 hover:border-orange-300 hover:bg-orange-50 transition">
-                                            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">✓</span>
-                                            <span className="text-gray-900 font-medium">{industry}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <IndustriesScrollSection />
 
                     {/* CTA Section */}
                     <section className="bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 py-20">
