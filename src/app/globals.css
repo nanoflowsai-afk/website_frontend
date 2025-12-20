@@ -90,21 +90,21 @@ a {
 }
 
 .animate-scroll-left {
-  animation: scroll-left 5s linear infinite;
+  animation: scroll-left 12s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
 .animate-scroll-right {
-  animation: scroll-right 5s linear infinite;
+  animation: scroll-right 12s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
 .animate-scroll-left-slow {
-  animation: scroll-left 7s linear infinite;
+  animation: scroll-left 15s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -112,15 +112,15 @@ a {
 
 @media (max-width: 768px) {
   .animate-scroll-left {
-    animation: scroll-left 6s linear infinite;
+    animation: scroll-left 5s linear infinite;
   }
 
   .animate-scroll-right {
-    animation: scroll-right 6s linear infinite;
+    animation: scroll-right 5s linear infinite;
   }
 
   .animate-scroll-left-slow {
-    animation: scroll-left 8s linear infinite;
+    animation: scroll-left 7s linear infinite;
   }
 }
 
