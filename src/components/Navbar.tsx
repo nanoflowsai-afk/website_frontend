@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { IndustriesDropdown } from "./IndustriesDropdown";
 import { ProductsDropdown } from "./ProductsDropdown";
+import { industries } from "@/lib/data/industries";
 
 export function Navbar() {
   const [resourcesOpen, setResourcesOpen] = useState(false);
@@ -369,92 +370,7 @@ export function Navbar() {
                       exit={{ opacity: 0, height: 0 }}
                       className="ml-4 mt-2 rounded-lg bg-gray-50 p-2 space-y-1"
                     >
-                      {[
-                        {
-                          id: "startups-saas",
-                          name: "Startups & SaaS",
-                          icon: "🚀",
-                          subs: [
-                            { id: "fintech-startups", name: "FinTech Startups", icon: "💳" },
-                            { id: "healthtech-startups", name: "HealthTech Startups", icon: "🏥" },
-                            { id: "edtech-startups", name: "EdTech Startups", icon: "📚" },
-                            { id: "proptech-startups", name: "PropTech Startups", icon: "🏗️" },
-                            { id: "hrtech-recruitment-saas", name: "HRTech & Recruitment", icon: "👥" },
-                          ]
-                        },
-                        {
-                          id: "enterprises",
-                          name: "Enterprises",
-                          icon: "🏢",
-                          subs: [
-                            { id: "banking-financial-services", name: "Banking & Financial Services", icon: "🏦" },
-                            { id: "manufacturing-industrial", name: "Manufacturing & Industrial", icon: "🏭" },
-                            { id: "it-services-consulting", name: "IT Services & Consulting", icon: "💻" },
-                            { id: "telecom-networking", name: "Telecom & Networking", icon: "📡" },
-                            { id: "energy-utilities", name: "Energy & Utilities", icon: "⚡" },
-                          ]
-                        },
-                        {
-                          id: "ecommerce",
-                          name: "E-Commerce",
-                          icon: "🛒",
-                          subs: [
-                            { id: "multi-vendor-marketplaces", name: "Multi-Vendor Marketplaces", icon: "🏪" },
-                            { id: "b2c-online-retail", name: "B2C E-commerce", icon: "🛍️" },
-                            { id: "b2b-ecommerce-platforms", name: "B2B E-commerce", icon: "📦" },
-                            { id: "fashion-lifestyle-ecommerce", name: "Fashion & Apparel", icon: "👕" },
-                            { id: "grocery-quick-commerce", name: "Groceries & Food", icon: "🍔" },
-                          ]
-                        },
-                        {
-                          id: "real-estate",
-                          name: "Real Estate",
-                          icon: "🏠",
-                          subs: [
-                            { id: "residential-real-estate", name: "Residential Real Estate", icon: "🏡" },
-                            { id: "commercial-real-estate", name: "Commercial Real Estate", icon: "🏢" },
-                            { id: "property-management-firms", name: "Property Management", icon: "🔑" },
-                            { id: "real-estate-developers", name: "Real Estate Developers", icon: "📊" },
-                            { id: "hospitality-vacation-rentals", name: "Hospitality & Resorts", icon: "🏨" },
-                          ]
-                        },
-                        {
-                          id: "healthcare",
-                          name: "Healthcare",
-                          icon: "⚕️",
-                          subs: [
-                            { id: "hospitals-multispecialty-clinics", name: "Hospitals & Clinics", icon: "🏥" },
-                            { id: "telemedicine-virtual-care", name: "Telemedicine", icon: "📞" },
-                            { id: "diagnostic-labs-imaging", name: "Diagnostic Labs", icon: "🔬" },
-                            { id: "pharmacies-medical-stores", name: "Pharmacies", icon: "💊" },
-                            { id: "health-insurance-providers", name: "Health Insurance", icon: "📋" },
-                          ]
-                        },
-                        {
-                          id: "education",
-                          name: "Education",
-                          icon: "📚",
-                          subs: [
-                            { id: "schools-k12", name: "K-12 Schools", icon: "🎓" },
-                            { id: "colleges-universities", name: "Colleges & Universities", icon: "🎯" },
-                            { id: "online-learning-platforms", name: "Online Learning Platforms", icon: "💻" },
-                            { id: "skill-development-vocational", name: "Vocational Training", icon: "🛠️" },
-                            { id: "corporate-training-ld", name: "Corporate Training", icon: "👔" },
-                          ]
-                        },
-                        {
-                          id: "local-businesses",
-                          name: "Local Business",
-                          icon: "🏪",
-                          subs: [
-                            { id: "restaurants-cafes-food", name: "Restaurants & Cafés", icon: "🍕" },
-                            { id: "salons-spas-personal-care", name: "Salons & Spas", icon: "💇" },
-                            { id: "automobile-services-workshops", name: "Automotive Services", icon: "🚗" },
-                            { id: "gyms-yoga-fitness", name: "Fitness & Gyms", icon: "🏋️" },
-                            { id: "clinics-local-healthcare", name: "Local Clinics", icon: "🏥" },
-                          ]
-                        },
-                      ].map((industry) => {
+                      {industries.map((industry) => {
                         const isExpanded = expandedIndustryId === industry.id;
                         return (
                           <div key={industry.id}>
@@ -487,7 +403,7 @@ export function Navbar() {
                                   transition={{ duration: 0.2 }}
                                   className="ml-4 mt-1 space-y-1 overflow-hidden"
                                 >
-                                  {industry.subs.map((sub) => (
+                                  {industry.subIndustries.map((sub) => (
                                     <a
                                       key={sub.id}
                                       href={`/industries/${industry.id}/${sub.id}`}
