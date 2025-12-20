@@ -6,16 +6,48 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Tech Stack Section Component - Single Row with Brand Icons
+// Tech Stack Section Component - With Categories
 function TechStackSection() {
-  const technologies = [
-    { name: "React", icon: "⚛️", color: "#61DAFB" },
-    { name: "Node.js", icon: "🟩", color: "#68A063" },
-    { name: "PostgreSQL", icon: "🐘", color: "#336791" },
-    { name: "AWS", icon: "☁️", color: "#FF9900" },
-    { name: "TypeScript", icon: "📘", color: "#3178C6" },
-    { name: "Docker", icon: "🐳", color: "#2496ED" }
-  ];
+  const [activeCategory, setActiveCategory] = useState("frontend");
+
+  const categories = {
+    frontend: {
+      name: "Frontend",
+      icon: "🎨",
+      technologies: [
+        { name: "React", icon: "⚛️" },
+        { name: "TypeScript", icon: "📘" },
+        { name: "Tailwind CSS", icon: "🎯" }
+      ]
+    },
+    backend: {
+      name: "Backend",
+      icon: "⚙️",
+      technologies: [
+        { name: "Node.js", icon: "🟩" },
+        { name: "Express", icon: "⚡" },
+        { name: "REST API", icon: "🔌" }
+      ]
+    },
+    database: {
+      name: "Database",
+      icon: "💾",
+      technologies: [
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "Redis", icon: "🔴" },
+        { name: "Prisma ORM", icon: "📊" }
+      ]
+    },
+    cloud: {
+      name: "Cloud & DevOps",
+      icon: "☁️",
+      technologies: [
+        { name: "AWS", icon: "☁️" },
+        { name: "Docker", icon: "🐳" },
+        { name: "GitHub Actions", icon: "🔄" }
+      ]
+    }
+  };
 
   return (
     <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
@@ -29,21 +61,43 @@ function TechStackSection() {
             <p className="text-gray-600 mt-4">Enterprise-grade stack built for FinTech</p>
           </div>
 
-          <div className="flex items-center justify-center gap-6 md:gap-8 flex-wrap">
-            {technologies.map((tech, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-                className="flex flex-col items-center gap-3 group cursor-pointer"
+          {/* Category Tabs */}
+          <div className="flex flex-wrap gap-3 justify-center mb-12">
+            {Object.entries(categories).map(([key, category]) => (
+              <button
+                key={key}
+                onClick={() => setActiveCategory(key)}
+                className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeCategory === key
+                    ? "bg-orange-500 text-white shadow-lg"
+                    : "bg-white text-gray-700 border border-gray-200 hover:border-orange-300"
+                }`}
               >
-                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white border border-gray-200 text-4xl shadow-sm group-hover:shadow-lg group-hover:border-orange-300 transition-all duration-300">
-                  {tech.icon}
-                </div>
-                <span className="text-sm font-semibold text-gray-700">{tech.name}</span>
-              </motion.div>
+                <span className="text-xl">{category.icon}</span>
+                {category.name}
+              </button>
             ))}
+          </div>
+
+          {/* Technologies Grid */}
+          <div className="flex items-center justify-center gap-6 md:gap-8 flex-wrap">
+            <AnimatePresence mode="wait">
+              {categories[activeCategory as keyof typeof categories]?.technologies.map((tech, idx) => (
+                <motion.div
+                  key={`${activeCategory}-${idx}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ delay: idx * 0.05 }}
+                  className="flex flex-col items-center gap-3 group cursor-pointer"
+                >
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white border border-gray-200 text-4xl shadow-sm group-hover:shadow-lg group-hover:border-orange-300 transition-all duration-300">
+                    {tech.icon}
+                  </div>
+                  <span className="text-sm font-semibold text-gray-700">{tech.name}</span>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </div>
