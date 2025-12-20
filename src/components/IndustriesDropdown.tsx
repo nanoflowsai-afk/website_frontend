@@ -32,17 +32,17 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[75vw] max-w-6xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl max-h-[600px] overflow-hidden"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[90vw] max-w-7xl rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4 h-full">
+      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-6">
         {industriesData.map((industry, index) => {
           const isExpanded = expandedIndustryIds.has(industry.id);
           const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
           const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
           return (
-            <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-4' : ''} overflow-y-auto max-h-[550px]`}>
+            <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-4' : ''}`}>
               {/* Header Section */}
               <Link
                 to={`/industries/${industry.id}`}
