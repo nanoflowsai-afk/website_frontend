@@ -24,6 +24,8 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
     }
   };
 
+  console.log("Current expandedIndustryId:", expandedIndustryId);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
