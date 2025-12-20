@@ -24,6 +24,8 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
     }
   };
 
+  console.log("Current expandedIndustryId:", expandedIndustryId);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
@@ -40,7 +42,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
           const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
           return (
-            <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-3' : ''} min-h-0`}>
+            <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-3' : ''}`}>
               {/* Header Section */}
               <Link
                 to={`/industries/${industry.id}`}
@@ -62,38 +64,31 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               </Link>
 
               {/* Sub-items Section */}
-              <div className="flex flex-col gap-3.5 items-start overflow-hidden">
-                <motion.div
-                  initial={false}
-                  animate={{ height: "auto" }}
-                  transition={{ duration: 0.3 }}
-                  className="w-full overflow-hidden"
-                >
-                  {visibleSubs.map((sub, subIndex) => (
-                    <motion.div
-                      key={sub.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.05 + subIndex * 0.02 }}
-                      className="w-full"
+              <div className="flex flex-col gap-3.5 items-start">
+                {visibleSubs.map((sub, subIndex) => (
+                  <motion.div
+                    key={sub.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.05 + subIndex * 0.02 }}
+                    className="w-full"
+                  >
+                    <Link
+                      to={`/industries/${industry.id}/${sub.id}`}
+                      className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3 h-8"
+                      onClick={onClose}
                     >
-                      <Link
-                        to={`/industries/${industry.id}/${sub.id}`}
-                        className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3 h-8"
-                        onClick={onClose}
+                      <motion.span
+                        className="text-base flex-shrink-0"
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <motion.span
-                          className="text-base flex-shrink-0"
-                          whileHover={{ scale: 1.2 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {sub.icon}
-                        </motion.span>
-                        <span className="group-hover:translate-x-0.5 transition-transform text-left">{sub.name}</span>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                        {sub.icon}
+                      </motion.span>
+                      <span className="group-hover:translate-x-0.5 transition-transform text-left">{sub.name}</span>
+                    </Link>
+                  </motion.div>
+                ))}
                 {hasMore && (
                   <button
                     type="button"
