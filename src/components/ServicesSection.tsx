@@ -169,12 +169,12 @@ export function ServicesSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/80"></div>
       <div className="relative flex flex-col lg:flex-row gap-6 p-0.5">
       <div className="lg:w-56 flex-shrink-0 lg:border-r lg:border-gray-200 lg:pr-6">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 pb-4 lg:pb-0">
+        <div className="flex flex-wrap lg:flex-col justify-center lg:justify-start gap-2 pb-4 lg:pb-0">
           {serviceCategories.map((category, index) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`flex flex-col sm:flex-row items-center lg:justify-start gap-1 sm:gap-2 px-3 py-3 lg:py-2 rounded-lg text-center sm:text-left transition-all ${
+              className={`flex flex-col sm:flex-row items-center lg:justify-start gap-1 sm:gap-2 px-3 py-3 lg:py-2 rounded-lg text-center sm:text-left transition-all max-w-xs sm:max-w-none lg:max-w-none lg:w-full ${
                 activeCategory === category.id
                   ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
                   : "bg-gray-50 text-gray-700 hover:bg-orange-50 border border-gray-100"
