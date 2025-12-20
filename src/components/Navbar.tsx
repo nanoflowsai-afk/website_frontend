@@ -383,6 +383,10 @@ export function Navbar() {
                     >
                       {industries.map((industry) => {
                         const isExpanded = expandedIndustryId === industry.id;
+                        const MAX_SHOWN = 6;
+                        const visibleSubs = industry.subIndustries.slice(0, MAX_SHOWN);
+                        const hasMore = industry.subIndustries.length > MAX_SHOWN;
+
                         return (
                           <div key={industry.id}>
                             <button
@@ -414,7 +418,7 @@ export function Navbar() {
                                   transition={{ duration: 0.2 }}
                                   className="ml-4 mt-1 space-y-1 overflow-hidden"
                                 >
-                                  {industry.subIndustries.map((sub) => (
+                                  {visibleSubs.map((sub) => (
                                     <a
                                       key={sub.id}
                                       href={`/industries/${industry.id}/${sub.id}`}
@@ -425,6 +429,15 @@ export function Navbar() {
                                       <span className="line-clamp-1">{sub.name}</span>
                                     </a>
                                   ))}
+                                  {hasMore && (
+                                    <a
+                                      href={`/industries/${industry.id}`}
+                                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-orange-600 text-xs font-semibold hover:bg-orange-50 transition-all mt-2"
+                                      onClick={() => setMobileOpen(false)}
+                                    >
+                                      Show more →
+                                    </a>
+                                  )}
                                 </motion.div>
                               )}
                             </AnimatePresence>
