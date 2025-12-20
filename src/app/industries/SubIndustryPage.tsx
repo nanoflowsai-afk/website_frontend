@@ -87,274 +87,572 @@ export default function SubIndustryPage() {
                 </div>
             </section>
 
-            <section className="bg-gradient-to-b from-gray-50 to-white py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-4xl" >
-                        <div className="mb-8 text-center" >
-                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                {subIndustry.name} Sub - Industry Overview
-                            </h2>
-                        </div>
-                        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
-                            <p className="text-lg text-gray-700 leading-relaxed" >
-                                {subIndustry.overview}
-                            </p>
-                            <p className="mt-6 text-orange-600 font-semibold italic" >
-                                We build trust - first, AI - powered {subIndustry.name.toLowerCase()} systems — not just apps.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-white py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-4xl" >
-                        <div className="mb-8 text-center" >
-                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                Why {subIndustry.name} Choose Nano Flows
-                            </h2>
-                        </div>
-                        <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-50 to-gray-50 p-8" >
-                            <p className="mb-6 text-gray-700 font-medium" >
-                                {subIndustry.whyChoose.intro}
-                            </p>
-                            <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-orange-500" >
-                                Nano Flows advantage:
-                            </p>
-                            <div className="space-y-3" >
-                                {subIndustry.whyChoose.points.map((point, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-start gap-4 rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md"
-                                    >
-                                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
-                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                        <p className="text-gray-700 font-medium" > {point} </p>
-                                    </div>
-                                ))}
+            {/* FinTech-specific content sections */}
+            {subIndustry.id === "fintech-startups" && (
+                <>
+                    {/* Section 1: Overview */}
+                    <section className="bg-white py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                                        <span className="text-orange-500">1️⃣</span> Overview of the FinTech Sub-Industry
+                                    </h2>
+                                </div>
+                                <div className="space-y-4 text-gray-700 leading-relaxed">
+                                    <p>
+                                        FinTech startups are companies that use technology to deliver financial services such as payments, lending, banking, insurance, investments, and expense management. These businesses rely heavily on software platforms, APIs, data, and automation to operate efficiently.
+                                    </p>
+                                    <p>
+                                        As FinTech companies grow, they face challenges like high user volume, compliance requirements, security risks, and operational complexity. To scale safely and profitably, FinTech startups need AI-powered systems, automation, and secure software architecture from the beginning.
+                                    </p>
+                                </div>
                             </div>
-                            <div className="mt-6 rounded-xl bg-gradient-to-r from-orange-100 to-amber-100 p-4" >
-                                <p className="text-center text-orange-800 font-semibold" >
-                                    Result: A {subIndustry.name.toLowerCase()} product investors and users trust.
+                        </div>
+                    </section>
+
+                    {/* Section 2: Business Categories */}
+                    <section className="bg-gray-50 py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                                        <span className="text-orange-500">2️⃣</span> Top Business Listings / Categories in FinTech Startups
+                                    </h2>
+                                    <p className="text-gray-600 text-sm">(Exact FinTech Business Types Nano Flows Targets)</p>
+                                </div>
+                                <p className="mb-6 text-gray-700 font-medium">Nano Flows provides solutions for the following FinTech business models:</p>
+                                <div className="grid gap-3 md:grid-cols-2">
+                                    {[
+                                        "Payment Gateway Platforms",
+                                        "Digital Wallet Applications",
+                                        "Buy Now Pay Later (BNPL) Platforms",
+                                        "Neo Banks & Digital Banking Apps",
+                                        "Loan Aggregation Platforms",
+                                        "Peer-to-Peer Lending Startups",
+                                        "MSME & Microfinance Platforms",
+                                        "Credit Scoring & Risk Analytics Companies",
+                                        "Insurance Technology (InsurTech) Platforms",
+                                        "Wealth Management & Investment Apps",
+                                        "Robo-Advisory Platforms",
+                                        "Crypto & Blockchain-Based FinTech",
+                                        "Regulatory Technology (RegTech) Platforms",
+                                        "Accounting & Expense Management SaaS",
+                                        "Subscription Billing & Invoicing Platforms",
+                                        "Payroll & Salary Advance Solutions",
+                                        "Cross-Border Payment Startups",
+                                        "Fraud Detection & AML Platforms",
+                                        "Open Banking API Providers",
+                                        "Embedded Finance Solutions"
+                                    ].map((category, index) => (
+                                        <div key={index} className="flex items-start gap-3 bg-white rounded-lg p-3">
+                                            <span className="font-bold text-orange-500 flex-shrink-0">{index + 1}.</span>
+                                            <span className="text-gray-700">{category}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 3: Who & Why */}
+                    <section className="bg-white py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900">
+                                        <span className="text-orange-500">3️⃣</span> Who These Services Are For & Why
+                                    </h2>
+                                </div>
+                                <div className="grid gap-8 md:grid-cols-2">
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900 mb-4">Who We Serve</h3>
+                                        <ul className="space-y-3">
+                                            {["FinTech startup founders", "Early-stage and growth-stage FinTech companies", "SaaS-based financial platforms", "Financial product innovators", "Enterprises launching FinTech products"].map((item, idx) => (
+                                                <li key={idx} className="flex items-start gap-3 text-gray-700">
+                                                    <span className="text-orange-500 mt-1">•</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900 mb-4">Why They Need These Services</h3>
+                                        <ul className="space-y-3">
+                                            {["To automate manual financial workflows", "To improve customer onboarding & engagement", "To reduce operational costs", "To maintain compliance & security", "To scale faster without system failures"].map((item, idx) => (
+                                                <li key={idx} className="flex items-start gap-3 text-gray-700">
+                                                    <span className="text-orange-500 mt-1">•</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 4: Tech Stack */}
+                    <section className="bg-gray-50 py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900">
+                                        <span className="text-orange-500">4️⃣</span> Technology Stack Used by Nano Flows
+                                    </h2>
+                                </div>
+                                <p className="mb-6 text-gray-700">Nano Flows uses a modern, scalable, and secure tech stack suitable for FinTech environments:</p>
+                                <div className="grid gap-4 md:grid-cols-2">
+                                    {[
+                                        { label: "Frontend", value: "React, Next.js" },
+                                        { label: "Backend", value: "Node.js, Python" },
+                                        { label: "Databases", value: "PostgreSQL, MongoDB" },
+                                        { label: "AI & Automation", value: "Custom AI models, workflow automation" },
+                                        { label: "Cloud & DevOps", value: "AWS / VPS, Docker, Nginx" },
+                                        { label: "Security", value: "Role-based access, encrypted APIs" },
+                                        { label: "Integrations", value: "Payment gateways, KYC APIs, banking APIs" }
+                                    ].map((item, idx) => (
+                                        <div key={idx} className="bg-white rounded-lg p-4">
+                                            <h4 className="font-bold text-gray-900 mb-2">{item.label}</h4>
+                                            <p className="text-gray-700 text-sm">{item.value}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 5: Features */}
+                    <section className="bg-white py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900">
+                                        <span className="text-orange-500">5️⃣</span> How Nano Flows AI Serves FinTech Startups
+                                    </h2>
+                                    <p className="text-gray-600 text-sm mt-2">(Features Included)</p>
+                                </div>
+                                <p className="mb-6 text-gray-700">Nano Flows builds secure, scalable, AI-powered systems specifically for FinTech operations, including:</p>
+                                <div className="grid gap-3">
+                                    {[
+                                        "AI-Native FinTech SaaS Platform Development",
+                                        "Customer & Lead Management CRM",
+                                        "AI Chatbots for onboarding & support",
+                                        "WhatsApp & Email Automation",
+                                        "AI-Based Follow-Up & Retention Systems",
+                                        "Automated KYC & Workflow Management",
+                                        "Role-Based Admin & User Dashboards",
+                                        "Real-Time Business & Financial Analytics",
+                                        "API-Ready Architecture for integrations"
+                                    ].map((feature, idx) => (
+                                        <div key={idx} className="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
+                                            <span className="text-orange-500 mt-1">✓</span>
+                                            <span className="text-gray-700">{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 6: Architecture */}
+                    <section className="bg-gray-50 py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900">
+                                        <span className="text-orange-500">6️⃣</span> AI-Driven System Architecture
+                                    </h2>
+                                    <p className="text-gray-600 text-sm mt-2">(Conceptual Flow)</p>
+                                </div>
+                                <div className="bg-white rounded-lg p-8">
+                                    <div className="space-y-3 text-center">
+                                        {[
+                                            "Lead / User Entry",
+                                            "AI Lead Qualification",
+                                            "CRM & User Management",
+                                            "KYC & Verification Automation",
+                                            "Risk & Credit Scoring",
+                                            "Transaction / Service Execution",
+                                            "AI Follow-Ups & Notifications",
+                                            "Support Chatbot & Ticket System",
+                                            "Analytics & Compliance Dashboard"
+                                        ].map((step, idx) => (
+                                            <div key={idx}>
+                                                <div className="inline-block bg-orange-500 text-white rounded-full px-4 py-2 text-sm font-semibold">{step}</div>
+                                                {idx < 8 && <div className="text-gray-400 text-lg">↓</div>}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="mt-8 text-center text-gray-700 font-medium">This ensures speed, accuracy, security, and scalability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 7: Benefits */}
+                    <section className="bg-white py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900">
+                                        <span className="text-orange-500">7️⃣</span> What Is the Use of Implementing These Systems?
+                                    </h2>
+                                </div>
+                                <p className="mb-6 text-gray-700">By implementing Nano Flows' AI-driven FinTech solutions, businesses can:</p>
+                                <div className="grid gap-3">
+                                    {[
+                                        "Reduce manual work by 50–70%",
+                                        "Onboard users faster",
+                                        "Increase customer retention",
+                                        "Improve operational visibility",
+                                        "Ensure compliance readiness",
+                                        "Scale confidently with growth"
+                                    ].map((benefit, idx) => (
+                                        <div key={idx} className="flex items-start gap-3 bg-orange-50 rounded-lg p-3">
+                                            <span className="text-orange-500 font-bold flex-shrink-0">✓</span>
+                                            <span className="text-gray-700">{benefit}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 8: Other Industries */}
+                    <section className="bg-gray-50 py-16">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-gray-900">
+                                        <span className="text-orange-500">8️⃣</span> Industries Nano Flows Serves (Beyond FinTech)
+                                    </h2>
+                                </div>
+                                <p className="mb-6 text-gray-700">In addition to FinTech startups, Nano Flows provides AI & software solutions for:</p>
+                                <div className="grid gap-3">
+                                    {[
+                                        "Startups & SaaS Companies",
+                                        "Enterprises & Corporates",
+                                        "E-Commerce & D2C Brands",
+                                        "Real Estate Businesses",
+                                        "Healthcare & Clinics",
+                                        "Education & EdTech Platforms",
+                                        "Local Businesses & Service Providers"
+                                    ].map((industry, idx) => (
+                                        <div key={idx} className="flex items-start gap-3 bg-white rounded-lg p-3">
+                                            <span className="text-orange-500 mt-1">•</span>
+                                            <span className="text-gray-700">{industry}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* CTA Section */}
+                    <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-3xl text-center">
+                                <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                                    Ready to Transform Your FinTech Business?
+                                </h2>
+                                <p className="mt-4 text-lg text-gray-600">
+                                    Let's discuss how our AI solutions can help you automate operations,
+                                    reduce costs, and deliver exceptional experiences to your customers.
+                                </p>
+                                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                                    <Link
+                                        to="/contact"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
+                                    >
+                                        Schedule a Demo →
+                                    </Link>
+                                    <Link
+                                        to={`/industries/${industry.id}`}
+                                        className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
+                                    >
+                                        ← Back to {industry.name}
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </>
+            )}
+
+            {/* Generic sub-industry sections for non-FinTech pages */}
+            {subIndustry.id !== "fintech-startups" && (
+                <>
+                    <section className="bg-gradient-to-b from-gray-50 to-white py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-4xl" >
+                                <div className="mb-8 text-center" >
+                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                        {subIndustry.name} Sub - Industry Overview
+                                    </h2>
+                                </div>
+                                <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
+                                    <p className="text-lg text-gray-700 leading-relaxed" >
+                                        {subIndustry.overview}
+                                    </p>
+                                    <p className="mt-6 text-orange-600 font-semibold italic" >
+                                        We build trust - first, AI - powered {subIndustry.name.toLowerCase()} systems — not just apps.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-4xl" >
+                                <div className="mb-8 text-center" >
+                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                        Why {subIndustry.name} Choose Nano Flows
+                                    </h2>
+                                </div>
+                                <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-slate-50 to-gray-50 p-8" >
+                                    <p className="mb-6 text-gray-700 font-medium" >
+                                        {subIndustry.whyChoose.intro}
+                                    </p>
+                                    <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-orange-500" >
+                                        Nano Flows advantage:
+                                    </p>
+                                    <div className="space-y-3" >
+                                        {subIndustry.whyChoose.points.map((point, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-start gap-4 rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md"
+                                            >
+                                                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
+                                                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p className="text-gray-700 font-medium" > {point} </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="mt-6 rounded-xl bg-gradient-to-r from-orange-100 to-amber-100 p-4" >
+                                        <p className="text-center text-orange-800 font-semibold" >
+                                            Result: A {subIndustry.name.toLowerCase()} product investors and users trust.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-4xl" >
+                                <div className="mb-8 text-center" >
+                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                        What We Build for {subIndustry.name}
+                                    </h2>
+                                </div>
+                                <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
+                                    <p className="mb-6 text-gray-700 font-medium" >
+                                        {subIndustry.whatWeBuild.intro}
+                                    </p>
+                                    <div className="grid gap-4 md:grid-cols-2" >
+                                        {subIndustry.whatWeBuild.solutions.map((solution, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:border-orange-200 hover:bg-orange-50"
+                                            >
+                                                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 text-white text-sm font-bold" >
+                                                    {index + 1}
+                                                </div>
+                                                <p className="text-gray-700 font-medium" > {solution} </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="mt-6 text-center text-gray-600 italic" >
+                                        {subIndustry.whatWeBuild.footer}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-white py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-4xl" >
+                                <div className="mb-8 text-center" >
+                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                        Core {subIndustry.name} Capabilities Included
+                                    </h2>
+                                    <p className="mx-auto mt-4 max-w-2xl text-gray-600" >
+                                        Every {subIndustry.name.toLowerCase()} product we build includes:
+                                    </p>
+                                </div>
+                                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4" >
+                                    {subIndustry.coreCapabilities.map((capability, index) => (
+                                        <div
+                                            key={index}
+                                            className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
+                                        >
+                                            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
+                                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-sm font-bold text-gray-900" > {capability} </h3>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className="mt-8 text-center text-gray-600 font-medium" >
+                                    Security, performance, and accuracy are non - negotiable.
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
 
-            <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-4xl" >
-                        <div className="mb-8 text-center" >
-                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                What We Build for {subIndustry.name}
-                            </h2>
+                    <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-4xl" >
+                                <div className="mb-8 text-center" >
+                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                        Ideal For + Business Outcomes
+                                    </h2>
+                                </div>
+                                <div className="grid gap-8 lg:grid-cols-2" >
+                                    <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
+                                        <h3 className="mb-6 text-xl font-bold text-gray-900" > Ideal for: </h3>
+                                        <div className="space-y-3" >
+                                            {subIndustry.idealFor.map((item, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="flex items-center gap-3 rounded-xl bg-gray-50 p-4"
+                                                >
+                                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold" >
+                                                        {index + 1}
+                                                    </div>
+                                                    <p className="text-gray-700 font-medium" > {item} </p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
+                                        <h3 className="mb-6 text-xl font-bold text-gray-900" > Business outcomes: </h3>
+                                        <div className="space-y-3" >
+                                            {subIndustry.businessOutcomes.map((outcome, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-orange-50 to-amber-50 p-4"
+                                                >
+                                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
+                                                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                    </div>
+                                                    <p className="text-gray-700 font-medium" > {outcome} </p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
-                            <p className="mb-6 text-gray-700 font-medium" >
-                                {subIndustry.whatWeBuild.intro}
-                            </p>
-                            <div className="grid gap-4 md:grid-cols-2" >
-                                {subIndustry.whatWeBuild.solutions.map((solution, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:border-orange-200 hover:bg-orange-50"
+                    </section>
+
+                    <section className="bg-white py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-5xl" >
+                                <div className="mb-10 text-center" >
+                                    <span className="mb-3 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-600" >
+                                        Our Services
+                                    </span>
+                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                        Related Services for {subIndustry.name}
+                                    </h2>
+                                    <p className="mx-auto mt-4 max-w-2xl text-gray-600" >
+                                        Explore the AI services that best complement your {subIndustry.name.toLowerCase()} needs and accelerate your digital transformation.
+                                    </p>
+                                </div>
+                                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" >
+                                    {getRelatedServices(subIndustry, industry.id).map((service, index) => (
+                                        <div
+                                            key={index}
+                                            className="group rounded-2xl bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col h-full"
+                                        >
+                                            <div className="relative h-40 overflow-hidden flex-shrink-0" >
+                                                <img
+                                                    src={service.image}
+                                                    alt={`${service.title} - NanoFlows ${service.category} Service`}
+                                                    title={service.title}
+                                                    className="object-cover w-full h-full absolute inset-0 transition-transform duration-500 group-hover:scale-110"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40" > </div>
+                                            </div>
+                                            <div className="p-5 text-center flex flex-col flex-1" >
+                                                <span className="mb-2 inline-block text-xs font-medium text-orange-500 uppercase tracking-wide" >
+                                                    {service.category}
+                                                </span>
+                                                <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-orange-600 transition-colors" >
+                                                    {service.title}
+                                                </h3>
+                                                <p className="mb-4 text-sm text-gray-600 leading-relaxed flex-1" >
+                                                    {service.description}
+                                                </p>
+                                                <Link
+                                                    to={`/services/${service.id}`}
+                                                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
+                                                >
+                                                    Learn More<span>→</span>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="mt-10 text-center" >
+                                    <Link
+                                        to="/services"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
                                     >
-                                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 text-white text-sm font-bold" >
-                                            {index + 1}
-                                        </div>
-                                        <p className="text-gray-700 font-medium" > {solution} </p>
-                                    </div>
-                                ))}
-                            </div>
-                            <p className="mt-6 text-center text-gray-600 italic" >
-                                {subIndustry.whatWeBuild.footer}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-white py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-4xl" >
-                        <div className="mb-8 text-center" >
-                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                Core {subIndustry.name} Capabilities Included
-                            </h2>
-                            <p className="mx-auto mt-4 max-w-2xl text-gray-600" >
-                                Every {subIndustry.name.toLowerCase()} product we build includes:
-                            </p>
-                        </div>
-                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4" >
-                            {subIndustry.coreCapabilities.map((capability, index) => (
-                                <div
-                                    key={index}
-                                    className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
-                                >
-                                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
+                                        View All Our Services
                                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
-                                    </div>
-                                    <h3 className="text-sm font-bold text-gray-900" > {capability} </h3>
-                                </div>
-                            ))}
-                        </div>
-                        <p className="mt-8 text-center text-gray-600 font-medium" >
-                            Security, performance, and accuracy are non - negotiable.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-4xl" >
-                        <div className="mb-8 text-center" >
-                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                Ideal For + Business Outcomes
-                            </h2>
-                        </div>
-                        <div className="grid gap-8 lg:grid-cols-2" >
-                            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
-                                <h3 className="mb-6 text-xl font-bold text-gray-900" > Ideal for: </h3>
-                                <div className="space-y-3" >
-                                    {subIndustry.idealFor.map((item, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-center gap-3 rounded-xl bg-gray-50 p-4"
-                                        >
-                                            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold" >
-                                                {index + 1}
-                                            </div>
-                                            <p className="text-gray-700 font-medium" > {item} </p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
-                                <h3 className="mb-6 text-xl font-bold text-gray-900" > Business outcomes: </h3>
-                                <div className="space-y-3" >
-                                    {subIndustry.businessOutcomes.map((outcome, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-orange-50 to-amber-50 p-4"
-                                        >
-                                            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
-                                                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                                </svg>
-                                            </div>
-                                            <p className="text-gray-700 font-medium" > {outcome} </p>
-                                        </div>
-                                    ))}
+                                    </Link>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
 
-            <section className="bg-white py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-5xl" >
-                        <div className="mb-10 text-center" >
-                            <span className="mb-3 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-600" >
-                                Our Services
-                            </span>
-                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                Related Services for {subIndustry.name}
-                            </h2>
-                            <p className="mx-auto mt-4 max-w-2xl text-gray-600" >
-                                Explore the AI services that best complement your {subIndustry.name.toLowerCase()} needs and accelerate your digital transformation.
-                            </p>
-                        </div>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" >
-                            {getRelatedServices(subIndustry, industry.id).map((service, index) => (
-                                <div
-                                    key={index}
-                                    className="group rounded-2xl bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col h-full"
-                                >
-                                    <div className="relative h-40 overflow-hidden flex-shrink-0" >
-                                        <img
-                                            src={service.image}
-                                            alt={`${service.title} - NanoFlows ${service.category} Service`}
-                                            title={service.title}
-                                            className="object-cover w-full h-full absolute inset-0 transition-transform duration-500 group-hover:scale-110"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40" > </div>
-                                    </div>
-                                    <div className="p-5 text-center flex flex-col flex-1" >
-                                        <span className="mb-2 inline-block text-xs font-medium text-orange-500 uppercase tracking-wide" >
-                                            {service.category}
-                                        </span>
-                                        <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-orange-600 transition-colors" >
-                                            {service.title}
-                                        </h3>
-                                        <p className="mb-4 text-sm text-gray-600 leading-relaxed flex-1" >
-                                            {service.description}
-                                        </p>
-                                        <Link
-                                            to={`/services/${service.id}`}
-                                            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
-                                        >
-                                            Learn More<span>→</span>
-                                        </Link>
-                                    </div>
+                    <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20" >
+                        <div className="mx-auto max-w-[1400px] px-6" >
+                            <div className="mx-auto max-w-3xl text-center" >
+                                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-3xl shadow-lg" >
+                                    {subIndustry.icon}
                                 </div>
-                            ))}
+                                <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
+                                    Ready to Transform Your {subIndustry.name} Business ?
+                                </h2>
+                                <p className="mt-4 text-lg text-gray-600" >
+                                    Let's discuss how our AI solutions can help you automate operations,
+                                    reduce costs, and deliver exceptional experiences to your customers.
+                                </p>
+                                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row" >
+                                    <Link
+                                        to="/contact"
+                                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
+                                    >
+                                        Schedule a Demo →
+                                    </Link>
+                                    <Link
+                                        to={`/industries/${industry.id}`}
+                                        className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
+                                    >
+                                        ← Back to {industry.name}
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
-                        <div className="mt-10 text-center" >
-                            <Link
-                                to="/services"
-                                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
-                            >
-                                View All Our Services
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20" >
-                <div className="mx-auto max-w-[1400px] px-6" >
-                    <div className="mx-auto max-w-3xl text-center" >
-                        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-3xl shadow-lg" >
-                            {subIndustry.icon}
-                        </div>
-                        <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                            Ready to Transform Your {subIndustry.name} Business ?
-                        </h2>
-                        <p className="mt-4 text-lg text-gray-600" >
-                            Let's discuss how our AI solutions can help you automate operations,
-                            reduce costs, and deliver exceptional experiences to your customers.
-                        </p>
-                        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row" >
-                            <Link
-                                to="/contact"
-                                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
-                            >
-                                Schedule a Demo →
-                            </Link>
-                            <Link
-                                to={`/industries/${industry.id}`}
-                                className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
-                            >
-                                ← Back to {industry.name}
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
+                </>
+            )}
 
             <Footer />
         </div>
