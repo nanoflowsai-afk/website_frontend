@@ -349,7 +349,7 @@ export default function SubIndustryPage() {
                             <div className="mx-auto max-w-3xl">
                                 <div className="mb-12 text-center">
                                     <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        <span className="text-lg">1️⃣</span> OVERVIEW
+                                        OVERVIEW
                                     </span>
                                     <h2 className="text-4xl font-bold text-gray-900 mb-6">Understanding the FinTech Landscape</h2>
                                 </div>
@@ -800,36 +800,6 @@ export default function SubIndustryPage() {
                         </div>
                     </section>
 
-                    <section className="bg-gradient-to-br from-orange-50 via-white to-amber-50 py-20" >
-                        <div className="mx-auto max-w-[1400px] px-6" >
-                            <div className="mx-auto max-w-3xl text-center" >
-                                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-3xl shadow-lg" >
-                                    {subIndustry.icon}
-                                </div>
-                                <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                    Ready to Transform Your {subIndustry.name} Business ?
-                                </h2>
-                                <p className="mt-4 text-lg text-gray-600" >
-                                    Let's discuss how our AI solutions can help you automate operations,
-                                    reduce costs, and deliver exceptional experiences to your customers.
-                                </p>
-                                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row" >
-                                    <Link
-                                        to="/contact"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5"
-                                    >
-                                        Schedule a Demo →
-                                    </Link>
-                                    <Link
-                                        to={`/industries/${industry.id}`}
-                                        className="inline-flex items-center gap-2 rounded-xl border-2 border-gray-300 px-8 py-4 font-semibold text-gray-700 transition hover:border-orange-300 hover:bg-orange-50"
-                                    >
-                                        ← Back to {industry.name}
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 </>
             )}
 
