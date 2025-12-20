@@ -17,6 +17,7 @@ export function Navbar() {
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [expandedIndustryId, setExpandedIndustryId] = useState<string | null>(null);
+  const [expandedSubIndustriesIds, setExpandedSubIndustriesIds] = useState<Set<string>>(new Set());
 
   // Admin State
   const [isAdmin, setIsAdmin] = useState(false);
@@ -383,9 +384,20 @@ export function Navbar() {
                     >
                       {industries.map((industry) => {
                         const isExpanded = expandedIndustryId === industry.id;
+                        const isSubExpanded = expandedSubIndustriesIds.has(industry.id);
                         const MAX_SHOWN = 6;
-                        const visibleSubs = industry.subIndustries.slice(0, MAX_SHOWN);
+                        const visibleSubs = isSubExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
                         const hasMore = industry.subIndustries.length > MAX_SHOWN;
+
+                        const toggleSubExpanded = (industryId: string) => {
+                          const newSet = new Set(expandedSubIndustriesIds);
+                          if (newSet.has(industryId)) {
+                            newSet.delete(industryId);
+                          } else {
+                            newSet.add(industryId);
+                          }
+                          setExpandedSubIndustriesIds(newSet);
+                        };
 
                         return (
                           <div key={industry.id}>
@@ -430,13 +442,15 @@ export function Navbar() {
                                     </a>
                                   ))}
                                   {hasMore && (
-                                    <a
-                                      href={`/industries/${industry.id}`}
-                                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-orange-600 text-xs font-semibold hover:bg-orange-50 transition-all mt-2"
-                                      onClick={() => setMobileOpen(false)}
+                                    <button
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        toggleSubExpanded(industry.id);
+                                      }}
+                                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-orange-600 text-xs font-semibold hover:bg-orange-50 transition-all mt-2 w-full"
                                     >
-                                      Show more →
-                                    </a>
+                                      {isSubExpanded ? "Show less ↑" : "Show more →"}
+                                    </button>
                                   )}
                                 </motion.div>
                               )}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -12,7 +13,18 @@ interface IndustriesDropdownProps {
 }
 
 export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
+  const [expandedIndustryIds, setExpandedIndustryIds] = useState<Set<string>>(new Set());
   const MAX_SHOWN = 6;
+
+  const toggleExpanded = (industryId: string) => {
+    const newSet = new Set(expandedIndustryIds);
+    if (newSet.has(industryId)) {
+      newSet.delete(industryId);
+    } else {
+      newSet.add(industryId);
+    }
+    setExpandedIndustryIds(newSet);
+  };
 
   return (
     <motion.div
@@ -25,7 +37,8 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
     >
       <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
         {industriesData.map((industry, index) => {
-          const visibleSubs = industry.subIndustries.slice(0, MAX_SHOWN);
+          const isExpanded = expandedIndustryIds.has(industry.id);
+          const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
           const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
           return (
@@ -76,13 +89,15 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                   </motion.div>
                 ))}
                 {hasMore && (
-                  <Link
-                    to={`/industries/${industry.id}`}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleExpanded(industry.id);
+                    }}
                     className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition"
-                    onClick={onClose}
                   >
-                    Show more →
-                  </Link>
+                    {isExpanded ? "Show less ↑" : "Show more →"}
+                  </button>
                 )}
               </div>
             </div>
