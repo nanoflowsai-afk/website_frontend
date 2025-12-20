@@ -64,7 +64,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               </Link>
 
               {/* Sub-items Section */}
-              <div className="flex flex-col gap-1 items-start">
+              <div className="flex flex-col gap-2.5 items-start">
                 {visibleSubs.map((sub, subIndex) => (
                   <motion.div
                     key={sub.id}
