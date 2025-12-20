@@ -5,105 +5,7 @@ import { industries, getRelatedServices } from "@/lib/data/industries";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Tech Stack Section Component - With Categories
-function TechStackSection() {
-  const [activeCategory, setActiveCategory] = useState("frontend");
-
-  const categories = {
-    frontend: {
-      name: "Frontend",
-      icon: "🎨",
-      technologies: [
-        { name: "React", icon: "⚛️" },
-        { name: "TypeScript", icon: "📘" },
-        { name: "Tailwind CSS", icon: "🎯" }
-      ]
-    },
-    backend: {
-      name: "Backend",
-      icon: "⚙️",
-      technologies: [
-        { name: "Node.js", icon: "🟩" },
-        { name: "Express", icon: "⚡" },
-        { name: "REST API", icon: "🔌" }
-      ]
-    },
-    database: {
-      name: "Database",
-      icon: "💾",
-      technologies: [
-        { name: "PostgreSQL", icon: "🐘" },
-        { name: "Redis", icon: "🔴" },
-        { name: "Prisma ORM", icon: "📊" }
-      ]
-    },
-    cloud: {
-      name: "Cloud & DevOps",
-      icon: "☁️",
-      technologies: [
-        { name: "AWS", icon: "☁️" },
-        { name: "Docker", icon: "🐳" },
-        { name: "GitHub Actions", icon: "🔄" }
-      ]
-    }
-  };
-
-  return (
-    <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
-      <div className="mx-auto max-w-[1400px] px-6">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-12 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-              TECH STACK
-            </span>
-            <h2 className="text-4xl font-bold text-gray-900">Modern, Secure & Scalable Technology</h2>
-            <p className="text-gray-600 mt-4">Enterprise-grade stack built for FinTech</p>
-          </div>
-
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {Object.entries(categories).map(([key, category]) => (
-              <button
-                key={key}
-                onClick={() => setActiveCategory(key)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  activeCategory === key
-                    ? "bg-orange-500 text-white shadow-lg"
-                    : "bg-white text-gray-700 border border-gray-200 hover:border-orange-300"
-                }`}
-              >
-                <span className="text-xl">{category.icon}</span>
-                {category.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Technologies Grid */}
-          <div className="flex items-center justify-center gap-6 md:gap-8 flex-wrap">
-            <AnimatePresence mode="wait">
-              {categories[activeCategory as keyof typeof categories]?.technologies.map((tech, idx) => (
-                <motion.div
-                  key={`${activeCategory}-${idx}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="flex flex-col items-center gap-3 group cursor-pointer"
-                >
-                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white border border-gray-200 text-4xl shadow-sm group-hover:shadow-lg group-hover:border-orange-300 transition-all duration-300">
-                    {tech.icon}
-                  </div>
-                  <span className="text-sm font-semibold text-gray-700">{tech.name}</span>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+import { TechStackTabs } from "@/components/TechStackTabs";
 
 // Architecture Flow Section Component - Vertical Flow
 function ArchitectureFlowSection() {
@@ -460,7 +362,20 @@ export default function SubIndustryPage() {
                     </section>
 
                     {/* Section 4: Tech Stack */}
-                    <TechStackSection />
+                    <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
+                        <div className="mx-auto max-w-[1400px] px-6">
+                            <div className="mx-auto max-w-3xl">
+                                <div className="mb-12 text-center">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        POWERED BY
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">Technologies We Work With</h2>
+                                    <p className="text-gray-600 mt-4">Enterprise-grade stack built for modern solutions</p>
+                                </div>
+                                <TechStackTabs />
+                            </div>
+                        </div>
+                    </section>
 
                     {/* Section 5: Features */}
                     <section className="bg-white py-20">
