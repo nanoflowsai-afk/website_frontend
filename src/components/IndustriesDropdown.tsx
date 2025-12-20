@@ -32,7 +32,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute inset-x-0 top-full mt-3 w-[97vw] max-w-[1500px] mx-auto rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
+      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[96vw] max-w-[1400px] rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl mx-auto"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-6">
