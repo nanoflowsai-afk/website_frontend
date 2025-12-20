@@ -91,8 +91,10 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
                 ))}
                 {hasMore && (
                   <button
+                    type="button"
                     onClick={(e) => {
                       e.preventDefault();
+                      e.stopPropagation();
                       toggleExpanded(industry.id);
                     }}
                     className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition w-full text-center"
