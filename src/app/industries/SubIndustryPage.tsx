@@ -419,11 +419,11 @@ export default function SubIndustryPage() {
                                         Every {subIndustry.name.toLowerCase()} product we build includes:
                                     </p>
                                 </div>
-                                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4" >
+                                <div className="grid gap-4 grid-cols-2 lg:grid-cols-4" >
                                     {subIndustry.coreCapabilities.map((capability, index) => (
                                         <div
                                             key={index}
-                                            className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
+                                            className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg flex flex-col items-center justify-center text-center"
                                         >
                                             <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
                                                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
