@@ -84,13 +84,13 @@ function ArchitectureFlowSection() {
 // Industries Scroll Section Component with Smooth Animation
 function IndustriesScrollSection() {
   const industriesData = [
-    { name: "Startups & SaaS", icon: "🚀", color: "from-blue-500 to-cyan-500", id: "startups" },
-    { name: "Enterprises", icon: "🏢", color: "from-indigo-500 to-blue-500", id: "enterprise" },
-    { name: "E-Commerce", icon: "🛍️", color: "from-purple-500 to-pink-500", id: "ecommerce" },
-    { name: "Real Estate", icon: "🏠", color: "from-orange-500 to-red-500", id: "realtor" },
-    { name: "Healthcare", icon: "⚕️", color: "from-green-500 to-emerald-500", id: "healthcare" },
-    { name: "EdTech", icon: "🎓", color: "from-yellow-500 to-orange-500", id: "education" },
-    { name: "Local Business", icon: "🏪", color: "from-rose-500 to-pink-500", id: "local-business" }
+    { name: "Startups & SaaS", icon: "🚀", color: "from-blue-500 to-cyan-500" },
+    { name: "Enterprises", icon: "🏢", color: "from-indigo-500 to-blue-500" },
+    { name: "E-Commerce", icon: "🛍️", color: "from-purple-500 to-pink-500" },
+    { name: "Real Estate", icon: "🏠", color: "from-orange-500 to-red-500" },
+    { name: "Healthcare", icon: "⚕️", color: "from-green-500 to-emerald-500" },
+    { name: "EdTech", icon: "🎓", color: "from-yellow-500 to-orange-500" },
+    { name: "Local Business", icon: "🏪", color: "from-rose-500 to-pink-500" }
   ];
 
   return (
@@ -112,9 +112,8 @@ function IndustriesScrollSection() {
             <div className="overflow-hidden">
               <div className="flex animate-scroll-left gap-8 pb-4" style={{ animationDuration: '20s' }}>
                 {Array(3).fill([...industriesData]).flat().map((ind, idx) => (
-                  <Link
+                  <div
                     key={`item-${idx}`}
-                    to={`/industries/${ind.id}`}
                     className="flex-shrink-0 w-72 group cursor-pointer"
                   >
                     <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-white`}>
@@ -124,7 +123,7 @@ function IndustriesScrollSection() {
                         Learn More →
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
