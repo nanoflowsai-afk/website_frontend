@@ -449,9 +449,9 @@ export default function SubIndustryPage() {
                                         Ideal For + Business Outcomes
                                     </h2>
                                 </div>
-                                <div className="grid gap-8 grid-cols-2" >
-                                    <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
-                                        <h3 className="mb-6 text-xl font-bold text-gray-900" > Ideal for: </h3>
+                                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 items-stretch" >
+                                    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm" >
+                                        <h3 className="mb-6 text-lg md:text-xl font-bold text-gray-900" > Ideal for: </h3>
                                         <div className="space-y-3" >
                                             {subIndustry.idealFor.map((item, index) => (
                                                 <div
@@ -466,8 +466,8 @@ export default function SubIndustryPage() {
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
-                                        <h3 className="mb-6 text-xl font-bold text-gray-900" > Business outcomes: </h3>
+                                    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm" >
+                                        <h3 className="mb-6 text-lg md:text-xl font-bold text-gray-900" > Business outcomes: </h3>
                                         <div className="space-y-3" >
                                             {subIndustry.businessOutcomes.map((outcome, index) => (
                                                 <div
