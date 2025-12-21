@@ -118,7 +118,7 @@ function IndustriesScrollSection() {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white py-20">
       <div className="mx-auto max-w-[1400px] px-6">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
               MORE INDUSTRIES
@@ -134,18 +134,18 @@ function IndustriesScrollSection() {
               onMouseEnter={() => setAutoScroll(false)}
               onMouseLeave={() => setAutoScroll(true)}
             >
-              <div className="flex gap-6 pb-4 w-max">
+              <div className="flex gap-8 pb-4 w-max">
                 {industriesData.map((ind, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="flex-shrink-0 w-64 group cursor-pointer"
+                    className="flex-shrink-0 w-72 group cursor-pointer"
                   >
-                    <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-8 h-48 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-white`}>
-                      <div className="text-6xl">{ind.icon}</div>
-                      <p className="text-center font-bold text-lg">{ind.name}</p>
+                    <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-white`}>
+                      <div className="text-7xl">{ind.icon}</div>
+                      <p className="text-center font-bold text-xl">{ind.name}</p>
                       <div className="text-white/90 text-sm font-semibold opacity-0 group-hover:opacity-100 transition">
                         Learn More →
                       </div>
