@@ -137,17 +137,17 @@ export function TechStackTabs() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 sm:grid-cols-3 md:grid-cols-6"
+            className="grid grid-cols-3 gap-4 sm:gap-5 md:gap-6 sm:grid-cols-4 md:grid-cols-5"
           >
             {activeTech.map((tech) => (
               <div
                 key={tech.name}
-                className="group flex flex-col items-center justify-center gap-2 sm:gap-3 rounded-xl border border-gray-100 bg-white p-4 sm:p-5 transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg min-h-[100px] sm:min-h-[120px]"
+                className="group flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 md:p-7 transition-all duration-300 hover:-translate-y-2 hover:border-orange-300 hover:shadow-xl min-h-[120px] sm:min-h-[140px] md:min-h-[160px]"
               >
-                <div className="flex h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 items-center justify-center rounded-xl bg-gray-50 p-2 sm:p-3 transition group-hover:bg-orange-50">
+                <div className="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 p-3 sm:p-4 transition-all duration-300 group-hover:from-orange-50 group-hover:to-orange-100">
                   <TechIcon tech={tech} />
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-gray-600 text-center leading-tight">
+                <span className="text-sm sm:text-base font-semibold text-gray-700 text-center leading-snug">
                   {tech.name}
                 </span>
               </div>
