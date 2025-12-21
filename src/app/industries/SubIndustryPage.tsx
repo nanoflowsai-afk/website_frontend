@@ -441,45 +441,54 @@ export default function SubIndustryPage() {
                         </div>
                     </section>
 
-                    <section className="bg-gradient-to-br from-slate-50 to-gray-100 py-20" >
+                    <section className="bg-gradient-to-br from-white via-blue-50/30 to-orange-50/30 py-20" >
                         <div className="mx-auto max-w-[1400px] px-6" >
-                            <div className="mx-auto max-w-4xl" >
-                                <div className="mb-8 text-center" >
+                            <div className="mx-auto max-w-5xl" >
+                                <div className="mb-12 text-center" >
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-600 mb-4">
+                                        PERFECT FIT
+                                    </span>
                                     <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                        Ideal For + Business Outcomes
+                                        Who Should Use This
                                     </h2>
                                 </div>
-                                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 items-stretch" >
-                                    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm" >
-                                        <h3 className="mb-6 text-lg md:text-xl font-bold text-gray-900" > Ideal for: </h3>
-                                        <div className="space-y-3" >
+                                <div className="grid gap-8 grid-cols-1 md:grid-cols-2" >
+                                    <div className="group rounded-3xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50/50 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" >
+                                        <div className="flex items-center gap-3 mb-8">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white text-xl font-bold">👥</div>
+                                            <h3 className="text-2xl font-bold text-gray-900" > Ideal for </h3>
+                                        </div>
+                                        <div className="space-y-4" >
                                             {subIndustry.idealFor.map((item, index) => (
                                                 <div
                                                     key={index}
-                                                    className="flex items-center gap-3 rounded-xl bg-gray-50 p-4"
+                                                    className="group/item flex items-start gap-4 rounded-2xl bg-white/60 p-5 border border-blue-100 hover:bg-blue-50/80 transition-all duration-200"
                                                 >
-                                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold" >
+                                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white text-sm font-bold flex-none mt-0.5" >
                                                         {index + 1}
                                                     </div>
-                                                    <p className="text-gray-700 font-medium" > {item} </p>
+                                                    <p className="text-gray-700 font-medium leading-relaxed" > {item} </p>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm" >
-                                        <h3 className="mb-6 text-lg md:text-xl font-bold text-gray-900" > Business outcomes: </h3>
-                                        <div className="space-y-3" >
+                                    <div className="group rounded-3xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-green-50/50 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" >
+                                        <div className="flex items-center gap-3 mb-8">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 text-white text-xl font-bold">🎯</div>
+                                            <h3 className="text-2xl font-bold text-gray-900" > Business Outcomes </h3>
+                                        </div>
+                                        <div className="space-y-4" >
                                             {subIndustry.businessOutcomes.map((outcome, index) => (
                                                 <div
                                                     key={index}
-                                                    className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-orange-50 to-amber-50 p-4"
+                                                    className="group/item flex items-start gap-4 rounded-2xl bg-white/60 p-5 border border-green-100 hover:bg-green-50/80 transition-all duration-200"
                                                 >
-                                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
-                                                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-500 text-white flex-none mt-0.5" >
+                                                        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" >
+                                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                         </svg>
                                                     </div>
-                                                    <p className="text-gray-700 font-medium" > {outcome} </p>
+                                                    <p className="text-gray-700 font-medium leading-relaxed" > {outcome} </p>
                                                 </div>
                                             ))}
                                         </div>
