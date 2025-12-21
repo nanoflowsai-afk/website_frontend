@@ -32,57 +32,10 @@ function ArchitectureFlowSection() {
             <p className="text-gray-600 mt-4">End-to-end automation with real-time monitoring and compliance checks</p>
           </div>
 
-          <div className="relative overflow-x-auto pb-12 scrollbar-hide">
-            <style>{`
-              @keyframes flowArrow {
-                0% {
-                  opacity: 0;
-                  transform: translateX(-20px);
-                }
-                10% {
-                  opacity: 1;
-                }
-                90% {
-                  opacity: 1;
-                }
-                100% {
-                  opacity: 0;
-                  transform: translateX(calc(100% + 20px));
-                }
-              }
-              
-              .flow-arrow {
-                animation: flowArrow 8s linear infinite;
-              }
-            `}</style>
-
-            {/* Flowing Base Line */}
-            <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent pointer-events-none"></div>
-
-            <div className="inline-flex gap-2 min-w-max px-6 relative z-10">
+          <div className="relative overflow-x-auto pb-8 scrollbar-hide">
+            <div className="inline-flex gap-2 min-w-max px-6">
               {steps.map((step, idx) => (
                 <div key={idx} className="relative flex items-center">
-                  {/* Animated Arrow */}
-                  {idx < steps.length - 1 && (
-                    <motion.div
-                      className="absolute top-20 left-full -translate-x-1/2 z-20 pointer-events-none"
-                      style={{
-                        animation: `flowArrow 8s linear infinite`,
-                        animationDelay: `${idx * 1}s`
-                      }}
-                    >
-                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.5}
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          className="text-orange-500"
-                        />
-                      </svg>
-                    </motion.div>
-                  )}
-
                   {/* Step Box */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -106,9 +59,21 @@ function ArchitectureFlowSection() {
                     </div>
                   </motion.div>
 
-                  {/* Spacer between boxes */}
+                  {/* Arrow Connector */}
                   {idx < steps.length - 1 && (
-                    <div className="flex-shrink-0 w-2"></div>
+                    <motion.div
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      whileInView={{ opacity: 1, scaleX: 1 }}
+                      transition={{ delay: idx * 0.1 + 0.05 }}
+                      className="flex-shrink-0 mx-2 origin-left"
+                    >
+                      <div className="flex items-center gap-1">
+                        <div className="w-6 h-0.5 bg-gradient-to-r from-orange-400 to-orange-300"></div>
+                        <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </motion.div>
                   )}
                 </div>
               ))}
