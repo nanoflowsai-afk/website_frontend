@@ -394,9 +394,9 @@ export default function SubIndustryPage() {
                                         { icon: "🌍", title: "Multi-Currency", desc: "Support 150+ currencies and instant conversions" },
                                         { icon: "👥", title: "Customer Support", desc: "24/7 AI chatbot + dedicated support team" }
                                     ].map((feature, idx) => (
-                                        <div key={idx} className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col">
+                                        <div key={idx} className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col items-center justify-center text-center">
                                             <div className="mb-3 text-3xl">{feature.icon}</div>
-                                            <h3 className="text-base font-bold text-gray-900 mb-2 flex-grow">{feature.title}</h3>
+                                            <h3 className="text-base font-bold text-gray-900 mb-2">{feature.title}</h3>
                                             <p className="text-gray-600 text-xs leading-relaxed">{feature.desc}</p>
                                         </div>
                                     ))}
