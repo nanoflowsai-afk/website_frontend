@@ -115,9 +115,7 @@ function IndustriesScrollSection() {
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-6 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent"></div>
 
             <div className="overflow-hidden" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-              <div className="flex gap-8 pb-4" style={{ 
-                animation: isHovering ? 'none' : 'scroll-left 20s linear infinite',
-              }}>
+              <div className={`flex animate-scroll-left gap-8 pb-4 ${isHovering ? 'animation-paused' : ''}`}>
                 {Array(3).fill([...industriesData]).flat().map((ind, idx) => (
                   <div
                     key={`item-${idx}`}
@@ -139,13 +137,8 @@ function IndustriesScrollSection() {
         </div>
       </div>
       <style>{`
-        @keyframes scroll-left {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(calc(-25% - 2rem));
-          }
+        .animation-paused {
+          animation-play-state: paused !important;
         }
       `}</style>
     </section>
