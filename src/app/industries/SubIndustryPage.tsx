@@ -1,9 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { industries, getRelatedServices } from "@/lib/data/industries";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { TechStackTabs } from "@/components/TechStackTabs";
 
@@ -83,15 +82,20 @@ function ArchitectureFlowSection() {
 
 // Industries Scroll Section Component with Smooth Animation
 function IndustriesScrollSection() {
+  const navigate = useNavigate();
   const industriesData = [
-    { name: "Startups & SaaS", icon: "🚀", color: "from-blue-500 to-cyan-500" },
-    { name: "Enterprises", icon: "🏢", color: "from-indigo-500 to-blue-500" },
-    { name: "E-Commerce", icon: "🛍️", color: "from-purple-500 to-pink-500" },
-    { name: "Real Estate", icon: "🏠", color: "from-orange-500 to-red-500" },
-    { name: "Healthcare", icon: "⚕️", color: "from-green-500 to-emerald-500" },
-    { name: "EdTech", icon: "🎓", color: "from-yellow-500 to-orange-500" },
-    { name: "Local Business", icon: "🏪", color: "from-rose-500 to-pink-500" }
+    { id: "startups-saas", name: "Startups & SaaS", icon: "🚀", color: "from-blue-500 to-cyan-500" },
+    { id: "enterprises", name: "Enterprises", icon: "🏢", color: "from-indigo-500 to-blue-500" },
+    { id: "ecommerce", name: "E-Commerce", icon: "🛍️", color: "from-purple-500 to-pink-500" },
+    { id: "real-estate", name: "Real Estate", icon: "🏠", color: "from-orange-500 to-red-500" },
+    { id: "healthcare", name: "Healthcare", icon: "⚕️", color: "from-green-500 to-emerald-500" },
+    { id: "education", name: "Education", icon: "🎓", color: "from-yellow-500 to-orange-500" },
+    { id: "local-businesses", name: "Local Businesses", icon: "🏪", color: "from-rose-500 to-pink-500" }
   ];
+
+  const handleIndustryClick = (industryId: string) => {
+    navigate(`/industries/${industryId}`);
+  };
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white py-20 overflow-hidden">
@@ -115,6 +119,7 @@ function IndustriesScrollSection() {
                   <div
                     key={`item-${idx}`}
                     className="flex-shrink-0 w-72 group cursor-pointer"
+                    onClick={() => handleIndustryClick(ind.id)}
                   >
                     <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-white`}>
                       <div className="text-7xl">{ind.icon}</div>
