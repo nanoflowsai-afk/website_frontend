@@ -32,37 +32,21 @@ function ArchitectureFlowSection() {
           </div>
 
           <div className="relative">
-            <div className="flex flex-col gap-0">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {steps.map((step, idx) => (
-                <div key={idx} className="relative flex items-start gap-6 pb-8">
-                  {/* Vertical line connector */}
-                  {idx < steps.length - 1 && (
-                    <div className="absolute left-8 top-24 h-12 w-0.5 bg-gradient-to-b from-orange-400 to-transparent"></div>
-                  )}
-                  
-                  {/* Circle icon */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex-shrink-0 relative z-10"
-                  >
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white text-2xl shadow-lg">
-                      {step.icon}
-                    </div>
-                  </motion.div>
-
-                  {/* Content */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex-1 pt-2"
-                  >
-                    <h4 className="font-bold text-gray-900 text-lg">{step.title}</h4>
-                    <p className="text-gray-600 mt-1">{step.desc}</p>
-                  </motion.div>
-                </div>
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 shadow-sm hover:shadow-lg hover:border-orange-300 transition-all duration-300"
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white text-2xl shadow-lg mb-4">
+                    {step.icon}
+                  </div>
+                  <h4 className="font-bold text-gray-900 text-lg mb-2">{step.title}</h4>
+                  <p className="text-gray-600 text-sm">{step.desc}</p>
+                </motion.div>
               ))}
             </div>
 
