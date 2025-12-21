@@ -103,11 +103,9 @@ function IndustriesScrollSection() {
       if (scrollContainer) {
         scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
         
-        // Reset to beginning when reaching near the end
+        // Reset to beginning when reaching near the end for seamless loop
         if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 100) {
-          setTimeout(() => {
-            scrollContainer.scrollLeft = 0;
-          }, 1000);
+          scrollContainer.scrollLeft = 0;
         }
       }
     }, 4000);
