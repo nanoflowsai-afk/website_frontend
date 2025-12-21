@@ -38,9 +38,6 @@ export default function ProductDetailPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/75"></div>
                 </div>
                 <div className="relative mx-auto max-w-[1400px] px-6">
-                    <Link to="/products" className="inline-flex items-center gap-2 text-sm text-white hover:text-gray-100 mb-8">
-                        ← Back to Products
-                    </Link>
                     <div className="max-w-2xl">
                         <h1 className="text-4xl font-extrabold text-white md:text-5xl lg:text-6xl">
                             {product.name}
