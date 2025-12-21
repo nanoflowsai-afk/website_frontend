@@ -106,7 +106,7 @@ function IndustriesScrollSection() {
             <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
               MORE INDUSTRIES
             </span>
-            <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond FinTech</h2>
+            <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond This</h2>
           </div>
 
           <div className="relative mt-16">
@@ -145,7 +145,7 @@ function IndustriesScrollSection() {
 export default function SubIndustryPage() {
     const { id, subId } = useParams<{ id: string; subId: string }>();
     const navigate = useNavigate();
-    const [showAllCategories, setShowAllCategories] = useState(false);
+    const [showAllSolutions, setShowAllSolutions] = useState(false);
     const industry = industries.find((ind) => ind.id === id);
     const subIndustry = industry?.subIndustries.find((sub) => sub.id === subId);
 
@@ -172,6 +172,7 @@ export default function SubIndustryPage() {
         <div className="min-h-screen bg-white">
             <Navbar />
 
+            {/* Hero Section */}
             <section className="relative overflow-hidden py-24 md:py-32 min-h-[450px] md:min-h-[550px]">
                 <div className="absolute inset-0">
                     <img
@@ -225,350 +226,286 @@ export default function SubIndustryPage() {
                 </div>
             </section>
 
-            {/* FinTech-specific content sections */}
-            {subIndustry.id === "fintech-startups" && (
-                <>
-                    {/* Section 1: Overview */}
-                    <section className="bg-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        OVERVIEW
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900 mb-6">Understanding the FinTech Landscape</h2>
-                                </div>
-                                <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-8 shadow-sm">
-                                    <div className="space-y-6 text-gray-700 leading-relaxed">
-                                        <p className="text-lg">
-                                            FinTech startups are companies that use technology to deliver financial services such as payments, lending, banking, insurance, investments, and expense management. These businesses rely heavily on software platforms, APIs, data, and automation to operate efficiently.
-                                        </p>
-                                        <div className="border-l-4 border-orange-500 bg-orange-50 p-4">
-                                            <p className="font-semibold text-gray-900 mb-2">The Challenge</p>
-                                            <p>
-                                                As FinTech companies grow, they face critical challenges: high user volume, strict compliance requirements, security risks, and operational complexity. To scale safely and profitably, FinTech startups need AI-powered systems, automation, and secure software architecture from day one.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            {/* Section 1: Overview */}
+            <section className="bg-white py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-3xl">
+                        <div className="mb-12 text-center">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                OVERVIEW
+                            </span>
+                            <h2 className="text-4xl font-bold text-gray-900 mb-6">Understanding {subIndustry.name}</h2>
                         </div>
-                    </section>
-
-                    {/* Section 2: Business Categories */}
-                    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        CATEGORIES
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">20+ FinTech Business Models We Support</h2>
-                                    <p className="text-gray-600 mt-4">Nano Flows provides tailored solutions for:</p>
-                                </div>
-                                <div className="grid gap-3 md:grid-cols-2">
-                                    {[
-                                        "Payment Gateway Platforms",
-                                        "Digital Wallet Applications",
-                                        "Buy Now Pay Later (BNPL) Platforms",
-                                        "Neo Banks & Digital Banking Apps",
-                                        "Loan Aggregation Platforms",
-                                        "Peer-to-Peer Lending Startups",
-                                        "MSME & Microfinance Platforms",
-                                        "Credit Scoring & Risk Analytics Companies",
-                                        "Insurance Technology (InsurTech) Platforms",
-                                        "Wealth Management & Investment Apps",
-                                        "Robo-Advisory Platforms",
-                                        "Crypto & Blockchain-Based FinTech",
-                                        "Regulatory Technology (RegTech) Platforms",
-                                        "Accounting & Expense Management SaaS",
-                                        "Subscription Billing & Invoicing Platforms",
-                                        "Payroll & Salary Advance Solutions",
-                                        "Cross-Border Payment Startups",
-                                        "Fraud Detection & AML Platforms",
-                                        "Open Banking API Providers",
-                                        "Embedded Finance Solutions"
-                                    ].slice(0, showAllCategories ? undefined : 10).map((category, index) => (
-                                        <div key={index} className="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-4 hover:border-orange-300 hover:bg-orange-50 transition">
-                                            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">{index + 1}</div>
-                                            <span className="text-gray-900 font-medium">{category}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                {!showAllCategories && (
-                                    <div className="mt-8 flex justify-center">
-                                        <button
-                                            onClick={() => setShowAllCategories(true)}
-                                            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
-                                        >
-                                            Show More
-                                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 3: Who & Why */}
-                    <section className="bg-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        WHO & WHY
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">Who We Serve and Why They Need Us</h2>
-                                </div>
-                                <div className="grid gap-8 md:grid-cols-2">
-                                    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-blue-50 to-white p-8 shadow-sm">
-                                        <div className="flex items-center gap-3 mb-6">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500 text-white font-bold">👥</div>
-                                            <h3 className="text-xl font-bold text-gray-900">Who We Serve</h3>
-                                        </div>
-                                        <ul className="space-y-4">
-                                            {["FinTech startup founders", "Early-stage and growth-stage FinTech companies", "SaaS-based financial platforms", "Financial product innovators", "Enterprises launching FinTech products"].map((item, idx) => (
-                                                <li key={idx} className="flex items-start gap-3 text-gray-700">
-                                                    <span className="text-orange-500 font-bold flex-shrink-0 mt-1">✓</span>
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-green-50 to-white p-8 shadow-sm">
-                                        <div className="flex items-center gap-3 mb-6">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-500 text-white font-bold">💡</div>
-                                            <h3 className="text-xl font-bold text-gray-900">Why They Need Us</h3>
-                                        </div>
-                                        <ul className="space-y-4">
-                                            {["Automate manual financial workflows", "Improve customer onboarding & engagement", "Reduce operational costs", "Maintain compliance & security", "Scale faster without system failures"].map((item, idx) => (
-                                                <li key={idx} className="flex items-start gap-3 text-gray-700">
-                                                    <span className="text-orange-500 font-bold flex-shrink-0 mt-1">→</span>
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 4: Tech Stack */}
-                    <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-6xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        POWERED BY
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">Technologies We Work With</h2>
-                                    <p className="text-gray-600 mt-4">Enterprise-grade stack built for modern solutions</p>
-                                </div>
-                                <TechStackTabs />
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 5: Features */}
-                    <section className="bg-white py-20">
-                        <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-6xl">
-                                <div className="mb-12 text-center">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        FEATURES
-                                    </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">How NanoFlows Serves {subIndustry.name}</h2>
-                                    <p className="text-gray-600 mt-4">NanoFlows builds secure, scalable, AI-powered systems specifically for {subIndustry.name.toLowerCase()} operations, including:</p>
-                                </div>
-                                <div className="grid gap-6 grid-cols-2 lg:grid-cols-4">
-                                    {[
-                                        { icon: "🤖", title: "AI-Powered Automation", desc: "Automate customer workflows and reduce manual tasks by 80%" },
-                                        { icon: "🔐", title: "Enterprise Security", desc: "Bank-level encryption, compliance-ready architecture" },
-                                        { icon: "📈", title: "Real-Time Analytics", desc: "Dashboard with KPIs, user behavior, and transaction insights" },
-                                        { icon: "⚡", title: "High Performance", desc: "Sub-second API response time, 99.99% uptime SLA" },
-                                        { icon: "🔗", title: "API Integrations", desc: "Connect with payment gateways, banks, and third-party services" },
-                                        { icon: "📱", title: "Mobile-First Design", desc: "Responsive web and native app support" },
-                                        { icon: "🌍", title: "Multi-Currency", desc: "Support 150+ currencies and instant conversions" },
-                                        { icon: "👥", title: "Customer Support", desc: "24/7 AI chatbot + dedicated support team" }
-                                    ].map((feature, idx) => (
-                                        <div key={idx} className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col items-center justify-center text-center">
-                                            <div className="mb-3 text-3xl">{feature.icon}</div>
-                                            <h3 className="text-base font-bold text-gray-900 mb-2">{feature.title}</h3>
-                                            <p className="text-gray-600 text-xs leading-relaxed">{feature.desc}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 6: Architecture */}
-                    <ArchitectureFlowSection />
-
-                    <section className="bg-white py-20" >
-                        <div className="mx-auto max-w-[1400px] px-6" >
-                            <div className="mx-auto max-w-4xl" >
-                                <div className="mb-12 text-center" >
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        CORE CAPABILITIES
-                                    </span>
-                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                        Core {subIndustry.name} Capabilities Included
-                                    </h2>
-                                    <p className="mx-auto mt-4 max-w-2xl text-gray-600" >
-                                        Every {subIndustry.name.toLowerCase()} product we build includes:
+                        <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-8 shadow-sm">
+                            <div className="space-y-6 text-gray-700 leading-relaxed">
+                                <p className="text-lg">
+                                    {subIndustry.overview}
+                                </p>
+                                <div className="border-l-4 border-orange-500 bg-orange-50 p-4">
+                                    <p className="font-semibold text-gray-900 mb-2">Why {subIndustry.name}?</p>
+                                    <p>
+                                        {subIndustry.whyChoose.intro} With our AI-powered solutions, we help you scale, innovate, and stay competitive in this rapidly evolving landscape.
                                     </p>
                                 </div>
-                                <div className="grid gap-4 grid-cols-2 lg:grid-cols-4" >
-                                    {subIndustry.coreCapabilities.map((capability, index) => (
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 2: Why Choose Us */}
+            <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-3xl">
+                        <div className="mb-12 text-center">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                WHY CHOOSE US
+                            </span>
+                            <h2 className="text-4xl font-bold text-gray-900">{subIndustry.whyChoose.intro}</h2>
+                        </div>
+                        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                            {subIndustry.whyChoose.points.map((point, index) => (
+                                <div 
+                                    key={index} 
+                                    className="flex items-start gap-4 rounded-xl bg-white border border-gray-200 p-5 hover:border-orange-300 hover:bg-orange-50 transition"
+                                >
+                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white font-bold flex-none mt-0.5">
+                                        ✓
+                                    </div>
+                                    <span className="text-gray-900 font-medium leading-relaxed">{point}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 3: What We Build */}
+            <section className="bg-white py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-3xl">
+                        <div className="mb-12 text-center">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                SOLUTIONS
+                            </span>
+                            <h2 className="text-4xl font-bold text-gray-900">{subIndustry.whatWeBuild.intro}</h2>
+                        </div>
+                        <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
+                            {subIndustry.whatWeBuild.solutions.slice(0, showAllSolutions ? undefined : 8).map((solution, index) => (
+                                <div 
+                                    key={index} 
+                                    className="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-4 hover:border-orange-300 hover:bg-orange-50 transition"
+                                >
+                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white text-xs font-bold">
+                                        {index + 1}
+                                    </div>
+                                    <span className="text-gray-900 font-medium">{solution}</span>
+                                </div>
+                            ))}
+                        </div>
+                        {subIndustry.whatWeBuild.solutions.length > 8 && !showAllSolutions && (
+                            <div className="mt-8 flex justify-center">
+                                <button
+                                    onClick={() => setShowAllSolutions(true)}
+                                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+                                >
+                                    Show More ({subIndustry.whatWeBuild.solutions.length - 8} more)
+                                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                    </svg>
+                                </button>
+                            </div>
+                        )}
+                        <div className="mt-8 rounded-lg bg-orange-50 border border-orange-200 p-6 text-center">
+                            <p className="text-gray-900 font-semibold">
+                                {subIndustry.whatWeBuild.footer}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 4: Tech Stack */}
+            <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-6xl">
+                        <div className="mb-12 text-center">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                POWERED BY
+                            </span>
+                            <h2 className="text-4xl font-bold text-gray-900">Technologies We Work With</h2>
+                            <p className="text-gray-600 mt-4">Enterprise-grade stack built for modern solutions</p>
+                        </div>
+                        <TechStackTabs />
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 5: Core Capabilities */}
+            <section className="bg-white py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-4xl">
+                        <div className="mb-12 text-center">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                CORE CAPABILITIES
+                            </span>
+                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                                Core {subIndustry.name} Capabilities Included
+                            </h2>
+                            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+                                Every {subIndustry.name.toLowerCase()} product we build includes:
+                            </p>
+                        </div>
+                        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+                            {subIndustry.coreCapabilities.map((capability, index) => (
+                                <div
+                                    key={index}
+                                    className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg flex flex-col items-center justify-center text-center"
+                                >
+                                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white">
+                                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-sm font-bold text-gray-900">{capability}</h3>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="mt-8 text-center text-gray-600 font-medium">
+                            Security, performance, and accuracy are non-negotiable.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 6: Architecture */}
+            <ArchitectureFlowSection />
+
+            {/* Section 7: Perfect Fit */}
+            <section className="bg-gradient-to-br from-white via-blue-50/30 to-orange-50/30 py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-5xl">
+                        <div className="mb-12 text-center">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                PERFECT FIT
+                            </span>
+                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                                Who Should Use This
+                            </h2>
+                        </div>
+                        <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
+                            <div className="group rounded-3xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50/50 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                                <div className="flex items-center gap-3 mb-8">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white text-xl font-bold">👥</div>
+                                    <h3 className="text-2xl font-bold text-gray-900">Ideal for</h3>
+                                </div>
+                                <div className="space-y-4">
+                                    {subIndustry.idealFor.map((item, index) => (
                                         <div
                                             key={index}
-                                            className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg flex flex-col items-center justify-center text-center"
+                                            className="group/item flex items-start gap-4 rounded-2xl bg-white/60 p-5 border border-blue-100 hover:bg-blue-50/80 transition-all duration-200"
                                         >
-                                            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white" >
-                                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white text-sm font-bold flex-none mt-0.5">
+                                                {index + 1}
+                                            </div>
+                                            <p className="text-gray-700 font-medium leading-relaxed">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="group rounded-3xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-green-50/50 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                                <div className="flex items-center gap-3 mb-8">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 text-white text-xl font-bold">🎯</div>
+                                    <h3 className="text-2xl font-bold text-gray-900">Business Outcomes</h3>
+                                </div>
+                                <div className="space-y-4">
+                                    {subIndustry.businessOutcomes.map((outcome, index) => (
+                                        <div
+                                            key={index}
+                                            className="group/item flex items-start gap-4 rounded-2xl bg-white/60 p-5 border border-green-100 hover:bg-green-50/80 transition-all duration-200"
+                                        >
+                                            <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-500 text-white flex-none mt-0.5">
+                                                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                 </svg>
                                             </div>
-                                            <h3 className="text-sm font-bold text-gray-900" > {capability} </h3>
+                                            <p className="text-gray-700 font-medium leading-relaxed">{outcome}</p>
                                         </div>
                                     ))}
                                 </div>
-                                <p className="mt-8 text-center text-gray-600 font-medium" >
-                                    Security, performance, and accuracy are non - negotiable.
-                                </p>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section>
 
-                    <section className="bg-gradient-to-br from-white via-blue-50/30 to-orange-50/30 py-20" >
-                        <div className="mx-auto max-w-[1400px] px-6" >
-                            <div className="mx-auto max-w-5xl" >
-                                <div className="mb-12 text-center" >
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        PERFECT FIT
-                                    </span>
-                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                        Who Should Use This
-                                    </h2>
-                                </div>
-                                <div className="grid gap-8 grid-cols-1 md:grid-cols-2" >
-                                    <div className="group rounded-3xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50/50 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" >
-                                        <div className="flex items-center gap-3 mb-8">
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white text-xl font-bold">👥</div>
-                                            <h3 className="text-2xl font-bold text-gray-900" > Ideal for </h3>
-                                        </div>
-                                        <div className="space-y-4" >
-                                            {subIndustry.idealFor.map((item, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="group/item flex items-start gap-4 rounded-2xl bg-white/60 p-5 border border-blue-100 hover:bg-blue-50/80 transition-all duration-200"
-                                                >
-                                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white text-sm font-bold flex-none mt-0.5" >
-                                                        {index + 1}
-                                                    </div>
-                                                    <p className="text-gray-700 font-medium leading-relaxed" > {item} </p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="group rounded-3xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-green-50/50 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" >
-                                        <div className="flex items-center gap-3 mb-8">
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 text-white text-xl font-bold">🎯</div>
-                                            <h3 className="text-2xl font-bold text-gray-900" > Business Outcomes </h3>
-                                        </div>
-                                        <div className="space-y-4" >
-                                            {subIndustry.businessOutcomes.map((outcome, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="group/item flex items-start gap-4 rounded-2xl bg-white/60 p-5 border border-green-100 hover:bg-green-50/80 transition-all duration-200"
-                                                >
-                                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-500 text-white flex-none mt-0.5" >
-                                                        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" >
-                                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                                        </svg>
-                                                    </div>
-                                                    <p className="text-gray-700 font-medium leading-relaxed" > {outcome} </p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            {/* Section 8: Related Services */}
+            <section className="bg-white py-20">
+                <div className="mx-auto max-w-[1400px] px-6">
+                    <div className="mx-auto max-w-5xl">
+                        <div className="mb-10 text-center">
+                            <span className="mb-3 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-600">
+                                OUR SERVICES
+                            </span>
+                            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                                Related Services for {subIndustry.name}
+                            </h2>
+                            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+                                Explore the AI services that best complement your {subIndustry.name.toLowerCase()} needs and accelerate your digital transformation.
+                            </p>
                         </div>
-                    </section>
-
-                    <section className="bg-white py-20" >
-                        <div className="mx-auto max-w-[1400px] px-6" >
-                            <div className="mx-auto max-w-5xl" >
-                                <div className="mb-10 text-center" >
-                                    <span className="mb-3 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-600" >
-                                        Our Services
-                                    </span>
-                                    <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
-                                        Related Services for {subIndustry.name}
-                                    </h2>
-                                    <p className="mx-auto mt-4 max-w-2xl text-gray-600" >
-                                        Explore the AI services that best complement your {subIndustry.name.toLowerCase()} needs and accelerate your digital transformation.
-                                    </p>
-                                </div>
-                                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" >
-                                    {getRelatedServices(subIndustry, industry.id).map((service, index) => (
-                                        <div
-                                            key={index}
-                                            className="group rounded-2xl bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col h-full"
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                            {getRelatedServices(subIndustry, industry.id).map((service, index) => (
+                                <div
+                                    key={index}
+                                    className="group rounded-2xl bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl flex flex-col h-full"
+                                >
+                                    <div className="relative h-40 overflow-hidden flex-shrink-0">
+                                        <img
+                                            src={service.image}
+                                            alt={`${service.title} - NanoFlows ${service.category} Service`}
+                                            title={service.title}
+                                            className="object-cover w-full h-full absolute inset-0 transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40"></div>
+                                    </div>
+                                    <div className="p-5 text-center flex flex-col flex-1">
+                                        <span className="mb-2 inline-block text-xs font-medium text-orange-500 uppercase tracking-wide">
+                                            {service.category}
+                                        </span>
+                                        <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
+                                            {service.title}
+                                        </h3>
+                                        <p className="mb-4 text-sm text-gray-600 leading-relaxed flex-1">
+                                            {service.description}
+                                        </p>
+                                        <Link
+                                            to={`/services/${service.id}`}
+                                            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
                                         >
-                                            <div className="relative h-40 overflow-hidden flex-shrink-0" >
-                                                <img
-                                                    src={service.image}
-                                                    alt={`${service.title} - NanoFlows ${service.category} Service`}
-                                                    title={service.title}
-                                                    className="object-cover w-full h-full absolute inset-0 transition-transform duration-500 group-hover:scale-110"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40" > </div>
-                                            </div>
-                                            <div className="p-5 text-center flex flex-col flex-1" >
-                                                <span className="mb-2 inline-block text-xs font-medium text-orange-500 uppercase tracking-wide" >
-                                                    {service.category}
-                                                </span>
-                                                <h3 className="mb-2 text-base font-bold text-gray-900 group-hover:text-orange-600 transition-colors" >
-                                                    {service.title}
-                                                </h3>
-                                                <p className="mb-4 text-sm text-gray-600 leading-relaxed flex-1" >
-                                                    {service.description}
-                                                </p>
-                                                <Link
-                                                    to={`/services/${service.id}`}
-                                                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 mt-auto"
-                                                >
-                                                    Learn More<span>→</span>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    ))}
+                                            Learn More<span>→</span>
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className="mt-10 text-center" >
-                                    <Link
-                                        to="/services"
-                                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
-                                    >
-                                        View All Our Services
-                                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
+                            ))}
                         </div>
-                    </section>
+                        <div className="mt-10 text-center">
+                            <Link
+                                to="/services"
+                                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+                            >
+                                View All Our Services
+                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                    {/* Section 8: Industries Scroll */}
-                    <IndustriesScrollSection />
-                </>
-            )}
+            {/* Section 9: Industries Scroll */}
+            <IndustriesScrollSection />
 
             <Footer />
         </div>
