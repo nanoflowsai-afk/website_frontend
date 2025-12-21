@@ -42,7 +42,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
           const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
           return (
-            <div key={industry.id} className={`flex flex-col h-fit ${index !== 0 ? 'pl-3' : ''}`}>
+            <div key={industry.id} className={`flex flex-col h-fit self-start ${index !== 0 ? 'pl-3' : ''}`}>
               {/* Header Section */}
               <Link
                 to={`/industries/${industry.id}`}
