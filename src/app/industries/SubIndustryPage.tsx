@@ -110,13 +110,10 @@ function IndustriesScrollSection() {
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-6 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent"></div>
 
             <div className="overflow-hidden">
-              <div className="flex animate-scroll-left gap-8 pb-4">
-                {[...industriesData, ...industriesData].map((ind, idx) => (
-                  <motion.div
-                    key={`${idx}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (idx % industriesData.length) * 0.05 }}
+              <div className="flex animate-scroll-left gap-8 pb-4" style={{ animationDuration: '20s' }}>
+                {Array(3).fill([...industriesData]).flat().map((ind, idx) => (
+                  <div
+                    key={`item-${idx}`}
                     className="flex-shrink-0 w-72 group cursor-pointer"
                   >
                     <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-white`}>
@@ -126,7 +123,7 @@ function IndustriesScrollSection() {
                         Learn More →
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
