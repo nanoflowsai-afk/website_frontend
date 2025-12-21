@@ -394,7 +394,7 @@ export default function SubIndustryPage() {
                     {/* Section 5: Features */}
                     <section className="bg-white py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
+                            <div className="mx-auto max-w-6xl">
                                 <div className="mb-12 text-center">
                                     <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
                                         FEATURES
@@ -402,7 +402,7 @@ export default function SubIndustryPage() {
                                     <h2 className="text-4xl font-bold text-gray-900">How NanoFlows Serves {subIndustry.name}</h2>
                                     <p className="text-gray-600 mt-4">NanoFlows builds secure, scalable, AI-powered systems specifically for {subIndustry.name.toLowerCase()} operations, including:</p>
                                 </div>
-                                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                                     {[
                                         { icon: "🤖", title: "AI-Powered Automation", desc: "Automate customer workflows and reduce manual tasks by 80%" },
                                         { icon: "🔐", title: "Enterprise Security", desc: "Bank-level encryption, compliance-ready architecture" },
@@ -413,10 +413,10 @@ export default function SubIndustryPage() {
                                         { icon: "🌍", title: "Multi-Currency", desc: "Support 150+ currencies and instant conversions" },
                                         { icon: "👥", title: "Customer Support", desc: "24/7 AI chatbot + dedicated support team" }
                                     ].map((feature, idx) => (
-                                        <div key={idx} className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 shadow-sm hover:shadow-md transition">
-                                            <div className="mb-3 text-3xl">{feature.icon}</div>
-                                            <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                                            <p className="text-gray-600 text-sm">{feature.desc}</p>
+                                        <div key={idx} className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl">
+                                            <div className="mb-4 text-4xl">{feature.icon}</div>
+                                            <h3 className="text-lg font-bold text-gray-900 mb-3">{feature.title}</h3>
+                                            <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
                                         </div>
                                     ))}
                                 </div>
