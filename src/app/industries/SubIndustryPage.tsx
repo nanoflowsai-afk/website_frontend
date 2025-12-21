@@ -145,7 +145,7 @@ function IndustriesScrollSection() {
 export default function SubIndustryPage() {
     const { id, subId } = useParams<{ id: string; subId: string }>();
     const navigate = useNavigate();
-    const [expandedColumns, setExpandedColumns] = useState<number[]>([]);
+    const [showAllCategories, setShowAllCategories] = useState(false);
     const industry = industries.find((ind) => ind.id === id);
     const subIndustry = industry?.subIndustries.find((sub) => sub.id === subId);
 
@@ -266,43 +266,48 @@ export default function SubIndustryPage() {
                                     <h2 className="text-4xl font-bold text-gray-900">20+ FinTech Business Models We Support</h2>
                                     <p className="text-gray-600 mt-4">Nano Flows provides tailored solutions for:</p>
                                 </div>
-                                <div className="grid gap-6 md:grid-cols-2">
+                                <div className="grid gap-3 md:grid-cols-2">
                                     {[
-                                        ["Payment Gateway Platforms", "Digital Wallet Applications", "Buy Now Pay Later (BNPL) Platforms", "Neo Banks & Digital Banking Apps", "Loan Aggregation Platforms", "Peer-to-Peer Lending Startups", "MSME & Microfinance Platforms", "Credit Scoring & Risk Analytics Companies", "Insurance Technology (InsurTech) Platforms", "Wealth Management & Investment Apps"],
-                                        ["Robo-Advisory Platforms", "Crypto & Blockchain-Based FinTech", "Regulatory Technology (RegTech) Platforms", "Accounting & Expense Management SaaS", "Subscription Billing & Invoicing Platforms", "Payroll & Salary Advance Solutions", "Cross-Border Payment Startups", "Fraud Detection & AML Platforms", "Open Banking API Providers", "Embedded Finance Solutions"]
-                                    ].map((column, colIdx) => (
-                                        <div key={colIdx} className="space-y-3">
-                                            {column.slice(0, expandedColumns.includes(colIdx) ? undefined : 5).map((category, index) => (
-                                                <div key={index} className="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-4 hover:border-orange-300 hover:bg-orange-50 transition">
-                                                    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">{(colIdx * 10) + index + 1}</div>
-                                                    <span className="text-gray-900 font-medium">{category}</span>
-                                                </div>
-                                            ))}
-                                            <div className="mt-4 flex justify-center">
-                                                <button
-                                                    onClick={() => setExpandedColumns(expandedColumns.includes(colIdx) ? expandedColumns.filter(c => c !== colIdx) : [...expandedColumns, colIdx])}
-                                                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-2 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl text-sm"
-                                                >
-                                                    {expandedColumns.includes(colIdx) ? (
-                                                        <>
-                                                            Show Less
-                                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                                                            </svg>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            Show More
-                                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                                                            </svg>
-                                                        </>
-                                                    )}
-                                                </button>
-                                            </div>
+                                        "Payment Gateway Platforms",
+                                        "Digital Wallet Applications",
+                                        "Buy Now Pay Later (BNPL) Platforms",
+                                        "Neo Banks & Digital Banking Apps",
+                                        "Loan Aggregation Platforms",
+                                        "Peer-to-Peer Lending Startups",
+                                        "MSME & Microfinance Platforms",
+                                        "Credit Scoring & Risk Analytics Companies",
+                                        "Insurance Technology (InsurTech) Platforms",
+                                        "Wealth Management & Investment Apps",
+                                        "Robo-Advisory Platforms",
+                                        "Crypto & Blockchain-Based FinTech",
+                                        "Regulatory Technology (RegTech) Platforms",
+                                        "Accounting & Expense Management SaaS",
+                                        "Subscription Billing & Invoicing Platforms",
+                                        "Payroll & Salary Advance Solutions",
+                                        "Cross-Border Payment Startups",
+                                        "Fraud Detection & AML Platforms",
+                                        "Open Banking API Providers",
+                                        "Embedded Finance Solutions"
+                                    ].slice(0, showAllCategories ? undefined : 10).map((category, index) => (
+                                        <div key={index} className="flex items-center gap-3 bg-white rounded-lg border border-gray-200 p-4 hover:border-orange-300 hover:bg-orange-50 transition">
+                                            <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold">{index + 1}</div>
+                                            <span className="text-gray-900 font-medium">{category}</span>
                                         </div>
                                     ))}
                                 </div>
+                                {!showAllCategories && (
+                                    <div className="mt-8 flex justify-center">
+                                        <button
+                                            onClick={() => setShowAllCategories(true)}
+                                            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-3 font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+                                        >
+                                            Show More
+                                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </section>
