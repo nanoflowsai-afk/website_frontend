@@ -383,34 +383,28 @@ export default function SubIndustryPage() {
                             <div className="mx-auto max-w-3xl">
                                 <div className="mb-12 text-center">
                                     <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
-                                        HOW NANOFLOWS SERVES FINTECH STARTUPS
+                                        FEATURES
                                     </span>
-                                    <h2 className="text-4xl font-bold text-gray-900">Features Included</h2>
-                                    <p className="text-gray-600 mt-4">NanoFlows builds secure, scalable, AI-powered systems specifically for FinTech operations, including:</p>
+                                    <h2 className="text-4xl font-bold text-gray-900">Comprehensive FinTech Solutions</h2>
+                                    <p className="text-gray-600 mt-4">Everything you need to build and scale</p>
                                 </div>
-                                <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-8 shadow-sm">
-                                    <div className="grid gap-4 md:grid-cols-2">
-                                        {[
-                                            "AI-Native FinTech SaaS Platform Development",
-                                            "Customer & Lead Management CRM",
-                                            "AI Chatbots for onboarding & support",
-                                            "WhatsApp & Email Automation",
-                                            "AI-Based Follow-Up & Retention Systems",
-                                            "Automated KYC & Workflow Management",
-                                            "Role-Based Admin & User Dashboards",
-                                            "Real-Time Business & Financial Analytics",
-                                            "API-Ready Architecture for integrations"
-                                        ].map((feature, idx) => (
-                                            <div key={idx} className="flex items-start gap-3 group">
-                                                <div className="flex-shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white mt-1">
-                                                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                                    </svg>
-                                                </div>
-                                                <span className="text-gray-700 font-medium group-hover:text-orange-600 transition">{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                                <div className="grid gap-4 md:grid-cols-2">
+                                    {[
+                                        { icon: "🤖", title: "AI-Powered Automation", desc: "Automate customer workflows and reduce manual tasks by 80%" },
+                                        { icon: "🔐", title: "Enterprise Security", desc: "Bank-level encryption, compliance-ready architecture" },
+                                        { icon: "📈", title: "Real-Time Analytics", desc: "Dashboard with KPIs, user behavior, and transaction insights" },
+                                        { icon: "⚡", title: "High Performance", desc: "Sub-second API response time, 99.99% uptime SLA" },
+                                        { icon: "🔗", title: "API Integrations", desc: "Connect with payment gateways, banks, and third-party services" },
+                                        { icon: "📱", title: "Mobile-First Design", desc: "Responsive web and native app support" },
+                                        { icon: "🌍", title: "Multi-Currency", desc: "Support 150+ currencies and instant conversions" },
+                                        { icon: "👥", title: "Customer Support", desc: "24/7 AI chatbot + dedicated support team" }
+                                    ].map((feature, idx) => (
+                                        <div key={idx} className="rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-6 shadow-sm hover:shadow-md transition">
+                                            <div className="mb-3 text-3xl">{feature.icon}</div>
+                                            <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                                            <p className="text-gray-600 text-sm">{feature.desc}</p>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
