@@ -81,10 +81,8 @@ function ArchitectureFlowSection() {
   );
 }
 
-// Industries Scroll Section Component with Auto-scroll
+// Industries Scroll Section Component with Smooth Animation
 function IndustriesScrollSection() {
-  const [autoScroll, setAutoScroll] = useState(true);
-  
   const industriesData = [
     { name: "Startups & SaaS", icon: "🚀", color: "from-blue-500 to-cyan-500" },
     { name: "Enterprises", icon: "🏢", color: "from-indigo-500 to-blue-500" },
@@ -95,26 +93,8 @@ function IndustriesScrollSection() {
     { name: "Local Business", icon: "🏪", color: "from-rose-500 to-pink-500" }
   ];
 
-  useEffect(() => {
-    if (!autoScroll) return;
-
-    const timer = setInterval(() => {
-      const scrollContainer = document.getElementById("industries-scroll");
-      if (scrollContainer) {
-        scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
-        
-        // Reset to beginning when reaching near the end for seamless loop
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 100) {
-          scrollContainer.scrollLeft = 0;
-        }
-      }
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [autoScroll]);
-
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+    <section className="bg-gradient-to-b from-gray-50 to-white py-20 overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-6">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
@@ -125,19 +105,18 @@ function IndustriesScrollSection() {
           </div>
 
           <div className="relative">
-            <div 
-              id="industries-scroll"
-              className="overflow-x-auto scrollbar-hide"
-              onMouseEnter={() => setAutoScroll(false)}
-              onMouseLeave={() => setAutoScroll(true)}
-            >
-              <div className="flex gap-8 pb-4 w-max">
-                {industriesData.map((ind, idx) => (
+            {/* Gradient Fade for Seamless Effect */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-6 bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent"></div>
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-6 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent"></div>
+
+            <div className="overflow-hidden">
+              <div className="flex animate-scroll-left gap-8 pb-4">
+                {[...industriesData, ...industriesData].map((ind, idx) => (
                   <motion.div
-                    key={idx}
+                    key={`${idx}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.05 }}
+                    transition={{ delay: (idx % industriesData.length) * 0.05 }}
                     className="flex-shrink-0 w-72 group cursor-pointer"
                   >
                     <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-white`}>
