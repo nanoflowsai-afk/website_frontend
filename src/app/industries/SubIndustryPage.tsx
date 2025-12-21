@@ -382,9 +382,11 @@ export default function SubIndustryPage() {
                         <div className="mx-auto max-w-[1400px] px-6">
                             <div className="mx-auto max-w-3xl">
                                 <div className="mb-12 text-center">
-                                    <h2 className="text-4xl font-bold text-gray-900">How NanoFlows Serves FinTech Startups</h2>
-                                    <h3 className="text-2xl font-bold text-gray-900 mt-4">Features Included</h3>
-                                    <p className="text-gray-600 mt-4">NanoFlows builds secure, scalable, AI-powered systems specifically for FinTech operations, including:</p>
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        FEATURES
+                                    </span>
+                                    <h2 className="text-4xl font-bold text-gray-900">How NanoFlows Serves {subIndustry.name}</h2>
+                                    <p className="text-gray-600 mt-4">NanoFlows builds secure, scalable, AI-powered systems specifically for {subIndustry.name.toLowerCase()} operations, including:</p>
                                 </div>
                                 <div className="grid gap-4 md:grid-cols-2">
                                     {[
