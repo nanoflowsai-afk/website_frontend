@@ -104,7 +104,7 @@ function IndustriesScrollSection() {
             <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond FinTech</h2>
           </div>
 
-          <div className="relative mt-8">
+          <div className="relative mt-16">
             {/* Gradient Fade for Seamless Effect */}
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-6 bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent"></div>
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-6 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent"></div>
