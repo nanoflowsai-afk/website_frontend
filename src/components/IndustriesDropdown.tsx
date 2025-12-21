@@ -35,7 +35,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       className="absolute left-[56%] -translate-x-1/2 top-full mt-3 w-[96vw] max-w-[1400px] rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4 items-start auto-rows-max">
+      <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4 items-start">
         {industriesData.map((industry, index) => {
           const isExpanded = expandedIndustryId === industry.id;
           const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
@@ -64,7 +64,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
               </Link>
 
               {/* Sub-items Section */}
-              <div className="flex flex-col gap-3.5 items-start">
+              <div className={`flex flex-col gap-3.5 items-start ${isExpanded ? 'max-h-[500px] overflow-y-auto pr-2' : 'max-h-[300px]'}`}>
                 {visibleSubs.map((sub, subIndex) => (
                   <motion.div
                     key={sub.id}
