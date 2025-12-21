@@ -122,7 +122,7 @@ function IndustriesScrollSection() {
                     className="flex-shrink-0 w-72 group cursor-pointer"
                     onClick={() => handleIndustryClick(ind.id)}
                   >
-                    <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 text-white`}>
+                    <div className={`flex flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br ${ind.color} p-10 h-56 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:translate-y-1 text-white`}>
                       <div className="text-7xl">{ind.icon}</div>
                       <p className="text-center font-bold text-xl">{ind.name}</p>
                     </div>
