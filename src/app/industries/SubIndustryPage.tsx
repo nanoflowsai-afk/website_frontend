@@ -33,7 +33,7 @@ function ArchitectureFlowSection() {
           </div>
 
           <div className="relative overflow-x-auto pb-8 scrollbar-hide">
-            <div className="inline-flex gap-2 min-w-max px-6">
+            <div className="inline-flex gap-2 min-w-max px-3 sm:px-6">
               {steps.map((step, idx) => (
                 <div key={idx} className="relative flex items-center">
                   {/* Step Box */}
@@ -41,7 +41,7 @@ function ArchitectureFlowSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="flex-shrink-0 w-56 group"
+                    className="flex-shrink-0 w-80 sm:w-56 group"
                   >
                     <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-orange-300 transition-all duration-300 h-full">
                       {/* Icon Box */}
