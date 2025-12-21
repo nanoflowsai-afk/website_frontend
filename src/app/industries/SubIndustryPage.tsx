@@ -124,7 +124,6 @@ function IndustriesScrollSection() {
               MORE INDUSTRIES
             </span>
             <h2 className="text-4xl font-bold text-gray-900">We Serve Beyond FinTech</h2>
-            <p className="text-gray-600 mt-2">Auto-scrolling through all industries we support</p>
           </div>
 
           <div className="relative">
