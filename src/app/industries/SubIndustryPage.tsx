@@ -411,7 +411,10 @@ export default function SubIndustryPage() {
                     <section className="bg-white py-20" >
                         <div className="mx-auto max-w-[1400px] px-6" >
                             <div className="mx-auto max-w-4xl" >
-                                <div className="mb-8 text-center" >
+                                <div className="mb-12 text-center" >
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
+                                        CORE CAPABILITIES
+                                    </span>
                                     <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
                                         Core {subIndustry.name} Capabilities Included
                                     </h2>
