@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { TechStackTabs } from "@/components/TechStackTabs";
 
-// Architecture Flow Section Component - Horizontal n8n Style
+// Architecture Flow Section Component - Vertical Flow
 function ArchitectureFlowSection() {
   const steps = [
     { title: "Lead / User Entry", icon: "📝", desc: "Capture customer data" },
@@ -23,71 +23,57 @@ function ArchitectureFlowSection() {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white py-20">
       <div className="mx-auto max-w-[1400px] px-6">
-        <div className="mx-auto max-w-full">
+        <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
               ARCHITECTURE
             </span>
             <h2 className="text-4xl font-bold text-gray-900">AI-Driven System Flow</h2>
-            <p className="text-gray-600 mt-4">End-to-end automation with real-time monitoring and compliance checks</p>
           </div>
 
-          <div className="relative overflow-x-auto pb-8 scrollbar-hide">
-            <div className="inline-flex gap-2 min-w-max px-6">
+          <div className="relative">
+            <div className="flex flex-col gap-0">
               {steps.map((step, idx) => (
-                <div key={idx} className="relative flex items-center">
-                  {/* Step Box */}
+                <div key={idx} className="relative flex items-start gap-6 pb-8">
+                  {/* Vertical line connector */}
+                  {idx < steps.length - 1 && (
+                    <div className="absolute left-8 top-24 h-12 w-0.5 bg-gradient-to-b from-orange-400 to-transparent"></div>
+                  )}
+                  
+                  {/* Circle icon */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="flex-shrink-0 w-56 group"
+                    className="flex-shrink-0 relative z-10"
                   >
-                    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-orange-300 transition-all duration-300 h-full">
-                      {/* Icon Box */}
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-white text-xl mb-3">
-                        {step.icon}
-                      </div>
-                      {/* Title */}
-                      <h4 className="font-bold text-gray-900 text-sm leading-tight mb-1">
-                        {step.title}
-                      </h4>
-                      {/* Description */}
-                      <p className="text-gray-600 text-xs leading-relaxed">
-                        {step.desc}
-                      </p>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500 text-white text-2xl shadow-lg">
+                      {step.icon}
                     </div>
                   </motion.div>
 
-                  {/* Arrow Connector */}
-                  {idx < steps.length - 1 && (
-                    <motion.div
-                      initial={{ opacity: 0, scaleX: 0 }}
-                      whileInView={{ opacity: 1, scaleX: 1 }}
-                      transition={{ delay: idx * 0.1 + 0.05 }}
-                      className="flex-shrink-0 mx-2 origin-left"
-                    >
-                      <div className="flex items-center gap-1">
-                        <div className="w-6 h-0.5 bg-gradient-to-r from-orange-400 to-orange-300"></div>
-                        <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
-                    </motion.div>
-                  )}
+                  {/* Content */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex-1 pt-2"
+                  >
+                    <h4 className="font-bold text-gray-900 text-lg">{step.title}</h4>
+                    <p className="text-gray-600 mt-1">{step.desc}</p>
+                  </motion.div>
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Summary Box */}
-          <div className="mt-8 rounded-lg bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 p-6 text-center">
-            <p className="text-gray-900 font-semibold text-lg">
-              ✨ Ensures speed, accuracy, security, and scalability
-            </p>
-            <p className="text-sm text-gray-600 mt-2">
-              Fully automated n8n-style workflow orchestration
-            </p>
+            <div className="mt-12 rounded-lg bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 p-6 text-center">
+              <p className="text-gray-900 font-semibold text-lg">
+                ✨ Ensures speed, accuracy, security, and scalability
+              </p>
+              <p className="text-sm text-gray-600 mt-2">
+                End-to-end automation with real-time monitoring and compliance checks
+              </p>
+            </div>
           </div>
         </div>
       </div>
