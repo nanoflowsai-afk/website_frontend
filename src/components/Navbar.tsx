@@ -135,7 +135,7 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (mobileOpen) {
+    if (mobileOpen || industriesOpen || productsOpen || resourcesOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -143,7 +143,7 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [mobileOpen]);
+  }, [mobileOpen, industriesOpen, productsOpen, resourcesOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-orange-100 bg-white/90 backdrop-blur-xl" suppressHydrationWarning>
