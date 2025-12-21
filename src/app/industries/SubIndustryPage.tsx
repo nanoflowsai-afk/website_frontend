@@ -445,7 +445,7 @@ export default function SubIndustryPage() {
                         <div className="mx-auto max-w-[1400px] px-6" >
                             <div className="mx-auto max-w-5xl" >
                                 <div className="mb-12 text-center" >
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-600 mb-4">
+                                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
                                         PERFECT FIT
                                     </span>
                                     <h2 className="text-3xl font-bold text-gray-900 md:text-4xl" >
