@@ -449,7 +449,7 @@ export default function SubIndustryPage() {
                                         Ideal For + Business Outcomes
                                     </h2>
                                 </div>
-                                <div className="grid gap-8 lg:grid-cols-2" >
+                                <div className="grid gap-8 grid-cols-2" >
                                     <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm" >
                                         <h3 className="mb-6 text-xl font-bold text-gray-900" > Ideal for: </h3>
                                         <div className="space-y-3" >
