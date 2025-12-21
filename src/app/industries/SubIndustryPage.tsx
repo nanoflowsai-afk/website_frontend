@@ -402,7 +402,7 @@ export default function SubIndustryPage() {
                                     <h2 className="text-4xl font-bold text-gray-900">How NanoFlows Serves {subIndustry.name}</h2>
                                     <p className="text-gray-600 mt-4">NanoFlows builds secure, scalable, AI-powered systems specifically for {subIndustry.name.toLowerCase()} operations, including:</p>
                                 </div>
-                                <div className="grid gap-4 md:grid-cols-2">
+                                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                                     {[
                                         { icon: "🤖", title: "AI-Powered Automation", desc: "Automate customer workflows and reduce manual tasks by 80%" },
                                         { icon: "🔐", title: "Enterprise Security", desc: "Bank-level encryption, compliance-ready architecture" },
