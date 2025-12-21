@@ -378,7 +378,7 @@ export default function SubIndustryPage() {
                     {/* Section 4: Tech Stack */}
                     <section className="bg-gradient-to-br from-gray-50 via-white to-orange-50/30 py-20">
                         <div className="mx-auto max-w-[1400px] px-6">
-                            <div className="mx-auto max-w-3xl">
+                            <div className="mx-auto max-w-6xl">
                                 <div className="mb-12 text-center">
                                     <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-600 mb-4">
                                         POWERED BY
