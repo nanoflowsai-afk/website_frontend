@@ -33,33 +33,56 @@ function ArchitectureFlowSection() {
           </div>
 
           <div className="relative overflow-x-auto pb-12 scrollbar-hide">
-            {/* Flowing Line Background */}
-            <svg className="absolute top-24 left-0 w-full h-1 pointer-events-none" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#fb923c" stopOpacity="0.3" />
-                  <stop offset="50%" stopColor="#f97316" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#fb923c" stopOpacity="0.3" />
-                </linearGradient>
-                <style>
-                  {`
-                    @keyframes flowLine {
-                      0% { stroke-dashoffset: 24; }
-                      100% { stroke-dashoffset: 0; }
-                    }
-                    .flow-line {
-                      animation: flowLine 2s linear infinite;
-                      stroke-dasharray: 12, 12;
-                    }
-                  `}
-                </style>
-              </defs>
-              <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#flowGradient)" strokeWidth="3" className="flow-line" />
-            </svg>
+            <style>{`
+              @keyframes flowArrow {
+                0% {
+                  opacity: 0;
+                  transform: translateX(-20px);
+                }
+                10% {
+                  opacity: 1;
+                }
+                90% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                  transform: translateX(calc(100% + 20px));
+                }
+              }
+              
+              .flow-arrow {
+                animation: flowArrow 8s linear infinite;
+              }
+            `}</style>
+
+            {/* Flowing Base Line */}
+            <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent pointer-events-none"></div>
 
             <div className="inline-flex gap-2 min-w-max px-6 relative z-10">
               {steps.map((step, idx) => (
                 <div key={idx} className="relative flex items-center">
+                  {/* Animated Arrow */}
+                  {idx < steps.length - 1 && (
+                    <motion.div
+                      className="absolute top-20 left-full -translate-x-1/2 z-20 pointer-events-none"
+                      style={{
+                        animation: `flowArrow 8s linear infinite`,
+                        animationDelay: `${idx * 1}s`
+                      }}
+                    >
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          className="text-orange-500"
+                        />
+                      </svg>
+                    </motion.div>
+                  )}
+
                   {/* Step Box */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
