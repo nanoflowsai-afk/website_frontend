@@ -92,79 +92,157 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
           </div>
         </div>
       ) : (
-        // Normal grid view
-        <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
-          {industriesData.map((industry, index) => {
-            const isExpanded = expandedIndustryId === industry.id;
-            const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
-            const hasMore = industry.subIndustries.length > MAX_SHOWN;
+        <>
+          {/* Desktop grid view */}
+          <div className="hidden md:grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
+            {industriesData.map((industry, index) => {
+              const isExpanded = expandedIndustryId === industry.id;
+              const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
+              const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
-            return (
-              <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-3' : ''}`}>
-              {/* Header Section */}
-              <Link
-                to={`/industries/${industry.id}`}
-                className="group flex flex-col mb-3 pb-3 border-b border-gray-100 transition-all hover:bg-orange-50 hover:text-orange-600 px-2 py-1 rounded-lg"
-                onClick={onClose}
-              >
-                <div className="flex items-start gap-2 mb-1">
-                  <motion.span
-                    className="text-2xl leading-none"
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
+              return (
+                <div key={industry.id} className={`flex flex-col ${index !== 0 ? 'pl-3' : ''}`}>
+                  {/* Header Section */}
+                  <Link
+                    to={`/industries/${industry.id}`}
+                    className="group flex flex-col mb-3 pb-3 border-b border-gray-100 transition-all hover:bg-orange-50 hover:text-orange-600 px-2 py-1 rounded-lg"
+                    onClick={onClose}
                   >
-                    {industry.icon}
-                  </motion.span>
-                </div>
-                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-widest group-hover:text-orange-600 transition leading-tight">
-                  {industry.name}
-                </h3>
-              </Link>
-
-              {/* Sub-items Section */}
-              <div className="flex flex-col gap-3.5 items-start">
-                {visibleSubs.map((sub, subIndex) => (
-                  <motion.div
-                    key={sub.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.05 + subIndex * 0.02 }}
-                    className="w-full"
-                  >
-                    <Link
-                      to={`/industries/${industry.id}/${sub.id}`}
-                      className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3 h-8"
-                      onClick={onClose}
-                    >
+                    <div className="flex items-start gap-2 mb-1">
                       <motion.span
-                        className="text-base flex-shrink-0"
-                        whileHover={{ scale: 1.2 }}
+                        className="text-2xl leading-none"
+                        whileHover={{ y: -4 }}
                         transition={{ duration: 0.3 }}
                       >
-                        {sub.icon}
+                        {industry.icon}
                       </motion.span>
-                      <span className="group-hover:translate-x-0.5 transition-transform text-left">{sub.name}</span>
+                    </div>
+                    <h3 className="text-xs font-bold text-gray-900 uppercase tracking-widest group-hover:text-orange-600 transition leading-tight">
+                      {industry.name}
+                    </h3>
+                  </Link>
+
+                  {/* Sub-items Section */}
+                  <div className="flex flex-col gap-3.5 items-start">
+                    {visibleSubs.map((sub, subIndex) => (
+                      <motion.div
+                        key={sub.id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.05 + subIndex * 0.02 }}
+                        className="w-full"
+                      >
+                        <Link
+                          to={`/industries/${industry.id}/${sub.id}`}
+                          className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3 h-8"
+                          onClick={onClose}
+                        >
+                          <motion.span
+                            className="text-base flex-shrink-0"
+                            whileHover={{ scale: 1.2 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {sub.icon}
+                          </motion.span>
+                          <span className="group-hover:translate-x-0.5 transition-transform text-left">{sub.name}</span>
+                        </Link>
+                      </motion.div>
+                    ))}
+                    {hasMore && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          toggleExpanded(industry.id);
+                        }}
+                        className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition w-full text-center"
+                      >
+                        {isExpanded ? "Show less ↑" : "Show more →"}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile scroll view */}
+          <div className="md:hidden overflow-x-auto scroll-smooth p-4">
+            <div className="flex gap-4 min-w-min pb-2">
+              {industriesData.map((industry) => {
+                const isExpanded = expandedIndustryId === industry.id;
+                const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
+                const hasMore = industry.subIndustries.length > MAX_SHOWN;
+
+                return (
+                  <div key={industry.id} className="w-[280px] flex-shrink-0">
+                    {/* Header Section */}
+                    <Link
+                      to={`/industries/${industry.id}`}
+                      className="group flex flex-col mb-3 pb-3 border-b border-gray-100 transition-all hover:bg-orange-50 hover:text-orange-600 px-2 py-1 rounded-lg"
+                      onClick={onClose}
+                    >
+                      <div className="flex items-start gap-2 mb-1">
+                        <motion.span
+                          className="text-2xl leading-none"
+                          whileHover={{ y: -4 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {industry.icon}
+                        </motion.span>
+                      </div>
+                      <h3 className="text-xs font-bold text-gray-900 uppercase tracking-widest group-hover:text-orange-600 transition leading-tight">
+                        {industry.name}
+                      </h3>
                     </Link>
-                  </motion.div>
-                ))}
-                {hasMore && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      toggleExpanded(industry.id);
-                    }}
-                    className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition w-full text-center"
-                  >
-                    {isExpanded ? "Show less ↑" : "Show more →"}
-                  </button>
-                )}
-              </div>
+
+                    {/* Sub-items Section */}
+                    <div className="flex flex-col gap-3.5 items-start">
+                      {visibleSubs.map((sub, subIndex) => (
+                        <motion.div
+                          key={sub.id}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.05 + subIndex * 0.02 }}
+                          className="w-full"
+                        >
+                          <Link
+                            to={`/industries/${industry.id}/${sub.id}`}
+                            className="group flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 transition-all py-1.5 px-2 rounded-md w-full hover:px-3 h-8"
+                            onClick={onClose}
+                          >
+                            <motion.span
+                              className="text-base flex-shrink-0"
+                              whileHover={{ scale: 1.2 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              {sub.icon}
+                            </motion.span>
+                            <span className="group-hover:translate-x-0.5 transition-transform text-left">{sub.name}</span>
+                          </Link>
+                        </motion.div>
+                      ))}
+                      {hasMore && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleExpanded(industry.id);
+                          }}
+                          className="mt-2 text-xs font-semibold text-orange-600 hover:text-orange-700 transition w-full text-center"
+                        >
+                          {isExpanded ? "Show less ↑" : "Show more →"}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </>
       )}
     </motion.div>
   );
