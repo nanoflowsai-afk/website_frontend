@@ -157,7 +157,7 @@ export function Navbar() {
             height={35}
             className="h-10 w-auto"
           />
-          <span className="text-xs font-semibold text-gray-900 leading-tight">Nanoflows<br/>AI Software</span>
+          <span className="text-xs font-semibold text-gray-900 leading-tight">Nanoflows AI<br/>Software<br/>Technologies<br/>Private Limited</span>
         </Link>
 
         <div className="flex items-center gap-2">
