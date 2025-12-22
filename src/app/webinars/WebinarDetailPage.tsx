@@ -686,39 +686,57 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Bonuses Section */}
-          <section className="px-6 py-16 bg-white">
+          <section className="px-6 py-16 bg-gray-900">
             <div className="mx-auto max-w-[1200px] text-center">
+              {/* Decorative Line */}
+              <div className="border-t-2 border-gray-700 mb-8 max-w-xs mx-auto"></div>
+
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-gray-400 mb-2 text-sm font-bold"
+              >
+                For a Limited Time, Get Access To
+              </motion.p>
+
               <motion.h2 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 mb-4"
+                className="text-3xl md:text-4xl font-black mb-2"
               >
-                Get Access To 5 Powerful Bonuses Worth ₹16,298/-
+                <span className="text-yellow-400">5 Powerful Bonuses</span> Worth <span className="text-yellow-400">₹16,298/-</span>
               </motion.h2>
-              <p className="text-2xl font-bold text-orange-600 mb-12">Absolutely for FREE!!!</p>
+              
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-2xl font-bold text-white mb-12"
+              >
+                Absolutely for <span className="text-yellow-400">FREE!!!</span>
+              </motion.p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 {[
                   {
                     num: 1,
-                    icon: '📈',
-                    title: 'Lead Generation Strategies',
-                    desc: 'Unlock exclusive strategies that ensure you scale quickly. Start driving 5X more leads immediately.',
+                    icon: '📚',
+                    title: 'Top 1% Business Secrets',
+                    desc: ['Unlock our exclusive lead generation strategies that ensure you scale quickly and efficiently.', 'Start driving 5X more leads immediately with our result-driven tactics.'],
                     value: '₹8,999/-'
                   },
                   {
                     num: 2,
                     icon: '🎨',
-                    title: 'Landing Page Design Formula',
-                    desc: 'Discover how to strategically design pages that skyrocket conversions. Simple 3-step formula.',
+                    title: 'Landing Page Design Mockup',
+                    desc: ['Discover how we strategically design landing pages that skyrocket conversions with cutting-edge design principles.', 'Start boosting your ROI instantly with our simple 5-step landing page formula.'],
                     value: '₹4,999/-'
                   },
                   {
                     num: 3,
-                    icon: '🤖',
-                    title: 'AI Automation Secrets',
-                    desc: 'Advanced automation techniques used by top 1% businesses. Never share approach.',
-                    value: '₹2,999/-'
+                    icon: '🖥️',
+                    title: 'Design Mockup Toolkit',
+                    desc: ['Get our exclusive design mockup toolkit to quickly transform your ideas into polished visuals.', 'Start impressing clients right away with our easy-to-use, professional design system.'],
+                    value: '₹2,300/-'
                   },
                 ].map((bonus, idx) => (
                   <motion.div
@@ -726,19 +744,63 @@ export default function WebinarDetailPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="p-8 bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl"
+                    className="p-6 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-700 rounded-xl hover:border-yellow-400 transition"
                   >
-                    <div className="text-5xl mb-4">{bonus.icon}</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">BONUS#{bonus.num}</h3>
-                    <h4 className="text-lg font-bold text-orange-600 mb-3">{bonus.title}</h4>
-                    <p className="text-gray-700 mb-4">{bonus.desc}</p>
-                    <div className="flex items-center justify-center gap-3">
-                      <span className="text-lg line-through text-gray-500">(Value = {bonus.value})</span>
-                      <span className="text-2xl font-bold text-green-600">FREE!!</span>
+                    {/* Header with bonus number */}
+                    <div className="text-center mb-4">
+                      <p className="text-yellow-400 font-bold text-xs mb-2">BONUS#{bonus.num}:</p>
+                    </div>
+
+                    {/* Icon/Visual */}
+                    <div className="text-5xl mb-4 text-center">{bonus.icon}</div>
+
+                    {/* Title */}
+                    <h3 className="text-sm font-bold text-white mb-4 leading-tight">{bonus.title}</h3>
+
+                    {/* Description */}
+                    <div className="space-y-2 mb-4">
+                      {bonus.desc.map((line, i) => (
+                        <div key={i} className="flex gap-2">
+                          <span className="text-green-400 flex-shrink-0">✓</span>
+                          <p className="text-xs text-gray-300 text-left leading-relaxed">{line}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Value and FREE */}
+                    <div className="border-t border-gray-700 pt-3">
+                      <p className="text-xs text-gray-400 mb-1">(Value = <span className="text-yellow-400">{bonus.value}</span>)</p>
+                      <p className="text-xl font-black text-yellow-400">FREE!!</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
+
+              {/* Decorative Chevrons */}
+              <div className="flex justify-center gap-4 mb-6">
+                <span className="text-2xl text-orange-600">⌄</span>
+                <span className="text-2xl text-orange-600">⌄</span>
+                <span className="text-2xl text-orange-600">⌄</span>
+              </div>
+
+              {/* Social Buttons */}
+              <div className="flex justify-center gap-3 mb-6">
+                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">f</button>
+                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">𝕏</button>
+                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">in</button>
+                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">📧</button>
+              </div>
+
+              {/* CTA Button */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition mb-3 inline-block"
+              >
+                🎯 Apply To Get Invite
+              </motion.button>
+
+              <p className="text-xs text-gray-400">Unlocked by Digital Chandu</p>
             </div>
           </section>
 
