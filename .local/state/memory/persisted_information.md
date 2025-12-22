@@ -1,59 +1,43 @@
-# FinTech Startups Page - Complete Redesign with Categories
+# NanoFlows Website Project - Current Status
 
-## Latest Updates (Dec 20, 2025)
-Successfully restored categories to tech stack section while keeping all previous improvements.
+## Project Overview
+- **Type**: React + Vite frontend application (NanoFlows AI Software Technologies marketing site)
+- **Stack**: React 19, Vite 7, TypeScript, Tailwind CSS, Framer Motion, React Router
+- **Status**: Running successfully on port 5000
+- **Deployment**: Configured as static site
 
-## Changes Made
+## Latest Changes (December 22, 2025)
+### Mobile Industries View - COMPLETED
+**Files Modified**:
+1. `src/components/IndustriesDropdown.tsx` - Added responsive design with separate mobile/desktop views
+2. `src/components/Navbar.tsx` - Updated mobile industries dropdown
 
-### ✅ Tech Stack with Categories Restored
-- **Location**: Section 4 "Modern, Secure & Scalable Technology"
-- **Features**:
-  - 4 interactive category tabs:
-    - 🎨 Frontend: React, TypeScript, Tailwind CSS
-    - ⚙️ Backend: Node.js, Express, REST API
-    - 💾 Database: PostgreSQL, Redis, Prisma ORM
-    - ☁️ Cloud & DevOps: AWS, Docker, GitHub Actions
-  - Click tabs to switch categories
-  - Smooth fade animations between categories
-  - Orange highlight for active tab
-  - Professional styling with hover effects
+**Implementation**:
+- **Mobile Industries**: Shows first 3 industries only (Startups & SaaS, Enterprises, E-Commerce)
+- **Vertical Scroll**: `max-h-80 overflow-y-auto` for scrolling down to see additional industries
+- **Expand/Collapse**: Each industry can be expanded to show sub-industries
+- **Sub-industries**: Shows up to 6 by default with "Show more" button to see all
+- **Responsive**: Desktop (grid layout) vs Mobile (list with scroll)
 
-### ✅ Vertical AI-Driven System Flow
-- **Location**: Section 6 "AI-Driven System Flow"
-- 8 steps in vertical flow with gradient icons and connecting lines
-- Circular gradient icons (orange-amber) for each step
-- Much more readable and professional
+## Project Structure
+- `src/components/`: Reusable components (Navbar, IndustriesDropdown, ProductsDropdown)
+- `src/app/`: Page components and layouts
+- `src/lib/data/`: Data files (industries.ts, services.ts, etc.)
+- `attached_assets/`: Generated images and stock images
 
-### ✅ Auto-Scrolling Industries Section with Colorful Gradients
-- **Location**: Section 8 "We Serve Beyond FinTech"
-- 7 industry cards with unique gradient backgrounds
-- Auto-scrolls every 4 seconds, pauses on hover
-- Professional white text on colorful gradients
+## Workflow Configuration
+- **Name**: Start application
+- **Command**: npm run dev
+- **Port**: 5000
+- **Output Type**: webview (Vite dev server)
+- **Status**: RUNNING
 
-### ✅ All Numbered Emojis Removed from Headers
-- Clean section badges with text only
-- Professional appearance throughout
+## Configuration Details
+- Vite config: allowedHosts: true (Replit proxy compatible)
+- All npm dependencies installed and working
+- Hot module replacement active
 
-## File Modified
-- `src/app/industries/SubIndustryPage.tsx` - TechStackSection with categories, state management, and AnimatePresence
-
-## Route Information
-- **Correct path**: `/industries/startups-saas/fintech-startups`
-- Parent industry: "startups-saas"
-- Sub-industry: "fintech-startups"
-
-## Server Status
-- Next.js Dev Server running on port 5000
-- All changes live with hot-reloading
-- Minor AnimatePresence console warning (non-critical, doesn't affect functionality)
-
-## Summary
-All requested features successfully implemented:
-✅ Tech stack categories fully restored and interactive
-✅ Professional vertical architecture flow
-✅ Auto-scrolling colorful industries section
-✅ Clean headers without numbered emojis
-✅ Smooth animations throughout
-✅ Responsive design with hover effects
-
-The page is ready to use and demonstrates professional design patterns suitable for a FinTech company.
+## User Preferences
+- Mobile: Vertical scrolling with limited initial items visible
+- First 3 industries shown by default in mobile menu
+- Expandable sections for sub-industries
