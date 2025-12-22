@@ -308,27 +308,12 @@ export default function WebinarsPage() {
                 </select>
               </div>
 
-              {/* View Toggle */}
-              <div className="col-span-2 sm:col-span-1 flex gap-2">
+              {/* View Toggle - Grid Only */}
+              <div className="col-span-2 sm:col-span-1">
                 <button
-                  onClick={() => setViewMode("grid")}
-                  className={`flex-1 px-3 py-2 rounded-lg border transition text-sm font-medium ${
-                    viewMode === "grid"
-                      ? "bg-orange-500 text-white border-orange-500"
-                      : "border-orange-200 text-gray-700 hover:border-orange-500"
-                  }`}
+                  className="w-full px-3 py-2 rounded-lg bg-orange-500 text-white border border-orange-500 transition text-sm font-medium"
                 >
                   Grid
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`flex-1 px-3 py-2 rounded-lg border transition text-sm font-medium ${
-                    viewMode === "list"
-                      ? "bg-orange-500 text-white border-orange-500"
-                      : "border-orange-200 text-gray-700 hover:border-orange-500"
-                  }`}
-                >
-                  List
                 </button>
               </div>
             </div>
@@ -449,10 +434,7 @@ export default function WebinarsPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className={viewMode === "grid"
-                    ? "grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                    : "space-y-4"
-                  }
+                  className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
                 >
                   {filteredWebinars.map((webinar, idx) => (
                     <motion.div
@@ -460,18 +442,16 @@ export default function WebinarsPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.05 }}
-                      className={`group overflow-hidden rounded-xl border border-orange-100 bg-white hover:border-orange-300 hover:shadow-lg transition ${
-                        viewMode === "list" ? "flex gap-6 p-6" : "flex flex-col"
-                      }`}
+                      className="group overflow-hidden rounded-xl border border-orange-100 bg-white hover:border-orange-300 hover:shadow-lg transition flex flex-col"
                     >
                       {/* Image */}
-                      <div className={viewMode === "list" ? "w-48 flex-shrink-0" : "relative h-48 w-full"}>
+                      <div className="relative h-48 w-full">
                         <img
                           src={webinar.image}
                           alt={webinar.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                         />
-                        <div className={`absolute ${viewMode === "list" ? "top-2 left-2" : "top-4 left-4"}`}>
+                        <div className="absolute top-4 left-4">
                           <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getTypeBadgeColor(webinar.type)}`}>
                             {getTypeIcon(webinar.type)} {webinar.type}
                           </span>
@@ -479,7 +459,7 @@ export default function WebinarsPage() {
                       </div>
 
                       {/* Content */}
-                      <div className={viewMode === "list" ? "flex-1 flex flex-col justify-center" : "flex-1 p-6 flex flex-col"}>
+                      <div className="flex-1 p-6 flex flex-col">
                         <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition">
                           {webinar.title}
                         </h3>
@@ -527,65 +507,66 @@ export default function WebinarsPage() {
           </div>
         </section>
 
-        {/* Past Webinars / Replays */}
-        {pastWebinars.length > 0 && (
-          <section className="px-6 py-16 bg-gradient-to-b from-transparent to-orange-50">
-            <div className="mx-auto max-w-[1400px]">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Past Webinars & Recordings</h2>
-              <p className="text-gray-600 mb-8">Access our complete library of recorded sessions</p>
-
-              <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {pastWebinars.slice(0, 6).map((webinar, idx) => (
-                  <motion.div
-                    key={webinar.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="group overflow-hidden rounded-xl border border-orange-100 bg-white hover:border-orange-300 hover:shadow-lg transition"
-                  >
-                    <div className="relative h-40">
-                      <img
-                        src={webinar.image}
-                        alt={webinar.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
-                        <span className="text-4xl">▶️</span>
-                      </div>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">
-                        {webinar.title}
-                      </h3>
-                      <p className="text-xs text-gray-600 mb-3">
-                        {webinar.date} • {webinar.duration}
-                      </p>
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition text-sm"
-                      >
-                        Watch Replay
-                      </motion.button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {pastWebinars.length > 6 && (
-                <div className="text-center mt-8">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-3 border-2 border-orange-500 text-orange-600 font-semibold rounded-lg hover:bg-orange-50 transition"
-                  >
-                    View All Recordings ({pastWebinars.length})
-                  </motion.button>
-                </div>
-              )}
+        {/* Program Features Section */}
+        <section className="px-6 py-20 bg-gradient-to-b from-orange-50 to-white">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Program Features
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Comprehensive learning experience designed for maximum impact
+              </p>
             </div>
-          </section>
-        )}
+
+            <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  icon: "🎬",
+                  title: "Live Interactive Sessions",
+                  description: "Real-time learning with live presenters and instant interaction",
+                },
+                {
+                  icon: "📊",
+                  title: "Real-World Case Studies",
+                  description: "Learn from actual business implementations and success stories",
+                },
+                {
+                  icon: "🤝",
+                  title: "Expert Panel Discussions",
+                  description: "Direct engagement with industry leaders and AI specialists",
+                },
+                {
+                  icon: "🎓",
+                  title: "Certification Eligible",
+                  description: "Earn recognized certificates upon completing webinars",
+                },
+                {
+                  icon: "📚",
+                  title: "Resource Materials",
+                  description: "Download slides, templates, and additional learning resources",
+                },
+                {
+                  icon: "🔄",
+                  title: "Lifetime Access",
+                  description: "Access all webinar recordings and materials anytime, anywhere",
+                },
+              ].map((feature, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="p-8 rounded-xl border border-orange-200 bg-white hover:border-orange-400 hover:shadow-lg transition"
+                >
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Why Attend Section */}
         <section className="px-6 py-20 bg-white">
@@ -617,37 +598,66 @@ export default function WebinarsPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="px-6 py-20 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500">
-          <div className="mx-auto max-w-[1400px] text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-            >
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Stay Updated with Our AI Webinars
+        {/* Extra Benefits Section */}
+        <section className="px-6 py-20 bg-white">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Extra Benefits
               </h2>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                Get notified about upcoming AI sessions, workshops, and exclusive learning opportunities from industry experts.
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Additional value to enhance your learning experience
               </p>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:bg-orange-50 transition shadow-lg"
+            <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
+              {[
+                {
+                  icon: "💼",
+                  title: "Networking Opportunities",
+                  description: "Connect with professionals from various industries and expand your professional network",
+                },
+                {
+                  icon: "🚀",
+                  title: "Implementation Support",
+                  description: "Get guidance on how to implement learned strategies in your organization",
+                },
+                {
+                  icon: "📈",
+                  title: "Performance Tracking",
+                  description: "Monitor your progress and learning outcomes through our interactive dashboard",
+                },
+                {
+                  icon: "🎁",
+                  title: "Exclusive Discounts",
+                  description: "Access special offers on our premium courses, tools, and consulting services",
+                },
+                {
+                  icon: "🌐",
+                  title: "Community Access",
+                  description: "Join our exclusive community of AI enthusiasts and professionals",
+                },
+                {
+                  icon: "📧",
+                  title: "Regular Updates",
+                  description: "Receive curated content, industry news, and new webinar announcements",
+                },
+              ].map((benefit, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex gap-6 p-8 rounded-xl border border-orange-100 bg-gradient-to-br from-orange-50/50 to-amber-50/50 hover:border-orange-300 hover:shadow-lg transition"
                 >
-                  Subscribe for Updates
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-orange-700 text-white font-semibold rounded-lg hover:bg-orange-800 transition shadow-lg border-2 border-white"
-                >
-                  Register for Next Webinar
-                </motion.button>
-              </div>
-            </motion.div>
+                  <div className="text-4xl flex-shrink-0">{benefit.icon}</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                    <p className="text-gray-600 text-sm">{benefit.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </main>

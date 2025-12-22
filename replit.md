@@ -39,23 +39,40 @@ attached_assets/      # Generated images and assets
 
 ## Recent Changes (Dec 22, 2025)
 
-### New Feature: Webinars Page
-Created a comprehensive webinars listing page following the Nanoflows design structure:
+### New Feature: Webinars Page (Updated)
+Created and refined a comprehensive webinars listing page following the Nanoflows design structure:
 
 **Features Implemented:**
 - **Hero Section**: Gradient orange background with page title, description, and CTA buttons
 - **Search & Filters**: Sticky filter bar with search, category, type (Upcoming/Live/Recorded), and level filters
+- **Grid View Only**: Responsive 3-column grid layout (removed list view)
 - **Featured Webinar**: Highlighted upcoming webinar with registration counter and detailed info
-- **Webinars Grid/List**: Grid (3 columns) and list view toggle with animated webinar cards
-- **Past Webinars Section**: Recorded webinars with play overlay and "Watch Replay" buttons
-- **Benefits Section**: 6 icon cards explaining why attendees should register
-- **CTA Section**: Call-to-action with orange gradient background and subscription buttons
+- **Webinars Grid**: Animated webinar cards with hover effects
+- **Program Features Section**: 6 feature cards highlighting:
+  - Live Interactive Sessions
+  - Real-World Case Studies
+  - Expert Panel Discussions
+  - Certification Eligible
+  - Resource Materials
+  - Lifetime Access
+- **Why Attend Section**: 6 icon cards explaining benefits
+- **Extra Benefits Section**: 6 benefit cards in 2-column layout with icons and descriptions:
+  - Networking Opportunities
+  - Implementation Support
+  - Performance Tracking
+  - Exclusive Discounts
+  - Community Access
+  - Regular Updates
 - **Responsive Design**: Fully responsive for mobile, tablet, and desktop
 
+**Removed Sections:**
+- Past Webinars & Recordings section (removed per request)
+- "Stay Updated with Our AI Webinars" CTA section (removed per request)
+
 **Navbar Integration:**
-- Added "Webinars" link to Resources dropdown menu (Desktop)
-- Added "Webinars" link to mobile Resources menu with emoji icon (🎓)
-- Added "Webinars" link to Footer resources section
+- "Webinars" link in Resources dropdown menu (Desktop)
+- "Webinars" link in mobile Resources menu with emoji icon (🎓)
+- "Webinars" link in Footer resources section
 
 **Sample Data:**
 - 6 sample webinars with varying levels (Beginner, Intermediate, Advanced)
