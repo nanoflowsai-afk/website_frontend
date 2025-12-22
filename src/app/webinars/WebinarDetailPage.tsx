@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 type Webinar = {
   id: number;
@@ -17,6 +18,7 @@ type Webinar = {
   image: string;
   registeredCount?: number;
   maxCapacity?: number;
+  isLandingPage?: boolean;
 };
 
 const allWebinars: Webinar[] = [
@@ -37,18 +39,19 @@ const allWebinars: Webinar[] = [
   },
   {
     id: 2,
-    title: "Marketing Automation with AI",
-    description: "Transform your marketing with intelligent automation and personalization strategies.",
-    date: "Dec 25, 2025",
-    time: "3:30 PM IST",
-    duration: "60 Minutes",
-    speaker: "Priya Singh",
-    level: "Intermediate",
-    category: "Marketing AI",
-    type: "Live",
+    title: "3 Days Business Automation Event",
+    description: "Automate Business, Save Lakhs & Get 12+ AI Agents Work For You 24/7 365 Days FREE",
+    date: "Dec 23/24/25",
+    time: "10:00 AM",
+    duration: "3 Days",
+    speaker: "NanoFlows Team",
+    level: "Beginner",
+    category: "Business AI",
+    type: "Upcoming",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 512,
-    maxCapacity: 1000,
+    registeredCount: 65,
+    maxCapacity: 99,
+    isLandingPage: true,
   },
   {
     id: 3,
@@ -108,6 +111,52 @@ const allWebinars: Webinar[] = [
   },
 ];
 
+// Countdown timer component
+function CountdownTimer() {
+  const [time, setTime] = useState({ days: 0, hours: 9, minutes: 15, seconds: 0 });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(prev => {
+        let { days, hours, minutes, seconds } = prev;
+        seconds--;
+        if (seconds < 0) {
+          seconds = 59;
+          minutes--;
+          if (minutes < 0) {
+            minutes = 59;
+            hours--;
+            if (hours < 0) {
+              hours = 23;
+              days--;
+            }
+          }
+        }
+        return { days, hours, minutes, seconds };
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const pad = (num: number) => String(num).padStart(2, '0');
+
+  return (
+    <div className="flex justify-center gap-4 text-center">
+      {[
+        { value: time.days, label: 'Days' },
+        { value: time.hours, label: 'Hours' },
+        { value: time.minutes, label: 'Minutes' },
+        { value: time.seconds, label: 'Seconds' },
+      ].map((item, idx) => (
+        <motion.div key={idx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-white rounded-lg border-2 border-orange-300">
+          <div className="text-2xl font-bold text-orange-600">{pad(item.value)}</div>
+          <div className="text-xs text-gray-600">{item.label}</div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function WebinarDetailPage() {
   const params = useParams();
   const webinarId = parseInt(params.id as string);
@@ -131,6 +180,372 @@ export default function WebinarDetailPage() {
               </motion.button>
             </Link>
           </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Special landing page for webinar ID 2
+  if (webinar.isLandingPage) {
+    return (
+      <>
+        <Navbar />
+        <main className="min-h-screen bg-white">
+          {/* Registration Form Section */}
+          <section className="px-6 py-12 bg-gradient-to-br from-orange-50 to-white">
+            <div className="mx-auto max-w-[1200px]">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+              >
+                {/* Left Content */}
+                <div>
+                  <motion.h1 
+                    initial={{ opacity: 0 }} 
+                    animate={{ opacity: 1 }}
+                    className="text-4xl md:text-5xl font-black text-gray-900 mb-4 leading-tight"
+                  >
+                    Apply For 🤖<br />Business Event
+                  </motion.h1>
+                  <p className="text-xl text-gray-700 mb-8">Join 65+ professionals (99 spots available)</p>
+                  <p className="text-lg font-bold text-orange-600 mb-4">⚡️ After 99 People It's ₹499/- (Get Your Seat Fast)</p>
+                </div>
+
+                {/* Registration Form */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="p-8 bg-white border-2 border-orange-200 rounded-2xl shadow-lg"
+                >
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Register Now</h2>
+                  <form className="space-y-4">
+                    <input type="text" placeholder="Name *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                    <input type="email" placeholder="Email *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                    <input type="tel" placeholder="WhatsApp Number *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                    <input type="text" placeholder="Business Name *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-lg"
+                    >
+                      Apply To Get Invite
+                    </motion.button>
+                  </form>
+                </motion.div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Event Header */}
+          <section className="px-6 py-12 bg-white">
+            <div className="mx-auto max-w-[1200px] text-center">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-4xl md:text-5xl font-black text-gray-900 mb-4"
+              >
+                ⚡️ 3 Days One Man Business Automation Event!
+              </motion.h2>
+              <p className="text-xl text-gray-700 mb-8">(Telugu States Biggest Business AI Agents Event On Dec 23/24/25th)</p>
+              <motion.h3 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="text-2xl md:text-3xl font-bold text-orange-600"
+              >
+                Automate Business Save Lakhs<br />Get 12+ AI AGENTS Work For You 24/7 365 Days FREE
+              </motion.h3>
+            </div>
+          </section>
+
+          {/* Countdown & Event Details */}
+          <section className="px-6 py-12 bg-gradient-to-b from-orange-50 to-white">
+            <div className="mx-auto max-w-[1200px]">
+              <div className="bg-white border-2 border-orange-300 rounded-2xl p-8 mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Event Starts In</h3>
+                <CountdownTimer />
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
+                  { icon: '🕐', label: 'Time', value: '10AM' },
+                  { icon: '📡', label: 'Event', value: 'Zoom' },
+                  { icon: '🎤', label: 'Host', value: 'Digital Chandu' },
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center"
+                  >
+                    <div className="text-3xl mb-2">{item.icon}</div>
+                    <p className="text-sm text-gray-600 font-semibold">{item.label}</p>
+                    <p className="text-lg font-bold text-gray-900">{item.value}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* 3 Days Roadmap */}
+          <section className="px-6 py-16 bg-white">
+            <div className="mx-auto max-w-[1200px]">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center"
+              >
+                3 Days Live Business Automation Event Roadmap
+              </motion.h2>
+
+              <div className="space-y-12">
+                {/* Day 1 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="p-8 bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl"
+                >
+                  <h3 className="text-3xl font-bold text-orange-600 mb-6">DAY 1: Business Growth Setup & Management</h3>
+                  <p className="text-xl font-bold text-gray-900 mb-6">GOAL #1: Install Top 1% Business Model In Your Biz 🤩</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      '✅ Website Builder – 10 Min Setup',
+                      '✅ Form Builder – 10 Min Setup',
+                      '✅ Funnel Builder – 10 Min Setup',
+                      '✅ Own Chatbot – 10 Min Setup',
+                      '✅ Shop Builder – 10 Min Setup',
+                      '✅ URL Shortener & Tracking',
+                      '✅ Facebook Marketing – 10 Min Setup',
+                      '✅ Instagram Marketing – 18 Min',
+                      '✅ WhatsApp Ads',
+                      '✅ CRM – Centralize All Leads',
+                      '✅ Bulk Import – 60 Seconds',
+                    ].map((item, idx) => (
+                      <motion.p
+                        key={idx}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: idx * 0.05 }}
+                        className="text-gray-700 font-medium"
+                      >
+                        {item}
+                      </motion.p>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Day 1 Continue - Automation */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-2xl"
+                >
+                  <h3 className="text-3xl font-bold text-blue-600 mb-6">DAY 1 CONTINUE: Business Automation</h3>
+                  <p className="text-xl font-bold text-gray-900 mb-6">GOAL #2: Replace Your 8 Hrs Employee With System 😍</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      '✅ Follow-up – Never miss a lead',
+                      '✅ Contact Group – Segment contacts',
+                      '✅ Meta Leads – Auto-sync from FB/Insta',
+                      '✅ Live Customer Management',
+                      '✅ Calendar Booking System',
+                      '✅ LMS – Learning Management',
+                      '✅ Email Automation – 24/7 System',
+                      '✅ WhatsApp Marketing – 24/7 365 Days',
+                      '✅ Business Automation – All Operations',
+                      '✅ SMS Marketing',
+                    ].map((item, idx) => (
+                      <motion.p
+                        key={idx}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: idx * 0.05 }}
+                        className="text-gray-700 font-medium"
+                      >
+                        {item}
+                      </motion.p>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* For Clients - Live Automation */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="p-8 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 rounded-2xl"
+                >
+                  <h3 className="text-3xl font-bold text-green-600 mb-6">FOR CLIENTS: Live Business Automation</h3>
+                  <p className="text-xl font-bold text-gray-900 mb-6">GOAL #3: Automate 80% Your Employee Work 🤩</p>
+                  
+                  <div className="space-y-6">
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="p-6 bg-white border-2 border-green-300 rounded-xl">
+                      <h4 className="text-lg font-bold text-gray-900 mb-4">✅ 1. Complete LevelUpVerse Setup</h4>
+                      <ul className="space-y-2 text-gray-700">
+                        <li>✓ Lead Capture System</li>
+                        <li>✓ WhatsApp Automation</li>
+                        <li>✓ CRM Integration</li>
+                        <li>✓ Auto Follow-up</li>
+                        <li>✓ Pipeline Tracking</li>
+                        <li>✓ Calendar Booking</li>
+                        <li>✓ Dashboard Analytics</li>
+                      </ul>
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1 }} className="p-6 bg-white border-2 border-green-300 rounded-xl">
+                      <h4 className="text-lg font-bold text-gray-900 mb-4">🧩 2. Build Your First Business Automation Flow</h4>
+                      <ul className="space-y-2 text-gray-700">
+                        <li>✔ Lead Form / Funnel</li>
+                        <li>✔ WhatsApp Instant Response</li>
+                        <li>✔ CRM Auto-Entry</li>
+                        <li>✔ Appointment Booking Link</li>
+                        <li>✔ AI Chatbot Reply</li>
+                      </ul>
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} className="p-6 bg-white border-2 border-green-300 rounded-xl">
+                      <h4 className="text-lg font-bold text-gray-900 mb-4">💬 3. Personalized Setup Assistance For:</h4>
+                      <div className="grid grid-cols-2 gap-3 text-gray-700">
+                        <p>🏡 Real Estate Agent</p>
+                        <p>💇‍♂️ Salon Owner</p>
+                        <p>📚 Trainer</p>
+                        <p>🚗 Travel Agent</p>
+                        <p>💼 Service Provider</p>
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+
+          {/* Testimonials */}
+          <section className="px-6 py-16 bg-gradient-to-b from-white to-orange-50">
+            <div className="mx-auto max-w-[1200px]">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 mb-4 text-center"
+              >
+                What Others Are Saying
+              </motion.h2>
+              <p className="text-center text-gray-600 mb-12 text-lg">TESTIMONIALS</p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: '"Saved Lakhs Every Month"',
+                    text: '"Most MasterClass are boring and filled with jargon. But LevelUpVerse showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                    author: '- Raj Kumar'
+                  },
+                  {
+                    title: '"My life changed forever"',
+                    text: '"Before the Master class, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                    author: '- Priya'
+                  },
+                  {
+                    title: '"Highly recommend this"',
+                    text: '"LevelUpVerse taught me how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                    author: '- Naveen'
+                  },
+                ].map((testimonial, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="p-6 bg-white border-2 border-orange-200 rounded-2xl"
+                  >
+                    <h3 className="text-lg font-bold text-orange-600 mb-3">{testimonial.title}</h3>
+                    <p className="text-gray-700 mb-4 italic">{testimonial.text}</p>
+                    <p className="text-sm font-bold text-gray-900">{testimonial.author}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Bonuses Section */}
+          <section className="px-6 py-16 bg-white">
+            <div className="mx-auto max-w-[1200px] text-center">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 mb-4"
+              >
+                Get Access To 5 Powerful Bonuses Worth ₹16,298/-
+              </motion.h2>
+              <p className="text-2xl font-bold text-orange-600 mb-12">Absolutely for FREE!!!</p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    num: 1,
+                    icon: '📈',
+                    title: 'Lead Generation Strategies',
+                    desc: 'Unlock exclusive strategies that ensure you scale quickly. Start driving 5X more leads immediately.',
+                    value: '₹8,999/-'
+                  },
+                  {
+                    num: 2,
+                    icon: '🎨',
+                    title: 'Landing Page Design Formula',
+                    desc: 'Discover how to strategically design pages that skyrocket conversions. Simple 3-step formula.',
+                    value: '₹4,999/-'
+                  },
+                  {
+                    num: 3,
+                    icon: '🤖',
+                    title: 'AI Automation Secrets',
+                    desc: 'Advanced automation techniques used by top 1% businesses. Never share approach.',
+                    value: '₹2,999/-'
+                  },
+                ].map((bonus, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="p-8 bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl"
+                  >
+                    <div className="text-5xl mb-4">{bonus.icon}</div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">BONUS#{bonus.num}</h3>
+                    <h4 className="text-lg font-bold text-orange-600 mb-3">{bonus.title}</h4>
+                    <p className="text-gray-700 mb-4">{bonus.desc}</p>
+                    <div className="flex items-center justify-center gap-3">
+                      <span className="text-lg line-through text-gray-500">(Value = {bonus.value})</span>
+                      <span className="text-2xl font-bold text-green-600">FREE!!</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Call to Action */}
+          <section className="px-6 py-16 bg-gradient-to-r from-orange-500 to-amber-500">
+            <div className="mx-auto max-w-[1200px] text-center">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-black text-white mb-6"
+              >
+                3 Days is all you Need for Your 100% Success!
+              </motion.h2>
+              <p className="text-lg text-white mb-8">Limited spots available - Only 99 people at this price</p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white text-orange-600 font-bold rounded-lg hover:shadow-lg transition text-lg"
+              >
+                Apply To Get Invite
+              </motion.button>
+            </div>
+          </section>
         </main>
         <Footer />
       </>
