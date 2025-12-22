@@ -19,6 +19,7 @@ const footerLinks = {
     { label: "Contact", href: "/contact" },
   ],
   resources: [
+    { label: "Webinars", href: "/webinars" },
     { label: "Case Studies", href: "/blog" },
     { label: "Documentation", href: "#" },
     { label: "API Reference", href: "#" },

@@ -266,6 +266,13 @@ export function Navbar() {
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
+                  to="/webinars"
+                  className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-orange-50 hover:text-orange-600"
+                  onClick={() => setResourcesOpen(false)}
+                >
+                  Webinars
+                </Link>
+                <Link
                   to="/careers"
                   className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-orange-50 hover:text-orange-600"
                   onClick={() => setResourcesOpen(false)}
@@ -525,6 +532,14 @@ export function Navbar() {
                       exit={{ opacity: 0, height: 0 }}
                       className="ml-8 mt-1 space-y-1 overflow-hidden"
                     >
+                      <Link
+                        to="/webinars"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 transition-all"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <span className="text-2xl">🎓</span>
+                        Webinars
+                      </Link>
                       <Link
                         to="/careers"
                         className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-blue-50 transition-all"

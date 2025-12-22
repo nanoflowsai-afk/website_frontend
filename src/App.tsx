@@ -20,6 +20,7 @@ import BlogPage from './app/blog/BlogPage';
 import BlogPostPage from './app/blog/BlogPostPage';
 import AdminPage from './app/admin/AdminPage';
 import SeoKeywordsPage from './app/SeoKeywordsPage';
+import WebinarsPage from './app/webinars/WebinarsPage';
 
 export default function App() {
     return (
@@ -28,6 +29,7 @@ export default function App() {
                 <Route path="/" element={<RootLayout />}>
                     <Route index element={<HomePage />} />
                     <Route path="admin" element={<AdminPage />} />
+                    <Route path="webinars" element={<WebinarsPage />} />
                     <Route path="services" element={<ServicesPage />} />
                     <Route path="services/:id" element={<ServiceDetailPage />} />
                     <Route path="contact" element={<ContactPage />} />

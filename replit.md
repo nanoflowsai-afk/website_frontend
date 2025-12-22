@@ -27,6 +27,8 @@ src/
 │   │   └── page.tsx  # Industries listing
 │   ├── products/     # Products pages
 │   ├── services/     # Services pages
+│   ├── webinars/     # Webinars page (NEW)
+│   │   └── WebinarsPage.tsx
 │   └── ...
 ├── components/       # Reusable React components
 ├── lib/              # Utilities and API helpers
@@ -34,6 +36,34 @@ src/
 public/               # Static assets
 attached_assets/      # Generated images and assets
 ```
+
+## Recent Changes (Dec 22, 2025)
+
+### New Feature: Webinars Page
+Created a comprehensive webinars listing page following the Nanoflows design structure:
+
+**Features Implemented:**
+- **Hero Section**: Gradient orange background with page title, description, and CTA buttons
+- **Search & Filters**: Sticky filter bar with search, category, type (Upcoming/Live/Recorded), and level filters
+- **Featured Webinar**: Highlighted upcoming webinar with registration counter and detailed info
+- **Webinars Grid/List**: Grid (3 columns) and list view toggle with animated webinar cards
+- **Past Webinars Section**: Recorded webinars with play overlay and "Watch Replay" buttons
+- **Benefits Section**: 6 icon cards explaining why attendees should register
+- **CTA Section**: Call-to-action with orange gradient background and subscription buttons
+- **Responsive Design**: Fully responsive for mobile, tablet, and desktop
+
+**Navbar Integration:**
+- Added "Webinars" link to Resources dropdown menu (Desktop)
+- Added "Webinars" link to mobile Resources menu with emoji icon (🎓)
+- Added "Webinars" link to Footer resources section
+
+**Sample Data:**
+- 6 sample webinars with varying levels (Beginner, Intermediate, Advanced)
+- Categories: AI Automation, AI Agents, Marketing AI, Business AI, Workshops
+- Types: Upcoming, Live, Recorded
+- Dynamic badge colors based on webinar type
+
+**Route:** `/webinars`
 
 ## Development
 - **Port**: 5000 (frontend dev server)
