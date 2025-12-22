@@ -1,0 +1,112 @@
+Design and implement a premium, modern, and highly professional Webinars page for my website Nanoflows.
+
+Important design rules:
+
+Use ONLY my existing website color theme (orange and related shades, no blue).
+
+Clean, minimal, enterprise-grade UI similar to SaaS products (Apple, Stripe, Webflow style).
+
+Fully responsive (desktop, tablet, mobile).
+
+Smooth animations (subtle fade, slide, hover effects).
+
+Professional typography and spacing.
+
+High visual hierarchy and clear CTAs.
+
+Page Sections to Design:
+1️⃣ Hero Section
+
+Strong headline highlighting AI-powered webinars by Nanoflows
+
+Short sub-headline explaining value (learning, automation, AI tools, real-world use cases)
+
+Primary CTA: “Register for Webinar”
+
+Secondary CTA: “View Upcoming Sessions”
+
+Background with abstract AI / flow / gradient effect using brand colors
+
+2️⃣ Why Choose Nanoflows Webinars?
+
+Grid or card layout with icons
+
+Key points like:
+
+Industry Experts
+
+Live AI Demos
+
+Real Business Use Cases
+
+Actionable Takeaways
+
+Certificate / Recording Access
+
+Hover effects and clean iconography
+
+3️⃣ Don’t Miss This Session (Featured Webinar)
+
+Highlight one featured upcoming webinar
+
+Include:
+
+Webinar title
+
+Date & time
+
+Speaker name & role
+
+Short description
+
+Countdown timer UI
+
+Prominent “Reserve My Seat” CTA button
+
+4️⃣ All Upcoming Webinars
+
+Card-based or list-based layout
+
+Each webinar card should include:
+
+Topic title
+
+Date & time
+
+Duration
+
+Level (Beginner / Intermediate / Advanced)
+
+Register button
+
+Filter or tag support (AI, Automation, Marketing, Dev, Business)
+
+5️⃣ Extra Benefits
+
+Horizontal or grid section
+
+Benefits such as:
+
+Free resources & templates
+
+Webinar recordings
+
+Community access
+
+Live Q&A
+
+Post-webinar support
+
+Visually engaging with icons and subtle motion
+
+Technical Notes:
+
+Use clean semantic HTML / modern React (if applicable)
+
+Modular, reusable components
+
+Ready for backend integration later
+
+SEO-friendly structure
+
+The final output should look premium, futuristic, trustworthy, and enterprise-ready, matching a high-end AI company website.
