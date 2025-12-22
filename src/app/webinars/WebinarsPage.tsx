@@ -333,35 +333,35 @@ export default function WebinarsPage() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-6 flex flex-col justify-between"
+                className="h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-5 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">Register Now</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Register Now</h3>
                   
                   {/* Form Input 1 */}
-                  <div className="mb-4">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                  <div className="mb-3">
+                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Full Name</label>
                     <input
                       type="text"
                       placeholder="Your name"
-                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-sm"
+                      className="w-full px-3 py-2 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-xs"
                     />
                   </div>
 
                   {/* Form Input 2 */}
-                  <div className="mb-4">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                  <div className="mb-3">
+                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Email Address</label>
                     <input
                       type="email"
                       placeholder="your@email.com"
-                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-sm"
+                      className="w-full px-3 py-2 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-xs"
                     />
                   </div>
 
                   {/* Form Input 3 */}
-                  <div className="mb-6">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Select Category</label>
-                    <select className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-sm bg-white">
+                  <div className="mb-4">
+                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Select Category</label>
+                    <select className="w-full px-3 py-2 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-xs bg-white">
                       <option>AI Automation</option>
                       <option>AI Agents</option>
                       <option>Marketing AI</option>
@@ -375,7 +375,7 @@ export default function WebinarsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition"
+                  className="w-full px-4 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-sm"
                 >
                   Register for Webinar →
                 </motion.button>
