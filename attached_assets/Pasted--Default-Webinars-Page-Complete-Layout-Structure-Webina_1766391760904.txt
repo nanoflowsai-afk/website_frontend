@@ -1,0 +1,238 @@
+📘 Default Webinars Page – Complete Layout Structure
+
+(Webinars Listing Page – /webinars)
+
+This page represents ALL webinars of Nanoflows.
+
+1️⃣ Page Hero Section (Top)
+
+Purpose: Instantly explain what this page is about.
+
+Required Elements
+
+Page Title
+Webinars & Live AI Sessions
+
+Short Description
+Learn how to apply AI, automation, and intelligent systems in real-world business scenarios.
+
+Optional CTA Button
+Upcoming Webinars | Watch Replays
+
+📐 Layout:
+
+Left: Text
+
+Right: Illustration / AI abstract image / webinar graphic
+
+2️⃣ Filters & Controls (Very Important)
+
+Purpose: Help users find relevant webinars quickly.
+
+Required Filters
+
+🔍 Search (by topic/title)
+
+📂 Category Dropdown
+
+AI Automation
+
+AI Agents
+
+Marketing AI
+
+Business AI
+
+Workshops
+
+📅 Type Filter
+
+Upcoming
+
+Live
+
+Recorded
+
+🎯 Level Filter
+
+Beginner
+
+Intermediate
+
+Advanced
+
+📐 Layout:
+
+Horizontal filter bar (sticky on scroll is a bonus)
+
+3️⃣ Featured / Upcoming Webinar (Highlight Section)
+
+Purpose: Promote the most important webinar.
+
+Required Elements
+
+Webinar Title
+
+Short description (1–2 lines)
+
+Date & Time
+
+Mode: Live / Online
+
+Duration
+
+Speaker(s)
+
+CTA: Register Now
+
+📐 Layout:
+
+Large card or banner
+
+Image on one side, content on the other
+
+Badge: LIVE or UPCOMING
+
+4️⃣ Webinars Grid / List (Main Content)
+
+Purpose: Display all webinars clearly.
+
+Each Webinar Card Must Show:
+
+Thumbnail / Cover Image
+
+Webinar Title
+
+Short Summary (1 line)
+
+Date & Time
+
+Duration
+
+Level (Beginner / Intermediate / Advanced)
+
+Mode Badge:
+
+🟢 Live
+
+🔵 Upcoming
+
+⚪ Recorded
+
+CTA Button:
+
+Register
+
+Watch Replay
+
+View Details
+
+📐 Layout Options:
+
+Grid (3 cards desktop, 1 mobile)
+
+OR List view (toggle optional)
+
+5️⃣ Webinar Card Example (Content Structure)
+[ Thumbnail Image ]
+
+Automate Your Business with AI Agents
+Live Webinar • 90 Minutes
+Level: Beginner
+
+Learn how AI agents can automate workflows,
+customer support, and decision-making.
+
+[ Register Now ]
+
+6️⃣ Past Webinars / Replays Section
+
+Purpose: Long-term value & SEO.
+
+Required Elements
+
+Section Heading:
+Past Webinars & Recordings
+
+Webinar cards (same style)
+
+CTA Button:
+Watch Replay
+
+📐 Layout:
+
+Grid with “Recorded” badge
+
+Optionally paginated
+
+7️⃣ Why Attend Nanoflows Webinars (Trust Section)
+
+Purpose: Convince users to register.
+
+Content Points
+
+Practical, real-world AI use cases
+
+No theory, only implementation
+
+Industry experts & AI engineers
+
+Live Q&A & recordings access
+
+Free & premium sessions
+
+📐 Layout:
+
+4–6 icon cards
+
+8️⃣ Call To Action (Bottom Section)
+
+Purpose: Conversion.
+
+Required Elements
+
+Heading:
+Stay Updated with Our AI Webinars
+
+Subtext:
+Get notified about upcoming AI sessions and workshops.
+
+CTA Buttons:
+
+Subscribe for Updates
+
+Register for Next Webinar
+
+📐 Layout:
+
+Centered
+
+Strong orange gradient background (Nanoflows style)
+
+9️⃣ Footer (Standard)
+
+Links
+
+Social icons
+
+Newsletter signup (optional)
+
+✅ Summary – Sections Checklist
+
+✔ Hero Section
+✔ Search & Filters
+✔ Featured Webinar
+✔ Webinars Grid/List
+✔ Past Webinars
+✔ Trust / Benefits
+✔ CTA Section
+
+🔥 Pro Tip for Nanoflows
+
+Since you’re an AI company, you can later add:
+
+🤖 “AI recommends this webinar for you”
+
+📊 Popular / Trending webinars
+
+🔔 Notify-me toggle for upcoming webinars
