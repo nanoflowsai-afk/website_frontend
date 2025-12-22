@@ -386,84 +386,86 @@ export function Navbar() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="ml-4 mt-2 rounded-lg bg-gray-50 p-2 space-y-1"
+                      className="mt-2 overflow-x-auto scroll-smooth"
                     >
-                      {industries.map((industry) => {
-                        const isExpanded = expandedIndustryId === industry.id;
-                        const isSubExpanded = expandedSubIndustriesIds.has(industry.id);
-                        const MAX_SHOWN = 6;
-                        const visibleSubs = isSubExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
-                        const hasMore = industry.subIndustries.length > MAX_SHOWN;
+                      <div className="flex gap-4 min-w-min p-4 pb-2">
+                        {industries.map((industry) => {
+                          const isExpanded = expandedIndustryId === industry.id;
+                          const isSubExpanded = expandedSubIndustriesIds.has(industry.id);
+                          const MAX_SHOWN = 6;
+                          const visibleSubs = isSubExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
+                          const hasMore = industry.subIndustries.length > MAX_SHOWN;
 
-                        const toggleSubExpanded = (industryId: string) => {
-                          const newSet = new Set(expandedSubIndustriesIds);
-                          if (newSet.has(industryId)) {
-                            newSet.delete(industryId);
-                          } else {
-                            newSet.add(industryId);
-                          }
-                          setExpandedSubIndustriesIds(newSet);
-                        };
+                          const toggleSubExpanded = (industryId: string) => {
+                            const newSet = new Set(expandedSubIndustriesIds);
+                            if (newSet.has(industryId)) {
+                              newSet.delete(industryId);
+                            } else {
+                              newSet.add(industryId);
+                            }
+                            setExpandedSubIndustriesIds(newSet);
+                          };
 
-                        return (
-                          <div key={industry.id}>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setExpandedIndustryId(isExpanded ? null : industry.id);
-                              }}
-                              className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-md text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-all text-sm font-medium"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span className="text-base">{industry.icon}</span>
-                                <span>{industry.name}</span>
-                              </div>
-                              <svg
-                                className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
+                          return (
+                            <div key={industry.id} className="w-[240px] flex-shrink-0 rounded-lg bg-gray-50 p-3">
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  setExpandedIndustryId(isExpanded ? null : industry.id);
+                                }}
+                                className="w-full flex items-center justify-between gap-2 px-2 py-2 rounded-md text-gray-700 hover:bg-orange-100 hover:text-orange-600 transition-all text-sm font-medium mb-2"
                               >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                              </svg>
-                            </button>
-                            <AnimatePresence>
-                              {isExpanded && (
-                                <motion.div
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: "auto" }}
-                                  exit={{ opacity: 0, height: 0 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="ml-4 mt-1 space-y-1 overflow-y-auto max-h-64"
+                                <div className="flex items-center gap-2 flex-1">
+                                  <span className="text-base flex-shrink-0">{industry.icon}</span>
+                                  <span className="line-clamp-2">{industry.name}</span>
+                                </div>
+                                <svg
+                                  className={`w-4 h-4 transition-transform flex-shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
                                 >
-                                  {visibleSubs.map((sub) => (
-                                    <a
-                                      key={sub.id}
-                                      href={`/industries/${industry.id}/${sub.id}`}
-                                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-gray-600 text-xs hover:bg-orange-50 hover:text-orange-600 transition-all"
-                                      onClick={() => setMobileOpen(false)}
-                                    >
-                                      <span className="text-sm">{sub.icon}</span>
-                                      <span className="line-clamp-1">{sub.name}</span>
-                                    </a>
-                                  ))}
-                                  {hasMore && (
-                                    <button
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        toggleSubExpanded(industry.id);
-                                      }}
-                                      className="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-orange-600 text-xs font-semibold hover:bg-orange-50 transition-all mt-2 w-full"
-                                    >
-                                      {isSubExpanded ? "Show less ↑" : "Show more →"}
-                                    </button>
-                                  )}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        );
-                      })}
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </button>
+                              <AnimatePresence>
+                                {isExpanded && (
+                                  <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="space-y-1 overflow-y-auto max-h-48"
+                                  >
+                                    {visibleSubs.map((sub) => (
+                                      <a
+                                        key={sub.id}
+                                        href={`/industries/${industry.id}/${sub.id}`}
+                                        className="flex items-center gap-2 px-2 py-1.5 rounded-md text-gray-600 text-xs hover:bg-orange-100 hover:text-orange-600 transition-all"
+                                        onClick={() => setMobileOpen(false)}
+                                      >
+                                        <span className="text-sm flex-shrink-0">{sub.icon}</span>
+                                        <span className="line-clamp-1">{sub.name}</span>
+                                      </a>
+                                    ))}
+                                    {hasMore && (
+                                      <button
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          toggleSubExpanded(industry.id);
+                                        }}
+                                        className="flex items-center gap-2 px-2 py-1.5 rounded-md text-orange-600 text-xs font-semibold hover:bg-orange-100 transition-all mt-2 w-full"
+                                      >
+                                        {isSubExpanded ? "Show less ↑" : "Show more →"}
+                                      </button>
+                                    )}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
