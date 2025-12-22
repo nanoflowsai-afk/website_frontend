@@ -277,34 +277,55 @@ export default function WebinarsPage() {
         </section>
 
         {/* Program Features Section - FIRST */}
-        <section className="px-6 py-16 bg-gradient-to-b from-orange-50 to-white">
+        <section className="px-6 py-16 bg-white">
           <div className="mx-auto max-w-[1400px]">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Choose Nanoflows Webinars?</h2>
-              <p className="text-gray-600">Comprehensive learning experience with maximum impact</p>
-            </div>
+            <div className="grid gap-12 grid-cols-1 lg:grid-cols-2 items-center">
+              {/* Left Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="relative h-96 rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg"
+              >
+                <img
+                  src={webinarHeroImage}
+                  alt="Why Choose Nanoflows"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
 
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { icon: "🎬", title: "Live Interactive Sessions", description: "Real-time learning with expert presenters" },
-                { icon: "📊", title: "Real-World Case Studies", description: "Learn from actual business implementations" },
-                { icon: "🤝", title: "Expert Panel Discussions", description: "Direct engagement with AI specialists" },
-                { icon: "🎓", title: "Certification Eligible", description: "Earn recognized certificates on completion" },
-                { icon: "📚", title: "Resource Materials", description: "Download slides, templates & resources" },
-                { icon: "🔄", title: "Lifetime Access", description: "Access all recordings anytime, anywhere" },
-              ].map((feature, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="p-6 rounded-xl border-2 border-orange-200 bg-white hover:border-orange-400 hover:shadow-lg transition"
-                >
-                  <div className="text-4xl mb-3">{feature.icon}</div>
-                  <h3 className="text-base font-bold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-sm text-gray-600">{feature.description}</p>
-                </motion.div>
-              ))}
+              {/* Right Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Choose Nanoflows Webinars?</h2>
+                <div className="space-y-4">
+                  {[
+                    { icon: "🎬", title: "Live Interactive Sessions", description: "Real-time learning with expert presenters" },
+                    { icon: "📊", title: "Real-World Case Studies", description: "Learn from actual business implementations" },
+                    { icon: "🤝", title: "Expert Panel Discussions", description: "Direct engagement with AI specialists" },
+                    { icon: "🎓", title: "Certification Eligible", description: "Earn recognized certificates on completion" },
+                    { icon: "📚", title: "Resource Materials", description: "Download slides, templates & resources" },
+                    { icon: "🔄", title: "Lifetime Access", description: "Access all recordings anytime, anywhere" },
+                  ].map((feature, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="flex gap-4 items-start"
+                    >
+                      <div className="text-3xl flex-shrink-0">{feature.icon}</div>
+                      <div>
+                        <h3 className="font-bold text-gray-900 mb-1">{feature.title}</h3>
+                        <p className="text-sm text-gray-600">{feature.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -526,14 +547,14 @@ export default function WebinarsPage() {
         </section>
 
         {/* Extra Benefits Section - FOURTH */}
-        <section className="px-6 py-16 bg-white">
+        <section className="px-6 py-16 bg-gradient-to-b from-orange-50 to-white">
           <div className="mx-auto max-w-[1400px]">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-3">Extra Benefits</h2>
               <p className="text-gray-600">Additional value to enhance your learning journey</p>
             </div>
 
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {[
                 { icon: "💼", title: "Networking Opportunities", description: "Connect with professionals from various industries" },
                 { icon: "🚀", title: "Implementation Support", description: "Get guidance on applying learned strategies" },
@@ -547,17 +568,11 @@ export default function WebinarsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="group relative overflow-hidden rounded-2xl p-8 text-center hover:shadow-xl transition duration-300"
-                  style={{
-                    background: `linear-gradient(135deg, ${idx % 3 === 0 ? 'rgb(251, 146, 60)' : idx % 3 === 1 ? 'rgb(249, 115, 22)' : 'rgb(234, 88, 12)'}, ${idx % 3 === 0 ? 'rgb(251, 191, 36)' : idx % 3 === 1 ? 'rgb(251, 146, 60)' : 'rgb(249, 115, 22)'})`,
-                  }}
+                  className="p-4 rounded-lg border-2 border-orange-200 bg-white hover:border-orange-400 hover:shadow-md transition"
                 >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition duration-300" />
-                  <div className="relative">
-                    <div className="text-5xl mb-4">{benefit.icon}</div>
-                    <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
-                    <p className="text-white/90 text-sm">{benefit.description}</p>
-                  </div>
+                  <div className="text-3xl mb-2">{benefit.icon}</div>
+                  <h3 className="text-sm font-bold text-gray-900 mb-1">{benefit.title}</h3>
+                  <p className="text-xs text-gray-600">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
