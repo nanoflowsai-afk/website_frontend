@@ -320,10 +320,10 @@ export default function WebinarsPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg hover:shadow-xl transition max-w-4xl mx-auto"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg hover:shadow-xl transition max-w-5xl mx-auto"
               >
                 {/* Image */}
-                <div className="relative h-64 lg:h-80 overflow-hidden">
+                <div className="relative h-64 lg:h-96 overflow-hidden rounded-xl">
                   <img
                     src={featuredWebinar.image}
                     alt={featuredWebinar.title}
@@ -337,53 +337,55 @@ export default function WebinarsPage() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col justify-center p-6 lg:p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                    {featuredWebinar.title}
-                  </h3>
-                  <p className="text-base text-gray-600 mb-6 line-clamp-2">{featuredWebinar.description}</p>
+                <div className="flex flex-col justify-between p-6 lg:p-8 h-64 lg:h-96 overflow-hidden">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                      {featuredWebinar.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-5 line-clamp-2">{featuredWebinar.description}</p>
 
-                  <div className="space-y-3 mb-7 text-sm">
-                    <div className="flex items-center gap-3 text-gray-700">
-                      <span className="text-lg">📅</span>
-                      <span className="font-medium">{featuredWebinar.date}</span>
-                      <span className="text-lg">🕐</span>
-                      <span className="font-medium">{featuredWebinar.time}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-gray-700">
-                      <span className="text-lg">⏱️</span>
-                      <span className="font-medium">{featuredWebinar.duration}</span>
-                      <span className="text-lg">👤</span>
-                      <span className="font-medium">{featuredWebinar.speaker}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-lg">🎯</span>
-                      <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
-                        {featuredWebinar.level}
-                      </span>
-                    </div>
-                  </div>
-
-                  {featuredWebinar.registeredCount && (
-                    <div className="mb-6">
-                      <p className="text-gray-600 font-semibold text-xs mb-2">
-                        🔥 {featuredWebinar.registeredCount} people registered
-                      </p>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className="bg-gradient-to-r from-orange-500 to-amber-500 h-2 rounded-full transition-all"
-                          style={{
-                            width: `${(featuredWebinar.registeredCount / (featuredWebinar.maxCapacity || 100)) * 100}%`,
-                          }}
-                        />
+                    <div className="space-y-2 mb-5 text-xs">
+                      <div className="flex items-center gap-3 text-gray-700">
+                        <span className="text-lg">📅</span>
+                        <span className="font-medium">{featuredWebinar.date}</span>
+                        <span className="text-lg">🕐</span>
+                        <span className="font-medium">{featuredWebinar.time}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-gray-700">
+                        <span className="text-lg">⏱️</span>
+                        <span className="font-medium">{featuredWebinar.duration}</span>
+                        <span className="text-lg">👤</span>
+                        <span className="font-medium">{featuredWebinar.speaker}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg">🎯</span>
+                        <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
+                          {featuredWebinar.level}
+                        </span>
                       </div>
                     </div>
-                  )}
+
+                    {featuredWebinar.registeredCount && (
+                      <div className="mb-4">
+                        <p className="text-gray-600 font-semibold text-xs mb-1">
+                          🔥 {featuredWebinar.registeredCount} people registered
+                        </p>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5">
+                          <div
+                            className="bg-gradient-to-r from-orange-500 to-amber-500 h-1.5 rounded-full transition-all"
+                            style={{
+                              width: `${(featuredWebinar.registeredCount / (featuredWebinar.maxCapacity || 100)) * 100}%`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition w-full text-sm"
+                    className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition w-full text-sm"
                   >
                     Register Now →
                   </motion.button>
