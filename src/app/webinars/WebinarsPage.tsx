@@ -210,24 +210,94 @@ export default function WebinarsPage() {
         {/* Filters Section - Sticky - Two Rows Mobile, Single Row Desktop */}
         <section className="sticky top-20 z-40 bg-white border-b-2 border-orange-100 px-4 md:px-6 py-3 md:py-4 shadow-md">
           <div className="mx-auto max-w-[1400px]">
-            {/* Mobile: Two Rows | Desktop: Single Row */}
-            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center">
-              {/* Row 1 Mobile / Part 1 Desktop: Search Bar */}
+            {/* Mobile Layout: Two Rows */}
+            <div className="flex flex-col md:hidden gap-3">
+              {/* Mobile Row 1: Search + Category */}
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder="🔍 Search webinars by title or topic..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-xs"
+                  />
+                </div>
+
+                <select
+                  value={selectedCategory || ""}
+                  onChange={(e) => setSelectedCategory(e.target.value || null)}
+                  className="px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                >
+                  <option value="">📂 Category</option>
+                  {categories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Mobile Row 2: Type, Level, Clear */}
+              <div className="flex gap-2">
+                <select
+                  value={selectedType || ""}
+                  onChange={(e) => setSelectedType(e.target.value || null)}
+                  className="flex-1 px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                >
+                  <option value="">📅 Type</option>
+                  {types.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  value={selectedLevel || ""}
+                  onChange={(e) => setSelectedLevel(e.target.value || null)}
+                  className="flex-1 px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                >
+                  <option value="">🎯 Level</option>
+                  {levels.map((level) => (
+                    <option key={level} value={level}>
+                      {level}
+                    </option>
+                  ))}
+                </select>
+
+                <button
+                  onClick={() => {
+                    setSearchTerm("");
+                    setSelectedCategory(null);
+                    setSelectedType(null);
+                    setSelectedLevel(null);
+                  }}
+                  className="px-3 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold transition text-xs whitespace-nowrap"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            {/* Desktop Layout: Single Row */}
+            <div className="hidden md:flex gap-3 items-center">
+              {/* Search Bar */}
               <div className="flex-1">
                 <input
                   type="text"
                   placeholder="🔍 Search webinars by title or topic..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-xs md:text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-sm"
                 />
               </div>
 
-              {/* Row 1 Mobile / Part 2 Desktop: Category Dropdown */}
+              {/* Category */}
               <select
                 value={selectedCategory || ""}
                 onChange={(e) => setSelectedCategory(e.target.value || null)}
-                className="w-full md:w-auto px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">📂 Category</option>
                 {categories.map((cat) => (
@@ -237,11 +307,11 @@ export default function WebinarsPage() {
                 ))}
               </select>
 
-              {/* Row 2 Mobile / Part 3 Desktop: Type Dropdown */}
+              {/* Type */}
               <select
                 value={selectedType || ""}
                 onChange={(e) => setSelectedType(e.target.value || null)}
-                className="w-full md:w-auto px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">📅 Type</option>
                 {types.map((type) => (
@@ -251,11 +321,11 @@ export default function WebinarsPage() {
                 ))}
               </select>
 
-              {/* Row 2 Mobile / Part 4 Desktop: Level Dropdown */}
+              {/* Level */}
               <select
                 value={selectedLevel || ""}
                 onChange={(e) => setSelectedLevel(e.target.value || null)}
-                className="w-full md:w-auto px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">🎯 Level</option>
                 {levels.map((level) => (
@@ -265,7 +335,7 @@ export default function WebinarsPage() {
                 ))}
               </select>
 
-              {/* Row 2 Mobile / Part 5 Desktop: Clear Button */}
+              {/* Clear Button */}
               <button
                 onClick={() => {
                   setSearchTerm("");
@@ -273,7 +343,7 @@ export default function WebinarsPage() {
                   setSelectedType(null);
                   setSelectedLevel(null);
                 }}
-                className="w-full md:w-auto px-3 md:px-4 py-2 md:py-2.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold transition text-xs whitespace-nowrap"
+                className="px-4 py-2.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold transition text-xs whitespace-nowrap"
               >
                 Clear
               </button>
