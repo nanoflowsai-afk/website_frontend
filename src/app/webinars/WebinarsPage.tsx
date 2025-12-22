@@ -20,6 +20,7 @@ type Webinar = {
   image: string;
   registeredCount?: number;
   maxCapacity?: number;
+  isLandingPage?: boolean;
 };
 
 const allWebinars: Webinar[] = [
@@ -52,6 +53,7 @@ const allWebinars: Webinar[] = [
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
     registeredCount: 512,
     maxCapacity: 1000,
+    isLandingPage: true,
   },
   {
     id: 3,
