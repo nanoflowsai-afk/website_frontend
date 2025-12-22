@@ -195,6 +195,7 @@ export function Navbar() {
             className="h-16 w-auto"
 
           />
+          <span className="text-sm font-semibold text-gray-900 leading-tight">Nanoflows AI Software<br/>Technologies Pvt. Ltd</span>
         </Link>
 
         <nav className="flex items-center gap-8 text-sm font-medium text-gray-700">
