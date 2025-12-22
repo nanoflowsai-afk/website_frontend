@@ -261,14 +261,14 @@ export default function WebinarsPage() {
         </section>
 
         {/* Program Features Section - FIRST */}
-        <section className="px-6 py-16 bg-gradient-to-b from-orange-50 to-white">
+        <section className="px-6 py-20 bg-white">
           <div className="mx-auto max-w-[1400px]">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Choose Nanoflows Webinars?</h2>
-              <p className="text-gray-600">Comprehensive learning experience with maximum impact</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-black tracking-tight text-gray-900 mb-4">Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Nanoflows Webinars?</span></h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Comprehensive learning experience with maximum impact and industry-leading expertise</p>
             </div>
 
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {[
                 { icon: "🎬", title: "Live Interactive Sessions", description: "Real-time learning with expert presenters" },
                 { icon: "📊", title: "Real-World Case Studies", description: "Learn from actual business implementations" },
@@ -282,11 +282,14 @@ export default function WebinarsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="p-6 rounded-xl border-2 border-orange-200 bg-white hover:border-orange-400 hover:shadow-lg transition"
+                  className="group relative p-8 rounded-2xl bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 hover:border-orange-400 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="text-4xl mb-3">{feature.icon}</div>
-                  <h3 className="text-base font-bold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-sm text-gray-600">{feature.description}</p>
+                  <div className="absolute top-0 left-0 w-1 h-12 bg-gradient-to-b from-orange-500 to-transparent rounded-r-lg" />
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center text-3xl mb-4 group-hover:shadow-lg transition-all">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -510,14 +513,14 @@ export default function WebinarsPage() {
         </section>
 
         {/* Extra Benefits Section - FOURTH */}
-        <section className="px-6 py-16 bg-gradient-to-b from-orange-50 to-white">
+        <section className="px-6 py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           <div className="mx-auto max-w-[1400px]">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Extra Benefits</h2>
-              <p className="text-gray-600">Additional value to enhance your learning journey</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-black tracking-tight text-white mb-4">Extra <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Benefits</span></h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">Additional value to enhance your learning journey and maximize your growth</p>
             </div>
 
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {[
                 { icon: "💼", title: "Networking Opportunities", description: "Connect with professionals from various industries" },
                 { icon: "🚀", title: "Implementation Support", description: "Get guidance on applying learned strategies" },
@@ -528,15 +531,18 @@ export default function WebinarsPage() {
               ].map((benefit, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex gap-4 p-6 rounded-xl border-2 border-orange-100 bg-white hover:border-orange-300 hover:shadow-lg transition"
+                  className="group relative p-6 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-700 border-2 border-gray-700 hover:border-orange-500 hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="text-4xl flex-shrink-0">{benefit.icon}</div>
-                  <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1">{benefit.title}</h3>
-                    <p className="text-sm text-gray-600">{benefit.description}</p>
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/10 group-hover:to-amber-500/10 rounded-2xl transition-all" />
+                  <div className="relative">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-2xl mb-4 group-hover:shadow-lg group-hover:scale-110 transition-all">
+                      {benefit.icon}
+                    </div>
+                    <h3 className="text-base font-bold text-white mb-2">{benefit.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
