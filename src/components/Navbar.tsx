@@ -147,7 +147,45 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-orange-100 bg-white/90 backdrop-blur-xl" suppressHydrationWarning>
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4" suppressHydrationWarning>
+      {/* Mobile Navbar */}
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:hidden" suppressHydrationWarning>
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/nanoflows-logo.png"
+            alt="NanoFlows"
+            width={100}
+            height={35}
+            className="h-10 w-auto"
+          />
+          <span className="text-xs font-semibold text-gray-900 leading-tight">Nanoflows<br/>AI Software</span>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          {!isAdmin && (
+            <Link
+              to="/login"
+              className="rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40"
+            >
+              Get Started
+            </Link>
+          )}
+          <button
+            className="rounded-lg p-2 text-gray-700 transition hover:bg-orange-50"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop Navbar */}
+      <div className="mx-auto hidden max-w-[1400px] items-center justify-between px-6 py-4 lg:flex" suppressHydrationWarning>
         <Link to="/" className="flex items-center gap-3">
           <img
             src="/nanoflows-logo.png"
@@ -159,7 +197,7 @@ export function Navbar() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-gray-700 lg:flex">
+        <nav className="flex items-center gap-8 text-sm font-medium text-gray-700">
           <Link to="/services" className="transition hover:text-orange-600">
             Services
           </Link>
@@ -252,7 +290,7 @@ export function Navbar() {
           {isAdmin ? (
             <Link
               to="/admin"
-              className="hidden rounded-xl bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-gray-800 sm:inline-flex"
+              className="rounded-xl bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-gray-800"
             >
               Admin Dashboard
             </Link>
@@ -264,18 +302,6 @@ export function Navbar() {
               Get Started
             </Link>
           )}
-          <button
-            className="rounded-lg p-2 text-gray-700 transition hover:bg-orange-50 lg:hidden"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -288,27 +314,6 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="border-t border-orange-100 bg-white overflow-hidden lg:hidden"
           >
-            {/* Header with Logo and Company Name */}
-            <div className="px-4 py-4 border-b border-orange-100">
-              <div className="flex items-center gap-3 mb-4">
-                <img
-                  src="/nanoflows-logo.png"
-                  alt="NanoFlows"
-                  width={120}
-                  height={40}
-                  className="h-12 w-auto"
-                />
-                <span className="text-sm font-semibold text-gray-900">Nanoflows AI Software Technologies</span>
-              </div>
-              <Link
-                to="/login"
-                className="flex justify-center rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40 w-3/4"
-                onClick={() => setMobileOpen(false)}
-              >
-                Get Started
-              </Link>
-            </div>
-
             <div className="px-4 py-4 space-y-1">
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
