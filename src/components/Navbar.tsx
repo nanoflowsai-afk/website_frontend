@@ -164,7 +164,7 @@ export function Navbar() {
           {!isAdmin && (
             <Link
               to="/login"
-              className="rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40"
+              className="rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 px-2 py-1.5 text-xs font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40"
             >
               Get Started
             </Link>
