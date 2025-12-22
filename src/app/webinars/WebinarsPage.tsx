@@ -173,35 +173,19 @@ export default function WebinarsPage() {
             }} />
             <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/50" />
           </div>
-          <div className="relative mx-auto max-w-[1400px]">
+          <div className="relative mx-auto max-w-[1400px] px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-3xl"
+              className="mx-auto max-w-3xl text-center"
             >
-              <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-                Learn AI Directly from Experts
+              <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+                Learn AI Directly from <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Experts</span>
               </h1>
-              <p className="text-xl sm:text-2xl text-white/95 mb-8 leading-relaxed">
+              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
                 Master practical AI, automation, and intelligent systems through live sessions with industry leaders. No theory, pure implementation.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white text-orange-600 font-bold rounded-lg hover:bg-gray-50 transition shadow-xl text-lg"
-                >
-                  Register Now
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-orange-700 text-white font-bold rounded-lg hover:bg-orange-800 transition shadow-xl text-lg border-2 border-white/30"
-                >
-                  Explore Webinars
-                </motion.button>
-              </div>
             </motion.div>
           </div>
         </section>
