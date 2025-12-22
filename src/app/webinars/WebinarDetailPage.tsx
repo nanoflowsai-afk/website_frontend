@@ -804,6 +804,156 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
+          {/* Mentor Section */}
+          <section className="px-6 py-16 bg-gray-900">
+            <div className="mx-auto max-w-[1200px]">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-black text-white text-center mb-12"
+              >
+                Meet Your Mentor, I am <span className="text-yellow-400">Digital Chandu</span>
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                {/* Left - Profile Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="relative h-64 md:h-80 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl border-2 border-purple-500 flex items-center justify-center overflow-hidden"
+                >
+                  <div className="text-center">
+                    <div className="text-7xl mb-4">👨‍💼</div>
+                    <h3 className="text-xl font-bold text-white mb-2">Digital Chandu</h3>
+                    <p className="text-sm text-purple-200">(Founder & Host)</p>
+                    <p className="text-xl font-black text-blue-300 mt-4">One Man Business</p>
+                    <p className="text-xl font-black text-blue-300">Automation Event</p>
+                  </div>
+                </motion.div>
+
+                {/* Right - Bio and Info */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="space-y-4"
+                >
+                  <div className="text-sm text-gray-300 leading-relaxed space-y-4">
+                    <div>
+                      <p className="text-xs text-gray-400 mb-1">Digital Marketing Agency - <span className="text-green-400 font-bold">Digital Chandu</span></p>
+                      <p className="text-xs text-gray-400"><span className="text-green-400">I</span> Digital Chandu</p>
+                    </div>
+
+                    <p className="text-xs text-gray-300">
+                      I launched my first agency but struggled to find consistent, high-quality clients.
+                    </p>
+
+                    <p className="text-xs text-gray-300">
+                      I tried everything – ads, funnels, and courses – but my business still wasn't growing the way I needed.
+                    </p>
+
+                    <p className="text-xs text-gray-300">
+                      I realized it wasn't about working harder – it was about building a system that works for you 24/7.
+                    </p>
+
+                    <p className="text-xs text-gray-300">
+                      That's when I developed the Business Growth System – a step-by-step framework designed to:
+                    </p>
+
+                    <ul className="space-y-2 text-xs text-gray-300">
+                      <li className="flex gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Attract consistent, high-quality leads</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Convert prospects into loyal, high-paying clients</span>
+                      </li>
+                      <li className="flex gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Automate marketing, sales, and follow-ups effortlessly</span>
+                      </li>
+                    </ul>
+
+                    <p className="text-xs text-gray-300">
+                      Now, I'm on a mission to help 100 businesses grow faster, smarter, and more profitably with our business growth system.
+                    </p>
+                  </div>
+
+                  {/* Decorative Chevrons */}
+                  <div className="flex justify-center gap-4 py-4">
+                    <span className="text-2xl text-orange-600">⌄</span>
+                    <span className="text-2xl text-orange-600">⌄</span>
+                    <span className="text-2xl text-orange-600">⌄</span>
+                  </div>
+
+                  {/* Social Buttons */}
+                  <div className="flex justify-center gap-3 mb-4">
+                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">f</button>
+                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">𝕏</button>
+                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">in</button>
+                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">📧</button>
+                  </div>
+
+                  {/* CTA Button */}
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition"
+                  >
+                    🎯 Apply To Get Invite
+                  </motion.button>
+
+                  <p className="text-xs text-gray-400 text-center">Unlocked by Digital Chandu</p>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="px-6 py-16 bg-gray-900">
+            <div className="mx-auto max-w-[1200px]">
+              <motion.h2 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-black text-white text-center mb-12"
+              >
+                Frequently Asked Questions..
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  {
+                    question: 'How You Are Conducting Master Class?',
+                    answer: 'We are conducting online live sessions.'
+                  },
+                  {
+                    question: 'How Many Days Total ?',
+                    answer: 'Total 3 Days'
+                  },
+                  {
+                    question: 'What If We Cannot Automate Business ?',
+                    answer: 'If you can\'t replicate client tactic, we back you. we will send service.'
+                  },
+                  {
+                    question: 'What Skills I Learn in This Master Class ?',
+                    answer: 'You learn leading, selling, management, automation and more...'
+                  },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="space-y-2"
+                  >
+                    <h3 className="text-sm font-bold text-white">{faq.question}</h3>
+                    <p className="text-xs text-gray-300 leading-relaxed">{faq.answer}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Call to Action */}
           <section className="px-6 py-16 bg-gradient-to-r from-orange-500 to-amber-500">
             <div className="mx-auto max-w-[1200px] text-center">
