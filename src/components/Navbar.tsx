@@ -288,6 +288,27 @@ export function Navbar() {
             transition={{ duration: 0.2 }}
             className="border-t border-orange-100 bg-white overflow-hidden lg:hidden"
           >
+            {/* Header with Logo and Company Name */}
+            <div className="px-4 py-4 border-b border-orange-100">
+              <div className="flex items-center gap-3 mb-4">
+                <img
+                  src="/nanoflows-logo.png"
+                  alt="NanoFlows"
+                  width={120}
+                  height={40}
+                  className="h-12 w-auto"
+                />
+                <span className="text-sm font-semibold text-gray-900">Nanoflows AI Software Technologies</span>
+              </div>
+              <Link
+                to="/login"
+                className="flex justify-center rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40 w-3/4"
+                onClick={() => setMobileOpen(false)}
+              >
+                Get Started
+              </Link>
+            </div>
+
             <div className="px-4 py-4 space-y-1">
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
