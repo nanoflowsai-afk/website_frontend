@@ -295,37 +295,38 @@ export default function WebinarsPage() {
                 />
               </motion.div>
 
-              {/* Middle Content - Redesigned */}
+              {/* Middle Content - Redesigned 3/3 */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
+                className="col-span-2 lg:col-span-1"
               >
                 <div className="mb-8">
-                  <h2 className="text-3xl font-black text-gray-900 mb-2">Why Choose</h2>
-                  <h2 className="text-3xl font-black bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Our Webinars?</h2>
+                  <h2 className="text-3xl font-black text-gray-900 mb-4">Why Choose Our Webinars?</h2>
+                  <p className="text-gray-600 leading-relaxed mb-8">Discover premium learning experiences with industry experts. Our webinars combine practical knowledge, real-world applications, and interactive discussions to accelerate your AI journey. Get certified, network with professionals, and access resources that transform your skills.</p>
                 </div>
                 
-                <div className="grid gap-4">
+                <div className="grid grid-cols-3 gap-3">
                   {[
-                    { icon: "🎬", title: "Live Interactive Sessions", description: "Real-time learning with industry experts", color: "from-blue-500/10 to-blue-600/5" },
-                    { icon: "📊", title: "Real-World Case Studies", description: "Learn from actual implementations", color: "from-green-500/10 to-green-600/5" },
-                    { icon: "🤝", title: "Expert Discussions", description: "Direct engagement with AI specialists", color: "from-purple-500/10 to-purple-600/5" },
-                    { icon: "🎓", title: "Certification Eligible", description: "Earn recognized credentials", color: "from-pink-500/10 to-pink-600/5" },
-                    { icon: "📚", title: "Resource Library", description: "Slides, templates & materials", color: "from-orange-500/10 to-orange-600/5" },
-                    { icon: "🔄", title: "Lifetime Access", description: "Watch anytime, anywhere", color: "from-cyan-500/10 to-cyan-600/5" },
+                    { icon: "🎬", title: "Live Sessions", description: "Expert-led interactive learning", color: "from-blue-500/10 to-blue-600/5" },
+                    { icon: "📊", title: "Case Studies", description: "Real implementations shared", color: "from-green-500/10 to-green-600/5" },
+                    { icon: "🤝", title: "Discussions", description: "Direct expert engagement", color: "from-purple-500/10 to-purple-600/5" },
+                    { icon: "🎓", title: "Certificates", description: "Earn credentials", color: "from-pink-500/10 to-pink-600/5" },
+                    { icon: "📚", title: "Resources", description: "Templates & materials", color: "from-orange-500/10 to-orange-600/5" },
+                    { icon: "🔄", title: "Lifetime Access", description: "Watch anytime", color: "from-cyan-500/10 to-cyan-600/5" },
                   ].map((feature, idx) => (
                     <motion.div
                       key={idx}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.06 }}
-                      className={`bg-gradient-to-br ${feature.color} border-l-4 border-orange-500 rounded-lg p-3.5 hover:border-orange-600 hover:shadow-md transition group`}
+                      className={`bg-gradient-to-br ${feature.color} border-l-4 border-orange-500 rounded-lg p-3 hover:border-orange-600 hover:shadow-md transition group h-fit`}
                     >
-                      <div className="flex gap-3 items-start">
-                        <div className="text-2xl flex-shrink-0 group-hover:scale-110 transition">{feature.icon}</div>
+                      <div className="flex gap-2 items-start">
+                        <div className="text-xl flex-shrink-0 group-hover:scale-110 transition">{feature.icon}</div>
                         <div className="flex-1">
-                          <h3 className="font-bold text-gray-900 text-sm mb-0.5 group-hover:text-orange-600 transition">{feature.title}</h3>
+                          <h3 className="font-bold text-gray-900 text-xs mb-0.5 group-hover:text-orange-600 transition">{feature.title}</h3>
                           <p className="text-xs text-gray-600">{feature.description}</p>
                         </div>
                       </div>
