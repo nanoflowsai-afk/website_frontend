@@ -34,7 +34,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
-      className="absolute left-[56%] -translate-x-1/2 top-full mt-3 w-[96vw] max-w-[1400px] rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl"
+      className="absolute left-[56%] -translate-x-1/2 top-full mt-3 w-[96vw] max-w-[1400px] rounded-2xl border border-gray-100 bg-white shadow-2xl backdrop-blur-xl max-h-[70vh] md:max-h-none overflow-y-auto md:overflow-y-visible"
       onClick={(e) => e.stopPropagation()}
     >
       {expandedIndustry ? (
@@ -93,7 +93,7 @@ export function IndustriesDropdown({ onClose }: IndustriesDropdownProps) {
         </div>
       ) : (
         // Normal grid view
-        <div className="grid grid-cols-7 gap-0 divide-x divide-gray-200 p-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-0 divide-x divide-gray-200 p-4 overflow-x-auto md:overflow-x-visible">
           {industriesData.map((industry, index) => {
             const isExpanded = expandedIndustryId === industry.id;
             const visibleSubs = isExpanded ? industry.subIndustries : industry.subIndustries.slice(0, MAX_SHOWN);
