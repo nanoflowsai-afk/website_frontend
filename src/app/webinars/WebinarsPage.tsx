@@ -553,13 +553,13 @@ export default function WebinarsPage() {
         )}
 
         {/* All Webinars Section - THIRD */}
-        <section className="px-4 md:px-6 py-12 md:py-16 bg-white">
+        <section className="px-6 py-16 bg-white">
           <div className="mx-auto max-w-[1400px]">
-            <div className="text-center mb-8 md:mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-3">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">
                 All Upcoming Webinars
               </h2>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className="text-sm text-gray-600">
                 {filteredWebinars.length} {filteredWebinars.length === 1 ? "webinar" : "webinars"} found
               </p>
             </div>
@@ -590,7 +590,7 @@ export default function WebinarsPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                  className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
                 >
                   {filteredWebinars.map((webinar, idx) => (
                     <motion.div
@@ -601,76 +601,73 @@ export default function WebinarsPage() {
                       className="group flex flex-col h-full rounded-xl border-2 border-orange-100 bg-white hover:border-orange-400 hover:shadow-lg transition overflow-hidden"
                     >
                       {/* Image */}
-                      <div className="relative h-32 md:h-40 w-full overflow-hidden">
+                      <div className="relative h-40 w-full overflow-hidden">
                         <img
                           src={webinar.image}
                           alt={webinar.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                         />
-                        <div className="absolute top-1.5 left-1.5 md:top-2 md:left-2">
-                          <span className={`inline-block px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs font-bold ${getTypeBadgeColor(webinar.type)} shadow-lg`}>
+                        <div className="absolute top-2 left-2">
+                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${getTypeBadgeColor(webinar.type)} shadow-lg`}>
                             {getTypeIcon(webinar.type)} {webinar.type}
                           </span>
                         </div>
                       </div>
 
                       {/* Content */}
-                      <div className="p-2 md:p-4 flex flex-col h-full">
-                        {/* Top Content */}
-                        <div className="flex-1">
-                          <div className="hidden md:flex gap-1 mb-2">
-                            <span className="inline-block px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-bold">
-                              {webinar.level}
-                            </span>
-                            <span className="inline-block px-1.5 py-0.5 bg-orange-100 text-orange-700 rounded text-xs font-bold">
-                              {webinar.category}
-                            </span>
-                          </div>
+                      <div className="flex-1 p-3 md:p-4 flex flex-col">
+                        <div className="flex gap-1.5 mb-1.5 md:mb-2">
+                          <span className="inline-block px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
+                            {webinar.level}
+                          </span>
+                          <span className="inline-block px-1.5 py-0.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold">
+                            {webinar.category}
+                          </span>
+                        </div>
 
-                          <h3 className="text-xs md:text-sm font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-orange-600 transition line-clamp-2 md:line-clamp-2 leading-tight">
-                            {webinar.title}
-                          </h3>
-                          <p className="hidden md:block text-xs text-gray-600 mb-2 line-clamp-2">
-                            {webinar.description}
-                          </p>
+                        <h3 className="text-xs md:text-sm font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-orange-600 transition line-clamp-2 leading-tight">
+                          {webinar.title}
+                        </h3>
+                        <p className="text-xs text-gray-600 mb-2 md:mb-3 flex-grow line-clamp-1">
+                          {webinar.description}
+                        </p>
 
-                          <div className="hidden md:grid grid-cols-2 gap-2 mb-3 text-xs text-gray-700">
-                            <div className="space-y-1">
-                              <div className="flex items-center gap-1">
-                                <span>📅</span>
-                                <span className="font-medium text-xs">{webinar.date}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <span>⏱️</span>
-                                <span className="font-medium text-xs">{webinar.duration}</span>
-                              </div>
+                        <div className="hidden md:grid grid-cols-2 gap-3 mb-3 text-xs text-gray-700">
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-1.5">
+                              <span>📅</span>
+                              <span className="font-medium">{webinar.date}</span>
                             </div>
-                            <div className="space-y-1">
-                              <div className="flex items-center gap-1">
-                                <span>🕐</span>
-                                <span className="font-medium text-xs">{webinar.time}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <span>👤</span>
-                                <span className="font-medium text-xs">{webinar.speaker}</span>
-                              </div>
+                            <div className="flex items-center gap-1.5">
+                              <span>⏱️</span>
+                              <span className="font-medium">{webinar.duration}</span>
+                            </div>
+                          </div>
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-1.5">
+                              <span>🕐</span>
+                              <span className="font-medium">{webinar.time}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                              <span>👤</span>
+                              <span className="font-medium">{webinar.speaker}</span>
                             </div>
                           </div>
                         </div>
 
-                        {/* Two Buttons Side by Side - Always at Bottom */}
-                        <div className="flex gap-1.5 md:gap-2 mt-auto pt-2 md:pt-0">
+                        {/* Two Buttons Side by Side */}
+                        <div className="flex gap-2 mt-auto">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex-1 px-1.5 md:px-3 py-1.5 md:py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded text-xs"
+                            className="flex-1 px-2 md:px-3 py-1.5 md:py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-xs"
                           >
                             {webinar.type === "Recorded" ? "Watch" : "Register"}
                           </motion.button>
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex-1 px-1.5 md:px-3 py-1.5 md:py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded text-xs"
+                            className="flex-1 px-2 md:px-3 py-1.5 md:py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-lg transition text-xs"
                           >
                             Know More
                           </motion.button>
