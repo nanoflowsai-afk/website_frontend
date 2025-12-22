@@ -367,40 +367,44 @@ export default function WebinarDetailPage() {
               <motion.h2 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center"
+                className="text-2xl md:text-3xl font-black text-white mb-12 text-center"
               >
-                3 Days Live Business Automation Event Roadmap
+                3 Days Live <span className="text-orange-500">Business Automation</span> <span className="text-red-500">Event</span> Roadmap
               </motion.h2>
 
-              <div className="space-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Day 1 */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  className="p-8 bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="bg-gradient-to-b from-orange-900 to-gray-900 border-2 border-orange-600 rounded-xl overflow-hidden"
                 >
-                  <h3 className="text-3xl font-bold text-orange-600 mb-6">DAY 1: Business Growth Setup & Management</h3>
-                  <p className="text-xl font-bold text-gray-900 mb-6">GOAL #1: Install Top 1% Business Model In Your Biz 🤩</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-orange-600 text-white text-center py-2">
+                    <div className="text-2xl font-black mb-1">❶</div>
+                    <h3 className="text-xs font-bold">DAY 1: Business Growth</h3>
+                    <p className="text-xs font-semibold">Setup & Management</p>
+                  </div>
+                  <div className="p-4 space-y-2">
+                    <p className="text-xs text-orange-400 font-bold text-center mb-3">Install Top 1% Business Model</p>
                     {[
-                      '✅ Website Builder – 10 Min Setup',
-                      '✅ Form Builder – 10 Min Setup',
-                      '✅ Funnel Builder – 10 Min Setup',
-                      '✅ Own Chatbot – 10 Min Setup',
-                      '✅ Shop Builder – 10 Min Setup',
-                      '✅ URL Shortener & Tracking',
-                      '✅ Facebook Marketing – 10 Min Setup',
-                      '✅ Instagram Marketing – 18 Min',
+                      '✅ Website Builder',
+                      '✅ Form Builder',
+                      '✅ Funnel Builder',
+                      '✅ Chatbot – 10 Min',
+                      '✅ Shop Builder',
+                      '✅ URL Shortener',
+                      '✅ Facebook Marketing',
+                      '✅ Instagram Marketing',
                       '✅ WhatsApp Ads',
-                      '✅ CRM – Centralize All Leads',
-                      '✅ Bulk Import – 60 Seconds',
+                      '✅ CRM Setup',
+                      '✅ Bulk Import',
                     ].map((item, idx) => (
                       <motion.p
                         key={idx}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ delay: idx * 0.05 }}
-                        className="text-gray-700 font-medium"
+                        transition={{ delay: idx * 0.03 }}
+                        className="text-xs text-gray-300"
                       >
                         {item}
                       </motion.p>
@@ -408,33 +412,39 @@ export default function WebinarDetailPage() {
                   </div>
                 </motion.div>
 
-                {/* Day 1 Continue - Automation */}
+                {/* Day 2 */}
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-2xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-gradient-to-b from-blue-900 to-gray-900 border-2 border-blue-600 rounded-xl overflow-hidden"
                 >
-                  <h3 className="text-3xl font-bold text-blue-600 mb-6">DAY 1 CONTINUE: Business Automation</h3>
-                  <p className="text-xl font-bold text-gray-900 mb-6">GOAL #2: Replace Your 8 Hrs Employee With System 😍</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-blue-600 text-white text-center py-2">
+                    <div className="text-2xl font-black mb-1">❷</div>
+                    <h3 className="text-xs font-bold">DAY 2: Hands-on</h3>
+                    <p className="text-xs font-semibold">Business Automation</p>
+                  </div>
+                  <div className="p-4 space-y-2">
+                    <p className="text-xs text-blue-400 font-bold text-center mb-3">Replace 8 Hrs Employee With System</p>
                     {[
-                      '✅ Follow-up – Never miss a lead',
-                      '✅ Contact Group – Segment contacts',
-                      '✅ Meta Leads – Auto-sync from FB/Insta',
-                      '✅ Live Customer Management',
-                      '✅ Calendar Booking System',
-                      '✅ LMS – Learning Management',
-                      '✅ Email Automation – 24/7 System',
-                      '✅ WhatsApp Marketing – 24/7 365 Days',
-                      '✅ Business Automation – All Operations',
+                      '✅ Follow-up Automation',
+                      '✅ Contact Segmentation',
+                      '✅ Meta Leads Integration',
+                      '✅ Customer Management',
+                      '✅ Calendar Booking',
+                      '✅ LMS Setup',
+                      '✅ Email Automation',
+                      '✅ WhatsApp 24/7',
+                      '✅ Business Workflows',
                       '✅ SMS Marketing',
+                      '✅ Lead Scoring',
                     ].map((item, idx) => (
                       <motion.p
                         key={idx}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ delay: idx * 0.05 }}
-                        className="text-gray-700 font-medium"
+                        transition={{ delay: 0.1 + idx * 0.03 }}
+                        className="text-xs text-gray-300"
                       >
                         {item}
                       </motion.p>
@@ -442,50 +452,43 @@ export default function WebinarDetailPage() {
                   </div>
                 </motion.div>
 
-                {/* For Clients - Live Automation */}
+                {/* Day 3 */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  className="p-8 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 rounded-2xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-gradient-to-b from-red-900 to-gray-900 border-2 border-red-600 rounded-xl overflow-hidden"
                 >
-                  <h3 className="text-3xl font-bold text-green-600 mb-6">FOR CLIENTS: Live Business Automation</h3>
-                  <p className="text-xl font-bold text-gray-900 mb-6">GOAL #3: Automate 80% Your Employee Work 🤩</p>
-                  
-                  <div className="space-y-6">
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="p-6 bg-white border-2 border-green-300 rounded-xl">
-                      <h4 className="text-lg font-bold text-gray-900 mb-4">✅ 1. Complete LevelUpVerse Setup</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li>✓ Lead Capture System</li>
-                        <li>✓ WhatsApp Automation</li>
-                        <li>✓ CRM Integration</li>
-                        <li>✓ Auto Follow-up</li>
-                        <li>✓ Pipeline Tracking</li>
-                        <li>✓ Calendar Booking</li>
-                        <li>✓ Dashboard Analytics</li>
-                      </ul>
-                    </motion.div>
-
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1 }} className="p-6 bg-white border-2 border-green-300 rounded-xl">
-                      <h4 className="text-lg font-bold text-gray-900 mb-4">🧩 2. Build Your First Business Automation Flow</h4>
-                      <ul className="space-y-2 text-gray-700">
-                        <li>✔ Lead Form / Funnel</li>
-                        <li>✔ WhatsApp Instant Response</li>
-                        <li>✔ CRM Auto-Entry</li>
-                        <li>✔ Appointment Booking Link</li>
-                        <li>✔ AI Chatbot Reply</li>
-                      </ul>
-                    </motion.div>
-
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} className="p-6 bg-white border-2 border-green-300 rounded-xl">
-                      <h4 className="text-lg font-bold text-gray-900 mb-4">💬 3. Personalized Setup Assistance For:</h4>
-                      <div className="grid grid-cols-2 gap-3 text-gray-700">
-                        <p>🏡 Real Estate Agent</p>
-                        <p>💇‍♂️ Salon Owner</p>
-                        <p>📚 Trainer</p>
-                        <p>🚗 Travel Agent</p>
-                        <p>💼 Service Provider</p>
-                      </div>
-                    </motion.div>
+                  <div className="bg-red-600 text-white text-center py-2">
+                    <div className="text-2xl font-black mb-1">❸</div>
+                    <h3 className="text-xs font-bold">DAY 3: For Clients</h3>
+                    <p className="text-xs font-semibold">Live Business Automation</p>
+                  </div>
+                  <div className="p-4 space-y-2">
+                    <p className="text-xs text-red-400 font-bold text-center mb-3">Automate 80% Employee Work</p>
+                    {[
+                      '✅ Complete Setup',
+                      '✅ Lead Capture',
+                      '✅ WhatsApp Integration',
+                      '✅ CRM Configuration',
+                      '✅ Auto Follow-up',
+                      '✅ Pipeline Tracking',
+                      '✅ Real Estate Setup',
+                      '✅ Salon Automation',
+                      '✅ Trainer Tools',
+                      '✅ Travel Agent Setup',
+                      '✅ Live Demo Work',
+                    ].map((item, idx) => (
+                      <motion.p
+                        key={idx}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.2 + idx * 0.03 }}
+                        className="text-xs text-gray-300"
+                      >
+                        {item}
+                      </motion.p>
+                    ))}
                   </div>
                 </motion.div>
               </div>
