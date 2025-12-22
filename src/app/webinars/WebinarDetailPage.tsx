@@ -606,6 +606,85 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
+          {/* Imagine You Never Have To Section */}
+          <section className="px-6 py-16 bg-gray-900">
+            <div className="mx-auto max-w-[600px]">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="border-2 border-gray-700 rounded-2xl p-8 md:p-12"
+              >
+                {/* Product Visual */}
+                <div className="mb-8 text-center">
+                  <div className="inline-block px-8 py-6 bg-gray-800 rounded-lg border border-gray-700">
+                    <div className="text-4xl">💻📱⌚</div>
+                  </div>
+                </div>
+
+                {/* Heading */}
+                <h3 className="text-xl font-bold text-white text-center mb-2">
+                  Imagine You Never Have To
+                </h3>
+                
+                <h2 className="text-4xl font-black text-yellow-400 text-center mb-8">
+                  WASTE TIME ON
+                </h2>
+
+                {/* Problems List */}
+                <div className="space-y-4 mb-8">
+                  {[
+                    { text: 'Manual Workflows That Waste Hours Every Day On Repetitive Tasks', icon: '❌' },
+                    { text: 'Missed Leads & Follow-Ups Because You\'re Still Doing Everything Manually', icon: '❌' },
+                    { text: 'Juggling Too Many Tools – CRM, WhatsApp, Email, Forms, Sheets & More', icon: '❌' },
+                    { text: 'Team Miscommunication That Leads To Lost Clients & Missed Deadlines', icon: '❌' },
+                    { text: 'Hiring More Staff Just To Handle Simple Work That Automation Can Do', icon: '❌' },
+                    { text: 'Zero Clarity On Growth – No Tracking, No Reports, No Control', icon: '❌' },
+                    { text: 'We Help You Automate 80% Your Employee Work & Save Lakhs Every Month', icon: '✅', highlight: true },
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                      className="flex gap-3"
+                    >
+                      <span className="text-lg flex-shrink-0">{item.icon}</span>
+                      <p className={`text-sm leading-relaxed ${item.highlight ? 'text-green-400 font-bold' : 'text-gray-300'}`}>
+                        {item.text}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Decorative Chevrons */}
+                <div className="flex justify-center gap-4 mb-6">
+                  <span className="text-2xl text-orange-600">⌄</span>
+                  <span className="text-2xl text-orange-600">⌄</span>
+                  <span className="text-2xl text-orange-600">⌄</span>
+                </div>
+
+                {/* Social Buttons */}
+                <div className="flex justify-center gap-3 mb-6">
+                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">f</button>
+                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">𝕏</button>
+                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">in</button>
+                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">📧</button>
+                </div>
+
+                {/* CTA Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition mb-3"
+                >
+                  🎯 Apply To Get Invite
+                </motion.button>
+
+                <p className="text-xs text-gray-400 text-center">Unlocked by Digital Chandu</p>
+              </motion.div>
+            </div>
+          </section>
+
           {/* Bonuses Section */}
           <section className="px-6 py-16 bg-white">
             <div className="mx-auto max-w-[1200px] text-center">
