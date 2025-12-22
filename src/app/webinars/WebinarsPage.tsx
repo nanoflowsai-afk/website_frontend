@@ -207,26 +207,27 @@ export default function WebinarsPage() {
           </div>
         </section>
 
-        {/* Filters Section - Sticky - Single Row */}
-        <section className="sticky top-20 z-40 bg-white border-b-2 border-orange-100 px-6 py-4 shadow-md">
+        {/* Filters Section - Sticky - Two Rows Mobile */}
+        <section className="sticky top-20 z-40 bg-white border-b-2 border-orange-100 px-4 md:px-6 py-3 md:py-4 shadow-md">
           <div className="mx-auto max-w-[1400px]">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
+            {/* Row 1: Search Bar + Category */}
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center mb-2 md:mb-0">
               {/* Search Bar */}
               <div className="flex-1">
                 <input
                   type="text"
-                  placeholder="🔍 Search webinars by title or topic..."
+                  placeholder="🔍 Search webinars..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-sm"
+                  className="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-xs md:text-sm"
                 />
               </div>
 
-              {/* Filter Dropdowns */}
+              {/* Category Dropdown */}
               <select
                 value={selectedCategory || ""}
                 onChange={(e) => setSelectedCategory(e.target.value || null)}
-                className="px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="w-full md:w-auto px-3 md:px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">📂 Category</option>
                 {categories.map((cat) => (
@@ -235,11 +236,14 @@ export default function WebinarsPage() {
                   </option>
                 ))}
               </select>
+            </div>
 
+            {/* Row 2: Type, Level, Clear Button */}
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center">
               <select
                 value={selectedType || ""}
                 onChange={(e) => setSelectedType(e.target.value || null)}
-                className="px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="w-full md:w-auto px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">📅 Type</option>
                 {types.map((type) => (
@@ -252,7 +256,7 @@ export default function WebinarsPage() {
               <select
                 value={selectedLevel || ""}
                 onChange={(e) => setSelectedLevel(e.target.value || null)}
-                className="px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="w-full md:w-auto px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">🎯 Level</option>
                 {levels.map((level) => (
@@ -269,7 +273,7 @@ export default function WebinarsPage() {
                   setSelectedType(null);
                   setSelectedLevel(null);
                 }}
-                className="px-4 py-2.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold transition text-xs whitespace-nowrap"
+                className="w-full md:w-auto px-3 md:px-4 py-2 md:py-2.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold transition text-xs whitespace-nowrap"
               >
                 Clear
               </button>
@@ -307,7 +311,7 @@ export default function WebinarsPage() {
                   <p className="text-xs md:text-sm text-gray-600 leading-relaxed mb-6 md:mb-8">Discover premium learning experiences with industry experts. Our webinars combine practical knowledge, real-world applications, and interactive discussions to accelerate your AI journey. Get certified, network with professionals, and access resources that transform your skills.</p>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-3">
+                <div className="grid grid-cols-2 gap-2 md:gap-3">
                   {[
                     { icon: "🎬", title: "Live Sessions", description: "Expert-led interactive learning", color: "from-blue-500/10 to-blue-600/5" },
                     { icon: "📊", title: "Case Studies", description: "Real implementations shared", color: "from-green-500/10 to-green-600/5" },
