@@ -4,11 +4,3 @@ node_modules
 .env.local
 .env.production
 
-notepad .gitignore
-.gitignore
-
-
-.local/
-.replit/
-node_modules/
-.env
