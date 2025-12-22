@@ -526,14 +526,14 @@ export default function WebinarsPage() {
         </section>
 
         {/* Extra Benefits Section - FOURTH */}
-        <section className="px-6 py-16 bg-gradient-to-b from-orange-50 to-white">
+        <section className="px-6 py-16 bg-white">
           <div className="mx-auto max-w-[1400px]">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-3">Extra Benefits</h2>
               <p className="text-gray-600">Additional value to enhance your learning journey</p>
             </div>
 
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
               {[
                 { icon: "💼", title: "Networking Opportunities", description: "Connect with professionals from various industries" },
                 { icon: "🚀", title: "Implementation Support", description: "Get guidance on applying learned strategies" },
@@ -544,15 +544,19 @@ export default function WebinarsPage() {
               ].map((benefit, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex gap-4 p-6 rounded-xl border-2 border-orange-100 bg-white hover:border-orange-300 hover:shadow-lg transition"
+                  className="group relative overflow-hidden rounded-2xl p-8 text-center hover:shadow-xl transition duration-300"
+                  style={{
+                    background: `linear-gradient(135deg, ${idx % 3 === 0 ? 'rgb(251, 146, 60)' : idx % 3 === 1 ? 'rgb(249, 115, 22)' : 'rgb(234, 88, 12)'}, ${idx % 3 === 0 ? 'rgb(251, 191, 36)' : idx % 3 === 1 ? 'rgb(251, 146, 60)' : 'rgb(249, 115, 22)'})`,
+                  }}
                 >
-                  <div className="text-4xl flex-shrink-0">{benefit.icon}</div>
-                  <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1">{benefit.title}</h3>
-                    <p className="text-sm text-gray-600">{benefit.description}</p>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition duration-300" />
+                  <div className="relative">
+                    <div className="text-5xl mb-4">{benefit.icon}</div>
+                    <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
+                    <p className="text-white/90 text-sm">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
