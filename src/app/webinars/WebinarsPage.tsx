@@ -164,13 +164,14 @@ export default function WebinarsPage() {
       <Navbar />
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 px-6 py-24 sm:py-32">
-          <div className="absolute inset-0 opacity-20">
+        <section className="relative overflow-hidden px-6 py-24 sm:py-32">
+          <div className="absolute inset-0">
             <div className="absolute inset-0" style={{
               backgroundImage: `url(${webinarHeroImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/50" />
           </div>
           <div className="relative mx-auto max-w-[1400px]">
             <motion.div
