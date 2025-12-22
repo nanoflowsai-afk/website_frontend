@@ -193,102 +193,132 @@ export default function WebinarDetailPage() {
         <Navbar />
         <main className="min-h-screen bg-white">
           {/* Registration Form Section */}
-          <section className="px-6 py-12 bg-gradient-to-br from-orange-50 to-white">
+          <section className="px-6 py-12 bg-white">
             <div className="mx-auto max-w-[1200px]">
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+              <motion.h1 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }}
+                className="text-4xl md:text-5xl font-black text-gray-900 mb-8 text-center"
               >
-                {/* Left Content */}
-                <div>
-                  <motion.h1 
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }}
-                    className="text-4xl md:text-5xl font-black text-gray-900 mb-4 leading-tight"
+                Apply For 🤖One Man Business Event
+              </motion.h1>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="max-w-md mx-auto bg-white border-2 border-orange-200 rounded-2xl p-8 shadow-lg"
+              >
+                <form className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">Name *</label>
+                    <input type="text" placeholder="Name" className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">Email *</label>
+                    <input type="email" placeholder="Email" className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">WhatsApp Number *</label>
+                    <div className="flex gap-2">
+                      <select className="px-3 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none bg-white">
+                        <option>United States +1</option>
+                        <option>India +91</option>
+                        <option>UK +44</option>
+                        <option>Canada +1</option>
+                        <option>Australia +61</option>
+                      </select>
+                      <input type="tel" placeholder="Phone number" className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">Business Name *</label>
+                    <input type="text" placeholder="Business Name" className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none" required />
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-lg"
                   >
-                    Apply For 🤖<br />Business Event
-                  </motion.h1>
-                  <p className="text-xl text-gray-700 mb-8">Join 65+ professionals (99 spots available)</p>
-                  <p className="text-lg font-bold text-orange-600 mb-4">⚡️ After 99 People It's ₹499/- (Get Your Seat Fast)</p>
-                </div>
-
-                {/* Registration Form */}
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="p-8 bg-white border-2 border-orange-200 rounded-2xl shadow-lg"
-                >
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Register Now</h2>
-                  <form className="space-y-4">
-                    <input type="text" placeholder="Name *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
-                    <input type="email" placeholder="Email *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
-                    <input type="tel" placeholder="WhatsApp Number *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
-                    <input type="text" placeholder="Business Name *" className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none" required />
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-lg"
-                    >
-                      Apply To Get Invite
-                    </motion.button>
-                  </form>
-                </motion.div>
+                    Apply To Get Invite
+                  </motion.button>
+                </form>
               </motion.div>
+
+              <p className="text-center mt-6 text-lg font-bold text-orange-600">Note: Remember, After 99 People It's Rs.499/- ( Get Your Seat Fast )</p>
             </div>
           </section>
 
           {/* Event Header */}
-          <section className="px-6 py-12 bg-white">
-            <div className="mx-auto max-w-[1200px] text-center">
+          <section className="px-6 py-16 bg-white">
+            <div className="mx-auto max-w-[1200px] text-center space-y-6">
               <motion.h2 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-4xl md:text-5xl font-black text-gray-900 mb-4"
+                className="text-4xl md:text-5xl font-black text-gray-900"
               >
                 ⚡️ 3 Days One Man Business Automation Event!
               </motion.h2>
-              <p className="text-xl text-gray-700 mb-8">(Telugu States Biggest Business AI Agents Event On Dec 23/24/25th)</p>
+              <p className="text-xl text-gray-700">(Telugu States Biggest Business AI Agents Event On Dec 23/24/25th )</p>
               <motion.h3 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="text-2xl md:text-3xl font-bold text-orange-600"
+                className="text-3xl font-bold text-orange-600"
               >
-                Automate Business Save Lakhs<br />Get 12+ AI AGENTS Work For You 24/7 365 Days FREE
+                Automate Business Save Lakhs  Get 12+ AI AGENTS Work For You 24/7 365 Days FREE
               </motion.h3>
+              <p className="text-lg font-semibold text-gray-900">Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.</p>
             </div>
           </section>
 
-          {/* Countdown & Event Details */}
+          {/* Key Highlight Section */}
           <section className="px-6 py-12 bg-gradient-to-b from-orange-50 to-white">
             <div className="mx-auto max-w-[1200px]">
-              <div className="bg-white border-2 border-orange-300 rounded-2xl p-8 mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Event Starts In</h3>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                className="p-8 bg-white border-2 border-orange-300 rounded-2xl text-center"
+              >
+                <h3 className="text-2xl font-black text-gray-900 mb-4">UNLOCK AI AGENTS! READ THIS QUICK NOTE:</h3>
+                <p className="text-lg text-gray-700 font-semibold">Don't waste 3 months learning. Get 12+ AI agents working for you immediately after this event.</p>
+              </motion.div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
+                  <p className="text-sm text-gray-600 font-semibold">📅 Date</p>
+                  <p className="text-lg font-bold text-gray-900">Dec 23/24/25th</p>
+                </div>
+                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
+                  <p className="text-sm text-gray-600 font-semibold">🕐 Time</p>
+                  <p className="text-lg font-bold text-gray-900">10AM</p>
+                </div>
+                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
+                  <p className="text-sm text-gray-600 font-semibold">📡 Event</p>
+                  <p className="text-lg font-bold text-gray-900">Zoom</p>
+                </div>
+                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
+                  <p className="text-sm text-gray-600 font-semibold">🎤 Host</p>
+                  <p className="text-lg font-bold text-gray-900">Digital Chandu</p>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center">
                 <CountdownTimer />
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
-                  { icon: '🕐', label: 'Time', value: '10AM' },
-                  { icon: '📡', label: 'Event', value: 'Zoom' },
-                  { icon: '🎤', label: 'Host', value: 'Digital Chandu' },
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center"
-                  >
-                    <div className="text-3xl mb-2">{item.icon}</div>
-                    <p className="text-sm text-gray-600 font-semibold">{item.label}</p>
-                    <p className="text-lg font-bold text-gray-900">{item.value}</p>
-                  </motion.div>
-                ))}
+              <div className="mt-8 text-center">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-lg"
+                >
+                  Apply To Get Invite
+                </motion.button>
+                <p className="mt-4 text-lg font-bold text-orange-600">Check You're In 99 People or Not</p>
+                <p className="text-gray-700">After 99 People Price Is Rs.499/-</p>
               </div>
+
+              <p className="mt-8 text-center text-xl font-black text-gray-900">No Boooring Theory, 100% Live Implementation</p>
             </div>
           </section>
 
