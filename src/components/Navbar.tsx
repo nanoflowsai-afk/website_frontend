@@ -388,7 +388,7 @@ export function Navbar() {
                       exit={{ opacity: 0, height: 0 }}
                       className="ml-4 mt-2 rounded-lg bg-gray-50 p-2 space-y-1 max-h-80 overflow-y-auto"
                     >
-                      {industries.slice(0, 3).map((industry) => {
+                      {industries.map((industry) => {
                         const isExpanded = expandedIndustryId === industry.id;
                         const isSubExpanded = expandedSubIndustriesIds.has(industry.id);
                         const MAX_SHOWN = 6;
