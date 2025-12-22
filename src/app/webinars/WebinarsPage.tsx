@@ -183,9 +183,25 @@ export default function WebinarsPage() {
               <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
                 Learn AI Directly from <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Experts</span>
               </h1>
-              <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
+              <p className="text-xl sm:text-2xl text-gray-300 mb-10 leading-relaxed">
                 Master practical AI, automation, and intelligent systems through live sessions with industry leaders. No theory, pure implementation.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition shadow-md text-base"
+                >
+                  Register for Webinar
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition border border-white/30 text-base"
+                >
+                  View Upcoming Sessions
+                </motion.button>
+              </div>
             </motion.div>
           </div>
         </section>
