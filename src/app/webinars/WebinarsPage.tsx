@@ -414,7 +414,7 @@ export default function WebinarsPage() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-4 md:p-5 flex flex-col justify-between"
+                className="h-auto md:h-80 lg:h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-4 md:p-5 flex flex-col justify-between"
               >
                 <div>
                   <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4">Register Now</h3>
@@ -480,7 +480,7 @@ export default function WebinarsPage() {
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg hover:shadow-xl transition max-w-5xl mx-auto"
               >
                 {/* Image */}
-                <div className="relative h-64 lg:h-96 overflow-hidden rounded-xl">
+                <div className="relative h-48 md:h-64 lg:h-96 overflow-hidden rounded-xl">
                   <img
                     src={featuredWebinar.image}
                     alt={featuredWebinar.title}
@@ -494,7 +494,7 @@ export default function WebinarsPage() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col justify-between p-6 lg:p-8 h-64 lg:h-96 overflow-hidden">
+                <div className="flex flex-col justify-between p-6 lg:p-8 h-auto lg:h-96">
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
                       {featuredWebinar.title}
