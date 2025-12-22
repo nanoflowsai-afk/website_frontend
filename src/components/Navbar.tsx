@@ -434,7 +434,7 @@ export function Navbar() {
                                   animate={{ opacity: 1, height: "auto" }}
                                   exit={{ opacity: 0, height: 0 }}
                                   transition={{ duration: 0.2 }}
-                                  className="ml-4 mt-1 space-y-1 overflow-hidden"
+                                  className="ml-4 mt-1 space-y-1 overflow-y-auto max-h-64"
                                 >
                                   {visibleSubs.map((sub) => (
                                     <a
