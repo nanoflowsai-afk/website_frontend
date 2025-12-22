@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -664,13 +665,15 @@ export default function WebinarsPage() {
                           >
                             {webinar.type === "Recorded" ? "Watch" : "Register"}
                           </motion.button>
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex-1 px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-lg transition text-xs"
-                          >
-                            Know More
-                          </motion.button>
+                          <Link to={`/webinars/${webinar.id}`} className="flex-1">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="w-full px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-lg transition text-xs"
+                            >
+                              Know More
+                            </motion.button>
+                          </Link>
                         </div>
                       </div>
                     </motion.div>
