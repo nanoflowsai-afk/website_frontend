@@ -460,18 +460,26 @@ export default function WebinarsPage() {
                           {webinar.description}
                         </p>
 
-                        <div className="space-y-1.5 mb-4 text-xs text-gray-700">
-                          <div className="flex items-center gap-2">
-                            <span>📅</span>
-                            <span className="font-medium">{webinar.date}</span>
-                            <span>🕐</span>
-                            <span className="font-medium">{webinar.time}</span>
+                        <div className="grid grid-cols-2 gap-4 mb-4 text-xs text-gray-700">
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-1.5">
+                              <span>📅</span>
+                              <span className="font-medium">{webinar.date}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                              <span>⏱️</span>
+                              <span className="font-medium">{webinar.duration}</span>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span>⏱️</span>
-                            <span className="font-medium">{webinar.duration}</span>
-                            <span>👤</span>
-                            <span className="font-medium">{webinar.speaker}</span>
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-1.5">
+                              <span>🕐</span>
+                              <span className="font-medium">{webinar.time}</span>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                              <span>👤</span>
+                              <span className="font-medium">{webinar.speaker}</span>
+                            </div>
                           </div>
                         </div>
 
