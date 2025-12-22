@@ -2,7 +2,8 @@ import { useState, useMemo } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import webinarHeroImage from "@assets/generated_images/ai_assistants_team_hero_no_text.png";
+import webinarHeroImage from "@assets/stock_images/professional_webinar_6d5e6348.jpg";
+import webinarAboutImage from "@assets/stock_images/professional_webinar_0ed09bfd.jpg";
 
 type Webinar = {
   id: number;
@@ -279,7 +280,7 @@ export default function WebinarsPage() {
         {/* Program Features Section - FIRST */}
         <section className="px-6 py-16 bg-white">
           <div className="mx-auto max-w-[1400px]">
-            <div className="grid gap-12 grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="grid gap-12 grid-cols-1 lg:grid-cols-3 items-start">
               {/* Left Image */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -288,43 +289,96 @@ export default function WebinarsPage() {
                 className="relative h-96 rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg"
               >
                 <img
-                  src={webinarHeroImage}
+                  src={webinarAboutImage}
                   alt="Why Choose Nanoflows"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
 
-              {/* Right Content */}
+              {/* Middle Content - Moved to Middle */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Choose Nanoflows Webinars?</h2>
-                <div className="space-y-4">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose Our Webinars?</h2>
+                <div className="space-y-3">
                   {[
-                    { icon: "🎬", title: "Live Interactive Sessions", description: "Real-time learning with expert presenters" },
-                    { icon: "📊", title: "Real-World Case Studies", description: "Learn from actual business implementations" },
-                    { icon: "🤝", title: "Expert Panel Discussions", description: "Direct engagement with AI specialists" },
-                    { icon: "🎓", title: "Certification Eligible", description: "Earn recognized certificates on completion" },
-                    { icon: "📚", title: "Resource Materials", description: "Download slides, templates & resources" },
-                    { icon: "🔄", title: "Lifetime Access", description: "Access all recordings anytime, anywhere" },
+                    { icon: "🎬", title: "Live Interactive Sessions", description: "Real-time learning with experts" },
+                    { icon: "📊", title: "Real-World Case Studies", description: "Actual business implementations" },
+                    { icon: "🤝", title: "Expert Panel Discussions", description: "Direct AI specialist engagement" },
+                    { icon: "🎓", title: "Certification Eligible", description: "Earn recognized certificates" },
+                    { icon: "📚", title: "Resource Materials", description: "Slides, templates & resources" },
+                    { icon: "🔄", title: "Lifetime Access", description: "Watch anytime, anywhere" },
                   ].map((feature, idx) => (
                     <motion.div
                       key={idx}
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex gap-4 items-start"
+                      transition={{ delay: idx * 0.08 }}
+                      className="flex gap-3 items-start"
                     >
-                      <div className="text-3xl flex-shrink-0">{feature.icon}</div>
+                      <div className="text-2xl flex-shrink-0">{feature.icon}</div>
                       <div>
-                        <h3 className="font-bold text-gray-900 mb-1">{feature.title}</h3>
-                        <p className="text-sm text-gray-600">{feature.description}</p>
+                        <h3 className="font-bold text-gray-900 text-sm mb-0.5">{feature.title}</h3>
+                        <p className="text-xs text-gray-600">{feature.description}</p>
                       </div>
                     </motion.div>
                   ))}
                 </div>
+              </motion.div>
+
+              {/* Right Registration Form - Exact Size Match */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-6 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">Register Now</h3>
+                  
+                  {/* Form Input 1 */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="Your name"
+                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-sm"
+                    />
+                  </div>
+
+                  {/* Form Input 2 */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-sm"
+                    />
+                  </div>
+
+                  {/* Form Input 3 */}
+                  <div className="mb-6">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Select Category</label>
+                    <select className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition text-sm bg-white">
+                      <option>AI Automation</option>
+                      <option>AI Agents</option>
+                      <option>Marketing AI</option>
+                      <option>Business AI</option>
+                      <option>Workshops</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Register Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition"
+                >
+                  Register for Webinar →
+                </motion.button>
               </motion.div>
             </div>
           </div>
