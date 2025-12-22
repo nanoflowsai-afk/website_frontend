@@ -278,15 +278,15 @@ export default function WebinarsPage() {
         </section>
 
         {/* Program Features Section - FIRST */}
-        <section className="px-6 py-16 bg-white">
+        <section className="px-4 md:px-6 py-12 md:py-16 bg-white">
           <div className="mx-auto max-w-[1400px]">
-            <div className="grid gap-12 grid-cols-1 lg:grid-cols-3 items-start">
+            <div className="grid gap-6 md:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start">
               {/* Left Image */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="relative h-96 rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg"
+                className="relative h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg"
               >
                 <img
                   src={webinarAboutImage}
@@ -300,14 +300,14 @@ export default function WebinarsPage() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="col-span-2 lg:col-span-1"
+                className="col-span-1 lg:col-span-1"
               >
-                <div className="mb-8">
-                  <h2 className="text-3xl font-black text-gray-900 mb-4">Why Choose Our Webinars?</h2>
-                  <p className="text-gray-600 leading-relaxed mb-8">Discover premium learning experiences with industry experts. Our webinars combine practical knowledge, real-world applications, and interactive discussions to accelerate your AI journey. Get certified, network with professionals, and access resources that transform your skills.</p>
+                <div className="mb-6 md:mb-8">
+                  <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3 md:mb-4">Why Choose Our Webinars?</h2>
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed mb-6 md:mb-8">Discover premium learning experiences with industry experts. Our webinars combine practical knowledge, real-world applications, and interactive discussions to accelerate your AI journey. Get certified, network with professionals, and access resources that transform your skills.</p>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-3">
                   {[
                     { icon: "🎬", title: "Live Sessions", description: "Expert-led interactive learning", color: "from-blue-500/10 to-blue-600/5" },
                     { icon: "📊", title: "Case Studies", description: "Real implementations shared", color: "from-green-500/10 to-green-600/5" },
@@ -321,13 +321,13 @@ export default function WebinarsPage() {
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.06 }}
-                      className={`bg-gradient-to-br ${feature.color} border-l-4 border-orange-500 rounded-lg p-3 hover:border-orange-600 hover:shadow-md transition group h-fit`}
+                      className={`bg-gradient-to-br ${feature.color} border-l-4 border-orange-500 rounded-lg p-2 md:p-3 hover:border-orange-600 hover:shadow-md transition group h-fit`}
                     >
                       <div className="flex gap-2 items-start">
-                        <div className="text-xl flex-shrink-0 group-hover:scale-110 transition">{feature.icon}</div>
-                        <div className="flex-1">
-                          <h3 className="font-bold text-gray-900 text-xs mb-0.5 group-hover:text-orange-600 transition">{feature.title}</h3>
-                          <p className="text-xs text-gray-600">{feature.description}</p>
+                        <div className="text-lg md:text-xl flex-shrink-0 group-hover:scale-110 transition">{feature.icon}</div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-gray-900 text-xs mb-0.5 group-hover:text-orange-600 transition line-clamp-1 whitespace-normal break-words">{feature.title}</h3>
+                          <p className="text-xs text-gray-600 line-clamp-1">{feature.description}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -340,10 +340,10 @@ export default function WebinarsPage() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-5 flex flex-col justify-between"
+                className="h-64 md:h-80 lg:h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-4 md:p-5 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-4">Register Now</h3>
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4">Register Now</h3>
                   
                   {/* Form Input 1 */}
                   <div className="mb-3">
