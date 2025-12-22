@@ -496,33 +496,50 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Testimonials */}
-          <section className="px-6 py-16 bg-gradient-to-b from-white to-orange-50">
+          <section className="px-6 py-16 bg-gray-900">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 mb-4 text-center"
+                className="text-3xl md:text-4xl font-black text-white mb-2 text-center"
               >
-                What Others Are Saying
+                3 Days is all you Need to Your <span className="text-yellow-400">100% Success!</span>
               </motion.h2>
-              <p className="text-center text-gray-600 mb-12 text-lg">TESTIMONIALS</p>
+              <p className="text-center text-gray-400 mb-12 text-sm font-bold uppercase tracking-wider">Testimonials</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.h3 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
+              >
+                What others are saying
+              </motion.h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 {[
                   {
+                    initials: 'RK',
+                    emoji: '👨‍💼',
                     title: '"Saved Lakhs Every Month"',
                     text: '"Most MasterClass are boring and filled with jargon. But LevelUpVerse showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
-                    author: '- Raj Kumar'
+                    author: '- Raj Kumar',
+                    rating: 5
                   },
                   {
+                    initials: 'PR',
+                    emoji: '👩‍💼',
                     title: '"My life changed forever"',
                     text: '"Before the Master class, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
-                    author: '- Priya'
+                    author: '- Priya',
+                    rating: 5
                   },
                   {
+                    initials: 'NV',
+                    emoji: '👨‍💻',
                     title: '"Highly recommend this"',
                     text: '"LevelUpVerse taught me how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
-                    author: '- Naveen'
+                    author: '- Naveen',
+                    rating: 5
                   },
                 ].map((testimonial, idx) => (
                   <motion.div
@@ -530,14 +547,62 @@ export default function WebinarDetailPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="p-6 bg-white border-2 border-orange-200 rounded-2xl"
+                    className="text-center"
                   >
-                    <h3 className="text-lg font-bold text-orange-600 mb-3">{testimonial.title}</h3>
-                    <p className="text-gray-700 mb-4 italic">{testimonial.text}</p>
-                    <p className="text-sm font-bold text-gray-900">{testimonial.author}</p>
+                    <div className="flex justify-center mb-6">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-2xl font-bold text-white border-4 border-gray-800">
+                        {testimonial.emoji}
+                      </div>
+                    </div>
+                    <h3 className="text-sm font-bold text-white mb-3">{testimonial.title}</h3>
+                    <p className="text-xs text-gray-300 mb-4 italic leading-relaxed">{testimonial.text}</p>
+                    <div className="flex justify-center gap-1 mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">⭐</span>
+                      ))}
+                    </div>
+                    <p className="text-xs font-bold text-gray-400">{testimonial.author}</p>
                   </motion.div>
                 ))}
               </div>
+
+              {/* End Goal Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="border-t-4 border-orange-500 pt-12"
+              >
+                <h3 className="text-2xl font-bold text-white text-center mb-4">
+                  End Goal of the <span className="text-yellow-400">3 Days</span> Event:
+                </h3>
+                <p className="text-center text-gray-300 mb-8 max-w-2xl mx-auto text-sm leading-relaxed">
+                  "95% of businesses fail. The other 5% barely survive. That's why we built <span className="font-bold">LevelUpVerse</span> – to save as many businesses as possible through smart automation."
+                </p>
+                
+                <div className="flex justify-center gap-4 mb-8">
+                  <span className="text-3xl">⌄</span>
+                  <span className="text-3xl">⌄</span>
+                  <span className="text-3xl">⌄</span>
+                </div>
+
+                <div className="flex justify-center gap-3 mb-6">
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">f</button>
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">𝕏</button>
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">in</button>
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">📧</button>
+                </div>
+
+                <div className="text-center">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition text-base"
+                  >
+                    🎯 Apply To Get Invite
+                  </motion.button>
+                  <p className="text-xs text-gray-400 mt-3">Unlocked by Digital Chandu</p>
+                </div>
+              </motion.div>
             </div>
           </section>
 
