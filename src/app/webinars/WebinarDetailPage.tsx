@@ -191,201 +191,323 @@ export default function WebinarDetailPage() {
     return (
       <>
         <Navbar />
-        <main className="min-h-screen bg-gray-900">
-          {/* Red Banner */}
-          <div className="bg-red-600 text-white py-3 text-center font-bold text-lg">
+        <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
+          {/* Red Banner with Animation */}
+          <motion.div 
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-gradient-to-r from-red-600 to-red-700 text-white py-3 text-center font-bold text-lg shadow-lg sticky top-0 z-10"
+          >
             ⚡ 3 Days One Man Business Automation Event!
-          </div>
+          </motion.div>
 
           {/* Hero Section */}
-          <section className="px-6 py-16 bg-gray-900 text-white">
+          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50 text-gray-900">
             <div className="mx-auto max-w-[1200px]">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-center mb-12"
               >
-                <p className="text-gray-400 mb-4">(Telugu States Biggest Business AI Agents Event On <span className="text-red-500 font-bold">Dec 23/24/25th</span>)</p>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-gray-600 mb-4 text-sm font-semibold"
+                >
+                  (Telugu States Biggest Business AI Agents Event On <span className="text-red-600 font-bold">Dec 23/24/25th</span>)
+                </motion.p>
                 
-                <h2 className="text-5xl md:text-6xl font-black mb-6">
-                  <span className="text-green-400">Automate Business Save Lakhs</span>
-                </h2>
+                <motion.h2 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="text-5xl md:text-6xl font-black mb-6 leading-tight"
+                >
+                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Automate Business</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Save Lakhs</span>
+                </motion.h2>
                 
-                <h3 className="text-4xl md:text-5xl font-black mb-6">
-                  <span className="text-orange-500">Get 12+ AI AGENTS </span>
-                  <span className="text-red-500">Work For You 24/7 365 Days </span>
-                  <span className="text-green-400">FREE</span>
-                </h3>
+                <motion.h3 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="text-3xl md:text-5xl font-black mb-8 leading-tight"
+                >
+                  <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
+                  <br />
+                  <span className="text-gray-800">Work For You 24/7 365 Days </span>
+                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE</span>
+                </motion.h3>
 
-                <p className="text-gray-300 border-2 border-yellow-400 rounded-lg px-4 py-2 inline-block mb-8">
-                  Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.
-                </p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-gray-700 border-2 border-orange-400 rounded-xl px-6 py-3 inline-block mb-8 bg-orange-50 shadow-sm font-semibold text-sm"
+                >
+                  📌 Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.
+                </motion.p>
               </motion.div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Left - Event Content & CTA */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition">
-                    Apply To Get Business Automation Event
-                  </button>
+                  <motion.button
+                    whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl text-lg shadow-lg transition duration-300"
+                  >
+                    📋 Apply To Get Business Automation Event
+                  </motion.button>
 
-                  <div className="bg-gray-800 border-2 border-gray-700 rounded-xl p-6 space-y-4">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">📅</span>
-                      <div>
-                        <p className="text-gray-400 text-sm">Date</p>
-                        <p className="text-white font-bold">Dec 23/24/25th</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">🕐</span>
-                      <div>
-                        <p className="text-gray-400 text-sm">Time</p>
-                        <p className="text-white font-bold">10AM</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">📡</span>
-                      <div>
-                        <p className="text-gray-400 text-sm">Event</p>
-                        <p className="text-white font-bold">Zoom</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">🎤</span>
-                      <div>
-                        <p className="text-gray-400 text-sm">Host</p>
-                        <p className="text-white font-bold">Digital Chandu</p>
-                      </div>
-                    </div>
-                  </div>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="bg-gradient-to-br from-white to-gray-50 border-2 border-orange-200 rounded-xl p-6 space-y-4 shadow-md hover:shadow-lg transition"
+                  >
+                    {[
+                      { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
+                      { icon: '🕐', label: 'Time', value: '10AM' },
+                      { icon: '📡', label: 'Event', value: 'Zoom' },
+                      { icon: '🎤', label: 'Host', value: 'Digital Chandu' }
+                    ].map((item, idx) => (
+                      <motion.div 
+                        key={idx}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.35 + idx * 0.08 }}
+                        className="flex items-center gap-4"
+                      >
+                        <span className="text-3xl">{item.icon}</span>
+                        <div>
+                          <p className="text-gray-600 text-xs font-semibold uppercase tracking-wide">{item.label}</p>
+                          <p className="text-gray-900 font-bold text-lg">{item.value}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
 
-                  <div className="flex gap-3 justify-center">
-                    <button className="w-10 h-10 bg-white text-gray-900 rounded-full flex items-center justify-center font-bold hover:bg-gray-200">f</button>
-                    <button className="w-10 h-10 bg-white text-gray-900 rounded-full flex items-center justify-center font-bold hover:bg-gray-200">𝕏</button>
-                    <button className="w-10 h-10 bg-white text-gray-900 rounded-full flex items-center justify-center font-bold hover:bg-gray-200">📧</button>
-                  </div>
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex gap-3 justify-center"
+                  >
+                    {[
+                      { label: 'f', color: 'from-blue-600 to-blue-700' },
+                      { label: '𝕏', color: 'from-black to-gray-800' },
+                      { label: '📧', color: 'from-red-600 to-red-700' }
+                    ].map((btn, idx) => (
+                      <motion.button
+                        key={idx}
+                        whileHover={{ scale: 1.2, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        className={`w-12 h-12 bg-gradient-to-br ${btn.color} text-white rounded-full flex items-center justify-center font-bold hover:shadow-lg transition text-lg`}
+                      >
+                        {btn.label}
+                      </motion.button>
+                    ))}
+                  </motion.div>
 
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-lg transition"
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-lg shadow-lg transition duration-300"
                   >
                     🎯 Apply To Get Invite
                   </motion.button>
 
-                  <p className="text-center text-sm text-gray-400">After 99 People Price Is Rs.499/-</p>
-                  <p className="text-center text-lg font-bold text-yellow-400">No Boooring Theory, 100% Live Implementation</p>
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <p className="text-center text-sm text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
+                    <p className="text-center text-base font-bold text-orange-600 mt-2">✨ No Boring Theory, 100% Live Implementation</p>
+                  </motion.div>
                 </motion.div>
 
                 {/* Right - Event Image/Visual */}
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="relative"
+                  initial={{ opacity: 0, x: 30, rotateY: -20 }}
+                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="relative perspective"
                 >
-                  <div className="bg-gradient-to-br from-purple-900 via-blue-900 to-gray-900 rounded-2xl p-8 border-2 border-blue-500 aspect-square flex flex-col items-center justify-center text-center">
-                    <div className="text-6xl mb-4">🤖</div>
-                    <h4 className="text-2xl font-bold text-white mb-2">One Man Business Automation Event</h4>
-                    <p className="text-gray-300 mb-6">Biggest AI AGENTS EVENT</p>
-                    <div className="space-y-2 mb-6">
-                      <p className="text-yellow-400 font-bold text-sm">LIVE CHALLENGE 🔥</p>
-                      <p className="text-green-400 font-semibold text-sm">If You Automate In 10 Employees</p>
+                  <motion.div 
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 rounded-2xl p-8 border-2 border-blue-400 aspect-square flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-3xl transition"
+                  >
+                    <motion.div 
+                      animate={{ rotate: [0, 5, -5, 0] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                      className="text-7xl mb-4"
+                    >
+                      🤖
+                    </motion.div>
+                    <h4 className="text-2xl font-black text-white mb-2 leading-tight">One Man Business Automation Event</h4>
+                    <p className="text-blue-100 mb-6 font-semibold">Biggest AI AGENTS EVENT</p>
+                    <div className="space-y-3 mb-6">
+                      <motion.p 
+                        animate={{ opacity: [1, 0.7, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="text-yellow-300 font-black text-base"
+                      >
+                        🔥 LIVE CHALLENGE 🔥
+                      </motion.p>
+                      <p className="text-green-200 font-bold text-sm">Get Your 10 Employees Automated</p>
                     </div>
-                    <div className="flex gap-2 mb-6">
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">AI</span>
-                      <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold">AGENTS</span>
-                      <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">EVENT</span>
+                    <div className="flex gap-2 mb-6 flex-wrap justify-center">
+                      {['AI', 'AGENTS', 'EVENT'].map((tag, idx) => (
+                        <motion.span
+                          key={idx}
+                          whileHover={{ scale: 1.1 }}
+                          className="bg-white/20 backdrop-blur text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/30"
+                        >
+                          {tag}
+                        </motion.span>
+                      ))}
                     </div>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition">
+                    <motion.button
+                      whileHover={{ scale: 1.08, boxShadow: "0 15px 35px rgba(59, 130, 246, 0.4)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-gray-900 font-bold py-2.5 px-8 rounded-lg transition shadow-lg text-sm"
+                    >
                       🎯 Book Now
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
                 </motion.div>
               </div>
             </div>
           </section>
 
           {/* Key Highlight Section */}
-          <section className="px-6 py-12 bg-gray-900">
+          <section className="px-6 py-16 bg-gradient-to-b from-gray-50 via-orange-50 to-white">
             <div className="mx-auto max-w-[1200px]">
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                className="p-8 bg-white border-2 border-orange-300 rounded-2xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="p-8 md:p-10 bg-gradient-to-r from-white to-orange-50 border-2 border-orange-300 rounded-2xl text-center shadow-lg hover:shadow-xl transition"
               >
-                <h3 className="text-2xl font-black text-gray-900 mb-4">UNLOCK AI AGENTS! READ THIS QUICK NOTE:</h3>
-                <p className="text-lg text-gray-700 font-semibold">Don't waste 3 months learning. Get 12+ AI agents working for you immediately after this event.</p>
+                <motion.h3 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-2xl md:text-3xl font-black text-gray-900 mb-4"
+                >
+                  🔓 UNLOCK AI AGENTS! READ THIS QUICK NOTE:
+                </motion.h3>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-lg text-gray-700 font-semibold leading-relaxed"
+                >
+                  Don't waste 3 months learning. Get 12+ AI agents working for you immediately after this event.
+                </motion.p>
               </motion.div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
-                  <p className="text-sm text-gray-600 font-semibold">📅 Date</p>
-                  <p className="text-lg font-bold text-gray-900">Dec 23/24/25th</p>
-                </div>
-                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
-                  <p className="text-sm text-gray-600 font-semibold">🕐 Time</p>
-                  <p className="text-lg font-bold text-gray-900">10AM</p>
-                </div>
-                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
-                  <p className="text-sm text-gray-600 font-semibold">📡 Event</p>
-                  <p className="text-lg font-bold text-gray-900">Zoom</p>
-                </div>
-                <div className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center">
-                  <p className="text-sm text-gray-600 font-semibold">🎤 Host</p>
-                  <p className="text-lg font-bold text-gray-900">Digital Chandu</p>
-                </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+                {[
+                  { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
+                  { icon: '🕐', label: 'Time', value: '10AM' },
+                  { icon: '📡', label: 'Event', value: 'Zoom' },
+                  { icon: '🎤', label: 'Host', value: 'Digital Chandu' }
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(251, 146, 60, 0.15)" }}
+                    className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center shadow-md hover:shadow-lg hover:border-orange-400 transition"
+                  >
+                    <p className="text-2xl mb-2">{item.icon}</p>
+                    <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
+                    <p className="text-lg font-bold text-gray-900 mt-1">{item.value}</p>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="mt-8 text-center">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="mt-10"
+              >
                 <CountdownTimer />
-              </div>
+              </motion.div>
 
-              <div className="mt-8 text-center">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-10 text-center"
+              >
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-lg"
+                  className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition text-lg inline-block"
                 >
-                  Apply To Get Invite
+                  ✨ Apply To Get Invite
                 </motion.button>
-                <p className="mt-4 text-lg font-bold text-orange-600">Check You're In 99 People or Not</p>
-                <p className="text-gray-700">After 99 People Price Is Rs.499/-</p>
-              </div>
+                <p className="mt-6 text-lg font-bold text-orange-600">✔️ Check You're In 99 People or Not</p>
+                <p className="text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
+              </motion.div>
 
-              <p className="mt-8 text-center text-xl font-black text-gray-900">No Boooring Theory, 100% Live Implementation</p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-8 text-center text-xl font-black text-gray-900 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent"
+              >
+                ✨ No Boring Theory, 100% Live Implementation
+              </motion.p>
             </div>
           </section>
 
           {/* 3 Days Roadmap */}
-          <section className="px-6 py-16 bg-gray-900">
+          <section className="px-6 py-20 bg-gradient-to-b from-white via-gray-50 to-white">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-2xl md:text-3xl font-black text-white mb-12 text-center"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 mb-16 text-center"
               >
-                3 Days Live <span className="text-orange-500">Business Automation</span> <span className="text-red-500">Event</span> Roadmap
+                3 Days Live <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Business Automation</span> Event Roadmap
               </motion.h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Day 1 */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  className="bg-gradient-to-b from-orange-900 to-gray-900 border-2 border-orange-600 rounded-xl overflow-hidden"
+                  transition={{ duration: 0.6 }}
+                  whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(251, 146, 60, 0.2)" }}
+                  className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
                 >
-                  <div className="bg-orange-600 text-white text-center py-2">
-                    <div className="text-2xl font-black mb-1">❶</div>
-                    <h3 className="text-xs font-bold">DAY 1: Business Growth</h3>
-                    <p className="text-xs font-semibold">Setup & Management</p>
+                  <div className="bg-gradient-to-r from-orange-600 to-orange-700 text-white text-center py-4">
+                    <div className="text-3xl font-black mb-2">❶</div>
+                    <h3 className="text-sm font-black">DAY 1: Business Growth</h3>
+                    <p className="text-xs font-bold text-orange-100">Setup & Management</p>
                   </div>
-                  <div className="p-4 space-y-2">
-                    <p className="text-xs text-orange-400 font-bold text-center mb-3">Install Top 1% Business Model</p>
+                  <div className="p-5 space-y-3 bg-gradient-to-b from-orange-50 to-white">
+                    <p className="text-xs text-orange-700 font-bold text-center mb-4 bg-orange-100 rounded-lg py-2">📦 Install Top 1% Business Model</p>
                     {[
                       '✅ Website Builder',
                       '✅ Form Builder',
@@ -401,10 +523,10 @@ export default function WebinarDetailPage() {
                     ].map((item, idx) => (
                       <motion.p
                         key={idx}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: idx * 0.03 }}
-                        className="text-xs text-gray-300"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.04 }}
+                        className="text-xs text-gray-700 font-medium"
                       >
                         {item}
                       </motion.p>
@@ -414,18 +536,19 @@ export default function WebinarDetailPage() {
 
                 {/* Day 2 */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="bg-gradient-to-b from-blue-900 to-gray-900 border-2 border-blue-600 rounded-xl overflow-hidden"
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(37, 99, 235, 0.2)" }}
+                  className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
                 >
-                  <div className="bg-blue-600 text-white text-center py-2">
-                    <div className="text-2xl font-black mb-1">❷</div>
-                    <h3 className="text-xs font-bold">DAY 2: Hands-on</h3>
-                    <p className="text-xs font-semibold">Business Automation</p>
+                  <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center py-4">
+                    <div className="text-3xl font-black mb-2">❷</div>
+                    <h3 className="text-sm font-black">DAY 2: Hands-on</h3>
+                    <p className="text-xs font-bold text-blue-100">Business Automation</p>
                   </div>
-                  <div className="p-4 space-y-2">
-                    <p className="text-xs text-blue-400 font-bold text-center mb-3">Replace 8 Hrs Employee With System</p>
+                  <div className="p-5 space-y-3 bg-gradient-to-b from-blue-50 to-white">
+                    <p className="text-xs text-blue-700 font-bold text-center mb-4 bg-blue-100 rounded-lg py-2">🔧 Replace 8 Hrs Employee With System</p>
                     {[
                       '✅ Follow-up Automation',
                       '✅ Contact Segmentation',
@@ -441,10 +564,10 @@ export default function WebinarDetailPage() {
                     ].map((item, idx) => (
                       <motion.p
                         key={idx}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.1 + idx * 0.03 }}
-                        className="text-xs text-gray-300"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + idx * 0.04 }}
+                        className="text-xs text-gray-700 font-medium"
                       >
                         {item}
                       </motion.p>
@@ -454,18 +577,19 @@ export default function WebinarDetailPage() {
 
                 {/* Day 3 */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="bg-gradient-to-b from-red-900 to-gray-900 border-2 border-red-600 rounded-xl overflow-hidden"
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.2)" }}
+                  className="bg-gradient-to-br from-red-500 to-red-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
                 >
-                  <div className="bg-red-600 text-white text-center py-2">
-                    <div className="text-2xl font-black mb-1">❸</div>
-                    <h3 className="text-xs font-bold">DAY 3: For Clients</h3>
-                    <p className="text-xs font-semibold">Live Business Automation</p>
+                  <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-center py-4">
+                    <div className="text-3xl font-black mb-2">❸</div>
+                    <h3 className="text-sm font-black">DAY 3: For Clients</h3>
+                    <p className="text-xs font-bold text-red-100">Live Business Automation</p>
                   </div>
-                  <div className="p-4 space-y-2">
-                    <p className="text-xs text-red-400 font-bold text-center mb-3">Automate 80% Employee Work</p>
+                  <div className="p-5 space-y-3 bg-gradient-to-b from-red-50 to-white">
+                    <p className="text-xs text-red-700 font-bold text-center mb-4 bg-red-100 rounded-lg py-2">🚀 Automate 80% Employee Work</p>
                     {[
                       '✅ Complete Setup',
                       '✅ Lead Capture',
@@ -481,10 +605,10 @@ export default function WebinarDetailPage() {
                     ].map((item, idx) => (
                       <motion.p
                         key={idx}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.2 + idx * 0.03 }}
-                        className="text-xs text-gray-300"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + idx * 0.04 }}
+                        className="text-xs text-gray-700 font-medium"
                       >
                         {item}
                       </motion.p>
@@ -496,21 +620,23 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Testimonials */}
-          <section className="px-6 py-16 bg-gray-900">
+          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-white mb-2 text-center"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 mb-4 text-center"
               >
-                3 Days is all you Need to Your <span className="text-yellow-400">100% Success!</span>
+                3 Days is all you Need for Your <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">100% Success!</span>
               </motion.h2>
-              <p className="text-center text-gray-400 mb-12 text-sm font-bold uppercase tracking-wider">Testimonials</p>
+              <p className="text-center text-gray-600 mb-12 text-xs font-bold uppercase tracking-[0.2em]">✨ Testimonials ✨</p>
 
               <motion.h3 
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center"
               >
                 What others are saying
               </motion.h3>
@@ -518,50 +644,60 @@ export default function WebinarDetailPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 {[
                   {
-                    initials: 'RK',
                     emoji: '👨‍💼',
                     title: '"Saved Lakhs Every Month"',
-                    text: '"Most MasterClass are boring and filled with jargon. But LevelUpVerse showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                    text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
                     author: '- Raj Kumar',
                     rating: 5
                   },
                   {
-                    initials: 'PR',
                     emoji: '👩‍💼',
                     title: '"My life changed forever"',
-                    text: '"Before the Master class, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                    text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
                     author: '- Priya',
                     rating: 5
                   },
                   {
-                    initials: 'NV',
                     emoji: '👨‍💻',
                     title: '"Highly recommend this"',
-                    text: '"LevelUpVerse taught me how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                    text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
                     author: '- Naveen',
                     rating: 5
                   },
                 ].map((testimonial, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="text-center"
+                    transition={{ delay: idx * 0.15, duration: 0.6 }}
+                    whileHover={{ y: -5, boxShadow: "0 15px 40px rgba(251, 146, 60, 0.1)" }}
+                    className="text-center p-6 bg-white border-2 border-orange-100 rounded-xl shadow-md hover:shadow-lg hover:border-orange-300 transition"
                   >
                     <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-2xl font-bold text-white border-4 border-gray-800">
+                      <motion.div 
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-3xl shadow-lg"
+                      >
                         {testimonial.emoji}
-                      </div>
+                      </motion.div>
                     </div>
-                    <h3 className="text-sm font-bold text-white mb-3">{testimonial.title}</h3>
-                    <p className="text-xs text-gray-300 mb-4 italic leading-relaxed">{testimonial.text}</p>
+                    <h3 className="text-sm font-bold text-gray-900 mb-3">{testimonial.title}</h3>
+                    <p className="text-xs text-gray-700 mb-4 italic leading-relaxed">{testimonial.text}</p>
                     <div className="flex justify-center gap-1 mb-3">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-yellow-400">⭐</span>
+                        <motion.span 
+                          key={i} 
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.2 + i * 0.1 }}
+                          className="text-lg"
+                        >
+                          ⭐
+                        </motion.span>
                       ))}
                     </div>
-                    <p className="text-xs font-bold text-gray-400">{testimonial.author}</p>
+                    <p className="text-xs font-bold text-orange-600">{testimonial.author}</p>
                   </motion.div>
                 ))}
               </div>
@@ -607,26 +743,36 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Imagine You Never Have To Section */}
-          <section className="px-6 py-16 bg-gray-900">
-            <div className="mx-auto max-w-[600px]">
+          <section className="px-6 py-20 bg-gradient-to-b from-gray-50 to-white">
+            <div className="mx-auto max-w-[700px]">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="border-2 border-gray-700 rounded-2xl p-8 md:p-12"
+                transition={{ duration: 0.6 }}
+                className="border-2 border-orange-200 rounded-2xl p-8 md:p-12 bg-gradient-to-br from-white to-orange-50 shadow-lg hover:shadow-xl transition"
               >
                 {/* Product Visual */}
-                <div className="mb-8 text-center">
-                  <div className="inline-block px-8 py-6 bg-gray-800 rounded-lg border border-gray-700">
-                    <div className="text-4xl">💻📱⌚</div>
-                  </div>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="mb-8 text-center"
+                >
+                  <motion.div 
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="inline-block px-8 py-6 bg-gradient-to-br from-orange-100 to-orange-50 rounded-lg border-2 border-orange-200"
+                  >
+                    <div className="text-5xl">💻📱⌚</div>
+                  </motion.div>
+                </motion.div>
 
                 {/* Heading */}
-                <h3 className="text-xl font-bold text-white text-center mb-2">
+                <h3 className="text-xl font-bold text-gray-900 text-center mb-2">
                   Imagine You Never Have To
                 </h3>
                 
-                <h2 className="text-4xl font-black text-yellow-400 text-center mb-8">
+                <h2 className="text-4xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent text-center mb-8">
                   WASTE TIME ON
                 </h2>
 
@@ -643,13 +789,13 @@ export default function WebinarDetailPage() {
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -15 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="flex gap-3"
+                      transition={{ delay: idx * 0.06 }}
+                      className={`flex gap-3 p-3 rounded-lg ${item.highlight ? 'bg-green-50 border-2 border-green-200' : 'hover:bg-gray-100 transition'}`}
                     >
-                      <span className="text-lg flex-shrink-0">{item.icon}</span>
-                      <p className={`text-sm leading-relaxed ${item.highlight ? 'text-green-400 font-bold' : 'text-gray-300'}`}>
+                      <span className="text-xl flex-shrink-0">{item.icon}</span>
+                      <p className={`text-sm leading-relaxed font-medium ${item.highlight ? 'text-green-700' : 'text-gray-700'}`}>
                         {item.text}
                       </p>
                     </motion.div>
@@ -657,62 +803,90 @@ export default function WebinarDetailPage() {
                 </div>
 
                 {/* Decorative Chevrons */}
-                <div className="flex justify-center gap-4 mb-6">
+                <motion.div 
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="flex justify-center gap-4 mb-6"
+                >
                   <span className="text-2xl text-orange-600">⌄</span>
                   <span className="text-2xl text-orange-600">⌄</span>
                   <span className="text-2xl text-orange-600">⌄</span>
-                </div>
+                </motion.div>
 
                 {/* Social Buttons */}
-                <div className="flex justify-center gap-3 mb-6">
-                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">f</button>
-                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">𝕏</button>
-                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">in</button>
-                  <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">📧</button>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex justify-center gap-3 mb-6"
+                >
+                  {[
+                    { label: 'f', color: 'from-blue-600 to-blue-700' },
+                    { label: '𝕏', color: 'from-black to-gray-800' },
+                    { label: 'in', color: 'from-blue-500 to-blue-600' },
+                    { label: '📧', color: 'from-red-600 to-red-700' }
+                  ].map((btn, idx) => (
+                    <motion.button
+                      key={idx}
+                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                      className={`w-9 h-9 rounded-full bg-gradient-to-br ${btn.color} text-white flex items-center justify-center transition shadow-md text-xs font-bold`}
+                    >
+                      {btn.label}
+                    </motion.button>
+                  ))}
+                </motion.div>
 
                 {/* CTA Button */}
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition mb-3"
+                  className="w-full py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-md"
                 >
                   🎯 Apply To Get Invite
                 </motion.button>
 
-                <p className="text-xs text-gray-400 text-center">Unlocked by Digital Chandu</p>
+                <p className="text-xs text-gray-600 text-center font-semibold">Unlocked by Digital Chandu</p>
               </motion.div>
             </div>
           </section>
 
           {/* Bonuses Section */}
-          <section className="px-6 py-16 bg-gray-900">
+          <section className="px-6 py-20 bg-gradient-to-b from-white via-gray-50 to-white">
             <div className="mx-auto max-w-[1200px] text-center">
               {/* Decorative Line */}
-              <div className="border-t-2 border-gray-700 mb-8 max-w-xs mx-auto"></div>
+              <motion.div 
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.6 }}
+                className="border-t-4 border-orange-400 mb-8 max-w-xs mx-auto"
+              ></motion.div>
 
               <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-gray-400 mb-2 text-sm font-bold"
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-gray-600 mb-2 text-sm font-bold uppercase tracking-widest"
               >
-                For a Limited Time, Get Access To
+                🎁 For a Limited Time, Get Access To
               </motion.p>
 
               <motion.h2 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black mb-2"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-3xl md:text-4xl font-black mb-4"
               >
-                <span className="text-yellow-400">5 Powerful Bonuses</span> Worth <span className="text-yellow-400">₹16,298/-</span>
+                <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">5 Powerful Bonuses</span> Worth <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">₹16,298/-</span>
               </motion.h2>
               
               <motion.p 
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-2xl font-bold text-white mb-12"
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-2xl font-bold text-gray-900 mb-12"
               >
-                Absolutely for <span className="text-yellow-400">FREE!!!</span>
+                Absolutely for <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent font-black">FREE!!!</span>
               </motion.p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -741,78 +915,67 @@ export default function WebinarDetailPage() {
                 ].map((bonus, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="p-6 bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-gray-700 rounded-xl hover:border-yellow-400 transition"
+                    transition={{ delay: idx * 0.12, duration: 0.6 }}
+                    whileHover={{ y: -8, boxShadow: "0 20px 50px rgba(251, 146, 60, 0.15)" }}
+                    className="p-6 bg-gradient-to-br from-white to-orange-50 border-2 border-orange-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 transition"
                   >
-                    {/* Header with bonus number */}
-                    <div className="text-center mb-4">
-                      <p className="text-yellow-400 font-bold text-xs mb-2">BONUS#{bonus.num}:</p>
-                    </div>
-
-                    {/* Icon/Visual */}
-                    <div className="text-5xl mb-4 text-center">{bonus.icon}</div>
-
-                    {/* Title */}
-                    <h3 className="text-sm font-bold text-white mb-4 leading-tight">{bonus.title}</h3>
-
-                    {/* Description */}
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: idx * 0.12 + 0.1 }} className="text-center mb-4">
+                      <p className="text-orange-600 font-black text-sm mb-2">🎁 BONUS#{bonus.num}</p>
+                    </motion.div>
+                    <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }} className="text-6xl mb-4 text-center">
+                      {bonus.icon}
+                    </motion.div>
+                    <h3 className="text-sm font-bold text-gray-900 mb-4 leading-tight">{bonus.title}</h3>
                     <div className="space-y-2 mb-4">
                       {bonus.desc.map((line, i) => (
-                        <div key={i} className="flex gap-2">
-                          <span className="text-green-400 flex-shrink-0">✓</span>
-                          <p className="text-xs text-gray-300 text-left leading-relaxed">{line}</p>
-                        </div>
+                        <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.12 + i * 0.1 }} className="flex gap-2">
+                          <span className="text-green-600 flex-shrink-0 font-bold">✓</span>
+                          <p className="text-xs text-gray-700 text-left leading-relaxed">{line}</p>
+                        </motion.div>
                       ))}
                     </div>
-
-                    {/* Value and FREE */}
-                    <div className="border-t border-gray-700 pt-3">
-                      <p className="text-xs text-gray-400 mb-1">(Value = <span className="text-yellow-400">{bonus.value}</span>)</p>
-                      <p className="text-xl font-black text-yellow-400">FREE!!</p>
+                    <div className="border-t-2 border-orange-200 pt-3">
+                      <p className="text-xs text-gray-600 mb-1">(Value = <span className="text-orange-600 font-bold">{bonus.value}</span>)</p>
+                      <p className="text-xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE!!</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Decorative Chevrons */}
-              <div className="flex justify-center gap-4 mb-6">
+              <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }} className="flex justify-center gap-4 mb-6 mt-12">
                 <span className="text-2xl text-orange-600">⌄</span>
                 <span className="text-2xl text-orange-600">⌄</span>
                 <span className="text-2xl text-orange-600">⌄</span>
-              </div>
+              </motion.div>
 
-              {/* Social Buttons */}
-              <div className="flex justify-center gap-3 mb-6">
-                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">f</button>
-                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">𝕏</button>
-                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">in</button>
-                <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">📧</button>
-              </div>
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex justify-center gap-3 mb-6">
+                {[{ label: 'f', color: 'from-blue-600 to-blue-700' }, { label: '𝕏', color: 'from-black to-gray-800' }, { label: 'in', color: 'from-blue-500 to-blue-600' }, { label: '📧', color: 'from-red-600 to-red-700' }].map((btn, idx) => (
+                  <motion.button key={idx} whileHover={{ scale: 1.15, rotate: 5 }} whileTap={{ scale: 0.9 }} className={`w-9 h-9 rounded-full bg-gradient-to-br ${btn.color} text-white flex items-center justify-center transition shadow-md text-xs font-bold`}>
+                    {btn.label}
+                  </motion.button>
+                ))}
+              </motion.div>
 
-              {/* CTA Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition mb-3 inline-block"
-              >
+              <motion.button whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }} whileTap={{ scale: 0.95 }} className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 inline-block shadow-md">
                 🎯 Apply To Get Invite
               </motion.button>
 
-              <p className="text-xs text-gray-400">Unlocked by Digital Chandu</p>
+              <p className="text-xs text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
             </div>
           </section>
 
           {/* Mentor Section */}
-          <section className="px-6 py-16 bg-gray-900">
+          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-white text-center mb-12"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 text-center mb-12"
               >
-                Meet Your Mentor, I am <span className="text-yellow-400">Digital Chandu</span>
+                Meet Your Mentor, <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Digital Chandu</span>
               </motion.h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -910,44 +1073,46 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="px-6 py-16 bg-gray-900">
+          <section className="px-6 py-20 bg-gradient-to-b from-gray-50 to-white">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-white text-center mb-12"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-black text-gray-900 text-center mb-12"
               >
-                Frequently Asked Questions..
+                Frequently Asked Questions
               </motion.h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   {
                     question: 'How You Are Conducting Master Class?',
                     answer: 'We are conducting online live sessions.'
                   },
                   {
-                    question: 'How Many Days Total ?',
+                    question: 'How Many Days Total?',
                     answer: 'Total 3 Days'
                   },
                   {
-                    question: 'What If We Cannot Automate Business ?',
+                    question: 'What If We Cannot Automate Business?',
                     answer: 'If you can\'t replicate client tactic, we back you. we will send service.'
                   },
                   {
-                    question: 'What Skills I Learn in This Master Class ?',
+                    question: 'What Skills I Learn in This Master Class?',
                     answer: 'You learn leading, selling, management, automation and more...'
                   },
                 ].map((faq, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="space-y-2"
+                    transition={{ delay: idx * 0.08, duration: 0.6 }}
+                    whileHover={{ boxShadow: "0 10px 30px rgba(251, 146, 60, 0.1)" }}
+                    className="p-5 bg-white border-2 border-orange-100 rounded-lg hover:border-orange-300 transition shadow-sm"
                   >
-                    <h3 className="text-sm font-bold text-white">{faq.question}</h3>
-                    <p className="text-xs text-gray-300 leading-relaxed">{faq.answer}</p>
+                    <h3 className="text-sm font-bold text-gray-900 mb-2">❓ {faq.question}</h3>
+                    <p className="text-xs text-gray-700 leading-relaxed">{faq.answer}</p>
                   </motion.div>
                 ))}
               </div>
@@ -955,43 +1120,69 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Disclaimer Section */}
-          <section className="px-6 py-4 bg-gray-100">
-            <div className="mx-auto max-w-[1200px]">
-              <p className="text-xs text-gray-600 text-center leading-relaxed">
-                This site is not a part of the Facebook™ website or Facebook™ Inc. Additionally, this site is NOT endorsed by Facebook™ in any way. FACEBOOK™ is a trademark of FACEBOOK™ Inc. As stipulated by law, we can not and do not make any guarantees about your ability to get results or earn any money with my ideas, information, tools or strategies. I just want to help you by giving great content, direction, and most importantly that belief can help you move forward in life. For more, privacy policies and disclaimers for the property, and website can be accessed via the links. I feel transparency is important and I hold ourselves (you & me) to a high standard of integrity. Thanks for stopping by. I hope this training and content brings you a lot of value & results.
+          <section className="px-6 py-8 bg-gradient-to-r from-gray-100 to-gray-50">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="mx-auto max-w-[1200px]"
+            >
+              <p className="text-xs text-gray-700 text-center leading-relaxed font-medium">
+                This site is not a part of the Facebook™ website or Facebook™ Inc. Additionally, this site is NOT endorsed by Facebook™ in any way. FACEBOOK™ is a trademark of FACEBOOK™ Inc. As stipulated by law, we can not and do not make any guarantees about your ability to get results. I just want to help you by giving great content and direction. For privacy policies and disclaimers, see links below. I feel transparency is important and I hold ourselves to a high standard of integrity. Thanks for stopping by!
               </p>
-            </div>
+            </motion.div>
           </section>
 
           {/* Final CTA Banner */}
-          <section className="px-6 py-4 bg-black">
-            <div className="mx-auto max-w-[1200px]">
-              <div className="flex items-center justify-between gap-4 bg-gradient-to-r from-green-500 to-green-600 rounded-full px-8 py-4">
+          <section className="px-6 py-6 bg-gradient-to-b from-white to-gray-50">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mx-auto max-w-[1200px]"
+            >
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl px-8 py-6 shadow-lg">
                 {/* Left - Text */}
                 <div className="flex-1 text-center md:text-left">
-                  <p className="text-white font-black text-lg md:text-2xl">
-                    Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
-                  </p>
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-white font-black text-lg md:text-2xl"
+                  >
+                    📅 Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
+                  </motion.p>
                 </div>
 
                 {/* Middle - Social Buttons */}
-                <div className="flex gap-2">
-                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
-                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
-                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
-                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex gap-3"
+                >
+                  {['f', '𝕏', 'in', '📧'].map((icon, idx) => (
+                    <motion.button
+                      key={idx}
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-11 h-11 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg shadow-md"
+                    >
+                      {icon}
+                    </motion.button>
+                  ))}
+                </motion.div>
 
                 {/* Right - CTA Button */}
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full transition whitespace-nowrap text-sm"
+                  className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
                 >
-                  Get Invite
+                  🎯 Get Invite
                 </motion.button>
               </div>
-            </div>
+            </motion.div>
           </section>
         </main>
         <Footer />
