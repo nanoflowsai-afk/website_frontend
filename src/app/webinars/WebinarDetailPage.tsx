@@ -954,24 +954,43 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
-          {/* Call to Action */}
-          <section className="px-6 py-16 bg-gradient-to-r from-orange-500 to-amber-500">
-            <div className="mx-auto max-w-[1200px] text-center">
-              <motion.h2 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-3xl md:text-4xl font-black text-white mb-6"
-              >
-                3 Days is all you Need for Your 100% Success!
-              </motion.h2>
-              <p className="text-lg text-white mb-8">Limited spots available - Only 99 people at this price</p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-orange-600 font-bold rounded-lg hover:shadow-lg transition text-lg"
-              >
-                Apply To Get Invite
-              </motion.button>
+          {/* Disclaimer Section */}
+          <section className="px-6 py-4 bg-gray-100">
+            <div className="mx-auto max-w-[1200px]">
+              <p className="text-xs text-gray-600 text-center leading-relaxed">
+                This site is not a part of the Facebook™ website or Facebook™ Inc. Additionally, this site is NOT endorsed by Facebook™ in any way. FACEBOOK™ is a trademark of FACEBOOK™ Inc. As stipulated by law, we can not and do not make any guarantees about your ability to get results or earn any money with my ideas, information, tools or strategies. I just want to help you by giving great content, direction, and most importantly that belief can help you move forward in life. For more, privacy policies and disclaimers for the property, and website can be accessed via the links. I feel transparency is important and I hold ourselves (you & me) to a high standard of integrity. Thanks for stopping by. I hope this training and content brings you a lot of value & results.
+              </p>
+            </div>
+          </section>
+
+          {/* Final CTA Banner */}
+          <section className="px-6 py-4 bg-black">
+            <div className="mx-auto max-w-[1200px]">
+              <div className="flex items-center justify-between gap-4 bg-gradient-to-r from-green-500 to-green-600 rounded-full px-8 py-4">
+                {/* Left - Text */}
+                <div className="flex-1 text-center md:text-left">
+                  <p className="text-white font-black text-lg md:text-2xl">
+                    Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
+                  </p>
+                </div>
+
+                {/* Middle - Social Buttons */}
+                <div className="flex gap-2">
+                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
+                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
+                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
+                  <button className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg">🌐</button>
+                </div>
+
+                {/* Right - CTA Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full transition whitespace-nowrap text-sm"
+                >
+                  Get Invite
+                </motion.button>
+              </div>
             </div>
           </section>
         </main>
