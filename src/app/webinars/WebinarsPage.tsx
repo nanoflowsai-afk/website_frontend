@@ -207,27 +207,27 @@ export default function WebinarsPage() {
           </div>
         </section>
 
-        {/* Filters Section - Sticky - Two Rows Mobile */}
+        {/* Filters Section - Sticky - Two Rows Mobile, Single Row Desktop */}
         <section className="sticky top-20 z-40 bg-white border-b-2 border-orange-100 px-4 md:px-6 py-3 md:py-4 shadow-md">
           <div className="mx-auto max-w-[1400px]">
-            {/* Row 1: Search Bar + Category */}
-            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center mb-2 md:mb-0">
-              {/* Search Bar */}
+            {/* Mobile: Two Rows | Desktop: Single Row */}
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center">
+              {/* Row 1 Mobile / Part 1 Desktop: Search Bar */}
               <div className="flex-1">
                 <input
                   type="text"
-                  placeholder="🔍 Search webinars..."
+                  placeholder="🔍 Search webinars by title or topic..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full px-3 md:px-4 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-xs md:text-sm"
                 />
               </div>
 
-              {/* Category Dropdown */}
+              {/* Row 1 Mobile / Part 2 Desktop: Category Dropdown */}
               <select
                 value={selectedCategory || ""}
                 onChange={(e) => setSelectedCategory(e.target.value || null)}
-                className="w-full md:w-auto px-3 md:px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                className="w-full md:w-auto px-3 py-2 md:py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
               >
                 <option value="">📂 Category</option>
                 {categories.map((cat) => (
@@ -236,10 +236,8 @@ export default function WebinarsPage() {
                   </option>
                 ))}
               </select>
-            </div>
 
-            {/* Row 2: Type, Level, Clear Button */}
-            <div className="flex flex-col md:flex-row gap-2 md:gap-3 md:items-center">
+              {/* Row 2 Mobile / Part 3 Desktop: Type Dropdown */}
               <select
                 value={selectedType || ""}
                 onChange={(e) => setSelectedType(e.target.value || null)}
@@ -253,6 +251,7 @@ export default function WebinarsPage() {
                 ))}
               </select>
 
+              {/* Row 2 Mobile / Part 4 Desktop: Level Dropdown */}
               <select
                 value={selectedLevel || ""}
                 onChange={(e) => setSelectedLevel(e.target.value || null)}
@@ -266,6 +265,7 @@ export default function WebinarsPage() {
                 ))}
               </select>
 
+              {/* Row 2 Mobile / Part 5 Desktop: Clear Button */}
               <button
                 onClick={() => {
                   setSearchTerm("");
