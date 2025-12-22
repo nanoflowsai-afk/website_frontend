@@ -615,25 +615,26 @@ export default function WebinarsPage() {
                       </div>
 
                       {/* Content */}
-                      <div className="flex-1 p-2.5 md:p-4 flex flex-col justify-between">
-                        <div>
-                          <div className="flex gap-1 mb-1.5 md:mb-2">
-                            <span className="inline-block px-1 md:px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-bold">
+                      <div className="p-2 md:p-4 flex flex-col h-full">
+                        {/* Top Content */}
+                        <div className="flex-1">
+                          <div className="hidden md:flex gap-1 mb-2">
+                            <span className="inline-block px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-bold">
                               {webinar.level}
                             </span>
-                            <span className="inline-block px-1 md:px-1.5 py-0.5 bg-orange-100 text-orange-700 rounded text-xs font-bold">
+                            <span className="inline-block px-1.5 py-0.5 bg-orange-100 text-orange-700 rounded text-xs font-bold">
                               {webinar.category}
                             </span>
                           </div>
 
-                          <h3 className="text-xs md:text-sm font-bold text-gray-900 mb-1 group-hover:text-orange-600 transition line-clamp-1 md:line-clamp-2 leading-tight">
+                          <h3 className="text-xs md:text-sm font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-orange-600 transition line-clamp-2 md:line-clamp-2 leading-tight">
                             {webinar.title}
                           </h3>
-                          <p className="text-xs text-gray-600 mb-1.5 md:mb-2 line-clamp-1 md:line-clamp-2">
+                          <p className="hidden md:block text-xs text-gray-600 mb-2 line-clamp-2">
                             {webinar.description}
                           </p>
 
-                          <div className="hidden md:grid grid-cols-2 gap-2 md:gap-3 mb-2 md:mb-3 text-xs text-gray-700">
+                          <div className="hidden md:grid grid-cols-2 gap-2 mb-3 text-xs text-gray-700">
                             <div className="space-y-1">
                               <div className="flex items-center gap-1">
                                 <span>📅</span>
@@ -657,19 +658,19 @@ export default function WebinarsPage() {
                           </div>
                         </div>
 
-                        {/* Two Buttons Side by Side */}
-                        <div className="flex gap-1.5 md:gap-2 mt-2">
+                        {/* Two Buttons Side by Side - Always at Bottom */}
+                        <div className="flex gap-1.5 md:gap-2 mt-auto pt-2 md:pt-0">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex-1 px-1.5 md:px-3 py-1 md:py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded text-xs"
+                            className="flex-1 px-1.5 md:px-3 py-1.5 md:py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded text-xs"
                           >
                             {webinar.type === "Recorded" ? "Watch" : "Register"}
                           </motion.button>
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="flex-1 px-1.5 md:px-3 py-1 md:py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded text-xs"
+                            className="flex-1 px-1.5 md:px-3 py-1.5 md:py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded text-xs"
                           >
                             Know More
                           </motion.button>
