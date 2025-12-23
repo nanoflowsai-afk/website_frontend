@@ -218,8 +218,15 @@ export default function WebinarDetailPage() {
           )}
 
           {/* Hero Section */}
-          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50 text-gray-900">
-            <div className="mx-auto max-w-[1200px]">
+          <section 
+            className="relative px-6 py-20 text-gray-900 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url(/images/ai-automation-hero.png)',
+              backgroundBlendMode: 'overlay'
+            }}
+          >
+            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="mx-auto max-w-[1200px] relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -230,9 +237,9 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-gray-600 mb-4 text-sm font-semibold"
+                  className="text-white mb-4 text-sm font-semibold"
                 >
-                  (Telugu States Biggest Business AI Agents Event On <span className="text-red-600 font-bold">Dec 23/24/25th</span>)
+                  (Telugu States Biggest Business AI Agents Event On <span className="text-yellow-300 font-bold">Dec 23/24/25th</span>)
                 </motion.p>
                 
                 <motion.h2 
@@ -241,9 +248,9 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.3, duration: 0.8 }}
                   className="text-5xl md:text-6xl font-black mb-6 leading-tight"
                 >
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Automate Business</span>
+                  <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Automate Business</span>
                   <br />
-                  <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Save Lakhs</span>
+                  <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Save Lakhs</span>
                 </motion.h2>
                 
                 <motion.h3 
@@ -252,29 +259,29 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.4, duration: 0.8 }}
                   className="text-3xl md:text-5xl font-black mb-8 leading-tight"
                 >
-                  <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
+                  <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
                   <br />
-                  <span className="text-gray-800">Work For You 24/7 365 Days </span>
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE</span>
+                  <span className="text-white">Work For You 24/7 365 Days </span>
+                  <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">FREE</span>
                 </motion.h3>
 
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="text-gray-700 border-2 border-orange-400 rounded-xl px-6 py-3 inline-block mb-8 bg-orange-50 shadow-sm font-semibold text-sm"
+                  className="text-white border-2 border-yellow-300 rounded-xl px-6 py-3 inline-block mb-8 bg-black/30 shadow-sm font-semibold text-sm"
                 >
                   📌 Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.
                 </motion.p>
               </motion.div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Left - Event Content & CTA */}
+              <div className="flex justify-center">
+                {/* Event Content & CTA */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="space-y-6"
+                  className="space-y-6 max-w-md"
                 >
                   <motion.button
                     whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
@@ -289,7 +296,7 @@ export default function WebinarDetailPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-gradient-to-br from-white to-gray-50 border-2 border-orange-200 rounded-xl p-6 space-y-4 shadow-md hover:shadow-lg transition"
+                    className="bg-white/95 backdrop-blur border-2 border-orange-300 rounded-xl p-6 space-y-4 shadow-md hover:shadow-lg transition"
                   >
                     {[
                       { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
@@ -349,28 +356,8 @@ export default function WebinarDetailPage() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
                   >
-                    <p className="text-center text-sm text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
-                    <p className="text-center text-base font-bold text-orange-600 mt-2">✨ No Boring Theory, 100% Live Implementation</p>
-                  </motion.div>
-                </motion.div>
-
-                {/* Right - Event Image/Visual */}
-                <motion.div
-                  initial={{ opacity: 0, x: 30, rotateY: -20 }}
-                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="relative perspective"
-                >
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="relative rounded-2xl border-2 border-blue-400 overflow-hidden shadow-2xl hover:shadow-3xl transition aspect-square"
-                  >
-                    <img 
-                      src="/images/ai-automation-hero.png" 
-                      alt="Business Automation Hero" 
-                      className="w-full h-full object-cover"
-                    />
+                    <p className="text-center text-sm text-gray-200 font-semibold">After 99 People Price Is ₹499/-</p>
+                    <p className="text-center text-base font-bold text-yellow-300 mt-2">✨ No Boring Theory, 100% Live Implementation</p>
                   </motion.div>
                 </motion.div>
               </div>
