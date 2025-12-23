@@ -227,7 +227,7 @@ export default function WebinarDetailPage() {
             backgroundAttachment: 'fixed'
           }}>
             {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-black/70"></div>
             <div className="mx-auto max-w-[1200px] relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
