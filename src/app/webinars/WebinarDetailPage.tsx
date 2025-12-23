@@ -484,12 +484,12 @@ export default function WebinarDetailPage() {
                   whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(37, 99, 235, 0.2)" }}
                   className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
                 >
-                  <img src="/attached_assets/generated_images/business_automation_workflow_systems.png" alt="Automation Workflows" className="w-full h-48 object-cover" />
                   <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center py-4">
                     <div className="text-3xl font-black mb-2">❷</div>
                     <h3 className="text-sm font-black">DAY 2: Hands-on</h3>
                     <p className="text-xs font-bold text-blue-100">Business Automation</p>
                   </div>
+                  <img src="/attached_assets/generated_images/business_automation_workflow_systems.png" alt="Automation Workflows" className="w-full h-48 object-cover" />
                   <div className="p-5 space-y-3 bg-gradient-to-b from-blue-50 to-white">
                     <p className="text-xs text-blue-700 font-bold text-center mb-4 bg-blue-100 rounded-lg py-2">🔧 Replace 8 Hrs Employee With System</p>
                     {[
@@ -526,12 +526,12 @@ export default function WebinarDetailPage() {
                   whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.2)" }}
                   className="bg-gradient-to-br from-red-500 to-red-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
                 >
-                  <img src="/attached_assets/generated_images/live_implementation_and_client_success.png" alt="Client Success" className="w-full h-48 object-cover" />
                   <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-center py-4">
                     <div className="text-3xl font-black mb-2">❸</div>
                     <h3 className="text-sm font-black">DAY 3: For Clients</h3>
                     <p className="text-xs font-bold text-red-100">Live Business Automation</p>
                   </div>
+                  <img src="/attached_assets/generated_images/live_implementation_and_client_success.png" alt="Client Success" className="w-full h-48 object-cover" />
                   <div className="p-5 space-y-3 bg-gradient-to-b from-red-50 to-white">
                     <p className="text-xs text-red-700 font-bold text-center mb-4 bg-red-100 rounded-lg py-2">🚀 Automate 80% Employee Work</p>
                     {[
