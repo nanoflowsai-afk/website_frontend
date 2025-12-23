@@ -259,15 +259,6 @@ export default function WebinarDetailPage() {
                 </motion.h3>
 
                 <div className="flex flex-col items-center gap-4">
-                  <motion.p 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="text-gray-700 border-2 border-orange-400 rounded-xl px-6 py-3 bg-orange-50 shadow-sm font-semibold text-sm"
-                  >
-                    📌 Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.
-                  </motion.p>
-
                   <motion.button
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
