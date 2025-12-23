@@ -575,7 +575,7 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Testimonials */}
-          <section className="px-6 py-10 bg-gradient-to-b from-white to-gray-50">
+          <section className="px-6 py-8 bg-gradient-to-b from-white to-gray-50">
             <div className="mx-auto max-w-[1200px]">
               <p className="text-center text-gray-600 mb-12 text-xs font-bold uppercase tracking-[0.2em]">✨ Testimonials ✨</p>
 
@@ -652,7 +652,7 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Imagine You Never Have To Section */}
-          <section className="px-6 py-10 bg-gradient-to-b from-gray-50 to-white">
+          <section className="px-6 py-8 bg-gradient-to-b from-gray-50 to-white">
             <div className="mx-auto max-w-[1200px]">
               <div className="text-center mb-12">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
