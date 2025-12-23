@@ -307,46 +307,6 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.2, duration: 0.8 }}
                   className="space-y-6"
                 >
-
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { icon: '📅', label: 'Date', value: 'Dec 23/24/25th', bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
-                      { icon: '🕐', label: 'Time', value: '10AM', bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
-                      { icon: '📡', label: 'Event', value: 'Zoom', bgColor: 'bg-purple-50', borderColor: 'border-purple-200' },
-                      { icon: '🎤', label: 'Host', value: 'Digital Chandu', bgColor: 'bg-green-50', borderColor: 'border-green-200' }
-                    ].map((item, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 + idx * 0.08 }}
-                        whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)" }}
-                        className={`p-4 ${item.bgColor} border-2 ${item.borderColor} rounded-xl text-center shadow-md hover:shadow-lg transition`}
-                      >
-                        <p className="text-3xl mb-2">{item.icon}</p>
-                        <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
-                        <p className="text-lg font-bold text-gray-900 mt-1">{item.value}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-lg shadow-lg transition duration-300"
-                  >
-                    🎯 Apply To Get Invite
-                  </motion.button>
-
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                  >
-                    <p className="text-center text-sm text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
-                    <p className="text-center text-base font-bold text-orange-600 mt-2">✨ No Boring Theory, 100% Live Implementation</p>
-                  </motion.div>
                 </motion.div>
 
                 {/* Right - Registration Form */}
@@ -426,62 +386,6 @@ export default function WebinarDetailPage() {
                 </motion.p>
               </motion.div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-                {[
-                  { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
-                  { icon: '🕐', label: 'Time', value: '10AM' },
-                  { icon: '📡', label: 'Event', value: 'Zoom' },
-                  { icon: '🎤', label: 'Host', value: 'Digital Chandu' }
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(251, 146, 60, 0.15)" }}
-                    className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center shadow-md hover:shadow-lg hover:border-orange-400 transition"
-                  >
-                    <p className="text-2xl mb-2">{item.icon}</p>
-                    <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
-                    <p className="text-lg font-bold text-gray-900 mt-1">{item.value}</p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.div 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="mt-10"
-              >
-                <CountdownTimer />
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-10 text-center"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition text-lg inline-block"
-                >
-                  ✨ Apply To Get Invite
-                </motion.button>
-                <p className="mt-6 text-lg font-bold text-orange-600">✔️ Check You're In 99 People or Not</p>
-                <p className="text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
-              </motion.div>
-
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 text-center text-xl font-black text-gray-900 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent"
-              >
-                ✨ No Boring Theory, 100% Live Implementation
-              </motion.p>
             </div>
           </section>
 
