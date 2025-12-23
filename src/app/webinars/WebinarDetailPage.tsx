@@ -989,7 +989,7 @@ export default function WebinarDetailPage() {
                     transition={{ delay: 0.1 }}
                     className="text-white font-black text-lg md:text-2xl"
                   >
-                    📅 Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
+                    Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
                   </motion.p>
                 </div>
 
