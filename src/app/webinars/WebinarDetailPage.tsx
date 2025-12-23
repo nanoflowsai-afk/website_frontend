@@ -289,33 +289,27 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.2, duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="bg-gradient-to-br from-white to-gray-50 border-2 border-orange-200 rounded-xl p-6 space-y-4 shadow-md hover:shadow-lg transition"
-                  >
+                  <div className="grid grid-cols-2 gap-4">
                     {[
                       { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
                       { icon: '🕐', label: 'Time', value: '10AM' },
                       { icon: '📡', label: 'Event', value: 'Zoom' },
                       { icon: '🎤', label: 'Host', value: 'Digital Chandu' }
                     ].map((item, idx) => (
-                      <motion.div 
+                      <motion.div
                         key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.35 + idx * 0.08 }}
-                        className="flex items-center gap-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + idx * 0.08 }}
+                        whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(251, 146, 60, 0.15)" }}
+                        className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center shadow-md hover:shadow-lg hover:border-orange-400 transition"
                       >
-                        <span className="text-3xl">{item.icon}</span>
-                        <div>
-                          <p className="text-gray-600 text-xs font-semibold uppercase tracking-wide">{item.label}</p>
-                          <p className="text-gray-900 font-bold text-lg">{item.value}</p>
-                        </div>
+                        <p className="text-3xl mb-2">{item.icon}</p>
+                        <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
+                        <p className="text-lg font-bold text-gray-900 mt-1">{item.value}</p>
                       </motion.div>
                     ))}
-                  </motion.div>
+                  </div>
 
                   <motion.div 
                     initial={{ opacity: 0 }}
