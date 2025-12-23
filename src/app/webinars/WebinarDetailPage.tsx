@@ -598,65 +598,90 @@ export default function WebinarDetailPage() {
                 What others are saying
               </motion.h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                {[
-                  {
-                    emoji: '👨‍💼',
-                    title: '"Saved Lakhs Every Month"',
-                    text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
-                    author: '- Raj Kumar',
-                    rating: 5
-                  },
-                  {
-                    emoji: '👩‍💼',
-                    title: '"My life changed forever"',
-                    text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
-                    author: '- Priya',
-                    rating: 5
-                  },
-                  {
-                    emoji: '👨‍💻',
-                    title: '"Highly recommend this"',
-                    text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
-                    author: '- Naveen',
-                    rating: 5
-                  },
-                ].map((testimonial, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.15, duration: 0.6 }}
-                    whileHover={{ y: -5, boxShadow: "0 15px 40px rgba(251, 146, 60, 0.1)" }}
-                    className="text-center p-6 bg-white border-2 border-orange-100 rounded-xl shadow-md hover:shadow-lg hover:border-orange-300 transition"
-                  >
-                    <div className="flex justify-center mb-6">
-                      <motion.div 
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-3xl shadow-lg"
-                      >
-                        {testimonial.emoji}
-                      </motion.div>
-                    </div>
-                    <h3 className="text-sm font-bold text-gray-900 mb-3">{testimonial.title}</h3>
-                    <p className="text-xs text-gray-700 mb-4 italic leading-relaxed">{testimonial.text}</p>
-                    <div className="flex justify-center gap-1 mb-3">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <motion.span 
-                          key={i} 
-                          initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.2 + i * 0.1 }}
-                          className="text-lg"
+              <div className="overflow-hidden">
+                <motion.div 
+                  className="flex gap-8 w-max"
+                  animate={{ x: ["0%", "-100%"] }}
+                  transition={{ 
+                    duration: 20, 
+                    repeat: Infinity, 
+                    ease: "linear"
+                  }}
+                >
+                  {[
+                    {
+                      emoji: '👨‍💼',
+                      title: '"Saved Lakhs Every Month"',
+                      text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                      author: '- Raj Kumar',
+                      rating: 5
+                    },
+                    {
+                      emoji: '👩‍💼',
+                      title: '"My life changed forever"',
+                      text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                      author: '- Priya',
+                      rating: 5
+                    },
+                    {
+                      emoji: '👨‍💻',
+                      title: '"Highly recommend this"',
+                      text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                      author: '- Naveen',
+                      rating: 5
+                    },
+                    {
+                      emoji: '👨‍💼',
+                      title: '"Saved Lakhs Every Month"',
+                      text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                      author: '- Raj Kumar',
+                      rating: 5
+                    },
+                    {
+                      emoji: '👩‍💼',
+                      title: '"My life changed forever"',
+                      text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                      author: '- Priya',
+                      rating: 5
+                    },
+                    {
+                      emoji: '👨‍💻',
+                      title: '"Highly recommend this"',
+                      text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                      author: '- Naveen',
+                      rating: 5
+                    },
+                  ].map((testimonial, idx) => (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ y: -5, boxShadow: "0 15px 40px rgba(251, 146, 60, 0.1)" }}
+                      className="text-center p-6 bg-white border-2 border-orange-100 rounded-xl shadow-md hover:shadow-lg hover:border-orange-300 transition flex-shrink-0 w-80"
+                    >
+                      <div className="flex justify-center mb-6">
+                        <motion.div 
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-3xl shadow-lg"
                         >
-                          ⭐
-                        </motion.span>
-                      ))}
-                    </div>
-                    <p className="text-xs font-bold text-orange-600">{testimonial.author}</p>
-                  </motion.div>
-                ))}
+                          {testimonial.emoji}
+                        </motion.div>
+                      </div>
+                      <h3 className="text-sm font-bold text-gray-900 mb-3">{testimonial.title}</h3>
+                      <p className="text-xs text-gray-700 mb-4 italic leading-relaxed">{testimonial.text}</p>
+                      <div className="flex justify-center gap-1 mb-3">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <span 
+                            key={i}
+                            className="text-lg"
+                          >
+                            ⭐
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-xs font-bold text-orange-600">{testimonial.author}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </div>
             </div>
           </section>
