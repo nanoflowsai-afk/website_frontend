@@ -327,7 +327,7 @@ export default function WebinarDetailPage() {
                     transition={{ type: "spring", stiffness: 400 }}
                     className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-lg shadow-lg transition duration-300"
                   >
-                    🎯 Apply To Get Invite
+                    Apply To Get Invite
                   </motion.button>
 
                   <motion.div 
@@ -726,7 +726,7 @@ export default function WebinarDetailPage() {
                       whileTap={{ scale: 0.95 }}
                       className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
                     >
-                      🎯 Apply To Get Invite
+                      Apply To Get Invite
                     </motion.button>
 
                     <p className="text-sm text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
@@ -1018,7 +1018,7 @@ export default function WebinarDetailPage() {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
                 >
-                  🎯 Get Invite
+                  Get Invite
                 </motion.button>
               </div>
             </motion.div>
