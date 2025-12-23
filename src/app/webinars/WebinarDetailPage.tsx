@@ -202,17 +202,17 @@ export default function WebinarDetailPage() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 flex items-center justify-center font-bold text-lg shadow-lg sticky top-0 z-10"
+              className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 flex items-center justify-between md:justify-center font-bold text-base md:text-lg shadow-lg sticky top-0 z-10"
             >
-              <span>⚡ 3 Days One Man Business Automation Event!</span>
+              <span className="flex-1 md:flex-none text-center">⚡ 3 Days One Man Business Automation Event!</span>
               <motion.button
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowBanner(false)}
-                className="absolute right-6 p-1 hover:bg-red-500 rounded-full transition"
+                className="flex-shrink-0 p-1 hover:bg-red-500 rounded-full transition ml-4 md:absolute md:right-6"
                 aria-label="Close banner"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </motion.button>
