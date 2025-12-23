@@ -4,3 +4,9 @@ node_modules
 .env.local
 .env.production
 
+# Replit / Local state
+.local/
+tsconfig.tsbuildinfo
+
+# Build cache
+*.tsbuildinfo
