@@ -358,18 +358,22 @@ export default function WebinarDetailPage() {
 
                 {/* Right - Professional Image */}
                 <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="flex flex-col items-center justify-center h-full"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex flex-col items-center gap-6"
                 >
-                  <div className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden hover:shadow-xl transition w-full">
+                  <motion.div 
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
+                  >
                     <img 
                       src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg" 
                       alt="AI Agents Automation" 
                       className="w-full h-auto object-cover rounded-xl"
                     />
-                  </div>
+                  </motion.div>
                 </motion.div>
               </div>
               </motion.div>
