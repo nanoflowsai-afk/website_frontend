@@ -561,15 +561,6 @@ export default function WebinarDetailPage() {
                 >
                   Apply To Get Invite
                 </motion.button>
-
-                <motion.h3
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-3xl md:text-4xl font-black text-gray-900"
-                >
-                  3 Days is all you Need to Your <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">100% Success!</span>
-                </motion.h3>
               </motion.div>
             </div>
           </section>
