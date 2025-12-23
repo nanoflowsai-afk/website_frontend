@@ -298,13 +298,13 @@ export default function WebinarDetailPage() {
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 mt-3 md:mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-start">
                 {/* Left - Event Content & CTA */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="space-y-4 md:space-y-6"
+                  className="space-y-4 md:space-y-6 order-1 lg:order-1"
                 >
                   <div className="mb-4 md:mb-6">
                     <div className="flex gap-2 flex-wrap mb-3 md:mb-4">
@@ -313,6 +313,26 @@ export default function WebinarDetailPage() {
                     </div>
                     <p className="text-gray-600 text-sm md:text-base leading-relaxed">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
                   </div>
+
+                  {/* Mobile Image - appears here on mobile */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex flex-col items-center gap-6 lg:hidden order-2 w-full"
+                  >
+                    <motion.div 
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                      className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
+                    >
+                      <img 
+                        src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg" 
+                        alt="AI Agents Automation" 
+                        className="w-full h-auto object-cover rounded-xl"
+                      />
+                    </motion.div>
+                  </motion.div>
 
                   <div className="grid grid-cols-2 gap-2 md:gap-4">
                     {[
@@ -356,12 +376,12 @@ export default function WebinarDetailPage() {
                   </motion.div>
                 </motion.div>
 
-                {/* Right - Professional Image */}
+                {/* Desktop Image - appears on right on desktop only */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="flex flex-col items-center gap-6"
+                  className="hidden lg:flex flex-col items-center gap-6 order-3 lg:order-2 sticky lg:top-24 h-fit"
                 >
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
