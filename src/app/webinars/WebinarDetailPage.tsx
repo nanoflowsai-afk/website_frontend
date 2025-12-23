@@ -291,18 +291,18 @@ export default function WebinarDetailPage() {
                 >
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      { icon: '📅', label: 'Date', value: 'Dec 23/24/25th' },
-                      { icon: '🕐', label: 'Time', value: '10AM' },
-                      { icon: '📡', label: 'Event', value: 'Zoom' },
-                      { icon: '🎤', label: 'Host', value: 'Digital Chandu' }
+                      { icon: '📅', label: 'Date', value: 'Dec 23/24/25th', bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
+                      { icon: '🕐', label: 'Time', value: '10AM', bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
+                      { icon: '📡', label: 'Event', value: 'Zoom', bgColor: 'bg-purple-50', borderColor: 'border-purple-200' },
+                      { icon: '🎤', label: 'Host', value: 'Digital Chandu', bgColor: 'bg-green-50', borderColor: 'border-green-200' }
                     ].map((item, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + idx * 0.08 }}
-                        whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(251, 146, 60, 0.15)" }}
-                        className="p-4 bg-white border-2 border-orange-200 rounded-xl text-center shadow-md hover:shadow-lg hover:border-orange-400 transition"
+                        whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)" }}
+                        className={`p-4 ${item.bgColor} border-2 ${item.borderColor} rounded-xl text-center shadow-md hover:shadow-lg transition`}
                       >
                         <p className="text-3xl mb-2">{item.icon}</p>
                         <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
