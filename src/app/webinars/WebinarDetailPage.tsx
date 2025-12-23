@@ -267,6 +267,7 @@ export default function WebinarDetailPage() {
                     transition={{ delay: 0.6 }}
                     whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => setShowModal(true)}
                     className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition duration-300"
                   >
                     📋 Apply To Get Business Automation Event
@@ -560,6 +561,7 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.2 }}
                   whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(220, 38, 38, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowModal(true)}
                   className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg shadow-lg transition duration-300"
                 >
                   Apply To Get Invite
