@@ -724,41 +724,6 @@ export default function WebinarDetailPage() {
                 transition={{ delay: 0.3 }}
                 className="mt-16 text-center"
               >
-                {/* Decorative Chevrons */}
-                <motion.div 
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="flex justify-center gap-4 mb-8"
-                >
-                  <span className="text-3xl text-orange-600">⌄</span>
-                  <span className="text-3xl text-orange-600">⌄</span>
-                  <span className="text-3xl text-orange-600">⌄</span>
-                </motion.div>
-
-                {/* Social Buttons */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="flex justify-center gap-3 mb-8"
-                >
-                  {[
-                    { label: 'f', color: 'from-blue-600 to-blue-700' },
-                    { label: '𝕏', color: 'from-black to-gray-800' },
-                    { label: 'in', color: 'from-blue-500 to-blue-600' },
-                    { label: '📧', color: 'from-red-600 to-red-700' }
-                  ].map((btn, idx) => (
-                    <motion.button
-                      key={idx}
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                      className={`w-10 h-10 rounded-full bg-gradient-to-br ${btn.color} text-white flex items-center justify-center transition shadow-md text-sm font-bold`}
-                    >
-                      {btn.label}
-                    </motion.button>
-                  ))}
-                </motion.div>
-
                 {/* CTA Button */}
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
