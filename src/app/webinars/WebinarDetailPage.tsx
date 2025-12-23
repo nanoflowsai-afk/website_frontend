@@ -391,36 +391,6 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
-          {/* Key Highlight Section */}
-          <section className="px-6 py-16 bg-gradient-to-b from-gray-50 via-orange-50 to-white">
-            <div className="mx-auto max-w-[1200px]">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="p-8 md:p-10 bg-gradient-to-r from-white to-orange-50 border-2 border-orange-300 rounded-2xl text-center shadow-lg hover:shadow-xl transition"
-              >
-                <motion.h3 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-2xl md:text-3xl font-black text-gray-900 mb-4"
-                >
-                  🔓 UNLOCK AI AGENTS! READ THIS QUICK NOTE:
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-lg text-gray-700 font-semibold leading-relaxed"
-                >
-                  Don't waste 3 months learning. Get 12+ AI agents working for you immediately after this event.
-                </motion.p>
-              </motion.div>
-
-            </div>
-          </section>
-
           {/* 3 Days Roadmap */}
           <section className="px-6 py-20 bg-gradient-to-b from-white via-gray-50 to-white">
             <div className="mx-auto max-w-[1200px]">
