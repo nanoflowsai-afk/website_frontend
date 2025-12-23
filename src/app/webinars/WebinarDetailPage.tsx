@@ -706,7 +706,7 @@ export default function WebinarDetailPage() {
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
               >
                 {/* Left - Problems List */}
-                <div className="space-y-4">
+                <div className="space-y-4 order-2 lg:order-1">
                   {[
                     { text: 'Manual Workflows That Waste Hours Every Day On Repetitive Tasks', icon: '❌' },
                     { text: 'Missed Leads & Follow-Ups Because You\'re Still Doing Everything Manually', icon: '❌' },
@@ -735,7 +735,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="flex flex-col items-center gap-6"
+                  className="flex flex-col items-center gap-6 order-1 lg:order-2"
                 >
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
