@@ -298,7 +298,7 @@ export default function WebinarDetailPage() {
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 mt-3 md:mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
                 {/* Left - Event Content & CTA */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
