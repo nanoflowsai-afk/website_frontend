@@ -291,30 +291,30 @@ export default function WebinarDetailPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="p-6 md:p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
+                className="p-4 md:p-6 lg:p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
               >
-                <div className="text-center mb-8">
-                  <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
-                  <h2 className="text-3xl md:text-4xl font-black leading-tight mb-6 mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
+                <div className="text-center mb-6 md:mb-8">
+                  <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 mt-3 md:mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
                 {/* Left - Event Content & CTA */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="space-y-6"
+                  className="space-y-4 md:space-y-6"
                 >
-                  <div className="mb-6">
-                    <div className="flex gap-2 flex-wrap mb-4">
-                      <span className="px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">AI Agents</span>
-                      <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Beginner</span>
+                  <div className="mb-4 md:mb-6">
+                    <div className="flex gap-2 flex-wrap mb-3 md:mb-4">
+                      <span className="px-3 py-1 md:px-4 md:py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">AI Agents</span>
+                      <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Beginner</span>
                     </div>
-                    <p className="text-gray-600 text-base leading-relaxed">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-2 md:gap-4">
                     {[
                       { icon: '📅', label: 'Date', value: 'Dec 23/24/25th', bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
                       { icon: '🕐', label: 'Time', value: '10AM', bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
@@ -341,7 +341,7 @@ export default function WebinarDetailPage() {
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400 }}
                     onClick={() => setShowModal(true)}
-                    className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-lg shadow-lg transition duration-300"
+                    className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-sm md:text-lg shadow-lg transition duration-300"
                   >
                     🎯 Apply To Get Invite
                   </motion.button>
