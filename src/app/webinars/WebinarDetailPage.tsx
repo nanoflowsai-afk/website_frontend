@@ -258,14 +258,27 @@ export default function WebinarDetailPage() {
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE</span>
                 </motion.h3>
 
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-gray-700 border-2 border-orange-400 rounded-xl px-6 py-3 inline-block mb-8 bg-orange-50 shadow-sm font-semibold text-sm"
-                >
-                  📌 Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.
-                </motion.p>
+                <div className="flex flex-col items-center gap-4">
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-gray-700 border-2 border-orange-400 rounded-xl px-6 py-3 bg-orange-50 shadow-sm font-semibold text-sm"
+                  >
+                    📌 Note: My Live Challenge. After 1st Day You Can Automate In Live With Me.
+                  </motion.p>
+
+                  <motion.button
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition duration-300"
+                  >
+                    📋 Apply To Get Business Automation Event
+                  </motion.button>
+                </div>
               </motion.div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -276,15 +289,6 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.2, duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl text-lg shadow-lg transition duration-300"
-                  >
-                    📋 Apply To Get Business Automation Event
-                  </motion.button>
-
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
