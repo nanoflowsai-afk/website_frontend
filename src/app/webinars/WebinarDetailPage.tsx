@@ -280,7 +280,7 @@ export default function WebinarDetailPage() {
               >
                 <div className="text-center mb-8">
                   <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
-                  <h2 className="text-2xl md:text-3xl font-black leading-tight mb-6 mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
+                  <h2 className="text-3xl md:text-4xl font-black leading-tight mb-6 mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
