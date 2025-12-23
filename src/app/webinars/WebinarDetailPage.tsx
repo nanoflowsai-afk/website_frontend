@@ -828,26 +828,6 @@ export default function WebinarDetailPage() {
                   </motion.div>
                 ))}
               </div>
-
-              <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 2, repeat: Infinity }} className="flex justify-center gap-4 mb-6 mt-12">
-                <span className="text-2xl text-orange-600">⌄</span>
-                <span className="text-2xl text-orange-600">⌄</span>
-                <span className="text-2xl text-orange-600">⌄</span>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex justify-center gap-3 mb-6">
-                {[{ label: 'f', color: 'from-blue-600 to-blue-700' }, { label: '𝕏', color: 'from-black to-gray-800' }, { label: 'in', color: 'from-blue-500 to-blue-600' }, { label: '📧', color: 'from-red-600 to-red-700' }].map((btn, idx) => (
-                  <motion.button key={idx} whileHover={{ scale: 1.15, rotate: 5 }} whileTap={{ scale: 0.9 }} className={`w-9 h-9 rounded-full bg-gradient-to-br ${btn.color} text-white flex items-center justify-center transition shadow-md text-xs font-bold`}>
-                    {btn.label}
-                  </motion.button>
-                ))}
-              </motion.div>
-
-              <motion.button whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }} whileTap={{ scale: 0.95 }} className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 inline-block shadow-md">
-                🎯 Apply To Get Invite
-              </motion.button>
-
-              <p className="text-xs text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
             </div>
           </section>
 
