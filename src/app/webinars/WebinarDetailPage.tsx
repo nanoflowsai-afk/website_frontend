@@ -158,6 +158,7 @@ function CountdownTimer() {
 }
 
 export default function WebinarDetailPage() {
+  const [showBanner, setShowBanner] = useState(true);
   const params = useParams();
   const webinarId = parseInt(params.id as string);
   const webinar = allWebinars.find((w) => w.id === webinarId);
@@ -193,14 +194,28 @@ export default function WebinarDetailPage() {
         <Navbar />
         <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
           {/* Red Banner with Animation */}
-          <motion.div 
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-gradient-to-r from-red-600 to-red-700 text-white py-3 text-center font-bold text-lg shadow-lg sticky top-0 z-10"
-          >
-            ⚡ 3 Days One Man Business Automation Event!
-          </motion.div>
+          {showBanner && (
+            <motion.div 
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -100, opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 flex items-center justify-between font-bold text-lg shadow-lg sticky top-0 z-10"
+            >
+              <span>⚡ 3 Days One Man Business Automation Event!</span>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setShowBanner(false)}
+                className="flex-shrink-0 ml-4 p-1 hover:bg-red-500 rounded-full transition"
+                aria-label="Close banner"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </motion.button>
+            </motion.div>
+          )}
 
           {/* Hero Section */}
           <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50 text-gray-900">
