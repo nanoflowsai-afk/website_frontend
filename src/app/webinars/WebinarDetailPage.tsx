@@ -832,7 +832,7 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Mentor Section */}
-          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
+          <section className="px-6 py-10 bg-gradient-to-b from-white to-gray-50">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
                 initial={{ opacity: 0, y: -20 }}
@@ -912,7 +912,7 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="px-6 py-20 bg-gradient-to-b from-gray-50 to-white">
+          <section className="px-6 py-10 bg-gradient-to-b from-gray-50 to-white">
             <div className="mx-auto max-w-[1200px]">
               <motion.h2 
                 initial={{ opacity: 0, y: -20 }}
