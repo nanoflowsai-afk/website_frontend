@@ -442,12 +442,12 @@ export default function WebinarDetailPage() {
                   whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(251, 146, 60, 0.2)" }}
                   className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
                 >
-                  <img src="/attached_assets/generated_images/business_setup_and_management_interface.png" alt="Business Setup Interface" className="w-full h-48 object-cover" />
                   <div className="bg-gradient-to-r from-orange-600 to-orange-700 text-white text-center py-4">
                     <div className="text-3xl font-black mb-2">❶</div>
                     <h3 className="text-sm font-black">DAY 1: Business Growth</h3>
                     <p className="text-xs font-bold text-orange-100">Setup & Management</p>
                   </div>
+                  <img src="/attached_assets/generated_images/business_setup_and_management_interface.png" alt="Business Setup Interface" className="w-full h-48 object-cover" />
                   <div className="p-5 space-y-3 bg-gradient-to-b from-orange-50 to-white">
                     <p className="text-xs text-orange-700 font-bold text-center mb-4 bg-orange-100 rounded-lg py-2">📦 Install Top 1% Business Model</p>
                     {[
