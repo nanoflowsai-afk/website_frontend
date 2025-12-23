@@ -1,5 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { apiFetch } from "@/lib/api";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,101 +18,12 @@ type Webinar = {
   level: "Beginner" | "Intermediate" | "Advanced";
   category: "AI Automation" | "AI Agents" | "Marketing AI" | "Business AI" | "Workshops";
   type: "Upcoming" | "Live" | "Recorded";
-  image: string;
+  imageUrl: string;
   registeredCount?: number;
   maxCapacity?: number;
   isLandingPage?: boolean;
 };
 
-const allWebinars: Webinar[] = [
-  {
-    id: 1,
-    title: "Automate Your Business with AI Agents",
-    description: "Learn how AI agents can automate workflows, customer support, and decision-making.",
-    date: "Dec 28, 2025",
-    time: "2:00 PM IST",
-    duration: "90 Minutes",
-    speaker: "Rajesh Kumar",
-    level: "Beginner",
-    category: "AI Agents",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 234,
-    maxCapacity: 500,
-  },
-  {
-    id: 2,
-    title: "Marketing Automation with AI",
-    description: "Transform your marketing with intelligent automation and personalization strategies.",
-    date: "Dec 25, 2025",
-    time: "3:30 PM IST",
-    duration: "60 Minutes",
-    speaker: "Priya Singh",
-    level: "Intermediate",
-    category: "Marketing AI",
-    type: "Live",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 512,
-    maxCapacity: 1000,
-    isLandingPage: true,
-  },
-  {
-    id: 3,
-    title: "Building Intelligent Search Systems",
-    description: "Enterprise AI search solutions for better data discovery and insights.",
-    date: "Dec 20, 2025",
-    time: "1:00 PM IST",
-    duration: "75 Minutes",
-    speaker: "Amit Patel",
-    level: "Advanced",
-    category: "AI Automation",
-    type: "Recorded",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-  },
-  {
-    id: 4,
-    title: "AI for Business Growth",
-    description: "Practical strategies to scale your business using AI-driven automation.",
-    date: "Dec 30, 2025",
-    time: "4:00 PM IST",
-    duration: "90 Minutes",
-    speaker: "Sarah Johnson",
-    level: "Beginner",
-    category: "Business AI",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 156,
-    maxCapacity: 500,
-  },
-  {
-    id: 5,
-    title: "Workshop: Custom LLM Development",
-    description: "Hands-on workshop on building custom language models for your use cases.",
-    date: "Dec 15, 2025",
-    time: "10:00 AM IST",
-    duration: "120 Minutes",
-    speaker: "Dr. Neha Gupta",
-    level: "Advanced",
-    category: "Workshops",
-    type: "Recorded",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-  },
-  {
-    id: 6,
-    title: "AI Agents in Customer Support",
-    description: "Deploy AI agents to handle customer inquiries and support tickets automatically.",
-    date: "Jan 5, 2026",
-    time: "2:30 PM IST",
-    duration: "60 Minutes",
-    speaker: "Marcus Chen",
-    level: "Intermediate",
-    category: "AI Agents",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 89,
-    maxCapacity: 500,
-  },
-];
 
 export default function WebinarsPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -119,12 +31,32 @@ export default function WebinarsPage() {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
 
+  const [webinars, setWebinars] = useState<Webinar[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchWebinars = async () => {
+      try {
+        const res = await apiFetch("/api/webinars");
+        if (res.ok) {
+          const data = await res.json();
+          setWebinars(data.webinars || []);
+        }
+      } catch (error) {
+        console.error("Failed to fetch webinars", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchWebinars();
+  }, []);
+
   const categories = ["AI Automation", "AI Agents", "Marketing AI", "Business AI", "Workshops"];
   const types = ["Upcoming", "Live", "Recorded"];
   const levels = ["Beginner", "Intermediate", "Advanced"];
 
   const filteredWebinars = useMemo(() => {
-    return allWebinars.filter((webinar) => {
+    return webinars.filter((webinar) => {
       const matchesSearch = webinar.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         webinar.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = !selectedCategory || webinar.category === selectedCategory;
@@ -132,10 +64,10 @@ export default function WebinarsPage() {
       const matchesLevel = !selectedLevel || webinar.level === selectedLevel;
       return matchesSearch && matchesCategory && matchesType && matchesLevel;
     });
-  }, [searchTerm, selectedCategory, selectedType, selectedLevel]);
+  }, [webinars, searchTerm, selectedCategory, selectedType, selectedLevel]);
 
   const upcomingWebinars = filteredWebinars.filter((w) => w.type === "Upcoming");
-  const featuredWebinar = upcomingWebinars[0] || allWebinars[0];
+  const featuredWebinar = upcomingWebinars[0] || webinars[0];
 
   const getTypeBadgeColor = (type: string) => {
     switch (type) {
@@ -383,7 +315,7 @@ export default function WebinarsPage() {
                   <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3 md:mb-4">Why Choose Our Webinars?</h2>
                   <p className="text-xs md:text-sm text-gray-600 leading-relaxed mb-6 md:mb-8">Discover premium learning experiences with industry experts. Our webinars combine practical knowledge, real-world applications, and interactive discussions to accelerate your AI journey. Get certified, network with professionals, and access resources that transform your skills.</p>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-2 md:gap-3">
                   {[
                     { icon: "🎬", title: "Live Sessions", description: "Expert-led interactive learning", color: "from-blue-500/10 to-blue-600/5" },
@@ -421,7 +353,7 @@ export default function WebinarsPage() {
               >
                 <div>
                   <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4">Register Now</h3>
-                  
+
                   {/* Form Input 1 */}
                   <div className="mb-3">
                     <label className="block text-xs font-semibold text-gray-700 mb-1.5">Full Name</label>
@@ -485,7 +417,7 @@ export default function WebinarsPage() {
                 {/* Image */}
                 <div className="relative h-48 md:h-64 lg:h-96 overflow-hidden rounded-xl">
                   <img
-                    src={featuredWebinar.image}
+                    src={featuredWebinar.imageUrl}
                     alt={featuredWebinar.title}
                     className="w-full h-full object-cover hover:scale-105 transition duration-500"
                   />
@@ -542,13 +474,15 @@ export default function WebinarsPage() {
                     )}
                   </div>
 
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition w-full text-sm"
-                  >
-                    Register Now →
-                  </motion.button>
+                  <Link to={`/webinars/${featuredWebinar.id}`}>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition w-full text-sm"
+                    >
+                      Register Now →
+                    </motion.button>
+                  </Link>
                 </div>
               </motion.div>
             </div>
@@ -606,7 +540,7 @@ export default function WebinarsPage() {
                       {/* Image */}
                       <div className="relative h-40 w-full overflow-hidden">
                         <img
-                          src={webinar.image}
+                          src={webinar.imageUrl}
                           alt={webinar.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                         />
@@ -660,13 +594,15 @@ export default function WebinarsPage() {
 
                         {/* Two Buttons Side by Side */}
                         <div className="flex gap-2 mt-auto">
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex-1 px-3 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-xs"
-                          >
-                            {webinar.type === "Recorded" ? "Watch" : "Register"}
-                          </motion.button>
+                          <Link to={`/webinars/${webinar.id}`} className="flex-1">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="w-full px-3 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-xs"
+                            >
+                              {webinar.type === "Recorded" ? "Watch" : "Register"}
+                            </motion.button>
+                          </Link>
                           <Link to={`/webinars/${webinar.id}`} className="flex-1">
                             <motion.button
                               whileHover={{ scale: 1.05 }}

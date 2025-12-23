@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin/
-Disallow: /api/
-Disallow: /login
-Disallow: /signup
-Disallow: /auth
-
-Sitemap: https://nanoflows.ai/sitemap.xml

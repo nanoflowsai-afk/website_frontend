@@ -58,6 +58,44 @@ type JobPosting = {
 
 type SlideInput = Omit<HeroSlide, "id">;
 
+type Webinar = {
+    id: number;
+    title: string;
+    description: string;
+    date: string;
+    time: string;
+    duration: string;
+    speaker: string;
+    level: string;
+    category: string;
+    type: string;
+    imageUrl: string;
+    registeredCount: number;
+    maxCapacity: number;
+    isLandingPage: boolean;
+    notificationActive: boolean;
+    notificationText: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    heroContext: string;
+    heroImage: string;
+    platform: string;
+    mentorName: string;
+    mentorRole: string;
+    mentorImage: string;
+    mentorBio: string;
+    roadmapItems: RoadmapItem[];
+};
+
+type RoadmapItem = {
+    day: number;
+    title: string;
+    subtitle: string;
+    highlight: string;
+    description: string[]; // Manage as array of strings
+    imageUrl: string;
+};
+
 type NavItem = {
     id: string;
     label: string;
@@ -123,6 +161,15 @@ const navItems: NavItem[] = [
             </svg>
         ),
     },
+    {
+        id: "webinars",
+        label: "Webinars",
+        icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+        ),
+    },
 ];
 
 export default function AdminPage() {
@@ -137,6 +184,7 @@ export default function AdminPage() {
     const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [jobs, setJobs] = useState<JobPosting[]>([]);
+    const [webinars, setWebinars] = useState<Webinar[]>([]);
 
     // Auth State
     const [isAuthed, setIsAuthed] = useState(false);
@@ -151,6 +199,8 @@ export default function AdminPage() {
     const [blogError, setBlogError] = useState<string | null>(null);
     const [blogUploading, setBlogUploading] = useState(false);
     const [careersError, setCareersError] = useState<string | null>(null);
+    const [webinarError, setWebinarError] = useState<string | null>(null);
+    const [webinarUploading, setWebinarUploading] = useState(false);
 
     // Forms
     const [slideForm, setSlideForm] = useState<SlideInput>({
@@ -205,6 +255,34 @@ export default function AdminPage() {
     });
     const [editingJobId, setEditingJobId] = useState<number | null>(null);
 
+    const [webinarForm, setWebinarForm] = useState({
+        title: "",
+        description: "",
+        date: "",
+        time: "",
+        duration: "",
+        speaker: "",
+        level: "Beginner",
+        category: "AI Automation",
+        type: "Upcoming",
+        imageUrl: "",
+        maxCapacity: 100,
+        isLandingPage: true, // Default to true now
+        notificationActive: false,
+        notificationText: "",
+        heroTitle: "",
+        heroSubtitle: "",
+        heroContext: "",
+        heroImage: "",
+        platform: "Zoom",
+        mentorName: "",
+        mentorRole: "",
+        mentorImage: "",
+        mentorBio: "",
+        roadmapItems: [] as RoadmapItem[],
+    });
+    const [editingWebinarId, setEditingWebinarId] = useState<number | null>(null);
+
     // Data Fetching Functions
     const fetchSlides = useCallback(async () => {
         try {
@@ -256,6 +334,16 @@ export default function AdminPage() {
         } catch (err) { console.error(err); }
     }, []);
 
+    const fetchWebinars = useCallback(async () => {
+        try {
+            const res = await apiFetch("/api/admin/webinars", { credentials: "include" });
+            if (res.ok) {
+                const data = await res.json();
+                setWebinars(data.webinars || []);
+            }
+        } catch (err) { console.error(err); }
+    }, []);
+
     // Initial Auth Check and Data Load
     useEffect(() => {
         const checkAuth = async () => {
@@ -273,7 +361,9 @@ export default function AdminPage() {
                 fetchAbout(),
                 fetchTeam(),
                 fetchBlog(),
+                fetchBlog(),
                 fetchCareers(),
+                fetchWebinars(),
             ]);
         };
         checkAuth();
@@ -359,6 +449,47 @@ export default function AdminPage() {
             }
         }
     }, [editingJobId, jobs]);
+
+    useEffect(() => {
+        if (editingWebinarId && webinars.length > 0) {
+            const w = webinars.find((x) => x.id === editingWebinarId);
+            if (w) {
+                setWebinarForm({
+                    title: w.title,
+                    description: w.description,
+                    date: w.date,
+                    time: w.time,
+                    duration: w.duration,
+                    speaker: w.speaker,
+                    level: w.level,
+                    category: w.category,
+                    type: w.type,
+                    imageUrl: w.imageUrl,
+                    maxCapacity: w.maxCapacity,
+                    isLandingPage: w.isLandingPage,
+                    notificationActive: w.notificationActive || false,
+                    notificationText: w.notificationText || "",
+                    heroTitle: w.heroTitle || "",
+                    heroSubtitle: w.heroSubtitle || "",
+                    heroContext: w.heroContext || "",
+                    heroImage: w.heroImage || "",
+                    platform: w.platform || "Zoom",
+                    mentorName: w.mentorName || "",
+                    mentorRole: w.mentorRole || "",
+                    mentorImage: w.mentorImage || "",
+                    mentorBio: w.mentorBio || "",
+                    roadmapItems: w.roadmapItems ? w.roadmapItems.map((r: any) => ({
+                        day: r.day,
+                        title: r.title,
+                        subtitle: r.subtitle,
+                        highlight: r.highlight,
+                        description: parseJsonArray(r.description),
+                        imageUrl: r.imageUrl
+                    })) : [],
+                });
+            }
+        }
+    }, [editingWebinarId, webinars]);
 
 
     // Handlers - Slides
@@ -563,6 +694,62 @@ export default function AdminPage() {
         fetchCareers();
     };
 
+    // Handlers - Webinars
+    const handleWebinarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setWebinarError(null);
+        const endpoint = editingWebinarId ? `/api/admin/webinars/${editingWebinarId}` : "/api/admin/webinars";
+        const method = editingWebinarId ? "PUT" : "POST";
+        try {
+            const res = await apiFetch(endpoint, {
+                method,
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(webinarForm),
+            });
+            if (res.ok) {
+                setWebinarForm({
+                    title: "", description: "", date: "", time: "", duration: "", speaker: "",
+                    level: "Beginner", category: "AI Automation", type: "Upcoming", imageUrl: "",
+
+                    maxCapacity: 100, isLandingPage: true,
+                    notificationActive: false, notificationText: "",
+                    heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "",
+                    platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "",
+                    roadmapItems: []
+                });
+                setEditingWebinarId(null);
+                fetchWebinars();
+            } else {
+                const data = await res.json();
+                setWebinarError(data?.error || "Save failed");
+            }
+        } catch { setWebinarError("Save error"); }
+    };
+
+    const handleWebinarImageUpload = async (file: File) => {
+        setWebinarUploading(true);
+        setWebinarError(null);
+        const formData = new FormData();
+        formData.append("file", file);
+        try {
+            const res = await apiFetch("/api/uploads", { method: "POST", body: formData });
+            if (res.ok) {
+                const json = await res.json();
+                if (json.url) setWebinarForm(f => ({ ...f, imageUrl: json.url }));
+            } else {
+                setWebinarError("Upload failed");
+            }
+        } catch { setWebinarError("Upload error"); }
+        setWebinarUploading(false);
+    };
+
+    const handleWebinarDelete = async (id: number) => {
+        if (!confirm("Delete webinar?")) return;
+        await apiFetch(`/api/admin/webinars/${id}`, { method: "DELETE", credentials: "include" });
+        fetchWebinars();
+    };
+
 
     const sortedSlides = useMemo(
         () => [...slides].sort((a, b) => a.displayOrder - b.displayOrder),
@@ -598,8 +785,8 @@ export default function AdminPage() {
                             key={item.id}
                             onClick={() => setActiveSection(item.id)}
                             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition ${activeSection === item.id
-                                    ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25"
-                                    : "text-slate-400 hover:bg-slate-800 hover:text-white"
+                                ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25"
+                                : "text-slate-400 hover:bg-slate-800 hover:text-white"
                                 }`}
                         >
                             {item.icon}
@@ -979,6 +1166,268 @@ export default function AdminPage() {
                                     </div>
                                 ))}
                                 {!jobs.length && <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center text-gray-500">No job postings yet. Create one above.</div>}
+                            </div>
+                        </div>
+                    )}
+
+                    {activeSection === "webinars" && (
+                        <div className="space-y-8">
+                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                                <h3 className="text-lg font-semibold text-gray-900 mb-6">{editingWebinarId ? "Edit Webinar" : "Create Webinar"}</h3>
+                                <form onSubmit={handleWebinarSubmit} className="space-y-4">
+                                    <div className="space-y-8">
+                                        {/* Basic Details */}
+                                        <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                            <h4 className="font-semibold text-gray-900 mb-4">Basic Details</h4>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                                                    <input value={webinarForm.title} onChange={(e) => setWebinarForm((f) => ({ ...f, title: e.target.value }))} placeholder="Webinar Title" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" required />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Speaker</label>
+                                                    <input value={webinarForm.speaker} onChange={(e) => setWebinarForm((f) => ({ ...f, speaker: e.target.value }))} placeholder="Speaker Name" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" required />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                                                    <input value={webinarForm.date} onChange={(e) => setWebinarForm((f) => ({ ...f, date: e.target.value }))} placeholder="Dec 25, 2025" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" required />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                                                    <input value={webinarForm.time} onChange={(e) => setWebinarForm((f) => ({ ...f, time: e.target.value }))} placeholder="3:30 PM IST" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" required />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Duration</label>
+                                                    <input value={webinarForm.duration} onChange={(e) => setWebinarForm((f) => ({ ...f, duration: e.target.value }))} placeholder="60 Minutes" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" required />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Level</label>
+                                                    <select value={webinarForm.level} onChange={(e) => setWebinarForm((f) => ({ ...f, level: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition bg-white">
+                                                        <option>Beginner</option>
+                                                        <option>Intermediate</option>
+                                                        <option>Advanced</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                                                    <select value={webinarForm.category} onChange={(e) => setWebinarForm((f) => ({ ...f, category: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition bg-white">
+                                                        <option>AI Automation</option>
+                                                        <option>AI Agents</option>
+                                                        <option>Marketing AI</option>
+                                                        <option>Business AI</option>
+                                                        <option>Workshops</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
+                                                    <select value={webinarForm.type} onChange={(e) => setWebinarForm((f) => ({ ...f, type: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition bg-white">
+                                                        <option>Upcoming</option>
+                                                        <option>Live</option>
+                                                        <option>Recorded</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Max Capacity</label>
+                                                    <input type="number" value={webinarForm.maxCapacity} onChange={(e) => setWebinarForm((f) => ({ ...f, maxCapacity: Number(e.target.value) }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Platform</label>
+                                                    <input value={webinarForm.platform} onChange={(e) => setWebinarForm((f) => ({ ...f, platform: e.target.value }))} placeholder="Zoom / YouTube" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Notification Bar */}
+                                        <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                            <h4 className="font-semibold text-gray-900 mb-4">Notification Bar</h4>
+                                            <div className="grid grid-cols-1 gap-4">
+                                                <div className="flex items-center gap-2">
+                                                    <input type="checkbox" checked={webinarForm.notificationActive} onChange={(e) => setWebinarForm((f) => ({ ...f, notificationActive: e.target.checked }))} className="w-4 h-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500" />
+                                                    <span className="text-sm text-gray-700">Show Notification Bar</span>
+                                                </div>
+                                                {webinarForm.notificationActive && (
+                                                    <input value={webinarForm.notificationText} onChange={(e) => setWebinarForm((f) => ({ ...f, notificationText: e.target.value }))} placeholder="⚡ 3 Days One Man Business Automation Event!" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Hero Section */}
+                                        <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                            <h4 className="font-semibold text-gray-900 mb-4">Hero Section</h4>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div className="md:col-span-2">
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Hero Main Title</label>
+                                                    <input value={webinarForm.heroTitle} onChange={(e) => setWebinarForm((f) => ({ ...f, heroTitle: e.target.value }))} placeholder="Automate Business Save Lakhs" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div className="md:col-span-2">
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Hero Subtitle</label>
+                                                    <input value={webinarForm.heroSubtitle} onChange={(e) => setWebinarForm((f) => ({ ...f, heroSubtitle: e.target.value }))} placeholder="Get 12+ AI AGENTS Work For You" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div className="md:col-span-2">
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Context (Top text)</label>
+                                                    <input value={webinarForm.heroContext} onChange={(e) => setWebinarForm((f) => ({ ...f, heroContext: e.target.value }))} placeholder="(Telugu States Biggest Business AI Agents Event)" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Hero Image URL</label>
+                                                    <input value={webinarForm.heroImage} onChange={(e) => setWebinarForm((f) => ({ ...f, heroImage: e.target.value }))} placeholder="https://..." className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div className="flex items-center gap-4 pt-6">
+                                                    <label className="text-sm font-medium text-gray-700">Or upload:</label>
+                                                    <input type="file" accept="image/*" onChange={async (e) => {
+                                                        const f = e.target.files?.[0];
+                                                        if (f) {
+                                                            const fd = new FormData(); fd.append("file", f);
+                                                            try {
+                                                                const res = await apiFetch("/api/uploads", { method: "POST", body: fd });
+                                                                if (res.ok) {
+                                                                    const j = await res.json();
+                                                                    setWebinarForm(prev => ({ ...prev, heroImage: j.url }));
+                                                                }
+                                                            } catch { }
+                                                        }
+                                                    }} className="text-sm" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Roadmap */}
+                                        <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                            <h4 className="font-semibold text-gray-900 mb-4">Event Roadmap (3 Days)</h4>
+                                            <div className="space-y-4">
+                                                {[1, 2, 3].map(day => {
+                                                    const existing = webinarForm.roadmapItems.find(r => r.day === day) || { day, title: "", subtitle: "", highlight: "", description: [], imageUrl: "" };
+                                                    const updateItem = (updates: any) => {
+                                                        setWebinarForm(prev => ({
+                                                            ...prev,
+                                                            roadmapItems: [
+                                                                ...prev.roadmapItems.filter(r => r.day !== day),
+                                                                { ...existing, ...updates }
+                                                            ]
+                                                        }));
+                                                    };
+
+                                                    return (
+                                                        <div key={day} className="p-4 border border-gray-200 rounded-lg bg-white">
+                                                            <h5 className="font-bold text-gray-700 mb-2">Day {day}</h5>
+                                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                                                <input value={existing.title} onChange={e => updateItem({ title: e.target.value })} placeholder="Title (e.g., Business Growth)" className="w-full p-2 border rounded" />
+                                                                <input value={existing.subtitle} onChange={e => updateItem({ subtitle: e.target.value })} placeholder="Subtitle (e.g., Setup & Management)" className="w-full p-2 border rounded" />
+                                                                <input value={existing.highlight} onChange={e => updateItem({ highlight: e.target.value })} placeholder="Highlight (e.g., Install Top 1% Business Model)" className="w-full p-2 border rounded" />
+                                                                <div className="md:col-span-2 space-y-2">
+                                                                    <div className="flex gap-2">
+                                                                        <input value={existing.imageUrl} onChange={e => updateItem({ imageUrl: e.target.value })} placeholder="Image URL" className="flex-1 p-2 border rounded" />
+                                                                        <input type="file" accept="image/*" onChange={async (e) => {
+                                                                            const f = e.target.files?.[0];
+                                                                            if (f) {
+                                                                                const fd = new FormData(); fd.append("file", f);
+                                                                                try {
+                                                                                    const res = await apiFetch("/api/uploads", { method: "POST", body: fd });
+                                                                                    if (res.ok) {
+                                                                                        const j = await res.json();
+                                                                                        updateItem({ imageUrl: j.url });
+                                                                                    }
+                                                                                } catch { }
+                                                                            }
+                                                                        }} className="text-sm w-auto" />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="md:col-span-2">
+                                                                    <input value={existing.description.join(", ")} onChange={e => updateItem({ description: e.target.value.split(",").map(s => s.trim()) })} placeholder="Checklist items (comma separated)" className="w-full p-2 border rounded" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+
+                                        {/* Mentor */}
+                                        <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                            <h4 className="font-semibold text-gray-900 mb-4">Mentor Details</h4>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                                    <input value={webinarForm.mentorName} onChange={(e) => setWebinarForm((f) => ({ ...f, mentorName: e.target.value }))} placeholder="Digital Chandu" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                                                    <input value={webinarForm.mentorRole} onChange={(e) => setWebinarForm((f) => ({ ...f, mentorRole: e.target.value }))} placeholder="Founder & Host" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div className="md:col-span-2">
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+                                                    <textarea value={webinarForm.mentorBio} onChange={(e) => setWebinarForm((f) => ({ ...f, mentorBio: e.target.value }))} rows={3} placeholder="Bio..." className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition resize-none" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Mentor Image URL</label>
+                                                    <input value={webinarForm.mentorImage} onChange={(e) => setWebinarForm((f) => ({ ...f, mentorImage: e.target.value }))} placeholder="https://..." className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div className="flex items-center gap-4 pt-6">
+                                                    <label className="text-sm font-medium text-gray-700">Or upload:</label>
+                                                    <input type="file" accept="image/*" onChange={async (e) => {
+                                                        const f = e.target.files?.[0];
+                                                        if (f) {
+                                                            const fd = new FormData(); fd.append("file", f);
+                                                            try {
+                                                                const res = await apiFetch("/api/uploads", { method: "POST", body: fd });
+                                                                if (res.ok) {
+                                                                    const j = await res.json();
+                                                                    setWebinarForm(prev => ({ ...prev, mentorImage: j.url }));
+                                                                }
+                                                            } catch { }
+                                                        }
+                                                    }} className="text-sm" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Description (Common) */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">General Description</label>
+                                            <textarea value={webinarForm.description} onChange={(e) => setWebinarForm((f) => ({ ...f, description: e.target.value }))} rows={3} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition resize-none" required />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">List Card Image URL</label>
+                                            <input value={webinarForm.imageUrl} onChange={(e) => setWebinarForm((f) => ({ ...f, imageUrl: e.target.value }))} placeholder="https://..." className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" required />
+                                        </div>
+                                        <div className="flex items-center gap-4">
+                                            <label className="text-sm font-medium text-gray-700">Or upload:</label>
+                                            <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleWebinarImageUpload(f); }} className="text-sm" />
+                                            {webinarUploading && <span className="text-sm text-orange-600">Uploading...</span>}
+                                        </div>
+
+                                        {webinarError && <p className="text-sm text-red-600">{webinarError}</p>}
+
+                                        <div className="flex gap-3 pt-2">
+                                            <button type="submit" className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold hover:-translate-y-0.5 transition shadow-lg shadow-orange-500/25">{editingWebinarId ? "Save Changes" : "Create Webinar"}</button>
+                                            {editingWebinarId && <button type="button" onClick={() => { setEditingWebinarId(null); setWebinarForm({ title: "", description: "", date: "", time: "", duration: "", speaker: "", level: "Beginner", category: "AI Automation", type: "Upcoming", imageUrl: "", maxCapacity: 100, isLandingPage: false, notificationActive: false, notificationText: "", heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "", platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "", roadmapItems: [] }); }} className="px-6 py-3 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition">Cancel</button>}
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div className="grid gap-4">
+                                {webinars.map((webinar) => (
+                                    <div key={webinar.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row md:items-center gap-6">
+                                        <div
+                                            className="w-32 h-20 rounded-xl bg-cover bg-center flex-shrink-0 border border-gray-200"
+                                            style={{ backgroundImage: `url(${normalizeImageUrl(webinar.imageUrl)})` }}
+                                        />
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <span className={`px-2 py-1 rounded-full text-xs font-medium ${webinar.type === "Live" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"}`}>{webinar.type}</span>
+                                                <span className="text-xs text-gray-500">{webinar.date} at {webinar.time}</span>
+                                            </div>
+                                            <h4 className="font-semibold text-gray-900">{webinar.title}</h4>
+                                            <p className="text-sm text-gray-600 line-clamp-1 mt-1">{webinar.description}</p>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <button onClick={() => setEditingWebinarId(webinar.id)} className="px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:border-orange-300 hover:text-orange-600 transition text-sm">Edit</button>
+                                            <button onClick={() => handleWebinarDelete(webinar.id)} className="px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:border-red-200 hover:text-red-600 transition text-sm">Delete</button>
+                                        </div>
+                                    </div>
+                                ))}
+                                {!webinars.length && <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center text-gray-500">No webinars yet. Create one above.</div>}
                             </div>
                         </div>
                     )}

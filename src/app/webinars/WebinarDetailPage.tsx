@@ -3,1505 +3,1021 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { apiFetch } from "@/lib/api";
+import { normalizeImageUrl } from "@/lib/images";
 
-type Webinar = {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  duration: string;
-  speaker: string;
-  level: "Beginner" | "Intermediate" | "Advanced";
-  category: "AI Automation" | "AI Agents" | "Marketing AI" | "Business AI" | "Workshops";
-  type: "Upcoming" | "Live" | "Recorded";
-  image: string;
-  registeredCount?: number;
-  maxCapacity?: number;
-  isLandingPage?: boolean;
+type RoadmapItem = {
+    id: number;
+    day: number;
+    title: string;
+    subtitle: string;
+    highlight: string;
+    description: string[]; // Parsed from JSON
+    imageUrl: string;
 };
 
-const allWebinars: Webinar[] = [
-  {
-    id: 1,
-    title: "Automate Your Business with AI Agents",
-    description: "Learn how AI agents can automate workflows, customer support, and decision-making.",
-    date: "Dec 28, 2025",
-    time: "2:00 PM IST",
-    duration: "90 Minutes",
-    speaker: "Rajesh Kumar",
-    level: "Beginner",
-    category: "AI Agents",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 234,
-    maxCapacity: 500,
-  },
-  {
-    id: 2,
-    title: "3 Days Business Automation Event",
-    description: "Automate Business, Save Lakhs & Get 12+ AI Agents Work For You 24/7 365 Days FREE",
-    date: "Dec 23/24/25",
-    time: "10:00 AM",
-    duration: "3 Days",
-    speaker: "NanoFlows Team",
-    level: "Beginner",
-    category: "Business AI",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 65,
-    maxCapacity: 99,
-    isLandingPage: true,
-  },
-  {
-    id: 3,
-    title: "Building Intelligent Search Systems",
-    description: "Enterprise AI search solutions for better data discovery and insights.",
-    date: "Dec 20, 2025",
-    time: "1:00 PM IST",
-    duration: "75 Minutes",
-    speaker: "Amit Patel",
-    level: "Advanced",
-    category: "AI Automation",
-    type: "Recorded",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-  },
-  {
-    id: 4,
-    title: "AI for Business Growth",
-    description: "Practical strategies to scale your business using AI-driven automation.",
-    date: "Dec 30, 2025",
-    time: "4:00 PM IST",
-    duration: "90 Minutes",
-    speaker: "Sarah Johnson",
-    level: "Beginner",
-    category: "Business AI",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 156,
-    maxCapacity: 500,
-  },
-  {
-    id: 5,
-    title: "Workshop: Custom LLM Development",
-    description: "Hands-on workshop on building custom language models for your use cases.",
-    date: "Dec 15, 2025",
-    time: "10:00 AM IST",
-    duration: "120 Minutes",
-    speaker: "Dr. Neha Gupta",
-    level: "Advanced",
-    category: "Workshops",
-    type: "Recorded",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-  },
-  {
-    id: 6,
-    title: "AI Agents in Customer Support",
-    description: "Deploy AI agents to handle customer inquiries and support tickets automatically.",
-    date: "Jan 5, 2026",
-    time: "2:30 PM IST",
-    duration: "60 Minutes",
-    speaker: "Marcus Chen",
-    level: "Intermediate",
-    category: "AI Agents",
-    type: "Upcoming",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-    registeredCount: 89,
-    maxCapacity: 500,
-  },
-];
+type Webinar = {
+    id: number;
+    title: string;
+    description: string;
+    date: string;
+    time: string;
+    duration: string;
+    speaker: string;
+    level: string;
+    category: string;
+    type: string;
+    imageUrl: string;
+    registeredCount: number;
+    maxCapacity: number;
+    isLandingPage: boolean;
+    notificationActive: boolean;
+    notificationText: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    heroContext: string;
+    heroImage: string;
+    platform: string;
+    mentorName: string;
+    mentorRole: string;
+    mentorImage: string;
+    mentorBio: string;
+    roadmapItems: RoadmapItem[];
+};
+
+
 
 // Countdown timer component
 function CountdownTimer() {
-  const [time, setTime] = useState({ days: 0, hours: 9, minutes: 15, seconds: 0 });
+    const [time, setTime] = useState({ days: 0, hours: 9, minutes: 15, seconds: 0 });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(prev => {
-        let { days, hours, minutes, seconds } = prev;
-        seconds--;
-        if (seconds < 0) {
-          seconds = 59;
-          minutes--;
-          if (minutes < 0) {
-            minutes = 59;
-            hours--;
-            if (hours < 0) {
-              hours = 23;
-              days--;
-            }
-          }
-        }
-        return { days, hours, minutes, seconds };
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(prev => {
+                let { days, hours, minutes, seconds } = prev;
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) {
+                            hours = 23;
+                            days--;
+                        }
+                    }
+                }
+                return { days, hours, minutes, seconds };
+            });
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
 
-  const pad = (num: number) => String(num).padStart(2, '0');
+    const pad = (num: number) => String(num).padStart(2, '0');
 
-  return (
-    <div className="flex justify-center gap-4 text-center">
-      {[
-        { value: time.days, label: 'Days' },
-        { value: time.hours, label: 'Hours' },
-        { value: time.minutes, label: 'Minutes' },
-        { value: time.seconds, label: 'Seconds' },
-      ].map((item, idx) => (
-        <motion.div key={idx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-white rounded-lg border-2 border-orange-300">
-          <div className="text-2xl font-bold text-orange-600">{pad(item.value)}</div>
-          <div className="text-xs text-gray-600">{item.label}</div>
-        </motion.div>
-      ))}
-    </div>
-  );
+    return (
+        <div className="flex justify-center gap-4 text-center">
+            {[
+                { value: time.days, label: 'Days' },
+                { value: time.hours, label: 'Hours' },
+                { value: time.minutes, label: 'Minutes' },
+                { value: time.seconds, label: 'Seconds' },
+            ].map((item, idx) => (
+                <motion.div key={idx} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 bg-white rounded-lg border-2 border-orange-300">
+                    <div className="text-2xl font-bold text-orange-600">{pad(item.value)}</div>
+                    <div className="text-xs text-gray-600">{item.label}</div>
+                </motion.div>
+            ))}
+        </div>
+    );
 }
 
 export default function WebinarDetailPage() {
-  const [showBanner, setShowBanner] = useState(true);
-  const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', business: '' });
-  const params = useParams();
-  const webinarId = parseInt(params.id as string);
-  const webinar = allWebinars.find((w) => w.id === webinarId);
+    const [showBanner, setShowBanner] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '', business: '' });
+    const params = useParams();
+    const webinarId = parseInt(params.id as string);
 
-  if (!webinar) {
-    return (
-      <>
-        <Navbar />
-        <main className="min-h-screen bg-white flex items-center justify-center">
-          <div className="text-center py-20">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Webinar Not Found</h1>
-            <p className="text-gray-600 mb-6">Sorry, we couldn't find the webinar you're looking for.</p>
-            <Link to="/webinars">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition"
-              >
-                Back to All Webinars
-              </motion.button>
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
-  }
+    const [webinar, setWebinar] = useState<Webinar | null>(null);
+    const [loading, setLoading] = useState(true);
 
-  // Special landing page for webinar ID 2
-  if (webinar.isLandingPage) {
-    return (
-      <>
-        <Navbar />
-        <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
-          {/* Red Banner with Animation */}
-          {showBanner && (
-            <motion.div 
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -100, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-2 px-6 flex items-center justify-between md:justify-center font-bold text-sm md:text-base shadow-lg sticky top-0 z-10 whitespace-nowrap"
-            >
-              <span className="flex-1 md:flex-none text-center">⚡ 3 Days One Man Business Automation Event!</span>
-              <motion.button
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setShowBanner(false)}
-                className="flex-shrink-0 p-1 hover:bg-red-500 rounded-full transition ml-4 md:absolute md:right-6"
-                aria-label="Close banner"
-              >
-                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </motion.button>
-            </motion.div>
-          )}
+    useEffect(() => {
+        const fetchDetails = async () => {
+            try {
+                const res = await apiFetch(`/api/webinars/${webinarId}`); // Use public ID endpoint
+                if (res.ok) {
+                    const data = await res.json();
+                    const webinarData = data.webinar;
 
-          {/* Hero Section */}
-          <section className="px-6 py-20 text-gray-900 relative" style={{
-            backgroundImage: "url('/attached_assets/generated_images/expert_teaching_ai_webinar.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}>
-            {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/70"></div>
-            <div className="mx-auto max-w-[1200px] relative z-10">
-              {/* Breadcrumb Navigation */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="flex items-center justify-start gap-2 mb-8 text-white text-sm"
-              >
-                <Link to="/webinars" className="hover:text-orange-300 transition">
-                  Webinars
-                </Link>
-                <span>/</span>
-                <span className="text-orange-300 font-semibold">{webinar.title}</span>
-              </motion.div>
+                    setWebinar({
+                        ...webinarData,
+                        roadmapItems: (webinarData.roadmapItems || [])
+                            .filter((item: any, index: number, self: any[]) =>
+                                index === self.findIndex((t) => t.day === item.day)
+                            )
+                            .map((item: any) => ({
+                                ...item,
+                                description: Array.isArray(item.description) ? item.description : (typeof item.description === 'string' ? JSON.parse(item.description) : [])
+                            }))
+                            .sort((a: any, b: any) => a.day - b.day)
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchDetails();
+    }, [webinarId]);
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-center mb-12"
-              >
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-white mb-4 text-sm font-semibold"
-                >
-                  (Telugu States Biggest Business AI Agents Event On <span className="text-red-600 font-bold">Dec 23/24/25th</span>)
-                </motion.p>
-                
-                <motion.h2 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-5xl md:text-6xl font-black mb-6 leading-tight"
-                >
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Automate Business</span>
-                  <br />
-                  <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Save Lakhs</span>
-                </motion.h2>
-                
-                <motion.h3 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-3xl md:text-5xl font-black mb-8 leading-tight"
-                >
-                  <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
-                  <br />
-                  <span className="text-white">Work For You 24/7 365 Days </span>
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE</span>
-                </motion.h3>
+    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
-                <div className="flex flex-col items-center gap-4">
-                  <motion.button
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setShowModal(true)}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition duration-300"
-                  >
-                    📋 Apply To Get Business Automation Event
-                  </motion.button>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Upcoming Session Section */}
-          <section className="px-6 py-20 bg-white text-gray-900">
-            <div className="mx-auto max-w-[1200px]">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="p-4 md:p-6 lg:p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
-              >
-                <div className="text-center mb-6 md:mb-8">
-                  <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 mt-3 md:mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
-                {/* Left - Event Content & CTA */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                  className="space-y-4 md:space-y-6 order-2 lg:order-2"
-                >
-                  <div className="mb-4 md:mb-6 text-center md:text-left">
-                    <div className="flex gap-2 flex-wrap mb-3 md:mb-4 justify-center md:justify-start">
-                      <span className="px-3 py-1 md:px-4 md:py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">AI Agents</span>
-                      <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Beginner</span>
+    if (!webinar) {
+        return (
+            <>
+                <Navbar />
+                <main className="min-h-screen bg-white flex items-center justify-center">
+                    <div className="text-center py-20">
+                        <h1 className="text-3xl font-bold text-gray-900 mb-4">Webinar Not Found</h1>
+                        <p className="text-gray-600 mb-6">Sorry, we couldn't find the webinar you're looking for.</p>
+                        <Link to="/webinars">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition"
+                            >
+                                Back to All Webinars
+                            </motion.button>
+                        </Link>
                     </div>
-                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
-                  </div>
+                </main>
+                <Footer />
+            </>
+        );
+    }
 
-                  {/* Mobile Image - appears here on mobile */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex flex-col items-center gap-6 lg:hidden order-2 w-full"
-                  >
-                    <motion.div 
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
-                    >
-                      <img 
-                        src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg" 
-                        alt="AI Agents Automation" 
-                        className="w-full h-auto object-cover rounded-xl"
-                      />
-                    </motion.div>
-                  </motion.div>
-
-                  <div className="grid grid-cols-2 gap-2 md:gap-4">
-                    {[
-                      { icon: '📅', label: 'Date', value: 'Dec 23/24/25th', bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
-                      { icon: '🕐', label: 'Time', value: '10AM', bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
-                      { icon: '📡', label: 'Event', value: 'Zoom', bgColor: 'bg-purple-50', borderColor: 'border-purple-200' },
-                      { icon: '🎤', label: 'Host', value: 'Digital Chandu', bgColor: 'bg-green-50', borderColor: 'border-green-200' }
-                    ].map((item, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 + idx * 0.08 }}
-                        whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)" }}
-                        className={`p-4 ${item.bgColor} border-2 ${item.borderColor} rounded-xl text-center shadow-md hover:shadow-lg transition`}
-                      >
-                        <p className="text-3xl mb-2">{item.icon}</p>
-                        <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
-                        <p className="text-lg font-bold text-gray-900 mt-1">{item.value}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    onClick={() => setShowModal(true)}
-                    className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-sm md:text-lg shadow-lg transition duration-300"
-                  >
-                    🎯 Apply To Get Invite
-                  </motion.button>
-
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                  >
-                    <p className="text-center text-sm text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
-                    <p className="text-center text-base font-bold text-orange-600 mt-2">✨ No Boring Theory, 100% Live Implementation</p>
-                  </motion.div>
-                </motion.div>
-
-                {/* Desktop Image - appears on left on desktop only */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="hidden lg:flex flex-col items-center gap-6 order-1 lg:order-1"
-                >
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
-                  >
-                    <img 
-                      src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg" 
-                      alt="AI Agents Automation" 
-                      className="w-full h-auto object-cover rounded-xl"
-                    />
-                  </motion.div>
-                </motion.div>
-              </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* 3 Days Roadmap */}
-          <section className="px-6 py-10 bg-gradient-to-b from-white via-gray-50 to-white">
-            <div className="mx-auto max-w-[1200px]">
-              <motion.h2 
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 mb-16 text-center"
-              >
-                3 Days Live <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Business Automation</span> Event Roadmap
-              </motion.h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Day 1 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(251, 146, 60, 0.2)" }}
-                  className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
-                >
-                  <div className="bg-gradient-to-r from-orange-600 to-orange-700 text-white text-center py-4">
-                    <div className="text-3xl font-black mb-2">❶</div>
-                    <h3 className="text-sm font-black">DAY 1: Business Growth</h3>
-                    <p className="text-xs font-bold text-orange-100">Setup & Management</p>
-                  </div>
-                  <img src="/attached_assets/generated_images/business_setup_and_management_interface.png" alt="Business Setup Interface" className="w-full h-48 object-cover" />
-                  <div className="p-5 space-y-3 bg-gradient-to-b from-orange-50 to-white">
-                    <p className="text-xs text-orange-700 font-bold text-center mb-4 bg-orange-100 rounded-lg py-2">📦 Install Top 1% Business Model</p>
-                    {[
-                      '✅ Website Builder',
-                      '✅ Form Builder',
-                      '✅ Funnel Builder',
-                      '✅ Chatbot – 10 Min',
-                      '✅ Shop Builder',
-                      '✅ URL Shortener',
-                      '✅ Facebook Marketing',
-                      '✅ Instagram Marketing',
-                      '✅ WhatsApp Ads',
-                      '✅ CRM Setup',
-                      '✅ Bulk Import',
-                    ].map((item, idx) => (
-                      <motion.p
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.04 }}
-                        className="text-xs text-gray-700 font-medium"
-                      >
-                        {item}
-                      </motion.p>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Day 2 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(37, 99, 235, 0.2)" }}
-                  className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
-                >
-                  <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center py-4">
-                    <div className="text-3xl font-black mb-2">❷</div>
-                    <h3 className="text-sm font-black">DAY 2: Hands-on</h3>
-                    <p className="text-xs font-bold text-blue-100">Business Automation</p>
-                  </div>
-                  <img src="/attached_assets/generated_images/business_automation_workflow_systems.png" alt="Automation Workflows" className="w-full h-48 object-cover" />
-                  <div className="p-5 space-y-3 bg-gradient-to-b from-blue-50 to-white">
-                    <p className="text-xs text-blue-700 font-bold text-center mb-4 bg-blue-100 rounded-lg py-2">🔧 Replace 8 Hrs Employee With System</p>
-                    {[
-                      '✅ Follow-up Automation',
-                      '✅ Contact Segmentation',
-                      '✅ Meta Leads Integration',
-                      '✅ Customer Management',
-                      '✅ Calendar Booking',
-                      '✅ LMS Setup',
-                      '✅ Email Automation',
-                      '✅ WhatsApp 24/7',
-                      '✅ Business Workflows',
-                      '✅ SMS Marketing',
-                      '✅ Lead Scoring',
-                    ].map((item, idx) => (
-                      <motion.p
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + idx * 0.04 }}
-                        className="text-xs text-gray-700 font-medium"
-                      >
-                        {item}
-                      </motion.p>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Day 3 */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.2)" }}
-                  className="bg-gradient-to-br from-red-500 to-red-600 border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition"
-                >
-                  <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-center py-4">
-                    <div className="text-3xl font-black mb-2">❸</div>
-                    <h3 className="text-sm font-black">DAY 3: For Clients</h3>
-                    <p className="text-xs font-bold text-red-100">Live Business Automation</p>
-                  </div>
-                  <img src="/attached_assets/generated_images/live_implementation_and_client_success.png" alt="Client Success" className="w-full h-48 object-cover" />
-                  <div className="p-5 space-y-3 bg-gradient-to-b from-red-50 to-white">
-                    <p className="text-xs text-red-700 font-bold text-center mb-4 bg-red-100 rounded-lg py-2">🚀 Automate 80% Employee Work</p>
-                    {[
-                      '✅ Complete Setup',
-                      '✅ Lead Capture',
-                      '✅ WhatsApp Integration',
-                      '✅ CRM Configuration',
-                      '✅ Auto Follow-up',
-                      '✅ Pipeline Tracking',
-                      '✅ Real Estate Setup',
-                      '✅ Salon Automation',
-                      '✅ Trainer Tools',
-                      '✅ Travel Agent Setup',
-                      '✅ Live Demo Work',
-                    ].map((item, idx) => (
-                      <motion.p
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 + idx * 0.04 }}
-                        className="text-xs text-gray-700 font-medium"
-                      >
-                        {item}
-                      </motion.p>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-
-          {/* Alert Section */}
-          <section className="px-6 py-16 bg-gradient-to-b from-white via-orange-50 to-white">
-            <div className="mx-auto max-w-[1200px]">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center space-y-6 p-8 md:p-12 bg-gradient-to-r from-orange-50 to-orange-100 border-2 border-orange-300 rounded-2xl shadow-lg"
-              >
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-lg md:text-xl font-bold text-orange-700"
-                >
-                  ALERT: Might you've strong product or service, but not have systems ( We Cannot Work 24/7 But Systems Work For Us, Top 1% Business People Use This ) Now You Can. ( I See You Live ).
-                </motion.p>
-
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(220, 38, 38, 0.4)" }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setShowModal(true)}
-                  className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg shadow-lg transition duration-300"
-                >
-                  Apply To Get Invite
-                </motion.button>
-
-                <motion.h3
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-3xl md:text-4xl font-black text-gray-900"
-                >
-                  3 Days is all you Need to Your <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">100% Success!</span>
-                </motion.h3>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Testimonials */}
-          <section className="px-6 py-8 bg-gradient-to-b from-white to-gray-50">
-            <div className="mx-auto max-w-[1200px]">
-              <p className="text-center text-gray-600 mb-12 text-xs font-bold uppercase tracking-[0.2em]">✨ Testimonials ✨</p>
-
-              <motion.h3 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center"
-              >
-                What others are saying
-              </motion.h3>
-
-              <div className="overflow-hidden">
-                <motion.div 
-                  className="flex gap-8 w-max"
-                  animate={{ x: ["0%", "-100%"] }}
-                  transition={{ 
-                    duration: 20, 
-                    repeat: Infinity, 
-                    ease: "linear"
-                  }}
-                >
-                  {[
-                    {
-                      emoji: '👨‍💼',
-                      title: '"Saved Lakhs Every Month"',
-                      text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
-                      author: '- Raj Kumar',
-                      rating: 5
-                    },
-                    {
-                      emoji: '👩‍💼',
-                      title: '"My life changed forever"',
-                      text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
-                      author: '- Priya',
-                      rating: 5
-                    },
-                    {
-                      emoji: '👨‍💻',
-                      title: '"Highly recommend this"',
-                      text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
-                      author: '- Naveen',
-                      rating: 5
-                    },
-                    {
-                      emoji: '👨‍💼',
-                      title: '"Saved Lakhs Every Month"',
-                      text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
-                      author: '- Raj Kumar',
-                      rating: 5
-                    },
-                    {
-                      emoji: '👩‍💼',
-                      title: '"My life changed forever"',
-                      text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
-                      author: '- Priya',
-                      rating: 5
-                    },
-                    {
-                      emoji: '👨‍💻',
-                      title: '"Highly recommend this"',
-                      text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
-                      author: '- Naveen',
-                      rating: 5
-                    },
-                  ].map((testimonial, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ y: -5, boxShadow: "0 15px 40px rgba(251, 146, 60, 0.1)" }}
-                      className="text-center p-6 bg-white border-2 border-orange-100 rounded-xl shadow-md hover:shadow-lg hover:border-orange-300 transition flex-shrink-0 w-80"
-                    >
-                      <div className="flex justify-center mb-6">
-                        <motion.div 
-                          animate={{ scale: [1, 1.05, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                          className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-3xl shadow-lg"
+    // Unified design for all webinars
+    if (webinar) {
+        return (
+            <>
+                <Navbar />
+                <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
+                    {/* Red Banner with Animation */}
+                    {showBanner && webinar.notificationActive && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -100, opacity: 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-2 px-6 flex items-center justify-between md:justify-center font-bold text-sm md:text-base shadow-lg sticky top-0 z-10 whitespace-nowrap"
                         >
-                          {testimonial.emoji}
+                            <span className="flex-1 md:flex-none text-center">{webinar.notificationText}</span>
+                            <motion.button
+                                whileHover={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setShowBanner(false)}
+                                className="flex-shrink-0 p-1 hover:bg-red-500 rounded-full transition ml-4 md:absolute md:right-6"
+                                aria-label="Close banner"
+                            >
+                                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </motion.button>
                         </motion.div>
-                      </div>
-                      <h3 className="text-sm font-bold text-gray-900 mb-3">{testimonial.title}</h3>
-                      <p className="text-xs text-gray-700 mb-4 italic leading-relaxed">{testimonial.text}</p>
-                      <div className="flex justify-center gap-1 mb-3">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <span 
-                            key={i}
-                            className="text-lg"
-                          >
-                            ⭐
-                          </span>
-                        ))}
-                      </div>
-                      <p className="text-xs font-bold text-orange-600">{testimonial.author}</p>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-            </div>
-          </section>
+                    )}
 
-          {/* Imagine You Never Have To Section */}
-          <section className="px-6 py-8 bg-gradient-to-b from-gray-50 to-white">
-            <div className="mx-auto max-w-[1200px]">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-                  Imagine You Never Have To
-                </h3>
-                
-                <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-8">
-                  WASTE TIME ON
-                </h2>
-              </div>
+                    {/* Hero Section */}
+                    <section className="px-6 py-20 text-gray-900 relative" style={{
+                        backgroundImage: `url('${normalizeImageUrl(webinar.heroImage)}')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundAttachment: 'fixed'
+                    }}>
+                        {/* Dark overlay for better text readability */}
+                        <div className="absolute inset-0 bg-black/70"></div>
+                        <div className="mx-auto max-w-[1200px] relative z-10">
+                            {/* Breadcrumb Navigation */}
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                className="flex items-center justify-start gap-2 mb-8 text-white text-sm"
+                            >
+                                <Link to="/webinars" className="hover:text-orange-300 transition">
+                                    Webinars
+                                </Link>
+                                <span>/</span>
+                                <span className="text-orange-300 font-semibold">{webinar.title}</span>
+                            </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
-              >
-                {/* Left - Problems List */}
-                <div className="space-y-4 order-2 lg:order-1">
-                  {[
-                    { text: 'Manual Workflows That Waste Hours Every Day On Repetitive Tasks', icon: '❌' },
-                    { text: 'Missed Leads & Follow-Ups Because You\'re Still Doing Everything Manually', icon: '❌' },
-                    { text: 'Juggling Too Many Tools – CRM, WhatsApp, Email, Forms, Sheets & More', icon: '❌' },
-                    { text: 'Team Miscommunication That Leads To Lost Clients & Missed Deadlines', icon: '❌' },
-                    { text: 'Hiring More Staff Just To Handle Simple Work That Automation Can Do', icon: '❌' },
-                    { text: 'We Help You Automate 80% Your Employee Work & Save Lakhs Every Month', icon: '✅', highlight: true },
-                  ].map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, x: -15 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.06 }}
-                      className={`flex gap-3 p-4 rounded-lg ${item.highlight ? 'bg-green-50 border-2 border-green-200' : 'bg-white border-2 border-orange-100 hover:border-orange-300 transition'}`}
-                    >
-                      <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                      <p className={`text-sm leading-relaxed font-medium ${item.highlight ? 'text-green-700' : 'text-gray-700'}`}>
-                        {item.text}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="text-center mb-12"
+                            >
+                                {webinar.heroContext && (
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.2 }}
+                                        className="text-white mb-4 text-sm font-semibold"
+                                    >
+                                        {webinar.heroContext}
+                                    </motion.p>
+                                )}
 
-                {/* Right - Image Visual and CTA */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="flex flex-col items-center gap-6 order-1 lg:order-2"
-                >
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
-                  >
-                    <img 
-                      src="/attached_assets/stock_images/business_workflow_au_cb921712.jpg" 
-                      alt="Business Workflow Automation" 
-                      className="w-full h-auto object-cover rounded-xl"
-                    />
-                  </motion.div>
+                                <motion.h2
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.3, duration: 0.8 }}
+                                    className="text-5xl md:text-6xl font-black mb-6 leading-tight"
+                                >
+                                    <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{webinar.heroTitle}</span>
+                                </motion.h2>
 
-                  {/* CTA Button Below Image */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="text-center w-full"
-                  >
-                    <motion.button
-                      whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setShowModal(true)}
-                      className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
-                    >
-                      🎯 Apply To Get Invite
-                    </motion.button>
+                                {webinar.heroSubtitle && (
+                                    <motion.h3
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.4, duration: 0.8 }}
+                                        className="text-3xl md:text-5xl font-black mb-8 leading-tight text-white"
+                                    >
+                                        {webinar.heroSubtitle}
+                                    </motion.h3>
+                                )}
 
-                    <p className="text-sm text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Bonuses Section */}
-          <section className="px-6 py-10 bg-gradient-to-b from-white via-gray-50 to-white">
-            <div className="mx-auto max-w-[1200px] text-center">
-              {/* Decorative Line */}
-              <motion.div 
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                transition={{ duration: 0.6 }}
-                className="border-t-4 border-orange-400 mb-8 max-w-xs mx-auto"
-              ></motion.div>
-
-              <motion.p 
-                initial={{ opacity: 0, y: -10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-gray-600 mb-2 text-sm font-bold uppercase tracking-widest"
-              >
-                🎁 For a Limited Time, Get Access To
-              </motion.p>
-
-              <motion.h2 
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="text-3xl md:text-4xl font-black mb-4"
-              >
-                <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">5 Powerful Bonuses</span> Worth <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">₹16,298/-</span>
-              </motion.h2>
-              
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="text-2xl font-bold text-gray-900 mb-12"
-              >
-                Absolutely for <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent font-black">FREE!!!</span>
-              </motion.p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                {[
-                  {
-                    num: 1,
-                    icon: '📚',
-                    title: 'Top 1% Business Secrets',
-                    desc: ['Unlock our exclusive lead generation strategies that ensure you scale quickly and efficiently.', 'Start driving 5X more leads immediately with our result-driven tactics.'],
-                    value: '₹8,999/-'
-                  },
-                  {
-                    num: 2,
-                    icon: '🎨',
-                    title: 'Landing Page Design Mockup',
-                    desc: ['Discover how we strategically design landing pages that skyrocket conversions with cutting-edge design principles.', 'Start boosting your ROI instantly with our simple 5-step landing page formula.'],
-                    value: '₹4,999/-'
-                  },
-                  {
-                    num: 3,
-                    icon: '🖥️',
-                    title: 'Design Mockup Toolkit',
-                    desc: ['Get our exclusive design mockup toolkit to quickly transform your ideas into polished visuals.', 'Start impressing clients right away with our easy-to-use, professional design system.'],
-                    value: '₹2,300/-'
-                  },
-                ].map((bonus, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.12, duration: 0.6 }}
-                    whileHover={{ y: -8, boxShadow: "0 20px 50px rgba(251, 146, 60, 0.15)" }}
-                    className="p-6 bg-gradient-to-br from-white to-orange-50 border-2 border-orange-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 transition"
-                  >
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: idx * 0.12 + 0.1 }} className="text-center mb-4">
-                      <p className="text-orange-600 font-black text-sm mb-2">🎁 BONUS#{bonus.num}</p>
-                    </motion.div>
-                    <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }} className="text-6xl mb-4 text-center">
-                      {bonus.icon}
-                    </motion.div>
-                    <h3 className="text-sm font-bold text-gray-900 mb-4 leading-tight">{bonus.title}</h3>
-                    <div className="space-y-2 mb-4">
-                      {bonus.desc.map((line, i) => (
-                        <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.12 + i * 0.1 }} className="flex gap-2">
-                          <span className="text-green-600 flex-shrink-0 font-bold">✓</span>
-                          <p className="text-xs text-gray-700 text-left leading-relaxed">{line}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-                    <div className="border-t-2 border-orange-200 pt-3">
-                      <p className="text-xs text-gray-600 mb-1">(Value = <span className="text-orange-600 font-bold">{bonus.value}</span>)</p>
-                      <p className="text-xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE!!</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Mentor Section */}
-          <section className="px-6 py-10 bg-gradient-to-b from-white to-gray-50">
-            <div className="mx-auto max-w-[1200px]">
-              <motion.h2 
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 text-center mb-12"
-              >
-                Meet Your Mentor, <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Digital Chandu</span>
-              </motion.h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                {/* Left - Profile Image */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  className="relative h-64 md:h-80 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl border-2 border-purple-500 flex items-center justify-center overflow-hidden"
-                >
-                  <div className="text-center">
-                    <div className="text-7xl mb-4">👨‍💼</div>
-                    <h3 className="text-xl font-bold text-white mb-2">Digital Chandu</h3>
-                    <p className="text-sm text-purple-200">(Founder & Host)</p>
-                    <p className="text-xl font-black text-blue-300 mt-4">One Man Business</p>
-                    <p className="text-xl font-black text-blue-300">Automation Event</p>
-                  </div>
-                </motion.div>
-
-                {/* Right - Bio and Info */}
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  className="space-y-4"
-                >
-                  <div className="text-sm text-gray-700 leading-relaxed space-y-4">
-                    <div>
-                      <p className="text-xs text-gray-700 mb-1">Digital Marketing Agency - <span className="text-orange-600 font-bold">Digital Chandu</span></p>
-                      <p className="text-xs text-gray-700"><span className="text-orange-600">I</span> Digital Chandu</p>
-                    </div>
-
-                    <p className="text-xs text-gray-700">
-                      I launched my first agency but struggled to find consistent, high-quality clients.
-                    </p>
-
-                    <p className="text-xs text-gray-700">
-                      I tried everything – ads, funnels, and courses – but my business still wasn't growing the way I needed.
-                    </p>
-
-                    <p className="text-xs text-gray-700">
-                      I realized it wasn't about working harder – it was about building a system that works for you 24/7.
-                    </p>
-
-                    <p className="text-xs text-gray-700">
-                      That's when I developed the Business Growth System – a step-by-step framework designed to:
-                    </p>
-
-                    <ul className="space-y-2 text-xs text-gray-700">
-                      <li className="flex gap-2">
-                        <span className="text-orange-600 flex-shrink-0">✓</span>
-                        <span>Attract consistent, high-quality leads</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-orange-600 flex-shrink-0">✓</span>
-                        <span>Convert prospects into loyal, high-paying clients</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-orange-600 flex-shrink-0">✓</span>
-                        <span>Automate marketing, sales, and follow-ups effortlessly</span>
-                      </li>
-                    </ul>
-
-                    <p className="text-xs text-gray-700">
-                      Now, I'm on a mission to help 100 businesses grow faster, smarter, and more profitably with our business growth system.
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-
-          {/* FAQ Section */}
-          <section className="px-6 py-10 bg-gradient-to-b from-gray-50 to-white">
-            <div className="mx-auto max-w-[1200px]">
-              <motion.h2 
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 text-center mb-12"
-              >
-                Frequently Asked Questions
-              </motion.h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  {
-                    question: 'How You Are Conducting Master Class?',
-                    answer: 'We are conducting online live sessions.'
-                  },
-                  {
-                    question: 'How Many Days Total?',
-                    answer: 'Total 3 Days'
-                  },
-                  {
-                    question: 'What If We Cannot Automate Business?',
-                    answer: 'If you can\'t replicate client tactic, we back you. we will send service.'
-                  },
-                  {
-                    question: 'What Skills I Learn in This Master Class?',
-                    answer: 'You learn leading, selling, management, automation and more...'
-                  },
-                ].map((faq, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.08, duration: 0.6 }}
-                    whileHover={{ boxShadow: "0 10px 30px rgba(251, 146, 60, 0.1)" }}
-                    className="p-5 bg-white border-2 border-orange-100 rounded-lg hover:border-orange-300 transition shadow-sm"
-                  >
-                    <h3 className="text-sm font-bold text-gray-900 mb-2">❓ {faq.question}</h3>
-                    <p className="text-xs text-gray-700 leading-relaxed">{faq.answer}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Final CTA Banner */}
-          <section className="px-6 py-6 bg-gradient-to-b from-white to-gray-50">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mx-auto max-w-[1200px]"
-            >
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl px-8 py-6 shadow-lg">
-                {/* Left - Text */}
-                <div className="flex-1 text-center md:text-left">
-                  <motion.p 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-white font-black text-lg md:text-2xl"
-                  >
-                    📅 Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
-                  </motion.p>
-                </div>
-
-                {/* Right - CTA Button */}
-                <motion.button
-                  whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setShowModal(true)}
-                  className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
-                >
-                  🎯 Get Invite
-                </motion.button>
-              </div>
-            </motion.div>
-          </section>
-
-          {/* Modal */}
-          {showModal && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-white rounded-2xl shadow-2xl max-w-md w-full relative"
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                {/* Modal Content */}
-                <div className="p-8">
-                  <h2 className="text-2xl font-black text-center text-orange-600 mb-8">
-                    Apply For 🎥 One Man Business Event
-                  </h2>
-
-                  <form className="space-y-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Enter name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="Enter email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        WhatsApp Number <span className="text-red-500">*</span>
-                      </label>
-                      <div className="flex gap-2">
-                        <div className="flex items-center px-3 border-2 border-gray-200 rounded-lg bg-white">
-                          <span className="text-sm font-semibold">🇮🇳 +91</span>
+                                <div className="flex flex-col items-center gap-4">
+                                    <motion.button
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.6 }}
+                                        whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => setShowModal(true)}
+                                        className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition duration-300"
+                                    >
+                                        📋 Apply To Get Business Automation Event
+                                    </motion.button>
+                                </div>
+                            </motion.div>
                         </div>
-                        <input
-                          type="tel"
-                          placeholder="81234 56789"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
-                        />
-                      </div>
-                    </div>
+                    </section>
 
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Business Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="enter business name"
-                        value={formData.business}
-                        onChange={(e) => setFormData({...formData, business: e.target.value})}
-                        className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
-                      />
-                    </div>
-                  </form>
+                    {/* Upcoming Session Section */}
+                    <section className="px-6 py-20 bg-white text-gray-900">
+                        <div className="mx-auto max-w-[1200px]">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="p-4 md:p-6 lg:p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
+                            >
+                                <div className="text-center mb-6 md:mb-8">
+                                    <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
+                                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black leading-tight mb-4 md:mb-6 mt-3 md:mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
+                                </div>
 
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition shadow-lg text-base mb-4"
-                  >
-                    Apply To Get Invite
-                  </motion.button>
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+                                    {/* Left - Event Content & CTA */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.2, duration: 0.8 }}
+                                        className="space-y-4 md:space-y-6 order-2 lg:order-2"
+                                    >
+                                        <div className="mb-4 md:mb-6 text-center md:text-left">
+                                            <div className="flex gap-2 flex-wrap mb-3 md:mb-4 justify-center md:justify-start">
+                                                <span className="px-3 py-1 md:px-4 md:py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">{webinar.category}</span>
+                                                <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">{webinar.level}</span>
+                                            </div>
+                                            <p className="text-gray-600 text-sm md:text-base leading-relaxed">{webinar.description}</p>
+                                        </div>
 
-                  <p className="text-center text-xs text-red-600 font-semibold">
-                    Note: Remember, After 99 People It's Rs.499/- ( Get Your Seat Fast )
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </main>
-        <Footer />
-      </>
-    );
-  }
+                                        {/* Mobile Image - appears here on mobile */}
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: 0.2 }}
+                                            className="flex flex-col items-center gap-6 lg:hidden order-2 w-full"
+                                        >
+                                            <motion.div
+                                                animate={{ y: [0, -10, 0] }}
+                                                transition={{ duration: 3, repeat: Infinity }}
+                                                className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
+                                            >
+                                                <img
+                                                    src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg"
+                                                    alt="AI Agents Automation"
+                                                    className="w-full h-auto object-cover rounded-xl"
+                                                />
+                                            </motion.div>
+                                        </motion.div>
 
-  const getTypeBadgeColor = (type: string) => {
-    switch (type) {
-      case "Live":
-        return "bg-green-100 text-green-700";
-      case "Upcoming":
-        return "bg-blue-100 text-blue-700";
-      case "Recorded":
-        return "bg-gray-100 text-gray-700";
-      default:
-        return "bg-gray-100 text-gray-700";
-    }
-  };
+                                        <div className="grid grid-cols-2 gap-2 md:gap-4">
+                                            {[
+                                                { icon: '📅', label: 'Date', value: webinar.date, bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
+                                                { icon: '🕐', label: 'Time', value: webinar.time, bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
+                                                { icon: '📡', label: 'Platform', value: webinar.platform, bgColor: 'bg-purple-50', borderColor: 'border-purple-200' },
+                                                { icon: '🎤', label: 'Host', value: webinar.mentorName, bgColor: 'bg-green-50', borderColor: 'border-green-200' }
+                                            ].map((item, idx) => (
+                                                <motion.div
+                                                    key={idx}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.3 + idx * 0.08 }}
+                                                    whileHover={{ y: -5, boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)" }}
+                                                    className={`p-4 ${item.bgColor} border-2 ${item.borderColor} rounded-xl text-center shadow-md hover:shadow-lg transition`}
+                                                >
+                                                    <p className="text-3xl mb-2">{item.icon}</p>
+                                                    <p className="text-xs text-gray-600 font-semibold uppercase tracking-wider">{item.label}</p>
+                                                    <p className="text-lg font-bold text-gray-900 mt-1">{item.value}</p>
+                                                </motion.div>
+                                            ))}
+                                        </div>
 
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case "Live":
-        return "🟢";
-      case "Upcoming":
-        return "🔵";
-      case "Recorded":
-        return "⚪";
-      default:
-        return "⚪";
-    }
-  };
+                                        <motion.button
+                                            whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
+                                            whileTap={{ scale: 0.95 }}
+                                            transition={{ type: "spring", stiffness: 400 }}
+                                            onClick={() => setShowModal(true)}
+                                            className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-sm md:text-lg shadow-lg transition duration-300"
+                                        >
+                                            🎯 Apply To Get Invite
+                                        </motion.button>
 
-  const relatedWebinars = allWebinars
-    .filter((w) => w.id !== webinar.id && w.category === webinar.category)
-    .slice(0, 3);
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.7 }}
+                                        >
+                                            <p className="text-center text-sm text-gray-600 font-semibold">After 99 People Price Is ₹499/-</p>
+                                            <p className="text-center text-base font-bold text-orange-600 mt-2">✨ No Boring Theory, 100% Live Implementation</p>
+                                        </motion.div>
+                                    </motion.div>
 
-  return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-white">
-        {/* Breadcrumb */}
-        <div className="px-6 py-4 bg-white border-b border-gray-100">
-          <div className="mx-auto max-w-[1200px]">
-            <div className="flex items-center gap-2 text-sm">
-              <Link to="/webinars" className="text-orange-600 hover:text-orange-700 font-medium">
-                Webinars
-              </Link>
-              <span className="text-gray-400">/</span>
-              <span className="text-gray-600">{webinar.title}</span>
-            </div>
-          </div>
-        </div>
+                                    {/* Desktop Image - appears on left on desktop only */}
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.2 }}
+                                        className="hidden lg:flex flex-col items-center gap-6 order-1 lg:order-1"
+                                    >
+                                        <motion.div
+                                            animate={{ y: [0, -10, 0] }}
+                                            transition={{ duration: 3, repeat: Infinity }}
+                                            className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
+                                        >
+                                            <img
+                                                src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg"
+                                                alt="AI Agents Automation"
+                                                className="w-full h-auto object-cover rounded-xl"
+                                            />
+                                        </motion.div>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </section>
 
-        {/* Hero Section with Image */}
-        <section className="px-6 py-12">
-          <div className="mx-auto max-w-[1200px]">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl overflow-hidden border-2 border-orange-100 shadow-lg"
-            >
-              <img
-                src={webinar.image}
-                alt={webinar.title}
-                className="w-full h-96 object-cover"
-              />
-            </motion.div>
-          </div>
-        </section>
+                    {/* 3 Days Roadmap */}
+                    <section className="px-6 py-10 bg-gradient-to-b from-white via-gray-50 to-white">
+                        <div className="mx-auto max-w-[1200px]">
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="text-3xl md:text-4xl font-black text-gray-900 mb-16 text-center"
+                            >
+                                3 Days Live <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Business Automation</span> Event Roadmap
+                            </motion.h2>
 
-        {/* Main Content */}
-        <section className="px-6 py-12">
-          <div className="mx-auto max-w-[1200px] grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Content */}
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {/* Type Badge */}
-                <div className="mb-4">
-                  <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold ${getTypeBadgeColor(webinar.type)} shadow-lg`}>
-                    {getTypeIcon(webinar.type)} {webinar.type}
-                  </span>
-                </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {(webinar.roadmapItems || []).map((item, idx) => {
+                                    // Define color themes based on Day
+                                    let colors = {
+                                        header: "from-orange-500 to-amber-500",
+                                        subtitle: "text-orange-100",
+                                        body: "from-orange-50 to-white",
+                                        highlightText: "text-orange-700",
+                                        highlightBg: "bg-orange-100",
+                                        shadow: "rgba(251, 146, 60, 0.2)"
+                                    };
 
-                {/* Title */}
-                <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                  {webinar.title}
-                </h1>
+                                    if (item.day === 2) {
+                                        colors = {
+                                            header: "from-blue-600 to-blue-400",
+                                            subtitle: "text-blue-100",
+                                            body: "from-blue-50 to-white",
+                                            highlightText: "text-blue-700",
+                                            highlightBg: "bg-blue-100",
+                                            shadow: "rgba(59, 130, 246, 0.2)"
+                                        };
+                                    } else if (item.day === 3) {
+                                        colors = {
+                                            header: "from-red-600 to-red-500",
+                                            subtitle: "text-red-100",
+                                            body: "from-red-50 to-white",
+                                            highlightText: "text-red-700",
+                                            highlightBg: "bg-red-100",
+                                            shadow: "rgba(220, 38, 38, 0.2)"
+                                        };
+                                    }
 
-                {/* Badges - Category & Level */}
-                <div className="flex flex-wrap gap-3 mb-8">
-                  <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-bold text-sm">
-                    {webinar.category}
-                  </span>
-                  <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-bold text-sm">
-                    {webinar.level}
-                  </span>
-                </div>
+                                    return (
+                                        <motion.div
+                                            key={idx}
+                                            initial={{ opacity: 0, y: 30 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                                            whileHover={{ y: -10, boxShadow: `0 20px 50px ${colors.shadow}` }}
+                                            className="bg-white border-0 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col"
+                                        >
+                                            <div className={`bg-gradient-to-r ${colors.header} text-white text-center py-4`}>
+                                                <div className="text-3xl font-black mb-2">Day {item.day}</div>
+                                                <h3 className="text-sm font-black">{item.title}</h3>
+                                                <p className={`text-xs font-bold ${colors.subtitle}`}>{item.subtitle}</p>
+                                            </div>
+                                            {item.imageUrl && <img src={normalizeImageUrl(item.imageUrl)} alt={item.title} className="w-full h-48 object-cover" />}
+                                            <div className={`p-5 space-y-3 bg-gradient-to-b ${colors.body} flex-1`}>
+                                                <p className={`text-xs ${colors.highlightText} font-bold text-center mb-4 ${colors.highlightBg} rounded-lg py-2`}>📦 {item.highlight}</p>
+                                                {(item.description || []).map((desc, i) => (
+                                                    <motion.p
+                                                        key={i}
+                                                        initial={{ opacity: 0, x: -10 }}
+                                                        whileInView={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: i * 0.04 }}
+                                                        className="text-xs text-gray-700 font-medium"
+                                                    >
+                                                        ✅ {desc}
+                                                    </motion.p>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </section>
 
-                {/* Description */}
-                <div className="mb-8">
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    {webinar.description}
-                  </p>
-                </div>
+                    {/* Alert Section */}
+                    <section className="px-6 py-16 bg-gradient-to-b from-white via-orange-50 to-white">
+                        <div className="mx-auto max-w-[1200px]">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="text-center space-y-6 p-8 md:p-12 bg-gradient-to-r from-orange-50 to-orange-100 border-2 border-orange-300 rounded-2xl shadow-lg"
+                            >
+                                <motion.p
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ delay: 0.1 }}
+                                    className="text-lg md:text-xl font-bold text-orange-700"
+                                >
+                                    ALERT: Might you've strong product or service, but not have systems ( We Cannot Work 24/7 But Systems Work For Us, Top 1% Business People Use This ) Now You Can. ( I See You Live ).
+                                </motion.p>
 
-                {/* Detailed Info Cards */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="p-4 bg-orange-50 border-2 border-orange-200 rounded-xl"
-                  >
-                    <p className="text-xs text-gray-600 font-semibold mb-1">📅 Date</p>
-                    <p className="text-lg font-bold text-gray-900">{webinar.date}</p>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.35 }}
-                    className="p-4 bg-blue-50 border-2 border-blue-200 rounded-xl"
-                  >
-                    <p className="text-xs text-gray-600 font-semibold mb-1">🕐 Time</p>
-                    <p className="text-lg font-bold text-gray-900">{webinar.time}</p>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="p-4 bg-purple-50 border-2 border-purple-200 rounded-xl"
-                  >
-                    <p className="text-xs text-gray-600 font-semibold mb-1">⏱️ Duration</p>
-                    <p className="text-lg font-bold text-gray-900">{webinar.duration}</p>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.45 }}
-                    className="p-4 bg-green-50 border-2 border-green-200 rounded-xl"
-                  >
-                    <p className="text-xs text-gray-600 font-semibold mb-1">👤 Speaker</p>
-                    <p className="text-lg font-bold text-gray-900">{webinar.speaker}</p>
-                  </motion.div>
-                </div>
+                                <motion.button
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(220, 38, 38, 0.4)" }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => setShowModal(true)}
+                                    className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg shadow-lg transition duration-300"
+                                >
+                                    Apply To Get Invite
+                                </motion.button>
 
-                {/* Registration Info */}
-                {webinar.registeredCount && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-200 rounded-xl"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-4xl">🔥</span>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-600">REGISTRATIONS</p>
-                        <p className="text-2xl font-bold text-gray-900">
-                          {webinar.registeredCount} / {webinar.maxCapacity}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="w-full bg-gray-300 rounded-full h-3">
-                      <div
-                        className="bg-gradient-to-r from-orange-500 to-amber-500 h-3 rounded-full transition-all"
-                        style={{
-                          width: `${(webinar.registeredCount / (webinar.maxCapacity || 100)) * 100}%`,
-                        }}
-                      />
-                    </div>
-                    <p className="text-xs text-gray-600 mt-2">
-                      {Math.round((webinar.registeredCount / (webinar.maxCapacity || 100)) * 100)}% spots filled
-                    </p>
-                  </motion.div>
-                )}
+                                <motion.h3
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="text-3xl md:text-4xl font-black text-gray-900"
+                                >
+                                    3 Days is all you Need to Your <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">100% Success!</span>
+                                </motion.h3>
+                            </motion.div>
+                        </div>
+                    </section>
 
-                {/* What You'll Learn */}
-                <div className="mt-10">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">What You'll Learn</h2>
-                  <div className="grid gap-3">
-                    {[
-                      `Master ${webinar.category.toLowerCase()} concepts`,
-                      `Gain practical implementation experience`,
-                      `Learn from industry expert ${webinar.speaker}`,
-                      `Network with professionals in your field`,
-                      `Access exclusive resources and materials`,
-                      `Get certified upon completion`,
-                    ].map((item, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 + idx * 0.05 }}
-                        className="flex items-center gap-3 p-3 bg-white border-2 border-orange-100 rounded-lg hover:border-orange-400 transition"
-                      >
-                        <span className="text-xl flex-shrink-0">✨</span>
-                        <span className="text-gray-700 font-medium">{item}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+                    {/* Testimonials */}
+                    <section className="px-6 py-8 bg-gradient-to-b from-white to-gray-50">
+                        <div className="mx-auto max-w-[1200px]">
+                            <p className="text-center text-gray-600 mb-12 text-xs font-bold uppercase tracking-[0.2em]">✨ Testimonials ✨</p>
 
-            {/* Right Sidebar - Registration Card */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="sticky top-24 p-6 bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-2xl shadow-lg"
-              >
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Ready to Join?</h3>
+                            <motion.h3
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center"
+                            >
+                                What others are saying
+                            </motion.h3>
 
-                {/* Form */}
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">Full Name</label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition bg-white text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">Email</label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition bg-white text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none transition bg-white text-sm"
-                    />
-                  </div>
-                </div>
+                            <div className="overflow-hidden">
+                                <motion.div
+                                    className="flex gap-8 w-max"
+                                    animate={{ x: ["0%", "-100%"] }}
+                                    transition={{
+                                        duration: 20,
+                                        repeat: Infinity,
+                                        ease: "linear"
+                                    }}
+                                >
+                                    {[
+                                        {
+                                            emoji: '👨‍💼',
+                                            title: '"Saved Lakhs Every Month"',
+                                            text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                                            author: '- Raj Kumar',
+                                            rating: 5
+                                        },
+                                        {
+                                            emoji: '👩‍💼',
+                                            title: '"My life changed forever"',
+                                            text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                                            author: '- Priya',
+                                            rating: 5
+                                        },
+                                        {
+                                            emoji: '👨‍💻',
+                                            title: '"Highly recommend this"',
+                                            text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                                            author: '- Naveen',
+                                            rating: 5
+                                        },
+                                        {
+                                            emoji: '👨‍💼',
+                                            title: '"Saved Lakhs Every Month"',
+                                            text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                                            author: '- Raj Kumar',
+                                            rating: 5
+                                        },
+                                        {
+                                            emoji: '👩‍💼',
+                                            title: '"My life changed forever"',
+                                            text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                                            author: '- Priya',
+                                            rating: 5
+                                        },
+                                        {
+                                            emoji: '👨‍💻',
+                                            title: '"Highly recommend this"',
+                                            text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                                            author: '- Naveen',
+                                            rating: 5
+                                        },
+                                    ].map((testimonial, idx) => (
+                                        <motion.div
+                                            key={idx}
+                                            whileHover={{ y: -5, boxShadow: "0 15px 40px rgba(251, 146, 60, 0.1)" }}
+                                            className="text-center p-6 bg-white border-2 border-orange-100 rounded-xl shadow-md hover:shadow-lg hover:border-orange-300 transition flex-shrink-0 w-80"
+                                        >
+                                            <div className="flex justify-center mb-6">
+                                                <motion.div
+                                                    animate={{ scale: [1, 1.05, 1] }}
+                                                    transition={{ duration: 2, repeat: Infinity }}
+                                                    className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-3xl shadow-lg"
+                                                >
+                                                    {testimonial.emoji}
+                                                </motion.div>
+                                            </div>
+                                            <h3 className="text-sm font-bold text-gray-900 mb-3">{testimonial.title}</h3>
+                                            <p className="text-xs text-gray-700 mb-4 italic leading-relaxed">{testimonial.text}</p>
+                                            <div className="flex justify-center gap-1 mb-3">
+                                                {[...Array(testimonial.rating)].map((_, i) => (
+                                                    <span
+                                                        key={i}
+                                                        className="text-lg"
+                                                    >
+                                                        ⭐
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <p className="text-xs font-bold text-orange-600">{testimonial.author}</p>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                            </div>
+                        </div>
+                    </section>
 
-                {/* Register Button */}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full px-6 py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-base mb-3"
-                >
-                  {webinar.type === "Recorded" ? "Watch Now →" : "Register Now →"}
-                </motion.button>
+                    {/* Imagine You Never Have To Section */}
+                    <section className="px-6 py-8 bg-gradient-to-b from-gray-50 to-white">
+                        <div className="mx-auto max-w-[1200px]">
+                            <div className="text-center mb-12">
+                                <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+                                    Imagine You Never Have To
+                                </h3>
 
-                {/* Share Info */}
-                <div className="text-center border-t border-orange-200 pt-4">
-                  <p className="text-xs text-gray-600 font-semibold mb-3">Share This Webinar</p>
-                  <div className="flex gap-2 justify-center">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition text-lg"
-                    >
-                      f
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 bg-sky-400 text-white rounded-full flex items-center justify-center hover:bg-sky-500 transition text-lg"
-                    >
-                      𝕏
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 transition text-lg"
-                    >
-                      💬
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+                                <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-8">
+                                    WASTE TIME ON
+                                </h2>
+                            </div>
 
-        {/* Related Webinars */}
-        {relatedWebinars.length > 0 && (
-          <section className="px-6 py-16 bg-gradient-to-b from-white to-orange-50">
-            <div className="mx-auto max-w-[1200px]">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">Related Webinars</h2>
-                <p className="text-gray-600">Check out other webinars in the same category</p>
-              </div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+                            >
+                                {/* Left - Problems List */}
+                                <div className="space-y-4 order-2 lg:order-1">
+                                    {[
+                                        { text: 'Manual Workflows That Waste Hours Every Day On Repetitive Tasks', icon: '❌' },
+                                        { text: 'Missed Leads & Follow-Ups Because You\'re Still Doing Everything Manually', icon: '❌' },
+                                        { text: 'Juggling Too Many Tools – CRM, WhatsApp, Email, Forms, Sheets & More', icon: '❌' },
+                                        { text: 'Team Miscommunication That Leads To Lost Clients & Missed Deadlines', icon: '❌' },
+                                        { text: 'Hiring More Staff Just To Handle Simple Work That Automation Can Do', icon: '❌' },
+                                        { text: 'We Help You Automate 80% Your Employee Work & Save Lakhs Every Month', icon: '✅', highlight: true },
+                                    ].map((item, idx) => (
+                                        <motion.div
+                                            key={idx}
+                                            initial={{ opacity: 0, x: -15 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: idx * 0.06 }}
+                                            className={`flex gap-3 p-4 rounded-lg ${item.highlight ? 'bg-green-50 border-2 border-green-200' : 'bg-white border-2 border-orange-100 hover:border-orange-300 transition'}`}
+                                        >
+                                            <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                                            <p className={`text-sm leading-relaxed font-medium ${item.highlight ? 'text-green-700' : 'text-gray-700'}`}>
+                                                {item.text}
+                                            </p>
+                                        </motion.div>
+                                    ))}
+                                </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relatedWebinars.map((related, idx) => (
-                  <motion.div
-                    key={related.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="group flex flex-col h-full rounded-xl border-2 border-orange-100 bg-white hover:border-orange-400 hover:shadow-lg transition overflow-hidden"
-                  >
-                    <div className="relative h-40 w-full overflow-hidden">
-                      <img
-                        src={related.image}
-                        alt={related.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                      />
-                    </div>
+                                {/* Right - Image Visual and CTA */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="flex flex-col items-center gap-6 order-1 lg:order-2"
+                                >
+                                    <motion.div
+                                        animate={{ y: [0, -10, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity }}
+                                        className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
+                                    >
+                                        <img
+                                            src="/attached_assets/stock_images/business_workflow_au_cb921712.jpg"
+                                            alt="Business Workflow Automation"
+                                            className="w-full h-auto object-cover rounded-xl"
+                                        />
+                                    </motion.div>
 
-                    <div className="flex-1 p-4 flex flex-col">
-                      <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition line-clamp-2 leading-tight">
-                        {related.title}
-                      </h3>
-                      <p className="text-xs text-gray-600 mb-4 flex-grow line-clamp-2">
-                        {related.description}
-                      </p>
+                                    {/* CTA Button Below Image */}
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.4 }}
+                                        className="text-center w-full"
+                                    >
+                                        <motion.button
+                                            whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
+                                            whileTap={{ scale: 0.95 }}
+                                            onClick={() => setShowModal(true)}
+                                            className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
+                                        >
+                                            🎯 Apply To Get Invite
+                                        </motion.button>
 
-                      <div className="flex gap-2">
-                        <span className="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
-                          {related.level}
-                        </span>
-                        <span className="inline-block px-2 py-0.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold">
-                          {related.category}
-                        </span>
-                      </div>
+                                        <p className="text-sm text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
+                                    </motion.div>
+                                </motion.div>
+                            </motion.div>
+                        </div>
+                    </section>
 
-                      <Link to={`/webinars/${related.id}`}>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full mt-4 px-3 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-xs"
+                    {/* Bonuses Section */}
+                    <section className="px-6 py-10 bg-gradient-to-b from-white via-gray-50 to-white">
+                        <div className="mx-auto max-w-[1200px] text-center">
+                            {/* Decorative Line */}
+                            <motion.div
+                                initial={{ scaleX: 0 }}
+                                whileInView={{ scaleX: 1 }}
+                                transition={{ duration: 0.6 }}
+                                className="border-t-4 border-orange-400 mb-8 max-w-xs mx-auto"
+                            ></motion.div>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1 }}
+                                className="text-gray-600 mb-2 text-sm font-bold uppercase tracking-widest"
+                            >
+                                🎁 For a Limited Time, Get Access To
+                            </motion.p>
+
+                            <motion.h2
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl md:text-4xl font-black mb-4"
+                            >
+                                <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">5 Powerful Bonuses</span> Worth <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">₹16,298/-</span>
+                            </motion.h2>
+
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-2xl font-bold text-gray-900 mb-12"
+                            >
+                                Absolutely for <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent font-black">FREE!!!</span>
+                            </motion.p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                                {[
+                                    {
+                                        num: 1,
+                                        icon: '📚',
+                                        title: 'Top 1% Business Secrets',
+                                        desc: ['Unlock our exclusive lead generation strategies that ensure you scale quickly and efficiently.', 'Start driving 5X more leads immediately with our result-driven tactics.'],
+                                        value: '₹8,999/-'
+                                    },
+                                    {
+                                        num: 2,
+                                        icon: '🎨',
+                                        title: 'Landing Page Design Mockup',
+                                        desc: ['Discover how we strategically design landing pages that skyrocket conversions with cutting-edge design principles.', 'Start boosting your ROI instantly with our simple 5-step landing page formula.'],
+                                        value: '₹4,999/-'
+                                    },
+                                    {
+                                        num: 3,
+                                        icon: '🖥️',
+                                        title: 'Design Mockup Toolkit',
+                                        desc: ['Get our exclusive design mockup toolkit to quickly transform your ideas into polished visuals.', 'Start impressing clients right away with our easy-to-use, professional design system.'],
+                                        value: '₹2,300/-'
+                                    },
+                                ].map((bonus, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.12, duration: 0.6 }}
+                                        whileHover={{ y: -8, boxShadow: "0 20px 50px rgba(251, 146, 60, 0.15)" }}
+                                        className="p-6 bg-gradient-to-br from-white to-orange-50 border-2 border-orange-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 transition"
+                                    >
+                                        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: idx * 0.12 + 0.1 }} className="text-center mb-4">
+                                            <p className="text-orange-600 font-black text-sm mb-2">🎁 BONUS#{bonus.num}</p>
+                                        </motion.div>
+                                        <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }} className="text-6xl mb-4 text-center">
+                                            {bonus.icon}
+                                        </motion.div>
+                                        <h3 className="text-sm font-bold text-gray-900 mb-4 leading-tight">{bonus.title}</h3>
+                                        <div className="space-y-2 mb-4">
+                                            {bonus.desc.map((line, i) => (
+                                                <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.12 + i * 0.1 }} className="flex gap-2">
+                                                    <span className="text-green-600 flex-shrink-0 font-bold">✓</span>
+                                                    <p className="text-xs text-gray-700 text-left leading-relaxed">{line}</p>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                        <div className="border-t-2 border-orange-200 pt-3">
+                                            <p className="text-xs text-gray-600 mb-1">(Value = <span className="text-orange-600 font-bold">{bonus.value}</span>)</p>
+                                            <p className="text-xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE!!</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Meet Your Mentor Section */}
+                    <section className="px-6 py-10 bg-white">
+                        <div className="mx-auto max-w-[1000px]">
+                            <h2 className="text-3xl font-black text-gray-900 mb-12 text-center">
+                                Meet Your <span className="text-orange-600">Mentor</span>
+                            </h2>
+
+                            <div className="bg-white border-2 border-orange-100 rounded-2xl p-6 md:p-10 shadow-lg flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+                                {/* Mentor Image */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="flex-shrink-0"
+                                >
+                                    <div className="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-orange-100 p-2 relative">
+                                        <div className="absolute inset-0 border-2 border-orange-500 rounded-full border-dashed animate-spin-slow"></div>
+                                        <img
+                                            src={normalizeImageUrl(webinar.mentorImage)}
+                                            alt={webinar.mentorName}
+                                            className="w-full h-full object-cover rounded-full shadow-md"
+                                        />
+                                    </div>
+                                </motion.div>
+
+                                {/* Mentor Content */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.2 }}
+                                    className="flex-1 text-center md:text-left"
+                                >
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{webinar.mentorName}</h3>
+                                    <div className="mb-6">
+                                        <p className="text-xs text-gray-700 mb-1">{webinar.mentorRole} - <span className="text-orange-600 font-bold">{webinar.mentorName}</span></p>
+                                    </div>
+
+                                    <div className="text-xs text-gray-700 space-y-4 whitespace-pre-wrap">
+                                        {webinar.mentorBio}
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* FAQ Section */}
+                    <section className="px-6 py-10 bg-gradient-to-b from-gray-50 to-white">
+                        <div className="mx-auto max-w-[1200px]">
+                            <motion.h2
+                                initial={{ opacity: 0, y: -20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                                className="text-3xl md:text-4xl font-black text-gray-900 text-center mb-12"
+                            >
+                                Frequently Asked Questions
+                            </motion.h2>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {[
+                                    {
+                                        question: 'How You Are Conducting Master Class?',
+                                        answer: 'We are conducting online live sessions.'
+                                    },
+                                    {
+                                        question: 'How Many Days Total?',
+                                        answer: 'Total 3 Days'
+                                    },
+                                    {
+                                        question: 'What If We Cannot Automate Business?',
+                                        answer: 'If you can\'t replicate client tactic, we back you. we will send service.'
+                                    },
+                                    {
+                                        question: 'What Skills I Learn in This Master Class?',
+                                        answer: 'You learn leading, selling, management, automation and more...'
+                                    },
+                                ].map((faq, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, y: 15 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.08, duration: 0.6 }}
+                                        whileHover={{ boxShadow: "0 10px 30px rgba(251, 146, 60, 0.1)" }}
+                                        className="p-5 bg-white border-2 border-orange-100 rounded-lg hover:border-orange-300 transition shadow-sm"
+                                    >
+                                        <h3 className="text-sm font-bold text-gray-900 mb-2">❓ {faq.question}</h3>
+                                        <p className="text-xs text-gray-700 leading-relaxed">{faq.answer}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Final CTA Banner */}
+                    <section className="px-6 py-6 bg-gradient-to-b from-white to-gray-50">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="mx-auto max-w-[1200px]"
                         >
-                          View Details →
-                        </motion.button>
-                      </Link>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                            <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl px-8 py-6 shadow-lg">
+                                {/* Left - Text */}
+                                <div className="flex-1 text-center md:text-left">
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        transition={{ delay: 0.1 }}
+                                        className="text-white font-black text-lg md:text-2xl"
+                                    >
+                                        📅 Book <span className="text-yellow-300">—</span> Before Time Hit <span className="text-yellow-300">"0"</span>
+                                    </motion.p>
+                                </div>
 
-              <div className="text-center mt-10">
-                <Link to="/webinars">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 border-2 border-orange-500 text-orange-600 font-bold rounded-lg hover:bg-orange-50 transition"
-                  >
-                    View All Webinars →
-                  </motion.button>
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
-      </main>
-      <Footer />
-    </>
-  );
+                                {/* Right - CTA Button */}
+                                <motion.button
+                                    whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => setShowModal(true)}
+                                    className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
+                                >
+                                    🎯 Get Invite
+                                </motion.button>
+                            </div>
+                        </motion.div>
+                    </section>
+
+                    {/* Modal */}
+                    {showModal && (
+                        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="bg-white rounded-2xl shadow-2xl max-w-md w-full relative"
+                            >
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setShowModal(false)}
+                                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+
+                                {/* Modal Content */}
+                                <div className="p-8">
+                                    <h2 className="text-2xl font-black text-center text-orange-600 mb-8">
+                                        Apply For 🎥 One Man Business Event
+                                    </h2>
+
+                                    <form className="space-y-4 mb-6">
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                Name <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                placeholder="Enter name"
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                Email <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="email"
+                                                placeholder="Enter email"
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                WhatsApp Number <span className="text-red-500">*</span>
+                                            </label>
+                                            <div className="flex gap-2">
+                                                <div className="flex items-center px-3 border-2 border-gray-200 rounded-lg bg-white">
+                                                    <span className="text-sm font-semibold">🇮🇳 +91</span>
+                                                </div>
+                                                <input
+                                                    type="tel"
+                                                    placeholder="81234 56789"
+                                                    value={formData.phone}
+                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                    className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                Business Name <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                placeholder="enter business name"
+                                                value={formData.business}
+                                                onChange={(e) => setFormData({ ...formData, business: e.target.value })}
+                                                className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                                            />
+                                        </div>
+                                    </form>
+
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition shadow-lg text-base mb-4"
+                                    >
+                                        Apply To Get Invite
+                                    </motion.button>
+
+                                    <p className="text-center text-xs text-red-600 font-semibold">
+                                        Note: Remember, After 99 People It's Rs.499/- ( Get Your Seat Fast )
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </div>
+                    )}
+                </main>
+                <Footer />
+            </>
+        );
+    }
+
+    return null;
 }
