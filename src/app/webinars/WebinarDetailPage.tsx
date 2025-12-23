@@ -275,10 +275,24 @@ export default function WebinarDetailPage() {
                 </div>
               </motion.div>
 
+              {/* Hero Image Section */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
+                className="rounded-2xl overflow-hidden shadow-lg border-2 border-orange-200 mb-8"
+              >
+                <img 
+                  src="/attached_assets/generated_images/professional_business_automation_hero_image.png"
+                  alt="Business Automation with AI Agents"
+                  className="w-full h-80 md:h-96 object-cover"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
                 className="p-6 md:p-8 bg-gradient-to-r from-white to-orange-50 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
               >
                 <div className="text-center mb-8">
