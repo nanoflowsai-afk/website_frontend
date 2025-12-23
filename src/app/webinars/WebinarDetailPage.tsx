@@ -561,6 +561,15 @@ export default function WebinarDetailPage() {
                 >
                   Apply To Get Invite
                 </motion.button>
+
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-3xl md:text-4xl font-black text-gray-900"
+                >
+                  3 Days is all you Need to Your <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">100% Success!</span>
+                </motion.h3>
               </motion.div>
             </div>
           </section>
@@ -568,14 +577,6 @@ export default function WebinarDetailPage() {
           {/* Testimonials */}
           <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
             <div className="mx-auto max-w-[1200px]">
-              <motion.h2 
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-black text-gray-900 mb-4 text-center"
-              >
-                3 Days is all you Need for Your <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">100% Success!</span>
-              </motion.h2>
               <p className="text-center text-gray-600 mb-12 text-xs font-bold uppercase tracking-[0.2em]">✨ Testimonials ✨</p>
 
               <motion.h3 
