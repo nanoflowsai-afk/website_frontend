@@ -364,45 +364,13 @@ export default function WebinarDetailPage() {
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity }}
-                    className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 rounded-2xl p-8 border-2 border-blue-400 aspect-square flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-3xl transition"
+                    className="relative rounded-2xl border-2 border-blue-400 overflow-hidden shadow-2xl hover:shadow-3xl transition aspect-square"
                   >
-                    <motion.div 
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      className="text-7xl mb-4"
-                    >
-                      🤖
-                    </motion.div>
-                    <h4 className="text-2xl font-black text-white mb-2 leading-tight">One Man Business Automation Event</h4>
-                    <p className="text-blue-100 mb-6 font-semibold">Biggest AI AGENTS EVENT</p>
-                    <div className="space-y-3 mb-6">
-                      <motion.p 
-                        animate={{ opacity: [1, 0.7, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="text-yellow-300 font-black text-base"
-                      >
-                        🔥 LIVE CHALLENGE 🔥
-                      </motion.p>
-                      <p className="text-green-200 font-bold text-sm">Get Your 10 Employees Automated</p>
-                    </div>
-                    <div className="flex gap-2 mb-6 flex-wrap justify-center">
-                      {['AI', 'AGENTS', 'EVENT'].map((tag, idx) => (
-                        <motion.span
-                          key={idx}
-                          whileHover={{ scale: 1.1 }}
-                          className="bg-white/20 backdrop-blur text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/30"
-                        >
-                          {tag}
-                        </motion.span>
-                      ))}
-                    </div>
-                    <motion.button
-                      whileHover={{ scale: 1.08, boxShadow: "0 15px 35px rgba(59, 130, 246, 0.4)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-gray-900 font-bold py-2.5 px-8 rounded-lg transition shadow-lg text-sm"
-                    >
-                      🎯 Book Now
-                    </motion.button>
+                    <img 
+                      src="/images/ai-automation-hero.png" 
+                      alt="Business Automation Hero" 
+                      className="w-full h-full object-cover"
+                    />
                   </motion.div>
                 </motion.div>
               </div>
