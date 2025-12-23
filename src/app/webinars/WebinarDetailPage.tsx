@@ -706,9 +706,13 @@ export default function WebinarDetailPage() {
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 3, repeat: Infinity }}
-                    className="p-12 bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl border-2 border-orange-200 shadow-lg"
+                    className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden"
                   >
-                    <div className="text-7xl">💻📱⌚</div>
+                    <img 
+                      src="/attached_assets/stock_images/business_workflow_au_cb921712.jpg" 
+                      alt="Business Workflow Automation" 
+                      className="w-full h-auto object-cover rounded-xl"
+                    />
                   </motion.div>
                 </motion.div>
               </motion.div>
