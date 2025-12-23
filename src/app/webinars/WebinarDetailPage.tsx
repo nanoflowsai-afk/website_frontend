@@ -218,15 +218,8 @@ export default function WebinarDetailPage() {
           )}
 
           {/* Hero Section */}
-          <section className="px-6 py-20 text-gray-900 relative" style={{
-            backgroundImage: 'url(/hero-automation.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}>
-            {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/90"></div>
-            <div className="mx-auto max-w-[1200px] relative z-10">
+          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50 text-gray-900">
+            <div className="mx-auto max-w-[1200px]">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
