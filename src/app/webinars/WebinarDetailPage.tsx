@@ -293,18 +293,18 @@ export default function WebinarDetailPage() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.25 }}
-                    className="space-y-3"
+                    className="space-y-4 text-center"
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-blue-500"></div>
-                      <span className="text-sm font-bold text-blue-600">Upcoming</span>
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                      <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Upcoming</span>
                     </div>
-                    <h2 className="text-4xl font-black text-gray-900">Automate Your Business with AI Agents</h2>
-                    <div className="flex gap-2 flex-wrap">
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">AI Agents</span>
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Beginner</span>
+                    <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">Automate Your Business with AI Agents</h2>
+                    <div className="flex gap-2 flex-wrap justify-center">
+                      <span className="px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">AI Agents</span>
+                      <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Beginner</span>
                     </div>
-                    <p className="text-gray-600 text-base leading-relaxed">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-lg mx-auto">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
                   </motion.div>
 
                   <div className="grid grid-cols-2 gap-4">
