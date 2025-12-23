@@ -220,8 +220,15 @@ export default function WebinarDetailPage() {
           )}
 
           {/* Hero Section */}
-          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50 text-gray-900">
-            <div className="mx-auto max-w-[1200px]">
+          <section className="px-6 py-20 text-gray-900 relative" style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}>
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="mx-auto max-w-[1200px] relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -274,12 +281,17 @@ export default function WebinarDetailPage() {
                   </motion.button>
                 </div>
               </motion.div>
+            </div>
+          </section>
 
+          {/* Upcoming Session Section */}
+          <section className="px-6 py-20 bg-white text-gray-900">
+            <div className="mx-auto max-w-[1200px]">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="p-6 md:p-8 bg-gradient-to-r from-white to-orange-50 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
+                className="p-6 md:p-8 bg-white border-2 border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
               >
                 <div className="text-center mb-8">
                   <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
