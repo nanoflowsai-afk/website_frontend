@@ -381,7 +381,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="hidden lg:flex flex-col items-center gap-6 order-3 lg:order-2 sticky lg:top-24 h-fit"
+                  className="hidden lg:flex flex-col items-center gap-6 order-3 lg:order-2"
                 >
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
