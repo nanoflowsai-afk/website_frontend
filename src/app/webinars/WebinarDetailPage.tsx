@@ -358,56 +358,71 @@ export default function WebinarDetailPage() {
                   </motion.div>
                 </motion.div>
 
-                {/* Right - Event Image/Visual */}
+                {/* Right - Registration Form */}
                 <motion.div
-                  initial={{ opacity: 0, x: 30, rotateY: -20 }}
-                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="relative perspective"
+                  className="bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
                 >
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 rounded-2xl p-8 border-2 border-blue-400 aspect-square flex flex-col items-center justify-center text-center shadow-2xl hover:shadow-3xl transition"
-                  >
-                    <motion.div 
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      className="text-7xl mb-4"
-                    >
-                      🤖
-                    </motion.div>
-                    <h4 className="text-2xl font-black text-white mb-2 leading-tight">One Man Business Automation Event</h4>
-                    <p className="text-blue-100 mb-6 font-semibold">Biggest AI AGENTS EVENT</p>
-                    <div className="space-y-3 mb-6">
-                      <motion.p 
-                        animate={{ opacity: [1, 0.7, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="text-yellow-300 font-black text-base"
-                      >
-                        🔥 LIVE CHALLENGE 🔥
-                      </motion.p>
-                      <p className="text-green-200 font-bold text-sm">Get Your 10 Employees Automated</p>
+                  <h3 className="text-2xl font-black text-gray-900 mb-6">Ready to Join?</h3>
+                  
+                  <form className="space-y-4 mb-6">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                      <input
+                        type="text"
+                        placeholder="Your name"
+                        className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white"
+                      />
                     </div>
-                    <div className="flex gap-2 mb-6 flex-wrap justify-center">
-                      {['AI', 'AGENTS', 'EVENT'].map((tag, idx) => (
-                        <motion.span
+                    
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                      <input
+                        type="email"
+                        placeholder="your@email.com"
+                        className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white"
+                      />
+                    </div>
+                  </form>
+
+                  <motion.button
+                    whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(251, 146, 60, 0.3)" }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 mb-4"
+                  >
+                    Register Now →
+                  </motion.button>
+
+                  <div>
+                    <p className="text-center text-sm font-semibold text-gray-700 mb-3">Share This Webinar</p>
+                    <div className="flex gap-3 justify-center">
+                      {[
+                        { label: 'f', color: 'from-blue-600 to-blue-700' },
+                        { label: '𝕏', color: 'from-black to-gray-800' },
+                        { label: '📧', color: 'from-red-600 to-red-700' }
+                      ].map((btn, idx) => (
+                        <motion.button
                           key={idx}
-                          whileHover={{ scale: 1.1 }}
-                          className="bg-white/20 backdrop-blur text-white px-4 py-1.5 rounded-full text-xs font-bold border border-white/30"
+                          whileHover={{ scale: 1.2, rotate: 5 }}
+                          whileTap={{ scale: 0.9 }}
+                          className={`w-10 h-10 bg-gradient-to-br ${btn.color} text-white rounded-full flex items-center justify-center font-bold hover:shadow-lg transition text-lg`}
                         >
-                          {tag}
-                        </motion.span>
+                          {btn.label}
+                        </motion.button>
                       ))}
                     </div>
-                    <motion.button
-                      whileHover={{ scale: 1.08, boxShadow: "0 15px 35px rgba(59, 130, 246, 0.4)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-gray-900 font-bold py-2.5 px-8 rounded-lg transition shadow-lg text-sm"
-                    >
-                      🎯 Book Now
-                    </motion.button>
-                  </motion.div>
+                  </div>
                 </motion.div>
               </div>
             </div>
