@@ -994,20 +994,6 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
-          {/* Disclaimer Section */}
-          <section className="px-6 py-8 bg-gradient-to-r from-gray-100 to-gray-50">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="mx-auto max-w-[1200px]"
-            >
-              <p className="text-xs text-gray-700 text-center leading-relaxed font-medium">
-                This site is not a part of the Facebook™ website or Facebook™ Inc. Additionally, this site is NOT endorsed by Facebook™ in any way. FACEBOOK™ is a trademark of FACEBOOK™ Inc. As stipulated by law, we can not and do not make any guarantees about your ability to get results. I just want to help you by giving great content and direction. For privacy policies and disclaimers, see links below. I feel transparency is important and I hold ourselves to a high standard of integrity. Thanks for stopping by!
-              </p>
-            </motion.div>
-          </section>
-
           {/* Final CTA Banner */}
           <section className="px-6 py-6 bg-gradient-to-b from-white to-gray-50">
             <motion.div 
