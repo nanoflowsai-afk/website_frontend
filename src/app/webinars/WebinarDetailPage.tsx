@@ -329,28 +329,6 @@ export default function WebinarDetailPage() {
                     ))}
                   </div>
 
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="flex gap-3 justify-center"
-                  >
-                    {[
-                      { label: 'f', color: 'from-blue-600 to-blue-700' },
-                      { label: '𝕏', color: 'from-black to-gray-800' },
-                      { label: '📧', color: 'from-red-600 to-red-700' }
-                    ].map((btn, idx) => (
-                      <motion.button
-                        key={idx}
-                        whileHover={{ scale: 1.2, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                        className={`w-12 h-12 bg-gradient-to-br ${btn.color} text-white rounded-full flex items-center justify-center font-bold hover:shadow-lg transition text-lg`}
-                      >
-                        {btn.label}
-                      </motion.button>
-                    ))}
-                  </motion.div>
-
                   <motion.button
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
                     whileTap={{ scale: 0.95 }}
