@@ -653,38 +653,79 @@ export default function WebinarDetailPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="border-t-4 border-orange-500 pt-12"
+                transition={{ duration: 0.6 }}
+                className="mt-16 p-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl text-center"
               >
-                <h3 className="text-2xl font-bold text-white text-center mb-4">
-                  End Goal of the <span className="text-yellow-400">3 Days</span> Event:
-                </h3>
-                <p className="text-center text-gray-300 mb-8 max-w-2xl mx-auto text-sm leading-relaxed">
-                  "95% of businesses fail. The other 5% barely survive. That's why we built <span className="font-bold">LevelUpVerse</span> – to save as many businesses as possible through smart automation."
-                </p>
-                
-                <div className="flex justify-center gap-4 mb-8">
-                  <span className="text-3xl">⌄</span>
-                  <span className="text-3xl">⌄</span>
-                  <span className="text-3xl">⌄</span>
-                </div>
+                <motion.h2 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-4xl md:text-5xl font-black mb-6 text-white"
+                >
+                  End Goal of the <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">3 Days Event:</span>
+                </motion.h2>
 
-                <div className="flex justify-center gap-3 mb-6">
-                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">f</button>
-                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">𝕏</button>
-                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">in</button>
-                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">📧</button>
-                </div>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-gray-300 text-lg max-w-3xl mx-auto mb-8 italic leading-relaxed"
+                >
+                  "95% of businesses fail. The other 5% barely survive. That's why we built <span className="font-bold text-orange-300">LevelUpVerse</span> – to save as many businesses as possible through smart automation."
+                </motion.p>
 
-                <div className="text-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition text-base"
-                  >
-                    🎯 Apply To Get Invite
-                  </motion.button>
-                  <p className="text-xs text-gray-400 mt-3">Unlocked by Digital Chandu</p>
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex justify-center gap-6 mb-8"
+                >
+                  <span className="text-4xl text-orange-400">⌄</span>
+                  <span className="text-4xl text-orange-400">⌄</span>
+                  <span className="text-4xl text-orange-400">⌄</span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex justify-center gap-4 mb-12"
+                >
+                  <div className="w-12 h-12 rounded-full border-2 border-red-500 flex items-center justify-center text-white font-bold text-lg">00</div>
+                  <div className="w-12 h-12 rounded-full border-2 border-red-500 flex items-center justify-center text-white font-bold text-lg">00</div>
+                  <div className="w-12 h-12 rounded-full border-2 border-red-500 flex items-center justify-center text-white font-bold text-lg">00</div>
+                  <div className="w-12 h-12 rounded-full border-2 border-red-500 flex items-center justify-center text-white font-bold text-lg">00</div>
+                </motion.div>
+
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg shadow-lg transition duration-300 text-lg mb-3"
+                >
+                  Apply To Get Invite
+                </motion.button>
+
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-xs text-red-400 font-bold mb-4"
+                >
+                  Check You're in 99 People or Not
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="flex justify-center items-center gap-2"
+                >
+                  <span className="text-white">♥</span>
+                  <p className="text-gray-300 font-semibold">Backed By Digital Chandu</p>
+                </motion.div>
               </motion.div>
             </div>
           </section>
