@@ -737,7 +737,7 @@ export default function WebinarDetailPage() {
           </section>
 
           {/* Bonuses Section */}
-          <section className="px-6 py-20 bg-gradient-to-b from-white via-gray-50 to-white">
+          <section className="px-6 py-10 bg-gradient-to-b from-white via-gray-50 to-white">
             <div className="mx-auto max-w-[1200px] text-center">
               {/* Decorative Line */}
               <motion.div 
