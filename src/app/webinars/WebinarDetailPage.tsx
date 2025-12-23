@@ -239,7 +239,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-5xl md:text-6xl font-black mb-6 leading-tight"
+                  className="text-3xl md:text-4xl font-black mb-6 leading-tight"
                 >
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Automate Business</span>
                   <br />
@@ -250,7 +250,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-3xl md:text-5xl font-black mb-8 leading-tight"
+                  className="text-3xl md:text-4xl font-black mb-8 leading-tight"
                 >
                   <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
                   <br />
@@ -655,11 +655,11 @@ export default function WebinarDetailPage() {
           <section className="px-6 py-8 bg-gradient-to-b from-gray-50 to-white">
             <div className="mx-auto max-w-[1200px]">
               <div className="text-center mb-12">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
                   Imagine You Never Have To
                 </h3>
                 
-                <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-8">
+                <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-8">
                   WASTE TIME ON
                 </h2>
               </div>
