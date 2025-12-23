@@ -906,32 +906,6 @@ export default function WebinarDetailPage() {
                       Now, I'm on a mission to help 100 businesses grow faster, smarter, and more profitably with our business growth system.
                     </p>
                   </div>
-
-                  {/* Decorative Chevrons */}
-                  <div className="flex justify-center gap-4 py-4">
-                    <span className="text-2xl text-orange-600">⌄</span>
-                    <span className="text-2xl text-orange-600">⌄</span>
-                    <span className="text-2xl text-orange-600">⌄</span>
-                  </div>
-
-                  {/* Social Buttons */}
-                  <div className="flex justify-center gap-3 mb-4">
-                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">f</button>
-                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">𝕏</button>
-                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">in</button>
-                    <button className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition text-xs font-bold">📧</button>
-                  </div>
-
-                  {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition"
-                  >
-                    🎯 Apply To Get Invite
-                  </motion.button>
-
-                  <p className="text-xs text-gray-400 text-center">Unlocked by Digital Chandu</p>
                 </motion.div>
               </div>
             </div>
