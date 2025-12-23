@@ -533,6 +533,68 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
+          {/* Alert Section */}
+          <section className="px-6 py-16 bg-gray-900">
+            <div className="mx-auto max-w-[1200px]">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-center space-y-6"
+              >
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-lg md:text-xl font-bold text-green-400"
+                >
+                  ALERT: Might you've strong product or service, but not have systems ( We Cannot Work 24/7 But Systems Work For Us, Top 1% Business People Use This ) Now You Can. ( I See You Live ).
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex justify-center gap-4"
+                >
+                  <a href="#" className="w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-orange-500 hover:text-white transition transform hover:scale-110">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.5 3h15a.5.5 0 01.5.5v13a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-13a.5.5 0 01.5-.5z"/></svg>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-orange-500 hover:text-white transition transform hover:scale-110">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M13 8V6a1 1 0 100-2h-1V2h-2v2H9V4a1 1 0 100 2v2H6a2 2 0 00-2 2v6h2v4h2v-4h4v4h2v-4h2V8a2 2 0 00-2-2z"/></svg>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-orange-500 hover:text-white transition transform hover:scale-110">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.25 2.25A.75.75 0 013 3v14a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5H2.5V3.75A.75.75 0 013 3h14a.75.75 0 010 1.5H3.75v10.75h12.5a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75V3a.75.75 0 01.75-.75h14a.75.75 0 010 1.5H3z"/></svg>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-white text-gray-900 flex items-center justify-center hover:bg-orange-500 hover:text-white transition transform hover:scale-110">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H3a1.5 1.5 0 00-1.5 1.5v14a1.5 1.5 0 001.5 1.5h14a1.5 1.5 0 001.5-1.5V9.5M10.5 1.5v8M10.5 1.5h8M6.5 13h7"/></svg>
+                  </a>
+                </motion.div>
+
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(220, 38, 38, 0.4)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-lg transition duration-300"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6 2a1 1 0 011 1v1h6V3a1 1 0 112 0v1h3a2 2 0 012 2v11a2 2 0 01-2 2H3a2 2 0 01-2-2V6a2 2 0 012-2h3V3a1 1 0 011-1z"/></svg>
+                  Apply To Get Invite
+                </motion.button>
+
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-3xl md:text-4xl font-black text-white"
+                >
+                  3 Days is all you Need to Your <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">100% Success!</span>
+                </motion.h3>
+              </motion.div>
+            </div>
+          </section>
+
           {/* Testimonials */}
           <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
             <div className="mx-auto max-w-[1200px]">
