@@ -285,12 +285,12 @@ export default function WebinarDetailPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-center mb-16"
+                className="mb-16 rounded-lg border border-gray-200 bg-white p-6 transition hover:border-orange-200 hover:shadow-md"
               >
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <span className="px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black leading-tight mb-6 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
+                <h2 className="text-4xl md:text-5xl font-black leading-tight text-center bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
               </motion.div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
