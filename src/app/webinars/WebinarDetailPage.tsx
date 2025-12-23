@@ -668,7 +668,7 @@ export default function WebinarDetailPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
               >
                 {/* Left - Problems List */}
                 <div className="space-y-4">
@@ -696,17 +696,17 @@ export default function WebinarDetailPage() {
                   ))}
                 </div>
 
-                {/* Right - Image Visual */}
+                {/* Right - Image Visual and CTA */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="flex justify-center"
+                  className="flex flex-col items-center gap-6"
                 >
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 3, repeat: Infinity }}
-                    className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden"
+                    className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
                   >
                     <img 
                       src="/attached_assets/stock_images/business_workflow_au_cb921712.jpg" 
@@ -714,26 +714,25 @@ export default function WebinarDetailPage() {
                       className="w-full h-auto object-cover rounded-xl"
                     />
                   </motion.div>
+
+                  {/* CTA Button Below Image */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-center w-full"
+                  >
+                    <motion.button
+                      whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
+                    >
+                      🎯 Apply To Get Invite
+                    </motion.button>
+
+                    <p className="text-sm text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-
-              {/* CTA Section - Below both columns */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mt-16 text-center"
-              >
-                {/* CTA Button */}
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
-                >
-                  🎯 Apply To Get Invite
-                </motion.button>
-
-                <p className="text-sm text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
               </motion.div>
             </div>
           </section>
