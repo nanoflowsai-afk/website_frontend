@@ -239,7 +239,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-gray-600 mb-4 text-sm font-semibold"
+                  className="text-white mb-4 text-sm font-semibold"
                 >
                   (Telugu States Biggest Business AI Agents Event On <span className="text-red-600 font-bold">Dec 23/24/25th</span>)
                 </motion.p>
@@ -263,7 +263,7 @@ export default function WebinarDetailPage() {
                 >
                   <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
                   <br />
-                  <span className="text-gray-800">Work For You 24/7 365 Days </span>
+                  <span className="text-white">Work For You 24/7 365 Days </span>
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">FREE</span>
                 </motion.h3>
 
