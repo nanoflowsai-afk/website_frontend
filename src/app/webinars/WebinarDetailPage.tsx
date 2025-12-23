@@ -678,7 +678,6 @@ export default function WebinarDetailPage() {
                     { text: 'Juggling Too Many Tools – CRM, WhatsApp, Email, Forms, Sheets & More', icon: '❌' },
                     { text: 'Team Miscommunication That Leads To Lost Clients & Missed Deadlines', icon: '❌' },
                     { text: 'Hiring More Staff Just To Handle Simple Work That Automation Can Do', icon: '❌' },
-                    { text: 'Zero Clarity On Growth – No Tracking, No Reports, No Control', icon: '❌' },
                     { text: 'We Help You Automate 80% Your Employee Work & Save Lakhs Every Month', icon: '✅', highlight: true },
                   ].map((item, idx) => (
                     <motion.div
