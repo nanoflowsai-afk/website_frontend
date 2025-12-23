@@ -288,8 +288,7 @@ export default function WebinarDetailPage() {
                 className="text-center mb-16"
               >
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Upcoming</span>
+                  <span className="px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-black leading-tight mb-6 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
               </motion.div>
