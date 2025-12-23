@@ -993,25 +993,6 @@ export default function WebinarDetailPage() {
                   </motion.p>
                 </div>
 
-                {/* Middle - Social Buttons */}
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="flex gap-3"
-                >
-                  {['f', '𝕏', 'in', '📧'].map((icon, idx) => (
-                    <motion.button
-                      key={idx}
-                      whileHover={{ scale: 1.15 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-11 h-11 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-800 transition font-bold text-lg shadow-md"
-                    >
-                      {icon}
-                    </motion.button>
-                  ))}
-                </motion.div>
-
                 {/* Right - CTA Button */}
                 <motion.button
                   whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
