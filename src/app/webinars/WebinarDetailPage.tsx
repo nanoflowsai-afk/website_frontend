@@ -345,7 +345,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
+                  className="sticky top-20 h-fit bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
                 >
                   <h3 className="text-2xl font-black text-gray-900 mb-6">Ready to Join?</h3>
                   
