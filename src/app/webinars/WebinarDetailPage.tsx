@@ -229,6 +229,20 @@ export default function WebinarDetailPage() {
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-black/70"></div>
             <div className="mx-auto max-w-[1200px] relative z-10">
+              {/* Breadcrumb Navigation */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex items-center justify-start gap-2 mb-8 text-white text-sm"
+              >
+                <Link to="/webinars" className="hover:text-orange-300 transition">
+                  Webinars
+                </Link>
+                <span>/</span>
+                <span className="text-orange-300 font-semibold">{webinar.title}</span>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
