@@ -306,8 +306,8 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.2, duration: 0.8 }}
                   className="space-y-4 md:space-y-6 order-1 lg:order-1"
                 >
-                  <div className="mb-4 md:mb-6">
-                    <div className="flex gap-2 flex-wrap mb-3 md:mb-4">
+                  <div className="mb-4 md:mb-6 text-center md:text-left">
+                    <div className="flex gap-2 flex-wrap mb-3 md:mb-4 justify-center md:justify-start">
                       <span className="px-3 py-1 md:px-4 md:py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">AI Agents</span>
                       <span className="px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Beginner</span>
                     </div>
