@@ -865,44 +865,44 @@ export default function WebinarDetailPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   className="space-y-4"
                 >
-                  <div className="text-sm text-gray-300 leading-relaxed space-y-4">
+                  <div className="text-sm text-gray-700 leading-relaxed space-y-4">
                     <div>
-                      <p className="text-xs text-gray-400 mb-1">Digital Marketing Agency - <span className="text-green-400 font-bold">Digital Chandu</span></p>
-                      <p className="text-xs text-gray-400"><span className="text-green-400">I</span> Digital Chandu</p>
+                      <p className="text-xs text-gray-700 mb-1">Digital Marketing Agency - <span className="text-orange-600 font-bold">Digital Chandu</span></p>
+                      <p className="text-xs text-gray-700"><span className="text-orange-600">I</span> Digital Chandu</p>
                     </div>
 
-                    <p className="text-xs text-gray-300">
+                    <p className="text-xs text-gray-700">
                       I launched my first agency but struggled to find consistent, high-quality clients.
                     </p>
 
-                    <p className="text-xs text-gray-300">
+                    <p className="text-xs text-gray-700">
                       I tried everything – ads, funnels, and courses – but my business still wasn't growing the way I needed.
                     </p>
 
-                    <p className="text-xs text-gray-300">
+                    <p className="text-xs text-gray-700">
                       I realized it wasn't about working harder – it was about building a system that works for you 24/7.
                     </p>
 
-                    <p className="text-xs text-gray-300">
+                    <p className="text-xs text-gray-700">
                       That's when I developed the Business Growth System – a step-by-step framework designed to:
                     </p>
 
-                    <ul className="space-y-2 text-xs text-gray-300">
+                    <ul className="space-y-2 text-xs text-gray-700">
                       <li className="flex gap-2">
-                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span className="text-orange-600 flex-shrink-0">✓</span>
                         <span>Attract consistent, high-quality leads</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span className="text-orange-600 flex-shrink-0">✓</span>
                         <span>Convert prospects into loyal, high-paying clients</span>
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span className="text-orange-600 flex-shrink-0">✓</span>
                         <span>Automate marketing, sales, and follow-ups effortlessly</span>
                       </li>
                     </ul>
 
-                    <p className="text-xs text-gray-300">
+                    <p className="text-xs text-gray-700">
                       Now, I'm on a mission to help 100 businesses grow faster, smarter, and more profitably with our business growth system.
                     </p>
                   </div>
