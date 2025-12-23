@@ -239,7 +239,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-3xl md:text-4xl font-black mb-6 leading-tight"
+                  className="text-5xl md:text-6xl font-black mb-6 leading-tight"
                 >
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Automate Business</span>
                   <br />
@@ -250,7 +250,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-3xl md:text-4xl font-black mb-8 leading-tight"
+                  className="text-3xl md:text-5xl font-black mb-8 leading-tight"
                 >
                   <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Get 12+ AI AGENTS </span>
                   <br />
