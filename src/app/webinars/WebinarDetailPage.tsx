@@ -307,14 +307,6 @@ export default function WebinarDetailPage() {
                   transition={{ delay: 0.2, duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <div className="mb-6">
-                    <div className="flex gap-2 flex-wrap mb-4">
-                      <span className="px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-bold uppercase tracking-wider">AI Agents</span>
-                      <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Beginner</span>
-                    </div>
-                    <p className="text-gray-600 text-base leading-relaxed">Learn how AI agents can automate workflows, customer support, and decision-making.</p>
-                  </div>
-
                   <div className="grid grid-cols-2 gap-4">
                     {[
                       { icon: '📅', label: 'Date', value: 'Dec 23/24/25th', bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
