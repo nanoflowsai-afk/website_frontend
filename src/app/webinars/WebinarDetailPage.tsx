@@ -653,40 +653,25 @@ export default function WebinarDetailPage() {
 
           {/* Imagine You Never Have To Section */}
           <section className="px-6 py-20 bg-gradient-to-b from-gray-50 to-white">
-            <div className="mx-auto max-w-[700px]">
+            <div className="mx-auto max-w-[1200px]">
+              <div className="text-center mb-12">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Imagine You Never Have To
+                </h3>
+                
+                <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-8">
+                  WASTE TIME ON
+                </h2>
+              </div>
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="border-2 border-orange-200 rounded-2xl p-8 md:p-12 bg-gradient-to-br from-white to-orange-50 shadow-lg hover:shadow-xl transition"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               >
-                {/* Product Visual */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="mb-8 text-center"
-                >
-                  <motion.div 
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="inline-block px-8 py-6 bg-gradient-to-br from-orange-100 to-orange-50 rounded-lg border-2 border-orange-200"
-                  >
-                    <div className="text-5xl">💻📱⌚</div>
-                  </motion.div>
-                </motion.div>
-
-                {/* Heading */}
-                <h3 className="text-xl font-bold text-gray-900 text-center mb-2">
-                  Imagine You Never Have To
-                </h3>
-                
-                <h2 className="text-4xl font-black bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent text-center mb-8">
-                  WASTE TIME ON
-                </h2>
-
-                {/* Problems List */}
-                <div className="space-y-4 mb-8">
+                {/* Left - Problems List */}
+                <div className="space-y-4">
                   {[
                     { text: 'Manual Workflows That Waste Hours Every Day On Repetitive Tasks', icon: '❌' },
                     { text: 'Missed Leads & Follow-Ups Because You\'re Still Doing Everything Manually', icon: '❌' },
@@ -701,9 +686,9 @@ export default function WebinarDetailPage() {
                       initial={{ opacity: 0, x: -15 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.06 }}
-                      className={`flex gap-3 p-3 rounded-lg ${item.highlight ? 'bg-green-50 border-2 border-green-200' : 'hover:bg-gray-100 transition'}`}
+                      className={`flex gap-3 p-4 rounded-lg ${item.highlight ? 'bg-green-50 border-2 border-green-200' : 'bg-white border-2 border-orange-100 hover:border-orange-300 transition'}`}
                     >
-                      <span className="text-xl flex-shrink-0">{item.icon}</span>
+                      <span className="text-2xl flex-shrink-0">{item.icon}</span>
                       <p className={`text-sm leading-relaxed font-medium ${item.highlight ? 'text-green-700' : 'text-gray-700'}`}>
                         {item.text}
                       </p>
@@ -711,23 +696,47 @@ export default function WebinarDetailPage() {
                   ))}
                 </div>
 
+                {/* Right - Image Visual */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex justify-center"
+                >
+                  <motion.div 
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="p-12 bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl border-2 border-orange-200 shadow-lg"
+                  >
+                    <div className="text-7xl">💻📱⌚</div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
+              {/* CTA Section - Below both columns */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mt-16 text-center"
+              >
                 {/* Decorative Chevrons */}
                 <motion.div 
                   animate={{ y: [0, 5, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="flex justify-center gap-4 mb-6"
+                  className="flex justify-center gap-4 mb-8"
                 >
-                  <span className="text-2xl text-orange-600">⌄</span>
-                  <span className="text-2xl text-orange-600">⌄</span>
-                  <span className="text-2xl text-orange-600">⌄</span>
+                  <span className="text-3xl text-orange-600">⌄</span>
+                  <span className="text-3xl text-orange-600">⌄</span>
+                  <span className="text-3xl text-orange-600">⌄</span>
                 </motion.div>
 
                 {/* Social Buttons */}
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="flex justify-center gap-3 mb-6"
+                  transition={{ delay: 0.4 }}
+                  className="flex justify-center gap-3 mb-8"
                 >
                   {[
                     { label: 'f', color: 'from-blue-600 to-blue-700' },
@@ -739,7 +748,7 @@ export default function WebinarDetailPage() {
                       key={idx}
                       whileHover={{ scale: 1.15, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`w-9 h-9 rounded-full bg-gradient-to-br ${btn.color} text-white flex items-center justify-center transition shadow-md text-xs font-bold`}
+                      className={`w-10 h-10 rounded-full bg-gradient-to-br ${btn.color} text-white flex items-center justify-center transition shadow-md text-sm font-bold`}
                     >
                       {btn.label}
                     </motion.button>
@@ -750,12 +759,12 @@ export default function WebinarDetailPage() {
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-md"
+                  className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
                 >
                   🎯 Apply To Get Invite
                 </motion.button>
 
-                <p className="text-xs text-gray-600 text-center font-semibold">Unlocked by Digital Chandu</p>
+                <p className="text-sm text-gray-600 font-semibold">Unlocked by Digital Chandu</p>
               </motion.div>
             </div>
           </section>
