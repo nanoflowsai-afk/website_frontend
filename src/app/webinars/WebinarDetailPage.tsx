@@ -276,13 +276,14 @@ export default function WebinarDetailPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-center mb-16"
+                className="p-8 md:p-10 bg-gradient-to-r from-white to-orange-50 border-2 border-orange-300 rounded-2xl shadow-lg hover:shadow-xl transition"
               >
-                <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
-                <h2 className="text-4xl md:text-5xl font-black leading-tight mb-6 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
-              </motion.div>
+                <div className="text-center mb-8">
+                  <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
+                  <h2 className="text-4xl md:text-5xl font-black leading-tight mb-6 mt-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Automate Your Business with AI Agents</h2>
+                </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Left - Event Content & CTA */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
@@ -386,6 +387,7 @@ export default function WebinarDetailPage() {
                   </motion.button>
                 </motion.div>
               </div>
+              </motion.div>
             </div>
           </section>
 
