@@ -304,7 +304,7 @@ export default function WebinarDetailPage() {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="space-y-4 md:space-y-6 order-1 lg:order-1"
+                  className="space-y-4 md:space-y-6 order-2 lg:order-2"
                 >
                   <div className="mb-4 md:mb-6 text-center md:text-left">
                     <div className="flex gap-2 flex-wrap mb-3 md:mb-4 justify-center md:justify-start">
@@ -376,12 +376,12 @@ export default function WebinarDetailPage() {
                   </motion.div>
                 </motion.div>
 
-                {/* Desktop Image - appears on right on desktop only */}
+                {/* Desktop Image - appears on left on desktop only */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="hidden lg:flex flex-col items-center gap-6 order-3 lg:order-2"
+                  className="hidden lg:flex flex-col items-center gap-6 order-1 lg:order-1"
                 >
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
