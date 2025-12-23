@@ -220,14 +220,8 @@ export default function WebinarDetailPage() {
           )}
 
           {/* Hero Section */}
-          <section className="px-6 py-20 text-gray-900 relative" style={{
-            backgroundImage: `url('/attached_assets/generated_images/modern_business_automation_background.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/80 to-white/85 pointer-events-none"></div>
-            <div className="mx-auto max-w-[1200px] relative z-10">
+          <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50 text-gray-900">
+            <div className="mx-auto max-w-[1200px]">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -281,24 +275,10 @@ export default function WebinarDetailPage() {
                 </div>
               </motion.div>
 
-              {/* Hero Image Section */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="rounded-2xl overflow-hidden shadow-lg border-2 border-orange-200 mb-8"
-              >
-                <img 
-                  src="/attached_assets/generated_images/professional_business_automation_hero_image.png"
-                  alt="Business Automation with AI Agents"
-                  className="w-full h-80 md:h-96 object-cover"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
                 className="p-6 md:p-8 bg-gradient-to-r from-white to-orange-50 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full"
               >
                 <div className="text-center mb-8">
