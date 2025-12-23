@@ -356,51 +356,20 @@ export default function WebinarDetailPage() {
                   </motion.div>
                 </motion.div>
 
-                {/* Right - Registration Form */}
+                {/* Right - Professional Image */}
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="sticky top-24 h-fit bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition will-change-transform"
+                  className="flex flex-col items-center justify-center h-full"
                 >
-                  <h3 className="text-2xl font-black text-gray-900 mb-6">Ready to Join?</h3>
-                  
-                  <form className="space-y-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                      <input
-                        type="text"
-                        placeholder="Your name"
-                        className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                      <input
-                        type="email"
-                        placeholder="your@email.com"
-                        className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
-                      <input
-                        type="tel"
-                        placeholder="+1 (555) 000-0000"
-                        className="w-full px-4 py-2.5 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white"
-                      />
-                    </div>
-                  </form>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(251, 146, 60, 0.3)" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 mb-4"
-                  >
-                    Register Now →
-                  </motion.button>
+                  <div className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden hover:shadow-xl transition w-full">
+                    <img 
+                      src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg" 
+                      alt="AI Agents Automation" 
+                      className="w-full h-auto object-cover rounded-xl"
+                    />
+                  </div>
                 </motion.div>
               </div>
               </motion.div>
