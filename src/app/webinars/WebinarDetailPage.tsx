@@ -202,7 +202,7 @@ export default function WebinarDetailPage() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 flex items-center justify-between md:justify-center font-bold text-base md:text-lg shadow-lg sticky top-0 z-10"
+              className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-2 px-6 flex items-center justify-between md:justify-center font-bold text-sm md:text-base shadow-lg sticky top-0 z-10 whitespace-nowrap"
             >
               <span className="flex-1 md:flex-none text-center">⚡ 3 Days One Man Business Automation Event!</span>
               <motion.button
