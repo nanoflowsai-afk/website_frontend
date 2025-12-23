@@ -415,26 +415,6 @@ export default function WebinarDetailPage() {
                   >
                     Register Now →
                   </motion.button>
-
-                  <div>
-                    <p className="text-center text-sm font-semibold text-gray-700 mb-3">Share This Webinar</p>
-                    <div className="flex gap-3 justify-center">
-                      {[
-                        { label: 'f', color: 'from-blue-600 to-blue-700' },
-                        { label: '𝕏', color: 'from-black to-gray-800' },
-                        { label: '📧', color: 'from-red-600 to-red-700' }
-                      ].map((btn, idx) => (
-                        <motion.button
-                          key={idx}
-                          whileHover={{ scale: 1.2, rotate: 5 }}
-                          whileTap={{ scale: 0.9 }}
-                          className={`w-10 h-10 bg-gradient-to-br ${btn.color} text-white rounded-full flex items-center justify-center font-bold hover:shadow-lg transition text-lg`}
-                        >
-                          {btn.label}
-                        </motion.button>
-                      ))}
-                    </div>
-                  </div>
                 </motion.div>
               </div>
             </div>
