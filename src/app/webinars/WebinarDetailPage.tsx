@@ -159,6 +159,8 @@ function CountdownTimer() {
 
 export default function WebinarDetailPage() {
   const [showBanner, setShowBanner] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', business: '' });
   const params = useParams();
   const webinarId = parseInt(params.id as string);
   const webinar = allWebinars.find((w) => w.id === webinarId);
@@ -325,6 +327,7 @@ export default function WebinarDetailPage() {
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400 }}
+                    onClick={() => setShowModal(true)}
                     className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-lg shadow-lg transition duration-300"
                   >
                     🎯 Apply To Get Invite
@@ -724,6 +727,7 @@ export default function WebinarDetailPage() {
                     <motion.button
                       whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => setShowModal(true)}
                       className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
                     >
                       🎯 Apply To Get Invite
@@ -997,6 +1001,7 @@ export default function WebinarDetailPage() {
                 <motion.button
                   whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowModal(true)}
                   className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
                 >
                   🎯 Get Invite
@@ -1004,6 +1009,106 @@ export default function WebinarDetailPage() {
               </div>
             </motion.div>
           </section>
+
+          {/* Modal */}
+          {showModal && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="bg-white rounded-2xl shadow-2xl max-w-md w-full relative"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Modal Content */}
+                <div className="p-8">
+                  <h2 className="text-2xl font-black text-center text-orange-600 mb-8">
+                    Apply For 🎥 One Man Business Event
+                  </h2>
+
+                  <form className="space-y-4 mb-6">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Enter name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="Enter email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        WhatsApp Number <span className="text-red-500">*</span>
+                      </label>
+                      <div className="flex gap-2">
+                        <div className="flex items-center px-3 border-2 border-gray-200 rounded-lg bg-white">
+                          <span className="text-sm font-semibold">🇮🇳 +91</span>
+                        </div>
+                        <input
+                          type="tel"
+                          placeholder="81234 56789"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Business Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="enter business name"
+                        value={formData.business}
+                        onChange={(e) => setFormData({...formData, business: e.target.value})}
+                        className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition bg-white text-sm"
+                      />
+                    </div>
+                  </form>
+
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition shadow-lg text-base mb-4"
+                  >
+                    Apply To Get Invite
+                  </motion.button>
+
+                  <p className="text-center text-xs text-red-600 font-semibold">
+                    Note: Remember, After 99 People It's Rs.499/- ( Get Your Seat Fast )
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          )}
         </main>
         <Footer />
       </>
