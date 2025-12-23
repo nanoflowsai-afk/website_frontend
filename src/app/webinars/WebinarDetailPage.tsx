@@ -221,7 +221,7 @@ export default function WebinarDetailPage() {
 
           {/* Hero Section */}
           <section className="px-6 py-20 text-gray-900 relative" style={{
-            backgroundImage: "url('/attached_assets/generated_images/professional_business_automation_with_ai_agents.png')",
+            backgroundImage: "url('/attached_assets/stock_images/professional_busines_6980fc91.jpg')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed'
