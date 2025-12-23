@@ -276,7 +276,7 @@ export default function WebinarDetailPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="p-8 md:p-10 bg-gradient-to-r from-white to-orange-50 border-2 border-orange-300 rounded-2xl shadow-lg hover:shadow-xl transition"
+                className="p-8 md:p-12 bg-gradient-to-r from-white to-orange-50 rounded-2xl shadow-lg hover:shadow-xl transition mx-auto w-full max-w-6xl"
               >
                 <div className="text-center mb-8">
                   <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Upcoming</span>
