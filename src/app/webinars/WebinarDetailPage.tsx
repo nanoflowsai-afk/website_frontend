@@ -563,105 +563,125 @@ export default function WebinarDetailPage() {
             </div>
           </section>
 
-          {/* Frequently Asked Questions */}
+          {/* Testimonials */}
           <section className="px-6 py-20 bg-gradient-to-b from-white to-gray-50">
-            <div className="mx-auto max-w-[900px]">
-              <motion.div
+            <div className="mx-auto max-w-[1200px]">
+              <motion.h2 
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-center mb-16"
+                className="text-3xl md:text-4xl font-black text-gray-900 mb-4 text-center"
               >
-                <p className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">Got Questions?</p>
-                <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                  Frequently Asked <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Questions</span>
-                </h2>
-                <p className="text-gray-600 text-base">Everything you need to know about the 3 Days Business Automation Event</p>
-              </motion.div>
+                3 Days is all you Need for Your <span className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">100% Success!</span>
+              </motion.h2>
+              <p className="text-center text-gray-600 mb-12 text-xs font-bold uppercase tracking-[0.2em]">✨ Testimonials ✨</p>
 
-              <div className="space-y-4">
+              <motion.h3 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center"
+              >
+                What others are saying
+              </motion.h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 {[
                   {
-                    question: "Is this event suitable for beginners?",
-                    answer: "Absolutely! This event is designed for entrepreneurs and business owners at all levels. We cover everything from basic setup to advanced automation, with no prior technical experience needed. Our hosts will guide you step-by-step through live implementation."
+                    emoji: '👨‍💼',
+                    title: '"Saved Lakhs Every Month"',
+                    text: '"Most MasterClass are boring and filled with jargon. But this event showed real automation setups live! I implemented them the same day and replaced my 6 Employees with this system"',
+                    author: '- Raj Kumar',
+                    rating: 5
                   },
                   {
-                    question: "What if I can't attend all 3 days?",
-                    answer: "We recommend attending all 3 days for maximum benefit, as each day builds on the previous one. However, if you can't make it to all sessions, recordings will be provided within 24 hours of each day's event."
+                    emoji: '👩‍💼',
+                    title: '"My life changed forever"',
+                    text: '"Before this event, I had no clue what CRM or workflows meant. Now I\'ve built my own automated client journey — and it runs 24/7!"',
+                    author: '- Priya',
+                    rating: 5
                   },
                   {
-                    question: "Do I need any special software or tools?",
-                    answer: "All you need is a laptop/computer with internet access and a web browser. We'll provide access to all tools and platforms during the event. No installation required beforehand."
+                    emoji: '👨‍💻',
+                    title: '"Highly recommend this"',
+                    text: '"I learned how to build systems that never rest. Leads, follow-ups, payments — everything runs automatically. It\'s like having a digital employee."',
+                    author: '- Naveen',
+                    rating: 5
                   },
-                  {
-                    question: "What will I actually learn in these 3 days?",
-                    answer: "Day 1: Business setup, website builders, CRM configuration, and automation basics. Day 2: Advanced workflows, customer management, email marketing automation, and follow-up systems. Day 3: Real-world implementations for different industries and live client success stories."
-                  },
-                  {
-                    question: "How much does this event cost?",
-                    answer: "The event is completely FREE for the first 99 participants. After that, it's available for ₹499/-. This is an incredible investment considering you get 12+ AI agents and systems worth thousands of rupees absolutely free."
-                  },
-                  {
-                    question: "Will I get support after the event?",
-                    answer: "Yes! All participants receive a 30-day support period where you can get help with implementation. Additionally, you'll have access to a community of 1000+ business owners where you can ask questions and share insights."
-                  },
-                  {
-                    question: "Can I use this for my client business?",
-                    answer: "Definitely! Many participants are agencies and service providers who implement these systems for their clients. You'll learn how to set up, customize, and manage these automation systems professionally."
-                  },
-                  {
-                    question: "What if I have a specific industry like real estate or salon?",
-                    answer: "Perfect! Day 3 specifically covers industry-specific implementations including real estate, salons, fitness, travel agencies, and more. You'll see real working examples for your business type."
-                  },
-                ].map((faq, idx) => (
+                ].map((testimonial, idx) => (
                   <motion.div
                     key={idx}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.08, duration: 0.5 }}
-                    className="bg-white border-2 border-orange-100 rounded-xl overflow-hidden hover:border-orange-300 hover:shadow-lg transition"
+                    transition={{ delay: idx * 0.15, duration: 0.6 }}
+                    whileHover={{ y: -5, boxShadow: "0 15px 40px rgba(251, 146, 60, 0.1)" }}
+                    className="text-center p-6 bg-white border-2 border-orange-100 rounded-xl shadow-md hover:shadow-lg hover:border-orange-300 transition"
                   >
-                    <details className="group cursor-pointer">
-                      <summary className="p-6 flex items-center justify-between select-none hover:bg-orange-50 transition">
-                        <h3 className="font-bold text-gray-900 text-base leading-relaxed pr-4">{faq.question}</h3>
-                        <motion.div
-                          initial={{ rotate: 0 }}
-                          animate={{ rotate: 180 }}
-                          transition={{ duration: 0.3 }}
-                          className="flex-shrink-0 text-orange-600 text-2xl group-open:rotate-180"
-                        >
-                          ▼
-                        </motion.div>
-                      </summary>
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        transition={{ duration: 0.3 }}
-                        className="border-t-2 border-orange-100 px-6 py-4 bg-gradient-to-r from-orange-50 to-white"
+                    <div className="flex justify-center mb-6">
+                      <motion.div 
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-3xl shadow-lg"
                       >
-                        <p className="text-gray-700 text-sm leading-relaxed">{faq.answer}</p>
+                        {testimonial.emoji}
                       </motion.div>
-                    </details>
+                    </div>
+                    <h3 className="text-sm font-bold text-gray-900 mb-3">{testimonial.title}</h3>
+                    <p className="text-xs text-gray-700 mb-4 italic leading-relaxed">{testimonial.text}</p>
+                    <div className="flex justify-center gap-1 mb-3">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <motion.span 
+                          key={i} 
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.2 + i * 0.1 }}
+                          className="text-lg"
+                        >
+                          ⭐
+                        </motion.span>
+                      ))}
+                    </div>
+                    <p className="text-xs font-bold text-orange-600">{testimonial.author}</p>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Additional Help Section */}
+              {/* End Goal Section */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="mt-12 p-8 bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-2xl text-center"
+                className="border-t-4 border-orange-500 pt-12"
               >
-                <p className="text-gray-700 font-semibold mb-4">Still have questions?</p>
-                <p className="text-gray-600 text-sm mb-6">Our support team is here to help. Reach out to us before the event.</p>
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(251, 146, 60, 0.2)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition shadow-lg"
-                >
-                  📧 Contact Support
-                </motion.button>
+                <h3 className="text-2xl font-bold text-white text-center mb-4">
+                  End Goal of the <span className="text-yellow-400">3 Days</span> Event:
+                </h3>
+                <p className="text-center text-gray-300 mb-8 max-w-2xl mx-auto text-sm leading-relaxed">
+                  "95% of businesses fail. The other 5% barely survive. That's why we built <span className="font-bold">LevelUpVerse</span> – to save as many businesses as possible through smart automation."
+                </p>
+                
+                <div className="flex justify-center gap-4 mb-8">
+                  <span className="text-3xl">⌄</span>
+                  <span className="text-3xl">⌄</span>
+                  <span className="text-3xl">⌄</span>
+                </div>
+
+                <div className="flex justify-center gap-3 mb-6">
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">f</button>
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">𝕏</button>
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">in</button>
+                  <button className="w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center text-white transition">📧</button>
+                </div>
+
+                <div className="text-center">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition text-base"
+                  >
+                    🎯 Apply To Get Invite
+                  </motion.button>
+                  <p className="text-xs text-gray-400 mt-3">Unlocked by Digital Chandu</p>
+                </div>
               </motion.div>
             </div>
           </section>
