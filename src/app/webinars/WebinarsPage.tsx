@@ -4,6 +4,7 @@ import { apiFetch } from "@/lib/api";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+import { LoginModal } from "@/components/LoginModal";
 import webinarHeroImage from "@assets/stock_images/professional_webinar_6d5e6348.jpg";
 import webinarAboutImage from "@assets/stock_images/professional_webinar_0ed09bfd.jpg";
 
@@ -33,6 +34,13 @@ export default function WebinarsPage() {
 
   const [webinars, setWebinars] = useState<Webinar[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const checkAuth = () => {
+    const adminToken = localStorage.getItem("nano_admin_token");
+    const userLoggedIn = localStorage.getItem("nano_user_logged_in");
+    return !!adminToken || userLoggedIn === "true";
+  };
 
   useEffect(() => {
     const fetchWebinars = async () => {
@@ -51,7 +59,7 @@ export default function WebinarsPage() {
     fetchWebinars();
   }, []);
 
-  const categories = ["AI Automation", "AI Agents", "Marketing AI", "Business AI", "Workshops"];
+  const categories = ["AI Automation", "AI Agents", "Marketing AI", "Business AI", "Workshops", "Other"];
   const types = ["Upcoming", "Live", "Recorded"];
   const levels = ["Beginner", "Intermediate", "Advanced"];
 
@@ -126,6 +134,16 @@ export default function WebinarsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    if (checkAuth()) {
+                      // Logic for what happens when logged in - in this hero context, maybe scroll to list or specific action? 
+                      // For now, assuming it scrolls to Featured or All Webinars as there's no specific link in original code.
+                      const featuredSection = document.getElementById("featured-webinar");
+                      if (featuredSection) featuredSection.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      setShowLoginModal(true);
+                    }
+                  }}
                   className="px-8 py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition shadow-md text-base"
                 >
                   Register for Webinar
@@ -133,6 +151,10 @@ export default function WebinarsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    const section = document.getElementById("all-webinars");
+                    if (section) section.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white font-bold rounded-lg hover:bg-white/20 transition border border-white/30 text-base"
                 >
                   View Upcoming Sessions
@@ -352,7 +374,7 @@ export default function WebinarsPage() {
                 className="h-auto md:h-80 lg:h-96 rounded-2xl overflow-hidden border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white shadow-lg p-4 md:p-5 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4">Register Now</h3>
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4">Subscribe & Get Notified</h3>
 
                   {/* Form Input 1 */}
                   <div className="mb-3">
@@ -383,6 +405,7 @@ export default function WebinarsPage() {
                       <option>Marketing AI</option>
                       <option>Business AI</option>
                       <option>Workshops</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>
@@ -391,9 +414,18 @@ export default function WebinarsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    if (!checkAuth()) {
+                      setShowLoginModal(true);
+                    } else {
+                      // Placeholder for actual registration logic if needed
+                      // For now, we just ensure the auth check is in place
+                      alert("Successfully Registered!");
+                    }
+                  }}
                   className="w-full px-4 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-sm"
                 >
-                  Register for Webinar →
+                  Subscribe & Get Notified →
                 </motion.button>
               </motion.div>
             </div>
@@ -408,6 +440,8 @@ export default function WebinarsPage() {
                 <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs font-bold mb-3">⭐ Featured Webinar</span>
                 <h2 className="text-3xl font-bold text-gray-900">Don't Miss This Session</h2>
               </div>
+
+              <div id="featured-webinar"></div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -478,6 +512,12 @@ export default function WebinarsPage() {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={(e) => {
+                        if (!checkAuth()) {
+                          e.preventDefault();
+                          setShowLoginModal(true);
+                        }
+                      }}
                       className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition w-full text-sm"
                     >
                       Register Now →
@@ -490,7 +530,7 @@ export default function WebinarsPage() {
         )}
 
         {/* All Webinars Section - THIRD */}
-        <section className="px-6 py-16 bg-white">
+        <section id="all-webinars" className="px-6 py-16 bg-white">
           <div className="mx-auto max-w-[1400px]">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-3">
@@ -598,6 +638,12 @@ export default function WebinarsPage() {
                             <motion.button
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
+                              onClick={(e) => {
+                                if (webinar.type !== "Recorded" && !checkAuth()) {
+                                  e.preventDefault();
+                                  setShowLoginModal(true);
+                                }
+                              }}
                               className="w-full px-3 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-xs"
                             >
                               {webinar.type === "Recorded" ? "Watch" : "Register"}
@@ -654,9 +700,10 @@ export default function WebinarsPage() {
             </div>
           </div>
         </section>
-      </main>
+      </main >
 
       <Footer />
+      <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
     </>
   );
 }

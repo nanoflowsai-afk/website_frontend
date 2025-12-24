@@ -51,6 +51,7 @@ function LoginForm() {
         setLoading(false);
 
         if (userRes.ok) {
+            localStorage.setItem("nano_user_logged_in", "true");
             navigate("/");
             return;
         }

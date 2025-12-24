@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { apiFetch } from "@/lib/api";
 import { normalizeImageUrl } from "@/lib/images";
+import { LoginModal } from "@/components/LoginModal";
 
 type RoadmapItem = {
     id: number;
@@ -102,6 +103,13 @@ export default function WebinarDetailPage() {
 
     const [webinar, setWebinar] = useState<Webinar | null>(null);
     const [loading, setLoading] = useState(true);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
+    const checkAuth = () => {
+        const adminToken = localStorage.getItem("nano_admin_token");
+        const userLoggedIn = localStorage.getItem("nano_user_logged_in");
+        return !!adminToken || userLoggedIn === "true";
+    };
 
     useEffect(() => {
         const fetchDetails = async () => {
@@ -257,7 +265,13 @@ export default function WebinarDetailPage() {
                                         transition={{ delay: 0.6 }}
                                         whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
                                         whileTap={{ scale: 0.98 }}
-                                        onClick={() => setShowModal(true)}
+                                        onClick={() => {
+                                            if (checkAuth()) {
+                                                setShowModal(true);
+                                            } else {
+                                                setShowLoginModal(true);
+                                            }
+                                        }}
                                         className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition duration-300"
                                     >
                                         📋 Apply To Get Business Automation Event
@@ -343,7 +357,13 @@ export default function WebinarDetailPage() {
                                             whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
                                             whileTap={{ scale: 0.95 }}
                                             transition={{ type: "spring", stiffness: 400 }}
-                                            onClick={() => setShowModal(true)}
+                                            onClick={() => {
+                                                if (checkAuth()) {
+                                                    setShowModal(true);
+                                                } else {
+                                                    setShowLoginModal(true);
+                                                }
+                                            }}
                                             className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-sm md:text-lg shadow-lg transition duration-300"
                                         >
                                             🎯 Apply To Get Invite
@@ -487,7 +507,13 @@ export default function WebinarDetailPage() {
                                     transition={{ delay: 0.2 }}
                                     whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(220, 38, 38, 0.4)" }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => setShowModal(true)}
+                                    onClick={() => {
+                                        if (checkAuth()) {
+                                            setShowModal(true);
+                                        } else {
+                                            setShowLoginModal(true);
+                                        }
+                                    }}
                                     className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg shadow-lg transition duration-300"
                                 >
                                     Apply To Get Invite
@@ -680,7 +706,13 @@ export default function WebinarDetailPage() {
                                         <motion.button
                                             whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(220, 38, 38, 0.2)" }}
                                             whileTap={{ scale: 0.95 }}
-                                            onClick={() => setShowModal(true)}
+                                            onClick={() => {
+                                                if (checkAuth()) {
+                                                    setShowModal(true);
+                                                } else {
+                                                    setShowLoginModal(true);
+                                                }
+                                            }}
                                             className="px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg transition mb-3 shadow-lg text-lg"
                                         >
                                             🎯 Apply To Get Invite
@@ -905,7 +937,13 @@ export default function WebinarDetailPage() {
                                 <motion.button
                                     whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => setShowModal(true)}
+                                    onClick={() => {
+                                        if (checkAuth()) {
+                                            setShowModal(true);
+                                        } else {
+                                            setShowLoginModal(true);
+                                        }
+                                    }}
                                     className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
                                 >
                                     🎯 Get Invite
@@ -1015,6 +1053,7 @@ export default function WebinarDetailPage() {
                     )}
                 </main>
                 <Footer />
+                <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
             </>
         );
     }
