@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 
 type LoginModalProps = {
   isOpen: boolean;
@@ -40,7 +39,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
             {/* Actions */}
             <div className="flex flex-col gap-3 px-6 pb-8 pt-2">
-              <Link to="/login" className="w-full">
+              <a href={`${import.meta.env.VITE_WEBINAR_URL || 'http://localhost:5173'}/login`} className="w-full">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -48,8 +47,8 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 >
                   Log In Now
                 </motion.button>
-              </Link>
-              
+              </a>
+
               <button
                 onClick={onClose}
                 className="w-full rounded-xl border-2 border-gray-100 bg-white py-3.5 text-sm font-bold text-gray-600 transition hover:bg-gray-50 hover:text-gray-900"

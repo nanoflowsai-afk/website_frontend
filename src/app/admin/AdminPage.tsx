@@ -115,6 +115,25 @@ const parseJsonArray = (value: unknown): string[] => {
     return [];
 };
 
+type Registration = {
+    id: number;
+    user: {
+        id: number;
+        name: string;
+        email: string;
+        headline?: string;
+    };
+    webinar: {
+        id: number;
+        title: string;
+        date: string;
+        time: string;
+    };
+    registeredAt: string;
+    status: string;
+    confirmed: boolean;
+};
+
 const navItems: NavItem[] = [
     {
         id: "hero",
@@ -170,6 +189,15 @@ const navItems: NavItem[] = [
             </svg>
         ),
     },
+    {
+        id: "registrations",
+        label: "Registrations",
+        icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+        ),
+    }
 ];
 
 export default function AdminPage() {
@@ -185,6 +213,8 @@ export default function AdminPage() {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [jobs, setJobs] = useState<JobPosting[]>([]);
     const [webinars, setWebinars] = useState<Webinar[]>([]);
+    const [registrations, setRegistrations] = useState<Registration[]>([]);
+    const [selectedWebinarFilter, setSelectedWebinarFilter] = useState<number | "all">("all");
 
     // Auth State
     const [isAuthed, setIsAuthed] = useState(false);
@@ -344,6 +374,17 @@ export default function AdminPage() {
         } catch (err) { console.error(err); }
     }, []);
 
+    const fetchRegistrations = useCallback(async (webinarId?: number) => {
+        try {
+            const query = webinarId ? `?webinarId=${webinarId}` : "";
+            const res = await apiFetch(`/api/admin/registrations${query}`, { credentials: "include" });
+            if (res.ok) {
+                const data = await res.json();
+                setRegistrations(data.registrations || []);
+            }
+        } catch (err) { console.error(err); }
+    }, []);
+
     // Initial Auth Check and Data Load
     useEffect(() => {
         const checkAuth = async () => {
@@ -363,7 +404,9 @@ export default function AdminPage() {
                 fetchBlog(),
                 fetchBlog(),
                 fetchCareers(),
+                fetchCareers(),
                 fetchWebinars(),
+                fetchRegistrations(),
             ]);
         };
         checkAuth();
@@ -864,7 +907,7 @@ export default function AdminPage() {
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <label className="text-sm font-medium text-gray-700">Or upload image:</label>
-                                        <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleHeroFile(f); }} className="text-sm" />
+                                        <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleHeroFile(f); }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                         {heroUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                                     </div>
                                     <div className="flex items-center gap-6">
@@ -966,7 +1009,7 @@ export default function AdminPage() {
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <label className="text-sm font-medium text-gray-700">Or upload:</label>
-                                        <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleMemberImageUpload(f); }} className="text-sm" />
+                                        <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleMemberImageUpload(f); }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                         {memberUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                                     </div>
                                     <div className="flex items-center gap-6">
@@ -1040,7 +1083,7 @@ export default function AdminPage() {
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <label className="text-sm font-medium text-gray-700">Or upload:</label>
-                                        <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleBlogImageUpload(f); }} className="text-sm" />
+                                        <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleBlogImageUpload(f); }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                         {blogUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                                     </div>
                                     <div className="flex items-center gap-6">
@@ -1285,7 +1328,7 @@ export default function AdminPage() {
                                                                 }
                                                             } catch { }
                                                         }
-                                                    }} className="text-sm" />
+                                                    }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1328,7 +1371,7 @@ export default function AdminPage() {
                                                                                     }
                                                                                 } catch { }
                                                                             }
-                                                                        }} className="text-sm w-auto" />
+                                                                        }} className="block w-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                                                     </div>
                                                                 </div>
                                                                 <div className="md:col-span-2">
@@ -1375,7 +1418,7 @@ export default function AdminPage() {
                                                                 }
                                                             } catch { }
                                                         }
-                                                    }} className="text-sm" />
+                                                    }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1392,7 +1435,7 @@ export default function AdminPage() {
                                         </div>
                                         <div className="flex items-center gap-4">
                                             <label className="text-sm font-medium text-gray-700">Or upload:</label>
-                                            <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleWebinarImageUpload(f); }} className="text-sm" />
+                                            <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleWebinarImageUpload(f); }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
                                             {webinarUploading && <span className="text-sm text-orange-600">Uploading...</span>}
                                         </div>
 
@@ -1428,6 +1471,87 @@ export default function AdminPage() {
                                     </div>
                                 ))}
                                 {!webinars.length && <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center text-gray-500">No webinars yet. Create one above.</div>}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* REGISTRATIONS SECTION */}
+                    {activeSection === "registrations" && (
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-900">Event Registrations</h2>
+                                <p className="text-gray-500">View and manage webinar signups</p>
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-6">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div className="w-full md:w-1/3">
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Filter by Webinar</label>
+                                        <select
+                                            value={selectedWebinarFilter}
+                                            onChange={(e) => {
+                                                const val = e.target.value === "all" ? "all" : Number(e.target.value);
+                                                setSelectedWebinarFilter(val);
+                                                fetchRegistrations(val === "all" ? undefined : val);
+                                            }}
+                                            className="w-full rounded-xl border border-gray-200 px-4 py-2.5 outline-none focus:border-orange-500 transition cursor-pointer"
+                                        >
+                                            <option value="all">All Webinars</option>
+                                            {webinars.map(w => (
+                                                <option key={w.id} value={w.id}>{w.title} ({w.date})</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div className="flex items-center gap-4">
+                                        <div className="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium">
+                                            Total: {registrations.length}
+                                        </div>
+                                        <button
+                                            onClick={() => fetchRegistrations(selectedWebinarFilter === "all" ? undefined : selectedWebinarFilter)}
+                                            className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition"
+                                        >
+                                            🔄
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left text-sm text-gray-600">
+                                        <thead className="bg-gray-50 border-b border-gray-200 font-medium text-gray-900">
+                                            <tr>
+                                                <th className="px-4 py-3">User</th>
+                                                <th className="px-4 py-3">Email</th>
+                                                <th className="px-4 py-3">Webinar</th>
+                                                <th className="px-4 py-3">Date</th>
+                                                <th className="px-4 py-3">Registered At</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-100">
+                                            {registrations.length === 0 ? (
+                                                <tr>
+                                                    <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                                                        No registrations found.
+                                                    </td>
+                                                </tr>
+                                            ) : (
+                                                registrations.map((reg) => (
+                                                    <tr key={reg.id} className="hover:bg-gray-50 transition">
+                                                        <td className="px-4 py-3 font-medium text-gray-900">{reg.user.name}</td>
+                                                        <td className="px-4 py-3">{reg.user.email}</td>
+                                                        <td className="px-4 py-3">
+                                                            <div className="font-medium text-gray-900">{reg.webinar.title}</div>
+                                                            <div className="text-xs text-gray-400">{reg.webinar.date} • {reg.webinar.time}</div>
+                                                        </td>
+                                                        <td className="px-4 py-3">{reg.webinar.date}</td>
+                                                        <td className="px-4 py-3 text-xs text-gray-400">
+                                                            {new Date(reg.registeredAt).toLocaleDateString()} {new Date(reg.registeredAt).toLocaleTimeString()}
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     )}
