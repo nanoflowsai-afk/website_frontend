@@ -157,7 +157,7 @@ export function Navbar() {
             height={35}
             className="h-10 w-auto"
           />
-          <span className="text-xs font-semibold text-gray-900 leading-tight">Nanoflows AI Software<br/>Technologies Pvt. Ltd</span>
+          <span className="text-xs font-semibold text-gray-900 leading-tight">Nanoflows AI Software<br />Technologies Pvt. Ltd</span>
         </Link>
 
         <div className="flex items-center gap-2">
@@ -195,7 +195,7 @@ export function Navbar() {
             className="h-16 w-auto"
 
           />
-          <span className="text-sm font-semibold text-gray-900 leading-tight">Nanoflows AI Software<br/>Technologies Pvt. Ltd</span>
+          <span className="text-sm font-semibold text-gray-900 leading-tight">Nanoflows AI Software<br />Technologies Pvt. Ltd</span>
         </Link>
 
         <nav className="flex items-center gap-8 text-sm font-medium text-gray-700">
@@ -273,6 +273,13 @@ export function Navbar() {
                   Webinars
                 </Link>
                 <Link
+                  to="/ai-tools"
+                  className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-orange-50 hover:text-orange-600"
+                  onClick={() => setResourcesOpen(false)}
+                >
+                  AI Tools
+                </Link>
+                <Link
                   to="/careers"
                   className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-orange-50 hover:text-orange-600"
                   onClick={() => setResourcesOpen(false)}
@@ -298,7 +305,7 @@ export function Navbar() {
           {isAdmin ? (
             <Link
               to="/admin"
-              className="rounded-xl bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-gray-800"
+              className="rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:-translate-y-0.5 hover:shadow-orange-500/40"
             >
               Admin Dashboard
             </Link>
@@ -537,8 +544,15 @@ export function Navbar() {
                         className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 transition-all"
                         onClick={() => setMobileOpen(false)}
                       >
-                        <span className="text-2xl">🎓</span>
                         Webinars
+                      </Link>
+                      <Link
+                        to="/ai-tools"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 transition-all"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <span className="text-2xl">🤖</span>
+                        AI Tools
                       </Link>
                       <Link
                         to="/careers"

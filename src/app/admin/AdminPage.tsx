@@ -33,6 +33,15 @@ type TeamMember = {
     displayOrder: number;
 };
 
+type ProductRequest = {
+    id: number;
+    name: string;
+    email: string;
+    idea: string;
+    status: "Pending" | "Reviewed" | "Completed";
+    createdAt: string;
+};
+
 type BlogPost = {
     id: number;
     title: string;
@@ -134,6 +143,18 @@ type Registration = {
     confirmed: boolean;
 };
 
+type AiTool = {
+    id: number;
+    name: string;
+    description: string;
+    category: string;
+    pricing: string;
+    websiteUrl: string;
+    imageUrl: string;
+    isActive: boolean;
+    displayOrder: number;
+};
+
 const navItems: NavItem[] = [
     {
         id: "hero",
@@ -197,6 +218,24 @@ const navItems: NavItem[] = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg>
         ),
+    },
+    {
+        id: "ai-tools",
+        label: "AI Tools",
+        icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+        ),
+    },
+    {
+        id: "product-requests",
+        label: "Product Requests",
+        icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+        ),
     }
 ];
 
@@ -214,6 +253,8 @@ export default function AdminPage() {
     const [jobs, setJobs] = useState<JobPosting[]>([]);
     const [webinars, setWebinars] = useState<Webinar[]>([]);
     const [registrations, setRegistrations] = useState<Registration[]>([]);
+    const [aiTools, setAiTools] = useState<AiTool[]>([]);
+    const [productRequests, setProductRequests] = useState<ProductRequest[]>([]);
     const [selectedWebinarFilter, setSelectedWebinarFilter] = useState<number | "all">("all");
 
     // Auth State
@@ -313,6 +354,20 @@ export default function AdminPage() {
     });
     const [editingWebinarId, setEditingWebinarId] = useState<number | null>(null);
 
+    const [aiToolForm, setAiToolForm] = useState({
+        name: "",
+        description: "",
+        category: "AI Tools",
+        pricing: "Free",
+        websiteUrl: "",
+        imageUrl: "",
+        isActive: true,
+        displayOrder: 0,
+    });
+    const [editingAiToolId, setEditingAiToolId] = useState<number | null>(null);
+    const [aiToolError, setAiToolError] = useState<string | null>(null);
+    const [aiToolUploading, setAiToolUploading] = useState(false);
+
     // Data Fetching Functions
     const fetchSlides = useCallback(async () => {
         try {
@@ -385,6 +440,28 @@ export default function AdminPage() {
         } catch (err) { console.error(err); }
     }, []);
 
+    const fetchAiTools = useCallback(async () => {
+        try {
+            const res = await apiFetch("/api/admin/ai-tools", { credentials: "include" });
+            if (res.ok) {
+                const data = await res.json();
+                setAiTools(data.tools || []);
+            }
+        } catch (err) { console.error(err); }
+    }, []);
+
+    const fetchProductRequests = useCallback(async () => {
+        try {
+            const res = await apiFetch("/api/admin/product-requests", { credentials: "include" });
+            if (res.ok) {
+                const data = await res.json();
+                setProductRequests(data.requests);
+            }
+        } catch (error) {
+            console.error("Failed to fetch product requests", error);
+        }
+    }, []);
+
     // Initial Auth Check and Data Load
     useEffect(() => {
         const checkAuth = async () => {
@@ -394,23 +471,22 @@ export default function AdminPage() {
                 return;
             }
             setIsAuthed(true);
-            setIsLoading(false);
 
-            // Load initial data
-            await Promise.all([
+            // Fetch Data
+            Promise.all([
                 fetchSlides(),
                 fetchAbout(),
                 fetchTeam(),
                 fetchBlog(),
-                fetchBlog(),
-                fetchCareers(),
                 fetchCareers(),
                 fetchWebinars(),
                 fetchRegistrations(),
-            ]);
+                fetchAiTools(),
+                fetchProductRequests(),
+            ]).finally(() => setIsLoading(false));
         };
         checkAuth();
-    }, [navigate]);
+    }, [navigate, fetchSlides, fetchAbout, fetchTeam, fetchBlog, fetchCareers, fetchWebinars, fetchRegistrations, fetchAiTools, fetchProductRequests]);
 
     // Sync Forms with Data when Editing
     useEffect(() => {
@@ -533,6 +609,24 @@ export default function AdminPage() {
             }
         }
     }, [editingWebinarId, webinars]);
+
+    useEffect(() => {
+        if (editingAiToolId && aiTools.length > 0) {
+            const t = aiTools.find((x) => x.id === editingAiToolId);
+            if (t) {
+                setAiToolForm({
+                    name: t.name,
+                    description: t.description,
+                    category: t.category,
+                    pricing: t.pricing,
+                    websiteUrl: t.websiteUrl,
+                    imageUrl: t.imageUrl,
+                    isActive: t.isActive,
+                    displayOrder: t.displayOrder,
+                });
+            }
+        }
+    }, [editingAiToolId, aiTools]);
 
 
     // Handlers - Slides
@@ -791,6 +885,92 @@ export default function AdminPage() {
         if (!confirm("Delete webinar?")) return;
         await apiFetch(`/api/admin/webinars/${id}`, { method: "DELETE", credentials: "include" });
         fetchWebinars();
+    };
+
+    // Handlers - AI Tools
+    const handleAiToolSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setAiToolError(null);
+        const endpoint = editingAiToolId ? `/api/admin/ai-tools/${editingAiToolId}` : "/api/admin/ai-tools";
+        const method = editingAiToolId ? "PUT" : "POST";
+        try {
+            const res = await apiFetch(endpoint, {
+                method,
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(aiToolForm),
+            });
+            if (res.ok) {
+                setAiToolForm({
+                    name: "", description: "", category: "AI Tools", pricing: "Free",
+                    websiteUrl: "", imageUrl: "", isActive: true, displayOrder: 0
+                });
+                setEditingAiToolId(null);
+                fetchAiTools();
+            } else {
+                const data = await res.json();
+                setAiToolError(data?.error || "Save failed");
+            }
+        } catch { setAiToolError("Save error"); }
+    };
+
+    const handleAiToolImageUpload = async (file: File) => {
+        setAiToolUploading(true);
+        setAiToolError(null);
+        const formData = new FormData();
+        formData.append("file", file);
+        try {
+            const res = await apiFetch("/api/uploads", { method: "POST", body: formData });
+            if (res.ok) {
+                const json = await res.json();
+                if (json.url) setAiToolForm(f => ({ ...f, imageUrl: json.url }));
+            } else {
+                setAiToolError("Upload failed");
+            }
+        } catch { setAiToolError("Upload error"); }
+        setAiToolUploading(false);
+    };
+
+    const handleAiToolDelete = async (id: number) => {
+        if (!confirm("Delete this AI tool?")) return;
+        try {
+            const res = await apiFetch(`/api/admin/ai-tools/${id}`, { method: "DELETE", credentials: "include" });
+            if (res.ok) {
+                setAiTools(prev => prev.filter(t => t.id !== id));
+            }
+        } catch (error) {
+            console.error("Delete failed", error);
+            setAiToolError("Failed to delete tool");
+        }
+    };
+
+    // --- Product Request Handlers ---
+    const handleRequestStatusUpdate = async (id: number, status: ProductRequest["status"]) => {
+        try {
+            const res = await apiFetch(`/api/admin/product-requests/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({ status }),
+            });
+            if (res.ok) {
+                fetchProductRequests();
+            }
+        } catch (error) {
+            console.error("Failed to update status", error);
+        }
+    };
+
+    const handleRequestDelete = async (id: number) => {
+        if (!confirm("Delete this request?")) return;
+        try {
+            const res = await apiFetch(`/api/admin/product-requests/${id}`, { method: "DELETE", credentials: "include" });
+            if (res.ok) {
+                setProductRequests(prev => prev.filter(r => r.id !== id));
+            }
+        } catch (error) {
+            console.error("Failed to delete request", error);
+        }
     };
 
 
@@ -1475,6 +1655,114 @@ export default function AdminPage() {
                         </div>
                     )}
 
+                    {/* AI TOOLS SECTION */}
+                    {activeSection === "ai-tools" && (
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-900">Manage AI Tools</h2>
+                                <p className="text-gray-500">Add, edit, or remove tools from the database</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                {/* Form */}
+                                <form onSubmit={handleAiToolSubmit} className="lg:col-span-1">
+                                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-4">
+                                        <h3 className="font-bold text-gray-900 mb-4">{editingAiToolId ? "Edit Tool" : "Add New Tool"}</h3>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Tool Name</label>
+                                            <input value={aiToolForm.name} onChange={(e) => setAiToolForm(f => ({ ...f, name: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="e.g. ChatGPT" required />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                                            <select value={aiToolForm.category} onChange={(e) => setAiToolForm(f => ({ ...f, category: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition">
+                                                <option value="AI Tools">AI Tools</option>
+                                                <option value="Automation & Workflows">Automation & Workflows</option>
+                                                <option value="Webinars & Learning">Webinars & Learning</option>
+                                                <option value="Business AI Solutions">Business AI Solutions</option>
+                                                <option value="Custom AI Development">Custom AI Development</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Pricing</label>
+                                            <select value={aiToolForm.pricing} onChange={(e) => setAiToolForm(f => ({ ...f, pricing: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition">
+                                                <option value="Free">Free</option>
+                                                <option value="Freemium">Freemium</option>
+                                                <option value="Paid">Paid</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Website URL</label>
+                                            <input value={aiToolForm.websiteUrl} onChange={(e) => setAiToolForm(f => ({ ...f, websiteUrl: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="https://..." required />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                                            <textarea value={aiToolForm.description} onChange={(e) => setAiToolForm(f => ({ ...f, description: e.target.value }))} rows={3} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition resize-none" required placeholder="Short description..." />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Tool Image</label>
+                                            <input value={aiToolForm.imageUrl} onChange={(e) => setAiToolForm(f => ({ ...f, imageUrl: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition mb-2" placeholder="Image URL" required />
+                                            <input type="file" accept="image/*" onChange={(e) => { const f = e.target.files?.[0]; if (f) handleAiToolImageUpload(f); }} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition" />
+                                            {aiToolUploading && <span className="text-sm text-orange-600">Uploading...</span>}
+                                        </div>
+
+                                        <div className="flex items-center gap-2">
+                                            <input type="checkbox" checked={aiToolForm.isActive} onChange={(e) => setAiToolForm(f => ({ ...f, isActive: e.target.checked }))} className="rounded border-gray-300 text-orange-600 focus:ring-orange-500" />
+                                            <label className="text-sm font-medium text-gray-700">Active</label>
+                                        </div>
+
+                                        {aiToolError && <p className="text-sm text-red-600">{aiToolError}</p>}
+
+                                        <div className="flex gap-2 pt-2">
+                                            <button type="submit" className="flex-1 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-xl shadow-lg hover:shadow-orange-500/25 transition">
+                                                {editingAiToolId ? "Update Tool" : "Add Tool"}
+                                            </button>
+                                            {editingAiToolId && (
+                                                <button type="button" onClick={() => { setEditingAiToolId(null); setAiToolForm({ name: "", category: "AI Tools", pricing: "Free", websiteUrl: "", description: "", imageUrl: "", isActive: true, displayOrder: 0 }); }} className="px-4 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition">
+                                                    Cancel
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </form>
+
+                                {/* List */}
+                                <div className="lg:col-span-2 space-y-4">
+                                    {aiTools.map((tool) => (
+                                        <div key={tool.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                                            <div className="w-20 h-20 rounded-xl bg-white flex-shrink-0 bg-contain bg-center bg-no-repeat border border-gray-200" style={{ backgroundImage: `url(${normalizeImageUrl(tool.imageUrl)})` }} />
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <h4 className="font-bold text-gray-900 truncate">{tool.name}</h4>
+                                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${tool.isActive ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>{tool.isActive ? "Active" : "Inactive"}</span>
+                                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-700 uppercase">{tool.pricing}</span>
+                                                </div>
+                                                <p className="text-xs text-orange-500 font-semibold mb-1">{tool.category}</p>
+                                                <p className="text-xs text-gray-600 line-clamp-1">{tool.description}</p>
+                                                <a href={tool.websiteUrl} target="_blank" rel="noreferrer" className="text-xs text-blue-500 hover:underline mt-1 block truncate">{tool.websiteUrl}</a>
+                                            </div>
+                                            <div className="flex gap-2">
+                                                <button onClick={() => setEditingAiToolId(tool.id)} className="p-2 text-gray-400 hover:text-orange-500 transition">
+                                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                                </button>
+                                                <button onClick={() => handleAiToolDelete(tool.id)} className="p-2 text-gray-400 hover:text-red-500 transition">
+                                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {aiTools.length === 0 && <div className="text-center py-10 text-gray-500">No tools found.</div>}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {/* REGISTRATIONS SECTION */}
                     {activeSection === "registrations" && (
                         <div className="space-y-8">
@@ -1545,6 +1833,96 @@ export default function AdminPage() {
                                                         <td className="px-4 py-3">{reg.webinar.date}</td>
                                                         <td className="px-4 py-3 text-xs text-gray-400">
                                                             {new Date(reg.registeredAt).toLocaleDateString()} {new Date(reg.registeredAt).toLocaleTimeString()}
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* PRODUCT REQUESTS SECTION */}
+                    {activeSection === "product-requests" && (
+                        <div className="space-y-8">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-900">Product Requests</h2>
+                                <p className="text-gray-500">Manage user product ideas and requests</p>
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                                <div className="flex items-center justify-between gap-4 mb-6">
+                                    <div className="flex items-center gap-4">
+                                        <div className="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium">
+                                            Total: {productRequests.length}
+                                        </div>
+                                        <button
+                                            onClick={fetchProductRequests}
+                                            className="p-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition"
+                                            title="Refresh"
+                                        >
+                                            🔄
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left text-sm text-gray-600">
+                                        <thead className="bg-gray-50 border-b border-gray-200 font-medium text-gray-900">
+                                            <tr>
+                                                <th className="px-6 py-4">User</th>
+                                                <th className="px-6 py-4">Product Idea</th>
+                                                <th className="px-6 py-4">Status</th>
+                                                <th className="px-6 py-4">Date</th>
+                                                <th className="px-6 py-4 text-right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-100">
+                                            {productRequests.length === 0 ? (
+                                                <tr>
+                                                    <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                                                        No requests found.
+                                                    </td>
+                                                </tr>
+                                            ) : (
+                                                productRequests.map((request) => (
+                                                    <tr key={request.id} className="hover:bg-gray-50 transition">
+                                                        <td className="px-6 py-4">
+                                                            <div className="font-bold text-gray-900">{request.name}</div>
+                                                            <div className="text-xs text-gray-500">{request.email}</div>
+                                                        </td>
+                                                        <td className="px-6 py-4">
+                                                            <p className="line-clamp-2 max-w-xs" title={request.idea}>{request.idea}</p>
+                                                        </td>
+                                                        <td className="px-6 py-4">
+                                                            <select
+                                                                value={request.status}
+                                                                onChange={(e) => handleRequestStatusUpdate(request.id, e.target.value as any)}
+                                                                className={`px-3 py-1 rounded-full text-xs font-bold border-none focus:ring-2 cursor-pointer ${request.status === "Pending" ? "bg-yellow-100 text-yellow-700 ring-yellow-500/20" :
+                                                                        request.status === "Reviewed" ? "bg-blue-100 text-blue-700 ring-blue-500/20" :
+                                                                            "bg-green-100 text-green-700 ring-green-500/20"
+                                                                    }`}
+                                                            >
+                                                                <option value="Pending">Pending</option>
+                                                                <option value="Reviewed">Reviewed</option>
+                                                                <option value="Completed">Completed</option>
+                                                            </select>
+                                                        </td>
+                                                        <td className="px-6 py-4 whitespace-nowrap">
+                                                            {new Date(request.createdAt).toLocaleDateString()}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right">
+                                                            <button
+                                                                onClick={() => handleRequestDelete(request.id)}
+                                                                className="text-gray-400 hover:text-red-500 transition p-2 hover:bg-red-50 rounded-lg"
+                                                                title="Delete Request"
+                                                            >
+                                                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))
