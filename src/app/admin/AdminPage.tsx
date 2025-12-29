@@ -93,6 +93,8 @@ type Webinar = {
     mentorRole: string;
     mentorImage: string;
     mentorBio: string;
+    price?: number;
+    currency?: string;
     roadmapItems: RoadmapItem[];
 };
 
@@ -141,6 +143,7 @@ type Registration = {
     registeredAt: string;
     status: string;
     confirmed: boolean;
+    paymentStatus?: string;
 };
 
 type AiTool = {
@@ -153,6 +156,14 @@ type AiTool = {
     imageUrl: string;
     isActive: boolean;
     displayOrder: number;
+    // New fields
+    price?: number;
+    currency?: string;
+    mentorName?: string;
+    mentorRole?: string;
+    mentorImage?: string;
+    mentorBio?: string;
+    roadmapItems?: any[];
 };
 
 const navItems: NavItem[] = [
@@ -350,8 +361,11 @@ export default function AdminPage() {
         mentorRole: "",
         mentorImage: "",
         mentorBio: "",
+        price: 0,
+        currency: "INR",
         roadmapItems: [] as RoadmapItem[],
     });
+    const [roadmapDayCount, setRoadmapDayCount] = useState(3);
     const [editingWebinarId, setEditingWebinarId] = useState<number | null>(null);
 
     const [aiToolForm, setAiToolForm] = useState({
@@ -439,6 +453,27 @@ export default function AdminPage() {
             }
         } catch (err) { console.error(err); }
     }, []);
+
+    const handleRegistrationStatusUpdate = async (id: number, status: string) => {
+        try {
+            const res = await apiFetch(`/api/admin/registrations/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status }),
+                credentials: "include"
+            });
+
+            if (res.ok) {
+                // Refresh registrations
+                fetchRegistrations(selectedWebinarFilter === "all" ? undefined : selectedWebinarFilter);
+            } else {
+                alert("Failed to update status");
+            }
+        } catch (error) {
+            console.error("Failed to update registration status", error);
+            alert("Error updating status");
+        }
+    };
 
     const fetchAiTools = useCallback(async () => {
         try {
@@ -597,6 +632,8 @@ export default function AdminPage() {
                     mentorRole: w.mentorRole || "",
                     mentorImage: w.mentorImage || "",
                     mentorBio: w.mentorBio || "",
+                    price: w.price || 0,
+                    currency: w.currency || "USD",
                     roadmapItems: w.roadmapItems ? w.roadmapItems.map((r: any) => ({
                         day: r.day,
                         title: r.title,
@@ -606,6 +643,14 @@ export default function AdminPage() {
                         imageUrl: r.imageUrl
                     })) : [],
                 });
+
+                // Calculate days
+                if (w.roadmapItems && w.roadmapItems.length > 0) {
+                    const maxDay = Math.max(...w.roadmapItems.map((r: any) => r.day));
+                    setRoadmapDayCount(Math.max(3, maxDay));
+                } else {
+                    setRoadmapDayCount(3);
+                }
             }
         }
     }, [editingWebinarId, webinars]);
@@ -853,8 +898,10 @@ export default function AdminPage() {
                     notificationActive: false, notificationText: "",
                     heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "",
                     platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "",
+                    price: 0, currency: "INR",
                     roadmapItems: []
                 });
+                setRoadmapDayCount(3);
                 setEditingWebinarId(null);
                 fetchWebinars();
             } else {
@@ -971,6 +1018,27 @@ export default function AdminPage() {
         } catch (error) {
             console.error("Failed to delete request", error);
         }
+    };
+
+    const handleDeleteDay = (dayToDelete: number) => {
+        if (roadmapDayCount <= 1) {
+            alert("You must have at least one day in the roadmap.");
+            return;
+        }
+
+        if (!confirm(`Are you sure you want to delete Day ${dayToDelete}? Subsequent days will be reordered.`)) {
+            return;
+        }
+
+        const updatedItems = webinarForm.roadmapItems
+            .filter(item => item.day !== dayToDelete)
+            .map(item => ({
+                ...item,
+                day: item.day > dayToDelete ? item.day - 1 : item.day
+            }));
+
+        setWebinarForm(prev => ({ ...prev, roadmapItems: updatedItems }));
+        setRoadmapDayCount(prev => prev - 1);
     };
 
 
@@ -1435,10 +1503,10 @@ export default function AdminPage() {
                                                     <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                                                     <select value={webinarForm.category} onChange={(e) => setWebinarForm((f) => ({ ...f, category: e.target.value }))} className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition bg-white">
                                                         <option>AI Automation</option>
-                                                        <option>AI Agents</option>
                                                         <option>Marketing AI</option>
                                                         <option>Business AI</option>
                                                         <option>Workshops</option>
+                                                        <option>Other</option>
                                                     </select>
                                                 </div>
                                                 <div>
@@ -1448,6 +1516,17 @@ export default function AdminPage() {
                                                         <option>Live</option>
                                                         <option>Recorded</option>
                                                     </select>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Price (INR)</label>
+                                                    <input
+                                                        type="number"
+                                                        min="0"
+                                                        value={webinarForm.price}
+                                                        onChange={(e) => setWebinarForm((f) => ({ ...f, price: Number(e.target.value) }))}
+                                                        placeholder="0 for Free"
+                                                        className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition"
+                                                    />
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-medium text-gray-700 mb-2">Max Capacity</label>
@@ -1515,9 +1594,9 @@ export default function AdminPage() {
 
                                         {/* Roadmap */}
                                         <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
-                                            <h4 className="font-semibold text-gray-900 mb-4">Event Roadmap (3 Days)</h4>
+                                            <h4 className="font-semibold text-gray-900 mb-4">Event Roadmap</h4>
                                             <div className="space-y-4">
-                                                {[1, 2, 3].map(day => {
+                                                {Array.from({ length: roadmapDayCount }, (_, i) => i + 1).map(day => {
                                                     const existing = webinarForm.roadmapItems.find(r => r.day === day) || { day, title: "", subtitle: "", highlight: "", description: [], imageUrl: "" };
                                                     const updateItem = (updates: any) => {
                                                         setWebinarForm(prev => ({
@@ -1531,7 +1610,18 @@ export default function AdminPage() {
 
                                                     return (
                                                         <div key={day} className="p-4 border border-gray-200 rounded-lg bg-white">
-                                                            <h5 className="font-bold text-gray-700 mb-2">Day {day}</h5>
+                                                            <div className="flex justify-between items-center mb-2">
+                                                                <h5 className="font-bold text-gray-700">Day {day}</h5>
+                                                                {roadmapDayCount > 1 && (
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => handleDeleteDay(day)}
+                                                                        className="text-red-500 hover:text-red-700 text-sm font-medium px-2 py-1 rounded hover:bg-red-50 transition"
+                                                                    >
+                                                                        🗑️ Delete
+                                                                    </button>
+                                                                )}
+                                                            </div>
                                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                                                 <input value={existing.title} onChange={e => updateItem({ title: e.target.value })} placeholder="Title (e.g., Business Growth)" className="w-full p-2 border rounded" />
                                                                 <input value={existing.subtitle} onChange={e => updateItem({ subtitle: e.target.value })} placeholder="Subtitle (e.g., Setup & Management)" className="w-full p-2 border rounded" />
@@ -1561,6 +1651,13 @@ export default function AdminPage() {
                                                         </div>
                                                     );
                                                 })}
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setRoadmapDayCount(prev => prev + 1)}
+                                                    className="w-full py-3 bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl text-gray-600 font-bold hover:bg-gray-200 hover:border-gray-400 transition flex items-center justify-center gap-2"
+                                                >
+                                                    <span>+</span> Add Day {roadmapDayCount + 1}
+                                                </button>
                                             </div>
                                         </div>
 
@@ -1623,7 +1720,7 @@ export default function AdminPage() {
 
                                         <div className="flex gap-3 pt-2">
                                             <button type="submit" className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold hover:-translate-y-0.5 transition shadow-lg shadow-orange-500/25">{editingWebinarId ? "Save Changes" : "Create Webinar"}</button>
-                                            {editingWebinarId && <button type="button" onClick={() => { setEditingWebinarId(null); setWebinarForm({ title: "", description: "", date: "", time: "", duration: "", speaker: "", level: "Beginner", category: "AI Automation", type: "Upcoming", imageUrl: "", maxCapacity: 100, isLandingPage: false, notificationActive: false, notificationText: "", heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "", platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "", roadmapItems: [] }); }} className="px-6 py-3 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition">Cancel</button>}
+                                            {editingWebinarId && <button type="button" onClick={() => { setEditingWebinarId(null); setWebinarForm({ title: "", description: "", date: "", time: "", duration: "", speaker: "", level: "Beginner", category: "AI Automation", type: "Upcoming", imageUrl: "", maxCapacity: 100, isLandingPage: false, notificationActive: false, notificationText: "", heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "", platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "", price: 0, currency: "INR", roadmapItems: [] }); }} className="px-6 py-3 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition">Cancel</button>}
                                         </div>
                                     </div>
                                 </form>
@@ -1810,14 +1907,17 @@ export default function AdminPage() {
                                                 <th className="px-4 py-3">User</th>
                                                 <th className="px-4 py-3">Email</th>
                                                 <th className="px-4 py-3">Webinar</th>
+                                                <th className="px-4 py-3">Status</th>
+                                                <th className="px-4 py-3">Payment</th>
                                                 <th className="px-4 py-3">Date</th>
                                                 <th className="px-4 py-3">Registered At</th>
+                                                <th className="px-4 py-3 text-right">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-gray-100">
                                             {registrations.length === 0 ? (
                                                 <tr>
-                                                    <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                                                    <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                                                         No registrations found.
                                                     </td>
                                                 </tr>
@@ -1830,9 +1930,43 @@ export default function AdminPage() {
                                                             <div className="font-medium text-gray-900">{reg.webinar.title}</div>
                                                             <div className="text-xs text-gray-400">{reg.webinar.date} • {reg.webinar.time}</div>
                                                         </td>
+                                                        <td className="px-4 py-3">
+                                                            <span className={`px-2 py-1 rounded-full text-xs font-bold uppercase ${reg.status === 'accepted' || reg.status === 'confirmed' ? 'bg-green-100 text-green-700' :
+                                                                reg.status === 'rejected' ? 'bg-red-100 text-red-700' :
+                                                                    'bg-yellow-100 text-yellow-700'
+                                                                }`}>
+                                                                {reg.status}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-4 py-3">
+                                                            <span className={`px-2 py-1 rounded-full text-xs font-bold uppercase ${reg.paymentStatus === 'SUCCESS' ? 'bg-green-100 text-green-700' :
+                                                                reg.paymentStatus === 'FAILED' ? 'bg-red-100 text-red-700' :
+                                                                    'bg-gray-100 text-gray-700'
+                                                                }`}>
+                                                                {reg.paymentStatus || 'N/A'}
+                                                            </span>
+                                                        </td>
                                                         <td className="px-4 py-3">{reg.webinar.date}</td>
                                                         <td className="px-4 py-3 text-xs text-gray-400">
                                                             {new Date(reg.registeredAt).toLocaleDateString()} {new Date(reg.registeredAt).toLocaleTimeString()}
+                                                        </td>
+                                                        <td className="px-4 py-3 text-right">
+                                                            {reg.status === 'pending' && (
+                                                                <div className="flex items-center justify-end gap-2">
+                                                                    <button
+                                                                        onClick={() => handleRegistrationStatusUpdate(reg.id, 'accepted')}
+                                                                        className="px-3 py-1 rounded-lg bg-green-50 text-green-700 border border-green-200 hover:bg-green-100 text-xs font-bold transition"
+                                                                    >
+                                                                        Accept
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={() => handleRegistrationStatusUpdate(reg.id, 'rejected')}
+                                                                        className="px-3 py-1 rounded-lg bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 text-xs font-bold transition"
+                                                                    >
+                                                                        Decline
+                                                                    </button>
+                                                                </div>
+                                                            )}
                                                         </td>
                                                     </tr>
                                                 ))
@@ -1901,8 +2035,8 @@ export default function AdminPage() {
                                                                 value={request.status}
                                                                 onChange={(e) => handleRequestStatusUpdate(request.id, e.target.value as any)}
                                                                 className={`px-3 py-1 rounded-full text-xs font-bold border-none focus:ring-2 cursor-pointer ${request.status === "Pending" ? "bg-yellow-100 text-yellow-700 ring-yellow-500/20" :
-                                                                        request.status === "Reviewed" ? "bg-blue-100 text-blue-700 ring-blue-500/20" :
-                                                                            "bg-green-100 text-green-700 ring-green-500/20"
+                                                                    request.status === "Reviewed" ? "bg-blue-100 text-blue-700 ring-blue-500/20" :
+                                                                        "bg-green-100 text-green-700 ring-green-500/20"
                                                                     }`}
                                                             >
                                                                 <option value="Pending">Pending</option>

@@ -1,9 +1,10 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { apiFetch } from "@/lib/api";
+import { apiFetch, userApi } from "@/lib/api";
+import { CheckCircle, Clock, Info } from 'lucide-react';
 import { normalizeImageUrl } from "@/lib/images";
 import { LoginModal } from "@/components/LoginModal";
 
@@ -98,6 +99,15 @@ export default function WebinarDetailPage() {
     const [showBanner, setShowBanner] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', business: '' });
+    const [userRegistrations, setUserRegistrations] = useState<any[]>([]);
+
+    // Status Popup State
+    const [statusPopup, setStatusPopup] = useState<{
+        open: boolean;
+        title: string;
+        message: string;
+        type: 'success' | 'pending' | 'info';
+    }>({ open: false, title: '', message: '', type: 'info' });
     const params = useParams();
     const webinarId = parseInt(params.id as string);
 
@@ -138,8 +148,64 @@ export default function WebinarDetailPage() {
                 setLoading(false);
             }
         };
+
+        const fetchUserRegistrations = async () => {
+            const userId = localStorage.getItem("user_id");
+            if (userId) { // Or check token presence
+                try {
+                    const res = await userApi.getRegistrations();
+                    setUserRegistrations(res.data.registrations || []);
+                } catch (err) {
+                    console.error("Failed to fetch user registrations", err);
+                }
+            }
+        };
+
         fetchDetails();
+        fetchUserRegistrations();
     }, [webinarId]);
+
+    const handleRegister = () => {
+        const userId = localStorage.getItem("user_id"); // Or use context if available
+        if (!userId && !checkAuth()) { // Fallback auth check
+            // If not logged in, maybe show login modal or redirect? 
+            // Existing code showed modal directly, but logic implies we need auth to check registration.
+            // If no auth, assume new registration or prompt login.
+            // For now, let's just proceed to showModal which likely handles partial forms or prompts.
+            // But user asked for "Already Registered" check which implies logged in state.
+            // If not logged in, they can't be "already registered" in this context easily without checking email later.
+            setShowLoginModal(true);
+            return;
+        }
+
+        const existingReg = userRegistrations.find(r => r.webinarId === webinarId || r.id === webinarId);
+        if (existingReg) {
+            if (existingReg.status === 'accepted') {
+                setStatusPopup({
+                    open: true,
+                    title: "Already Registered",
+                    message: "You are already confirmed for this webinar! We look forward to seeing you there.",
+                    type: 'success'
+                });
+            } else if (existingReg.status === 'pending') {
+                setStatusPopup({
+                    open: true,
+                    title: "Registration Pending",
+                    message: "Your registration has been submitted and is currently pending admin approval. You will be notified once approved.",
+                    type: 'pending'
+                });
+            } else {
+                setStatusPopup({
+                    open: true,
+                    title: "Registration Status",
+                    message: `You have already registered. Current status: ${existingReg.status}`,
+                    type: 'info'
+                });
+            }
+            return;
+        }
+        setShowModal(true);
+    };
 
     if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
@@ -163,6 +229,45 @@ export default function WebinarDetailPage() {
                     </div>
                 </main>
                 <Footer />
+
+                {/* Status Popup */}
+                <AnimatePresence>
+                    {statusPopup.open && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => setStatusPopup(prev => ({ ...prev, open: false }))}
+                                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            />
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                                className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl text-center"
+                            >
+                                <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${statusPopup.type === 'success' ? 'bg-green-100' :
+                                    statusPopup.type === 'pending' ? 'bg-orange-100' : 'bg-blue-100'
+                                    }`}>
+                                    {statusPopup.type === 'success' && <CheckCircle className="h-8 w-8 text-green-600" />}
+                                    {statusPopup.type === 'pending' && <Clock className="h-8 w-8 text-orange-600" />}
+                                    {statusPopup.type === 'info' && <Info className="h-8 w-8 text-blue-600" />}
+                                </div>
+
+                                <h3 className="mb-2 text-xl font-bold text-gray-900">{statusPopup.title}</h3>
+                                <p className="mb-6 text-gray-500">{statusPopup.message}</p>
+
+                                <button
+                                    onClick={() => setStatusPopup(prev => ({ ...prev, open: false }))}
+                                    className="w-full rounded-xl bg-gray-900 py-3 font-semibold text-white transition hover:bg-gray-800"
+                                >
+                                    Close
+                                </button>
+                            </motion.div>
+                        </div>
+                    )}
+                </AnimatePresence>
             </>
         );
     }
@@ -265,13 +370,7 @@ export default function WebinarDetailPage() {
                                         transition={{ delay: 0.6 }}
                                         whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(251, 146, 60, 0.3)" }}
                                         whileTap={{ scale: 0.98 }}
-                                        onClick={() => {
-                                            if (checkAuth()) {
-                                                setShowModal(true);
-                                            } else {
-                                                setShowLoginModal(true);
-                                            }
-                                        }}
+                                        onClick={handleRegister}
                                         className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transition duration-300"
                                     >
                                         📋 Apply To Get Business Automation Event
@@ -357,13 +456,7 @@ export default function WebinarDetailPage() {
                                             whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(220, 38, 38, 0.4)" }}
                                             whileTap={{ scale: 0.95 }}
                                             transition={{ type: "spring", stiffness: 400 }}
-                                            onClick={() => {
-                                                if (checkAuth()) {
-                                                    setShowModal(true);
-                                                } else {
-                                                    setShowLoginModal(true);
-                                                }
-                                            }}
+                                            onClick={handleRegister}
                                             className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl text-sm md:text-lg shadow-lg transition duration-300"
                                         >
                                             🎯 Apply To Get Invite
@@ -417,35 +510,35 @@ export default function WebinarDetailPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {(webinar.roadmapItems || []).map((item, idx) => {
-                                    // Define color themes based on Day
-                                    let colors = {
-                                        header: "from-orange-500 to-amber-500",
-                                        subtitle: "text-orange-100",
-                                        body: "from-orange-50 to-white",
-                                        highlightText: "text-orange-700",
-                                        highlightBg: "bg-orange-100",
-                                        shadow: "rgba(251, 146, 60, 0.2)"
-                                    };
-
-                                    if (item.day === 2) {
-                                        colors = {
+                                    // Define color themes
+                                    const themes = [
+                                        { // Theme 1 (Orange) - Day 1, 4, 7...
+                                            header: "from-orange-500 to-amber-500",
+                                            subtitle: "text-orange-100",
+                                            body: "from-orange-50 to-white",
+                                            highlightText: "text-orange-700",
+                                            highlightBg: "bg-orange-100",
+                                            shadow: "rgba(251, 146, 60, 0.2)"
+                                        },
+                                        { // Theme 2 (Blue) - Day 2, 5, 8...
                                             header: "from-blue-600 to-blue-400",
                                             subtitle: "text-blue-100",
                                             body: "from-blue-50 to-white",
                                             highlightText: "text-blue-700",
                                             highlightBg: "bg-blue-100",
                                             shadow: "rgba(59, 130, 246, 0.2)"
-                                        };
-                                    } else if (item.day === 3) {
-                                        colors = {
+                                        },
+                                        { // Theme 3 (Red) - Day 3, 6, 9...
                                             header: "from-red-600 to-red-500",
                                             subtitle: "text-red-100",
                                             body: "from-red-50 to-white",
                                             highlightText: "text-red-700",
                                             highlightBg: "bg-red-100",
                                             shadow: "rgba(220, 38, 38, 0.2)"
-                                        };
-                                    }
+                                        }
+                                    ];
+
+                                    const colors = themes[idx % themes.length];
 
                                     return (
                                         <motion.div
@@ -507,13 +600,7 @@ export default function WebinarDetailPage() {
                                     transition={{ delay: 0.2 }}
                                     whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(220, 38, 38, 0.4)" }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => {
-                                        if (checkAuth()) {
-                                            setShowModal(true);
-                                        } else {
-                                            setShowLoginModal(true);
-                                        }
-                                    }}
+                                    onClick={handleRegister}
                                     className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-lg shadow-lg transition duration-300"
                                 >
                                     Apply To Get Invite
@@ -937,13 +1024,7 @@ export default function WebinarDetailPage() {
                                 <motion.button
                                     whileHover={{ scale: 1.08, boxShadow: "0 10px 25px rgba(220, 38, 38, 0.3)" }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => {
-                                        if (checkAuth()) {
-                                            setShowModal(true);
-                                        } else {
-                                            setShowLoginModal(true);
-                                        }
-                                    }}
+                                    onClick={handleRegister}
                                     className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition whitespace-nowrap text-base shadow-lg"
                                 >
                                     🎯 Get Invite
@@ -1054,6 +1135,45 @@ export default function WebinarDetailPage() {
                 </main>
                 <Footer />
                 <LoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
+
+                {/* Status Popup */}
+                <AnimatePresence>
+                    {statusPopup.open && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => setStatusPopup(prev => ({ ...prev, open: false }))}
+                                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            />
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                                className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl text-center"
+                            >
+                                <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${statusPopup.type === 'success' ? 'bg-green-100' :
+                                    statusPopup.type === 'pending' ? 'bg-orange-100' : 'bg-blue-100'
+                                    }`}>
+                                    {statusPopup.type === 'success' && <CheckCircle className="h-8 w-8 text-green-600" />}
+                                    {statusPopup.type === 'pending' && <Clock className="h-8 w-8 text-orange-600" />}
+                                    {statusPopup.type === 'info' && <Info className="h-8 w-8 text-blue-600" />}
+                                </div>
+
+                                <h3 className="mb-2 text-xl font-bold text-gray-900">{statusPopup.title}</h3>
+                                <p className="mb-6 text-gray-500">{statusPopup.message}</p>
+
+                                <button
+                                    onClick={() => setStatusPopup(prev => ({ ...prev, open: false }))}
+                                    className="w-full rounded-xl bg-gray-900 py-3 font-semibold text-white transition hover:bg-gray-800"
+                                >
+                                    Close
+                                </button>
+                            </motion.div>
+                        </div>
+                    )}
+                </AnimatePresence>
             </>
         );
     }

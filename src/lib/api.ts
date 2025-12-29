@@ -19,3 +19,15 @@ export async function apiFetch(path: string, options: RequestInit = {}) {
     headers,
   });
 }
+
+export const userApi = {
+  getRegistrations: async () => {
+    const res = await apiFetch('/user/registrations');
+    if (!res.ok) {
+      console.error("Failed to fetch registrations", await res.text());
+      return { data: { registrations: [] } }; // Fallback or throw
+    }
+    const data = await res.json();
+    return { data }; // Mimic Axios structure
+  }
+};

@@ -23,6 +23,23 @@ type Webinar = {
   registeredCount?: number;
   maxCapacity?: number;
   isLandingPage?: boolean;
+  computedStatus?: "Upcoming" | "Live" | "Recorded";
+};
+
+// Helper to parse date/time string (e.g., "Dec 28, 2025", "3:30 PM IST")
+const parseWebinarDateTime = (dateStr: string, timeStr: string) => {
+  try {
+    const cleanTime = timeStr.replace(/\s*[A-Z]{3}$/, '').trim(); // Remove timezone (IST, etc)
+    const dtString = `${dateStr} ${cleanTime}`;
+    return new Date(dtString);
+  } catch (e) {
+    return new Date(); // Fallback
+  }
+};
+
+const getDurationMinutes = (durationStr: string) => {
+  const match = durationStr.match(/(\d+)/);
+  return match ? parseInt(match[1]) : 60; // Default 60 mins
 };
 
 
@@ -48,7 +65,48 @@ export default function WebinarsPage() {
         const res = await apiFetch("/api/webinars");
         if (res.ok) {
           const data = await res.json();
-          setWebinars(data.webinars || []);
+          let fetchedWebinars: Webinar[] = data.webinars || [];
+
+          // Process status and sort
+          const now = new Date();
+          const processed = fetchedWebinars.map(w => {
+            const start = parseWebinarDateTime(w.date, w.time);
+            const durationMins = getDurationMinutes(w.duration);
+            const end = new Date(start.getTime() + durationMins * 60000);
+
+            let status: "Upcoming" | "Live" | "Recorded" = "Upcoming";
+            if (now > end) {
+              status = "Recorded";
+            } else if (now >= start && now <= end) {
+              status = "Live";
+            } else {
+              status = "Upcoming";
+            }
+
+            // Helper for sorting: Past last, then by date
+            return { ...w, computedStatus: status, _sortDate: start };
+          });
+
+          // Sort: Active (Live/Upcoming) first, then Recorded. 
+          // Within Active: ascending date (nearest first).
+          // Within Recorded: descending date (newest recorded first).
+          processed.sort((a: any, b: any) => {
+            const dateA = a._sortDate;
+            const dateB = b._sortDate;
+
+            const isPastA = a.computedStatus === 'Recorded';
+            const isPastB = b.computedStatus === 'Recorded';
+
+            if (isPastA && !isPastB) return 1;
+            if (!isPastA && isPastB) return -1;
+
+            if (isPastA && isPastB) {
+              return dateB.getTime() - dateA.getTime(); // Newest recorded first
+            }
+            return dateA.getTime() - dateB.getTime(); // Nearest upcoming first
+          });
+
+          setWebinars(processed);
         }
       } catch (error) {
         console.error("Failed to fetch webinars", error);
@@ -68,13 +126,15 @@ export default function WebinarsPage() {
       const matchesSearch = webinar.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         webinar.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = !selectedCategory || webinar.category === selectedCategory;
-      const matchesType = !selectedType || webinar.type === selectedType;
+      // Filter by computedStatus if types are selected based on UI (Live, Upcoming, Recorded)
+      const statusToMatch = webinar.computedStatus || webinar.type;
+      const matchesType = !selectedType || statusToMatch === selectedType;
       const matchesLevel = !selectedLevel || webinar.level === selectedLevel;
       return matchesSearch && matchesCategory && matchesType && matchesLevel;
     });
   }, [webinars, searchTerm, selectedCategory, selectedType, selectedLevel]);
 
-  const upcomingWebinars = filteredWebinars.filter((w) => w.type === "Upcoming");
+  const upcomingWebinars = filteredWebinars.filter((w) => (w.computedStatus || w.type) !== "Recorded");
   const featuredWebinar = upcomingWebinars[0] || webinars[0];
 
   const getTypeBadgeColor = (type: string) => {
@@ -446,25 +506,26 @@ export default function WebinarsPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg hover:shadow-xl transition max-w-5xl mx-auto"
+                className="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 bg-white rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg hover:shadow-xl transition max-w-5xl mx-auto"
               >
                 {/* Image */}
-                <div className="relative h-48 md:h-64 lg:h-96 overflow-hidden rounded-xl">
+                <div className="relative h-48 md:h-64 lg:h-full min-h-[300px] overflow-hidden">
                   <img
                     src={featuredWebinar.imageUrl}
                     alt={featuredWebinar.title}
                     className="w-full h-full object-cover hover:scale-105 transition duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold ${getTypeBadgeColor(featuredWebinar.type)} shadow-lg`}>
-                      {getTypeIcon(featuredWebinar.type)} {featuredWebinar.type}
+                    <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold ${getTypeBadgeColor(featuredWebinar.computedStatus || featuredWebinar.type)} shadow-lg`}>
+                      {getTypeIcon(featuredWebinar.computedStatus || featuredWebinar.type)} {featuredWebinar.computedStatus || featuredWebinar.type}
                     </span>
                   </div>
                 </div>
 
+
                 {/* Content */}
-                <div className="flex flex-col justify-between p-6 lg:p-8 h-auto lg:h-96">
-                  <div className="flex-1">
+                <div className="flex flex-col p-6 lg:p-8 h-auto lg:h-full">
+                  <div className="mb-6">
                     <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
                       {featuredWebinar.title}
                     </h3>
@@ -491,21 +552,7 @@ export default function WebinarsPage() {
                       </div>
                     </div>
 
-                    {featuredWebinar.registeredCount && (
-                      <div className="mb-4">
-                        <p className="text-gray-600 font-semibold text-xs mb-1">
-                          🔥 {featuredWebinar.registeredCount} people registered
-                        </p>
-                        <div className="w-full bg-gray-200 rounded-full h-1.5">
-                          <div
-                            className="bg-gradient-to-r from-orange-500 to-amber-500 h-1.5 rounded-full transition-all"
-                            style={{
-                              width: `${(featuredWebinar.registeredCount / (featuredWebinar.maxCapacity || 100)) * 100}%`,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    )}
+
                   </div>
 
                   <Link to={`/webinars/${featuredWebinar.id}`}>
@@ -585,8 +632,8 @@ export default function WebinarsPage() {
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                         />
                         <div className="absolute top-2 left-2">
-                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${getTypeBadgeColor(webinar.type)} shadow-lg`}>
-                            {getTypeIcon(webinar.type)} {webinar.type}
+                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${getTypeBadgeColor(webinar.computedStatus || webinar.type)} shadow-lg`}>
+                            {getTypeIcon(webinar.computedStatus || webinar.type)} {webinar.computedStatus || webinar.type}
                           </span>
                         </div>
                       </div>
@@ -639,14 +686,18 @@ export default function WebinarsPage() {
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={(e) => {
-                                if (webinar.type !== "Recorded" && !checkAuth()) {
+                                const currentStatus = webinar.computedStatus || webinar.type;
+                                if (currentStatus !== "Recorded" && !checkAuth()) {
                                   e.preventDefault();
                                   setShowLoginModal(true);
                                 }
                               }}
-                              className="w-full px-3 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-lg hover:shadow-lg transition text-xs"
+                              className={`w-full px-3 py-2 bg-gradient-to-r ${(webinar.computedStatus || webinar.type) === "Recorded"
+                                ? "from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700"
+                                : "from-orange-500 to-amber-500"
+                                } text-white font-bold rounded-lg hover:shadow-lg transition text-xs`}
                             >
-                              {webinar.type === "Recorded" ? "Watch" : "Register"}
+                              {(webinar.computedStatus || webinar.type) === "Recorded" ? "Watch Now" : "Register"}
                             </motion.button>
                           </Link>
                           <Link to={`/webinars/${webinar.id}`} className="flex-1">
