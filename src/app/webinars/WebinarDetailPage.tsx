@@ -1120,6 +1120,39 @@ export default function WebinarDetailPage() {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
+                                        onClick={async (e) => {
+                                            e.preventDefault();
+                                            if (!checkAuth()) {
+                                                setShowLoginModal(true);
+                                                return;
+                                            }
+
+                                            // Call API to register
+                                            try {
+                                                const res = await apiFetch(`/api/user/registrations/${webinarId}`, {
+                                                    method: 'POST'
+                                                });
+
+                                                if (res.ok) {
+                                                    setShowModal(false);
+                                                    setStatusPopup({
+                                                        open: true,
+                                                        title: "Success!",
+                                                        message: "You have successfully registered for this webinar.",
+                                                        type: 'success'
+                                                    });
+                                                    // Refresh registrations
+                                                    const regRes = await userApi.getRegistrations();
+                                                    setUserRegistrations(regRes.data.registrations || []);
+                                                } else {
+                                                    const err = await res.json();
+                                                    alert(err.error || "Failed to register");
+                                                }
+                                            } catch (error) {
+                                                console.error(error);
+                                                alert("An error occurred");
+                                            }
+                                        }}
                                         className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold rounded-lg transition shadow-lg text-base mb-4"
                                     >
                                         Apply To Get Invite
