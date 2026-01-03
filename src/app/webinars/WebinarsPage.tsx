@@ -509,7 +509,7 @@ export default function WebinarsPage() {
                 className="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 bg-white rounded-2xl overflow-hidden border-2 border-orange-200 shadow-lg hover:shadow-xl transition max-w-5xl mx-auto"
               >
                 {/* Image */}
-                <div className="relative h-48 md:h-64 lg:h-full min-h-[300px] overflow-hidden">
+                <div className="relative h-40 md:h-56 lg:h-full min-h-[200px] overflow-hidden">
                   <img
                     src={featuredWebinar.imageUrl}
                     alt={featuredWebinar.title}
@@ -524,29 +524,33 @@ export default function WebinarsPage() {
 
 
                 {/* Content */}
-                <div className="flex flex-col p-6 lg:p-8 h-auto lg:h-full">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                <div className="flex flex-col p-5 lg:p-6 h-auto lg:h-full">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">
                       {featuredWebinar.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-5 line-clamp-2">{featuredWebinar.description}</p>
+                    <p className="text-sm text-gray-600 mb-3 line-clamp-2">{featuredWebinar.description}</p>
 
-                    <div className="space-y-2 mb-5 text-xs">
-                      <div className="flex items-center gap-3 text-gray-700">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4 text-xs">
+                      <div className="flex items-center gap-2 text-gray-700">
                         <span className="text-lg">📅</span>
                         <span className="font-medium">{featuredWebinar.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-700">
                         <span className="text-lg">🕐</span>
                         <span className="font-medium">{featuredWebinar.time}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-gray-700">
+                      <div className="flex items-center gap-2 text-gray-700">
                         <span className="text-lg">⏱️</span>
                         <span className="font-medium">{featuredWebinar.duration}</span>
-                        <span className="text-lg">👤</span>
-                        <span className="font-medium">{featuredWebinar.speaker}</span>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <span className="text-lg">👤</span>
+                        <span className="font-medium truncate">{featuredWebinar.speaker}</span>
+                      </div>
+                      <div className="flex items-center gap-2 col-span-2">
                         <span className="text-lg">🎯</span>
-                        <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
+                        <span className="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
                           {featuredWebinar.level}
                         </span>
                       </div>
