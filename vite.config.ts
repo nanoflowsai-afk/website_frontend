@@ -4,6 +4,8 @@ import path from 'path';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
+    console.log("DEBUG: Loaded VITE_API_BASE_URL:", env.VITE_API_BASE_URL);
+    console.log("DEBUG: Proxy Target:", env.VITE_API_BASE_URL || 'http://localhost:5001');
     return {
         plugins: [react()],
         resolve: {
