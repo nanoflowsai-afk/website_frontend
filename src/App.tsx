@@ -32,7 +32,7 @@ export default function App() {
                     <Route index element={<HomePage />} />
                     <Route path="admin" element={<AdminPage />} />
                     <Route path="webinars" element={<WebinarsPage />} />
-                    <Route path="webinars/:id" element={<WebinarDetailPage />} />
+                    <Route path="webinars/:slug" element={<WebinarDetailPage />} />
                     <Route path="ai-tools" element={<AiToolsPage />} />
                     <Route path="services" element={<ServicesPage />} />
                     <Route path="services/:id" element={<ServiceDetailPage />} />

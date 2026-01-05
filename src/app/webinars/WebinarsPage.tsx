@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { apiFetch } from "@/lib/api";
+import { createSlug } from "@/lib/slugUtils";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -228,58 +229,51 @@ export default function WebinarsPage() {
         <section className="sticky top-20 z-40 bg-white border-b-2 border-orange-100 px-4 md:px-6 py-3 md:py-4 shadow-md">
           <div className="mx-auto max-w-[1400px]">
             {/* Mobile Layout: Two Rows */}
+            {/* Mobile Layout: Improved Spacing */}
             <div className="flex flex-col md:hidden gap-3">
-              {/* Mobile Row 1: Search + Category */}
-              <div className="flex gap-2">
-                <div className="flex-1">
-                  <input
-                    type="text"
-                    placeholder="🔍 Search webinars by title or topic..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-xs"
-                  />
-                </div>
+              {/* Row 1: Search (Full Width) */}
+              <div className="w-full">
+                <input
+                  type="text"
+                  placeholder="🔍 Search webinars..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 transition text-sm shadow-sm"
+                />
+              </div>
 
+              {/* Row 2: Filters Grid */}
+              <div className="grid grid-cols-2 gap-2">
                 <select
                   value={selectedCategory || ""}
                   onChange={(e) => setSelectedCategory(e.target.value || null)}
-                  className="px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                  className="px-2 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium bg-white truncate"
                 >
                   <option value="">📂 Category</option>
                   {categories.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
+                    <option key={cat} value={cat}>{cat}</option>
                   ))}
                 </select>
-              </div>
 
-              {/* Mobile Row 2: Type, Level, Clear */}
-              <div className="flex gap-2">
                 <select
                   value={selectedType || ""}
                   onChange={(e) => setSelectedType(e.target.value || null)}
-                  className="flex-1 px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                  className="px-2 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium bg-white truncate"
                 >
                   <option value="">📅 Type</option>
                   {types.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
+                    <option key={type} value={type}>{type}</option>
                   ))}
                 </select>
 
                 <select
                   value={selectedLevel || ""}
                   onChange={(e) => setSelectedLevel(e.target.value || null)}
-                  className="flex-1 px-3 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium hover:border-orange-400 transition bg-white"
+                  className="px-2 py-2 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-xs font-medium bg-white truncate"
                 >
                   <option value="">🎯 Level</option>
                   {levels.map((level) => (
-                    <option key={level} value={level}>
-                      {level}
-                    </option>
+                    <option key={level} value={level}>{level}</option>
                   ))}
                 </select>
 
@@ -290,9 +284,9 @@ export default function WebinarsPage() {
                     setSelectedType(null);
                     setSelectedLevel(null);
                   }}
-                  className="px-3 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold transition text-xs whitespace-nowrap"
+                  className="px-2 py-2 rounded-lg bg-orange-100 text-orange-700 border-2 border-orange-200 hover:bg-orange-200 font-bold transition text-xs"
                 >
-                  Clear
+                  ✖ Clear
                 </button>
               </div>
             </div>
@@ -559,7 +553,7 @@ export default function WebinarsPage() {
 
                   </div>
 
-                  <Link to={`/webinars/${featuredWebinar.id}`}>
+                  <Link to={`/webinars/${createSlug(featuredWebinar.title)}`}>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -629,14 +623,14 @@ export default function WebinarsPage() {
                       className="group flex flex-col h-full rounded-xl border-2 border-orange-100 bg-white hover:border-orange-400 hover:shadow-lg transition overflow-hidden"
                     >
                       {/* Image */}
-                      <div className="relative h-40 w-full overflow-hidden">
+                      <div className="relative h-48 w-full overflow-hidden">
                         <img
                           src={webinar.imageUrl}
                           alt={webinar.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                         />
-                        <div className="absolute top-2 left-2">
-                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${getTypeBadgeColor(webinar.computedStatus || webinar.type)} shadow-lg`}>
+                        <div className="absolute top-3 left-3">
+                          <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${getTypeBadgeColor(webinar.computedStatus || webinar.type)} shadow-md backdrop-blur-sm bg-opacity-90`}>
                             {getTypeIcon(webinar.computedStatus || webinar.type)} {webinar.computedStatus || webinar.type}
                           </span>
                         </div>
@@ -684,11 +678,11 @@ export default function WebinarsPage() {
                         </div>
 
                         {/* Two Buttons Side by Side */}
-                        <div className="flex gap-2 mt-auto">
-                          <Link to={`/webinars/${webinar.id}`} className="flex-1">
+                        <div className="flex flex-col xs:flex-row gap-2 mt-auto">
+                          <Link to={`/webinars/${createSlug(webinar.title)}`} className="flex-1 w-full">
                             <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
                               onClick={(e) => {
                                 const currentStatus = webinar.computedStatus || webinar.type;
                                 if (currentStatus !== "Recorded" && !checkAuth()) {
@@ -696,21 +690,21 @@ export default function WebinarsPage() {
                                   setShowLoginModal(true);
                                 }
                               }}
-                              className={`w-full px-3 py-2 bg-gradient-to-r ${(webinar.computedStatus || webinar.type) === "Recorded"
-                                ? "from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700"
-                                : "from-orange-500 to-amber-500"
-                                } text-white font-bold rounded-lg hover:shadow-lg transition text-xs`}
+                              className={`w-full px-3 py-2.5 bg-gradient-to-r ${(webinar.computedStatus || webinar.type) === "Recorded"
+                                ? "from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800"
+                                : "from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600"
+                                } text-white font-bold rounded-lg shadow-sm transition text-xs uppercase tracking-wide`}
                             >
                               {(webinar.computedStatus || webinar.type) === "Recorded" ? "Watch Now" : "Register"}
                             </motion.button>
                           </Link>
-                          <Link to={`/webinars/${webinar.id}`} className="flex-1">
+                          <Link to={`/webinars/${createSlug(webinar.title)}`} className="flex-1 w-full">
                             <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              className="w-full px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-lg transition text-xs"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              className="w-full px-3 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200 font-bold rounded-lg transition text-xs uppercase tracking-wide"
                             >
-                              Know More
+                              Details
                             </motion.button>
                           </Link>
                         </div>

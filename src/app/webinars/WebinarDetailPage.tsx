@@ -7,6 +7,8 @@ import { apiFetch, userApi } from "@/lib/api";
 import { CheckCircle, Clock, Info } from 'lucide-react';
 import { normalizeImageUrl } from "@/lib/images";
 import { LoginModal } from "@/components/LoginModal";
+import { createSlug } from "@/lib/slugUtils";
+import aiAgentsAutomationImage from "@assets/stock_images/ai_agents_automation_c41dbe10.jpg";
 
 type RoadmapItem = {
     id: number;
@@ -109,8 +111,10 @@ export default function WebinarDetailPage() {
         type: 'success' | 'pending' | 'info';
     }>({ open: false, title: '', message: '', type: 'info' });
     const params = useParams();
-    const webinarId = parseInt(params.id as string);
+    // const webinarId = parseInt(params.id as string); // Removed direct ID usage
+    const { slug } = params;
 
+    const [webinarId, setWebinarId] = useState<number | null>(null);
     const [webinar, setWebinar] = useState<Webinar | null>(null);
     const [loading, setLoading] = useState(true);
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -122,25 +126,40 @@ export default function WebinarDetailPage() {
     };
 
     useEffect(() => {
-        const fetchDetails = async () => {
+        const resolveWebinar = async () => {
+            setLoading(true);
             try {
-                const res = await apiFetch(`/api/webinars/${webinarId}`); // Use public ID endpoint
-                if (res.ok) {
-                    const data = await res.json();
-                    const webinarData = data.webinar;
+                // First get all webinars to find matching slug
+                const allRes = await apiFetch("/api/webinars");
+                if (!allRes.ok) throw new Error("Failed to fetch webinars list");
+                const allData = await allRes.json();
+                const allWebinars: Webinar[] = allData.webinars || [];
 
-                    setWebinar({
-                        ...webinarData,
-                        roadmapItems: (webinarData.roadmapItems || [])
-                            .filter((item: any, index: number, self: any[]) =>
-                                index === self.findIndex((t) => t.day === item.day)
-                            )
-                            .map((item: any) => ({
-                                ...item,
-                                description: Array.isArray(item.description) ? item.description : (typeof item.description === 'string' ? JSON.parse(item.description) : [])
-                            }))
-                            .sort((a: any, b: any) => a.day - b.day)
-                    });
+                const found = allWebinars.find(w => createSlug(w.title) === slug);
+
+                if (found) {
+                    setWebinarId(found.id);
+                    // Then fetch details for this ID
+                    const res = await apiFetch(`/api/webinars/${found.id}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        const webinarData = data.webinar;
+
+                        setWebinar({
+                            ...webinarData,
+                            roadmapItems: (webinarData.roadmapItems || [])
+                                .filter((item: any, index: number, self: any[]) =>
+                                    index === self.findIndex((t) => t.day === item.day)
+                                )
+                                .map((item: any) => ({
+                                    ...item,
+                                    description: Array.isArray(item.description) ? item.description : (typeof item.description === 'string' ? JSON.parse(item.description) : [])
+                                }))
+                                .sort((a: any, b: any) => a.day - b.day)
+                        });
+                    }
+                } else {
+                    setWebinar(null);
                 }
             } catch (err) {
                 console.error(err);
@@ -148,6 +167,12 @@ export default function WebinarDetailPage() {
                 setLoading(false);
             }
         };
+
+        if (slug) {
+            resolveWebinar();
+        } else {
+            setLoading(false);
+        }
 
         const fetchUserRegistrations = async () => {
             const userId = localStorage.getItem("user_id");
@@ -161,9 +186,8 @@ export default function WebinarDetailPage() {
             }
         };
 
-        fetchDetails();
         fetchUserRegistrations();
-    }, [webinarId]);
+    }, [slug]);
 
     const handleRegister = () => {
         const userId = localStorage.getItem("user_id"); // Or use context if available
@@ -423,7 +447,7 @@ export default function WebinarDetailPage() {
                                                 className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
                                             >
                                                 <img
-                                                    src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg"
+                                                    src={aiAgentsAutomationImage}
                                                     alt="AI Agents Automation"
                                                     className="w-full h-auto object-cover rounded-xl"
                                                 />
@@ -485,7 +509,7 @@ export default function WebinarDetailPage() {
                                             className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
                                         >
                                             <img
-                                                src="/attached_assets/stock_images/ai_agents_automation_c41dbe10.jpg"
+                                                src={aiAgentsAutomationImage}
                                                 alt="AI Agents Automation"
                                                 className="w-full h-auto object-cover rounded-xl"
                                             />
@@ -777,7 +801,7 @@ export default function WebinarDetailPage() {
                                         className="rounded-2xl border-2 border-orange-200 shadow-lg overflow-hidden w-full"
                                     >
                                         <img
-                                            src="/attached_assets/stock_images/business_workflow_au_cb921712.jpg"
+                                            src={aiAgentsAutomationImage}
                                             alt="Business Workflow Automation"
                                             className="w-full h-auto object-cover rounded-xl"
                                         />

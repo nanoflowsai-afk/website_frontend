@@ -544,6 +544,7 @@ export function Navbar() {
                         className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-orange-50 transition-all"
                         onClick={() => setMobileOpen(false)}
                       >
+                        <span className="text-2xl">🎥</span>
                         Webinars
                       </Link>
                       <Link
