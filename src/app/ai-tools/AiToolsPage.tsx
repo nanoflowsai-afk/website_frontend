@@ -32,10 +32,17 @@ export default function AiToolsPage() {
         const fetchTools = async () => {
             try {
                 const res = await fetch("/api/ai-tools"); // Public endpoint
-                if (res.ok) {
-                    const data = await res.json();
-                    setTools(data.tools || []);
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
                 }
+                const contentType = res.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    const text = await res.text();
+                    console.error("Received non-JSON response:", text.substring(0, 100));
+                    throw new TypeError("Received non-JSON response from server");
+                }
+                const data = await res.json();
+                setTools(data.tools || []);
             } catch (err) {
                 console.error("Failed to fetch tools", err);
             } finally {
