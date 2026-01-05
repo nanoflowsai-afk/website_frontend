@@ -95,6 +95,9 @@ type Webinar = {
     mentorBio: string;
     price?: number;
     currency?: string;
+    meetingId?: string;
+    passcode?: string;
+    inviteLink?: string;
     roadmapItems: RoadmapItem[];
 };
 
@@ -363,6 +366,9 @@ export default function AdminPage() {
         mentorBio: "",
         price: 0,
         currency: "INR",
+        meetingId: "",
+        passcode: "",
+        inviteLink: "",
         roadmapItems: [] as RoadmapItem[],
     });
     const [roadmapDayCount, setRoadmapDayCount] = useState(3);
@@ -634,6 +640,9 @@ export default function AdminPage() {
                     mentorBio: w.mentorBio || "",
                     price: w.price || 0,
                     currency: w.currency || "USD",
+                    meetingId: w.meetingId || "",
+                    passcode: w.passcode || "",
+                    inviteLink: w.inviteLink || "",
                     roadmapItems: w.roadmapItems ? w.roadmapItems.map((r: any) => ({
                         day: r.day,
                         title: r.title,
@@ -899,6 +908,7 @@ export default function AdminPage() {
                     heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "",
                     platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "",
                     price: 0, currency: "INR",
+                    meetingId: "", passcode: "", inviteLink: "",
                     roadmapItems: []
                 });
                 setRoadmapDayCount(3);
@@ -1536,6 +1546,18 @@ export default function AdminPage() {
                                                     <label className="block text-sm font-medium text-gray-700 mb-2">Platform</label>
                                                     <input value={webinarForm.platform} onChange={(e) => setWebinarForm((f) => ({ ...f, platform: e.target.value }))} placeholder="Zoom / YouTube" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
                                                 </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Meeting ID</label>
+                                                    <input value={webinarForm.meetingId} onChange={(e) => setWebinarForm((f) => ({ ...f, meetingId: e.target.value }))} placeholder="123-456-7890" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Passcode</label>
+                                                    <input value={webinarForm.passcode} onChange={(e) => setWebinarForm((f) => ({ ...f, passcode: e.target.value }))} placeholder="Secret123" className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
+                                                <div className="md:col-span-2">
+                                                    <label className="block text-sm font-medium text-gray-700 mb-2">Invite Link</label>
+                                                    <input value={webinarForm.inviteLink} onChange={(e) => setWebinarForm((f) => ({ ...f, inviteLink: e.target.value }))} placeholder="https://zoom.us/j/..." className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1720,7 +1742,7 @@ export default function AdminPage() {
 
                                         <div className="flex gap-3 pt-2">
                                             <button type="submit" className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold hover:-translate-y-0.5 transition shadow-lg shadow-orange-500/25">{editingWebinarId ? "Save Changes" : "Create Webinar"}</button>
-                                            {editingWebinarId && <button type="button" onClick={() => { setEditingWebinarId(null); setWebinarForm({ title: "", description: "", date: "", time: "", duration: "", speaker: "", level: "Beginner", category: "AI Automation", type: "Upcoming", imageUrl: "", maxCapacity: 100, isLandingPage: false, notificationActive: false, notificationText: "", heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "", platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "", price: 0, currency: "INR", roadmapItems: [] }); }} className="px-6 py-3 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition">Cancel</button>}
+                                            {editingWebinarId && <button type="button" onClick={() => { setEditingWebinarId(null); setWebinarForm({ title: "", description: "", date: "", time: "", duration: "", speaker: "", level: "Beginner", category: "AI Automation", type: "Upcoming", imageUrl: "", maxCapacity: 100, isLandingPage: false, notificationActive: false, notificationText: "", heroTitle: "", heroSubtitle: "", heroContext: "", heroImage: "", platform: "Zoom", mentorName: "", mentorRole: "", mentorImage: "", mentorBio: "", price: 0, currency: "INR", meetingId: "", passcode: "", inviteLink: "", roadmapItems: [] }); }} className="px-6 py-3 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 transition">Cancel</button>}
                                         </div>
                                     </div>
                                 </form>
